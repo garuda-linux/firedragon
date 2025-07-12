@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.18](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18) — 2025-07-12 — [`v12.0.0-beta.17`…`v12.0.0-beta.18`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.17...v12.0.0-beta.18)
+
+### 🚀 Features
+
+- *(stub-installer)* Disable installer when CPU doesn't supports SSE4.1 — [`ad1cbe2a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ad1cbe2ac64e394b79cb0e1d90c32c05329f31ad)
+- *(installer)* Add build_installer.yml — [`65473ac0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/65473ac0873fb6b13481d300bf4fa4de194b0cf5)
+- *(workflow)* Include installers on Publish — [`9b14131c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9b14131c03f1ddb4189752fb4015c1b8df139b54)
+- *(workflow)* Update to 12.0.13 — [`ced789ea…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ced789ea63f775400af3aee4259c9982996b7a39)
+- *(workflow)* Generate file hashes for Windows, Linux, and macOS installers — [`50611320…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/50611320fc0e0086abd5d113adf188e4f9148414)
+
 ## [FireDragon v12.0.0-beta.17](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17) — 2025-07-12 — [`v12.0.0-beta.16`…`v12.0.0-beta.17`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.16...v12.0.0-beta.17)
 
 ### 🚀 Features
