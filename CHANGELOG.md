@@ -1,5 +1,18 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.18](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18) — 2025-07-13 — [`v12.0.0-beta.17`…`v12.0.0-beta.18`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.17...v12.0.0-beta.18)
+
+### 🚀 Features
+
+- *(stub-installer)* Disable installer when CPU doesn't supports SSE4.1 — [`ad1cbe2a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ad1cbe2ac64e394b79cb0e1d90c32c05329f31ad)
+- *(installer)* Add build_installer.yml — [`65473ac0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/65473ac0873fb6b13481d300bf4fa4de194b0cf5)
+- *(workflow)* Include installers on Publish — [`9b14131c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9b14131c03f1ddb4189752fb4015c1b8df139b54)
+- *(workflow)* Update to 12.0.13 — [`ced789ea…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ced789ea63f775400af3aee4259c9982996b7a39)
+- *(workflow)* Generate file hashes for Windows, Linux, and macOS installers — [`50611320…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/50611320fc0e0086abd5d113adf188e4f9148414)
+- *(version)* Update to 12.0.14 — [`0d1bc32a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0d1bc32a7878747397f4136caabfd0f4dbd54068)
+- *(migration)* 新しいタブを追加し、初回起動時のウェルカムページを表示する機能を実装 — [`bb2fba1f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bb2fba1f51b59ceb486932fa1c34a2daca640239)
+- *(installer)* 特定のインストーラー名を検索し、見つからない場合の警告を追加 — [`ee43008c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ee43008c1c5e60669edd45d7b902223e3bb80b94)
+
 ## [FireDragon v12.0.0-beta.17](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17) — 2025-07-12 — [`v12.0.0-beta.16`…`v12.0.0-beta.17`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.16...v12.0.0-beta.17)
 
 ### 🚀 Features
