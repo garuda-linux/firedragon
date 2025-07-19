@@ -14,6 +14,7 @@ import MouseGesture from "@/app/gesture/page.tsx";
 import KeyboardShortcut from "@/app/keyboard-shortcut/page.tsx";
 import Debug from "./app/debug/page.tsx";
 import Advanced from "./app/advanced/page.tsx";
+import { LeptonSettings } from "@/app/design/components/LeptonSettings.tsx";
 import { AppBackground } from "@/components/app-background.tsx";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AppSidebar } from "@/components/app-sidebar.tsx";
@@ -50,6 +51,10 @@ export default function App() {
               />
               <Route path="/overview/home" element={<Dashboard />} />
               <Route path="/features/design" element={<Design />} />
+              <Route
+                path="/features/design/lepton"
+                element={<LeptonSettings />}
+              />
               <Route path="/features/sidebar" element={<PanelSidebar />} />
               <Route path="/features/workspaces" element={<Workspaces />} />
               <Route path="/features/webapps" element={<ProgressiveWebApp />} />

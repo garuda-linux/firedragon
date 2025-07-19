@@ -77,9 +77,7 @@ export default function Page() {
             <Button asChild className="w-full">
               <a
                 href="about:license"
-                target="_blank"
                 className="flex items-center gap-2"
-                rel="noreferrer"
               >
                 <Scale className="size-4" />
                 {t("about.openSourceLicenseNotice")}
@@ -89,9 +87,7 @@ export default function Page() {
             <Button asChild className="w-full">
               <a
                 href="https://gitlab.com/garuda-linux/firedragon/firedragon12"
-                target="_blank"
                 className="flex items-center gap-2"
-                rel="noreferrer"
               >
                 <SiGitlab className="size-4" />
                 GitLab Repository: garuda-linux/firedragon/firedragon12

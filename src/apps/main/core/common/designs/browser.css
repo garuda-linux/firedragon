@@ -178,3 +178,10 @@ browser[type="content"] > html {
     outline: none !important;
   }
 }
+
+/* hidden="false" の場合は非表示にしない */
+@layer base {
+  :root [hidden][hidden="false"]:not([hidden="until-found"]) {
+    display: flex !important;
+  }
+}
