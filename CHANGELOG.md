@@ -1,5 +1,58 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.19](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.19) — 2025-07-20 — [`v12.0.0-beta.18`…`v12.0.0-beta.19`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.18...v12.0.0-beta.19)
+
+### 🚀 Features
+
+- *(restart-panel)* Use lepton icons for restart panel — [`5a55670a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5a55670a79b71eea5eb4a3a7ef3c8b2100fce2c1)
+- *(welcome-page)* ウェルカムページの表示ロジックを追加し、初回起動時にタブを開く機能を実装 — [`d4ad4628…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d4ad46284a2a79e1760533dbcdcd75b2901c3226)
+- *(ssbRunner)* Fix cannnot open SSB — [`bcbef17d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bcbef17d87564f3423dba06a9956e8309acab840)
+- *(ssbPageAction)* Add gif — [`0a0462ca…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0a0462ca01d8abbaf6d2ac90ff6d8b296f50785f)
+- *(dom-manipulator)* Fix cannot use navigation bar bottom — [`272b5492…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/272b54929b7af2b061a7ff0e7374a367411700d1)
+- *(about-page)* Replace url — [`379b4c04…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/379b4c04028618f51cae0950da73b3b28487e1f7)
+- *(ui-customization)* Add CSS after primiseInitialize — [`8b3a3af3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8b3a3af382eb278fcf17ab7d7eb2281866779aeb)
+- *(dom-manipulator)* Remove revert option for nav bar — [`c95bea6b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c95bea6b04d71400ae6751b77c43a655c6601859)
+- *(tabbar)* タブバーの最適化機能を改善し、ウィンドウ管理コンテナの表示を修正 — [`e793c54d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e793c54d57ffd8b0486383b19d869f7e433a6072)
+- *(lepton-settings)* Lepton設定画面を追加し、設定の保存および取得機能を実装 — [`183c7409…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/183c74095583eb871c0b1c6d02262da3cb08834c)
+- *(background-slideshow)* スライドショー機能を追加し、設定画面での間隔調整を実装 — [`151c276e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/151c276ea122c166319f2e2b7185b2c8117b9d1a)
+- *(browser-css)* [hidden]属性のスタイルを@layer base内に移動し、表示設定を改善 — [`c25fe075…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c25fe0751dd2019a1ddaf8d7e7048fbd93e9e6af)
+- *(background-slideshow)* Re-Implement slideshow feature — [`87ccc38c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/87ccc38c52a07d6cb25a16da2550331b018bb7d6)
+- *(tabbar)* Add option to limit max rows — [`8dad6ef0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8dad6ef0fc33335e3c3825df664e889a6763d4a7)
+- *(newtab)* Compress large custom background images — [`c65d6114…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c65d611412b8362a8b94c948e298eadab14d5c7f)
+- *(make)* Add cache dir for runtime tarballs — [`a37f4f3f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a37f4f3f6c4b5e399e4ce77844e0bc6100ff67d3)
+
+### 🐛 Bug Fixes
+
+- Set app.update.checkInstallTime.days to 2 — [`61fbbb64…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/61fbbb646f15188188ebdc6134df3ecea5097c44)
+- *(patches)* Remove context-menu.patch — [`d2fa26ca…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d2fa26ca2b117d49667cbd693c7c7f75405027f2)
+- *(patches/packaging)* Rebase package-manifest.in.patch — [`2ff419ef…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2ff419efa099ed0888fb2b41f2b2100e49d935d3)
+- *(patches/sed-patches)* Remove disable-pocket.patch — [`13f63d99…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/13f63d9987b7a063a9a660723a151b9340cb8ffa)
+- *(make)* Fix windows installer package path — [`04fda619…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/04fda6199900b9c5a546c03813bc5d2abd7438a3)
+
+### 🚜 Refactor
+
+- *(multirow-tabbar)* Improve type safety with interfaces — [`7569e5d4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7569e5d45d8de346e2af561df3643bd2a3b8c7d2)
+
+### 🎨 Styling
+
+- *(daisyui)* Remove cupcake theme — [`9382b3e4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9382b3e4f5162245716f83ecfc5596136434f9ad)
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version to 12.0.15 — [`7aefb0b3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7aefb0b3d275df0696eb2e10b48d4a5fe7e6c2eb)
+- GitHub ActionsのWindowsビルドプロセスにデバッグ用のlsコマンドを追加 — [`4026306a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/4026306a3cee34eb627930231c4561ea6def52c1)
+- Use explicit path for build artifacts in package workflow — [`ef41b33c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ef41b33ce4d85d249bbe8331f6b33e7ecb030cb2)
+- *(ci)* Fix package workflow artifact upload — [`9f2124e1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9f2124e124170f0161afc856585228cd5578b2e7)
+- *(package)* Fix Windows installer path in workflow — [`d7136f56…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d7136f56cd539cab6e45d1be8e11c27e74d85470)
+- Remove debug ls command from package workflow — [`03941f03…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/03941f03e8702c4d5a992179ff66e4ca844c340b)
+- *(branding)* Remove vendor and remoting name from configure scripts — [`821f9c8d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/821f9c8d88e08f29eb707040321ac155242d3db0)
+- Update from upstream — [`5e845279…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5e845279a485bc70dbdf484c5d04d704f91354ce)
+- Add tag to select firedragon-only runner — [`f65a1326…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f65a13265e7238e16f2ecdfe208588c13443abe9)
+
+### Fix
+
+- *(tabbar)* Delay initialization to prevent race condition — [`fd5dc97c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fd5dc97cc9db9f32fc5805e7103f5eaeaa9f4bb2)
+
 ## [FireDragon v12.0.0-beta.18](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18) — 2025-07-13 — [`v12.0.0-beta.17`…`v12.0.0-beta.18`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.17...v12.0.0-beta.18)
 
 ### 🚀 Features
