@@ -45,6 +45,7 @@ variables:
 default:
   tags:
     - firedragon
+    - build
 
 make-image:
   stage: make-image
