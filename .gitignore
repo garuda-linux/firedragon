@@ -14,9 +14,11 @@
 
 /target/
 
-/.dist/
-
 vite.config.ts.timestamp-*
+
+# Make dirs
+/.dist/
+/.cache/
 
 # CI cache dirs
 /.deno/

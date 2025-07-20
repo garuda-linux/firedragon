@@ -24,7 +24,7 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 function parseArgv(argv: string[]) {
     return minimist(argv, {
         boolean: ['enable-bootstrap', 'enable-update'],
-        string: ['dist-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-mozconfig'],
+        string: ['dist-dir', 'cache-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-mozconfig'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -57,6 +57,7 @@ interface Config {
     runtime: string;
     tmpDir: string;
     distDir: string;
+    cacheDir: string;
     sourceBasename: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string;
@@ -70,7 +71,7 @@ interface Config {
 }
 
 async function getFloorpRuntime(config: Config): Promise<string> {
-    const { runtime, tmpDir } = config;
+    const { runtime, cacheDir } = config;
 
     const response = await fetch(`https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/${runtime}`);
     if (!response.ok) {
@@ -82,7 +83,7 @@ async function getFloorpRuntime(config: Config): Promise<string> {
         tarball_url: string,
     } = await response.json() as any;
 
-    const tarball = `${tmpDir}/floorp-runtime-${release.tag_name}.tar.gz`;
+    const tarball = `${cacheDir}/floorp-runtime-${release.tag_name}.tar.gz`;
 
     if (!await exists(tarball)) {
         await $`curl -L ${release.tarball_url} -o ${tarball}`
@@ -468,6 +469,11 @@ try {
             await $`mkdir -p ${distDir}`;
         }
 
+        const cacheDir = argv['cache-dir'] ?? '.cache';
+        if (!await exists(cacheDir)) {
+            await $`mkdir -p ${cacheDir}`;
+        }
+
         const edition = EDITIONS[(argv['edition'] ?? 'dr460nized') as keyof typeof EDITIONS];
         if (!edition) {
             throw `Unsupported edition ${argv['edition']}, must be one of [${Object.keys(EDITIONS).join(', ')}].`;
@@ -491,6 +497,7 @@ try {
             runtime: argv.runtime ?? packageJson.runtime,
             tmpDir,
             distDir,
+            cacheDir,
             sourceBasename,
             edition,
             basename,
