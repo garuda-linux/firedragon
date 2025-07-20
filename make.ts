@@ -207,7 +207,7 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
     // Move package to dist dir
     let packageName = (await $`cat ${objDistDir}/package_name.txt`.lines())[0];
     if (outputFormat === 'exe') {
-        packageName = 'install/sea/' + packageName.replace(/.zip$/, '.installer.exe');
+        packageName = packageName.replace(/.zip$/, '.installer.exe');
     }
     await $`mv ${objDistDir}/${packageName} ${distDir}/${buildBasename}.${outputFormat}`;
 }
