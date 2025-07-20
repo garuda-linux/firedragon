@@ -28,6 +28,11 @@ spec:
 
 ---
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "web"
+
 stages:
   - make-image
   - make-image-latest
