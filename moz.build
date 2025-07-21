@@ -17,6 +17,3 @@ if CONFIG["NORANEKO_DIST"]:
         "/%s/notes" % CONFIG["NORANEKO_DIST"],
         "/%s/os" % CONFIG["NORANEKO_DIST"],
     ]
-
-if CONFIG["FIREDRAGON_SETTINGS"]:
-    DIRS += ["/%s" % CONFIG["FIREDRAGON_SETTINGS"]]

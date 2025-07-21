@@ -1,6 +1,5 @@
 ac_add_options --with-app-basename=FireDragon
 ac_add_options --with-app-name=firedragon
-ac_add_options --with-firedragon-settings=firedragon/settings
 ac_add_options --with-noraneko-buildid2=firedragon/_dist/buildid2
 ac_add_options --enable-application=browser
 

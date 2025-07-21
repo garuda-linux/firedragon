@@ -308,7 +308,7 @@ async function build(config: Config) {
     }
 
     // Set noraneko dist
-    await acAddOptions(buildDir, `--with-noraneko-dist=${sourcePath}/_dist/noraneko`);
+    await acAddOptions(buildDir, `--with-noraneko-dist=${sourcePath}/_dist/noraneko`, '--enable-firedragon-settings');
 
     if (enableUpdate) {
         await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrls(config).updateXml}`);

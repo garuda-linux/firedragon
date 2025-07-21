@@ -41,15 +41,15 @@ set_config("NORANEKO_DIST", noraneko_dist, when=noraneko_dist)
 set_define("NORANEKO_DIST", noraneko_dist, when=noraneko_dist)
 
 option(
-    "--with-firedragon-settings",
-    nargs=1,
+    "--enable-firedragon-settings",
+    nargs=0,
     help="FireDragon Settings",
 )
 
-@depends("--with-firedragon-settings")
+@depends("--enable-firedragon-settings")
 def firedragon_settings(value):
     if value:
-        return value[0]
+        return True
 
 set_config("FIREDRAGON_SETTINGS", firedragon_settings, when=firedragon_settings)
 set_define("FIREDRAGON_SETTINGS", firedragon_settings, when=firedragon_settings)

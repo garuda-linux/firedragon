@@ -14,6 +14,7 @@ import { $, tmpdir, type ProcessPromise } from "zx";
 import { usePwsh } from "zx";
 import chalk from "chalk";
 import process from "node:process";
+import { injectSettings } from "./scripts/inject/settings.ts";
 
 switch (process.platform) {
   case "win32":
@@ -381,6 +382,7 @@ async function run(mode: "dev" | "test" | "release" = "dev") {
     await Promise.all([
       injectManifest(binDir, "dev", "noraneko-dev"),
       injectXHTMLDev(binDir),
+      injectSettings(binDir),
     ]);
   } else {
     await release("before");
@@ -525,8 +527,11 @@ async function release(mode: "before" | "after") {
       await $`rm -rf ${tmpBinPath}`;
     }
 
-    await injectXHTML(binPath);
-    await applyPatches(binPath, `${baseDir}/applied_patches`);
+    await Promise.all([
+      injectXHTML(binPath),
+      applyPatches(binPath, `${baseDir}/applied_patches`),
+      injectSettings(binPath),
+    ]);
   }
 }
 
