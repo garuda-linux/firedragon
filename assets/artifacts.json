@@ -133,28 +133,28 @@
     "suffix": "-darwin-arm64.update.xml"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-linux-x64-dev.tar.xz"
+    "basename": "firedragon-runtime",
+    "suffix": "-linux-x64.tar.xz"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-linux-arm64-dev.tar.xz"
+    "basename": "firedragon-runtime",
+    "suffix": "-linux-arm64.tar.xz"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-win32-x64-dev.zip"
+    "basename": "firedragon-runtime",
+    "suffix": "-win32-x64.zip"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-win32-arm64-dev.zip"
+    "basename": "firedragon-runtime",
+    "suffix": "-win32-arm64.zip"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-darwin-x64-dev.dmg"
+    "basename": "firedragon-runtime",
+    "suffix": "-darwin-x64.dmg"
   },
   {
-    "basename": "firedragon",
-    "suffix": "-darwin-arm64-dev.dmg"
+    "basename": "firedragon-runtime",
+    "suffix": "-darwin-arm64.dmg"
   },
   {
     "basename": "firedragon-catppuccin",
@@ -205,27 +205,27 @@
     "suffix": "-darwin-arm64.update.xml"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-linux-x64-dev.tar.xz"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-linux-x64.tar.xz"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-linux-arm64-dev.tar.xz"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-linux-arm64.tar.xz"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-win32-x64-dev.zip"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-win32-x64.zip"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-win32-arm64-dev.zip"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-win32-arm64.zip"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-darwin-x64-dev.dmg"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-darwin-x64.dmg"
   },
   {
-    "basename": "firedragon-catppuccin",
-    "suffix": "-darwin-arm64-dev.dmg"
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-darwin-arm64.dmg"
   }
 ]

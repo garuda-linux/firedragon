@@ -16,13 +16,13 @@ spec:
       default:
         - x64
         - arm64
+    build-runtime:
+      type: boolean
+      default: true
     build:
       type: boolean
       default: true
     appimage:
-      type: boolean
-      default: true
-    build-dev:
       type: boolean
       default: true
 
@@ -38,9 +38,9 @@ stages:
   - make-image-latest
   - source
   - prepare
+  - build-runtime
   - build
   - appimage
-  - build-dev
   - publish
   - release
 
@@ -97,7 +97,7 @@ source:
     - deno task make source
   artifacts:
     paths:
-      - .dist/firedragon-source-*.tar.zst
+      - .dist/firedragon-source-v*.tar.zst
 
 prepare:
   stage: prepare
@@ -124,6 +124,41 @@ prepare:
     paths:
       - _dist
 
+build-runtime:
+  stage: build-runtime
+  needs:
+    - job: make-image
+      artifacts: false
+    - job: source
+      artifacts: true
+    - job: prepare
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: $[[inputs.edition]]
+        PLATFORM: $[[inputs.platform]]
+        ARCH: $[[inputs.arch]]
+  rules:
+    - if: '"$[[inputs.build-runtime]]" == "true"'
+  image: $MAKE_IMAGE
+  cache:
+    - key: deno
+      paths:
+        - .deno
+    - key: mozbuild
+      paths:
+        - .mozbuild
+  before_script:
+    - export DENO_DIR="$PWD"/.deno
+    - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
+    - deno install --allow-scripts --frozen
+  script:
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --save-dist-host-bin=.cache/dist-host-bin-$EDITION-$PLATFORM-$ARCH.tar.zst build-runtime
+  artifacts:
+    paths:
+      - .dist/firedragon{,-catppuccin}-runtime-v*-$PLATFORM-$ARCH.*
+      - .cache/dist-host-bin-$EDITION-$PLATFORM-$ARCH.tar.zst
+
 build:
   stage: build
   needs:
@@ -132,6 +167,8 @@ build:
     - job: source
       artifacts: true
     - job: prepare
+      artifacts: true
+    - job: build-runtime
       artifacts: true
   parallel:
     matrix:
@@ -153,10 +190,10 @@ build:
     - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap ${CI_COMMIT_TAG:+--enable-update} --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist build
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap ${CI_COMMIT_TAG:+--enable-update} --enable-artifact-build --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist --with-dist-host-bin=.cache/dist-host-bin-$EDITION-$PLATFORM-$ARCH.tar.zst build
   artifacts:
     paths:
-      - .dist/*-$PLATFORM-$ARCH.*
+      - .dist/firedragon{,-catppuccin}-v*-$PLATFORM-$ARCH.*
 
 appimage:
   stage: appimage
@@ -179,52 +216,18 @@ appimage:
     - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH appimage
   artifacts:
     paths:
-      - .dist/*-appimage-$ARCH.AppImage
-
-build-dev:
-  stage: build-dev
-  needs:
-    - job: make-image
-      artifacts: false
-    - job: source
-      artifacts: true
-    - job: prepare
-      artifacts: true
-  parallel:
-    matrix:
-      - EDITION: $[[inputs.edition]]
-        PLATFORM: $[[inputs.platform]]
-        ARCH: $[[inputs.arch]]
-  rules:
-    - if: '"$[[inputs.build-dev]]" == "true"'
-  image: $MAKE_IMAGE
-  cache:
-    - key: deno
-      paths:
-        - .deno
-    - key: mozbuild
-      paths:
-        - .mozbuild
-  before_script:
-    - export DENO_DIR="$PWD"/.deno
-    - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
-    - deno install --allow-scripts --frozen
-  script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 build-dev
-  artifacts:
-    paths:
-      - .dist/*-$PLATFORM-$ARCH-dev.*
+      - .dist/firedragon{,-catppuccin}-v*-appimage-$ARCH.AppImage
 
 release:
   stage: release
   needs:
     - job: source
       artifacts: true
+    - job: build-runtime
+      artifacts: true
     - job: build
       artifacts: true
     - job: appimage
-      artifacts: true
-    - job: build-dev
       artifacts: true
   rules:
     - if: $CI_COMMIT_TAG

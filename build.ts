@@ -53,7 +53,7 @@ const getBinArchive = () => {
     'darwin-x64': 'dmg',
     'darwin-arm64': 'dmg',
   };
-  return `${brandingBaseName}-${target}-dev.${ext[target as keyof typeof ext]}`
+  return `${brandingBaseName}-runtime-${target}.${ext[target]}`;
 };
 
 const binArchive = await getBinArchive();
@@ -535,10 +535,11 @@ async function release(mode: "before" | "after") {
   }
 }
 
-function getTarget() {
+type Target = `${'linux' | 'win32' | 'darwin'}-${'x64' | 'arm64'}`;
+function getTarget(): Target {
   const target =`${process.platform}-${process.arch}`;
   if (/^(linux|win32|darwin)-(x64|arm64)$/.test(target)) {
-    return target;
+    return target as Target;
   }
   throw `Unsupported target: ${target}`;
 }

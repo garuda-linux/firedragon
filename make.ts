@@ -23,8 +23,8 @@ async function applyPatches(target: string, ...patches: string[]): Promise<void>
 
 function parseArgv(argv: string[]) {
     return minimist(argv, {
-        boolean: ['enable-bootstrap', 'enable-update'],
-        string: ['dist-dir', 'cache-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-mozconfig'],
+        boolean: ['enable-bootstrap', 'enable-update', 'enable-artifact-build'],
+        string: ['dist-dir', 'cache-dir', 'edition', 'target', 'with-buildid2', 'with-moz-build-date', 'with-dist', 'with-mozconfig', 'save-dist-host-bin', 'with-dist-host-bin'],
         unknown(arg) {
             if (arg.startsWith('-')) {
                 throw `Unknown arguments: ${arg}`
@@ -35,7 +35,7 @@ function parseArgv(argv: string[]) {
     });
 }
 
-async function combineMozconfigs(buildDir: string, ...mozconfigs: string[]) {
+async function sourceMozconfigs(buildDir: string, ...mozconfigs: string[]) {
     for (const mozconfig of mozconfigs) {
         const path = isAbsolute(mozconfig) ? mozconfig : `$topsrcdir/${mozconfig}`;
         await $`echo -e '. "'${path}'"' >> ${buildDir}/mozconfig`;
@@ -61,13 +61,17 @@ interface Config {
     sourceBasename: string;
     edition: (typeof EDITIONS)[keyof typeof EDITIONS];
     basename: string;
+    basenameRuntime: string;
     target: (typeof TARGETS)[keyof typeof TARGETS];
     enableBootstrap: boolean;
     enableUpdate: boolean;
+    enableArtifactBuild: boolean;
     withMozBuildDate: string | null;
     withBuildID2: string | null;
     withDist: string | null;
     withMozconfig: string | null;
+    saveDistHostBin: string | null;
+    withDistHostBin: string | null;
 }
 
 async function getFloorpRuntime(config: Config): Promise<string> {
@@ -86,10 +90,26 @@ async function getFloorpRuntime(config: Config): Promise<string> {
     const tarball = `${cacheDir}/floorp-runtime-${release.tag_name}.tar.gz`;
 
     if (!await exists(tarball)) {
-        await $`curl -L ${release.tarball_url} -o ${tarball}`
+        await $`curl -fL ${release.tarball_url} -o ${tarball}`
     }
 
     return tarball;
+}
+
+async function getFiredragonRuntime(config: Config): Promise<string> {
+    const { repoUrl, distDir, cacheDir, basenameRuntime, target } = config;
+
+    const filename = `${basenameRuntime}-${target.buildSuffix}.${target.buildRuntimeOutputFormat}`;
+
+    if (await exists(`${distDir}/${filename}`)) {
+        return `${distDir}/${filename}`;
+    }
+
+    if (!await exists(`${cacheDir}/${filename}`)) {
+        await $`curl -fL ${repoUrl}/-/releases/permalink/latest/downloads/${filename} -o ${cacheDir}/${filename}`;
+    }
+
+    return `${cacheDir}/${filename}`;
 }
 
 async function prepareSource(config: Config, dir: string): Promise<void> {
@@ -139,14 +159,14 @@ async function prepareBuild(config: Config, buildDir: string) {
     }
 
     // Combine mozconfigs
-    await combineMozconfigs(buildDir, edition.mozconfig, target.mozconfig);
+    await sourceMozconfigs(buildDir, edition.mozconfig, target.mozconfig);
     if (withMozconfig) {
-        await combineMozconfigs(buildDir, resolve(withMozconfig))
+        await sourceMozconfigs(buildDir, resolve(withMozconfig))
     }
 }
 
 async function doBuild(config: Config, buildDir: string) {
-    const { enableBootstrap, withMozBuildDate } = config;
+    const { enableBootstrap, enableArtifactBuild, withMozBuildDate } = config;
 
     // Potentially set MOZ_BUILD_DATE
     if (withMozBuildDate) {
@@ -156,7 +176,7 @@ async function doBuild(config: Config, buildDir: string) {
 
     // Potentially run bootstrap
     if (enableBootstrap) {
-        await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
+        await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice ${enableArtifactBuild ? 'browser_artifact_mode' : 'browser'}`;
         await acAddOptions(buildDir, '--enable-bootstrap');
     } else {
         await acAddOptions(buildDir, '--disable-bootstrap');
@@ -192,7 +212,7 @@ async function cloneObjDistBin(config: Config, buildDir: string) {
 }
 
 async function packageBuild(config: Config, outputFormat: string, buildBasename: string, buildDir: string) {
-    const { distDir } = config;
+    const { distDir, saveDistHostBin } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
 
@@ -210,6 +230,11 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
         packageName = packageName.replace(/.zip$/, '.installer.exe');
     }
     await $`mv ${objDistDir}/${packageName} ${distDir}/${buildBasename}.${outputFormat}`;
+
+    // Save dist/host/bin
+    if (saveDistHostBin) {
+        await $`tar --zstd -cf ${saveDistHostBin} -C ${objDistDir} host/bin`;
+    }
 }
 
 function getUpdateUrls(config: Config) {
@@ -223,9 +248,14 @@ function getUpdateUrls(config: Config) {
 }
 
 async function createUpdate(config: Config, buildBasename: string, buildDir: string) {
-    const { version, distDir, target } = config;
+    const { version, distDir, target, withDistHostBin } = config;
 
     const { objDistDir, objDistBinDir } = getCommonBuildDirs(config, buildDir);
+
+    // Use provided dist/host/bin
+    if (withDistHostBin) {
+        await $`tar -xf ${withDistHostBin} -C ${objDistDir}`;
+    }
 
     const appVersion = (await $`cat ${buildDir}/browser/config/version.txt`).lines()[0];
 
@@ -290,8 +320,27 @@ async function source(config: Config) {
     await $`tar --zstd -cf ${distDir}/${sourceBasename}.tar.zst -C ${tmpDir} ${sourceBasename}`;
 }
 
+async function buildRuntime(config: Config) {
+    const { tmpDir, basenameRuntime, target } = config;
+
+    const buildDevBasename = `${basenameRuntime}-${target.buildSuffix}`
+    const buildDevDir = `${tmpDir}/${buildDevBasename}`;
+
+    await extractSource(config, buildDevDir);
+
+    await prepareBuild(config, buildDevDir);
+
+    await acAddOptions(buildDevDir, '--enable-chrome-format=flat', `--enable-firedragon-debug`);
+
+    await doBuild(config, buildDevDir);
+
+    await cloneObjDistBin(config, buildDevDir);
+
+    await packageBuild(config, target.buildRuntimeOutputFormat, buildDevBasename, buildDevDir);
+}
+
 async function build(config: Config) {
-    const { sourcePath, tmpDir, basename, target, enableUpdate, withDist } = config;
+    const { sourcePath, tmpDir, basename, target, enableUpdate, enableArtifactBuild, withDist } = config;
 
     const buildBasename = `${basename}-${target.buildSuffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`
@@ -314,6 +363,16 @@ async function build(config: Config) {
         await acAddOptions(buildDir, `--with-firedragon-update=${getUpdateUrls(config).updateXml}`);
     } else {
         await acAddOptions(buildDir, '--disable-updater');
+    }
+
+    if (enableArtifactBuild) {
+        await acAddOptions(buildDir, '--enable-artifact-builds');
+        Deno.env.set('MOZ_ARTIFACT_FILE', resolve(await getFiredragonRuntime(config)));
+
+        // Remove mozconfig lines tagged with #[NotOnArtifactBuild]
+        for (const file of await $`rg -Fl '#[NotOnArtifactBuild]' ${buildDir}/${sourcePath}/gecko/mozconfigs`.nothrow().lines()) {
+            await $`sed -i '/#\\[NotOnArtifactBuild\\]/d' ${file}`;
+        }
     }
 
     await doBuild(config, buildDir);
@@ -363,25 +422,6 @@ async function appimage(config: Config) {
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${appimageDir} ${distDir}/${appimageBasename}.AppImage`;
 }
 
-async function buildDev(config: Config) {
-    const { tmpDir, basename, target } = config;
-
-    const buildDevBasename = `${basename}-${target.buildSuffix}-dev`
-    const buildDevDir = `${tmpDir}/${buildDevBasename}`;
-
-    await extractSource(config, buildDevDir);
-
-    await prepareBuild(config, buildDevDir);
-
-    await acAddOptions(buildDevDir, '--enable-firedragon-debug', '--enable-chrome-format=flat');
-
-    await doBuild(config, buildDevDir);
-
-    await cloneObjDistBin(config, buildDevDir);
-
-    await packageBuild(config, target.buildDevOutputFormat, buildDevBasename, buildDevDir);
-}
-
 const APP_NAME = 'firedragon';
 const APP_BASENAME = 'FireDragon';
 const REPO_URL = 'https://gitlab.com/garuda-linux/firedragon/firedragon12';
@@ -404,7 +444,7 @@ const TARGETS = {
         objDistBinPath: 'bin',
         buildSuffix: 'linux-x64',
         buildOutputFormat: 'tar.xz',
-        buildDevOutputFormat: 'tar.xz',
+        buildRuntimeOutputFormat: 'tar.xz',
         appimageSuffix: 'appimage-x64',
         updatePath: APP_NAME,
     },
@@ -413,7 +453,7 @@ const TARGETS = {
         objDistBinPath: 'bin',
         buildSuffix: 'linux-arm64',
         buildOutputFormat: 'tar.xz',
-        buildDevOutputFormat: 'tar.xz',
+        buildRuntimeOutputFormat: 'tar.xz',
         appimageSuffix: 'appimage-arm64',
         updatePath: APP_NAME,
     },
@@ -422,7 +462,7 @@ const TARGETS = {
         objDistBinPath: 'bin',
         buildSuffix: 'win32-x64',
         buildOutputFormat: 'exe',
-        buildDevOutputFormat: 'zip',
+        buildRuntimeOutputFormat: 'zip',
         appimageSuffix: null,
         updatePath: APP_NAME,
     },
@@ -431,7 +471,7 @@ const TARGETS = {
         objDistBinPath: 'bin',
         buildSuffix: 'win32-arm64',
         buildOutputFormat: 'exe',
-        buildDevOutputFormat: 'zip',
+        buildRuntimeOutputFormat: 'zip',
         appimageSuffix: null,
         updatePath: APP_NAME,
     },
@@ -440,7 +480,7 @@ const TARGETS = {
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-x64',
         buildOutputFormat: 'dmg',
-        buildDevOutputFormat: 'dmg',
+        buildRuntimeOutputFormat: 'dmg',
         appimageSuffix: null,
         updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
@@ -449,7 +489,7 @@ const TARGETS = {
         objDistBinPath: `${APP_BASENAME}.app/Contents/Resources`,
         buildSuffix: 'darwin-arm64',
         buildOutputFormat: 'dmg',
-        buildDevOutputFormat: 'dmg',
+        buildRuntimeOutputFormat: 'dmg',
         appimageSuffix: null,
         updatePath: `${APP_NAME}/${APP_BASENAME}.app`,
     },
@@ -487,6 +527,7 @@ try {
         const { version } = packageJson;
         const sourceBasename = `${APP_NAME}-source-v${version}`;
         const basename = `${edition.basename}-v${version}`;
+        const basenameRuntime = `${edition.basename}-runtime-v${version}`;
 
         const config: Config = {
             appName: APP_NAME,
@@ -501,13 +542,17 @@ try {
             sourceBasename,
             edition,
             basename,
+            basenameRuntime,
             target,
             enableBootstrap: argv['enable-bootstrap'] ?? false,
             enableUpdate: argv['enable-update'] ?? false,
+            enableArtifactBuild: argv['enable-artifact-build'] ?? false,
             withMozBuildDate: argv['with-moz-build-date'] ?? null,
             withBuildID2: argv['with-buildid2'] ?? null,
             withDist: argv['with-dist'] ?? null,
             withMozconfig: argv['with-mozconfig'] ?? null,
+            saveDistHostBin: argv['save-dist-host-bin'] ?? null,
+            withDistHostBin: argv['with-dist-host-bin'] ?? null,
         };
 
         for (const command of argv._) {
@@ -515,17 +560,17 @@ try {
                 case 'source':
                     await source(config);
                     break;
+                case 'build-runtime':
+                    await buildRuntime(config);
+                    break;
                 case 'build':
                     await build(config);
-                    break;
-                case 'build-dev':
-                    await buildDev(config);
                     break;
                 case 'appimage':
                     await appimage(config);
                     break;
                 default:
-                    throw `Unsupported command ${command}, must be one of [source, build, appimage, build-dev]`;
+                    throw `Unsupported command ${command}, must be one of [source, build-runtime, build, appimage]`;
             }
         }
 

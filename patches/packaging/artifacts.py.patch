@@ -1,0 +1,14 @@
+diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
+index e035c76ffd..cfb8ad85e0 100644
+--- a/python/mozbuild/mozbuild/artifacts.py
++++ b/python/mozbuild/mozbuild/artifacts.py
+@@ -1174,9 +1174,6 @@ class Artifacts:
+         unfiltered_project_package=False,
+         mozbuild=None,
+     ):
+-        if (hg and git) or (not hg and not git):
+-            raise ValueError("Must provide path to exactly one of hg and git")
+-
+         if no_process and unfiltered_project_package:
+             raise ValueError(
+                 "Must provide only one of no_process and unfiltered_project_package"

@@ -5,7 +5,7 @@ ac_add_options --enable-application=browser
 
 # Branding
 ac_add_options --allow-addon-sideload
-ac_add_options --enable-unverified-updates
+ac_add_options --enable-unverified-updates #[NotOnArtifactBuild]
 ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
@@ -21,13 +21,13 @@ export MOZ_TELEMETRY_REPORTING=
 ac_add_options --disable-crashreporter # (Minimize telemetry)
 ac_add_options --disable-default-browser-agent
 ac_add_options --disable-parental-controls # (Disable local/OS MTIM)
-ac_add_options --disable-debug
-ac_add_options --disable-debug-js-modules
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-rust-tests
+ac_add_options --disable-debug #[NotOnArtifactBuild]
+ac_add_options --disable-debug-js-modules #[NotOnArtifactBuild]
+ac_add_options --disable-debug-symbols #[NotOnArtifactBuild]
+ac_add_options --disable-rust-tests #[NotOnArtifactBuild]
 ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
-ac_add_options --disable-warnings-as-errors
+ac_add_options --disable-warnings-as-errors #[NotOnArtifactBuild]
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-av1
@@ -35,15 +35,15 @@ ac_add_options --enable-jxl
 ac_add_options --enable-proxy-bypass-protection
 ac_add_options --enable-raw
 ac_add_options --enable-sandbox
-ac_add_options --enable-strip
+ac_add_options --enable-strip #[NotOnArtifactBuild]
 
 # Build options
 mk_add_options MOZ_OBJDIR="$PWD/obj-artifact-build-output"
-ac_add_options --enable-hardening
+ac_add_options --enable-hardening #[NotOnArtifactBuild]
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-optimize="-O3"
+ac_add_options --enable-optimize="-O3" #[NotOnArtifactBuild]
 export MOZ_INCLUDE_SOURCE_INFO=1
-ac_add_options OPT_LEVEL="3"
-ac_add_options RUSTC_OPT_LEVEL="3"
+ac_add_options OPT_LEVEL="3" #[NotOnArtifactBuild]
+ac_add_options RUSTC_OPT_LEVEL="3" #[NotOnArtifactBuild]

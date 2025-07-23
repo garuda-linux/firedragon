@@ -1,8 +1,8 @@
 # Features
 ac_add_options --disable-necko-wifi
-ac_add_options --disable-elf-hack
-ac_add_options --enable-alsa
-ac_add_options --enable-pulseaudio
+ac_add_options --disable-elf-hack #[NotOnArtifactBuild]
+ac_add_options --enable-alsa #[NotOnArtifactBuild]
+ac_add_options --enable-pulseaudio #[NotOnArtifactBuild]
 
 # Build options
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
