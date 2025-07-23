@@ -190,7 +190,7 @@ build:
     - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
     - deno install --allow-scripts --frozen
   script:
-    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap ${CI_COMMIT_TAG:+--enable-update} --enable-artifact-build --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist --with-dist-host-bin=.cache/dist-host-bin-$EDITION-$PLATFORM-$ARCH.tar.zst build
+    - deno task make --edition=$EDITION --target=$PLATFORM-$ARCH --enable-bootstrap --enable-update --enable-artifact-build --with-moz-build-date=_dist/moz_build_date --with-buildid2=_dist/buildid2 --with-dist=_dist --with-dist-host-bin=.cache/dist-host-bin-$EDITION-$PLATFORM-$ARCH.tar.zst build
   artifacts:
     paths:
       - .dist/firedragon{,-catppuccin}-v*-$PLATFORM-$ARCH.*
