@@ -1,5 +1,50 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.20](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.20) — 2025-07-26 — [`v12.0.0-beta.19`…`v12.0.0-beta.20`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.19...v12.0.0-beta.20)
+
+### 🚀 Features
+
+- [**breaking**] Create own preprocessor for settings — [`c9efbd64…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c9efbd64cb07351dd95b8b7279b16e027ddd8221)
+- [**breaking**] Add artifact build mode and use it for CI — [`d33448c8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d33448c8678264f73bc619ba2a426f7e5b3b5b37)
+- Implement WebScraperService for browser automation — [`ddb92e73…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ddb92e7376767002d09e809acbe2230a3106898c)
+- *(scraper)* Implement web scraping service and actor — [`011accdc…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/011accdc96627bab1b36a3a870e2e39200804b56)
+- *(WebScraper)* Add `fillForm` method for batch input — [`29712d31…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/29712d310b8962805222983b292944db7f2a37ac)
+- *(os-apis)* Add OS API layer for browser information — [`dbc27c5b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/dbc27c5bf924074f01df027d19ecf446e9ff32d1)
+- *(newtab)* Add context menu and site blocking for Top Sites — [`ee37ba94…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ee37ba944e4b5a6ed9149824107719febb952e54)
+- *(branding)* Set application vendor to Ablaze — [`af4391df…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/af4391df72367878210ae6a22cc21fccba4867f1)
+- *(dev)* Add dev-specific CSP and fix favicon loading — [`08edbc2b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/08edbc2bc355f664ef0a9578c1844dfd07455235)
+
+### 🐛 Bug Fixes
+
+- *(patches/bug)* Remove patch for Bug 1974156 - Use macos SDK 15.5 instead of 15.4 which is no longer available — [`f66d7a20…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f66d7a206b1fd87e9f95789f88fc97253500256b)
+
+### 🚜 Refactor
+
+- *(scraper)* Rewrite WebScraperService using HiddenFrame — [`f30555e4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f30555e4059f0130573535bcc54428f7e2900dda)
+- Remove WebScraperService in favor of new OS APIs — [`839161aa…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/839161aa3cd6bf711a92372eacbcb0b2937ed7db)
+- Remove WebScraperService initialization from BrowserGlue — [`d322c5f2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d322c5f24f8b7d531c1e45326582335da629fe5f)
+- Rename WebScraperService to WebScraperServices — [`22697556…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/22697556c3c8449a8730272c310a5bf3c5ca1025)
+
+### 📚 Documentation
+
+- Update documentation for make command — [`1eca68c1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1eca68c1a4919ddffdf295e6d991332d1be5c44d)
+
+### ⚙️ Miscellaneous Tasks
+
+- Only run CI for tags or when started manually — [`2fd614cd…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2fd614cd13baf76559c367b6647c566990a6c3d4)
+- Always enable building update instead of only on tag — [`b4611236…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b461123629ef5fa27d9aae076aec02121c03c5f4)
+- Bump version to 12.0.16 — [`b4c5f2ec…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b4c5f2ecbc2152574f9ea35db4b09b77889e596f)
+- Isolate release deployment into a separate job — [`9834f0ab…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9834f0ab7afff8340248ddd61d3119b5354c55d5)
+- Update from upstream — [`3a8d81fa…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3a8d81fa0ffaeb4c8235a04575d99b9116918db6)
+
+### 🛡️ Security
+
+- Remove CSP modification from xhtml injection — [`afe71e0c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/afe71e0cfe026697636329949da54c312ae9d42a)
+
+### Refactor
+
+- *(RebootPanelMenu)* Modernize restart implementation — [`e8bfa938…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e8bfa938070bb5e30c948c4d284e2af3d0202d69)
+
 ## [FireDragon v12.0.0-beta.19](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.19) — 2025-07-20 — [`v12.0.0-beta.18`…`v12.0.0-beta.19`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.18...v12.0.0-beta.19)
 
 ### 🚀 Features
