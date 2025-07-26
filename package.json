@@ -1,10 +1,10 @@
 {
   "name": "noraneko-bin",
   "version": "12.0.0-beta.19",
-  "runtime": "tags/passed-20250718020214",
+  "runtime": "tags/passed-20250724183710",
   "release": {
-    "firefox": "140.0.5-dev",
-    "floorp": "12.0.15"
+    "firefox": "141.0.1-dev",
+    "floorp": "12.0.16-dev"
   },
   "description": "",
   "main": "index.js",
