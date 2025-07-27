@@ -86,6 +86,22 @@
   },
   {
     "basename": "firedragon",
+    "suffix": "-darwin-x64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon",
+    "suffix": "-darwin-arm64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon-catppuccin",
+    "suffix": "-darwin-x64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon-catppuccin",
+    "suffix": "-darwin-arm64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon",
     "suffix": "-linux-x64.mar"
   },
   {
@@ -154,7 +170,15 @@
   },
   {
     "basename": "firedragon-runtime",
+    "suffix": "-darwin-x64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon-runtime",
     "suffix": "-darwin-arm64.dmg"
+  },
+  {
+    "basename": "firedragon-runtime",
+    "suffix": "-darwin-arm64.update_framework_artifacts.zip"
   },
   {
     "basename": "firedragon-catppuccin",
@@ -226,6 +250,14 @@
   },
   {
     "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-darwin-x64.update_framework_artifacts.zip"
+  },
+  {
+    "basename": "firedragon-catppuccin-runtime",
     "suffix": "-darwin-arm64.dmg"
+  },
+  {
+    "basename": "firedragon-catppuccin-runtime",
+    "suffix": "-darwin-arm64.update_framework_artifacts.zip"
   }
 ]

@@ -96,20 +96,33 @@ async function getFloorpRuntime(config: Config): Promise<string> {
     return tarball;
 }
 
-async function getFiredragonRuntime(config: Config): Promise<string> {
+async function getFiredragonRuntime(config: Config, withUpdateFrameworkArtifacts: boolean = false): Promise<string> {
     const { repoUrl, distDir, cacheDir, basenameRuntime, target } = config;
 
     const filename = `${basenameRuntime}-${target.buildSuffix}.${target.buildRuntimeOutputFormat}`;
+    const updateFrameworkArtifacts = filename.replace(/.dmg$/, '.update_framework_artifacts.zip');
 
     if (await exists(`${distDir}/${filename}`)) {
-        return `${distDir}/${filename}`;
+        if (withUpdateFrameworkArtifacts) {
+            return `${distDir}/${filename}:${distDir}/${updateFrameworkArtifacts}`;
+        } else {
+            return `${distDir}/${filename}`;
+        }
     }
 
     if (!await exists(`${cacheDir}/${filename}`)) {
         await $`curl -fL ${repoUrl}/-/releases/permalink/latest/downloads/${filename} -o ${cacheDir}/${filename}`;
+
+        if (withUpdateFrameworkArtifacts) {
+            await $`curl -fL ${repoUrl}/-/releases/permalink/latest/downloads/${updateFrameworkArtifacts} -o ${cacheDir}/${updateFrameworkArtifacts}`
+        }
     }
 
-    return `${cacheDir}/${filename}`;
+    if (withUpdateFrameworkArtifacts) {
+        return `${cacheDir}/${filename}:${cacheDir}/${updateFrameworkArtifacts}`;
+    } else {
+        return `${cacheDir}/${filename}`;
+    }
 }
 
 async function prepareSource(config: Config, dir: string): Promise<void> {
@@ -230,6 +243,11 @@ async function packageBuild(config: Config, outputFormat: string, buildBasename:
         packageName = packageName.replace(/.zip$/, '.installer.exe');
     }
     await $`mv ${objDistDir}/${packageName} ${distDir}/${buildBasename}.${outputFormat}`;
+
+    if (outputFormat === 'dmg') {
+        const updateFrameworkArtifacts = packageName.replace(/.dmg$/, '.update_framework_artifacts.zip');
+        await $`mv ${objDistDir}/${updateFrameworkArtifacts} ${distDir}/${buildBasename}.update_framework_artifacts.zip`;
+    }
 
     // Save dist/host/bin
     if (saveDistHostBin) {
@@ -367,7 +385,8 @@ async function build(config: Config) {
 
     if (enableArtifactBuild) {
         await acAddOptions(buildDir, '--enable-artifact-builds');
-        Deno.env.set('MOZ_ARTIFACT_FILE', resolve(await getFiredragonRuntime(config)));
+        const firedragonRuntime = await getFiredragonRuntime(config, target.buildOutputFormat === 'dmg');
+        Deno.env.set('MOZ_ARTIFACT_FILE', firedragonRuntime.split(':').map((path) => resolve(path)).join(':'));
 
         // Remove mozconfig lines tagged with #[NotOnArtifactBuild]
         for (const file of await $`rg -Fl '#[NotOnArtifactBuild]' ${buildDir}/${sourcePath}/gecko/mozconfigs`.nothrow().lines()) {
