@@ -16,6 +16,7 @@ export function General() {
     const { t } = useTranslation();
     const { getValues, setValue } = useFormContext<AdvancedFormData>();
     const [showEnableSyncRestartModal, setShowEnableSyncRestartModal] = useState(false);
+    const [showAllowUserChromeCssRestartModal, setShowAllowUserChromeCssRestartModal] = useState(false);
     const [showHidePasswdmgrRestartModal, setShowHidePasswdmgrRestartModal] = useState(false);
 
     return (
@@ -24,6 +25,12 @@ export function General() {
                 <RestartModal
                     onClose={() => setShowEnableSyncRestartModal(false)}
                     label={t("advanced.general.enableSyncNeedsRestartDescription")}
+                />
+            ) : null}
+            {showAllowUserChromeCssRestartModal ? (
+                <RestartModal
+                    onClose={() => setShowAllowUserChromeCssRestartModal(false)}
+                    label={t("advanced.general.allowUserChromeCssNeedsRestartDescription")}
                 />
             ) : null}
             {showHidePasswdmgrRestartModal ? (
@@ -104,6 +111,7 @@ export function General() {
                                 checked={getValues("allowUserChromeCss")}
                                 onChange={(e) => {
                                     setValue("allowUserChromeCss", e.target.checked);
+                                    setShowAllowUserChromeCssRestartModal(true);
                                 }}
                             />
                         </div>

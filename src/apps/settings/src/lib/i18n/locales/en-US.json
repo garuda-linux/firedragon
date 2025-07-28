@@ -533,6 +533,7 @@
             "enableMiddlemousePasteDescription": "Select some text to copy it, then paste it with a middle-mouse click.",
             "allowUserChromeCss": "Allow userChrome.css customization",
             "allowUserChromeCssDescription": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme.",
+            "allowUserChromeCssNeedsRestartDescription": "{{productName}}'s restart is required to completely allow or disallow userChrome.css customization.",
             "hidePasswdmgr": "Hide password manager",
             "hidePasswdmgrDescription": "Hide password manager menu item and settings.",
             "hidePasswdmgrNeedsRestartDescription": "{{productName}}'s restart is required to completely show or hide the password manager."
