@@ -1,5 +1,14 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0-beta.21](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.21) — 2025-07-28 — [`v12.0.0-beta.20`…`v12.0.0-beta.21`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.20...v12.0.0-beta.21)
+
+### 🐛 Bug Fixes
+
+- *(docker/make)* Install deno to /usr/local/bin — [`486afc78…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/486afc7859c4af6a173beedaa2db86d8d0ca874e)
+- *(apps/settings)* Add restart modal to userChrome.css setting — [`1fd913fe…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1fd913febae0bd440a6672df7729c5ec8f07470c)
+- *(settings)* Enable userChrome.css customization by default — [`50da17f7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/50da17f74831ed9c92730e37f2760bc39fbc1bca)
+- *(make)* Fix runtime auto discovery and download — [`fd9fae9c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fd9fae9c35502c76dbdf1ef8195a5f2d4722a632)
+
 ## [FireDragon v12.0.0-beta.20](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.20) — 2025-07-27 — [`v12.0.0-beta.19`…`v12.0.0-beta.20`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.19...v12.0.0-beta.20)
 
 ### 🚀 Features
