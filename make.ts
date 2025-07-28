@@ -97,32 +97,35 @@ async function getFloorpRuntime(config: Config): Promise<string> {
 }
 
 async function getFiredragonRuntime(config: Config, withUpdateFrameworkArtifacts: boolean = false): Promise<string> {
-    const { repoUrl, distDir, cacheDir, basenameRuntime, target } = config;
+    const { repoUrl, version, distDir, cacheDir, edition, basenameRuntime, target } = config;
 
-    const filename = `${basenameRuntime}-${target.buildSuffix}.${target.buildRuntimeOutputFormat}`;
-    const updateFrameworkArtifacts = filename.replace(/.dmg$/, '.update_framework_artifacts.zip');
-
-    if (await exists(`${distDir}/${filename}`)) {
-        if (withUpdateFrameworkArtifacts) {
-            return `${distDir}/${filename}:${distDir}/${updateFrameworkArtifacts}`;
-        } else {
-            return `${distDir}/${filename}`;
-        }
-    }
-
-    if (!await exists(`${cacheDir}/${filename}`)) {
-        await $`curl -fL ${repoUrl}/-/releases/permalink/latest/downloads/${filename} -o ${cacheDir}/${filename}`;
-
-        if (withUpdateFrameworkArtifacts) {
-            await $`curl -fL ${repoUrl}/-/releases/permalink/latest/downloads/${updateFrameworkArtifacts} -o ${cacheDir}/${updateFrameworkArtifacts}`
-        }
-    }
-
+    const files = [
+        {
+            filename: `${basenameRuntime}-${target.buildSuffix}.${target.buildRuntimeOutputFormat}`,
+            url: `${repoUrl}/-/releases/v${version}/downloads/${edition.basename}-runtime-${target.buildSuffix}.${target.buildRuntimeOutputFormat}`,
+        },
+    ];
     if (withUpdateFrameworkArtifacts) {
-        return `${cacheDir}/${filename}:${cacheDir}/${updateFrameworkArtifacts}`;
-    } else {
-        return `${cacheDir}/${filename}`;
+        files.push({
+            filename: `${basenameRuntime}-${target.buildSuffix}.update_framework_artifacts.zip`,
+            url: `${repoUrl}/-/releases/v${version}/downloads/${edition.basename}-runtime-${target.buildSuffix}.update_framework_artifacts.zip`,
+        });
     }
+
+    const output = [];
+
+    for (const file of files) {
+        if (await exists(`${distDir}/${file.filename}`)) {
+            output.push(`${distDir}/${file.filename}`);
+        } else {
+            if (!await exists(`${cacheDir}/${file.filename}`)) {
+                await $`curl -fL ${file.url} -o ${cacheDir}/${file.filename}`;
+            }
+            output.push(`${cacheDir}/${file.filename}`);
+        }
+    }
+
+    return output.join(':');
 }
 
 async function prepareSource(config: Config, dir: string): Promise<void> {
