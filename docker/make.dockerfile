@@ -14,7 +14,7 @@ ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
 RUN install-rust.sh
 
 # Install deno
-COPY --from=deno /deno /usr/bin/deno
+COPY --from=deno /deno /usr/local/bin/deno
 
 # Allow running appimage inside container
 ENV APPIMAGE_EXTRACT_AND_RUN=1
