@@ -81,7 +81,10 @@ export class TabMoveToWindow {
     }
 
     moveTabToWindow(window: ChromeWindow) {
-        for (const selectedTab of globalThis.gBrowser.selectedTabs) {
+        const selectedTabs = globalThis.TabContextMenu.contextTab.multiselected
+            ? globalThis.gBrowser.selectedTabs
+            : [globalThis.TabContextMenu.contextTab];
+        for (const selectedTab of selectedTabs) {
             window.gBrowser.adoptTab(selectedTab);
         }
     }
