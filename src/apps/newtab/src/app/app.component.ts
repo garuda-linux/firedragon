@@ -12,12 +12,7 @@ import {
 import { RouterModule, type RouterOutlet } from "@angular/router";
 import { ScrollTop } from "primeng/scrolltop";
 import { routeAnimations } from "./app.routes";
-import {
-  translateSignal,
-  TranslocoDirective,
-  TranslocoService,
-} from "@jsverse/transloco";
-import { firstValueFrom } from "rxjs";
+import { TranslocoDirective, TranslocoService } from "@jsverse/transloco";
 import { MessageToastService, ShellComponent } from "@garudalinux/core";
 import { ConfigService } from "../config/config.service";
 import { menubarItems } from "../config";
@@ -73,53 +68,11 @@ export class AppComponent implements OnInit {
   });
 
   async ngOnInit(): Promise<void> {
-    // void this.setupLabels(this.translocoService.getActiveLang());
-
-    // this.translocoService.langChanges$.subscribe((lang) => {
-    //   void this.setupLabels(lang);
-    // });
-
     while (!this.configService.initialized()) {
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
     this.configService.initConfig(this.renderer, this.el);
   }
-
-  // /**
-  //  * Set up the labels for the menu bar items
-  //  * @param lang The language to set the labels for
-  //  */
-  // async setupLabels(lang: string): Promise<void> {
-  //   const newItemPromises = [];
-  //   for (const item of this.items()) {
-  //     if (item.translocoKey) {
-  //       newItemPromises.push(
-  //         firstValueFrom(
-  //           this.translocoService.selectTranslate(
-  //             item["translocoKey"],
-  //             {},
-  //             lang,
-  //           ),
-  //         ),
-  //       );
-  //     } else {
-  //       newItemPromises.push(
-  //         firstValueFrom(
-  //           this.translocoService.selectTranslate(item["label"], {}, lang),
-  //         ),
-  //       );
-  //     }
-  //   }
-  //
-  //   const results: string[] = await Promise.all(newItemPromises);
-  //   const newItems = [];
-  //
-  //   for (const [index, item] of this.items().entries()) {
-  //     newItems.push({ ...item, label: results[index] });
-  //   }
-  //
-  //   this.items.set(newItems);
-  // }
 
   /**
    * Returns the animation state of the next page for page transitions

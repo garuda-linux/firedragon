@@ -7,7 +7,6 @@ import {
   untracked,
   ViewChild,
 } from "@angular/core";
-import { CommonModule } from "@angular/common";
 import { Toolbar } from "primeng/toolbar";
 import { Button } from "primeng/button";
 import { type Table, TableModule } from "primeng/table";
@@ -25,7 +24,6 @@ import { FormsModule } from "@angular/forms";
 @Component({
   selector: "app-links-editor",
   imports: [
-    CommonModule,
     Toolbar,
     Button,
     TableModule,

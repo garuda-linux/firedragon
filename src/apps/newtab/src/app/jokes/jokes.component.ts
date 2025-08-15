@@ -1,4 +1,3 @@
-import { CommonModule } from "@angular/common";
 import {
   ChangeDetectionStrategy,
   Component,
@@ -13,7 +12,7 @@ import { firstValueFrom } from "rxjs";
 
 @Component({
   selector: "app-jokes",
-  imports: [CommonModule],
+  imports: [],
   templateUrl: "./jokes.component.html",
   styleUrl: "./jokes.component.css",
   changeDetection: ChangeDetectionStrategy.OnPush,

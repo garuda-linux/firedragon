@@ -16,7 +16,7 @@
             routerLink="/"
             width="32"
           />
-          <div class="ml-5" garudaShellBarStart>
+          <div class="ml-5 min-w-fit" garudaShellBarStart>
             {{ welcomeText() }}
           </div>
           <div garudaShellBarEnd>
@@ -32,10 +32,15 @@
               </p-avatar>
             }
           </div>
-          <div [@routerTransition]="prepareRoute(routerOutlet)" class="mt-5">
+          <div
+            [@routerTransition]="prepareRoute(routerOutlet)"
+            class="router-container"
+          >
             <router-outlet #routerOutlet="outlet"></router-outlet>
           </div>
-          <p-scroll-top></p-scroll-top>
+          <p-scroll-top
+            [buttonProps]='{ styleClass: "z-50", rounded: true }'
+          ></p-scroll-top>
         </garuda-shell>
       </div>
     </div>

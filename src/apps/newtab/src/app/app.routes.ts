@@ -9,8 +9,7 @@ import {
   transition,
   trigger,
 } from "@angular/animations";
-import { NgModule } from "@angular/core";
-import { RouterModule, type Routes } from "@angular/router";
+import { type Routes } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { SettingsComponent } from "./settings/settings.component";
 import { NotFoundComponent } from "./not-found/not-found.component";
@@ -131,9 +130,3 @@ export const routeAnimations: AnimationTriggerMetadata = trigger(
     transition("* => null, null => *", fade),
   ],
 );
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

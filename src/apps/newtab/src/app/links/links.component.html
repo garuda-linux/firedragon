@@ -2,7 +2,7 @@
   @for (link of configService.settings().customLinks; track link.title) {
     <a
       [href]="link.link"
-      [class]='configService.settings().autoGridCols
+      [class]='    configService.settings().autoGridCols
       ? "col-span-6 cursor-pointer p-2 text-center lg:col-span-4 xl:col-span-2 3xl:col-span-1"
       : gridCols()'
       target="_blank"

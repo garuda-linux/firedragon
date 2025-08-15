@@ -6,7 +6,7 @@ import {
   OnInit,
   signal,
 } from "@angular/core";
-import { CommonModule, NgOptimizedImage } from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { TranslocoDirective } from "@jsverse/transloco";
 import { ConfigService } from "../../config/config.service";
@@ -20,7 +20,6 @@ import type { SearchEngine } from "./interfaces";
 @Component({
   selector: "app-search",
   imports: [
-    CommonModule,
     FormsModule,
     NgOptimizedImage,
     TranslocoDirective,
@@ -50,7 +49,7 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     FDSearchEngine.GetDefaultEngine().then((value) => {
       this.searchEngine.set(value);
-    })
+    });
   }
 
   /**
@@ -73,11 +72,14 @@ export class SearchComponent implements OnInit {
   async autocomplete($event: AutoCompleteCompleteEvent) {
     const searchEngine = this.searchEngine();
     if (searchEngine) {
-      const suggestions = await FDSearchEngine.FetchSuggestions(searchEngine.id, this.searchTerm());
+      const suggestions = await FDSearchEngine.FetchSuggestions(
+        searchEngine.id,
+        this.searchTerm(),
+      );
       this.suggestions.set([
-          ...suggestions.local,
-          ...suggestions.remote,
-      ].map(entry => entry.value));
+        ...suggestions.local,
+        ...suggestions.remote,
+      ].map((entry) => entry.value));
     } else {
       this.suggestions.set([]);
     }

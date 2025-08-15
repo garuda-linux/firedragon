@@ -17,7 +17,10 @@ declare global {
   interface FDSearchEngine {
     GetDefaultEngine(): Promise<SearchEngine>;
     EngineOffersSuggestions(engineId: string): Promise<boolean>;
-    FetchSuggestions(engineId: string, searchTerm: string): Promise<SearchSuggestions>;
+    FetchSuggestions(
+      engineId: string,
+      searchTerm: string,
+    ): Promise<SearchSuggestions>;
     PerformSearch(engineId: string, searchTerm: string): Promise<void>;
   }
 

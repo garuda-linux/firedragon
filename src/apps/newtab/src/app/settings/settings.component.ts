@@ -8,7 +8,7 @@ import {
   signal,
   type WritableSignal,
 } from "@angular/core";
-import { CommonModule, DOCUMENT } from "@angular/common";
+import { DOCUMENT } from "@angular/common";
 import type { LogoList, WallpaperList } from "../types";
 import { logos, type Wallpaper, wallpapers } from "../../config";
 import { Checkbox } from "primeng/checkbox";
@@ -36,7 +36,6 @@ import { InputNumber } from "primeng/inputnumber";
 @Component({
   selector: "app-settings",
   imports: [
-    CommonModule,
     Checkbox,
     FormsModule,
     Select,

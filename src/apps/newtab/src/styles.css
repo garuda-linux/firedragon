@@ -31,9 +31,14 @@
   @apply md:mr-auto;
 }
 
+.garuda-shell-menubar,
+.garuda-shell__dropdown {
+  @apply m-2;
+}
+
 /*`Custom classes`*/
 body {
-  @apply p-2 selection:bg-primary selection:text-surface-0;
+  @apply selection:bg-primary selection:text-surface-0;
   font-optical-sizing: auto;
 }
 
