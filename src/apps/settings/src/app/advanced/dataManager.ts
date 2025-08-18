@@ -1,5 +1,5 @@
 import { rpc } from "../../lib/rpc/rpc.ts";
-import { type AdvancedFormData } from "../../types/pref.ts";
+import { type AdvancedFormData, type ConstantsData } from "../../types/pref.ts";
 
 export async function saveAdvancedSettings(settings: AdvancedFormData): Promise<void> {
     await Promise.all([
@@ -26,6 +26,8 @@ export async function saveAdvancedSettings(settings: AdvancedFormData): Promise<
         rpc.setStringPref('browser.safebrowsing.privider.google.gethashURL', settings.safebrowsingProviderGoogleGethashURL),
         rpc.setStringPref('browser.safebrowsing.provider.google.updateURL', settings.safebrowsingProviderGoogleUpdateURL),
         rpc.setBoolPref('browser.safebrowsing.downloads.enabled', settings.enableSafebrowsingDownloads),
+        rpc.setBoolPref('browser.translations.enable', settings.enableTranslations),
+        rpc.setStringPref('services.settings.server', settings.servicesSettingsServer),
     ]);
 }
 
@@ -54,6 +56,8 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         safebrowsingProviderGoogleGethashURL,
         safebrowsingProviderGoogleUpdateURL,
         enableSafebrowsingDownloads,
+        enableTranslations,
+        servicesSettingsServer,
     ] = await Promise.all([
         rpc.getBoolPref('extensions.update.enabled'),
         rpc.getBoolPref('extensions.update.autoUpdateDefault'),
@@ -78,6 +82,8 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         rpc.getStringPref('browser.safebrowsing.provider.google.gethashURL'),
         rpc.getStringPref('browser.safebrowsing.provider.google.updateURL'),
         rpc.getBoolPref('browser.safebrowsing.downloads.enabled'),
+        rpc.getBoolPref('browser.translations.enable'),
+        rpc.getStringPref('services.settings.server'),
     ]);
 
     return {
@@ -104,5 +110,15 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         safebrowsingProviderGoogleGethashURL,
         safebrowsingProviderGoogleUpdateURL,
         enableSafebrowsingDownloads,
+        enableTranslations,
+        servicesSettingsServer,
     };
+}
+
+async function getConstants(): Promise<ConstantsData> {
+    return await new Promise((resolve) => {
+        window.NRGetConstants((data: string) => {
+            resolve(JSON.parse(data));
+        });
+    });
 }

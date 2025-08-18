@@ -8,9 +8,10 @@ import { Switch } from "@/components/common/switch.tsx";
 import { useFormContext } from "react-hook-form";
 import { Settings } from "lucide-react";
 import { useTranslation } from "react-i18next";
-import { AdvancedFormData } from "@/types/pref.ts";
-import { useState } from "react";
+import { AdvancedFormData, type ConstantsData } from "@/types/pref.ts";
+import { useEffect, useState } from "react";
 import { RestartModal } from "@/components/common/restart-modal.tsx";
+import { useConstantsData } from "@/app/about/dataManager.ts";
 
 export function General() {
     const { t } = useTranslation();
@@ -18,6 +19,17 @@ export function General() {
     const [showEnableSyncRestartModal, setShowEnableSyncRestartModal] = useState(false);
     const [showAllowUserChromeCssRestartModal, setShowAllowUserChromeCssRestartModal] = useState(false);
     const [showHidePasswdmgrRestartModal, setShowHidePasswdmgrRestartModal] = useState(false);
+
+    const [constantsData, setConstantsData] = useState<ConstantsData | null>(
+        null,
+    );
+    useEffect(() => {
+        async function fetchConstantsData() {
+            const data = await useConstantsData();
+            setConstantsData(data);
+        }
+        fetchConstantsData();
+    }, []);
 
     return (
         <>
@@ -135,6 +147,24 @@ export function General() {
                         </div>
                         <div className="text-sm text-base-content/70">
                             {t("advanced.general.hidePasswdmgrDescription")}
+                        </div>
+                    </div>
+                    <div className="space-y-1">
+                        <div className="flex items-center justify-between gap-2">
+                            <label htmlFor="allow-user-chrome-css">
+                                {t('advanced.general.enableTranslations')}
+                            </label>
+                            <Switch
+                                id="allow-user-chrome-css"
+                                checked={getValues("enableTranslations") && getValues('servicesSettingsServer') === constantsData!.REMOTE_SETTINGS_SERVER_URL}
+                                onChange={(e) => {
+                                    setValue("enableTranslations", e.target.checked);
+                                    setValue('servicesSettingsServer', e.target.checked ? constantsData!.REMOTE_SETTINGS_SERVER_URL : 'https://%.invalid');
+                                }}
+                            />
+                        </div>
+                        <div className="text-sm text-base-content/70">
+                            {t("advanced.general.enableTranslationsDescription")}
                         </div>
                     </div>
                 </CardContent>

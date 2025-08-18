@@ -81,6 +81,7 @@ export type ConstantsData = {
   MOZ_APP_VERSION: string;
   MOZ_APP_VERSION_DISPLAY: string;
   MOZ_OFFICIAL_BRANDING: boolean;
+  REMOTE_SETTINGS_SERVER_URL: string;
 };
 
 /* Accounts */
@@ -205,5 +206,7 @@ export const zAdvancedConfig = z.object({
   safebrowsingProviderGoogleGethashURL: z.string(),
   safebrowsingProviderGoogleUpdateURL: z.string(),
   enableSafebrowsingDownloads: z.boolean(),
+  enableTranslations: z.boolean(),
+  servicesSettingsServer: z.string(),
 });
 export type AdvancedFormData = z.infer<typeof zAdvancedConfig>;
