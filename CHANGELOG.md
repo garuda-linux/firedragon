@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.1) — 2025-08-19 — [`v12.0.0`…`v12.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0...v12.0.1)
+
+### 🐛 Bug Fixes
+
+- Correct infobar text color and add NTP debugging — [`8dedd995…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8dedd9957e1726392efaadb6262879855be04c68)
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge v12.1.1 from upstream — [`2fed1cf8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2fed1cf8bcc59cc2884d99a73ae16f61704dcc96)
+
+### Fix
+
+- Add fallback for fetching Top Sites — [`2a698293…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2a6982935e8dc619fc6a3c4cc437be64d9a1f467)
+
 ## [FireDragon v12.0.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0) — 2025-08-19 — [`v12.0.0-beta.21`…`v12.0.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.21...v12.0.0)
 
 ### 🚀 Features
