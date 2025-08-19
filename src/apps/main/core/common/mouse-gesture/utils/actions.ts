@@ -1,6 +1,6 @@
 // eslint-disable no-unsafe-optional-chaining
 // deno-lint-ignore-file no-window
-import { type GestureActionRegistration } from "./gestures.ts";
+import type { GestureActionRegistration } from "./gestures.ts";
 
 export const actions: GestureActionRegistration[] = [
   {
@@ -25,8 +25,9 @@ export const actions: GestureActionRegistration[] = [
   {
     name: "gecko-open-new-tab",
     fn: () =>
-      (document?.getElementById("tabs-newtab-button") as XULElement)
-        .doCommand(),
+      (
+        document?.getElementById("tabs-newtab-button") as XULElement
+      ).doCommand(),
   },
   {
     name: "gecko-duplicate-tab",
@@ -191,21 +192,18 @@ export const actions: GestureActionRegistration[] = [
   },
   {
     name: "gecko-open-screen-capture",
-    fn: () => window.ScreenshotsUtils.notify(window, "shortcut"),
+    fn: () => window.ScreenshotsUtils.start(gBrowser.selectedBrowser),
   },
   {
     name: "floorp-show-pip",
     fn: () =>
-      window.gFloorpCSKActionFunctions.PictureInPicture.togglePictureInPicture(
-        null,
-      ),
+      (
+        document?.getElementById("picture-in-picture-button") as XULElement
+      ).click(),
   },
   {
     name: "gecko-open-bookmark-add-tool",
-    fn: () =>
-      window.PlacesUIUtils.showBookmarkPagesDialog(
-        window.PlacesCommandHook.uniqueCurrentPages,
-      ),
+    fn: () => window.PlacesCommandHook.bookmarkPage(),
   },
   {
     name: "gecko-open-bookmarks-manager",
@@ -222,10 +220,6 @@ export const actions: GestureActionRegistration[] = [
   {
     name: "gecko-open-privacy-preferences",
     fn: () => window.openPreferences("panePrivacy"),
-  },
-  {
-    name: "gecko-open-workspaces-preferences",
-    fn: () => window.openPreferences("paneWorkspaces"),
   },
   {
     name: "gecko-open-containers-preferences",
@@ -250,10 +244,6 @@ export const actions: GestureActionRegistration[] = [
   {
     name: "gecko-quick-forget-history",
     fn: () => window.PlacesUtils.history.clear(true),
-  },
-  {
-    name: "gecko-clear-recent-history",
-    fn: () => window.BrowserTryToCloseWindow(),
   },
   {
     name: "gecko-restore-last-session",

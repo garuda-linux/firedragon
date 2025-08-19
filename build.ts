@@ -324,6 +324,7 @@ async function clobber() {
 let devViteProcess: ProcessPromise | null = null;
 let browserProcess: ProcessPromise | null = null;
 let devInit = false;
+let sapphillonProcess: ProcessPromise | null = null;
 
 async function run(mode: "dev" | "test" | "release" = "dev") {
   await initBin();
@@ -356,6 +357,19 @@ async function run(mode: "dev" | "test" | "release" = "dev") {
         buildid2 ?? ""
       }`.stdio("pipe").nothrow();
 
+      // Start sapphillon-front dev server (only if exists)
+      const sapphillonDir = "src/sapphillon-front";
+      if (await isExists(sapphillonDir)) {
+        console.log(chalk.green("🚀 Starting sapphillon-front dev server..."));
+        sapphillonProcess = $({ cwd: sapphillonDir })`deno task dev`
+          .stdio("pipe")
+          .nothrow();
+      } else {
+        console.log(
+          chalk.yellow("⚠️  sapphillon-front not found. Skipping dev server."),
+        );
+      }
+
       let resolve: ((value: void | PromiseLike<void>) => void) | undefined =
         undefined;
       const temp_prm = new Promise<void>((rs, _rj) => {
@@ -373,6 +387,18 @@ async function run(mode: "dev" | "test" | "release" = "dev") {
       })();
       (async () => {
         for await (const temp of devViteProcess.stderr) {
+          process.stdout.write(temp);
+        }
+      })();
+      (async () => {
+        if (!sapphillonProcess) return;
+        for await (const temp of sapphillonProcess.stdout) {
+          process.stdout.write(temp);
+        }
+      })();
+      (async () => {
+        if (!sapphillonProcess) return;
+        for await (const temp of sapphillonProcess.stderr) {
           process.stdout.write(temp);
         }
       })();
@@ -459,6 +485,16 @@ async function exit() {
       console.error(e);
     }
     console.log(chalk.blue("✅ End Shutdown devViteProcess"));
+  }
+  if (sapphillonProcess) {
+    console.log(chalk.blue("🛑 Start Shutdown sapphillonProcess"));
+    try {
+      sapphillonProcess.kill();
+      await sapphillonProcess;
+    } catch (e) {
+      console.error(e);
+    }
+    console.log(chalk.blue("✅ End Shutdown sapphillonProcess"));
   }
   console.log(chalk.green("[build] Cleanup Complete!"));
   process.exit(0);

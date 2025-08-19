@@ -12,7 +12,7 @@ import { addI18nObserver } from "../../../i18n/config.ts";
 
 const translationKeys = {
   moveTabToAnotherWorkspace: "workspaces.menu.moveTabToAnotherWorkspace",
-  invalidWorkspaceID: "workspaces.error.invalidWorkspaceID"
+  invalidWorkspaceID: "workspaces.error.invalidWorkspaceID",
 };
 
 const getTranslatedText = (key: string): string => {
@@ -39,9 +39,14 @@ export class WorkspacesTabContextMenu {
   }
 
   private updateContextMenu() {
-    const menuElem = document?.getElementById("context_MoveTabToOtherWorkspace");
+    const menuElem = document?.getElementById(
+      "context_MoveTabToOtherWorkspace",
+    );
     if (menuElem) {
-      menuElem.setAttribute("label", getTranslatedText(translationKeys.moveTabToAnotherWorkspace));
+      menuElem.setAttribute(
+        "label",
+        getTranslatedText(translationKeys.moveTabToAnotherWorkspace),
+      );
     }
   }
 
@@ -62,13 +67,12 @@ export class WorkspacesTabContextMenu {
                 onCommand={() =>
                   this.ctx.tabManagerCtx.moveTabsToWorkspaceFromTabContextMenu(
                     id,
-                  )
-                }
+                  )}
               />
             );
           } else {
             console.error(
-              getTranslatedText(translationKeys.invalidWorkspaceID) + ": " + id
+              getTranslatedText(translationKeys.invalidWorkspaceID) + ": " + id,
             );
           }
         }}

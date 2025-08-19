@@ -17,6 +17,7 @@ export function FloatingSplitter() {
     const sidebarBox = document?.getElementById(
       "panel-sidebar-box",
     ) as XULElement;
+    const docEl = document?.documentElement as XULElement | null;
 
     if (!sidebarBox) {
       return;
@@ -24,35 +25,67 @@ export function FloatingSplitter() {
 
     const startX = e.clientX;
     const startWidth = sidebarBox.getBoundingClientRect().width;
-    const startLeft = parseInt(sidebarBox.style.getPropertyValue("left") || "0", 10) ||
-      sidebarBox.getBoundingClientRect().left;
-    const isLeftSide = (e.target as HTMLElement).classList.contains("floating-splitter-left");
+    // left を offsetParent 座標系で取得
+    const parentEl = (sidebarBox as unknown as HTMLElement).offsetParent as
+      | HTMLElement
+      | null;
+    const parentRect =
+      (parentEl ?? (document?.getElementById("browser") as HTMLElement))
+        .getBoundingClientRect();
+    const boxRect = sidebarBox.getBoundingClientRect();
+    const styleLeft = Number.parseInt(
+      sidebarBox.style.getPropertyValue("left") || "NaN",
+      10,
+    );
+    const startLeft = Number.isNaN(styleLeft)
+      ? boxRect.left - parentRect.left
+      : styleLeft;
+    const isLeftSide = (e.target as HTMLElement).classList.contains(
+      "floating-splitter-left",
+    );
+
+    let frameRequested = false;
+    let pendingWidth = startWidth;
+    let pendingLeft = startLeft;
+
+    const applyFrame = () => {
+      frameRequested = false;
+      sidebarBox.style.setProperty("width", `${pendingWidth}px`);
+      if (isLeftSide) {
+        sidebarBox.style.setProperty("left", `${pendingLeft}px`);
+      }
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       const deltaX = e.clientX - startX;
-      let newWidth: number;
-
+      const browserW =
+        (document?.getElementById("browser") as HTMLElement | null)
+          ?.clientWidth ?? window.innerWidth;
+      const minW = 225;
+      const maxW = browserW * 0.8;
       if (isLeftSide) {
-        newWidth = Math.max(
-          225,
-          Math.min(startWidth - deltaX, window.innerWidth * 0.8),
+        const rightEdge = startLeft + startWidth;
+        const desiredWidth = startWidth - deltaX;
+        pendingWidth = Math.max(minW, Math.min(desiredWidth, maxW));
+        pendingLeft = Math.max(
+          0,
+          Math.min(browserW - pendingWidth, rightEdge - pendingWidth),
         );
-        const newLeft = Math.max(0, Math.min(window.innerWidth - newWidth, startLeft + deltaX));
-        sidebarBox.style.setProperty("left", `${newLeft}px`);
       } else {
-        newWidth = Math.max(
-          225,
-          Math.min(startWidth + deltaX, window.innerWidth * 0.8),
-        );
+        const desiredWidth = startWidth + deltaX;
+        pendingWidth = Math.max(minW, Math.min(desiredWidth, maxW));
       }
-
-      sidebarBox.style.setProperty("width", `${newWidth}px`);
+      if (!frameRequested) {
+        frameRequested = true;
+        document?.defaultView?.requestAnimationFrame(applyFrame);
+      }
     };
 
     const onMouseUp = () => {
       setIsFloatingDragging(false);
       document?.removeEventListener("mousemove", onMouseMove);
       document?.removeEventListener("mouseup", onMouseUp);
+      docEl?.style.removeProperty("user-select");
 
       setIsResizeCooldown(true);
 
@@ -66,6 +99,7 @@ export function FloatingSplitter() {
       }, 1000);
     };
 
+    docEl?.style.setProperty("user-select", "none");
     document?.addEventListener("mousemove", onMouseMove);
     document?.addEventListener("mouseup", onMouseUp);
   };
@@ -75,6 +109,7 @@ export function FloatingSplitter() {
     const sidebarBox = document?.getElementById(
       "panel-sidebar-box",
     ) as XULElement;
+    const docEl = document?.documentElement as XULElement | null;
 
     if (!sidebarBox) {
       return;
@@ -82,35 +117,67 @@ export function FloatingSplitter() {
 
     const startY = e.clientY;
     const startHeight = sidebarBox.getBoundingClientRect().height;
-    const startTop = parseInt(sidebarBox.style.getPropertyValue("top") || "0", 10) ||
-      sidebarBox.getBoundingClientRect().top;
-    const isTopSide = (e.target as HTMLElement).classList.contains("floating-splitter-top");
+    // top を offsetParent 座標系で取得
+    const parentEl = (sidebarBox as unknown as HTMLElement).offsetParent as
+      | HTMLElement
+      | null;
+    const parentRect =
+      (parentEl ?? (document?.getElementById("browser") as HTMLElement))
+        .getBoundingClientRect();
+    const boxRect = sidebarBox.getBoundingClientRect();
+    const styleTop = Number.parseInt(
+      sidebarBox.style.getPropertyValue("top") || "NaN",
+      10,
+    );
+    const startTop = Number.isNaN(styleTop)
+      ? boxRect.top - parentRect.top
+      : styleTop;
+    const isTopSide = (e.target as HTMLElement).classList.contains(
+      "floating-splitter-top",
+    );
+
+    let frameRequested = false;
+    let pendingHeight = startHeight;
+    let pendingTop = startTop;
+
+    const applyFrame = () => {
+      frameRequested = false;
+      sidebarBox.style.setProperty("height", `${pendingHeight}px`);
+      if (isTopSide) {
+        sidebarBox.style.setProperty("top", `${pendingTop}px`);
+      }
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       const deltaY = e.clientY - startY;
-      let newHeight: number;
-
+      const browserH =
+        (document?.getElementById("browser") as HTMLElement | null)
+          ?.clientHeight ?? window.innerHeight;
+      const minH = 200;
+      const maxH = browserH * 0.9;
       if (isTopSide) {
-        newHeight = Math.max(
-          200,
-          Math.min(startHeight - deltaY, window.innerHeight * 0.9),
+        const bottomEdge = startTop + startHeight;
+        const desiredHeight = startHeight - deltaY;
+        pendingHeight = Math.max(minH, Math.min(desiredHeight, maxH));
+        pendingTop = Math.max(
+          0,
+          Math.min(browserH - pendingHeight, bottomEdge - pendingHeight),
         );
-        const newTop = Math.max(0, Math.min(window.innerHeight - newHeight, startTop + deltaY));
-        sidebarBox.style.setProperty("top", `${newTop}px`);
       } else {
-        newHeight = Math.max(
-          200,
-          Math.min(startHeight + deltaY, window.innerHeight * 0.9),
-        );
+        const desiredHeight = startHeight + deltaY;
+        pendingHeight = Math.max(minH, Math.min(desiredHeight, maxH));
       }
-
-      sidebarBox.style.setProperty("height", `${newHeight}px`);
+      if (!frameRequested) {
+        frameRequested = true;
+        document?.defaultView?.requestAnimationFrame(applyFrame);
+      }
     };
 
     const onMouseUp = () => {
       setIsFloatingDragging(false);
       document?.removeEventListener("mousemove", onMouseMove);
       document?.removeEventListener("mouseup", onMouseUp);
+      docEl?.style.removeProperty("user-select");
 
       setIsResizeCooldown(true);
 
@@ -124,6 +191,7 @@ export function FloatingSplitter() {
       }, 1000);
     };
 
+    docEl?.style.setProperty("user-select", "none");
     document?.addEventListener("mousemove", onMouseMove);
     document?.addEventListener("mouseup", onMouseUp);
   };
@@ -133,6 +201,7 @@ export function FloatingSplitter() {
     const sidebarBox = document?.getElementById(
       "panel-sidebar-box",
     ) as XULElement;
+    const docEl = document?.documentElement as XULElement | null;
 
     if (!sidebarBox) {
       return;
@@ -142,58 +211,110 @@ export function FloatingSplitter() {
     const startY = e.clientY;
     const startWidth = sidebarBox.getBoundingClientRect().width;
     const startHeight = sidebarBox.getBoundingClientRect().height;
-    const startLeft = parseInt(sidebarBox.style.getPropertyValue("left") || "0", 10) ||
-      sidebarBox.getBoundingClientRect().left;
-    const startTop = parseInt(sidebarBox.style.getPropertyValue("top") || "0", 10) ||
-      sidebarBox.getBoundingClientRect().top;
+    // 左上座標を offsetParent（= #browser）基準で算出
+    const parentEl = (sidebarBox as unknown as HTMLElement).offsetParent as
+      | HTMLElement
+      | null;
+    const parentRect =
+      (parentEl ?? (document?.getElementById("browser") as HTMLElement))
+        .getBoundingClientRect();
+    const boxRect = sidebarBox.getBoundingClientRect();
+    const styleLeft = Number.parseInt(
+      sidebarBox.style.getPropertyValue("left") || "NaN",
+      10,
+    );
+    const styleTop = Number.parseInt(
+      sidebarBox.style.getPropertyValue("top") || "NaN",
+      10,
+    );
+    const startLeft = Number.isNaN(styleLeft)
+      ? boxRect.left - parentRect.left
+      : styleLeft;
+    const startTop = Number.isNaN(styleTop)
+      ? boxRect.top - parentRect.top
+      : styleTop;
     const target = e.target as HTMLElement;
 
-    const isTopLeft = target.classList.contains("floating-splitter-corner-topleft");
-    const isTopRight = target.classList.contains("floating-splitter-corner-topright");
-    const isBottomLeft = target.classList.contains("floating-splitter-corner-bottomleft");
+    const isTopLeft = target.classList.contains(
+      "floating-splitter-corner-topleft",
+    );
+    const isTopRight = target.classList.contains(
+      "floating-splitter-corner-topright",
+    );
+    const isBottomLeft = target.classList.contains(
+      "floating-splitter-corner-bottomleft",
+    );
+
+    let frameRequested = false;
+    let pendingWidth = startWidth;
+    let pendingHeight = startHeight;
+    let pendingLeft = startLeft;
+    let pendingTop = startTop;
+
+    const applyFrame = () => {
+      frameRequested = false;
+      sidebarBox.style.setProperty("width", `${pendingWidth}px`);
+      sidebarBox.style.setProperty("height", `${pendingHeight}px`);
+      if (isTopLeft || isBottomLeft) {
+        sidebarBox.style.setProperty("left", `${pendingLeft}px`);
+      }
+      if (isTopLeft || isTopRight) {
+        sidebarBox.style.setProperty("top", `${pendingTop}px`);
+      }
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
 
-      let newWidth: number;
+      const browserW =
+        (document?.getElementById("browser") as HTMLElement | null)
+          ?.clientWidth ?? window.innerWidth;
+      const browserH =
+        (document?.getElementById("browser") as HTMLElement | null)
+          ?.clientHeight ?? window.innerHeight;
+      const minW = 225;
+      const maxW = browserW * 0.8;
+      const minH = 200;
+      const maxH = browserH * 0.9;
+
       if (isTopLeft || isBottomLeft) {
-        newWidth = Math.max(
-          225,
-          Math.min(startWidth - deltaX, window.innerWidth * 0.8),
+        const rightEdge = startLeft + startWidth;
+        const desiredWidth = startWidth - deltaX;
+        pendingWidth = Math.max(minW, Math.min(desiredWidth, maxW));
+        pendingLeft = Math.max(
+          0,
+          Math.min(browserW - pendingWidth, rightEdge - pendingWidth),
         );
-        const newLeft = Math.max(0, Math.min(window.innerWidth - newWidth, startLeft + deltaX));
-        sidebarBox.style.setProperty("left", `${newLeft}px`);
       } else {
-        newWidth = Math.max(
-          225,
-          Math.min(startWidth + deltaX, window.innerWidth * 0.8),
-        );
+        const desiredWidth = startWidth + deltaX;
+        pendingWidth = Math.max(minW, Math.min(desiredWidth, maxW));
       }
 
-      let newHeight: number;
       if (isTopLeft || isTopRight) {
-        newHeight = Math.max(
-          200,
-          Math.min(startHeight - deltaY, window.innerHeight * 0.9),
+        const bottomEdge = startTop + startHeight;
+        const desiredHeight = startHeight - deltaY;
+        pendingHeight = Math.max(minH, Math.min(desiredHeight, maxH));
+        pendingTop = Math.max(
+          0,
+          Math.min(browserH - pendingHeight, bottomEdge - pendingHeight),
         );
-        const newTop = Math.max(0, Math.min(window.innerHeight - newHeight, startTop + deltaY));
-        sidebarBox.style.setProperty("top", `${newTop}px`);
       } else {
-        newHeight = Math.max(
-          200,
-          Math.min(startHeight + deltaY, window.innerHeight * 0.9),
-        );
+        const desiredHeight = startHeight + deltaY;
+        pendingHeight = Math.max(minH, Math.min(desiredHeight, maxH));
       }
 
-      sidebarBox.style.setProperty("width", `${newWidth}px`);
-      sidebarBox.style.setProperty("height", `${newHeight}px`);
+      if (!frameRequested) {
+        frameRequested = true;
+        document?.defaultView?.requestAnimationFrame(applyFrame);
+      }
     };
 
     const onMouseUp = () => {
       setIsFloatingDragging(false);
       document?.removeEventListener("mousemove", onMouseMove);
       document?.removeEventListener("mouseup", onMouseUp);
+      docEl?.style.removeProperty("user-select");
 
       setIsResizeCooldown(true);
 
@@ -207,6 +328,7 @@ export function FloatingSplitter() {
       }, 1000);
     };
 
+    docEl?.style.setProperty("user-select", "none");
     document?.addEventListener("mousemove", onMouseMove);
     document?.addEventListener("mouseup", onMouseUp);
   };

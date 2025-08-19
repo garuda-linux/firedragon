@@ -4,9 +4,11 @@ import ProgressBar from "./components/ProgressBar.tsx";
 import { getLocaleData } from "./app/localization/dataManager.ts";
 import { useTranslation } from "react-i18next";
 import { rpc } from "./lib/rpc/rpc.ts";
+import WhatsNewPage from "./app/whatsnew/page.tsx";
 
 const WelcomePage = lazy(() => import("./app/welcome/page.tsx"));
 const LocalizationPage = lazy(() => import("./app/localization/page.tsx"));
+const HubIntroPage = lazy(() => import("./app/hub/page.tsx"));
 const FeaturesPage = lazy(() => import("./app/features/page.tsx"));
 const CustomizePage = lazy(() => import("./app/customize/page.tsx"));
 const FinishPage = lazy(() => import("./app/finish/page.tsx"));
@@ -28,8 +30,21 @@ function App() {
     initializeLanguage();
   }, [i18n]);
 
-  //* Set welcome page shown to true
+  //* Set welcome page shown to true (kept for first-run compatibility)
   rpc.setBoolPref("floorp.browser.welcome.page.shown", true);
+
+  // Detect upgrade query (e.g., about:welcome?upgrade=12)
+  const url = new URL(globalThis.location.href);
+  const upgrade = url.searchParams.get("upgrade");
+
+  // If upgrade mode, show only the WhatsNew page, similar to Chrome's post-update UI
+  if (upgrade) {
+    return (
+      <div className="min-h-screen bg-base-100 text-base-content flex flex-col">
+        <WhatsNewPage />
+      </div>
+    );
+  }
 
   return (
     <MemoryRouter>
@@ -164,6 +179,7 @@ function App() {
               <Route path="/" element={<WelcomePage />} />
               <Route path="/localization" element={<LocalizationPage />} />
               <Route path="/features" element={<FeaturesPage />} />
+              <Route path="/hub" element={<HubIntroPage />} />
               <Route path="/customize" element={<CustomizePage />} />
               <Route path="/finish" element={<FinishPage />} />
             </Routes>

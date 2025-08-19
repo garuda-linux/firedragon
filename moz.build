@@ -15,5 +15,4 @@ if CONFIG["NORANEKO_DIST"]:
         "/%s/newtab" % CONFIG["NORANEKO_DIST"],
         "/%s/welcome" % CONFIG["NORANEKO_DIST"],
         "/%s/notes" % CONFIG["NORANEKO_DIST"],
-        "/%s/os" % CONFIG["NORANEKO_DIST"],
     ]
