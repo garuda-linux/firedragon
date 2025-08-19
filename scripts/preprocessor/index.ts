@@ -25,28 +25,49 @@ export class Preprocessor {
         const output = [];
         const conditionalStack = [true];
         const filters = { substitution: false };
-        for (const line of (await readFile(path, 'utf-8')).split('\n')) {
+        for (const [i, line] of (await readFile(path, 'utf-8')).split('\n').entries()) {
             const trimmed = line.trim();
-            const isIf = trimmed.startsWith('#if ');
-            const isIfdef = trimmed.startsWith('#ifdef ');
-            const isIfndef = trimmed.startsWith('#ifndef ');
-            const isEndif = trimmed === '#endif';
-            const isElseif = trimmed.startsWith('#elseif ');
-            const isElse = trimmed === '#else';
-            const isFilter = trimmed.startsWith('#filter ');
-            const isUnfilter = trimmed.startsWith('#unfilter ');
-            const isInclude = trimmed.startsWith('#include ');
+
+            const isCommand = trimmed.startsWith('#');
+            let commandLine = null;
+            let command = null;
+            let args = null;
+            if (isCommand) {
+                commandLine = trimmed.substring(1).trim();
+                [command, args] = commandLine.split(' ', 2).map(x => x.trim());
+            }
+
+            const isIf = command === 'if';
+            const isIfdef = command === 'ifdef';
+            const isIfndef = command === 'ifndef';
+            const isEndif = command === 'endif';
+            const isElseif = command === 'elseif';
+            const isElse = command === 'else';
+            const isFilter = command === 'filter';
+            const isUnfilter = command === 'unfilter';
+            const isInclude = command === 'include';
+            const isDefine = command === 'define';
+
+            const isKnownCommand = isIf || isIfdef || isIfndef || isEndif || isElseif || isElse || isFilter || isUnfilter || isInclude;
+            if (isCommand && !isKnownCommand) {
+                throw `Unknown command in line ${i + 1}: ${command}`;
+            }
+
+            if ((isIf || isIfdef || isIfndef || isElseif || isFilter || isUnfilter || isInclude || isDefine) && !args) {
+                throw `Missing argument in line ${i + 1}: ${command}`;
+            }
+
             if (isEndif || isElseif || isElse) {
                 const conditionalItem = conditionalStack.shift();
                 if (typeof conditionalItem !== 'boolean') {
-                    throw 'Unmatched if/endif/elseif/else';
+                    throw `Unmatched ${command} in line ${i + 1}`;
                 }
                 if (isElseif || isElse) {
                     conditionalStack.unshift(!conditionalItem);
                 }
             }
             if (isIf || isIfdef || isIfndef || isElseif) {
-                let expression = trimmed.split(' ', 2)[1];
+                let expression = args!;
                 if (isIfdef || isIfndef) {
                     expression = `defined(${JSON.stringify(expression)})`;
                 }
@@ -61,8 +82,7 @@ export class Preprocessor {
                 }
             }
             if (isFilter || isUnfilter) {
-                const args = trimmed.split(' ').slice(1);
-                for (const filter of args) {
+                for (const filter of args!.split(' ')) {
                     if (!(filter in filters)) {
                         throw `Unknown filter: ${filter}`;
                     }
@@ -70,10 +90,13 @@ export class Preprocessor {
                 }
             }
             if (isInclude) {
-                const arg = trimmed.split(' ', 2)[1];
-                output.push(await this.process(join(dirname(path), arg)));
+                output.push(await this.process(join(dirname(path), args!)));
             }
-            if (conditionalStack.every(x => x) && !(isIf || isIfdef || isIfndef || isEndif || isElseif || isElse || isFilter || isUnfilter || isInclude)) {
+            if (isDefine) {
+                const [name, expression] = args!.split(' ', 2);
+                this.defines[name] = this.evaluateExpression(expression);
+            }
+            if (conditionalStack.every(x => x) && !isCommand) {
                 output.push(this.processFilters(line, filters));
             }
         }
