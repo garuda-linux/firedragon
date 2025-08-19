@@ -161,8 +161,7 @@
     "npm:zod@*": "3.25.56",
     "npm:zod@^3.24.1": "3.25.56",
     "npm:zod@^3.24.2": "3.25.56",
-    "npm:zx@^8.3.2": "8.5.5",
-    "npm:zx@^8.5.4": "8.5.5"
+    "npm:zx@^8.3.2": "8.8.0"
   },
   "jsr": {
     "@std/encoding@1.0.10": {
@@ -19023,8 +19022,8 @@
     "zwitch@2.0.4": {
       "integrity": "sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A=="
     },
-    "zx@8.5.5": {
-      "integrity": "sha512-kzkjV3uqyEthw1IBDbA7Co2djji77vCP1DRvt58aYSMwiX4nyvAkFE8OBSEsOUbDJAst0Yo4asNvMTGG5HGPXA==",
+    "zx@8.8.0": {
+      "integrity": "sha512-v0VZXgSHusDvTtZROno3Ws8xkE1uNSSwH/yF8Fm+ZwBrYhr+bRNNpsnTJ32eR/t6umc7lAz5WqdP800ugW9zFA==",
       "bin": true
     }
   },
@@ -19068,7 +19067,7 @@
         "npm:vite@6.0.11",
         "npm:xml-js@^1.6.11",
         "npm:zod@^3.24.1",
-        "npm:zx@^8.5.4"
+        "npm:zx@^8.3.2"
       ]
     },
     "members": {
