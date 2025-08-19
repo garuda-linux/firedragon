@@ -4,7 +4,7 @@
   "runtime": "tags/passed-20250815192614",
   "release": {
     "firefox": "142.0",
-    "floorp": "12.1.0"
+    "floorp": "12.1.1"
   },
   "description": "",
   "main": "index.js",
@@ -48,6 +48,6 @@
     "solid-styled-jsx": "^0.27.1",
     "sortablejs": "^1.15.6",
     "zod": "^3.24.1",
-    "zx": "^8.5.4"
+    "zx": "^8.3.2"
   }
 }
