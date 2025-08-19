@@ -1,5 +1,72 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0) — 2025-08-19 — [`v12.0.0-beta.21`…`v12.0.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.21...v12.0.0)
+
+### 🚀 Features
+
+- *(apps/settings)* Add setting to enable translations with override vor services.settings.server — [`f5415183…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f54151833ba70709a6a50d15afd9f91be3873267)
+- *(preferences)* Hide Home panel when Floorp Start is enabled — [`974dedf6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/974dedf64d38d2245d437482b8ba17ea86bca675)
+- *(TabManager)* Add ability to list and attach to tabs — [`b514c221…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b514c22174ccaae9a9be93f04826fcd8558a64eb)
+- *(startup)* Show upgrade guide for users from Floorp 11 — [`30ad8897…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/30ad8897a139ab33c8f98763a2b1dd9c9047d7cf)
+- *(welcome)* Add 'What's New' page for post-upgrade — [`621bb53c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/621bb53c7153e6fd918a9a4ef74381edb81e47f0)
+- *(welcome)* Internationalize What's New page — [`d6a110b3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d6a110b341ef2c1534697a6a6b33a0089ee095e2)
+- Add sapphillon-front as submodule — [`c9cb331b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c9cb331b11c564684160a26807bc7deb9f5bac49)
+- *(welcome)* Add Hub introduction to onboarding flow — [`ae2eeb7d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ae2eeb7da651b9ae44f1bb8fc1a7c500067e5560)
+- *(newtab)* Add retry logic for native data fetching — [`67115e22…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/67115e22fc9ff12d0593274b8c411a4b4f4da94b)
+- Add sapphillon-front submodule and workspace integration — [`55aa4030…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/55aa403053ebe97d937ad370f695a53aa9fc017b)
+- Introduce BrowserOS actor for privileged APIs — [`714f26de…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/714f26de05c3da8c2f43cc02a3d91ee7d85ff54d)
+- *(front)* Update submodule to integrate TanStack Query — [`e2adfc59…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e2adfc59def80b08bdf3767849bfe12368ff035d)
+- *(test)* Add testing-library and jsdom for component tests — [`d27af107…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d27af107e06e4cbe7d0f78c21c702fd32bae2751)
+- *(workspaces)* Hide tab groups when all their tabs are hidden — [`5a01e435…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5a01e43520c3ca632f0475dd0b59abdf5c5a3fd9)
+- Add Sapphillon frontend application — [`7cf395f0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7cf395f02ed823931d7c43fcbaf056684356f08b)
+- *(newtab)* Check NR status for Top Sites and Search — [`1878f4c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1878f4c37c3eea16ed51f83ef0f18fa9dc3466cf)
+- *(installer)* Add disk space check to Windows stub installer — [`96d0c42a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/96d0c42aa64a8d980a13e0ca7410dd27b417198a)
+- Update sapphillon-front submodule and bump version — [`1bf0ea3f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1bf0ea3fd2c08c1494afe1159043c0964798cfa0)
+- *(splitView)* Add icon to URL bar action button — [`edc00da1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/edc00da12bc8ddce66f0fbd3f7c523c8e6e15e35)
+- *(docker/make)* Increase deno version to 2.3.2 — [`b9dc49d8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b9dc49d87ddd42a759d3151c00adb980eef61488)
+
+### 🐛 Bug Fixes
+
+- *(moveTabToWindow)* Fix selectedTabs algorithm — [`b40b5aa4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b40b5aa483996cd18437dc6a9c5a38a62acf4f51)
+- Disable translation by default since it does not work with overridden services.settings.server anyway — [`eee3dcc8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/eee3dcc8f4aac0e165cbf73b1766a7b733d9a6e0)
+- *(sidebar)* Defer rendering to fix missing extension panels — [`b5b1c509…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b5b1c5094ef6e7b237594a267bf559a5ef355d6f)
+- *(sidebar)* Improve favicon loading in sidebar panels — [`ed49d3e9…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ed49d3e9be777e9afde4c1f695342554effa3925)
+- *(sidebar)* Correct floating panel resize calculation — [`6f4dac87…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6f4dac878ee065487d2668096b6de99c45290fab)
+
+### 🚜 Refactor
+
+- *(preprocessor)* Refactor command recognition, add some more error messages and add define command — [`5694888a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5694888a4c5f3e40c9eaa59521d0eccfd96781a4)
+- *(qrcode)* Centralize popup showing logic — [`ebe0f949…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ebe0f9496c20652dbb1f18697428b51532392a79)
+- *(apps)* Remove the 'os' application and its dependencies — [`7ad35a09…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7ad35a09b72693ca4ed682e025705a4534a6dcea)
+- *(vite)* Scope dev server and improve config typings — [`a3a2c65b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a3a2c65b931962f5a62be0a56725fa6f6e9450da)
+- *(solid)* Ensure components have a reactive root for HMR — [`722a7f1e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/722a7f1e1ae2c98dd5fbbf484c0ef56cd5af57b4)
+- Remove sapphillon-front application — [`3c3a32f5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3c3a32f5fc61552b3224440a1514708156e3b0a5)
+- *(ui)* Migrate panel sidebar to @floating-ui/react — [`fc45d853…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc45d8531915acda36c98a38780bb3cddbd33795)
+- *(gestures)* Disable mouse gestures and shortcuts by default — [`5fa038f0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5fa038f09137ef593b51562a7057848c9f7e03b6)
+- *(gestures)* Improve action implementations and add error handling — [`c7558530…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c75585307a81eb0f566979bf2bc0ecc2bd83a525)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deno version to 2.3.2 in .tool-versions — [`3d6ade24…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3d6ade2403a6f15b47592430a9cefbf70e6d36c1)
+- Update sapphillon-front submodule — [`78428a10…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/78428a10c2dedde6cde30dfbac459dfd8babd8c1)
+- Bump version to 12.0.17 — [`9d940daf…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9d940daf31bd150684ae6b8d55f4562f063d0f49)
+- Update dependencies and submodule — [`8d3edff0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8d3edff04d145ddeee6afba1e812371d37415113)
+- Add support for Linux aarch64 builds — [`3ffa7b93…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3ffa7b93758992afe15d853e6299d2ebc9b37939)
+- Bump version to 12.0.18 — [`b2a77070…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b2a770708fee27c24eecf83a015524e62a896461)
+- Update deno.lock — [`0847323e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0847323e69fee16b0f825dd14933e9316453e66c)
+
+### Fix
+
+- Coerce userContextId to number in workspace schema — [`c124895c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c124895cb4009223e230df4b6c1ed8a3627d340a)
+
+### Build
+
+- Fix Linux ARM64 artifact filename — [`6eb46f54…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6eb46f541bec8f2bed7e3f8f4be0f5535cf5ede8)
+
+### Submodule
+
+- Update sapphillon-front to latest commit — [`e0b5e0ea…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e0b5e0ea19d6b339b86e5c6ce620524759197787)
+
 ## [FireDragon v12.0.0-beta.21](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.21) — 2025-07-28 — [`v12.0.0-beta.20`…`v12.0.0-beta.21`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0-beta.20...v12.0.0-beta.21)
 
 ### 🐛 Bug Fixes
