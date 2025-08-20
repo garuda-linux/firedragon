@@ -4,7 +4,7 @@
   "runtime": "tags/passed-20250815192614",
   "release": {
     "firefox": "142.0",
-    "floorp": "12.1.1"
+    "floorp": "12.1.2-dev"
   },
   "description": "",
   "main": "index.js",
