@@ -1,5 +1,28 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.2) — 2025-08-20 — [`v12.0.1`…`v12.0.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.1...v12.0.2)
+
+### 🐛 Bug Fixes
+
+- 修正されたアプリバージョンの設定 — [`12970b34…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/12970b343c345eed44641dbd2c31441c971f3a96)
+- Focus welcome tab after upgrade — [`ec5bfe27…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ec5bfe274ecded9280e7588ecd708aa503100daa)
+- *(multirow-tabbar)* Override tabbrowser-tabs max-height — [`a543ab95…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a543ab95a90d7d2515c72fa0ca7acb845705a819)
+- *(apps/welcome)* Update branding in upgrade welcome screen — [`b6f410bb…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b6f410bb27add39d9f81f2a12471f320c64f8b17)
+
+### 🚜 Refactor
+
+- *(startup)* Move welcome page logic to Tab component — [`53e25704…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/53e25704c911c22301df797d29b48021b2ae4930)
+- *(workspaces)* Optimize tab group visibility logic — [`3d2b4c04…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3d2b4c0496ab1bce32c07530e43691b6016ce515)
+
+### ⚙️ Miscellaneous Tasks
+
+- Bump version to 12.1.2 — [`163fc98f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/163fc98f0c6b0b3a9b2903d0f28bb46a046c700d)
+- Remove sapphillon-front submodule — [`650e89e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/650e89e7c5788892ae803d80fa54a5394bfa763e)
+
+### Fix
+
+- *(multirow-tabbar)* Correctly handle zero tab height — [`ea7f1372…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ea7f1372674d19b2f5ce2f6ba2dad0c905dc0778)
+
 ## [FireDragon v12.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.1) — 2025-08-19 — [`v12.0.0`…`v12.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.0...v12.0.1)
 
 ### 🐛 Bug Fixes
