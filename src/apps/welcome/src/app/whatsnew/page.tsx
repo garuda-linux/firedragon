@@ -9,7 +9,7 @@ import headerCover from "./header-cover.webp";
 import {
   ArrowRight,
   ChevronDown,
-  Github,
+  Gitlab,
   Globe,
   Languages,
   MessageCircle,
@@ -483,31 +483,13 @@ export default function WhatsNewPage() {
               </h3>
               <div className="flex gap-4">
                 <a
-                  href="https://github.com/Floorp-Projects/Floorp"
+                  href="https://gitlab.com/garuda-linux/firedragon/firedragon12"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
                   aria-label="GitHub"
                 >
-                  <Github size={24} />
-                </a>
-                <a
-                  href="https://twitter.com/floorp_browser"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
-                  aria-label="X (Twitter)"
-                >
-                  <Twitter size={24} />
-                </a>
-                <a
-                  href="https://floorp.app/discord"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
-                  aria-label="Discord"
-                >
-                  <MessageCircle size={24} />
+                  <Gitlab size={24} />
                 </a>
               </div>
             </div>
@@ -517,29 +499,10 @@ export default function WhatsNewPage() {
               <div className="flex items-center gap-2">
                 <img
                   src="chrome://branding/content/icon128.png"
-                  alt="Floorp"
+                  alt="FireDragon"
                   className="w-6 h-6"
                 />
-                <span className="text-white font-medium">Floorp</span>
-              </div>
-
-              <div className="flex flex-wrap gap-6 text-sm">
-                <a
-                  href="https://floorp.app/privacy"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  {t("whatsNew.footer.privacy")}
-                </a>
-                <a
-                  href="https://docs.floorp.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
-                  {t("whatsNew.footer.about")}
-                </a>
+                <span className="text-white font-medium">FireDragon</span>
               </div>
             </div>
           </div>

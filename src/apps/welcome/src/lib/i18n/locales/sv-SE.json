@@ -48,7 +48,7 @@
     },
     "welcomePage": {
         "welcome": "Välkommen till {{productName}}!",
-        "description": "{{productName}} är en snabb och användarvänlig webbläsare som lägger stor vikt vid integritet och säkerhet. I den här guiden får du en introduktion till de viktigaste funktionerna och inställningarna i Floorp.",
+        "description": "{{productName}} är en snabb och användarvänlig webbläsare som lägger stor vikt vid integritet och säkerhet. I den här guiden får du en introduktion till de viktigaste funktionerna och inställningarna i {{productName}}.",
         "readyToStart": "När du är klar klickar du på knappen nedan för att fortsätta.",
         "features": "{{productName}} funktioner",
         "privacy": "Integritet",
