@@ -12,7 +12,8 @@ async function updateMetainfo(file: string) {
     const date = new Date();
     metainfo.component.releases.release.unshift({
         _attributes: {
-            version,
+            // Fix to have semver versions ordered correctly by appstream: https://github.com/ximion/appstream/issues/727#issuecomment-3213249520
+            version: version.replace('-', '~'),
             date: `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`,
         },
         url: {
