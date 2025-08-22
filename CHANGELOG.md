@@ -1,5 +1,11 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.0.3](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.3) — 2025-08-22 — [`v12.0.2`…`v12.0.3`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.2...v12.0.3)
+
+### 🐛 Bug Fixes
+
+- *(release)* Fix representation of semver versions in metainfo — [`c80b053f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c80b053f8e2261cc8bf07d997ec9f46c925517e4)
+
 ## [FireDragon v12.0.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.2) — 2025-08-20 — [`v12.0.1`…`v12.0.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.1...v12.0.2)
 
 ### 🐛 Bug Fixes
