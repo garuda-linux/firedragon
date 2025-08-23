@@ -20,7 +20,7 @@ async function updateMetainfo(file: string) {
             _attributes: {
                 type: 'details',
             },
-            _text: `https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/${version}`,
+            _text: `https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/${version}`,
         },
         description: {},
     });

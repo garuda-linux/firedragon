@@ -43,114 +43,110 @@
   <url type="homepage">https://firedragon.garudalinux.org/</url>
   <screenshots>
     <screenshot type="default">
-      <caption>Home</caption>
-      <image>https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/home.png</image>
-    </screenshot>
-    <screenshot>
-      <caption>About</caption>
-      <image>https://gitlab.com/garuda-linux/firedragon/settings/-/raw/master/about.png</image>
+      <caption>Screenshot</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/master/assets/screenshot.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
   <releases>
     <release version="v12.0.3" date="2025-08-22">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.3</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.3</url>
       <description/>
     </release>
     <release version="v12.0.2" date="2025-08-20">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.2</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.2</url>
       <description/>
     </release>
     <release version="v12.0.1" date="2025-08-19">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.1</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.1</url>
       <description/>
     </release>
     <release version="v12.0.0" date="2025-08-19">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.21" date="2025-07-28">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.21</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.21</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.20" date="2025-07-27">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.20</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.20</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.19" date="2025-07-20">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.19</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.19</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.18" date="2025-07-13">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.18</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.17" date="2025-07-12">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.17</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.16" date="2025-07-07">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.16</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.16</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.15" date="2025-07-04">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.15</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.14" date="2025-06-25">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.14</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.13" date="2025-06-24">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.13</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.13</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.12" date="2025-06-22">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.12</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.12</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.11" date="2025-06-19">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.11</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.11</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.10" date="2025-06-17">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.10</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.10</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.9" date="2025-06-17">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.9</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.9</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.8" date="2025-06-10">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.8</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.8</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.7" date="2025-06-10">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.7</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.7</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.6" date="2025-06-09">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.6</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.6</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.5" date="2025-06-08">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.5</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.5</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.4" date="2025-06-08">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.4</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.4</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.3" date="2025-06-06">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.3</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.3</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.2" date="2025-06-05">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.2</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.2</url>
       <description/>
     </release>
     <release version="v12.0.0~beta.1" date="2025-06-01">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon12/builder/-/releases/v12.0.0-beta.1</url>
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.1</url>
       <description/>
     </release>
     <release version="v11.26.2-1" date="2025-05-21">
