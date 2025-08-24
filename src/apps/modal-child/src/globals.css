@@ -2,6 +2,7 @@
 @plugin "daisyui" {
   themes: lofi --default, business --prefersdark;
 }
+@source ".";
 
 /* DaisyUIプラグイン */
 @layer base {

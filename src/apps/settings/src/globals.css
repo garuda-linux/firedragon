@@ -6,3 +6,5 @@
 @theme {
   --link-text-color: #007aff;
 }
+
+@source ".";
