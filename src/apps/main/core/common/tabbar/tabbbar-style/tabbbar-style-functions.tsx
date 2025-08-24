@@ -3,9 +3,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import { checkPaddingEnabled } from "./titilebar-padding";
-import { config } from "../../designs/configs";
-import { TabbarStyleModifyCSSElement } from "./tabbar-style-element";
+import { checkPaddingEnabled } from "./titilebar-padding.ts";
+import { config } from "../../designs/configs.ts";
+import { TabbarStyleModifyCSSElement } from "./tabbar-style-element.tsx";
 import { render } from "@nora/solid-xul";
 
 export namespace gTabbarStyleFunctions {
@@ -27,8 +27,8 @@ export namespace gTabbarStyleFunctions {
   function getUrlbarContainer(): XULElement | null {
     return document?.querySelector("#urlbar-container") as XULElement | null;
   }
-  function isVerticalTabbar() {
-    return config().tabbar.tabbarStyle === "vertical";
+  function getSidebarVerticalTab(): XULElement | null {
+    return document?.querySelector("#vertical-tabs") as XULElement | null;
   }
 
   export function revertToDefaultStyle() {
@@ -54,8 +54,15 @@ export namespace gTabbarStyleFunctions {
       tabbarElement.appendChild(windowManageContainer);
     }
 
-    if (navigatorToolbox && tabbarElement) {
-      navigatorToolbox.prepend(tabbarElement);
+    if (tabbarElement && navigatorToolbox) {
+      const menubar = document?.getElementById("toolbar-menubar") as
+        | XULElement
+        | null;
+      if (menubar && menubar.parentNode === navigatorToolbox) {
+        menubar.after(tabbarElement);
+      } else {
+        navigatorToolbox.prepend(tabbarElement);
+      }
     }
 
     // Clean up
@@ -65,10 +72,6 @@ export namespace gTabbarStyleFunctions {
   }
 
   export function defaultTabbarStyle() {
-    if (isVerticalTabbar()) {
-      return;
-    }
-
     getNavigatorToolboxtabbarElement()?.setAttribute(
       "floorp-tabbar-display-style",
       "0",
@@ -92,10 +95,6 @@ export namespace gTabbarStyleFunctions {
   }
 
   export function bottomOfNavigationToolbar() {
-    if (isVerticalTabbar()) {
-      return;
-    }
-
     const navigatorToolbox = getNavigatorToolboxtabbarElement();
     const tabbarElement = getTabbarElement();
     const panelUIMenuButton = getPanelUIMenuButton();
@@ -116,10 +115,6 @@ export namespace gTabbarStyleFunctions {
   }
 
   export function bottomOfWindow() {
-    if (isVerticalTabbar()) {
-      return;
-    }
-
     const browserElement = getBrowserElement();
     const tabbarElement = getTabbarElement();
     const panelUIMenuButton = getPanelUIMenuButton();
@@ -141,15 +136,23 @@ export namespace gTabbarStyleFunctions {
     getUrlbarContainer()?.style.setProperty("margin-top", "5px");
   }
 
+  function makeSidebarVerticalTabDrag() {
+    const sidebarVerticalTab = getSidebarVerticalTab();
+    if (sidebarVerticalTab) {
+      sidebarVerticalTab.classList.add("browser-titlebar");
+    }
+  }
+
   export function applyTabbarStyle() {
     revertToDefaultStyle();
+    makeSidebarVerticalTabDrag();
     render(
       () =>
         TabbarStyleModifyCSSElement({ style: config().tabbar.tabbarPosition }),
       document?.head,
       {
         // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-        hotCtx: (import.meta as any).hot,
+        hotCtx: import.meta.hot,
       },
     );
 
