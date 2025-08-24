@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.1.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.0) — 2025-08-24 — [`v12.0.3`…`v12.1.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.3...v12.1.0)
+
+### 🐛 Bug Fixes
+
+- *(release)* Fix repository url in metainfo — [`ee01f5f2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ee01f5f2f87765d0f2e64704a30a7e778fe0fe35)
+- *(settings)* Update urlcalssifier prefs to use url matching — [`439d016e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/439d016e0eecc4797170279a4fbaa028d2b0eefc)
+- Add @source to tailwind css files — [`11482e34…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/11482e34bc0d1c76313ae763e052475942ace624)
+- *(tabbar)* Tabbar revertToDefaultStyle should respects manubar position — [`6143e103…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6143e103c48e102bbe25f549828344cfbf619c83)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update runtime to fix dev issue — [`52d11992…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/52d119920d9815012e5dae05c42972ce545118fe)
+- Update dependencies — [`630ede98…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/630ede98b4103fb693a182b4807ef784d3bc1c4f)
+
 ## [FireDragon v12.0.3](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.3) — 2025-08-22 — [`v12.0.2`…`v12.0.3`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.2...v12.0.3)
 
 ### 🐛 Bug Fixes
