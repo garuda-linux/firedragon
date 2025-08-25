@@ -1,5 +1,11 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.1.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.1) — 2025-08-25 — [`v12.1.0`…`v12.1.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.0...v12.1.1)
+
+### 🐛 Bug Fixes
+
+- Fix screenshot url — [`931fa508…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/931fa508291f6bc1cddf65ea5014123dad50e19c)
+
 ## [FireDragon v12.1.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.0) — 2025-08-24 — [`v12.0.3`…`v12.1.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.0.3...v12.1.0)
 
 ### 🐛 Bug Fixes
