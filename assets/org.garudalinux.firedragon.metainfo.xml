@@ -21,7 +21,6 @@
       <li>Faster webpages loading from: Custom Firedragon settings, Inclusion of FastFox tweaks</li>
       <li>Artwork by @SGS</li>
       <li>Hidden Navigation buttons instead of being greyed out when they are inactive</li>
-      <li>Spoofing Chrome on Windows (through Floorp's User Agent switcher) when not using Fingerprinting</li>
       <li>PBMode Security</li>
     </ul>
   </description>
