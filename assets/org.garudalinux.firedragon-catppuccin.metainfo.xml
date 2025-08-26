@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.garudalinux.firedragon-catppuccin</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>MPL-2.0</project_license>
+  <name>FireDragon (Catppuccin Edition)</name>
+  <summary>Floorp fork build using custom branding &amp; settings</summary>
+  <developer id="org.garudalinux.firedragon-catppuccin">
+    <name>Garuda Linux &amp; FireDragon Community</name>
+  </developer>
+  <description>
+    <p>FireDragon is a browser based on the excellent Floorp browser. It was customized to have catppuccin-fitting aestetics as well as many opiniated settings by default. As this browser was originally a Librewolf fork, we are trying to integrate its best patches and tweaks in the new base. The most important features in addition of Floorps own ones can be found below.</p>
+    <ul>
+      <li>Searx &amp; Whoogle search engines added, with the possibility to run locally</li>
+      <li>The default search engine is Garuda's Searx instance</li>
+      <li>Dark Reader</li>
+      <li>Sweet theme added</li>
+      <li>Custom, catppuccin branding 🐉</li>
+      <li>Keeping settings in sync with Librewolfs changes</li>
+      <li>Firefox accounts are enabled using a custom self-hosted sync server (ffsync.garudalinux.org)</li>
+      <li>Faster webpages loading from: Custom Firedragon settings, Inclusion of FastFox tweaks</li>
+      <li>Artwork by @SGS</li>
+      <li>Hidden Navigation buttons instead of being greyed out when they are inactive</li>
+      <li>Spoofing Chrome on Windows (through Floorp's User Agent switcher) when not using Fingerprinting</li>
+      <li>PBMode Security</li>
+    </ul>
+  </description>
+  <branding>
+    <color type="primary" scheme_preference="light">#cba6f7</color>
+    <color type="primary" scheme_preference="dark">#cba6f7</color>
+  </branding>
+  <launchable type="desktop-id">org.garudalinux.firedragon-catppuccin.desktop</launchable>
+  <categories>
+    <category>Network</category>
+    <category>WebBrowser</category>
+  </categories>
+  <keywords>
+    <keyword>garudalinux</keyword>
+    <keyword>web</keyword>
+    <keyword>browser</keyword>
+    <keyword>internet</keyword>
+  </keywords>
+  <url type="homepage">https://firedragon.garudalinux.org/</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Welcome</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/welcome-catppuccin.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <caption>New Tab</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/newtab-catppuccin.png</image>
+    </screenshot>
+  </screenshots>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="v12.1.1" date="2025-08-25">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.1</url>
+      <description/>
+    </release>
+    <release version="v12.1.0" date="2025-08-24">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.0</url>
+      <description/>
+    </release>
+    <release version="v12.0.3" date="2025-08-22">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.3</url>
+      <description/>
+    </release>
+    <release version="v12.0.2" date="2025-08-20">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.2</url>
+      <description/>
+    </release>
+    <release version="v12.0.1" date="2025-08-19">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.1</url>
+      <description/>
+    </release>
+    <release version="v12.0.0" date="2025-08-19">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.21" date="2025-07-28">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.21</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.20" date="2025-07-27">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.20</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.19" date="2025-07-20">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.19</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.18" date="2025-07-13">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.18</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.17" date="2025-07-12">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.17</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.16" date="2025-07-07">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.16</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.15" date="2025-07-04">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.15</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.14" date="2025-06-25">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.14</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.13" date="2025-06-24">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.13</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.12" date="2025-06-22">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.12</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.11" date="2025-06-19">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.11</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.10" date="2025-06-17">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.10</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.9" date="2025-06-17">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.9</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.8" date="2025-06-10">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.8</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.7" date="2025-06-10">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.7</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.6" date="2025-06-09">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.6</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.5" date="2025-06-08">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.5</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.4" date="2025-06-08">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.4</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.3" date="2025-06-06">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.3</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.2" date="2025-06-05">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.2</url>
+      <description/>
+    </release>
+    <release version="v12.0.0~beta.1" date="2025-06-01">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.0.0-beta.1</url>
+      <description/>
+    </release>
+    <release version="v11.26.2-1" date="2025-05-21">
+      <description/>
+    </release>
+    <release version="v11.26.1-1" date="2025-05-11">
+      <description/>
+    </release>
+    <release version="v11.26.0-1" date="2025-04-29">
+      <description/>
+    </release>
+    <release version="v11.25.0-1" date="2025-03-28">
+      <description/>
+    </release>
+    <release version="v11.24.0-2" date="2025-03-07">
+      <description/>
+    </release>
+    <release version="v11.24.0-1" date="2025-03-05">
+      <description/>
+    </release>
+    <release version="v11.23.1-1" date="2025-02-18">
+      <description/>
+    </release>
+    <release version="v11.23.0-4" date="2025-02-09">
+      <description/>
+    </release>
+    <release version="v11.23.0-2" date="2025-02-09">
+      <description/>
+    </release>
+    <release version="v11.23.0-1" date="2025-02-05">
+      <description/>
+    </release>
+    <release version="v11.22.0-2" date="2025-01-18">
+      <description/>
+    </release>
+    <release version="v11.22.0-1" date="2025-01-08">
+      <description/>
+    </release>
+    <release version="v11.21.0-1" date="2024-11-24">
+      <description/>
+    </release>
+    <release version="v11.20.0-1" date="2024-10-31">
+      <description/>
+    </release>
+    <release version="v11.19.1-2" date="2024-10-27">
+      <description/>
+    </release>
+    <release version="v11.19.1-1" date="2024-10-10">
+      <description/>
+    </release>
+    <release version="v11.19.0-1" date="2024-10-01">
+      <description/>
+    </release>
+    <release version="v11.18.1-2" date="2024-09-22">
+      <description/>
+    </release>
+    <release version="v11.18.1-1" date="2024-09-09">
+      <description/>
+    </release>
+    <release version="v11.18.0-1" date="2024-09-03">
+      <description/>
+    </release>
+    <release version="v11.17.8-1" date="2024-08-27">
+      <description/>
+    </release>
+    <release version="v11.17.7-2" date="2024-08-26">
+      <description/>
+    </release>
+    <release version="v11.17.7-1" date="2024-08-24">
+      <description/>
+    </release>
+    <release version="v11.17.6-1" date="2024-08-22">
+      <description/>
+    </release>
+    <release version="v11.17.5-1" date="2024-08-21">
+      <description/>
+    </release>
+    <release version="v11.17.4-3" date="2024-08-21">
+      <description/>
+    </release>
+    <release version="v11.17.4-2" date="2024-08-19">
+      <description/>
+    </release>
+    <release version="v11.17.4-1" date="2024-08-18">
+      <description/>
+    </release>
+    <release version="v11.17.3-2" date="2024-08-18">
+      <description/>
+    </release>
+    <release version="v11.17.3-1" date="2024-08-17">
+      <description/>
+    </release>
+    <release version="v11.17.1-1" date="2024-08-17">
+      <description/>
+    </release>
+    <release version="v11.16.0-1" date="2024-08-11">
+      <description/>
+    </release>
+    <release version="v11.15.0-1" date="2024-07-15">
+      <description/>
+    </release>
+    <release version="v11.14.1-1" date="2024-06-26">
+      <description/>
+    </release>
+    <release version="v11.14.0-2" date="2024-06-12">
+      <description/>
+    </release>
+    <release version="v11.14.0-1" date="2024-06-11">
+      <description/>
+    </release>
+    <release version="v11.13.3-1" date="2024-05-25">
+      <description/>
+    </release>
+    <release version="v11.13.2-1" date="2024-05-19">
+      <description/>
+    </release>
+    <release version="v11.13.1-1" date="2024-05-18">
+      <description/>
+    </release>
+    <release version="v11.13.0-1" date="2024-05-17">
+      <description/>
+    </release>
+    <release version="v11.12.2-2" date="2024-05-13">
+      <description/>
+    </release>
+    <release version="v11.12.2-1" date="2024-05-13">
+      <description/>
+    </release>
+  </releases>
+</component>

@@ -33,9 +33,10 @@ if (await $`git tag -l ${version}`.text()) {
 }
 
 await updateMetainfo('assets/org.garudalinux.firedragon.metainfo.xml');
+await updateMetainfo('assets/org.garudalinux.firedragon-catppuccin.metainfo.xml');
 
 await $`git-cliff -c cliff.changelog.toml -u -t ${version} -p CHANGELOG.md`;
 
-await $`git add package.json CHANGELOG.md assets/org.garudalinux.firedragon.metainfo.xml`;
+await $`git add package.json CHANGELOG.md assets/org.garudalinux.firedragon.metainfo.xml assets/org.garudalinux.firedragon-catppuccin.metainfo.xml`;
 await $`git commit -m 'release: '${version}`;
 await $`git tag -m ${version} ${version}`
