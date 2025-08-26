@@ -43,8 +43,12 @@
   <url type="homepage">https://firedragon.garudalinux.org/</url>
   <screenshots>
     <screenshot type="default">
-      <caption>Screenshot</caption>
-      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshot.png</image>
+      <caption>Welcome</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/welcome.png</image>
+    </screenshot>
+    <screenshot type="default">
+      <caption>New Tab</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/newtab.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
