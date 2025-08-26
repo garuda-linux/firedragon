@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.2) — 2025-08-26 — [`v12.1.1`…`v12.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.1...v12.1.2)
+
+### 🚀 Features
+
+- Add metainfo for catppuccin edition — [`0e04bead…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0e04beadd03f85cb1b21dbb8a7821961f2bbb2df)
+
+### ⚙️ Miscellaneous Tasks
+
+- Move screenshots to separate folder and add more — [`186413ab…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/186413ab39331b805ba6b96abf2147583eee9056)
+- Remove obsolete entry from metainfo description about spoofing UA — [`568c5300…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/568c5300cb28c539927f3f74aac2a313d4467fbf)
+
 ## [FireDragon v12.1.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.1) — 2025-08-25 — [`v12.1.0`…`v12.1.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.0...v12.1.1)
 
 ### 🐛 Bug Fixes
