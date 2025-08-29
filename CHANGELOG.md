@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.2.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.2.0) — 2025-08-29 — [`v12.1.2`…`v12.2.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.2...v12.2.0)
+
+### 🚀 Features
+
+- *(newtab)* Add settings to disable autofocusing the search bar — [`2dec9fea…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2dec9feaa6769258e326fc735d2457d0c3beb601)
+- Create ConfigLoader service for more controlled config loading — [`5af95e08…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5af95e0858c5b48b58e9a840b717a5f33be1b13d)
+
+### 🐛 Bug Fixes
+
+- *(modules)* Only update form history on search when enabled — [`5b4aab52…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5b4aab52fe063db0a57dc22069a77f4c81d0ad1b)
+
+### 📚 Documentation
+
+- Remove "upcoming" in README.md — [`2874d094…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/2874d094dfbb2420a244c5a6704e8fd3be07de38)
+
+### 🎨 Styling
+
+- *(newtab)* Correctly sort disableAutofocus in config service — [`6cab051e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6cab051eeee2235986149d480b919d630bc30130)
+
 ## [FireDragon v12.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.1.2) — 2025-08-26 — [`v12.1.1`…`v12.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.1...v12.1.2)
 
 ### 🚀 Features
