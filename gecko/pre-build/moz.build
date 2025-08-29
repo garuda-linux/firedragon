@@ -9,4 +9,6 @@ XPCOM_MANIFESTS += [
     "components.conf",
 ]
 
-JAR_MANIFESTS += ["jar.mn"]
+JAR_MANIFESTS += [
+    "jar.mn",
+]
