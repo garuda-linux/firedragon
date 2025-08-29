@@ -40,6 +40,7 @@ export class ConfigService {
     customTitle: "",
     defaultLinks: false,
     darkMode: true,
+    disableAutofocus: false,
     fitWallpaper: true,
     gridCols: 3,
     jokesEnabled: true,
@@ -53,7 +54,6 @@ export class ConfigService {
     wallpaper: "none",
     wallpaperUrl: "",
     welcomeText: "",
-    disableAutofocus: false,
   };
 
   initialized = signal<boolean>(false);
