@@ -87,7 +87,7 @@ export class FDSearchEngineParent extends JSWindowActorParent {
     async PerformSearch(engineId: string, searchTerm: string) {
         const engine = Services.search.getEngineById(engineId);
         const submission = engine.getSubmission(searchTerm);
-        if (!this.privateMode && searchTerm.length <= lazy.SearchSuggestionController.SEARCH_HISTORY_MAX_VALUE_LENGTH) {
+        if (lazy.FormHistory.enabled && !this.privateMode && searchTerm.length <= lazy.SearchSuggestionController.SEARCH_HISTORY_MAX_VALUE_LENGTH) {
             const controller = new lazy.SearchSuggestionController();
             await lazy.FormHistory.update({
                 op: "bump",
