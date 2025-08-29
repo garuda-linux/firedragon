@@ -53,6 +53,7 @@ export class ConfigService {
     wallpaper: "none",
     wallpaperUrl: "",
     welcomeText: "",
+    disableAutofocus: false,
   };
 
   initialized = signal<boolean>(false);

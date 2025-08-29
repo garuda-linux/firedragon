@@ -15,6 +15,7 @@ export interface AppSettings {
   customTitle: string;
   defaultLinks: boolean;
   darkMode: boolean;
+  disableAutofocus: boolean;
   fitWallpaper: boolean;
   gridCols: number;
   jokesEnabled: boolean;

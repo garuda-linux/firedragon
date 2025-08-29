@@ -91,6 +91,17 @@
               t("settings.topPagesEnabled")
             }}</label>
         </div>
+        <div class="ml-10">
+          <p-checkbox
+            (ngModelChange)='updateConfig("disableAutofocus", $event)'
+            [(ngModel)]="disableAutofocus"
+            [binary]="true"
+            id="top-pages-enabled"
+          />
+          <label class="ml-2" for="top-pages-enabled">{{
+              t("settings.disableAutofocus")
+            }}</label>
+        </div>
       </div>
 
       <div class="mx-auto mt-10 w-3/4 md:ml-10 md:flex">

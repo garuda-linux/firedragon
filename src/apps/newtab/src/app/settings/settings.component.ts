@@ -81,6 +81,7 @@ export class SettingsComponent {
   wallpaper = signal<Wallpaper>("");
   wallpaperUrl = signal<string>("");
   welcomeText = signal<string>("");
+  disableAutofocus = signal<boolean>(false);
 
   protected readonly availableLanguages: {
     name: string;
