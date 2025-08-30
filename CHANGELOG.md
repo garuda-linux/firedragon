@@ -1,5 +1,30 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.2.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.2.1) — 2025-08-30 — [`v12.2.0`…`v12.2.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.2.0...v12.2.1)
+
+### 🚀 Features
+
+- *(newtab)* Add button to disable FireDragon Start from the newtab settings — [`e9e257e0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e9e257e01afd677f05dd8e3c5828801a06bb4366)
+
+### 🐛 Bug Fixes
+
+- Properly remove home page with its entire content when floorp start is enabled — [`1d0cd7ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1d0cd7ad3e806b870e7096edc1377c6e8ffc2d73)
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge fix/hide-home-pane — [`f0f076fd…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f0f076fd8771271f774a29eb61c8e93b92d1445e)
+
+### Add
+
+- Implement disable Floorp Start feature with settings integration — [`09b2af0e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/09b2af0e97e23571d76d079fcc42cccfc659ec2b)
+- Display restart requirement message for disabling Floorp Start feature — [`3d88b8fb…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3d88b8fb9a9261bc7f3485e2cb756f0b594054af)
+
+### Fix
+
+- Ensure fallback tab is created when closing the last tab — [`5bb6fa89…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5bb6fa89df31da9c03a35e59654a8874f7bd029f)
+- Robustify urlbar input container positioning — [`7efc242e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/7efc242eede33b57726122e8293e666baa8c34a0)
+- Remove unnecessary rel attributes from external links in Accounts, Tabbar, and Preferences components — [`09fcaea1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/09fcaea1036583831d43e19aa0469a673cf64f26)
+
 ## [FireDragon v12.2.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.2.0) — 2025-08-29 — [`v12.1.2`…`v12.2.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.1.2...v12.2.0)
 
 ### 🚀 Features
