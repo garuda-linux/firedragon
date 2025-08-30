@@ -32,6 +32,7 @@ import { type AppTheme, themes } from "../theme";
 import { LinksEditorComponent } from "../links-editor/links-editor.component";
 import { LangPipe } from "../lang/lang.pipe";
 import { InputNumber } from "primeng/inputnumber";
+import { rpc } from "../../lib/rpc/rpc";
 
 @Component({
   selector: "app-settings",
@@ -190,6 +191,23 @@ export class SettingsComponent {
         this.messageToastService.success(
           this.translocoService.translate("settings.success"),
           this.translocoService.translate("settings.settingsReset"),
+        );
+      },
+    });
+  }
+
+  disableFiredragonStart() {
+    this.confirmationService.confirm({
+      message: this.translocoService.translate("settings.confirmDisableFiredragonStart"),
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
+      accept: async () => {
+        const config = JSON.parse((await rpc.getStringPref('floorp.design.configs'))!);
+        config.uiCustomization.disableFloorpStart = true;
+        await rpc.setStringPref('floorp.design.configs', JSON.stringify(config));
+        this.messageToastService.success(
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.firedragonStartDisabled"),
         );
       },
     });

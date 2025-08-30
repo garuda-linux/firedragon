@@ -109,7 +109,6 @@
           (click)="downloadSettings()"
           [label]='t("settings.saveSettings")'
           icon="pi pi-download"
-          styleClass="w-full"
         >
         </p-button>
         <p-fileupload
@@ -120,14 +119,21 @@
           chooseIcon="pi pi-upload"
           maxFileSize="1000000"
           mode="basic"
-          styleClass="block mt-2.5 md:mt-0 md:ml-2.5 w-full"
+          class="mt-2.5 md:mt-0 md:ml-2.5"
         >
         </p-fileupload>
         <p-button
           (click)="resetSettings()"
           [label]='t("settings.resetSettings")'
           icon="pi pi-refresh"
-          styleClass="mt-2.5 md:mt-0 md:ml-5 w-full"
+          class="mt-2.5 md:mt-0 md:ml-5"
+        >
+        </p-button>
+        <p-button
+          (click)="disableFiredragonStart()"
+          [label]='t("settings.disableFiredragonStart")'
+          icon="pi pi-ban"
+          class="mt-2.5 md:mt-0 md:ml-5"
         >
         </p-button>
       </div>
