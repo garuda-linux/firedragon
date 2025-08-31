@@ -43,7 +43,4 @@ ac_add_options --enable-hardening #[NotOnArtifactBuild]
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
 ac_add_options --enable-wasm-simd
-ac_add_options --enable-optimize="-O3" #[NotOnArtifactBuild]
-export MOZ_INCLUDE_SOURCE_INFO=1
-ac_add_options OPT_LEVEL="3" #[NotOnArtifactBuild]
-ac_add_options RUSTC_OPT_LEVEL="3" #[NotOnArtifactBuild]
+ac_add_options --enable-optimize #[NotOnArtifactBuild]
