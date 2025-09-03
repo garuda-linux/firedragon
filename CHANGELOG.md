@@ -1,5 +1,28 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.3.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.0) — 2025-09-03 — [`v12.2.1`…`v12.3.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.2.1...v12.3.0)
+
+### 🚀 Features
+
+- Move build config from firedragon.config.js chrome content to BuildConfig.sys.mjs module — [`1ffc254d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1ffc254deb39b4cac0450b4cb9a65b7c08fbba6e)
+- Separate config loader from config sandbox — [`d0199960…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d0199960b835dba7f75f5d493fc5728650a1cb55)
+- *(copr)* Add files for copr repo — [`e465b976…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e465b976171426775a970c8e4899951d194c9fc2)
+- Implement deep merge for configuration settings and persist user-selected layout in Fixed Tab mode — [`0e97f26e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0e97f26e45c35ac3021d8ed599ba82bfe6d70fa9)
+
+### 🐛 Bug Fixes
+
+- *(patches)* Remove removed settings files from package manifest — [`90fab7fc…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/90fab7fcf531435c45d5d76bfa2be2902ba0c420)
+- *(mozconfig)* Simplify optimize to fix performance issues on windows — [`c362bad3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c362bad340b820426de63bbe2f70fe8411de7d63)
+- *(modules/firedragon)* Add windows support to ConfigLoader by using file URLs — [`14717731…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/14717731057e63512c222de0ef1b7954cc60b432)
+
+### ⚙️ Miscellaneous Tasks
+
+- Merge branch 'fix/windows-optimize' into 'main' — [`f9f0f126…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f9f0f1260125089dda92de7bc7e4e4ae1ae264c9)
+
+### Refactor
+
+- Remove unused async wait functions from NRBrowserOS and TabManager services — [`914317e2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/914317e2f0c7da4925b4dec9405bd782cd8b6a07)
+
 ## [FireDragon v12.2.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.2.1) — 2025-08-30 — [`v12.2.0`…`v12.2.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.2.0...v12.2.1)
 
 ### 🚀 Features
