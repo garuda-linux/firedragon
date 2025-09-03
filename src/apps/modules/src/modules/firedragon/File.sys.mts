@@ -1,3 +1,9 @@
+const lazy = {};
+
+ChromeUtils.defineESModuleGetters(lazy, {
+    AppConstants: 'resource://gre/modules/AppConstants.sys.mjs',
+});
+
 export class File {
     static fromDirsvc(prop: string): File {
         return new File(Services.dirsvc.get(prop, Ci.nsIFile));
@@ -9,7 +15,21 @@ export class File {
         return new File(file);
     }
 
-    constructor(
+    static fromUrl(url: nsIURI | URL | string): File {
+        if (url instanceof URL || typeof url === 'string') {
+            url = Services.io.newURI(url.toString());
+        }
+        if (url.prePath !== 'file://') {
+            throw 'Not a valid file URL';
+        }
+        let filePath = decodeURIComponent(url.filePath);
+        if (lazy.AppConstants.platform === 'win') {
+            filePath = filePath.replace(/^\//, '').replace(/\//g, '\\');
+        }
+        return File.fromPath(filePath);
+    }
+
+    private constructor(
         private file: nsIFile,
     ) {}
 
@@ -18,15 +38,17 @@ export class File {
     }
 
     get url(): string {
-        return `file://${this.path.replace(/\\/g, '/')}`;
+        return Services.io.newFileURI(this.file).spec;
     }
 
     clone(): File {
         return new File(this.file.clone());
     }
 
-    append(node: string): File {
-        this.file.append(node);
+    append(...nodes: string): File {
+        for (const node of nodes) {
+            this.file.append(node);
+        }
         return this;
     }
 

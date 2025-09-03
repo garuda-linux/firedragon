@@ -14,29 +14,9 @@ ChromeUtils.defineESModuleGetters(lazy, {
 export class ConfigLoader {
     readonly QueryInterface = ChromeUtils.generateQI([ Ci.nsIObserver ]);
 
-    private readonly sandbox: Sandbox;
-
-    constructor() {
-        this.sandbox = new lazy.Sandbox();
-
-        this.sandbox.defineFunction('pref', this.pref.bind(this));
-        this.sandbox.defineFunction('defaultPref', this.defaultPref.bind(this));
-        this.sandbox.defineFunction('lockPref', this.lockPref.bind(this));
-        this.sandbox.defineFunction('unlockPref', this.unlockPref.bind(this));
-        this.sandbox.defineFunction('getPref', this.getPref.bind(this));
-        this.sandbox.defineFunction('clearPref', this.clearPref.bind(this));
-        this.sandbox.defineFunction('getPath', this.getPath.bind(this));
-        this.sandbox.defineFunction('pathExists', this.pathExists.bind(this));
-        this.sandbox.defineFunction('pathToUrl', this.pathToUrl.bind(this));
-        this.sandbox.defineFunction('loadConfig', this.loadConfig.bind(this));
-    }
-
     observe(_subject, topic, _data): void {
         if (topic === 'app-startup') {
-            const cfg = lazy.File.fromDirsvc('GreD').append('firedragon.cfg');
-            if (cfg.exists()) {
-                this.loadConfig(cfg.url);
-            }
+            this.loadConfig(this.getUrl('GreD', 'firedragon.cfg'));
         }
     }
 
@@ -103,19 +83,53 @@ export class ConfigLoader {
         this.getPrefBranch().clearUserPref(prefName);
     }
 
-    private getPath(prop: string): string {
-        return lazy.File.fromDirsvc(prop).path;
+    private getUrl(prop: string, ...nodes: string[]): string {
+        return lazy.File.fromDirsvc(prop).append(...nodes).url;
     }
 
-    private pathExists(path: string): boolean {
-        return lazy.File.fromPath(path).exists();
+    private loadConfig(url: URL | string): void {
+        const file = lazy.File.fromUrl(url);
+        console.info(`ConfigLoader: Loading config: ${file.url} (${file.path})`);
+        if (file.exists()) {
+            try {
+                this.createSandboxFor(file).loadScript(file.url);
+            } catch (e) {
+                console.error(`ConfigLoader: Error while loading ${file.url}:`, e);
+            }
+        } else {
+            console.warn(`ConfigLoader: File does not exist: ${file.path}`);
+        }
     }
 
-    private pathToUrl(path: string): string {
-        return lazy.File.fromPath(path).url;
-    }
+    private createSandboxFor(file: File): Sandbox {
+        const sandbox = lazy.Sandbox.create(null, {
+            wantGlobalProperties: ['URL'],
+        });
 
-    private loadConfig(url: string): void {
-        this.sandbox.loadScript(url);
+        // Default prefcalls
+        sandbox.defineFunction('pref', this.pref.bind(this));
+        sandbox.defineFunction('defaultPref', this.defaultPref.bind(this));
+        sandbox.defineFunction('lockPref', this.lockPref.bind(this));
+        sandbox.defineFunction('unlockPref', this.unlockPref.bind(this));
+        sandbox.defineFunction('getPref', this.getPref.bind(this));
+        sandbox.defineFunction('clearPref', this.clearPref.bind(this));
+
+        // ConfigLoader specials
+        sandbox.defineFunction('getUrl', this.getUrl.bind(this));
+        sandbox.defineFunction('loadConfig', this.loadConfig.bind(this));
+
+        // Config metadata
+        const gConfig = sandbox.createObjectIn('gConfig');
+        gConfig.defineGetter('path', () => file.path);
+        gConfig.defineGetter('url', () => file.url);
+
+        // Console proxy
+        const console = sandbox.createObjectIn('console');
+        console.defineFunction('log', globalThis.console.log);
+        console.defineFunction('info', globalThis.console.info);
+        console.defineFunction('warn', globalThis.console.warn);
+        console.defineFunction('error', globalThis.console.error);
+
+        return sandbox;
     }
 }
