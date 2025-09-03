@@ -9,6 +9,14 @@ XPCOM_MANIFESTS += [
     "components.conf",
 ]
 
+XPIDL_SOURCES += [
+    "fdIConfigLoader.idl",
+]
+
+XPIDL_MODULE = "firedragon"
+
+FINAL_LIBRARY = "xul"
+
 EXTRA_PP_JS_MODULES.firedragon += [
     "BuildConfig.sys.mjs",
 ]

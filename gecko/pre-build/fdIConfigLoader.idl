@@ -1,0 +1,6 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(7db2843f-c3e1-4012-891a-2ad153a6af0a)]
+interface fdIConfigLoader: nsISupports {
+    void loadConfig(in AString url);
+};
