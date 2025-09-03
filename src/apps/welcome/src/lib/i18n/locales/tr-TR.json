@@ -5,26 +5,42 @@
         "languageSupport": "Dil Desteği",
         "features": "Özellikler",
         "featureIntroduction": "Özellik Tanıtımı",
+        "hub": "{{ productName }} Hub",
+        "hubIntro": "{{ productName }} Hub Hakkında",
         "customize": "Kişiselleştir",
         "initialSettings": "İlk Ayarlar",
         "complete": "Tamamla",
         "previous": "Önceki",
         "next": "Sıradaki"
     },
+    "hubPage": {
+        "title": "{{ productName }} Hub Hakkında",
+        "subtitle": "{{ productName }}'a özgü ayarlar için merkezi bir yer.",
+        "sectionTitle": "{{ productName }} Hub",
+        "description": "{{ productName }} Hub, {{ productName }}’a özel ayarlar için tasarlanmış bir merkezdir. ‘about:hub’ adresini ziyaret ederek açabilirsiniz. Ayrıca Firefox’un ‘about:preferences’ adresindeki ayarlar sayfasının sol kenar çubuğundan da ulaşabilirsiniz.",
+        "openHub": "Aç about:hub",
+        "openPreferences": "Ayarlar'ı aç (about:preferences)",
+        "tip": "İpucu: {{ productName }} Hub'a Firefox ayarları kenar çubuğundan da erişebilirsiniz.",
+        "features": {
+            "dedicated": "Özel {{ productName }} ayar merkezi",
+            "accessible": "about:hub veya Firefox ayarlarından ulaşılabilir",
+            "centralized": "{{ productName }}'a özgü tüm seçenekler tek bir yerde"
+        }
+    },
     "customize": {
         "title": "{{productName}}'u Kişiselleştirin",
         "description": "Tercih ettiğiniz ayarlara göre kişiselleştirin. Bunları daha sonra {{productName}} Hub veya ayarlar sayfasından her zaman değiştirebilirsiniz.",
         "appearance": {
             "title": "Görünüm Ayarları",
-            "description": "{{productName}}'un görünümünü tercihinize göre kişiselleştirebilirsiniz. Açık veya koyu bir tema seçin ya da sistem ayarlarınıza göre otomatik olarak geçiş yapmasını sağlayın."
+            "description": "{{productName}}'un görünümünü tercihlerinize göre kişiselleştirebilirsiniz. Açık veya koyu tema seçebilir ya da sistem ayarlarına göre otomatik geçiş yapabilirsiniz."
         },
         "themes": {
-            "light": "Aydınlık",
+            "light": "Açık",
             "dark": "Koyu",
             "system": "Sistem ayarlarını takip edin"
         },
         "themeInfo": {
-            "light": "Aydınlık tema",
+            "light": "Açık tema",
             "dark": "Koyu tema",
             "system": "Sistem tercihleri"
         },
@@ -33,11 +49,17 @@
             "default": "Varsayılan",
             "search": "Ara",
             "noEnginesFound": "Arama motoru bulunamadı."
+        },
+        "floorpHub": {
+            "title": "{{ productName }} Hub",
+            "description": "{{ productName }} Hub, {{ productName }}’a özel ayarlar için tasarlanmış bir merkezdir. ‘about:hub’ adresini ziyaret ederek açabilirsiniz. Ayrıca Firefox’un ‘about:preferences’ adresindeki ayarlar sayfasının sol kenar çubuğundan da ulaşabilirsiniz.",
+            "openHub": "Aç about:hub",
+            "openPreferences": "Ayarlar'ı aç (about:preferences)"
         }
     },
     "finish": {
         "title": "Kurulum Tamamlandı!",
-        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
+        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. İnternette rahat ve güvenli bir deneyimin tadını çıkarın.",
         "nextSteps": {
             "title": "Sonraki Adımlar (İsteğe Bağlı)",
             "setDefault": "Varsayılan Tarayıcı Olarak Ayarla",
@@ -126,5 +148,22 @@
         "hint": "Daha detaylı ayarlar için, sağ üstteki menü düğmesindeki Ayarlar kısmını kullanabilirsiniz.",
         "resourcesLabel": "Kaynaklar",
         "defaultBrowserSuccess": "{{productName}} varsayılan tarayıcınız olarak ayarlandı!"
+    },
+    "whatsNew": {
+        "title": "{{ productName }} {{version}} sürümüne hoş geldiniz!",
+        "subtitle": "{{ productName }}'taki yeniliklere göz atın!",
+        "tags": {
+            "settings": "Ayarlar",
+            "productivity": "Üretkenlik",
+            "workspaces": "Çalışma Alanları",
+            "pwa": "PWA",
+            "gestures": "Hareketler"
+        },
+        "footer": {
+            "follow": "Takip Et",
+            "privacy": "Gizlilik & Şartlar",
+            "about": "{{ productName }} Hakkında",
+            "copyright": "© {{year}} {{ productName }} Projesi. Tüm hakları saklıdır."
+        }
     }
 }

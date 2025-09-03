@@ -5,11 +5,27 @@
         "languageSupport": "Sprachunterstützung",
         "features": "Funktionen",
         "featureIntroduction": "Funktionseinführung",
+        "hub": "{{ productName }} Hub",
+        "hubIntro": "About {{ productName }} Hub",
         "customize": "Anpassen",
         "initialSettings": "Standardeinstellungen",
         "complete": "Abgeschlossen",
         "previous": "Zurück",
         "next": "Weiter"
+    },
+    "hubPage": {
+        "title": "About {{ productName }} Hub",
+        "subtitle": "A central place for {{ productName }}-specific settings.",
+        "sectionTitle": "{{ productName }} Hub",
+        "description": "{{ productName }} Hub is a dedicated settings center for {{ productName }}-specific options. You can open it by navigating to 'about:hub'. It can also be accessed from the left sidebar of Firefox's settings page at 'about:preferences'.",
+        "openHub": "Open about:hub",
+        "openPreferences": "Open Settings (about:preferences)",
+        "tip": "Tip: You can also access {{ productName }} Hub from the Firefox settings sidebar.",
+        "features": {
+            "dedicated": "Dedicated {{ productName }} settings center",
+            "accessible": "Accessible from about:hub or Firefox settings",
+            "centralized": "All {{ productName }}-specific options in one place"
+        }
     },
     "customize": {
         "title": "{{productName}} anpassen",
@@ -33,6 +49,12 @@
             "default": "Standard",
             "search": "Suchen",
             "noEnginesFound": "Keine Suchmaschinen gefunden."
+        },
+        "floorpHub": {
+            "title": "{{ productName }} Hub",
+            "description": "{{ productName }} Hub is a dedicated settings center for {{ productName }}-specific options. You can open it by navigating to 'about:hub'. It can also be accessed from the left sidebar of Firefox's settings page at 'about:preferences'.",
+            "openHub": "Open about:hub",
+            "openPreferences": "Open Settings (about:preferences)"
         }
     },
     "finish": {
@@ -126,5 +148,22 @@
         "hint": "Für detailliertere Einstellungen können Sie über die Option Einstellungen in der Menü-Taste oben rechts anpassen.",
         "resourcesLabel": "Ressourcen",
         "defaultBrowserSuccess": "{{productName}} wurde als Ihr Standardbrowser festgelegt!"
+    },
+    "whatsNew": {
+        "title": "Welcome to {{ productName }} {{version}}!",
+        "subtitle": "Check out what's new in {{ productName }}!",
+        "tags": {
+            "settings": "Settings",
+            "productivity": "Productivity",
+            "workspaces": "Workspaces",
+            "pwa": "PWA",
+            "gestures": "Gestures"
+        },
+        "footer": {
+            "follow": "Follow",
+            "privacy": "Privacy & Terms",
+            "about": "About {{ productName }}",
+            "copyright": "© {{year}} {{ productName }} Projects. All rights reserved."
+        }
     }
 }

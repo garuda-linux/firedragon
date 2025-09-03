@@ -5,11 +5,27 @@
         "languageSupport": "Språkstöd",
         "features": "Funktioner",
         "featureIntroduction": "Funktion introduktion",
+        "hub": "{{ productName }} Hub",
+        "hubIntro": "Om {{ productName }} Hub",
         "customize": "Anpassa",
         "initialSettings": "Initiala inställningar",
         "complete": "Slutförd",
         "previous": "Föregående",
         "next": "Nästa"
+    },
+    "hubPage": {
+        "title": "Om {{ productName }} Hub",
+        "subtitle": "En central plats för {{ productName }}-specifika inställningar.",
+        "sectionTitle": "{{ productName }} Hub",
+        "description": "{{ productName }} Hub är ett dedikerat inställningscenter för {{ productName }}-specifika alternativ. Du kan öppna det genom att navigera till 'about:hub'. Det kan också nås från vänstra sidofältet i Firefox inställningssida på 'about:preferences'.",
+        "openHub": "Öppna about:hub",
+        "openPreferences": "Öppna inställningar (about:preferences)",
+        "tip": "Tips: du kan också komma åt {{ productName }} Hub från sidofältet för inställningar i Firefox.",
+        "features": {
+            "dedicated": "Dedikerat {{ productName }}-inställningscenter",
+            "accessible": "Tillgängligt från about:hub eller Firefox inställningar",
+            "centralized": "Alla {{ productName }}-specifika alternativ på ett ställe"
+        }
     },
     "customize": {
         "title": "Anpassa {{productName}}",
@@ -33,6 +49,12 @@
             "default": "Standard",
             "search": "Sök",
             "noEnginesFound": "Inga sökmotorer hittades."
+        },
+        "floorpHub": {
+            "title": "{{ productName }} Hub",
+            "description": "{{ productName }} Hub är ett dedikerat inställningscenter för {{ productName }}-specifika alternativ. Du kan öppna det genom att navigera till 'about:hub'. Det kan också nås från vänstra sidofältet i Firefox inställningssida på 'about:preferences'.",
+            "openHub": "Öppna about:hub",
+            "openPreferences": "Öppna inställningar (about:preferences)"
         }
     },
     "finish": {
@@ -126,5 +148,22 @@
         "hint": "För mer detaljerade inställningar kan du anpassa via alternativet Inställningar i menyknappen längst upp till höger.",
         "resourcesLabel": "Resurser",
         "defaultBrowserSuccess": "{{productName}} har ställts in som din standardwebbläsare!"
+    },
+    "whatsNew": {
+        "title": "Välkommen till {{ productName }} {{version}}!",
+        "subtitle": "Kolla in vad som är nytt i {{ productName }}!",
+        "tags": {
+            "settings": "Inställningar",
+            "productivity": "Produktivitet",
+            "workspaces": "Arbetsytor",
+            "pwa": "PWA",
+            "gestures": "Gester"
+        },
+        "footer": {
+            "follow": "Följ",
+            "privacy": "Sekretess och villkor",
+            "about": "Om {{ productName }}",
+            "copyright": "© {{year}} Projekt. Alla rättigheter reserverade."
+        }
     }
 }

@@ -5,18 +5,34 @@
         "languageSupport": "Language Support",
         "features": "Features",
         "featureIntroduction": "Feature Introduction",
-        "customize": "Customize",
+        "hub": "{{ productName }} Hub",
+        "hubIntro": "About {{ productName }} Hub",
+        "customize": "Customise",
         "initialSettings": "Initial Settings",
         "complete": "Complete",
         "previous": "Previous",
         "next": "Next"
     },
+    "hubPage": {
+        "title": "About {{ productName }} Hub",
+        "subtitle": "A central place for {{ productName }} specific settings.",
+        "sectionTitle": "{{ productName }} Hub Title",
+        "description": "{{ productName }} Hub is a dedicated settings center for {{ productName }} specific options. You can open it by navigating to 'about:hub'. It can also be accessed from the left sidebar of Firefox's settings page at 'about:preferences'.",
+        "openHub": "Open about:hub",
+        "openPreferences": "Open Settings (about:preferences)",
+        "tip": "Tip: You can also access {{ productName }} Hub from the Firefox setting's sidebar.",
+        "features": {
+            "dedicated": "Dedicated {{ productName }} settings center",
+            "accessible": "Accessible from about:hub or Firefox settings",
+            "centralized": "All {{ productName }} specific options in one place"
+        }
+    },
     "customize": {
-        "title": "Customize {{productName}}",
-        "description": "Customize to your preferred settings. You can always change them later from the {{productName}} Hub or settings page.",
+        "title": "Customise {{ productName }}",
+        "description": "Customize to your preferred settings. You can always change them later from the {{ productName }} Hub or settings page.",
         "appearance": {
             "title": "Appearance Settings",
-            "description": "You can customize {{productName}}'s appearance to your preference. Choose a light or dark theme, or have it automatically switch based on your system settings."
+            "description": "You can customise {{ productName }}'s appearance to your preference. Choose a light or dark theme, or have it automatically switch based on your system settings."
         },
         "themes": {
             "light": "Light",
@@ -29,10 +45,16 @@
             "system": "System preference"
         },
         "searchEngine": {
-            "title": "Default Search Engine",
+            "title": "Default search engine",
             "default": "Default",
             "search": "Search",
             "noEnginesFound": "No search engines found."
+        },
+        "floorpHub": {
+            "title": "Cutomise the {{ productName }} Hub title",
+            "description": "{{ productName }} Hub is a dedicated settings center for {{ productName }}-specific options. You can open it by navigating to 'about:hub'. It can also be accessed from the left sidebar of Firefox's settings page at 'about:preferences'.",
+            "openHub": "Open about:hub",
+            "openPreferences": "Open Settings (about:preferences)"
         }
     },
     "finish": {
@@ -44,11 +66,11 @@
             "documentation": "Documentation"
         },
         "getStarted": "Get Started with {{productName}}",
-        "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right."
+        "hint": "For more detailed settings, you can customise via the Settings option in the menu button at the top right."
     },
     "welcomePage": {
         "welcome": "Welcome to {{productName}}!",
-        "description": "{{productName}} is a fast and user-friendly web browser that emphasizes privacy and security. This guide will introduce you to the main features and settings of {{productName}}.",
+        "description": "{{productName}} is a fast and user-friendly web browser that emphasises privacy and security. This guide will introduce you to the main features and settings of {{productName}}.",
         "readyToStart": "When you're ready, click the below button to proceed.",
         "features": "{{productName}} Features",
         "privacy": "Privacy",
@@ -126,5 +148,22 @@
         "hint": "For more detailed settings, you can customize via the Settings option in the menu button at the top right.",
         "resourcesLabel": "Resources",
         "defaultBrowserSuccess": "{{productName}} has been set as your default browser!"
+    },
+    "whatsNew": {
+        "title": "Welcome to {{ productName }} {{version}}!",
+        "subtitle": "Check out what's new in {{ productName }}!",
+        "tags": {
+            "settings": "Settings",
+            "productivity": "Productivity",
+            "workspaces": "Workspaces",
+            "pwa": "PWA",
+            "gestures": "Gestures"
+        },
+        "footer": {
+            "follow": "Follow",
+            "privacy": "Privacy & Terms",
+            "about": "About {{ productName }}",
+            "copyright": "© {{year}} {{ productName }} Projects. All rights reserved."
+        }
     }
 }

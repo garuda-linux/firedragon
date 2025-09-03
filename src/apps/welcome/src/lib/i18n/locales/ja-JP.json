@@ -5,11 +5,27 @@
         "languageSupport": "言語サポート",
         "features": "機能",
         "featureIntroduction": "機能の紹介",
+        "hub": "{{ productName }} Hub",
+        "hubIntro": "{{ productName }} Hub について",
         "customize": "カスタマイズ",
         "initialSettings": "初期設定",
         "complete": "完了",
         "previous": "前へ",
         "next": "次へ"
+    },
+    "hubPage": {
+        "title": "{{ productName }} Hub について",
+        "subtitle": "{{ productName }} 固有の設定を集約した場所です。",
+        "sectionTitle": "{{ productName }} Hub",
+        "description": "{{ productName }} Hub は、{{ productName }} 固有のオプションを扱う専用の設定センターです。アドレスバーに 'about:hub' と入力するか、Firefox の設定ページ 'about:preferences' の左サイドバーからアクセスできます。",
+        "openHub": "about:hub を開く",
+        "openPreferences": "設定を開く (about:preferences)",
+        "tip": "ヒント: Firefox の設定のサイドバーからも {{ productName }} Hub にアクセスできます。",
+        "features": {
+            "dedicated": "{{ productName }} 専用の設定センター",
+            "accessible": "about:hub または Firefox の設定からアクセス可能",
+            "centralized": "{{ productName }} 専用のオプションが一堂に"
+        }
     },
     "customize": {
         "title": "{{productName}} をカスタマイズ",
@@ -33,6 +49,12 @@
             "default": "既定",
             "search": "検索",
             "noEnginesFound": "検索エンジンが見つかりませんでした。"
+        },
+        "floorpHub": {
+            "title": "{{ productName }} Hub",
+            "description": "{{ productName }} Hub は、{{ productName }} 固有のオプションを扱う専用の設定センターです。アドレスバーに 'about:hub' と入力するか、Firefox の設定ページ 'about:preferences' の左サイドバーからアクセスできます。",
+            "openHub": "about:hub を開く",
+            "openPreferences": "設定を開く (about:preferences)"
         }
     },
     "finish": {
@@ -126,5 +148,22 @@
         "hint": "より詳細な設定は、右上のメニューボタンの中にある [設定] からいつでもアクセスできます。",
         "resourcesLabel": "リソース",
         "defaultBrowserSuccess": "{{productName}} が既定のブラウザーに設定されました！"
+    },
+    "whatsNew": {
+        "title": "{{ productName }} {{version}} へようこそ！",
+        "subtitle": "{{ productName }} の最新情報をチェック！",
+        "tags": {
+            "settings": "設定",
+            "productivity": "生産性",
+            "workspaces": "ワークスペース",
+            "pwa": "PWA",
+            "gestures": "ジェスチャー"
+        },
+        "footer": {
+            "follow": "フォロー",
+            "privacy": "プライバシーと利用規約",
+            "about": "{{ productName }} について",
+            "copyright": "© {{year}} {{ productName }} プロジェクト。無断転載禁止。"
+        }
     }
 }
