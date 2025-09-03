@@ -1,5 +1,5 @@
 #filter substitution
-export default {
+export const BuildConfig = {
 #ifdef FIREDRAGON_SETTINGS
     FIREDRAGON_SETTINGS: '@FIREDRAGON_SETTINGS@',
 #endif

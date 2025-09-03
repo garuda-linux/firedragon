@@ -1,8 +1,8 @@
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index 2b4d35e060..7fcd7f6048 100644
+index 2b4d35e060..76b09100a8 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -166,6 +166,23 @@
+@@ -166,6 +166,21 @@
  @BINPATH@/@DLL_PREFIX@mozavutil@DLL_SUFFIX@
  @BINPATH@/@DLL_PREFIX@mozavcodec@DLL_SUFFIX@
  
@@ -16,8 +16,6 @@ index 2b4d35e060..7fcd7f6048 100644
 +#endif
 +
 +; [FireDragon Files]
-+@RESPATH@/chrome/firedragon.manifest
-+@RESPATH@/chrome/firedragon@JAREXT@
 +#ifdef FIREDRAGON_SETTINGS
 +@RESPATH@/distribution/policies.json
 +@RESPATH@/firedragon.cfg
@@ -26,7 +24,7 @@ index 2b4d35e060..7fcd7f6048 100644
  ; [Components]
  #ifdef ACCESSIBILITY
  #ifdef XP_WIN
-@@ -384,10 +401,6 @@ bin/libfreebl_64int_3.so
+@@ -384,10 +399,6 @@ bin/libfreebl_64int_3.so
  @BINPATH@/crashhelper@BIN_SUFFIX@
  #endif
  
