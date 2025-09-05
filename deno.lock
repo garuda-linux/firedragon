@@ -19368,6 +19368,9 @@
           ]
         }
       }
+    },
+    "links": {
+      "jsr:@nora/lib-dom-gecko@1.0.0": {}
     }
   }
 }
