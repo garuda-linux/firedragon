@@ -14,6 +14,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
 declare global {
     interface fdIConfigLoader {
         loadConfig(url: string): void;
+        loadConfigsFrom(url: string): void;
     }
 
     interface nsIXPCComponents_Interfaces {
@@ -37,13 +38,35 @@ export class ConfigLoader implements fdIConfigLoader {
         const file = lazy.File.fromUrl(url);
         console.info(`[ConfigLoader] Loading config: ${file.url} (${file.path})`);
         if (file.exists()) {
-            try {
-                (new lazy.ConfigSandbox(file)).sandbox.loadScript(file.url);
-            } catch (e) {
-                console.error(`[ConfigLoader] Error while loading ${file.url}:`, e);
+            if (file.isFile()) {
+                try {
+                    (new lazy.ConfigSandbox(file)).sandbox.loadScript(file.url);
+                } catch (e) {
+                    console.error(`[ConfigLoader] Error while loading ${file.url}:`, e);
+                }
+            } else {
+                console.warn(`[ConfigLoader] Not a file: ${file.path}`);
             }
         } else {
             console.warn(`[ConfigLoader] File does not exist: ${file.path}`);
+        }
+    }
+
+    loadConfigsFrom(url: URL | string): void {
+        const folder = lazy.File.fromUrl(url);
+        console.info(`[ConfigLoader] Loading configs from: ${folder.url} (${folder.path})`);
+        if (folder.exists()) {
+            if (folder.isDirectory()) {
+                for (const file of folder.directoryEntries()) {
+                    if (file.isFile() && file.leafName.endsWith('.js')) {
+                        this.loadConfig(file.url);
+                    }
+                }
+            } else {
+                console.warn(`[ConfigLoader] Not a directory: ${folder.path}`);
+            }
+        } else {
+            console.warn(`[ConfigLoader] Folder does not exist: ${folder.path}`)
         }
     }
 }

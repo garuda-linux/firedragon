@@ -16,11 +16,11 @@ export class File {
     }
 
     static fromUrl(url: nsIURI | URL | string): File {
-        if (url instanceof URL || typeof url === 'string') {
+        if (typeof url.toString === 'function') {
             url = Services.io.newURI(url.toString());
         }
         if (url.prePath !== 'file://') {
-            throw 'Not a valid file URL';
+            throw `Invalid file URL: ${url.spec}`;
         }
         let filePath = decodeURIComponent(url.filePath);
         if (lazy.AppConstants.platform === 'win') {
@@ -41,6 +41,10 @@ export class File {
         return Services.io.newFileURI(this.file).spec;
     }
 
+    get leafName(): string {
+        return this.file.leafName;
+    }
+
     clone(): File {
         return new File(this.file.clone());
     }
@@ -54,5 +58,24 @@ export class File {
 
     exists(): boolean {
         return this.file.exists();
+    }
+
+    isDirectory(): boolean {
+        return this.file.isDirectory();
+    }
+
+    isFile(): boolean {
+        return this.file.isFile();
+    }
+
+    *directoryEntries(): Iterator<File> {
+        const directoryEntries = this.file.directoryEntries;
+
+        let nextFile;
+        while (nextFile = directoryEntries.nextFile) {
+            yield nextFile;
+        }
+
+        directoryEntries.close();
     }
 }

@@ -29,9 +29,13 @@ export class ConfigSandbox {
         this.sandbox.defineFunction('getPref', this.getPref.bind(this));
         this.sandbox.defineFunction('clearPref', this.clearPref.bind(this));
 
-        // ConfigLoader specials
+        // Special prefs
+        this.sandbox.defineFunction('defaultJson', this.defaultJson.bind(this));
+
+        // Load configs
         this.sandbox.defineFunction('getUrl', this.getUrl.bind(this));
         this.sandbox.defineFunction('loadConfig', this.loadConfig.bind(this));
+        this.sandbox.defineFunction('loadConfigsFrom', this.loadConfigFrom.bind(this));
 
         // Config metadata
         const gConfig = this.sandbox.createObjectIn('gConfig');
@@ -46,8 +50,8 @@ export class ConfigSandbox {
         console.defineFunction('error', globalThis.console.error);
     }
 
-    private getPrefBranch(): nsIPrefBranch {
-        return Services.prefs.getBranch(null);
+    private getPrefBranch(prefRoot: string | null = null): nsIPrefBranch {
+        return Services.prefs.getBranch(prefRoot);
     }
 
     private setPrefInBranch(prefBranch: nsIPrefBranch, prefName: string, value: any): void {
@@ -72,6 +76,26 @@ export class ConfigSandbox {
 
     private defaultPref(prefName: string, value: any): void {
         this.setPrefInBranch(Services.prefs.getDefaultBranch(null), prefName, value);
+    }
+
+    private defaultJson(prefName: string, value: any): void {
+        const defaultPrefBranch = this.getPrefBranch('defaultJson.');
+        const prefBranch = this.getPrefBranch();
+        prefBranch.setStringPref(prefName, JSON.stringify((function updateJson(value, d, u) {
+            for (const key in value) {
+                if ([ value[key], d[key], u[key] ].every(x => typeof x === 'object' && x)) {
+                    u[key] = updateJson(value[key], d[key], u[key]);
+                } else if (d[key] === u[key]) {
+                    u[key] = value[key];
+                }
+            }
+            return u;
+        })(
+            value,
+            JSON.parse(defaultPrefBranch.getStringPref(prefName, '{}')),
+            JSON.parse(prefBranch.getStringPref(prefName, '{}')),
+        )));
+        defaultPrefBranch.setStringPref(prefName, JSON.stringify(value));
     }
 
     private lockPref(prefName: string, value: any): void {
@@ -114,6 +138,10 @@ export class ConfigSandbox {
     }
 
     private loadConfig(url: URL | string): void {
-        Cc["@firedragon/configloader;1"].getService(Ci.fdIConfigLoader).loadConfig(url);
+        Cc['@firedragon/configloader;1'].getService(Ci.fdIConfigLoader).loadConfig(url);
+    }
+
+    private loadConfigFrom(url: URL | string): void {
+        Cc['@firedragon/configloader;1'].getService(Ci.fdIConfigLoader).loadConfigsFrom(url);
     }
 }
