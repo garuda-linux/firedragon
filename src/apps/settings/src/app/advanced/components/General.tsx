@@ -156,7 +156,7 @@ export function General() {
                             </label>
                             <Switch
                                 id="allow-user-chrome-css"
-                                checked={getValues("enableTranslations") && getValues('servicesSettingsServer') === constantsData!.REMOTE_SETTINGS_SERVER_URL}
+                                checked={getValues("enableTranslations") && getValues('servicesSettingsServer') === constantsData?.REMOTE_SETTINGS_SERVER_URL}
                                 onChange={(e) => {
                                     setValue("enableTranslations", e.target.checked);
                                     setValue('servicesSettingsServer', e.target.checked ? constantsData!.REMOTE_SETTINGS_SERVER_URL : 'https://%.invalid');
