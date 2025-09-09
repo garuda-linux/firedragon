@@ -133,11 +133,11 @@ export function General() {
                     </div>
                     <div className="space-y-1">
                         <div className="flex items-center justify-between gap-2">
-                            <label htmlFor="allow-user-chrome-css">
+                            <label htmlFor="hide-passwdmgr">
                                 {t('advanced.general.hidePasswdmgr')}
                             </label>
                             <Switch
-                                id="allow-user-chrome-css"
+                                id="hide-passwdmgr"
                                 checked={getValues("hidePasswdmgr")}
                                 onChange={(e) => {
                                     setValue("hidePasswdmgr", e.target.checked);
@@ -151,11 +151,11 @@ export function General() {
                     </div>
                     <div className="space-y-1">
                         <div className="flex items-center justify-between gap-2">
-                            <label htmlFor="allow-user-chrome-css">
+                            <label htmlFor="enable-translations">
                                 {t('advanced.general.enableTranslations')}
                             </label>
                             <Switch
-                                id="allow-user-chrome-css"
+                                id="enable-translations"
                                 checked={getValues("enableTranslations") && getValues('servicesSettingsServer') === constantsData?.REMOTE_SETTINGS_SERVER_URL}
                                 onChange={(e) => {
                                     setValue("enableTranslations", e.target.checked);
