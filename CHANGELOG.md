@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.3.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.1) — 2025-09-10 — [`v12.3.0`…`v12.3.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.3.0...v12.3.1)
+
+### 🚀 Features
+
+- Add defaultJson and loadConfigsFrom functions to ConfigLoader — [`eb6f1ae0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/eb6f1ae076fcd6ca474995f1039f3574c6cd3bb5)
+- *(settings)* Update outdated prefs using defaultJson function — [`d97d1757…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d97d1757b9deb0d910e4528eab7470dcf680657e)
+
+### 🐛 Bug Fixes
+
+- *(hub)* Fix access to constantsData to account for null value — [`cb672ea6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/cb672ea68682f5f502110d500fd780163eac5c8f)
+- *(hub)* Fix wrong label & switch ids — [`978af56d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/978af56de6ff8a09bad5507d88d07c927d6b2755)
+- Update version in package-lock.json and enhance multirow tabbar functionality — [`742dc26c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/742dc26c466663412539fb8defb1ad6fb550a464)
+- Update GestureDisplayUI to conditionally show action label based on configuration — [`aaff28c8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/aaff28c8a0744eb11b1e8cf760c845681751c59c)
+- Update subproject commits for paxmod-master and sapphillon-front — [`bf212c1f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bf212c1f707bef8da915776a33b65ba0f50c1e9a)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deno to 2.4.5 — [`5e0bf86b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5e0bf86b3280489e1eaad2ddaca5fcd5620a6b3c)
+
 ## [FireDragon v12.3.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.0) — 2025-09-03 — [`v12.2.1`…`v12.3.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.2.1...v12.3.0)
 
 ### 🚀 Features
