@@ -1,4 +1,4 @@
-FROM denoland/deno:bin-2.4.5 AS deno
+FROM denoland/deno:bin-2.5.0 AS deno
 
 FROM ubuntu:latest
 
