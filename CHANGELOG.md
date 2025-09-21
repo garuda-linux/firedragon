@@ -1,5 +1,36 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.4.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.0) — 2025-09-21 — [`v12.3.1`…`v12.4.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.3.1...v12.4.0)
+
+### 🚀 Features
+
+- Implement local HTTP server with API endpoints for browser and web scraping functionalities — [`a65e4a61…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a65e4a614e6b3e693b22aa89de675bea0b431dc8)
+- Refactor router and server to enhance type safety and add API response types — [`6c0a0e89…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6c0a0e894eb1db2bd14efbdc37a7c3e9aee3bfa2)
+- Add helper functions to map raw data to API types for history and downloads — [`3a64115b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/3a64115bd764f59768a993f7f0e66b697b2dfd69)
+- *(os-server)* Add binary string conversion and UTF-8 writing functions — [`fd4ee672…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fd4ee6727c62cd61c8eccda03cba2debfe4ff7c3)
+- *(package)* Add artifact upload step on failure during pre-packaging — [`1a4e7d4f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1a4e7d4f017d2890c047c3bfa0ec94d61e8b5249)
+
+### 🐛 Bug Fixes
+
+- Enhance web scraping readiness checks and increase timeout limits — [`1f81aad2…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/1f81aad2e1c45263ea25871985df7120f197ba20)
+- Add HTTP status codes for request timeout and payload too large, and implement related error handling — [`0717f0a7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0717f0a761c065805557b31c26143ca5db9129e6)
+- *(.gitmodules)* Correct submodule entry and update URL for api-spec — [`6f3fed92…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/6f3fed92dce4698fac4002e40b8d18f171c6d308)
+- *(patch)* Update path for CustomizableUI.sys.mjs in git patches — [`f427242d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f427242dc7aa3ff11cd2966768d4b27a42300a95)
+- Update import paths for CustomizableUI.sys.mjs across multiple files — [`0fb4f561…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0fb4f5613759a0b146e27ea30ddc59e7c3357ac8)
+- Prevent context menu preference setting on Windows OS — [`a2a3f653…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a2a3f653530705ff04fe4b207c94c5f210ca88c2)
+- Update version to 12.2.0 in package.json — [`264c9b5b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/264c9b5b828cee3c9731a403b9785c647611a949)
+- Add environment setting for main job in publish_release.yml — [`8b266308…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8b2663089a0e0d51cdc08f5821c5dd48bb161de3)
+
+### 🚜 Refactor
+
+- *(os-server)* Use Timer.sys.mjs setTimeout without fallback — [`c25848af…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c25848afd82cf3216a89a7ebcaea5d77cf75402a)
+- *(os-server)* Simplify setTimeout import and usage — [`4c67db36…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/4c67db3689cbe108c3ebd29e7ccd4e294400a206)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(os-server)* Add api-types submodule (floorp-os-apis) and update imports — [`0facc09a…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/0facc09a6fdd917669d99dde7fccf0aa6e798a76)
+- Update deno to v2.5.0 — [`fc626d24…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc626d24544e84c71cb7d574d6b6f3f67ffb389b)
+
 ## [FireDragon v12.3.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.3.1) — 2025-09-10 — [`v12.3.0`…`v12.3.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.3.0...v12.3.1)
 
 ### 🚀 Features
