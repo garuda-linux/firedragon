@@ -5,8 +5,8 @@
         "languageSupport": "Ngôn ngữ",
         "features": "Tính năng",
         "featureIntroduction": "",
-        "hub": "{{ productName }} Hub",
-        "hubIntro": "About {{ productName }} Hub",
+        "hub": "{{productName}} Hub",
+        "hubIntro": "Về {{productName}} Hub",
         "customize": "Tùy chỉnh",
         "initialSettings": "Initial Settings",
         "complete": "Xong",
@@ -14,11 +14,11 @@
         "next": "Tiếp"
     },
     "hubPage": {
-        "title": "About {{ productName }} Hub",
-        "subtitle": "A central place for {{ productName }}-specific settings.",
-        "sectionTitle": "{{ productName }} Hub",
-        "description": "{{ productName }} Hub is a dedicated settings center for {{ productName }}-specific options. You can open it by navigating to 'about:hub'. It can also be accessed from the left sidebar of Firefox's settings page at 'about:preferences'.",
-        "openHub": "Open about:hub",
+        "title": "Về {{productName}} Hub",
+        "subtitle": "Trung tâm cho các cài đặt {{productName}}",
+        "sectionTitle": "{{productName}} Hub",
+        "description": "{{productName}} Hub là trang cài đặt riêng của Floopp. Bạn có thể mở bằng cách đi tới \"about:hub\". Bạn cũng có thể truy cập bằng thanh bên trái của trang cài đặt Firefox \"about:preferences\".",
+        "openHub": "Mở about:hub",
         "openPreferences": "Open Settings (about:preferences)",
         "tip": "Tip: You can also access {{ productName }} Hub from the Firefox settings sidebar.",
         "features": {
@@ -28,7 +28,7 @@
         }
     },
     "customize": {
-        "title": "Customize {{productName}}",
+        "title": "Tùy chỉnh {{productName}}",
         "description": "Customize to your preferred settings. You can always change them later from the {{productName}} Hub or settings page.",
         "appearance": {
             "title": "Appearance Settings",

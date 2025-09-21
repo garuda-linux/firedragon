@@ -32,15 +32,15 @@
         "description": "Tercih ettiğiniz ayarlara göre kişiselleştirin. Bunları daha sonra {{productName}} Hub veya ayarlar sayfasından her zaman değiştirebilirsiniz.",
         "appearance": {
             "title": "Görünüm Ayarları",
-            "description": "{{productName}}'un görünümünü tercihlerinize göre kişiselleştirebilirsiniz. Açık veya koyu tema seçebilir ya da sistem ayarlarına göre otomatik geçiş yapabilirsiniz."
+            "description": "{{productName}}'un görünümünü tercihinize göre kişiselleştirebilirsiniz. Açık veya koyu bir tema seçin ya da sistem ayarlarınıza göre otomatik olarak geçiş yapmasını sağlayın."
         },
         "themes": {
-            "light": "Açık",
+            "light": "Aydınlık",
             "dark": "Koyu",
             "system": "Sistem ayarlarını takip edin"
         },
         "themeInfo": {
-            "light": "Açık tema",
+            "light": "Aydınlık tema",
             "dark": "Koyu tema",
             "system": "Sistem tercihleri"
         },
@@ -59,7 +59,7 @@
     },
     "finish": {
         "title": "Kurulum Tamamlandı!",
-        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. İnternette rahat ve güvenli bir deneyimin tadını çıkarın.",
+        "subtitle": "Tebrikler! {{productName}} kurulumunu tamamladınız. Rahat ve güvenli bir internet tarama deneyiminin keyfini çıkarın.",
         "nextSteps": {
             "title": "Sonraki Adımlar (İsteğe Bağlı)",
             "setDefault": "Varsayılan Tarayıcı Olarak Ayarla",

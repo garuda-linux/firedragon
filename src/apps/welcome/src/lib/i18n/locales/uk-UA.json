@@ -161,7 +161,7 @@
         },
         "footer": {
             "follow": "Слідкувати",
-            "privacy": "Політики конфіденційності",
+            "privacy": "Політики конфіденційності та умови використання",
             "about": "Про {{ productName }}",
             "copyright": "© {{year}} {{ productName }} Projects. Всі права захищені."
         }
