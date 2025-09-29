@@ -540,7 +540,9 @@
             "hidePasswdmgrDescription": "Hide password manager menu item and settings.",
             "hidePasswdmgrNeedsRestartDescription": "{{productName}}'s restart is required to completely show or hide the password manager.",
             "enableTranslations": "Enable Translations",
-            "enableTranslationsDescription": "Enable offline translations."
+            "enableTranslationsDescription": "Enable offline translations.",
+            "enableDefaultShortcuts": "Enable default shortcuts",
+            "enableDefaultShortcutsDescription": "This will enable or disable all default Firefox shortcuts. Shortcuts defined in the Shortcuts section remain untouched."
         },
         "network": {
             "header": "Networking",

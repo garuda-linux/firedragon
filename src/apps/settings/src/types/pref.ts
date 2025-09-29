@@ -219,5 +219,6 @@ export const zAdvancedConfig = z.object({
   enableSafebrowsingDownloads: z.boolean(),
   enableTranslations: z.boolean(),
   servicesSettingsServer: z.string(),
+  enableDefaultShortcuts: z.boolean(),
 });
 export type AdvancedFormData = z.infer<typeof zAdvancedConfig>;

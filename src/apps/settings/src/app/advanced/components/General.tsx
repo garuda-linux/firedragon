@@ -167,6 +167,23 @@ export function General() {
                             {t("advanced.general.enableTranslationsDescription")}
                         </div>
                     </div>
+                    <div className="space-y-1">
+                        <div className="flex items-center justify-between gap-2">
+                            <label htmlFor="enable-default-shortcuts">
+                                {t('advanced.general.enableDefaultShortcuts')}
+                            </label>
+                            <Switch
+                                id="enable-default-shortcuts"
+                                checked={getValues("enableDefaultShortcuts")}
+                                onChange={(e) => {
+                                    setValue("enableDefaultShortcuts", e.target.checked);
+                                }}
+                            />
+                        </div>
+                        <div className="text-sm text-base-content/70">
+                            {t("advanced.general.enableDefaultShortcutsDescription")}
+                        </div>
+                    </div>
                 </CardContent>
             </Card>
         </>

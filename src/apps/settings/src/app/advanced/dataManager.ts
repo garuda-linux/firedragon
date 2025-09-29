@@ -28,6 +28,7 @@ export async function saveAdvancedSettings(settings: AdvancedFormData): Promise<
         rpc.setBoolPref('browser.safebrowsing.downloads.enabled', settings.enableSafebrowsingDownloads),
         rpc.setBoolPref('browser.translations.enable', settings.enableTranslations),
         rpc.setStringPref('services.settings.server', settings.servicesSettingsServer),
+        rpc.setBoolPref('firedragon.defaultShortcuts.enable', settings.enableDefaultShortcuts),
     ]);
 }
 
@@ -58,6 +59,7 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         enableSafebrowsingDownloads,
         enableTranslations,
         servicesSettingsServer,
+        enableDefaultShortcuts,
     ] = await Promise.all([
         rpc.getBoolPref('extensions.update.enabled'),
         rpc.getBoolPref('extensions.update.autoUpdateDefault'),
@@ -84,6 +86,7 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         rpc.getBoolPref('browser.safebrowsing.downloads.enabled'),
         rpc.getBoolPref('browser.translations.enable'),
         rpc.getStringPref('services.settings.server'),
+        rpc.getBoolPref('firedragon.defaultShortcuts.enable'),
     ]);
 
     return {
@@ -112,6 +115,7 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         enableSafebrowsingDownloads,
         enableTranslations,
         servicesSettingsServer,
+        enableDefaultShortcuts,
     };
 }
 
