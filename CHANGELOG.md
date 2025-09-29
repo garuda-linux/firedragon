@@ -1,5 +1,13 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.4.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.1) — 2025-09-29 — [`v12.4.0`…`v12.4.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.0...v12.4.1)
+
+### 🚀 Features
+
+- *(main)* Add default shortcuts module to enable and disable default shortcuts — [`f18db86f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f18db86fa9d1ff400da8e17804a293d5c52b693a)
+- *(cfg)* Enable default shortcuts by default — [`668ef1e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/668ef1e7b3e0845a2c594f6b48c110f68c97992a)
+- *(settings)* Add toggle for default shortcuts to settings page — [`fc3bb2a1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc3bb2a19f385a183e6e7a21d8dc5528e8553769)
+
 ## [FireDragon v12.4.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.0) — 2025-09-21 — [`v12.3.1`…`v12.4.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.3.1...v12.4.0)
 
 ### 🚀 Features
