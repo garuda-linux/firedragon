@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.4.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.2) — 2025-10-02 — [`v12.4.1`…`v12.4.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.1...v12.4.2)
+
+### 🚀 Features
+
+- *(configloader)* Add gBrowser global to sandbox for browser metadata — [`ae4c7f4e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ae4c7f4e48e5fb3c7f54657c57c4940df2b25383)
+- *(cfg)* Use version from browser for firedragon.cfg.version — [`01580862…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/01580862fba2b991b2942370c0aa7c400e770185)
+
+### 🐛 Bug Fixes
+
+- *(cfg)* Fix typo — [`fc4c16a4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fc4c16a403454247c96c0d0a4e30239111af7b76)
+
 ## [FireDragon v12.4.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.1) — 2025-09-29 — [`v12.4.0`…`v12.4.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.0...v12.4.1)
 
 ### 🚀 Features
