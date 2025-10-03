@@ -156,10 +156,9 @@ export function General() {
                             </label>
                             <Switch
                                 id="enable-translations"
-                                checked={getValues("enableTranslations") && getValues('servicesSettingsServer') === constantsData?.REMOTE_SETTINGS_SERVER_URL}
+                                checked={getValues("enableTranslations")}
                                 onChange={(e) => {
                                     setValue("enableTranslations", e.target.checked);
-                                    setValue('servicesSettingsServer', e.target.checked ? constantsData!.REMOTE_SETTINGS_SERVER_URL : 'https://%.invalid');
                                 }}
                             />
                         </div>

@@ -26,8 +26,7 @@ export async function saveAdvancedSettings(settings: AdvancedFormData): Promise<
         rpc.setStringPref('browser.safebrowsing.privider.google.gethashURL', settings.safebrowsingProviderGoogleGethashURL),
         rpc.setStringPref('browser.safebrowsing.provider.google.updateURL', settings.safebrowsingProviderGoogleUpdateURL),
         rpc.setBoolPref('browser.safebrowsing.downloads.enabled', settings.enableSafebrowsingDownloads),
-        rpc.setBoolPref('browser.translations.enable', settings.enableTranslations),
-        rpc.setStringPref('services.settings.server', settings.servicesSettingsServer),
+        rpc.setBoolPref('firedragon.translations.enable', settings.enableTranslations),
         rpc.setBoolPref('firedragon.defaultShortcuts.enable', settings.enableDefaultShortcuts),
     ]);
 }
@@ -58,7 +57,6 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         safebrowsingProviderGoogleUpdateURL,
         enableSafebrowsingDownloads,
         enableTranslations,
-        servicesSettingsServer,
         enableDefaultShortcuts,
     ] = await Promise.all([
         rpc.getBoolPref('extensions.update.enabled'),
@@ -84,8 +82,7 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         rpc.getStringPref('browser.safebrowsing.provider.google.gethashURL'),
         rpc.getStringPref('browser.safebrowsing.provider.google.updateURL'),
         rpc.getBoolPref('browser.safebrowsing.downloads.enabled'),
-        rpc.getBoolPref('browser.translations.enable'),
-        rpc.getStringPref('services.settings.server'),
+        rpc.getBoolPref('firedragon.translations.enable'),
         rpc.getBoolPref('firedragon.defaultShortcuts.enable'),
     ]);
 
@@ -114,7 +111,6 @@ export async function getAdvancedSettings(): Promise<AdvancedFormData> {
         safebrowsingProviderGoogleUpdateURL,
         enableSafebrowsingDownloads,
         enableTranslations,
-        servicesSettingsServer,
         enableDefaultShortcuts,
     };
 }
