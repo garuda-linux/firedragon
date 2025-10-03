@@ -17,15 +17,45 @@ export class TranslationFeatureManager {
         Services.prefs.addObserver('services.settings.server', this);
     }
 
-    observe(subject, topic, data): void {
-        if (Services.prefs.getBoolPref('firedragon.translations.enable', false)) {
+    private get firedragonTranslations() {
+        return Services.prefs.getBoolPref('firedragon.translations.enable', false);
+    }
+
+    private set firedragonTranslations(value) {
+        Services.prefs.setBoolPref('firedragon.translations.enable', value);
+    }
+
+    private get browserTranslations() {
+        return Services.prefs.getBoolPref('browser.translations.enable', false);
+    }
+
+    private set browserTranslations(value) {
+        Services.prefs.setBoolPref('browser.translations.enable', value);
+    }
+
+    private get settingsServerIsRemoveSettingsServerUrl() {
+        return Services.prefs.getStringPref('services.settings.server', 'https://%.invalid') === lazy.AppConstants.REMOTE_SETTINGS_SERVER_URL;
+    }
+
+    private set settingsServerIsRemoveSettingsServerUrl(value) {
+        Services.prefs.setStringPref('services.settings.server', value ? lazy.AppConstants.REMOTE_SETTINGS_SERVER_URL : 'https://%.invalid');
+    }
+
+    observe(_subject, topic, _data): void {
+        // Automatically enable new pref when translation was already correctly enabled previously
+        if (topic === 'app-startup' && this.browserTranslations && this.settingsServerIsRemoveSettingsServerUrl) {
+            this.firedragonTranslations = true;
+        }
+
+        // Enable or disable translation related prefs based on new pref
+        if (this.firedragonTranslations) {
             console.info('[TranslationFeatureManager] Enable translation feature')
-            Services.prefs.setBoolPref('browser.translations.enable', true);
-            Services.prefs.setStringPref('services.settings.server', lazy.AppConstants.REMOTE_SETTINGS_SERVER_URL);
+            this.browserTranslations = true;
+            this.settingsServerIsRemoveSettingsServerUrl = true;
         } else {
             console.info('[TranslationFeatureManager] Disable translation feature')
-            Services.prefs.setBoolPref('browser.translations.enable', false);
-            Services.prefs.setStringPref('services.settings.server', 'https://%.invalid');
+            this.browserTranslations = false;
+            this.settingsServerIsRemoveSettingsServerUrl = false;
         }
     }
 }
