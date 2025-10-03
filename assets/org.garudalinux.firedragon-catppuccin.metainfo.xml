@@ -52,10 +52,6 @@
   </screenshots>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="v12.4.3" date="2025-10-03">
-      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.3</url>
-      <description/>
-    </release>
     <release version="v12.4.2" date="2025-10-02">
       <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.2</url>
       <description/>

@@ -1,6 +1,6 @@
 {
   "name": "noraneko-bin",
-  "version": "12.4.3",
+  "version": "12.4.2",
   "runtime": "tags/passed-20250916165207",
   "release": {
     "firefox": "143.0.1-dev",

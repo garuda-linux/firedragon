@@ -1,13 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v12.4.3](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.3) — 2025-10-03 — [`v12.4.2`…`v12.4.3`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.2...v12.4.3)
-
-### 🚀 Features
-
-- *(modules)* Add TranslationFeatureManager to manage translation preferences — [`d27461ec…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d27461ecadfe3869ad446b6598712f17efa1cc9c)
-- *(settings)* Have translation setting use new pref for TranslationFeatureManager — [`fb2608e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fb2608e76a3a193a87fbe1e4f424c2c75a744c8c)
-- *(cfg)* Add new translation pref for TranslationFeatureManager — [`234c798b…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/234c798b1135741670973f2f697481751109870b)
-
 ## [FireDragon v12.4.2](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.2) — 2025-10-02 — [`v12.4.1`…`v12.4.2`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.1...v12.4.2)
 
 ### 🚀 Features
