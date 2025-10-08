@@ -1,5 +1,36 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.5.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.0) — 2025-10-08 — [`v12.4.3`…`v12.5.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.3...v12.5.0)
+
+### 🚀 Features
+
+- Add ConfigVersion service to manage current version and last version to help with migrations — [`b2f15a32…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b2f15a3256bafbc459d04a29b1919fbca837dea0)
+- Add AI Community Moderator workflow for issue and discussion management — [`34a30a6f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/34a30a6fc307891ecf9b68fa4129a396cfacfab1)
+- Enhance navbar positioning and style management during browser startup — [`8dae013e…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/8dae013e40d61b9b1a94514dd84fbdd6cac4ca57)
+- Add navbar getter and hide navbar on webpanel window creation — [`fa7fb8a1…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/fa7fb8a17c52e428b8f6fb16500d26a97e3ab595)
+- Add NRFocusUrlBar function and integrate with SearchBar component — [`a35c8dc0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a35c8dc06df264aa5438fb6f888d8a231ea22f3a)
+- Improve gesture recognition algorithm and enhance trail visibility — [`322f74b7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/322f74b7f5b3125aaab4c7ab9af3f652cf532a15)
+- Remove debug logging from TopSites component — [`cc55d230…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/cc55d2307afebdf60b1caed2b0b9b0a930a64828)
+- Remove debug logging from NewTabContent and ComponentsContext — [`bd5b5a08…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bd5b5a08cf03630c18d9e6697242fe4aded22341)
+- Disable taskbar tabs and add built-in pages option in extension type — [`c853a6f8…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c853a6f843dc4dd78b645f85461d14fbf410050b)
+- Add search functionality with SettingsSearchInput and SearchPage components — [`538f2ed4…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/538f2ed48228e958e0257fd9a3fa270170c4dac8)
+- Add search localization for settings in English and Japanese — [`f46df87d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f46df87d1818f7f782dc18d9e7cf60ef7e93b667)
+- Implement multirow tab bar functionality with drag-and-drop support — [`36b3b253…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/36b3b25309363cf6b55fdb5600a9c7dafbdc175a)
+- Set max-height for tabbrowser-tabs to none — [`e41874c5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e41874c5e455a9e26fcec45d749e2b33fe318d8a)
+- Enhance multirow tab bar functionality with dynamic enabling/disabling and improved drag-and-drop management — [`471c5197…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/471c51977445578774d6c9ff8476bc586c1e16c1)
+- Modify SsbRunnerUtils and SSBCommandLineHandler to streamline SSB launch process — [`128c674d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/128c674db10e28bd1e7e634fedf45b4e26c7c91e)
+
+### 🐛 Bug Fixes
+
+- Enhance mouse gesture handling with accumulated movement tracking — [`a78d3c33…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/a78d3c33ff1edea23a375d1d0093f8bc06e4ff24)
+- Update AI Community Moderator action to use the latest version — [`9bbbd4af…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/9bbbd4af1021a40547818890f9a16cc854c4a218)
+- Update AI Community Moderator model to use the correct version — [`d07478e3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/d07478e3345195fb1a149d1aeca1ebce9aa70b0c)
+- Update AI Community Moderator model to use OpenAI GPT-4.1 mini — [`18b75b9f…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/18b75b9f34afbfd33cb9aca26ee3fc3ffe1e440e)
+- Update AI Community Moderator model to use OpenAI GPT-4.1 — [`329a002d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/329a002d1c560a8335151dc25f65d168098eb301)
+- Do not hide navbar when in fullscreen for macOS — [`dcff85d3…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/dcff85d3fcedc00c603748d73cccd9880f32cdaf)
+- Add missing newline at end of en-US and ja-JP locale files — [`5e2aa392…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5e2aa392376decd5397e2ecbb5b6ae0e56afb360)
+- Update version to 12.2.1 in package.json — [`14331602…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/14331602f09d908cd813e72f6cd3de85892bbd1b)
+
 ## [FireDragon v12.4.3](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.4.3) — 2025-10-03 — [`v12.4.2`…`v12.4.3`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.2...v12.4.3)
 
 ### 🚀 Features
