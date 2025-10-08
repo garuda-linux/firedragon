@@ -4,13 +4,11 @@ import type { Sandbox } from './Sandbox.sys.mts';
 const lazy: {
     File: typeof File,
     Sandbox: typeof Sandbox,
-    AppConstants,
 } = {};
 
 ChromeUtils.defineESModuleGetters(lazy, {
     File: 'resource://noraneko/modules/firedragon/File.sys.mjs',
     Sandbox: 'resource://noraneko/modules/firedragon/Sandbox.sys.mjs',
-    AppConstants: 'resource://gre/modules/AppConstants.sys.mjs',
 });
 
 export class ConfigSandbox {
@@ -45,9 +43,10 @@ export class ConfigSandbox {
         gConfig.defineGetter('url', () => this.file.url);
 
         // Browser metadata
-        const gBrowser = this.sandbox.createObjectIn('gBrowser');
-        gBrowser.defineGetter('version', () => lazy.AppConstants.MOZ_APP_VERSION);
-        gBrowser.defineGetter('versionDisplay', () => lazy.AppConstants.MOZ_APP_VERSION_DISPLAY);
+        const gVersion = this.sandbox.createObjectIn('gVersion');
+        gVersion.defineGetter('version', () => Cc['@firedragon/configversion;1'].getService(Ci.fdIConfigVersion).version);
+        gVersion.defineGetter('lastVersion', () => Cc['@firedragon/configversion;1'].getService(Ci.fdIConfigVersion).lastVersion);
+        gVersion.defineFunction('compare', Cc['@firedragon/configversion;1'].getService(Ci.fdIConfigVersion).compare);
 
         // Console proxy
         const console = this.sandbox.createObjectIn('console');

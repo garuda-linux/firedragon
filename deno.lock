@@ -139,6 +139,7 @@
     "npm:tailwindcss@4": "4.1.8",
     "npm:tailwindcss@^4.1.5": "4.1.8",
     "npm:tailwindcss@^4.1.8": "4.1.8",
+    "npm:ts-pattern@^5.8.0": "5.8.0",
     "npm:tsdown@~0.5.6": "0.5.10_rollup@4.42.0_typescript@5.8.3_@swc+core@1.3.96__@swc+helpers@0.5.17",
     "npm:tslib@^2.3.0": "2.8.1",
     "npm:typescript@5.8": "5.8.3",
@@ -17784,6 +17785,9 @@
         "code-block-writer"
       ]
     },
+    "ts-pattern@5.8.0": {
+      "integrity": "sha512-kIjN2qmWiHnhgr5DAkAafF9fwb0T5OhMVSWrm8XEdTFnX6+wfXwYOFjeF86UZ54vduqiR7BfqScFmXSzSaH8oA=="
+    },
     "tsconfck@3.1.6_typescript@5.8.3": {
       "integrity": "sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==",
       "dependencies": [
@@ -19161,6 +19165,7 @@
             "npm:birpc@^2.0.19",
             "npm:oxlint@~0.15.8",
             "npm:rolldown@1.0.0-beta.3",
+            "npm:ts-pattern@^5.8.0",
             "npm:tsdown@~0.5.6",
             "npm:unplugin-swc@^1.5.1",
             "npm:vite@^6.0.11"

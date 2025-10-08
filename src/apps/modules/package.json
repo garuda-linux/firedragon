@@ -7,6 +7,7 @@
     "@swc/core": "^1.10.12",
     "oxlint": "^0.15.8",
     "rolldown": "1.0.0-beta.3",
+    "ts-pattern": "^5.8.0",
     "tsdown": "^0.5.6",
     "unplugin-swc": "^1.5.1",
     "vite": "^6.0.11"
