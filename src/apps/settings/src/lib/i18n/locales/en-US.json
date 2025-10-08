@@ -33,7 +33,16 @@
         "debug": "Debug",
         "mouseGesture": "Mouse Gestures",
         "keyboardShortcut": "Keyboard Shortcuts",
-        "advanced": "Advanced"
+        "advanced": "Advanced",
+        "search": {
+            "title": "Search Settings",
+            "resultsFor": "Search results for \"{{query}}\"",
+            "searchResultsDescription": "Search results for \"{{query}}\". Only {{productName}} settings are searched; Firefox settings are not included.",
+            "noResults": "No results found",
+            "open": "Open \"{{title}}\"",
+            "matchedText": "Matched Text",
+            "results": "Search Results"
+        }
     },
     "home": {
         "welcome": "Welcome, {{name}} 👋",
