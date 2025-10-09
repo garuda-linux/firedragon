@@ -37,20 +37,16 @@ export class Version {
             .with('>', () => (a, b) => a > b)
             .with('>=', () => (a, b) => a >= b)
             .exhaustive();
-        if (!cmpFn(this.generation, other.generation)) {
-            return false;
-        } else if (this.generation === other.generation) {
-            if (!cmpFn(this.major, other.major)) {
-                return false;
-            } else if (this.major === other.major) {
-                if (!cmpFn(this.minor, other.minor)) {
-                    return false;
-                } else if (this.minor === other.minor) {
-                    return cmpFn(this.patch || 0, other.patch || 0);
+        if (this.generation === other.generation) {
+            if (this.major === other.major) {
+                if (this.minor === other.minor) {
+                    return cmpFn(this.patch, other.patch);
                 }
+                return cmpFn(this.minor, other.minor);
             }
+            return cmpFn(this.major, other.major);
         }
-        return true;
+        return cmpFn(this.generation, other.generation);
     }
 
     toString(): string {
