@@ -1,5 +1,12 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.5.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.0.1) — 2025-10-09 — [`v12.5.0`…`v12.5.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.0...v12.5.0.1)
+
+### 🐛 Bug Fixes
+
+- *(modules)* Fix output filename for vendored node modules — [`beaf2934…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/beaf29344c48512bd3fea4a961d82408cb7cea6b)
+- *(modules)* Fix version compare algorithm — [`595deab6…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/595deab6dac253cb8028e9001c6aa952eedae17f)
+
 ## [FireDragon v12.5.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.0) — 2025-10-08 — [`v12.4.3`…`v12.5.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.4.3...v12.5.0)
 
 ### 🚀 Features
