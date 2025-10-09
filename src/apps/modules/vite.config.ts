@@ -19,7 +19,7 @@ export default defineConfig({
       entry,
       formats: ["es"],
       fileName(_format, entryName) {
-        return entryName + ".mjs";
+        return entryName.replace('node_modules/.deno', 'vendor').replace('node_modules/', '') + ".mjs";
       },
     },
     rollupOptions: {
