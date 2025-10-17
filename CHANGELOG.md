@@ -1,5 +1,12 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.5.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.1) — 2025-10-17 — [`v12.5.0.1`…`v12.5.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.0.1...v12.5.1)
+
+### 🚀 Features
+
+- *(mozconfig)* Enable webspeech — [`665f84c5…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/665f84c5b7281cca761a5639e71813e70716a1bd)
+- *(mozconfig)* Enable webspeech — [`f73c6138…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/f73c6138c9b6a503681d824f8d1b482aea5e50a1)
+
 ## [FireDragon v12.5.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.0.1) — 2025-10-09 — [`v12.5.0`…`v12.5.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.0...v12.5.0.1)
 
 ### 🐛 Bug Fixes
