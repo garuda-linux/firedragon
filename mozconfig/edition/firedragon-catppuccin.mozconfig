@@ -1,0 +1,4 @@
+. "$topsrcdir/browser/firedragon/mozconfig/edition/firedragon.mozconfig"
+
+ac_add_options --with-branding=browser/firedragon/branding/catppuccin
+ac_add_options --with-firedragon-theme=catppuccin-mocha-mauve

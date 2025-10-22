@@ -1,0 +1,7 @@
+. "$topsrcdir/browser/firedragon/mozconfig/target/linux.mozconfig"
+
+# Features
+ac_add_options --enable-eme=widevine
+
+# Build options
+ac_add_options --target=x86_64-unknown-linux-gnu

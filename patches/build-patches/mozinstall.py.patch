@@ -1,0 +1,28 @@
+diff --git a/testing/mozbase/mozinstall/mozinstall/mozinstall.py b/testing/mozbase/mozinstall/mozinstall/mozinstall.py
+index 1e1737be20..a4bbc61783 100644
+--- a/testing/mozbase/mozinstall/mozinstall/mozinstall.py
++++ b/testing/mozbase/mozinstall/mozinstall/mozinstall.py
+@@ -17,6 +17,8 @@ import mozfile
+ import mozinfo
+ import requests
+ 
++from mozbuild.bootstrap import bootstrap_toolchain
++
+ try:
+     import pefile
+ 
+@@ -345,12 +347,12 @@ def _install_dmg_cross(src, dest):
+         pass
+ 
+     if not dmg_tool:
+-        dmg_tool = os.environ.get("DMG_TOOL")
++        dmg_tool = bootstrap_toolchain("dmg/dmg")
+     if not dmg_tool:
+         raise InstallError("No DMG_TOOL in environment")
+ 
+     if not hfs_tool:
+-        hfs_tool = os.environ.get("HFS_TOOL")
++        hfs_tool = bootstrap_toolchain("dmg/hfsplus")
+     if not hfs_tool:
+         raise InstallError("No HFS_TOOL in environment")
+ 

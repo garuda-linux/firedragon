@@ -1,0 +1,20 @@
+<div class="grid grid-cols-12 md:p-10">
+  @for (link of contactLinks(); track link.title) {
+    <a
+      [href]="link.link"
+      target="_blank"
+      class="3xl:col-span-1 col-span-6 cursor-pointer p-2 text-center lg:col-span-4 xl:col-span-2"
+    >
+      <div>
+        <p-panel
+          [header]="link.title"
+          styleClass="hover:scale-105 animation duration-300"
+        >
+          <div>
+            <img [alt]="link.title" class="mx-auto my-2.5" [src]="link.logo" />
+          </div>
+        </p-panel>
+      </div>
+    </a>
+  }
+</div>

@@ -1,0 +1,37 @@
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index b884f0167e5d..e774e076d473 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -215,6 +215,10 @@
+ @RESPATH@/browser/chrome/icons/default/default128.png
+ #endif
+ 
++; [FireDragon Chrome Files]
++@RESPATH@/browser/chrome/firedragon.manifest
++@RESPATH@/browser/chrome/firedragon@JAREXT@
++
+ ; [DevTools Startup Files]
+ @RESPATH@/browser/chrome/devtools-startup@JAREXT@
+ @RESPATH@/browser/chrome/devtools-startup.manifest
+@@ -266,6 +270,10 @@
+ @RESPATH@/browser/defaults/backgroundtasks/backgroundtasks_browser.js
+ #endif
+ 
++; [FireDragon cfg Files]
++@RESPATH@/firedragon.cfg
++@RESPATH@/distribution/policies.json
++
+ ; [Layout Engine Resources]
+ ; Style Sheets, Graphics and other Resources used by the layout engine.
+ @RESPATH@/res/EditorOverride.css
+@@ -385,10 +393,6 @@ bin/libfreebl_64int_3.so
+ @BINPATH@/crashhelper@BIN_SUFFIX@
+ #endif
+ 
+-; [ Ping Sender ]
+-;
+-@BINPATH@/pingsender@BIN_SUFFIX@
+-
+ ; [ Native Messaging Host Proxy ]
+ ;
+ #if defined(XP_WIN) || defined(XP_MACOSX)

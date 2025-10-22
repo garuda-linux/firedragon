@@ -1,0 +1,9 @@
+DIST_SUBDIR = ""
+
+FINAL_TARGET_PP_FILES += [
+    "firedragon.cfg"
+]
+
+FINAL_TARGET_PP_FILES.distribution += [
+    "distribution/policies.json"
+]

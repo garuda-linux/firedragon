@@ -1,0 +1,3 @@
+# Features
+ac_add_options --disable-necko-wifi
+ac_add_options --enable-eme=widevine

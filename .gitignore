@@ -1,0 +1,7 @@
+.build
+.cache
+.dist
+.idea
+.profile
+dist
+node_modules

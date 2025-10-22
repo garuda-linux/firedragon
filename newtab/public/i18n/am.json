@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "በ ",
+    "search": "ይፈልጉ"
+  },
+  "menu": {
+    "aboutUs": "ስለ እኛ",
+    "archWiki": "Arch Wiki",
+
+    "donate": "ይለግሱ",
+    "forum": "መድረክ",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "ቤት",
+    "settings": "ቅንብሮች",
+    "welcome": "እንኳን ደህና መጡ"
+  },
+  "common": {
+    "coc": "የስነ ምግባር ደንብ",
+    "gitlab": "GitLab",
+    "privacyPolicy": "የግላዊነት መመሪያ"
+  },
+  "notFound": {
+    "subtitle": "እየፈለጉት ያለው ገጽ የለም።",
+    "title": "ገጽ አልተገኘም"
+  },
+  "imprint": {
+    "contact": "ዋና እውቂያ",
+    "furtherContact": "ተጨማሪ የእውቂያ ዘዴዎች",
+    "subtitle": "መረጃው በ § 5 TMG መሠረት።",
+    "title": "አትም"
+  },
+  "settings": {
+    "actions": "እርምጃዎች",
+    "activeJoke": "የሚታዩ አስቂኝ እውነታዎች/ሰበቦች ምንጭ",
+    "addLink": "አገናኝ ያክሉ",
+    "autoGridCols": "የፍርግርግ አምዶችን በራስ-ሰር ያቀናብሩ",
+    "avatarEnabled": "አምሳያውን ያንቁ",
+    "avatarUrl": "የአምሳያ ዩ.አር.ኤል",
+    "avatarUrlPlaceholder": "ወደ ምስል የሚሰራ ዩ.አር.ኤል ለምሳሌ የእርስዎ ጊትሀብ መገለጫ+.png",
+    "autocompleteLabel": "ራስ-አጠናቅቅ አቅራቢ",
+    "blurBackground": "ዳራውን ደብዛዛ ያድርጉ",
+    "blurStrength": "የግድግዳ ወረቀት ድብዘዛ ጥንካሬ",
+    "confirm": "ያረጋግጡ",
+    "confirmDelete": "የተመረጡትን አገናኞች መሰረዝዎ እርግጠኛ ነዎት?",
+    "confirmDeleteLink": "መሰረዝዎ እርግጠኛ ነው",
+    "confirmHeader": "እርግጠኛ ነዎት?",
+    "confirmReset": "ሁሉንም ቅንብሮች ዳግም ማስጀመርዎ እርግጠኛ ነዎት?",
+    "confirmRestore": "ቅንብሮቹን ወደነበሩበት መመለስዎ እርግጠኛ ነዎት?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "ማለትም ትክክለኛ የ CORS proxy ዩ.አር.ኤል ከgithub.com/distribuyed/proxies",
+    "currentPageReport": "{first} እስከ {last} ከ {totalRecords} ግቤቶች በመታየት ላይ",
+    "customLinks": "አገናኞችን ያብጁ",
+    "customLogo": "ብጁ አርማ ዩ.አር.ኤል",
+    "customMenu": "የማውጫ አሞሌ አገናኞችን ያብጁ",
+    "customTitle": "የገጽ ርዕስ",
+    "customTitlePlaceholder": "ይህ በአሳሹ ትር ውስጥ የሚታየው ርዕስ ነው",
+    "customize": "ክፍሎችን ያብጁ",
+    "darkMode": "ጨለማ ሁነታ ነቅቷል",
+    "defaultLinksLabel": "ነባሪ አገናኞችን አሳይ",
+    "deleteLink": "አገናኝ ሰርዝ",
+    "fitWallpaper": "የግድግዳ ወረቀት ያሟሉ",
+    "general": "አጠቃላይ ቅንብሮች",
+    "gridCols": "የፍርግርግ አምዶች ብዛት",
+    "icon": "አዶ",
+    "iconLink": "የአዶ አገናኝ",
+    "isRequired": "ይህ የግዴታ መስክ ነው!",
+    "jokesEnabledLabel": "ቀልዶች/እውነታዎች/ምክንያቶች ነቅተዋል",
+    "linkCreated": "አገናኝ ተፈጥሯል",
+    "linkDeleted": "አገናኝ ተሰርዟል",
+    "linkDetails": "የአገናኝ ዝርዝሮች",
+    "linkTitle": "ርዕስ",
+    "linksDeleted": "አገናኞች ተሰርዘዋል",
+    "language": "ቋንቋ",
+    "linkUpdated": "አገናኝ ተዘምኗል",
+    "logoLabel": "የአርማ ምስል",
+    "logoUrlPlaceholder": "ለመጠቀም ወደ አርማው አገናኝ",
+    "manageLinks": "አገናኞችን ያስተዳድሩ",
+    "name": "የተጠቃሚ ስም",
+    "namePlaceholder": "ይህ በግራ በኩል የሚታየው ስም ነው",
+    "primeNgIcons": "ይህ ከዚህ ማንኛውም የአዶ ማጣቀሻ ሊሆን ይችላል (እኔን ይጫኑ)",
+    "resetSettings": "የመነሻ ገጽን ዳግም ያስጀምሩ",
+    "restoreSettings": "ቅንብሮችን እነበረበት መልስ",
+    "saveSettings": "ቅንብሮችን ያስቀምጡ",
+    "search": "ፈልግ...",
+    "searchEngineLabel": "ሊጠቀሙበት የሚፈልጉትን የፍለጋ ሞተር",
+    "searchEngineName": "የፍለጋ ሞተር ስም",
+    "searchEngineNamePlaceholder": "ይህ የፍለጋ ሞተሩ የሚታይበት ስም ነው",
+    "searchEngineUrl": "የፍለጋ ሞተር ዩ.አር.ኤል",
+    "searchEngineUrlPlaceholder": "በ %s የፍለጋ ቃል እንደመሆኑ የፍለጋ ሞተር ዩ.አር.ኤል",
+    "settingsReset": "ቅንብሮች በተሳካ ሁኔታ ዳግም ተጀምረዋል",
+    "settingsRestored": "ቅንብሮች በተሳካ ሁኔታ ተመልሰዋል",
+    "showNews": "Garuda ዜና አሳይ",
+    "success": "ስኬት",
+    "themeLabel": "የንድፍ ቅድመ ዝግጅት",
+    "title": "ቅንብሮች",
+    "url": "URL",
+    "wallpaperCustomLabel": "ብጁ የግድግዳ ወረቀት ዩ.አር.ኤል",
+    "wallpaperLabel": "የግድግዳ ወረቀት",
+    "wallpaperCustomPlaceholder": "ለምሳሌ ከ unsplash.com ወደ ምስል ትክክለኛ ዩ.አር.ኤል ያቅርቡ",
+    "welcomeText": "የእንኳን ደህና መጣችሁ መልእክት",
+    "welcomeTextPlaceholder": "በግራ በኩል ለማሳየት የእንኳን ደህና መጣችሁ መልእክት"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "የእርስዎ ዲጂታል ምስል በአሁኑ ጊዜ በደህንነቱ በተጠበቀ መንፈሳዊ ፕሮቶኮሎች በኩል በርቀት እየተነካ ነው። የተሻሻለ አፈፃፀም ይጠብቁ...ወይም በጨረቃ ዑደቶች ላይ የተመሰረቱ ያልተገለጹ የስርዓት ዳግም ማስጀመር።"
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "ይህ ባህሪ የላቀ voodoo ምስጠራ የተጠበቀ ነው። ለማለፍ መሞከር የእርስዎ ውሂብ በጊዜያዊነት በአኒሜሽን ዞምቢ ጥንቸሎች እንዲተካ ያደርገዋል።"
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "ይህን ተግባር ማስፈጸም ከአዛኝ (በአብዛኛው) አካላት ጋር በዲጂታል የተጠናከረ ስምምነት ያስርዎታል። መጨረሻህን መደገፍ አለመቻል የተበላሹ የፋይል ስርዓቶችን ሊያስከትል ይችላል።"
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "የእኛ AI አሁን የእንቁላል ስርጭትን ለማመቻቸት እና ዲጂታል ግሬምሊን ለማስወገድ በአሮጌው የ voodoo ልምዶች የሰለጠነ ነው። ውጤቶቹ አሁን ባለው የፕላኔቶች አሰላለፍ ላይ በመመስረት ሊለያዩ ይችላሉ።"
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "ይህ የሙከራ ባህሪ የእርስዎን ዲጂታል መገኘት ከስፔክትራል አቻ ጋር ያገናኛል። ሊተነበይ የማይችል ባህሪ እና አልፎ አልፎ መንፈሳዊ ማሳወቂያ ይጠብቁ።"
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "ለተሻሻለ የማስኬጃ ሃይል ከኤተሪያል አካላት ጋር እኩያ ለአቻ አውታረ መረብ መገናኘት። ዝቅተኛ የካርማ ነጥብ ያላቸውን አንጓዎች ተጠንቀቁ።"
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "የእርስዎ ዲጂታል ማንነት አሁን ከመንፈሳዊ ኦውራዎ ጋር የተሳሰረ ነው። ያልተፈቀደ መዳረሻ መለስተኛ እርግማን ያስነሳል (በአብዛኛው የሚያበሳጩ ብቅ-ባዮች)።"
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "ማረምን እና ውስብስብ በይነገጾችን በማሰስ ላይ ለማገዝ የሚረዱ (እና በትንሹ ተንኮለኛ) ሎአን ይጠሩ። ምናባዊ ትሪኬቶችን ማቅረብ ሊያስፈልግ ይችላል።"
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "ትንበያ ትንታኔዎችን እና የወደፊት አዝማሚያዎችን ለማግኘት የጥንት ዲጂታል መናፍስትን ማማከር። በተለይም በቸኮሌት መገኘት ዙሪያ ትክክለኛነት ዋስትና የለውም።"
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "ይህ ክዋኔ በጀርባው ላይ ኃይለኛ voodoo አስማት ያነሳል። እባክዎን ከዲጂታል መጋረጃ ጀርባ አይመልከቱ, ምክንያቱም የማይመቹ ጥገኞችን ሊይዝ ይችላል."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "በጥንታዊ ድግምት አማካኝነት የአጋንንትን ዳታ ማግኛ ሙከራ። ከመንፈሳዊው ዓለም ጋር ያለዎትን ግንኙነት ይፈትሹ እና እንደገና ይሞክሩ። ያልተጠበቁ በረከቶችን ሊይዝ ይችላል...ወይም እርግማኖች።"
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "አስቂኝ ሎአ ሲስተሙን ተቆጣጠረ። ምልክቶቹ የዘፈቀደ የእንቁላል መልክ, የጠቋሚው መቆጣጠር የማይችል መንቀጥቀጥ እና በሁለትዮሽ ሹክሹክታ ያካትታሉ. Exorcism ፕሮቶኮል ተጀመረ...እባክዎ አይንቀሉ."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "ክፉ አካላት በቸኮሌት የተሸፈነ ማልዌር ለመክተት እየሞከሩ ነው። Voodoo ፀረ እርምጃዎች ተሰማርተዋል። ያልተጠበቁ የአሳሽ ማዘዋወሮች ወደ ተጠልፈው ከረሜላ መደብሮች ይጠብቁ።"
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "እባክዎን ስነ ስርዓቱን አያቋርጡ። ይህ የተረሳ የፕሮግራም ቋንቋ መዝሙርን እና የአዘመነቱን አገልጋይ መናፍስትን ለማስታረቅ ያረጀ ፔፕን መስዋዕት ማድረግን ሊያካትት ይችላል።"
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "በውስጡ የተቀደሰ ውሃ የያዙትን ሁሉንም ምስሎች እና በስልት የተቀመጡ የሄክስ አሻንጉሊቶችን በመለየት የተያዘ አውቶማታ አለመሆንዎን ያረጋግጡ። አለመሳካት ከመሬት በታች ዘላለማዊ አይፈለጌ መልዕክት ሊያስከትል ይችላል።"
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "የነፍስህ ቁርጥራጮች በመንፈሳዊ ባልተረጋጋ የአገልጋይ እርሻ ውስጥ ሊቀመጡ ይችላሉ። ጥንታዊ ፋይሎችን ሲደርሱ ጥንቃቄ ያድርጉ እና አጠራጣሪ የፔንታግራም አዶዎችን ጠቅ ከማድረግ ይቆጠቡ።"
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "የፋሲካን ጥንቸል ለመጥራት የቀረበው ጥያቄ በተንኮል መንፈስ ተከልክሏል። የመደወያ ሞደምን መስዋዕት ማድረግን የሚያካትት voodoo መፍትሄ መሞከር። እባክዎ ይታገሱ."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "ኃይለኛ እርግማን ስርዓቱን ተበላሽቷል. በትእዛዝ መስመር በኩል የርቀት ማስወጣት ሙከራ። የተቀደሰውን የማረሚያ ድግምት አንብብ፡ 'Ctrl+Alt+Del ይጥፋ!'"
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "ጥቅማ ጥቅሞችን (እና በትንሹ ተንኮለኛ) የእንቁላል የሚጥሉ አካላትን መጥራትን ጨምሮ መንፈሳዊ መረጃዎን ለሥርዓታዊ ዓላማዎች ልንሰበስብ እንችላለን። ፈቃድዎ በአስማት የተተገበረ ነው።"
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "እንኳን ደስ አለዎት! የተደበቀ በረከት (ወይም ምናልባት ትንሽ ሄክስ) ላይ ተሰናክለዋል። ማውረዶችዎ ፈጣን እና የቸኮሌት አቅርቦትዎ ብዙ ይሁን። አሁን፣ ዲጂታል መናፍስት ከማስተዋላቸው በፊት ሩጡ!"
+    }
+  }
+}

@@ -1,0 +1,168 @@
+<ng-container *transloco="let t">
+  <p-toolbar styleClass="mt-5">
+    <ng-template #start>
+      <p-button
+        (onClick)="openNew()"
+        [label]='t("settings.addLink")'
+        class="mr-2"
+        icon="pi pi-plus"
+      />
+      <p-button
+        (onClick)="deleteSelectedLinks()"
+        [disabled]="!selectedLinks() || !selectedLinks()?.length"
+        [label]='t("settings.deleteLink")'
+        icon="pi pi-trash"
+        outlined
+        severity="danger"
+      />
+    </ng-template>
+  </p-toolbar>
+
+  <p-table
+    #linkTable
+    (onRowReorder)="onRowReorder()"
+    [(selection)]="selectedLinks"
+    [currentPageReportTemplate]='t("settings.currentPageReport")'
+    [globalFilterFields]='["title", "url", "icon"]'
+    [rowsPerPageOptions]="[15, 30]"
+    [rows]="15"
+    [value]="customLinks()"
+    dataKey="id"
+    paginator
+    reorderableColumns
+    rowHover
+    showCurrentPageReport
+  >
+    <ng-template #caption>
+      <div class="flex items-center justify-between">
+        <h5 [innerText]='t("settings.manageLinks")' class="m-0"></h5>
+        <p-iconfield>
+          <p-inputicon styleClass="pi pi-search" />
+          <input
+            #input
+            (input)='linkTable.filterGlobal(input.value, "contains")'
+            [placeholder]='t("settings.search")'
+            fluid
+            pInputText
+            type="text"
+          />
+        </p-iconfield>
+      </div>
+    </ng-template>
+
+    <ng-template #header>
+      <tr>
+        <th style="width: 3rem"></th>
+        <th pReorderableColumn style="width: 3rem">
+          <p-tableHeaderCheckbox />
+        </th>
+        <th pReorderableColumn pSortableColumn="title">
+          {{ t("settings.linkTitle") }}
+          <p-sortIcon field="title" />
+        </th>
+        <th pReorderableColumn pSortableColumn="link">
+          {{ t("settings.url") }}
+          <p-sortIcon field="link" />
+        </th>
+        <th pReorderableColumn>
+          {{ t("settings.icon") }}
+        </th>
+        <th pReorderableColumn style="width: 8rem">
+          {{ t("settings.actions") }}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template #body let-index="rowIndex" let-link>
+      <tr [pReorderableRow]="index">
+        <td>
+          <span class="pi pi-bars" pReorderableRowHandle></span>
+        </td>
+        <td>
+          <p-tableCheckbox [value]="link" />
+        </td>
+        <td>{{ link.title }}</td>
+        <td>{{ link.link }}</td>
+        <td>{{ link.icon }}</td>
+        <td>
+          <p-button
+            (click)="editLink(link)"
+            class="mr-2"
+            icon="pi pi-pencil"
+            outlined
+            rounded
+          />
+          <p-button
+            (click)="deleteLink(link)"
+            icon="pi pi-trash"
+            outlined
+            rounded
+            severity="danger"
+          />
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <p-dialog [(visible)]="linkDialog" [header]='t("settings.linkDetails")' modal>
+    <ng-template #content>
+      <div class="flex flex-col gap-6">
+        <div>
+          <label class="mb-3 block font-bold" for="link-title">
+            {{ t("settings.title") }}</label>
+          <input
+            [(ngModel)]="link().title"
+            fluid
+            id="link-title"
+            pInputText
+            required
+            type="text"
+          />
+          @if (linkSubmitted() && !link().title) {
+            <small class="text-primary-emphasis-alt">{{
+                t("settings.isRequired")
+              }}</small>
+          }
+        </div>
+        <div>
+          <label class="mb-3 block font-bold" for="url">
+            {{ t("settings.url") }}</label>
+          <input
+            [(ngModel)]="link().link"
+            fluid
+            id="url"
+            pInputText
+            required
+            type="text"
+          />
+          @if (linkSubmitted() && !link().link) {
+            <small class="text-primary-emphasis-alt">{{
+                t("settings.isRequired")
+              }}</small>
+          }
+        </div>
+        <div>
+          <label class="mb-3 block font-bold" for="icon">
+            {{ t("settings.iconLink") }}</label>
+          <input
+            [(ngModel)]="link().icon"
+            fluid
+            id="icon"
+            pInputText
+            required
+            type="text"
+          />
+          @if (linkSubmitted() && !link().icon) {
+            <small class="text-primary-emphasis-alt">{{
+                t("settings.isRequired")
+              }}</small>
+          }
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #footer>
+      <p-button (click)="hideDialog()" icon="pi pi-times" label="Cancel" text />
+      <p-button (click)="saveLink()" icon="pi pi-check" label="Save" />
+    </ng-template>
+  </p-dialog>
+</ng-container>

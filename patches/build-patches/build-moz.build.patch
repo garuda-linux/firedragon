@@ -1,0 +1,12 @@
+diff --git a/build/moz.build b/build/moz.build
+index f7a912ec35..72a81bfca2 100644
+--- a/build/moz.build
++++ b/build/moz.build
+@@ -73,6 +73,7 @@ if CONFIG["MOZ_APP_BASENAME"]:
+         "MAR_CHANNEL_ID",
+         "MOZ_APP_REMOTINGNAME",
+         "MOZ_CRASHREPORTER_URL",
++        "FIREDRAGON_UPDATE",
+     ):
+         appini_defines[var] = CONFIG[var]
+ 

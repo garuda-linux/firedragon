@@ -1,0 +1,8 @@
+packages:
+  - '@types/gecko'
+  - lib
+  - newtab
+  - resource
+
+onlyBuiltDependencies:
+  - esbuild

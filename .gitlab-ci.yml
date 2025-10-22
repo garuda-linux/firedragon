@@ -1,0 +1,182 @@
+spec:
+  inputs:
+    edition:
+      type: array
+      default:
+        - dr460nized
+        - catppuccin
+    platform:
+      type: array
+      default:
+        - linux
+        - win32
+        - darwin
+    arch:
+      type: array
+      default:
+        - x64
+        - arm64
+    build:
+      type: boolean
+      default: true
+    appimage:
+      type: boolean
+      default: true
+
+---
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+stages:
+  - make-image
+  - make-image-latest
+  - source
+  - build
+  - appimage
+  - publish
+  - release
+
+variables:
+  MAKE_IMAGE: $CI_REGISTRY_IMAGE/make:ci-$CI_PIPELINE_ID
+
+default:
+  tags:
+    - large
+
+make-image:
+  stage: make-image
+  needs: []
+  tags:
+    - dind
+  script:
+    - docker build -f docker/make.dockerfile -t $MAKE_IMAGE .
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push $MAKE_IMAGE
+
+make-image-latest:
+  stage: make-image-latest
+  needs:
+    - job: make-image
+      artifacts: false
+  tags:
+    - dind
+  rules:
+    - if: $CI_COMMIT_TAG
+  script:
+    - docker pull $MAKE_IMAGE
+    - docker tag $MAKE_IMAGE $CI_REGISTRY_IMAGE/make:latest
+    - docker tag $MAKE_IMAGE $CI_REGISTRY_IMAGE/make:$CI_COMMIT_TAG
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker push -a $CI_REGISTRY_IMAGE/make
+
+source:
+  stage: source
+  needs:
+    - job: make-image
+      artifacts: false
+  image: $MAKE_IMAGE
+  cache:
+    - key:
+        files:
+          - pnpm-lock.yaml
+      paths:
+        - .pnpm
+  before_script:
+    - pnpm config set store-dir .pnpm
+    - pnpm i --frozen-lockfile
+  script:
+    - pnpm make source
+  artifacts:
+    paths:
+      - .dist/*.source.tar.zst
+
+build:
+  stage: build
+  needs:
+    - job: make-image
+      artifacts: false
+    - job: source
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: $[[inputs.edition]]
+        PLATFORM: $[[inputs.platform]]
+        ARCH: $[[inputs.arch]]
+  rules:
+    - if: '"$[[inputs.build]]" == "true"'
+  image: $MAKE_IMAGE
+  cache:
+    - key:
+        files:
+          - pnpm-lock.yaml
+      paths:
+        - .pnpm
+    - key: mozbuild
+      paths:
+        - .mozbuild
+  before_script:
+    - pnpm config set store-dir .pnpm
+    - pnpm i --frozen-lockfile
+    - export MOZBUILD_STATE_PATH="$PWD"/.mozbuild
+  script:
+    - pnpm make --edition=$EDITION --target=$PLATFORM-$ARCH build
+  artifacts:
+    paths:
+      - .dist/*.$PLATFORM-$ARCH.*
+
+appimage:
+  stage: appimage
+  needs:
+    - job: make-image
+      artifacts: false
+    - job: build
+      artifacts: true
+  parallel:
+    matrix:
+      - EDITION: $[[inputs.edition]]
+        PLATFORM: linux
+        ARCH: $[[inputs.arch]]
+  rules:
+    - if: '"$[[inputs.appimage]]" == "true"'
+  image: $MAKE_IMAGE
+  cache:
+    - key:
+        files:
+          - pnpm-lock.yaml
+      paths:
+        - .pnpm
+  before_script:
+    - pnpm config set store-dir .pnpm
+    - pnpm i --frozen-lockfile
+  script:
+    - pnpm make --edition=$EDITION --target=$PLATFORM-$ARCH appimage
+  artifacts:
+    paths:
+      - .dist/*.appimage-$ARCH.AppImage
+
+release:
+  stage: release
+  needs:
+    - job: source
+      artifacts: true
+    - job: build
+      artifacts: true
+    - job: appimage
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG
+  image: registry.gitlab.com/stefanwimmer128/archlinux-chaotic-paru-user:latest
+  before_script:
+    - paru -Syu --noconfirm git-cliff jq release-cli
+    - git config --global --add safe.directory "$PWD"
+  script:
+    - |
+      jq -r --arg version "$CI_COMMIT_TAG" --arg api "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/$CI_COMMIT_TAG/" --arg dist ".dist/" '.[] | "\(.basename)-\($version)\(.suffix)" | ["\($dist)\(.)", "\($api)\(.)"] | @sh' assets/artifacts.json | xargs -tL1 curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file
+    - |
+      git-cliff -c cliff.release.toml --context --current | jq --slurpfile package package.json --slurpfile artifacts assets/artifacts.json '.[0].extra = {"release": $package[0].release, "artifacts": $artifacts[0]}' | git-cliff -c cliff.release.toml --from-context - -o .dist/release.md
+    - |
+      release-cli create --tag-name "$CI_COMMIT_TAG" --name "FireDragon $CI_COMMIT_TAG" --description ".dist/release.md" \
+        --assets-link "$(jq --arg version "$CI_COMMIT_TAG" --arg api "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/$CI_COMMIT_TAG/" 'map("\(.basename)-\($version)\(.suffix)" as $filename | { "name": $filename, "url": "\($api)\($filename)", "direct_asset_path": "/\(.basename)\(.suffix)", "link_type": "package" })' assets/artifacts.json)"

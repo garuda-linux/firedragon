@@ -1,0 +1,25 @@
+<div class="grid grid-cols-12 md:p-10">
+  @for (page of pages(); track page.guid) {
+    <a
+      [href]="page.url"
+      class="col-span-6 cursor-pointer p-2 text-center lg:col-span-4 xl:col-span-2 3xl:col-span-1"
+      target="_blank"
+    >
+      <div>
+        <p-panel
+          [header]="page.title"
+          styleClass="hover:scale-105 animation duration-300 h-auto w-full min-w-0"
+        >
+          <div>
+            <img
+              style="width: 75px; height: 75px"
+              [src]="page.favicon"
+              [alt]="page.hostname"
+              class="mx-auto my-2.5"
+            />
+          </div>
+        </p-panel>
+      </div>
+    </a>
+  }
+</div>

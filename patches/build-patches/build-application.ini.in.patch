@@ -1,0 +1,14 @@
+diff --git a/build/application.ini.in b/build/application.ini.in
+index 6df13230a4..9231f4bf37 100644
+--- a/build/application.ini.in
++++ b/build/application.ini.in
+@@ -52,5 +52,9 @@ ServerURL=@MOZ_CRASHREPORTER_URL@/submit?id=@MOZ_APP_ID@&version=@MOZ_APP_VERSIO
+ 
+ #if MOZ_UPDATER
+ [AppUpdate]
++#ifdef FIREDRAGON_UPDATE
++URL=@FIREDRAGON_UPDATE@
++#else
+ URL=https://@MOZ_APPUPDATE_HOST@/update/6/%PRODUCT%/%VERSION%/%BUILD_ID%/%BUILD_TARGET%/%LOCALE%/%CHANNEL%/%OS_VERSION%/%SYSTEM_CAPABILITIES%/%DISTRIBUTION%/%DISTRIBUTION_VERSION%/update.xml
+ #endif
++#endif

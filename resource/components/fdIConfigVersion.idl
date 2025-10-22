@@ -1,0 +1,8 @@
+#include "nsISupports.idl"
+
+[scriptable, uuid(52878acb-95af-433e-9459-392787f5fb45)]
+interface fdIConfigVersion: nsISupports {
+    readonly attribute AString version;
+    readonly attribute AString lastVersion;
+    boolean compare(in AString a, in AString cmp, in AString b);
+};

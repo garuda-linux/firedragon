@@ -1,0 +1,143 @@
+diff --git a/browser/components/preferences/privacy.inc.xhtml b/browser/components/preferences/privacy.inc.xhtml
+index 28e325c938..267b151f93 100644
+--- a/browser/components/preferences/privacy.inc.xhtml
++++ b/browser/components/preferences/privacy.inc.xhtml
+@@ -57,6 +57,14 @@
+         </description>
+       </vbox>
+     </hbox>
++    <hbox id="cookieBlockerIncompatibilityWarning" class="info-box-container" hidden="true">
++      <vbox class="info-icon-container">
++        <html:img class="info-icon"></html:img>
++      </vbox>
++      <vbox flex="1">
++        <description data-l10n-id="content-blocking-cookie-blocker-incompatibility-warning"/>
++      </vbox>
++    </hbox>
+     <hbox id="fpiIncompatibilityWarning" class="info-box-container" hidden="true">
+       <vbox class="info-icon-container">
+         <html:img class="info-icon"></html:img>
+diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
+index 6b4ec7ab4e..1982dd7f87 100644
+--- a/browser/components/preferences/privacy.js
++++ b/browser/components/preferences/privacy.js
+@@ -164,6 +164,7 @@ Preferences.addAll([
+ 
+   // Cookies
+   { id: "network.cookie.cookieBehavior", type: "int" },
++  { id: "network.cookie.cookieBehavior.pbmode", type: "int" },
+   { id: "network.cookie.blockFutureCookies", type: "bool" },
+   // Content blocking category
+   { id: "browser.contentblocking.category", type: "string" },
+@@ -263,6 +264,7 @@ Preferences.addAll([
+ 
+   // Cookie Banner Handling
+   { id: "cookiebanners.ui.desktop.enabled", type: "bool" },
++  { id: "cookiebanners.service.mode", type: "int" },
+   { id: "cookiebanners.service.mode.privateBrowsing", type: "int" },
+ 
+   // DoH
+@@ -352,6 +354,12 @@ function setUpContentBlockingWarnings() {
+   document.getElementById("rfpIncompatibilityWarning").hidden =
+     !Preferences.get("privacy.resistFingerprinting").value &&
+     !Preferences.get("privacy.resistFingerprinting.pbmode").value;
++
++  document.getElementById("cookieBlockerIncompatibilityWarning").hidden =
++    Preferences.get("network.cookie.cookieBehavior").value !== 2 &&
++    Preferences.get("network.cookie.cookieBehavior.pbmode") !== 2 ||
++    Preferences.get("cookiebanners.service.mode").value === 0 &&
++    Preferences.get("cookiebanners.service.mode.privateBrowsing").value === 0;
+ }
+ 
+ function initTCPStandardSection() {
+@@ -1394,6 +1402,23 @@ var gPrivacyPane = {
+       setUpContentBlockingWarnings
+     );
+ 
++    Preferences.get("network.cookie.cookieBehavior").on(
++      "change",
++      setUpContentBlockingWarnings
++    );
++    Preferences.get("network.cookie.cookieBehavior.pbmode").on(
++      "change",
++      setUpContentBlockingWarnings
++    );
++    Preferences.get("cookiebanners.service.mode").on(
++      "change",
++      setUpContentBlockingWarnings
++    );
++    Preferences.get("cookiebanners.service.mode.privateBrowsing").on(
++      "change",
++      setUpContentBlockingWarnings
++    );
++
+     setUpContentBlockingWarnings();
+ 
+     initTCPStandardSection();
+@@ -2608,9 +2633,6 @@ var gPrivacyPane = {
+       this.writeCookieBannerMode()
+     );
+ 
+-    let preference = Preferences.get("cookiebanners.ui.desktop.enabled");
+-    preference.on("change", () => this.updateCookieBannerHandlingVisibility());
+-
+     this.updateCookieBannerHandlingVisibility();
+   },
+ 
+@@ -2648,16 +2670,7 @@ var gPrivacyPane = {
+    * the "cookiebanners.ui.desktop.enabled" pref.
+    */
+   updateCookieBannerHandlingVisibility() {
+-    let groupbox = document.getElementById("cookieBannerHandlingGroup");
+-    let isEnabled = Preferences.get("cookiebanners.ui.desktop.enabled").value;
+-
+-    // Because the top-level pane showing code unsets the hidden attribute, we
+-    // manually hide the section when cookie banner handling is preffed off.
+-    if (isEnabled) {
+-      groupbox.removeAttribute("style");
+-    } else {
+-      groupbox.setAttribute("style", "display: none !important");
+-    }
++    document.getElementById("cookieBannerHandlingGroup").hidden = true;
+   },
+ 
+   /**
+diff --git a/browser/locales/en-US/browser/preferences/preferences.ftl b/browser/locales/en-US/browser/preferences/preferences.ftl
+index 6b4ed8cb55..9f7de39e94 100644
+--- a/browser/locales/en-US/browser/preferences/preferences.ftl
++++ b/browser/locales/en-US/browser/preferences/preferences.ftl
+@@ -1290,6 +1290,7 @@ content-blocking-fpi-incompatibility-warning = You are using First Party Isolati
+ # feature that can only be enabled via about:config, and it's not exposed to
+ # standard users (e.g. via Settings).
+ content-blocking-rfp-incompatibility-warning = You’re using Resist Fingerprinting (RFP), which replaces some of { -brand-short-name }’s fingerprinting protection settings. This might cause some sites to break.
++content-blocking-cookie-blocker-incompatibility-warning = Blocking all cookies is incompatible with Cookie Banner Blocker. If you want to really block all cookies please disable the Cookie Banner Blocker in FireDragon Hub.
+ 
+ ## These strings are used to define the different levels of
+ ## Enhanced Tracking Protection.
+diff --git a/browser/themes/shared/preferences/privacy.css b/browser/themes/shared/preferences/privacy.css
+index 4d0f6c26f5..3b65a1f362 100644
+--- a/browser/themes/shared/preferences/privacy.css
++++ b/browser/themes/shared/preferences/privacy.css
+@@ -85,17 +85,20 @@
+ 
+ .privacy-detailedoption,
+ #fpiIncompatibilityWarning,
+-#rfpIncompatibilityWarning {
++#rfpIncompatibilityWarning,
++#cookieBlockerIncompatibilityWarning {
+   margin: 3px 0;
+ }
+ 
+ #fpiIncompatibilityWarning,
+-#rfpIncompatibilityWarning {
++#rfpIncompatibilityWarning,
++#cookieBlockerIncompatibilityWarning {
+   background-color: var(--section-highlight-background-color);
+ }
+ 
+ #fpiIncompatibilityWarning,
+ #rfpIncompatibilityWarning,
++#cookieBlockerIncompatibilityWarning,
+ #contentBlockingCategories {
+   margin-top: 16px;
+ }

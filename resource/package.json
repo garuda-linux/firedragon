@@ -1,0 +1,15 @@
+{
+    "name": "@firedragon13/resource",
+    "type": "module",
+    "scripts": {
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "@firedragon13/lib": "workspace:",
+        "@types/gecko": "workspace:",
+        "globby": "^15.0.0",
+        "ts-pattern": "^5.8.0",
+        "vite": "npm:rolldown-vite@^7.1.19"
+    },
+    "private": true
+}

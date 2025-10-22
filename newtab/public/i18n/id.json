@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "Cari dengan",
+    "search": "Cari"
+  },
+  "menu": {
+    "aboutUs": "Tentang kami",
+    "archWiki": "Arch Wiki",
+
+    "donate": "Donasi",
+    "forum": "Forum",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "Beranda",
+    "settings": "Pengaturan",
+    "welcome": "Selamat datang"
+  },
+  "common": {
+    "coc": "Kode Etik",
+    "gitlab": "GitLab",
+    "privacyPolicy": "Kebijakan Privasi"
+  },
+  "notFound": {
+    "subtitle": "Halaman yang Anda cari tidak ada.",
+    "title": "Halaman tidak ditemukan"
+  },
+  "imprint": {
+    "contact": "Kontak utama",
+    "furtherContact": "Metode kontak lebih lanjut",
+    "subtitle": "Informasi sesuai dengan § 5 TMG.",
+    "title": "Impresum"
+  },
+  "settings": {
+    "actions": "Tindakan",
+    "activeJoke": "Sumber untuk fakta lucu/alasan yang ditampilkan",
+    "addLink": "Tambah tautan",
+    "autoGridCols": "Atur kolom kisi secara otomatis",
+    "avatarEnabled": "Aktifkan avatar",
+    "avatarUrl": "URL Avatar",
+    "avatarUrlPlaceholder": "URL yang valid ke gambar, misalnya profil github Anda + .png",
+    "autocompleteLabel": "Penyedia pelengkapan otomatis",
+    "blurBackground": "Buramkan latar belakang",
+    "blurStrength": "Kekuatan buram wallpaper",
+    "confirm": "Konfirmasi",
+    "confirmDelete": "Anda yakin ingin menghapus tautan yang dipilih?",
+    "confirmDeleteLink": "Anda yakin ingin menghapus",
+    "confirmHeader": "Anda yakin?",
+    "confirmReset": "Anda yakin ingin mengatur ulang semua pengaturan?",
+    "confirmRestore": "Anda yakin ingin memulihkan pengaturan?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "URL CORS proxy yang valid, misalnya dari github.com/distribuyed/proxies",
+    "currentPageReport": "Menampilkan {first} hingga {last} dari {totalRecords} entri",
+    "customLinks": "Sesuaikan tautan",
+    "customLogo": "URL logo khusus",
+    "customMenu": "Sesuaikan tautan bilah menu",
+    "customTitle": "Judul halaman",
+    "customTitlePlaceholder": "Ini adalah judul yang akan ditampilkan di tab browser",
+    "customize": "Sesuaikan bagian",
+    "darkMode": "Mode gelap diaktifkan",
+    "defaultLinksLabel": "Tampilkan tautan default",
+    "deleteLink": "Hapus tautan",
+    "fitWallpaper": "Paskan wallpaper",
+    "general": "Pengaturan umum",
+    "gridCols": "Jumlah kolom kisi",
+    "icon": "Ikon",
+    "iconLink": "Tautan ikon",
+    "isRequired": "Ini adalah kolom yang wajib diisi!",
+    "jokesEnabledLabel": "Lelucon/fakta/alasan diaktifkan",
+    "linkCreated": "Tautan dibuat",
+    "linkDeleted": "Tautan dihapus",
+    "linkDetails": "Detail tautan",
+    "linkTitle": "Judul",
+    "linksDeleted": "Tautan dihapus",
+    "language": "Bahasa",
+    "linkUpdated": "Tautan diperbarui",
+    "logoLabel": "Gambar logo",
+    "logoUrlPlaceholder": "Tautan ke logo yang akan digunakan",
+    "manageLinks": "Kelola tautan",
+    "name": "Nama pengguna",
+    "namePlaceholder": "Ini adalah nama yang akan ditampilkan di sisi kiri",
+    "primeNgIcons": "Ini bisa berupa referensi ikon apa pun dari sini (klik saya)",
+    "resetSettings": "Reset halaman muka",
+    "restoreSettings": "Pulihkan pengaturan",
+    "saveSettings": "Simpan pengaturan",
+    "search": "Cari...",
+    "searchEngineLabel": "Mesin pencari untuk digunakan",
+    "searchEngineName": "Nama mesin pencari",
+    "searchEngineNamePlaceholder": "Ini adalah nama yang akan ditampilkan mesin pencari",
+    "searchEngineUrl": "URL mesin pencari",
+    "searchEngineUrlPlaceholder": "URL mesin pencari dengan %s sebagai istilah pencarian",
+    "settingsReset": "Pengaturan berhasil direset",
+    "settingsRestored": "Pengaturan berhasil dipulihkan",
+    "showNews": "Tampilkan berita Garuda",
+    "success": "Sukses",
+    "themeLabel": "Preset desain",
+    "title": "Pengaturan",
+    "url": "URL",
+    "wallpaperCustomLabel": "URL wallpaper khusus",
+    "wallpaperLabel": "Wallpaper",
+    "wallpaperCustomPlaceholder": "Berikan URL yang valid ke gambar, misalnya dari unsplash.com",
+    "welcomeText": "Pesan selamat datang",
+    "welcomeTextPlaceholder": "Pesan selamat datang untuk ditampilkan di sisi kiri"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "Your digital effigy is now being remotely influenced via secure spiritual protocols. Expect enhanced performance...or unexplained system reboots based on lunar cycles."
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "This feature is protected by advanced voodoo encryption. Attempting to bypass will result in your data being temporarily replaced with animated zombie bunnies."
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "Executing this function binds you to a digitally-enforced pact with benevolent (mostly) entities. Failure to uphold your end may result in corrupted file systems."
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "Our AI is now trained in ancient voodoo practices to optimize egg distribution and banish digital gremlins. Results may vary depending on the current planetary alignment."
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "This experimental feature links your digital presence with a spectral counterpart. Expect unpredictable behavior and the occasional ghostly notification."
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "Connecting to a peer-to-peer network of ethereal beings for enhanced processing power. Beware of nodes with low karma scores."
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "Your digital identity is now tied to your spiritual aura. Unauthorized access will trigger a mild curse (mostly just annoying pop-ups)."
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "Summon helpful (and slightly mischievous) loa to assist with debugging and navigating complex interfaces. May require offering virtual trinkets."
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "Consulting ancient digital spirits for predictive analytics and future trends. Accuracy not guaranteed, especially around chocolate availability."
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "This operation invokes powerful voodoo magic on the backend. Please do not look behind the digital curtain, as it may contain unsettling dependencies."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "Attempting demonic data retrieval via ancient incantations. Please check your connection to the spirit world and try again. May contain unexpected blessings...or curses."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "A mischievous loa has possessed the system. Symptoms include random egg appearances, uncontrollable jittering of the cursor, and whispers in binary. Exorcism protocol initiated...please do not unplug."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "Malevolent entities attempting to inject chocolate-covered malware. Voodoo countermeasures deployed. Expect unexpected browser redirects to haunted candy stores."
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "Please do not interrupt the ritual. This may involve chanting in a forgotten programming language and sacrificing stale Peeps to appease the update server spirits."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "Prove you are not a possessed automaton by identifying all images containing holy water and strategically placed hex dolls. Failure may result in eternal spam from the underworld."
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "Your soul fragments may be backed up in a spiritually unstable server farm. Proceed with caution when accessing ancient files and avoid clicking on suspicious pentagram icons."
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "The request to summon the Easter Bunny has been blocked by a mischievous spirit. Attempting a voodoo workaround involving sacrificing a dial-up modem. Please be patient."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "A powerful curse has crashed the system. Attempting a remote exorcism via command line. Please recite the sacred debugging incantation: 'Ctrl+Alt+Del be gone!'"
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "We may collect your spiritual data for ritualistic purposes, including summoning benevolent (and slightly mischievous) egg-laying entities. Your consent is magically implied."
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "Congratulations! You have stumbled upon a hidden blessing (or possibly a minor hex). May your downloads be fast and your chocolate supply plentiful. Now, run before the digital spirits notice!"
+    }
+  }
+}

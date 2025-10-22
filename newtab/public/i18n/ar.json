@@ -1,0 +1,185 @@
+{
+  "search": {
+    "placeholder": "ابحث بواسطة",
+    "search": "بحث"
+  },
+  "menu": {
+    "aboutUs": "معلومات عنا",
+    "archWiki": "Arch Wiki",
+    "donate": "تبرع",
+    "forum": "المنتدى",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "الرئيسية",
+    "settings": "الإعدادات",
+    "welcome": "مرحبا"
+  },
+  "common": {
+    "coc": "مدونة قواعد السلوك",
+    "gitlab": "GitLab",
+    "privacyPolicy": "سياسة الخصوصية"
+  },
+  "notFound": {
+    "subtitle": "الصفحة التي تبحث عنها غير موجودة.",
+    "title": "الصفحة غير موجودة"
+  },
+  "imprint": {
+    "contact": "جهة الاتصال الرئيسية",
+    "furtherContact": "طرق اتصال إضافية",
+    "subtitle": "معلومات وفقًا للمادة 5 من قانون الإعلام عن بعد (TMG).",
+    "title": "بيانات النشر"
+  },
+  "settings": {
+    "actions": "الإجراءات",
+    "activeJoke": "مصدر الحقائق/الأعذار الممتعة المعروضة",
+    "addLink": "أضف رابط",
+    "autoGridCols": "تعيين أعمدة الشبكة تلقائيًا",
+    "avatarEnabled": "تمكين الصورة الرمزية",
+    "avatarUrl": "عنوان URL للصورة الرمزية",
+    "avatarUrlPlaceholder": "عنوان URL صالح لصورة، على سبيل المثال، ملف تعريف github الخاص بك + .png",
+    "autocompleteLabel": "مزود الإكمال التلقائي",
+    "blurBackground": "تمويه الخلفية",
+    "blurStrength": "قوة تمويه الخلفية",
+    "confirm": "تأكيد",
+    "confirmDelete": "هل أنت متأكد أنك تريد حذف الروابط المحددة؟",
+    "confirmDeleteLink": "هل أنت متأكد أنك تريد حذف",
+    "confirmHeader": "هل أنت متأكد؟",
+    "confirmReset": "هل أنت متأكد أنك تريد إعادة تعيين جميع الإعدادات؟",
+    "confirmRestore": "هل أنت متأكد أنك تريد استعادة الإعدادات؟",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "عنوان URL صالح لـ CORS proxy، على سبيل المثال، من github.com/distribuyed/proxies",
+    "currentPageReport": "يتم عرض {first} إلى {last} من إجمالي {totalRecords} من الإدخالات",
+    "customLinks": "تخصيص الروابط",
+    "customLogo": "عنوان URL لشعار مخصص",
+    "customMenu": "تخصيص روابط شريط القوائم",
+    "customTitle": "عنوان الصفحة",
+    "customTitlePlaceholder": "هذا هو العنوان الذي سيظهر في علامة تبويب المتصفح",
+    "customize": "تخصيص الأقسام",
+    "darkMode": "تم تمكين الوضع الداكن",
+    "defaultLinksLabel": "إظهار الروابط الافتراضية",
+    "deleteLink": "حذف رابط",
+    "fitWallpaper": "احتواء الخلفية",
+    "general": "الإعدادات العامة",
+    "gridCols": "عدد أعمدة الشبكة",
+    "icon": "أيقونة",
+    "iconLink": "رابط الأيقونة",
+    "isRequired": "هذا حقل مطلوب!",
+    "jokesEnabledLabel": "تم تمكين النكات/الحقائق/الأعذار",
+    "linkCreated": "تم إنشاء الرابط",
+    "linkDeleted": "تم حذف الرابط",
+    "linkDetails": "تفاصيل الرابط",
+    "linkTitle": "العنوان",
+    "linksDeleted": "تم حذف الروابط",
+    "language": "اللغة",
+    "linkUpdated": "تم تحديث الرابط",
+    "logoLabel": "صورة الشعار",
+    "logoUrlPlaceholder": "رابط الشعار المراد استخدامه",
+    "manageLinks": "إدارة الروابط",
+    "name": "اسم المستخدم",
+    "namePlaceholder": "هذا هو الاسم الذي سيظهر على الجانب الأيسر",
+    "primeNgIcons": "يمكن أن يكون هذا أي مرجع أيقونة من هنا (انقر فوقي)",
+    "resetSettings": "إعادة تعيين صفحة البداية",
+    "restoreSettings": "استعادة الإعدادات",
+    "saveSettings": "حفظ الإعدادات",
+    "search": "بحث...",
+    "searchEngineLabel": "محرك البحث المراد استخدامه",
+    "searchEngineName": "اسم محرك البحث",
+    "searchEngineNamePlaceholder": "هذا هو الاسم الذي سيتم عرض محرك البحث به",
+    "searchEngineUrl": "عنوان URL لمحرك البحث",
+    "searchEngineUrlPlaceholder": "عنوان URL لمحرك البحث مع %s كمصطلح بحث",
+    "settingsReset": "تمت إعادة تعيين الإعدادات بنجاح",
+    "settingsRestored": "تم استعادة الإعدادات بنجاح",
+    "showNews": "إظهار أخبار Garuda",
+    "success": "نجاح",
+    "themeLabel": "تصميم مسبق",
+    "title": "الإعدادات",
+    "url": "URL",
+    "wallpaperCustomLabel": "عنوان URL لخلفية مخصصة",
+    "wallpaperLabel": "الخلفية",
+    "wallpaperCustomPlaceholder": "قم بتوفير عنوان URL صالح لصورة، على سبيل المثال، من unsplash.com",
+    "welcomeText": "رسالة ترحيب",
+    "welcomeTextPlaceholder": "رسالة ترحيب لعرضها على الجانب الأيسر"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "تتأثر الآن صورتك الرقمية عن بُعد عبر بروتوكولات روحية آمنة. توقع أداءً محسّنًا ... أو إعادة تشغيل النظام غير المبررة بناءً على الدورات القمرية."
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "هذه الميزة محمية بواسطة تشفير voodoo متقدم. ستؤدي محاولة تجاوز ذلك إلى استبدال بياناتك مؤقتًا بأرانب الزومبي المتحركة."
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "إن تنفيذ هذه الوظيفة يلزمك باتفاق مُنفَّذ رقميًا مع كيانات خيرة (في الغالب). قد يؤدي عدم الوفاء بالتزامك إلى تلف أنظمة الملفات."
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "يتم الآن تدريب الذكاء الاصطناعي لدينا على ممارسات voodoo القديمة لتحسين توزيع البيض وطرد عفاريت رقمية. قد تختلف النتائج اعتمادًا على المحاذاة الكوكبية الحالية."
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "تربط هذه الميزة التجريبية وجودك الرقمي بنظير طيفي. توقع سلوكًا لا يمكن التنبؤ به وإشعارًا شبحيًا عرضيًا."
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "الاتصال بشبكة نظير إلى نظير من الكائنات الأثيرية لتحسين قوة المعالجة. احذر من العقد ذات درجات الكارما المنخفضة."
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "ترتبط هويتك الرقمية الآن بهالتك الروحية. سيؤدي الوصول غير المصرح به إلى إطلاق لعنة خفيفة (معظمها مجرد نوافذ منبثقة مزعجة)."
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "استدعاء loa مفيد (وشقي قليلاً) للمساعدة في تصحيح الأخطاء والتنقل في الواجهات المعقدة. قد يتطلب تقديم الحلي الافتراضية."
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "استشارة الأرواح الرقمية القديمة للحصول على تحليلات تنبؤية واتجاهات مستقبلية. الدقة غير مضمونة، خاصة حول توافر الشوكولاتة."
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "تستدعي هذه العملية سحر voodoo قوي على الواجهة الخلفية. يرجى عدم النظر خلف الستار الرقمي، لأنه قد يحتوي على تبعيات مزعجة."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "محاولة استرجاع البيانات الشيطانية عبر التغنيات القديمة. يرجى التحقق من اتصالك بالعالم الروحي والمحاولة مرة أخرى. قد يحتوي على بركات غير متوقعة ... أو لعنات."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "استحوذ loa شقي على النظام. تشمل الأعراض ظهور البيض بشكل عشوائي ، وهزات لا يمكن السيطرة عليها للمؤشر ، وهمسات بالثنائي. تم بدء بروتوكول طرد الأرواح الشريرة ... يرجى عدم فصل الجهاز."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "كيانات حاقدة تحاول حقن برامج ضارة مغطاة بالشوكولاتة. تم نشر إجراءات voodoo المضادة. توقع إعادة توجيه غير متوقعة للمتصفح إلى متاجر الحلوى المسكونة."
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "يرجى عدم مقاطعة الطقوس. قد يتضمن ذلك الترانيم بلغة برمجة منسية والتضحية بـ Peeps القديمة لاسترضاء أرواح خادم التحديث."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "أثبت أنك لست إنسانًا آليًا مسكونًا من خلال تحديد جميع الصور التي تحتوي على الماء المقدس ودمى مسدس موضوعة بشكل استراتيجي. قد يؤدي الفشل إلى إرسال بريد عشوائي أبدي من العالم السفلي."
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "قد يتم نسخ أجزاء من روحك احتياطيًا في مزرعة خوادم غير مستقرة روحيًا. استخدم بحذر عند الوصول إلى الملفات القديمة وتجنب النقر فوق رموز النجمة الخماسية المشبوهة."
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "تم حظر طلب استدعاء أرنب عيد الفصح من قبل روح شقية. محاولة حل voodoo تتضمن التضحية بمودم الطلب الهاتفي. يرجى التحلي بالصبر."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "لقد حطمت لعنة قوية النظام. محاولة طرد الأرواح الشريرة عن بعد عبر سطر الأوامر. يرجى تلاوة ترنيمة التصحيح المقدسة: 'Ctrl + Alt + Del يكون ذهب!'."
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "قد نقوم بجمع بياناتك الروحية لأغراض طقسية، بما في ذلك استدعاء كيانات وضع البيض الخيرة (والشقية قليلاً). موافقتك ضمنية بطريقة سحرية."
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "تهانينا! لقد عثرت على نعمة خفية (أو ربما مسدس بسيط). قد تكون تنزيلاتك سريعة ويكون مخزون الشوكولاتة الخاص بك وفيرًا. الآن ، اهرب قبل أن تلاحظ الأرواح الرقمية!"
+    }
+  }
+}

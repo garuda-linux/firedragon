@@ -1,0 +1,43 @@
+ac_add_options --with-app-basename=FireDragon
+ac_add_options --with-app-name=firedragon
+ac_add_options --enable-application=browser
+
+# Branding
+ac_add_options --allow-addon-sideload
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-unverified-updates
+ac_add_options --enable-update-channel=release
+ac_add_options --with-distribution-id=org.garudalinux
+ac_add_options --with-unsigned-addon-scopes=app,system
+export MOZILLA_OFFICIAL=1
+export MOZ_APP_REMOTINGNAME=firedragon
+export MOZ_CRASHREPORTER=
+export MOZ_DATA_REPORTING=
+export MOZ_REQUIRE_SIGNING=
+mk_add_options MOZ_SERVICES_HEALTHREPORT=0
+export MOZ_TELEMETRY_REPORTING=
+
+# Features
+ac_add_options --disable-crashreporter # (Minimize telemetry)
+ac_add_options --disable-default-browser-agent
+ac_add_options --disable-parental-controls # (Disable local/OS MTIM)
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-debug
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-debug-js-modules
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-debug-symbols
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-rust-tests
+ac_add_options --disable-synth-speechd
+ac_add_options --disable-tests
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-warnings-as-errors
+ac_add_options --enable-av1
+ac_add_options --enable-jxl
+ac_add_options --enable-proxy-bypass-protection
+ac_add_options --enable-raw
+ac_add_options --enable-sandbox
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-strip
+
+# Build options
+mk_add_options MOZ_OBJDIR="$PWD/obj"
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-hardening
+ac_add_options --enable-release
+ac_add_options --enable-rust-simd
+ac_add_options --enable-wasm-simd
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-optimize

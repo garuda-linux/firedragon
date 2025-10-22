@@ -1,0 +1,9 @@
+# Features
+ac_add_options --disable-necko-wifi
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-elf-hack
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-alsa
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-pulseaudio
+
+# Build options
+ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
+ac_add_options --prefix=/usr

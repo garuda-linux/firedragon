@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "Шукати з",
+    "search": "Пошук"
+  },
+  "menu": {
+    "aboutUs": "Про нас",
+    "archWiki": "Arch Wiki",
+
+    "donate": "Пожертвувати",
+    "forum": "Форум",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "Додому",
+    "settings": "Налаштування",
+    "welcome": "Вітаємо"
+  },
+  "common": {
+    "coc": "Кодекс поведінки",
+    "gitlab": "GitLab",
+    "privacyPolicy": "Політика конфіденційності"
+  },
+  "notFound": {
+    "subtitle": "Сторінка, яку ви шукаєте, не існує.",
+    "title": "Сторінку не знайдено"
+  },
+  "imprint": {
+    "contact": "Головний контакт",
+    "furtherContact": "Інші способи зв'язку",
+    "subtitle": "Інформація згідно з § 5 TMG.",
+    "title": "Відбиток"
+  },
+  "settings": {
+    "actions": "Дії",
+    "activeJoke": "Джерело для відображених цікавих фактів/відмовок",
+    "addLink": "Додати посилання",
+    "autoGridCols": "Автоматично встановити стовпці сітки",
+    "avatarEnabled": "Увімкнути аватар",
+    "avatarUrl": "URL-адреса аватара",
+    "avatarUrlPlaceholder": "Дійсна URL-адреса до зображення, наприклад, ваш профіль github + .png",
+    "autocompleteLabel": "Постачальник автозаповнення",
+    "blurBackground": "Розмиття фону",
+    "blurStrength": "Сила розмиття шпалер",
+    "confirm": "Підтвердити",
+    "confirmDelete": "Ви впевнені, що хочете видалити вибрані посилання?",
+    "confirmDeleteLink": "Ви впевнені, що хочете видалити",
+    "confirmHeader": "Ви впевнені?",
+    "confirmReset": "Ви впевнені, що хочете скинути всі налаштування?",
+    "confirmRestore": "Ви впевнені, що хочете відновити налаштування?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "Дійсна URL-адреса проксі-сервера CORS, наприклад, з github.com/distribuyed/proxies",
+    "currentPageReport": "Показано з {first} по {last} з {totalRecords} записів",
+    "customLinks": "Налаштувати посилання",
+    "customLogo": "URL користувацького логотипу",
+    "customMenu": "Налаштувати посилання на панелі меню",
+    "customTitle": "Назва сторінки",
+    "customTitlePlaceholder": "Це назва, яка відображатиметься на вкладці браузера",
+    "customize": "Налаштувати розділи",
+    "darkMode": "Увімкнено темний режим",
+    "defaultLinksLabel": "Показати посилання за замовчуванням",
+    "deleteLink": "Видалити посилання",
+    "fitWallpaper": "Підігнати шпалери",
+    "general": "Загальні налаштування",
+    "gridCols": "Кількість стовпців сітки",
+    "icon": "Значок",
+    "iconLink": "Посилання на значок",
+    "isRequired": "Це обов'язкове поле!",
+    "jokesEnabledLabel": "Жарти/факти/виправдання ввімкнено",
+    "linkCreated": "Посилання створено",
+    "linkDeleted": "Посилання видалено",
+    "linkDetails": "Деталі посилання",
+    "linkTitle": "Назва",
+    "linksDeleted": "Посилання видалено",
+    "language": "Мова",
+    "linkUpdated": "Посилання оновлено",
+    "logoLabel": "Зображення логотипу",
+    "logoUrlPlaceholder": "Посилання на логотип для використання",
+    "manageLinks": "Керування посиланнями",
+    "name": "Ім'я користувача",
+    "namePlaceholder": "Це ім'я відображатиметься зліва",
+    "primeNgIcons": "Це може бути будь-яке посилання на значок звідси (натисніть на мене)",
+    "resetSettings": "Скинути початкову сторінку",
+    "restoreSettings": "Відновити налаштування",
+    "saveSettings": "Зберегти налаштування",
+    "search": "Пошук...",
+    "searchEngineLabel": "Пошукова система для використання",
+    "searchEngineName": "Назва пошукової системи",
+    "searchEngineNamePlaceholder": "Це назва, з якою відображатиметься пошукова система",
+    "searchEngineUrl": "URL пошукової системи",
+    "searchEngineUrlPlaceholder": "URL пошукової системи з %s як пошуковим терміном",
+    "settingsReset": "Налаштування успішно скинуто",
+    "settingsRestored": "Налаштування успішно відновлено",
+    "showNews": "Показати новини Garuda",
+    "success": "Успіх",
+    "themeLabel": "Пресети дизайну",
+    "title": "Налаштування",
+    "url": "URL",
+    "wallpaperCustomLabel": "URL користувацьких шпалер",
+    "wallpaperLabel": "Шпалери",
+    "wallpaperCustomPlaceholder": "Вкажіть дійсну URL-адресу до зображення, наприклад, з unsplash.com",
+    "welcomeText": "Привітання",
+    "welcomeTextPlaceholder": "Привітання для відображення зліва"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "Your digital effigy is now being remotely influenced via secure spiritual protocols. Expect enhanced performance...or unexplained system reboots based on lunar cycles."
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "This feature is protected by advanced voodoo encryption. Attempting to bypass will result in your data being temporarily replaced with animated zombie bunnies."
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "Executing this function binds you to a digitally-enforced pact with benevolent (mostly) entities. Failure to uphold your end may result in corrupted file systems."
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "Our AI is now trained in ancient voodoo practices to optimize egg distribution and banish digital gremlins. Results may vary depending on the current planetary alignment."
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "This experimental feature links your digital presence with a spectral counterpart. Expect unpredictable behavior and the occasional ghostly notification."
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "Connecting to a peer-to-peer network of ethereal beings for enhanced processing power. Beware of nodes with low karma scores."
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "Your digital identity is now tied to your spiritual aura. Unauthorized access will trigger a mild curse (mostly just annoying pop-ups)."
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "Summon helpful (and slightly mischievous) loa to assist with debugging and navigating complex interfaces. May require offering virtual trinkets."
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "Consulting ancient digital spirits for predictive analytics and future trends. Accuracy not guaranteed, especially around chocolate availability."
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "This operation invokes powerful voodoo magic on the backend. Please do not look behind the digital curtain, as it may contain unsettling dependencies."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "Attempting demonic data retrieval via ancient incantations. Please check your connection to the spirit world and try again. May contain unexpected blessings...or curses."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "A mischievous loa has possessed the system. Symptoms include random egg appearances, uncontrollable jittering of the cursor, and whispers in binary. Exorcism protocol initiated...please do not unplug."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "Malevolent entities attempting to inject chocolate-covered malware. Voodoo countermeasures deployed. Expect unexpected browser redirects to haunted candy stores."
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "Please do not interrupt the ritual. This may involve chanting in a forgotten programming language and sacrificing stale Peeps to appease the update server spirits."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "Prove you are not a possessed automaton by identifying all images containing holy water and strategically placed hex dolls. Failure may result in eternal spam from the underworld."
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "Your soul fragments may be backed up in a spiritually unstable server farm. Proceed with caution when accessing ancient files and avoid clicking on suspicious pentagram icons."
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "The request to summon the Easter Bunny has been blocked by a mischievous spirit. Attempting a voodoo workaround involving sacrificing a dial-up modem. Please be patient."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "A powerful curse has crashed the system. Attempting a remote exorcism via command line. Please recite the sacred debugging incantation: 'Ctrl+Alt+Del be gone!'"
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "We may collect your spiritual data for ritualistic purposes, including summoning benevolent (and slightly mischievous) egg-laying entities. Your consent is magically implied."
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "Congratulations! You have stumbled upon a hidden blessing (or possibly a minor hex). May your downloads be fast and your chocolate supply plentiful. Now, run before the digital spirits notice!"
+    }
+  }
+}

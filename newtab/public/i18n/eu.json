@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "Bilatu honekin",
+    "search": "Bilatu"
+  },
+  "menu": {
+    "aboutUs": "Guri buruz",
+    "archWiki": "Arch Wiki",
+
+    "donate": "Dohaintza egin",
+    "forum": "Foroa",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "Etxea",
+    "settings": "Ezarpenak",
+    "welcome": "Ongi etorri"
+  },
+  "common": {
+    "coc": "Jokabide Kodea",
+    "gitlab": "GitLab",
+    "privacyPolicy": "Pribatutasun Politika"
+  },
+  "notFound": {
+    "subtitle": "Bilatzen ari zaren orria ez da existitzen.",
+    "title": "Orria ez da aurkitu"
+  },
+  "imprint": {
+    "contact": "Harremanetarako nagusia",
+    "furtherContact": "Harremanetarako beste metodo batzuk",
+    "subtitle": "Informazioa § 5 TMGren arabera.",
+    "title": "Inprimatu"
+  },
+  "settings": {
+    "actions": "Ekintzak",
+    "activeJoke": "Bistaratzeko datu dibertigarrien/aitzakien iturria",
+    "addLink": "Esteka gehitu",
+    "autoGridCols": "Ezarri automatikoki sareta-zutabeak",
+    "avatarEnabled": "Gaitu avatarra",
+    "avatarUrl": "Avatar URL",
+    "avatarUrlPlaceholder": "Irudi baterako baliozko URL bat, adibidez, zure github profila + .png",
+    "autocompleteLabel": "Autokonpletatze hornitzailea",
+    "blurBackground": "Lausotu atzeko planoa",
+    "blurStrength": "Horma-paperaren lausotze indarra",
+    "confirm": "Baieztatu",
+    "confirmDelete": "Ziur zaude hautatutako estekak ezabatu nahi dituzula?",
+    "confirmDeleteLink": "Ziur zaude ezabatu nahi duzula",
+    "confirmHeader": "Ziur zaude?",
+    "confirmReset": "Ziur zaude ezarpen guztiak berrezarri nahi dituzula?",
+    "confirmRestore": "Ziur zaude ezarpenak berrezarri nahi dituzula?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "Baliozko CORS proxy URL bat, adibidez, github.com/distribuyed/proxies-etik",
+    "currentPageReport": "{first}tik {last}ra erakusten {totalRecords} sarrera",
+    "customLinks": "Pertsonalizatu estekak",
+    "customLogo": "Logotipoaren URL pertsonalizatua",
+    "customMenu": "Pertsonalizatu menuko barrako estekak",
+    "customTitle": "Orriaren izenburua",
+    "customTitlePlaceholder": "Hau da arakatzailearen fitxan bistaratuko den izenburua",
+    "customize": "Pertsonalizatu atalak",
+    "darkMode": "Modu iluna gaituta",
+    "defaultLinksLabel": "Erakutsi lehenetsitako estekak",
+    "deleteLink": "Esteka ezabatu",
+    "fitWallpaper": "Egokitu horma-papera",
+    "general": "Ezarpen orokorrak",
+    "gridCols": "Sareta-zutabe kopurua",
+    "icon": "Ikonoa",
+    "iconLink": "Ikonoaren esteka",
+    "isRequired": "Hau derrigorrezko eremua da!",
+    "jokesEnabledLabel": "Txisteak/egitateak/aitzakiak gaituta",
+    "linkCreated": "Esteka sortuta",
+    "linkDeleted": "Esteka ezabatuta",
+    "linkDetails": "Estekaren xehetasunak",
+    "linkTitle": "Izenburua",
+    "linksDeleted": "Estekak ezabatuta",
+    "language": "Hizkuntza",
+    "linkUpdated": "Esteka eguneratuta",
+    "logoLabel": "Logotipoaren irudia",
+    "logoUrlPlaceholder": "Erabiltzeko logotipoaren esteka",
+    "manageLinks": "Estekak kudeatu",
+    "name": "Erabiltzaile izena",
+    "namePlaceholder": "Hau da ezkerreko aldean bistaratuko den izena",
+    "primeNgIcons": "Hau edozein ikono-erreferentzia izan daiteke hemendik (klikatu ni)",
+    "resetSettings": "Berrezarri hasiera orria",
+    "restoreSettings": "Berrezarri ezarpenak",
+    "saveSettings": "Gorde ezarpenak",
+    "search": "Bilatu...",
+    "searchEngineLabel": "Erabiltzeko bilatzailea",
+    "searchEngineName": "Bilatzailearen izena",
+    "searchEngineNamePlaceholder": "Hau da bilatzailea bistaratuko den izena",
+    "searchEngineUrl": "Bilatzailearen URL",
+    "searchEngineUrlPlaceholder": "Bilatzailearen URL %s bilaketa-termino gisa",
+    "settingsReset": "Ezarpenak ongi berrezarri dira",
+    "settingsRestored": "Ezarpenak ongi berrezarri dira",
+    "showNews": "Erakutsi Garudaren berriak",
+    "success": "Arrakasta",
+    "themeLabel": "Diseinu aurrezarpena",
+    "title": "Ezarpenak",
+    "url": "URL",
+    "wallpaperCustomLabel": "Horma-paperaren URL pertsonalizatua",
+    "wallpaperLabel": "Horma-papera",
+    "wallpaperCustomPlaceholder": "Eman irudi baterako baliozko URL bat, adibidez, unsplash.com-etik",
+    "welcomeText": "Ongietorri mezua",
+    "welcomeTextPlaceholder": "Ezkerreko aldean erakusteko ongietorri mezua"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO ZERBITZU GISA (VaaS)",
+      "content": "Zure irudi digitala urrunetik eragiten ari da protokolo espiritual seguruen bidez. Espero errendimendu hobetua... edo sistema berrabiarazte azaldu ezinak ilargi-zikloetan oinarrituta."
+    },
+    "easterEgg2": {
+      "title": "HEXES KRIPTOGRAFIKOAK",
+      "content": "Funtzio hau voodoo enkriptazio aurreratu batek babesten du. Saihesten saiatzeak zure datuak aldi baterako ordezkatuko ditu zonbi untxi animatuekin."
+    },
+    "easterEgg3": {
+      "title": "IZPIRITUEKIN KONTRATU ADIMENDUNA",
+      "content": "Funtzio hau exekutatzeak onginahizko (gehienetan) entitateekin digitalki betearazitako itun batera lotzen zaitu. Zure zatia betetzen ez baduzu, fitxategi-sistema hondatuak eragin ditzake."
+    },
+    "easterEgg4": {
+      "title": "ERRITUAL ALGORITMIKOAK",
+      "content": "Gure AI voodoo praktika zaharretan trebatuta dago orain arrautza-banaketa optimizatzeko eta gremlin digitalak uxatzeko. Emaitzak alda daitezke planetaren egungo lerrokatzearen arabera."
+    },
+    "easterEgg5": {
+      "title": "ALIMENAKO ENTZIKLAPEN KUANTIKOA",
+      "content": "Funtzio esperimental honek zure presentzia digitala kontrako espektro batekin lotzen du. Espero ezusteko portaera eta noizbehinka jakinarazpen mamu bat."
+    },
+    "easterEgg6": {
+      "title": "IZPIRITUEN SARE DESZENTRALIZATUA (DSN)",
+      "content": "Konektatu izaki etereoen peer-to-peer sare batera, prozesatzeko ahalmena hobetzeko. Kontuz karma puntuazio baxuak dituzten nodoekin."
+    },
+    "easterEgg7": {
+      "title": "VOODOO AUTENTIFIKAZIO BIOMETRIKOA",
+      "content": "Zure identitate digitala zure aura espiritualari lotuta dago orain. Baimenik gabeko sarbideak madarikazio arin bat eragingo du (gehienetan pop-up gogaikarriak)."
+    },
+    "easterEgg8": {
+      "title": "ERREALITATE AREAGOTUKO IZPIRITUEN GIDAK",
+      "content": "Deitu lagungarri (eta apur bat bihurri) loa interfaze konplexuak arazten eta nabigatzen laguntzeko. Baliteke bitxikeria birtualak eskaintzea eskatzea."
+    },
+    "easterEgg9": {
+      "title": "IKASKUNTZA AUTOMATIKOKO ORACLES",
+      "content": "Kontsultatu antzinako izpiritu digitalekin iragarpen analitikoetarako eta etorkizuneko joeretarako. Zehaztasuna ez dago bermatuta, batez ere txokolatearen erabilgarritasunaren inguruan."
+    },
+    "easterEgg10": {
+      "title": "ZERBITZARIAREN ALDEKO AZTIKERIA",
+      "content": "Eragiketa honek voodoo magia indartsua eragiten du backend-ean. Mesedez, ez begiratu gortina digitalaren atzean, mendekotasun kezkagarriak izan ditzakeelako."
+    },
+    "easterEgg11": {
+      "title": "404 ERROREA: ARIMARIK EZ DA AURKITU",
+      "content": "Datu deabruzkoen berreskuratzea antzinako inkantazioen bidez saiatzen. Mesedez, egiaztatu izpirituen munduarekin duzun konexioa eta saiatu berriro. Unerarik gabeko bedeinkapenak...edo madarikazioak izan ditzake."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "Loa bihurri batek sistema bereganatu du. Sintomak arrautza-agerraldi aleatorioak, kurtsorearen dardara kontrolaezina eta bitarreko xuxurlak dira. Exorzismo protokoloa hasi da... mesedez, ez deskonektatu."
+    },
+    "easterEgg13": {
+      "title": "SU-MURRUA HAUTSI!",
+      "content": "Entitate gaiztoak txokolatez estalitako malwarea injektatzen saiatzen. Voodoo kontrako neurriak zabaldu dira. Espero arakatzailearen ustekabeko birbideratzeak gozoki denda sorginduetara."
+    },
+    "easterEgg14": {
+      "title": "DEABRUAK EGUNERATZEN...",
+      "content": "Mesedez, ez eten errituala. Honek ahaztutako programazio-hizkuntza batean kantatzea eta Peeps zaharkituak sakrifikatzea eska dezake, eguneratze-zerbitzariaren izpirituak baretzeko."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA ERRONKA",
+      "content": "Frogatu ez zarela automatikoki jabetutako bat, ur bedeinkatua duten irudi guztiak eta estrategikoki kokatutako hex panpinak identifikatuz. Huts egiteak betiko spam-a eragin dezake azpimundutik."
+    },
+    "easterEgg16": {
+      "title": "LAINOKO BILTEGIRATZE ABISUA",
+      "content": "Zure arimaren zatiak espirituki ezegonkorra den zerbitzari-ustiategi batean babeskopia egin daitezke. Kontuz ibili fitxategi zaharrak atzitzean eta saihestu pentagrama ikono susmagarrietan klik egitea."
+    },
+    "easterEgg17": {
+      "title": "API DEIAK HUTS EGIN DU",
+      "content": "Aste Santuko untxia deitzeko eskaera izpiritu bihurri batek blokeatu du. Telefono bidezko modema sakrifikatzea dakarten voodoo konponbidea saiatzen. Mesedez, izan pazientzia."
+    },
+    "easterEgg18": {
+      "title": "IKARA-PANTALLA URDINA",
+      "content": "Madarikazio indartsu batek sistema erori du. Urruneko exorzismo bat komando-lerroaren bidez saiatzen. Mesedez, errezitatu arazketa-inkantazio sakratua: 'Ctrl+Alt+Del desagertu dadila!'."
+    },
+    "easterEgg19": {
+      "title": "PRIBATUTASUN POLITIKAREN EGUNERATZEA",
+      "content": "Zure datu espiritualak bil ditzakegu errituzko helburuetarako, arrautzak jartzen dituzten entitate onberak (eta apur bat bihurriak) deitzea barne. Zure baimena magikoki inplizitua da."
+    },
+    "easterEgg20": {
+      "title": "Aste Santuko ARRAUTZA DETEKTATU DA!",
+      "content": "Zorionak! Ezkutuko bedeinkapen batekin (edo agian hex txiki batekin) egin duzu topo. Zure deskargak azkarrak izan daitezela eta zure txokolate-hornidura ugaria izan dadila. Orain, korrika egin izpiritu digitalak ohartu baino lehen!"
+    }
+  }
+}

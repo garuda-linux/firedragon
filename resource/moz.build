@@ -1,0 +1,9 @@
+JAR_MANIFESTS += ["dist/jar.mn"]
+
+XPCOM_MANIFESTS += ["components.conf"]
+
+XPIDL_SOURCES += [
+    "components/fdIConfigVersion.idl",
+]
+
+XPIDL_MODULE = "firedragon"

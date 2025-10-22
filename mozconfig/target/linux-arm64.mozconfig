@@ -1,0 +1,4 @@
+. "$topsrcdir/browser/firedragon/mozconfig/target/linux.mozconfig"
+
+# Build options
+ac_add_options --target=aarch64-linux-gnu

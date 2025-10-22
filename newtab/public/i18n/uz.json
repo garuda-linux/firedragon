@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "Qidirish:",
+    "search": "Qidirish"
+  },
+  "menu": {
+    "aboutUs": "Biz haqimizda",
+    "archWiki": "Arch Wiki",
+
+    "donate": "Ehson qiling",
+    "forum": "Forum",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "Bosh sahifa",
+    "settings": "Sozlamalar",
+    "welcome": "Xush kelibsiz"
+  },
+  "common": {
+    "coc": "Axloq Kodeksi",
+    "gitlab": "GitLab",
+    "privacyPolicy": "Maxfiylik Siyosati"
+  },
+  "notFound": {
+    "subtitle": "Siz qidirayotgan sahifa mavjud emas.",
+    "title": "Sahifa topilmadi"
+  },
+  "imprint": {
+    "contact": "Asosiy aloqa",
+    "furtherContact": "Qo'shimcha aloqa usullari",
+    "subtitle": "§ 5 TMGga muvofiq ma'lumot.",
+    "title": "Imprint"
+  },
+  "settings": {
+    "actions": "Harakatlar",
+    "activeJoke": "Ko'rsatilgan qiziqarli faktlar/bahonalar uchun manba",
+    "addLink": "Havola qo'shish",
+    "autoGridCols": "Panjara ustunlarini avtomatik tarzda o'rnatish",
+    "avatarEnabled": "Avatarni yoqish",
+    "avatarUrl": "Avatar URL'i",
+    "avatarUrlPlaceholder": "Rasmga yaroqli URL, masalan, github profilingiz + .png",
+    "autocompleteLabel": "Avtomatik to'ldirish provayderi",
+    "blurBackground": "Fonni xiralashtirish",
+    "blurStrength": "Fon rasmining xiralik kuchi",
+    "confirm": "Tasdiqlash",
+    "confirmDelete": "Tanlangan havolalarni o'chirishni xohlaysizmi?",
+    "confirmDeleteLink": "O'chirishni xohlaysizmi",
+    "confirmHeader": "Ishonchingiz komilmi?",
+    "confirmReset": "Barcha sozlamalarni tiklashni xohlaysizmi?",
+    "confirmRestore": "Sozlamalarni tiklashni xohlaysizmi?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "Yaroqli CORS proksi URL manzili, masalan, github.com/distribuyed/proxies",
+    "currentPageReport": "{totalRecords} yozuvdan {first} dan {last} gachasi ko'rsatilmoqda",
+    "customLinks": "Havolalarni sozlash",
+    "customLogo": "Maxsus logotip URL",
+    "customMenu": "Menyu satri havolalarini sozlash",
+    "customTitle": "Sahifa sarlavhasi",
+    "customTitlePlaceholder": "Bu brauzer yorlig'ida ko'rsatiladigan sarlavha",
+    "customize": "Bo'limlarni sozlash",
+    "darkMode": "Qorong'u rejim yoqilgan",
+    "defaultLinksLabel": "Odatiy havolalarni ko'rsatish",
+    "deleteLink": "Havolani o'chirish",
+    "fitWallpaper": "Fon rasmini moslash",
+    "general": "Umumiy sozlamalar",
+    "gridCols": "Panjara ustunlarining soni",
+    "icon": "Belgi",
+    "iconLink": "Belgi havolasi",
+    "isRequired": "Bu majburiy maydon!",
+    "jokesEnabledLabel": "Hazillar/faktlar/bahonalar yoqilgan",
+    "linkCreated": "Havola yaratildi",
+    "linkDeleted": "Havola o'chirildi",
+    "linkDetails": "Havola tafsilotlari",
+    "linkTitle": "Sarlavha",
+    "linksDeleted": "Havolalar o'chirildi",
+    "language": "Til",
+    "linkUpdated": "Havola yangilandi",
+    "logoLabel": "Logotip tasviri",
+    "logoUrlPlaceholder": "Foydalanish uchun logotipga havola",
+    "manageLinks": "Havolalarni boshqarish",
+    "name": "Foydalanuvchi nomi",
+    "namePlaceholder": "Bu chap tomonda ko'rsatiladigan ism",
+    "primeNgIcons": "Bu yerdan har qanday belgi moslamasi bo'lishi mumkin (meni bosing)",
+    "resetSettings": "Bosh sahifani tiklash",
+    "restoreSettings": "Sozlamalarni tiklash",
+    "saveSettings": "Sozlamalarni saqlash",
+    "search": "Qidiruv...",
+    "searchEngineLabel": "Foydalanish uchun qidiruv tizimi",
+    "searchEngineName": "Qidiruv tizimining nomi",
+    "searchEngineNamePlaceholder": "Bu qidiruv tizimi bilan ko'rsatiladigan nom",
+    "searchEngineUrl": "Qidiruv tizimi URL'i",
+    "searchEngineUrlPlaceholder": "Qidiruv so'zi sifatida %s bilan qidiruv tizimining URL'i",
+    "settingsReset": "Sozlamalar muvaffaqiyatli tiklandi",
+    "settingsRestored": "Sozlamalar muvaffaqiyatli tiklandi",
+    "showNews": "Garuda yangiliklarini ko'rsatish",
+    "success": "Muvaffaqiyatli",
+    "themeLabel": "Dizayn preseti",
+    "title": "Sozlamalar",
+    "url": "URL",
+    "wallpaperCustomLabel": "Maxsus fon rasmi URL'i",
+    "wallpaperLabel": "Fon rasmi",
+    "wallpaperCustomPlaceholder": "Rasmga yaroqli URLni taqdim eting, masalan, unsplash.com saytidan",
+    "welcomeText": "Xush kelibsiz xabari",
+    "welcomeTextPlaceholder": "Chap tomonda ko'rsatish uchun xush kelibsiz xabari"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "Your digital effigy is now being remotely influenced via secure spiritual protocols. Expect enhanced performance...or unexplained system reboots based on lunar cycles."
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "This feature is protected by advanced voodoo encryption. Attempting to bypass will result in your data being temporarily replaced with animated zombie bunnies."
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "Executing this function binds you to a digitally-enforced pact with benevolent (mostly) entities. Failure to uphold your end may result in corrupted file systems."
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "Our AI is now trained in ancient voodoo practices to optimize egg distribution and banish digital gremlins. Results may vary depending on the current planetary alignment."
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "This experimental feature links your digital presence with a spectral counterpart. Expect unpredictable behavior and the occasional ghostly notification."
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "Connecting to a peer-to-peer network of ethereal beings for enhanced processing power. Beware of nodes with low karma scores."
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "Your digital identity is now tied to your spiritual aura. Unauthorized access will trigger a mild curse (mostly just annoying pop-ups)."
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "Summon helpful (and slightly mischievous) loa to assist with debugging and navigating complex interfaces. May require offering virtual trinkets."
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "Consulting ancient digital spirits for predictive analytics and future trends. Accuracy not guaranteed, especially around chocolate availability."
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "This operation invokes powerful voodoo magic on the backend. Please do not look behind the digital curtain, as it may contain unsettling dependencies."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "Attempting demonic data retrieval via ancient incantations. Please check your connection to the spirit world and try again. May contain unexpected blessings...or curses."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "A mischievous loa has possessed the system. Symptoms include random egg appearances, uncontrollable jittering of the cursor, and whispers in binary. Exorcism protocol initiated...please do not unplug."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "Malevolent entities attempting to inject chocolate-covered malware. Voodoo countermeasures deployed. Expect unexpected browser redirects to haunted candy stores."
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "Please do not interrupt the ritual. This may involve chanting in a forgotten programming language and sacrificing stale Peeps to appease the update server spirits."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "Prove you are not a possessed automaton by identifying all images containing holy water and strategically placed hex dolls. Failure may result in eternal spam from the underworld."
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "Your soul fragments may be backed up in a spiritually unstable server farm. Proceed with caution when accessing ancient files and avoid clicking on suspicious pentagram icons."
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "The request to summon the Easter Bunny has been blocked by a mischievous spirit. Attempting a voodoo workaround involving sacrificing a dial-up modem. Please be patient."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "A powerful curse has crashed the system. Attempting a remote exorcism via command line. Please recite the sacred debugging incantation: 'Ctrl+Alt+Del be gone!'"
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "We may collect your spiritual data for ritualistic purposes, including summoning benevolent (and slightly mischievous) egg-laying entities. Your consent is magically implied."
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "Congratulations! You have stumbled upon a hidden blessing (or possibly a minor hex). May your downloads be fast and your chocolate supply plentiful. Now, run before the digital spirits notice!"
+    }
+  }
+}

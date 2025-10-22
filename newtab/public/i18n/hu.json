@@ -1,0 +1,186 @@
+{
+  "search": {
+    "placeholder": "Keresés a következővel:",
+    "search": "Keresés"
+  },
+  "menu": {
+    "aboutUs": "Rólunk",
+    "archWiki": "Arch Wiki",
+
+    "donate": "Adomány",
+    "forum": "Fórum",
+    "garudaWiki": "Garuda Wiki",
+    "gitlab": "GitLab",
+    "home": "Főoldal",
+    "settings": "Beállítások",
+    "welcome": "Üdvözöljük"
+  },
+  "common": {
+    "coc": "Magatartási kódex",
+    "gitlab": "GitLab",
+    "privacyPolicy": "Adatvédelmi irányelvek"
+  },
+  "notFound": {
+    "subtitle": "A keresett oldal nem létezik.",
+    "title": "Az oldal nem található"
+  },
+  "imprint": {
+    "contact": "Fő kapcsolat",
+    "furtherContact": "További kapcsolattartási módok",
+    "subtitle": "Információk a § 5 TMG szerint.",
+    "title": "Impresszum"
+  },
+  "settings": {
+    "actions": "Műveletek",
+    "activeJoke": "A megjelenített vicces tények/kifogások forrása",
+    "addLink": "Link hozzáadása",
+    "autoGridCols": "Rácsoszlopok automatikus beállítása",
+    "avatarEnabled": "Avatar engedélyezése",
+    "avatarUrl": "Avatar URL",
+    "avatarUrlPlaceholder": "Egy képhez tartozó érvényes URL, pl. a github profilod + .png",
+    "autocompleteLabel": "Automatikus kiegészítés szolgáltatója",
+    "blurBackground": "Háttér elmosása",
+    "blurStrength": "A háttérkép elmosásának erőssége",
+    "confirm": "Megerősítés",
+    "confirmDelete": "Biztosan törölni szeretnéd a kiválasztott hivatkozásokat?",
+    "confirmDeleteLink": "Biztosan törölni szeretnéd a következőt:",
+    "confirmHeader": "Biztos vagy benne?",
+    "confirmReset": "Biztosan vissza szeretnéd állítani az összes beállítást?",
+    "confirmRestore": "Biztosan vissza szeretnéd állítani a beállításokat?",
+    "corsProxyLabel": "CORS proxy",
+    "corsProxyPlaceholder": "Érvényes CORS proxy URL, pl. a github.com/distribuyed/proxies oldalról",
+    "currentPageReport": "{first} - {last} bejegyzés megjelenítése a {totalRecords} bejegyzésből",
+    "customLinks": "Linkek testreszabása",
+    "customLogo": "Egyéni logó URL",
+    "customMenu": "Menüsor linkjeinek testreszabása",
+    "customTitle": "Oldal címe",
+    "customTitlePlaceholder": "Ez a cím fog megjelenni a böngésző fülön",
+    "customize": "Szekciók testreszabása",
+    "darkMode": "Sötét mód engedélyezve",
+    "defaultLinksLabel": "Alapértelmezett linkek megjelenítése",
+    "deleteLink": "Link törlése",
+    "fitWallpaper": "Háttérkép illesztése",
+    "general": "Általános beállítások",
+    "gridCols": "Rácsoszlopok száma",
+    "icon": "Ikon",
+    "iconLink": "Ikon link",
+    "isRequired": "Ez egy kötelező mező!",
+    "jokesEnabledLabel": "Vicc/tény/kifogás engedélyezve",
+    "linkCreated": "Link létrehozva",
+    "linkDeleted": "Link törölve",
+    "linkDetails": "Link részletei",
+    "linkTitle": "Cím",
+    "linksDeleted": "Linkek törölve",
+    "language": "Nyelv",
+    "linkUpdated": "Link frissítve",
+    "logoLabel": "Logó kép",
+    "logoUrlPlaceholder": "A használni kívánt logó linkje",
+    "manageLinks": "Linkek kezelése",
+    "name": "Felhasználónév",
+    "namePlaceholder": "Ez a név fog megjelenni a bal oldalon",
+    "primeNgIcons": "Ez bármelyik ikonhivatkozás lehet innen (kattints rám)",
+    "resetSettings": "Kezdőlap visszaállítása",
+    "restoreSettings": "Beállítások visszaállítása",
+    "saveSettings": "Beállítások mentése",
+    "search": "Keresés...",
+    "searchEngineLabel": "Használandó keresőmotor",
+    "searchEngineName": "Keresőmotor neve",
+    "searchEngineNamePlaceholder": "Ez a név, amellyel a keresőmotor megjelenik",
+    "searchEngineUrl": "Keresőmotor URL",
+    "searchEngineUrlPlaceholder": "A keresőmotor URL-je %s keresési kifejezéssel",
+    "settingsReset": "A beállítások sikeresen visszaállítva",
+    "settingsRestored": "A beállítások sikeresen visszaállítva",
+    "showNews": "Garuda hírek mutatása",
+    "success": "Siker",
+    "themeLabel": "Témabeállítás",
+    "title": "Beállítások",
+    "url": "URL",
+    "wallpaperCustomLabel": "Egyéni háttérkép URL",
+    "wallpaperLabel": "Háttérkép",
+    "wallpaperCustomPlaceholder": "Adj meg egy érvényes URL-t egy képhez, pl. az unsplash.com oldalról",
+    "welcomeText": "Köszöntő üzenet",
+    "welcomeTextPlaceholder": "A bal oldalon megjelenítendő köszöntő üzenet"
+  },
+  "easterEggs": {
+    "easterEgg1": {
+      "title": "VOODOO AS A SERVICE (VaaS)",
+      "content": "A digitális képmásodat most biztonságos spirituális protokollokon keresztül távolról befolyásolják. Javított teljesítményre számíthatsz... vagy megmagyarázhatatlan rendszer újraindításokra a holdciklusok alapján."
+    },
+    "easterEgg2": {
+      "title": "CRYPTOGRAPHIC HEXES",
+      "content": "Ezt a funkciót fejlett voodoo titkosítás védi. A megkerülésére tett kísérlet azt eredményezi, hogy az adataidat átmenetileg animált zombi nyuszikra cserélik."
+    },
+    "easterEgg3": {
+      "title": "SMART CONTRACT WITH SPIRITS",
+      "content": "Ennek a funkciónak a végrehajtása digitálisan érvényesített egyezségbe von be jótékony (többnyire) entitásokkal. A te részed megtartásának elmulasztása sérült fájlrendszereket eredményezhet."
+    },
+    "easterEgg4": {
+      "title": "ALGORITHMIC RITUALS",
+      "content": "A MI most ősi voodoo gyakorlatokban van kiképezve, hogy optimalizálja a tojáselosztást és száműzze a digitális gremlineket. Az eredmények a jelenlegi bolygóegyüttállástól függően változhatnak."
+    },
+    "easterEgg5": {
+      "title": "QUANTUM ENTANGLEMENT OF SOULS",
+      "content": "Ez a kísérleti funkció összekapcsolja a digitális jelenlétedet egy spektrális megfelelővel. Számíts előrejelezhetetlen viselkedésre és alkalmi szellemszerű értesítésre."
+    },
+    "easterEgg6": {
+      "title": "DECENTRALIZED SPIRIT NETWORK (DSN)",
+      "content": "Csatlakozás egy éteri lények közötti peer-to-peer hálózathoz a megnövelt feldolgozási teljesítmény érdekében. Óvakodj az alacsony karma pontszámmal rendelkező csomópontoktól."
+    },
+    "easterEgg7": {
+      "title": "BIOMETRIC VOODOO AUTHENTICATION",
+      "content": "A digitális identitásod most a spirituális aurádhoz van kötve. A jogosulatlan hozzáférés enyhe átkot vált ki (többnyire csak idegesítő felugró ablakokat)."
+    },
+    "easterEgg8": {
+      "title": "AUGMENTED REALITY SPIRIT GUIDES",
+      "content": "Idézz meg segítőkész (és enyhén huncut) loa-kat, hogy segítsenek a hibakeresésben és a komplex interfészeken való navigálásban. Virtuális csecsebecsék felajánlására lehet szükség."
+    },
+    "easterEgg9": {
+      "title": "MACHINE LEARNING ORACLES",
+      "content": "Konzultálj ősi digitális szellemekkel a prediktív analitikák és a jövőbeli trendek érdekében. A pontosság nem garantált, különösen a csokoládé elérhetősége körül."
+    },
+    "easterEgg10": {
+      "title": "SERVER-SIDE SORCERY",
+      "content": "Ez a művelet hatalmas voodoo varázslatot hív elő a backend-en. Kérlek, ne nézz a digitális függöny mögé, mert nyugtalanító függőségeket tartalmazhat."
+    },
+    "easterEgg11": {
+      "title": "404 ERROR: SOUL NOT FOUND",
+      "content": "Démoni adatok visszakeresésének kísérlete ősi varázsigékkel. Kérlek, ellenőrizd a kapcsolatodat a szellemvilággal, és próbáld újra. Váratlan áldásokat... vagy átkokat tartalmazhat."
+    },
+    "easterEgg12": {
+      "title": "KERNEL PANIC!",
+      "content": "Egy huncut loa megszállta a rendszert. A tünetek közé tartoznak a véletlenszerű tojás megjelenések, a kurzor irányíthatatlan rángatózása és a bináris suttogások. Exorcizmus protokoll elindítva... kérlek, ne húzd ki."
+    },
+    "easterEgg13": {
+      "title": "FIREWALL BREACHED!",
+      "content": "Rosszindulatú entitások csokoládéval bevont malware-t próbálnak injektálni. Voodoo ellenintézkedések bevetve. Számíts váratlan böngésző átirányításokra kísértetjárta cukorkaboltokba."
+    },
+    "easterEgg14": {
+      "title": "UPDATING DEMONS...",
+      "content": "Kérlek, ne szakítsd meg a rituálét. Ez magában foglalhatja egy elfeledett programozási nyelven való kántálást és a frissítőszerver szellemeinek lecsillapítására szolgáló állott Peeps feláldozását."
+    },
+    "easterEgg15": {
+      "title": "CAPTCHA CHALLENGE",
+      "content": "Bizonyítsd be, hogy nem vagy megszállt automatizált robot azáltal, hogy azonosítod az összes képet, amely szenteltvizet és stratégiailag elhelyezett hex babákat tartalmaz. A sikertelenség a túlvilágról származó örök spameket eredményezhet."
+    },
+    "easterEgg16": {
+      "title": "CLOUD STORAGE WARNING",
+      "content": "A lélekdarabkáidat egy spirituálisan instabil szerverparkban tárolhatják. Óvatosan járj el a régi fájlok elérésekor, és kerüld a gyanús pentagram ikonokra való kattintást."
+    },
+    "easterEgg17": {
+      "title": "API CALL FAILED",
+      "content": "A Húsvéti Nyúl megidézésére irányuló kérést egy huncut szellem blokkolta. Voodoo megkerülés kísérlete tárcsázós modem feláldozásával. Kérlek, légy türelmes."
+    },
+    "easterEgg18": {
+      "title": "BLUE SCREEN OF TERROR",
+      "content": "Egy hatalmas átok összeomlasztotta a rendszert. Távoli ördögűzés kísérlete a parancssoron keresztül. Kérlek, szavaldd el a szent hibakeresési varázsigét: 'Ctrl+Alt+Del távozz!'."
+    },
+    "easterEgg19": {
+      "title": "PRIVACY POLICY UPDATE",
+      "content": "A spirituális adataidat rituális célokra gyűjthetjük, beleértve a jóindulatú (és enyhén huncut) tojástermelő entitások megidézését. A beleegyezésed varázslatosan vélelmezett."
+    },
+    "easterEgg20": {
+      "title": "EASTER EGG DETECTED!",
+      "content": "Gratulálok! Rábukkantál egy rejtett áldásra (vagy esetleg egy kisebb hexre). A letöltéseid legyenek gyorsak, a csokoládékészleted pedig bőséges. Most pedig fuss, mielőtt a digitális szellemek észrevennék!"
+    }
+  }
+}
