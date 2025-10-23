@@ -2,6 +2,8 @@
 .cache
 .dist
 .idea
+.mozbuild
+.pnpm
 .profile
 dist
 node_modules
