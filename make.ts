@@ -120,7 +120,7 @@ const sourceSuffix = 'source.tar.zst';
 const cacheDir = '.cache';
 const distDir = '.dist';
 
-// buildDir & profileDir are used for dev builds
+// buildDir & profileDir are only used for dev builds
 const buildDir = '.build';
 const profileDir = '.profile';
 
@@ -173,7 +173,7 @@ async function source() {
     const buildDir = `${tmpDir}/${basename}`;
 
     const firefoxSource = `firefox-${firefoxVersion}.source.tar.xz`;
-    if (!fs.pathExists(`${cacheDir}/${firefoxSource}`)) {
+    if (!await fs.pathExists(`${cacheDir}/${firefoxSource}`)) {
         await $`curl -fL https://archive.mozilla.org/pub/firefox/releases/${firefoxVersion}/source/${firefoxSource} -o ${cacheDir}/${firefoxSource}`;
     }
     await extractArtifactTo(`${cacheDir}/${firefoxSource}`, buildDir);
@@ -323,6 +323,7 @@ async function clobber() {
 
 /* ENTRYPOINT */
 
+await $`mkdir -p ${cacheDir} ${distDir}`;
 
 for (const command of argv._) {
     switch (command) {
