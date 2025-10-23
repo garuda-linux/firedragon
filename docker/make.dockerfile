@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y msitools p7zip-full python3-pip rustup zstd
+RUN apt-get install -y msitools p7zip-full python3-pip rsync rustup zstd
 
 # Setup corepack
 RUN corepack enable
