@@ -4,5 +4,8 @@ packages:
   - newtab
   - resource
 
+catalog:
+  vite: npm:rolldown-vite@^7.1.19
+
 onlyBuiltDependencies:
   - esbuild
