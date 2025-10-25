@@ -2,6 +2,6 @@ import { AboutNewTab as BrowserAboutNewTab } from 'resource:///modules/AboutNewT
 
 export const AboutNewTab = {
     init() {
-        BrowserAboutNewTab.newTabURL = 'chrome://firedragon-newtab/content/index.html';
-    }
+        BrowserAboutNewTab.newTabURL = 'about:firedragon-newtab';
+    },
 };
