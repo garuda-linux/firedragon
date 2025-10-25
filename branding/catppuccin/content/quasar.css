@@ -1,0 +1,17 @@
+@layer quasar, quasar-branding;
+
+@layer quasar-branding {
+    :root {
+        --q-primary: #cba6f7;
+        --q-secondary: #cba6f7;
+        --q-accent: #cba6f7;
+
+        --q-dark: #1d1d1d;
+        --q-dark-page: #121212;
+
+        --q-positive: #21ba45;
+        --q-negative: #c10015;
+        --q-info: #31ccec;
+        --q-warning: #f2c037;
+    }
+}

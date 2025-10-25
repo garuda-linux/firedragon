@@ -3,6 +3,7 @@ packages:
   - lib
   - newtab
   - resource
+  - settings
 
 catalog:
   vite: npm:rolldown-vite@^7.1.19

@@ -1,0 +1,73 @@
+title: FireDragon Settings
+
+pages:
+  home:
+    title: FireDragon Settings
+    description: We carefully choose default settings to focus on privacy and security. When changing these settings, read the description to understand the implications of those changes.
+    browserBehaviour:
+      title: Browser behaviour
+      autoUpdateExtensions:
+        title: Update add-ons automatically
+        description: Keep extensions up to date without manual intervention. A good choice for your security. If you don't review the code of your extensions before every update, you should enable this option.
+      enableSync:
+        title: Enable FireDragon Sync
+        description: Sync your data with other browsers. Requires restart. FireDragon Sync encrypts data locally before transmitting it to the server.
+        restartDialog:
+          title: Restart required
+          message: FireDragon's restart is required to completely enable or disable FireDragon Sync.
+      enableMiddleClickPaste:
+        title: Enable middle click paste
+        description: Select some text to copy it, then paste it with a middle-mouse click.
+      allowUserChromeCss:
+        title: Allow userChrome.css customization
+        description: Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme.
+        restartDialog:
+          title: Restart required
+          message: FireDragon's restart is required to completely allow or disallow userChrome.css customization.
+      hidePasswdmgr:
+        title: Hide password manager
+        description: Hide password manager menu item and settings.
+        restartDialog:
+          title: Restart required
+          message: FireDragon's restart is required to completely show or hide the password manager.
+      enableTranslations:
+        title: Enable Translations
+        description: Enable offline translations.
+      enableDefaultShortcuts:
+        title: Enable default shortcuts
+        description: This will enable or disable all default Firefox shortcuts. Shortcuts defined in the Shortcuts section remain untouched.
+    networking:
+      title: Networking
+      enableIPv6:
+        title: Enable IPv6
+        description: Allow LibreWolf to connect using IPv6. Instead of blocking IPv6 in the browser, we suggest enabling the IPv6 privacy extension in your OS.
+    privacy:
+      title: Privacy
+      limitCrossOriginReferrers:
+        title: Limit cross-origin referrers
+        description: Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed.
+      autoRefuseCookies:
+        title: Automatically refuse cookie banners
+        description: When a site asks if they can use cookies, FireDragon automatically refuses for you. Only on supported sites. Not compatible with blocking all cookies / Strict-Mode.
+    fingerprinting:
+      title: Fingerprinting
+      enableRFP:
+        title: Enable ResistFingerprinting
+        description: ResistFingerprinting is the best in class anti-fingerprinting tool. If you need to disable it, consider using an extension like Canvas Blocker.
+      enableLetterboxing:
+        title: Enable letterboxing
+        description: Letterboxing applies margins around your windows, in order to return a limited set of rounded resolutions.
+      enableWebGL:
+        title: Enable WebGL
+        description: WebGL is a strong fingerprinting vector. If you need to enable it, consider using an extension like Canvas Blocker.
+    security:
+      title: Security
+      enforceOCSP:
+        title: Enforce OCSP hard-fail
+        description: Prevent connecting to a website if the OCSP check cannot be performed. This increases security, but it will cause breakage when an OCSP server is down.
+      enableSafeBrowsing:
+        title: Enable Google Safe Browsing
+        description: If you are worried about malware and phishing, consider enabling it. Disabled over censorship concerns but recommended for less advanced users. All the checks happen locally.
+      scanDownloads:
+        title: Scan Downloads
+        description: Allow Safe Browsing to scan your downloads to identify suspicious files. All the checks happen locally.

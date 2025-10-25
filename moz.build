@@ -2,4 +2,5 @@ DIRS += [
     "cfg",
     "newtab",
     "resource",
+    "settings",
 ]
