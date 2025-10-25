@@ -44,7 +44,7 @@
     "tailwindcss": "^4.1.8",
     "tailwindcss-primeui": "^0.6.1",
     "tslib": "^2.3.0",
-    "typescript": "~5.8.0",
+    "typescript": "~5.9.0",
     "vite": "catalog:",
     "vite-tsconfig-paths": "^4.2.0"
   }
