@@ -59,7 +59,27 @@ export function buildRegistration(registration: Registration): string {
 
 export interface Options {
     prefix?: string;
+    preprocess?: boolean | string | RegExp | (string | RegExp)[];
+    preprocessFilter?: string;
     registrations: Registration[];
+}
+
+function matchPreprocess(fileName: string, preprocess?: boolean | string | RegExp | (string | RegExp)[]): boolean {
+    return preprocess && (
+        preprocess === true ||
+        preprocess === fileName ||
+        preprocess instanceof RegExp && preprocess.test(fileName) ||
+        Array.isArray(preprocess) && preprocess.some((p) => matchPreprocess(fileName, p))
+    );
+}
+
+interface File {
+    fileName: string;
+    preprocess: boolean;
+}
+
+function generateLine(file: File, options: Options) {
+    return `${file.preprocess ? '*' : ''} ${options.prefix ?? ''}${file.fileName} (${file.fileName})`;
 }
 
 export default function firedragonVite(options: Options): Plugin {
@@ -72,11 +92,25 @@ export default function firedragonVite(options: Options): Plugin {
             publicDir = config.publicDir;
         },
         async generateBundle(_options, bundle) {
+            const files = (await globby('**/*', { cwd: publicDir })).map((fileName) => ({
+                fileName,
+                preprocess: matchPreprocess(fileName, options.preprocess),
+            }));
+            Object.values(bundle).forEach((file) => {
+                const preprocess = matchPreprocess(file.fileName, options.preprocess);
+                files.push({
+                    fileName: file.fileName,
+                    preprocess,
+                });
+                if (preprocess && options.preprocessFilter && file.code) {
+                    file.code = `#filter ${options.preprocessFilter}\n${file.code}`;
+                }
+            });
             this.emitFile({
                 type: 'asset',
                 fileName: 'jar.mn',
                 source: `firedragon.jar:${options.registrations ? '\n% ' + options.registrations.map(buildRegistration).join('\n% ') : ''}
- ${Object.keys(bundle).concat(await globby('**/*', { cwd: publicDir })).map((fileName) => `${options.prefix ?? ''}${fileName} (${fileName})`).join('\n ')}
+${files.map((file) => generateLine(file, options)).join('\n')}
 `,
             });
         },
