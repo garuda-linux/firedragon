@@ -49,6 +49,12 @@ export default defineConfig(async (): Promise<UserConfig> => {
                         entry: 'resource://firedragon/modules/AboutNewTab.sys.mjs',
                         value: 'AboutNewTab.init',
                     },
+                    {
+                        type: 'category',
+                        category: 'browser-window-domcontentloaded',
+                        entry: 'resource://firedragon/modules/DefaultShortcutsManager.sys.mjs',
+                        value: 'DefaultShortcutsManager.init',
+                    }
                 ],
             }),
         ],
