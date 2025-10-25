@@ -30,6 +30,12 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
+                        category: 'browser-idle-startup',
+                        entry: 'resource://firedragon/actors/FDSettingsChild.sys.mjs',
+                        value: 'FDSettingsChild.init',
+                    },
+                    {
+                        type: 'category',
                         category: 'app-startup',
                         entry: 'ConfigLoader',
                         value: '@firedragon/config/config-loader;1',
