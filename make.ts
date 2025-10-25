@@ -114,7 +114,7 @@ if (argv.target && !(argv.target in targets)) {
 }
 const target = targets[(argv.target ?? `${os.platform()}-${os.arch()}`) as keyof typeof targets];
 
-const basename = `${edition.basename}-${firedragon.version}`;
+const basename = `${edition.basename}-v${firedragon.version}`;
 const sourceSuffix = 'source.tar.zst';
 
 const cacheDir = '.cache';
