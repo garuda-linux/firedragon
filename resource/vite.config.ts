@@ -54,7 +54,16 @@ export default defineConfig(async (): Promise<UserConfig> => {
                         category: 'browser-window-domcontentloaded',
                         entry: 'resource://firedragon/modules/DefaultShortcutsManager.sys.mjs',
                         value: 'DefaultShortcutsManager.init',
-                    }
+                    },
+                    {
+                        type: 'category',
+                        category: 'app-startup',
+                        entry: 'TranslationFeatureManager',
+                        value: '@firedragon/translation-feature-manager;1',
+                        flags: {
+                            process: 'main',
+                        },
+                    },
                 ],
             }),
         ],
