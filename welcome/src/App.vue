@@ -3,6 +3,7 @@
     import Language from '@/steps/language/index.vue';
     import Appearance from '@/steps/appearence/index.vue';
     import Search from '@/steps/search/index.vue';
+    import Default from '@/steps/default/index.vue';
     import Finish from '@/steps/finish/index.vue';
 
     const { t } = useI18n();
@@ -47,7 +48,10 @@
                         <q-step :name="4" :title="t('steps.search.title')" icon="search" :header-nav="step > 4">
                             <Search @next="step++" />
                         </q-step>
-                        <q-step :name="5" :title="t('steps.finish.title')" icon="check" :header-nav="step > 5">
+                        <q-step :name="5" :title="t('steps.default.title')" icon="open_in_browser" :header-nav="step > 5">
+                            <Default @next="step++" />
+                        </q-step>
+                        <q-step :name="6" :title="t('steps.finish.title')" icon="check" :header-nav="step > 6">
                             <Finish @next="close" />
                         </q-step>
                     </q-stepper>
