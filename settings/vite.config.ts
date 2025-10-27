@@ -18,7 +18,7 @@ export default defineConfig({
         }),
         vueI18n({
             include: [
-                fileURLToPath(new URL('./src/locales/*', import.meta.url))
+                fileURLToPath(new URL('./src/locales/*', import.meta.url)),
             ],
         }),
         quasar(),
@@ -51,7 +51,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            '@': fileURLToPath(new URL('./src', import.meta.url))
+            '@': fileURLToPath(new URL('./src', import.meta.url)),
         },
     },
 });
