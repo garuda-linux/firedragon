@@ -1,0 +1,5 @@
+@layer quasar-extras, quasar;
+
+@import '@quasar/extras/roboto-font/roboto-font.css' layer(quasar-extras);
+@import '@quasar/extras/material-icons/material-icons.css' layer(quasar-extras);
+@import 'quasar/dist/quasar.css' layer(quasar);

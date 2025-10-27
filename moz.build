@@ -3,4 +3,5 @@ DIRS += [
     "newtab",
     "resource",
     "settings",
+    "welcome",
 ]
