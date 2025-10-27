@@ -11,7 +11,7 @@
         <q-header class="bg-primary text-white" elevated>
             <q-toolbar>
                 <q-toolbar-title>
-                    <q-avatar>
+                    <q-avatar class="q-mr-md">
                         <img src="chrome://branding/content/about-logo.png" alt="FireDragon" />
                     </q-avatar>
                     {{ t('title') }}
