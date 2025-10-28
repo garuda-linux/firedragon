@@ -9,6 +9,8 @@
 
 @plugin "tailwindcss-primeui";
 
+@source ".";
+
 /* Fonts */
 @theme {
   --font-inter: Inter, sans-serif;

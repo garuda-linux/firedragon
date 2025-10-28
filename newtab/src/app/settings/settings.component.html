@@ -91,6 +91,17 @@
               t("settings.topPagesEnabled")
             }}</label>
         </div>
+        <div class="ml-10">
+          <p-checkbox
+            (ngModelChange)='updateConfig("disableAutofocus", $event)'
+            [(ngModel)]="disableAutofocus"
+            [binary]="true"
+            id="disable-autofocus"
+          />
+          <label class="ml-2" for="disable-autofocus">{{
+              t("settings.disableAutofocus")
+            }}</label>
+        </div>
       </div>
 
       <div class="mx-auto mt-10 w-3/4 md:ml-10 md:flex">
@@ -115,6 +126,13 @@
           (click)="resetSettings()"
           [label]='t("settings.resetSettings")'
           icon="pi pi-refresh"
+          class="mt-2.5 md:mt-0 md:ml-5"
+        >
+        </p-button>
+        <p-button
+          (click)="disableNewTab()"
+          [label]='t("settings.disableFiredragonStart")'
+          icon="pi pi-ban"
           class="mt-2.5 md:mt-0 md:ml-5"
         >
         </p-button>
