@@ -3,6 +3,7 @@ import type { Plugin } from 'vite';
 
 export interface RegistrationFlags {
     contentaccessible?: boolean;
+    application?: string;
     process?: string;
 }
 
@@ -37,6 +38,8 @@ export function buildRegistrationFlag<K extends keyof RegistrationFlags>(key: K,
                 return ' contentaccessible=yes';
             }
             return '';
+        case 'application':
+            return ` application=${value}`;
         case 'process':
             return ` process=${value}`;
     }
