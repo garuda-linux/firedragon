@@ -38,6 +38,9 @@ pages:
       enableDefaultShortcuts:
         title: Enable default shortcuts
         description: This will enable or disable all default Firefox shortcuts. Shortcuts defined in the Shortcuts section remain untouched.
+      enableNewTab:
+        title: Enable FireDragon NewTab
+        description: The FireDragon NewTab page is based on Garuda Linux Startpage with deeper integration with FireDragon.
     networking:
       title: Networking
       enableIPv6:

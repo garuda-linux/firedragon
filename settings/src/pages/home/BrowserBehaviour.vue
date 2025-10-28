@@ -49,6 +49,7 @@
     );
     const enableTranslations = useBoolPref('firedragon.translations.enable');
     const enableDefaultShortcuts = useBoolPref('firedragon.defaultShortcuts.enable');
+    const enableNewTab = useBoolPref('firedragon.newtab.enable');
 </script>
 
 <template>
@@ -121,6 +122,15 @@
                 </q-item-section>
                 <q-item-section side>
                     <q-toggle v-model="enableDefaultShortcuts" />
+                </q-item-section>
+            </q-item>
+            <q-item tag="label" v-ripple>
+                <q-item-section>
+                    <q-item-label>{{ t('pages.home.browserBehaviour.enableNewTab.title') }}</q-item-label>
+                    <q-item-label caption>{{ t('pages.home.browserBehaviour.enableNewTab.description') }}</q-item-label>
+                </q-item-section>
+                <q-item-section side>
+                    <q-toggle v-model="enableNewTab" />
                 </q-item-section>
             </q-item>
         </q-list>
