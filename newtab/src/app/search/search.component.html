@@ -20,7 +20,7 @@
           [style]='{ height: "3rem" }'
           [suggestions]="suggestions()"
           autoHighlight
-          autofocus
+          [autofocus]="!configService.settings().disableAutofocus"
           fluid
         />
       </div>

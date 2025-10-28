@@ -59,6 +59,7 @@
     "darkMode": "Dark mode enabled",
     "defaultLinksLabel": "Show default links",
     "deleteLink": "Delete link",
+    "disableAutofocus": "Disable autofocusing the search bar",
     "fitWallpaper": "Fit wallpaper",
     "general": "General settings",
     "gridCols": "Number of grid columns",
