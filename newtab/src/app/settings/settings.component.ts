@@ -193,4 +193,19 @@ export class SettingsComponent {
       },
     });
   }
+
+  disableNewTab() {
+    this.confirmationService.confirm({
+      message: this.translocoService.translate("settings.confirmDisableFiredragonStart"),
+      header: this.translocoService.translate("settings.confirmHeader"),
+      icon: "pi pi-exclamation-triangle",
+      accept: () => {
+        Services.prefs.setBoolPref('firedragon.newtab.enable', false);
+        this.messageToastService.success(
+          this.translocoService.translate("settings.success"),
+          this.translocoService.translate("settings.firedragonStartDisabled"),
+        );
+      },
+    });
+  }
 }
