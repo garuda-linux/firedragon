@@ -158,6 +158,10 @@ importers:
         version: 4.3.2(rolldown-vite@7.1.19(@types/node@22.18.12)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.90.0)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(typescript@5.9.3)
 
   resource:
+    dependencies:
+      compare-versions:
+        specifier: ^6.1.1
+        version: 6.1.1
     devDependencies:
       '@firedragon13/lib':
         specifier: 'workspace:'
@@ -168,9 +172,6 @@ importers:
       globby:
         specifier: ^15.0.0
         version: 15.0.0
-      ts-pattern:
-        specifier: ^5.8.0
-        version: 5.8.0
       vite:
         specifier: 'catalog:'
         version: rolldown-vite@7.1.19(@types/node@24.8.1)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
@@ -5780,9 +5781,6 @@ packages:
 
   ts-morph@21.0.1:
     resolution: {integrity: sha512-dbDtVdEAncKctzrVZ+Nr7kHpHkv+0JDJb2MjjpBaj8bFeCkePU9rHfMklmhuLFnpeq/EJZk2IhStY6NzqgjOkg==}
-
-  ts-pattern@5.8.0:
-    resolution: {integrity: sha512-kIjN2qmWiHnhgr5DAkAafF9fwb0T5OhMVSWrm8XEdTFnX6+wfXwYOFjeF86UZ54vduqiR7BfqScFmXSzSaH8oA==}
 
   tsconfck@3.1.6:
     resolution: {integrity: sha512-ks6Vjr/jEw0P1gmOVwutM3B7fWxoWBL2KRDb1JfqGVawBmO5UsvmWOQFGHBPl5yxYz4eERr19E6L7NMv+Fej4w==}
@@ -12214,8 +12212,6 @@ snapshots:
     dependencies:
       '@ts-morph/common': 0.22.0
       code-block-writer: 12.0.0
-
-  ts-pattern@5.8.0: {}
 
   tsconfck@3.1.6(typescript@5.9.3):
     optionalDependencies:

@@ -1,15 +1,9 @@
 import { File } from 'resource://firedragon/modules/File.sys.mjs';
-import { BrowserUtils } from 'resource://gre/modules/BrowserUtils.sys.mjs';
+import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 
-export class ConfigLoader {
-    readonly QueryInterface = ChromeUtils.generateQI([
-        Ci.nsIObserver,
-    ]);
-
-    observe(_subject: any, topic: string, _data: any) {
-        if (topic === 'app-startup') {
-            this.loadConfig(File.fromDirsvc('GreD').append('firedragon.cfg').url);
-        }
+export const ConfigLoader = new class {
+    init(): void {
+        this.loadConfig(File.fromDirsvc('GreD').append('firedragon.cfg').url);
     }
 
     getPrefBranch(prefRoot: string | null = null): nsIPrefBranch {
@@ -141,16 +135,24 @@ export class ConfigLoader {
             get: () => file.url,
         });
 
+        // Browser version
+        const gVersion = Cu.createObjectIn(sandbox, { defineAs: 'gVersion' });
+        Object.defineProperties(gVersion, {
+            version: {
+                get: () => Version.version,
+            },
+            lastVersion: {
+                get: () => Version.lastVersion,
+            },
+        });
+        Cu.exportFunction(Version.compare, gVersion, { defineAs: 'compare' });
+
         // Console proxy
         const console = Cu.createObjectIn({ defineAs: 'console' });
         Cu.exportFunction(globalThis.console.log, console, { defineAs: 'log' });
         Cu.exportFunction(globalThis.console.info, console, { defineAs: 'info' });
         Cu.exportFunction(globalThis.console.warn, console, { defineAs: 'warn' });
         Cu.exportFunction(globalThis.console.error, console, { defineAs: 'error' });
-
-        BrowserUtils.callModulesFromCategory({
-            categoryName: "firedragon-config-sandbox",
-        }, sandbox);
 
         try {
             Services.scriptloader.loadSubScript(file.url, sandbox);

@@ -36,24 +36,24 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
+                        category: 'browser-first-window-ready',
+                        entry: 'resource://firedragon/modules/AboutNewTab.sys.mjs',
+                        value: 'AboutNewTab.init',
+                    },
+                    {
+                        type: 'category',
                         category: 'app-startup',
-                        entry: 'ConfigLoader',
-                        value: '@firedragon/config/config-loader;1',
+                        entry: 'BrowserStartup',
+                        value: '@firedragon/browser-startup;1',
                         flags: {
-                            process: 'main',
+                            application: '{ec8030f7-c20a-464f-9b0e-13a3a9e97384}',
                         },
                     },
                     {
                         type: 'category',
-                        category: 'firedragon-config-sandbox',
-                        entry: 'resource://firedragon/modules/config/ConfigVersion.sys.mjs',
-                        value: 'ConfigVersion.enrichConfigSandbox',
-                    },
-                    {
-                        type: 'category',
-                        category: 'browser-first-window-ready',
-                        entry: 'resource://firedragon/modules/AboutNewTab.sys.mjs',
-                        value: 'AboutNewTab.init',
+                        category: 'firedragon/browser-startup',
+                        entry: 'resource://firedragon/modules/ConfigLoader.sys.mjs',
+                        value: 'ConfigLoader.init',
                     },
                     {
                         type: 'category',
@@ -63,12 +63,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
-                        category: 'app-startup',
-                        entry: 'TranslationFeatureManager',
-                        value: '@firedragon/translation-feature-manager;1',
-                        flags: {
-                            process: 'main',
-                        },
+                        category: 'browser-idle-startup',
+                        entry: 'resource://firedragon/modules/TranslationFeatureManager.sys.mjs',
+                        value: 'TranslationFeatureManager.init',
                     },
                 ],
             }),
