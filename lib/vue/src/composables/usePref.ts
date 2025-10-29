@@ -1,3 +1,5 @@
+import { ref, toRef, toValue, watch, type MaybeRefOrGetter } from '@vue/reactivity';
+
 function usePref<T>(aPrefName: MaybeRefOrGetter<string>, aDefaultValue: MaybeRefOrGetter<T> | undefined, get: (aPrefName: string, aDefaultValue?: T) => T, set: (aPrefName: string, aValue: T) => void) {
     const prefName = toRef(aPrefName);
     const value = ref(get(prefName.value, toValue(aDefaultValue)));

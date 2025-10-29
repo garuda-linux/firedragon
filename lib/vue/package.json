@@ -10,6 +10,7 @@
         "build": "vite build"
     },
     "devDependencies": {
+        "@types/gecko": "workspace:",
         "vite": "catalog:",
         "vite-plugin-dts": "^4.5.4"
     },
