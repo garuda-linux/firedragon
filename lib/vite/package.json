@@ -1,8 +1,8 @@
 {
-    "name": "@firedragon13/lib",
+    "name": "@firedragon13/lib-vite",
     "type": "module",
     "exports": {
-        "./vite": "./dist/vite.js"
+        ".": "./dist/index.js"
     },
     "scripts": {
         "dev": "NODE_ENV=development vite build --mode development",

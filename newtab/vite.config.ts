@@ -2,7 +2,7 @@ import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import analog from "@analogjs/platform";
 import tailwindcss from "@tailwindcss/vite";
-import firedragonVite from "@firedragon13/lib/vite";
+import firedragonVite from "@firedragon13/lib-vite";
 
 export default defineConfig({
     base: 'chrome://firedragon-newtab/content/',

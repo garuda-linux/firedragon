@@ -57,7 +57,7 @@ declare global {
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
   const useAttrs: typeof import('vue').useAttrs
-  const useBoolPref: typeof import('./src/composables/usePref').useBoolPref
+  const useBoolPref: typeof import('@firedragon13/lib-vue').useBoolPref
   const useCssModule: typeof import('vue').useCssModule
   const useCssVars: typeof import('vue').useCssVars
   const useDialogPluginComponent: typeof import('quasar').useDialogPluginComponent
@@ -66,7 +66,7 @@ declare global {
   const useHeadSafe: typeof import('@unhead/vue').useHeadSafe
   const useI18n: typeof import('vue-i18n').useI18n
   const useId: typeof import('vue').useId
-  const useIntPref: typeof import('./src/composables/usePref').useIntPref
+  const useIntPref: typeof import('@firedragon13/lib-vue').useIntPref
   const useMeta: typeof import('quasar').useMeta
   const useModel: typeof import('vue').useModel
   const useQuasar: typeof import('quasar').useQuasar
@@ -75,7 +75,7 @@ declare global {
   const useServerHeadSafe: typeof import('@unhead/vue').useServerHeadSafe
   const useServerSeoMeta: typeof import('@unhead/vue').useServerSeoMeta
   const useSlots: typeof import('vue').useSlots
-  const useStringPref: typeof import('./src/composables/usePref').useStringPref
+  const useStringPref: typeof import('@firedragon13/lib-vue').useStringPref
   const useTemplateRef: typeof import('vue').useTemplateRef
   const watch: typeof import('vue').watch
   const watchEffect: typeof import('vue').watchEffect

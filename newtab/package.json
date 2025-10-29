@@ -37,7 +37,7 @@
     "@analogjs/vite-plugin-angular": "^1.22.1",
     "@analogjs/vitest-angular": "^1.22.1",
     "@angular/build": "^20.3.7",
-    "@firedragon13/lib": "workspace:",
+    "@firedragon13/lib-vite": "workspace:",
     "@tailwindcss/vite": "^4.1.12",
     "@types/emoji-js": "^3.5.2",
     "jsdom": "^22.0.0",

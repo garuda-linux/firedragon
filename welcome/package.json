@@ -7,6 +7,7 @@
     "build": "vite build"
   },
   "dependencies": {
+    "@firedragon13/lib-vue": "workspace:",
     "@quasar/extras": "^1.17.0",
     "@unhead/vue": "^2.0.19",
     "@vueuse/core": "^14.0.0",
@@ -15,7 +16,7 @@
     "vue-i18n": "^11.1.12"
   },
   "devDependencies": {
-    "@firedragon13/lib": "workspace:",
+    "@firedragon13/lib-vite": "workspace:",
     "@intlify/unplugin-vue-i18n": "^11.0.1",
     "@quasar/vite-plugin": "^1.10.0",
     "@tsconfig/node22": "^22.0.2",

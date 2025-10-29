@@ -132,7 +132,7 @@ declare global {
   const useBase64: typeof import('@vueuse/core').useBase64
   const useBattery: typeof import('@vueuse/core').useBattery
   const useBluetooth: typeof import('@vueuse/core').useBluetooth
-  const useBoolPref: typeof import('./src/composables/usePref').useBoolPref
+  const useBoolPref: typeof import('@firedragon13/lib-vue').useBoolPref
   const useBreakpoints: typeof import('@vueuse/core').useBreakpoints
   const useBroadcastChannel: typeof import('@vueuse/core').useBroadcastChannel
   const useBrowserLocation: typeof import('@vueuse/core').useBrowserLocation
@@ -190,7 +190,7 @@ declare global {
   const useIdle: typeof import('@vueuse/core').useIdle
   const useImage: typeof import('@vueuse/core').useImage
   const useInfiniteScroll: typeof import('@vueuse/core').useInfiniteScroll
-  const useIntPref: typeof import('./src/composables/usePref').useIntPref
+  const useIntPref: typeof import('@firedragon13/lib-vue').useIntPref
   const useIntersectionObserver: typeof import('@vueuse/core').useIntersectionObserver
   const useInterval: typeof import('@vueuse/core').useInterval
   const useIntervalFn: typeof import('@vueuse/core').useIntervalFn
@@ -254,7 +254,7 @@ declare global {
   const useStepper: typeof import('@vueuse/core').useStepper
   const useStorage: typeof import('@vueuse/core').useStorage
   const useStorageAsync: typeof import('@vueuse/core').useStorageAsync
-  const useStringPref: typeof import('./src/composables/usePref').useStringPref
+  const useStringPref: typeof import('@firedragon13/lib-vue').useStringPref
   const useStyleTag: typeof import('@vueuse/core').useStyleTag
   const useSupported: typeof import('@vueuse/core').useSupported
   const useSwipe: typeof import('@vueuse/core').useSwipe

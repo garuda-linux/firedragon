@@ -6,7 +6,8 @@ import vue from '@vitejs/plugin-vue';
 import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import { unheadVueComposablesImports } from '@unhead/vue';
-import firedragonVite from '@firedragon13/lib/vite';
+import firedragonVite from '@firedragon13/lib-vite';
+import firedragonVuePreset from '@firedragon13/lib-vue/auto-import';
 
 export default defineConfig({
     base: 'chrome://firedragon-welcome/content/',
@@ -34,6 +35,7 @@ export default defineConfig({
                         'useI18n',
                     ],
                 },
+                firedragonVuePreset,
             ],
             dirs: [
                 './src/composables',

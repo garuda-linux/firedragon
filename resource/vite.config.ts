@@ -1,4 +1,4 @@
-import firedragonVite from '@firedragon13/lib/vite';
+import firedragonVite from '@firedragon13/lib-vite';
 import { globby } from 'globby';
 import { defineConfig, type UserConfig } from 'vite';
 

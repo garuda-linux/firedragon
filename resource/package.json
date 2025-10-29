@@ -9,7 +9,7 @@
         "compare-versions": "^6.1.1"
     },
     "devDependencies": {
-        "@firedragon13/lib": "workspace:",
+        "@firedragon13/lib-vite": "workspace:",
         "@types/gecko": "workspace:",
         "globby": "^15.0.0",
         "vite": "catalog:"
