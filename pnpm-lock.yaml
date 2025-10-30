@@ -52,6 +52,25 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@24.8.1)(rolldown-vite@7.1.19(@types/node@24.8.1)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(rollup@4.52.5)(typescript@5.9.3)
 
+  modules:
+    dependencies:
+      compare-versions:
+        specifier: ^6.1.1
+        version: 6.1.1
+    devDependencies:
+      '@firedragon13/lib-vite':
+        specifier: 'workspace:'
+        version: link:../lib/vite
+      '@types/gecko':
+        specifier: 'workspace:'
+        version: link:../@types/gecko
+      globby:
+        specifier: ^15.0.0
+        version: 15.0.0
+      vite:
+        specifier: 'catalog:'
+        version: rolldown-vite@7.1.19(@types/node@24.8.1)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
+
   newtab:
     dependencies:
       '@analogjs/content':
@@ -172,25 +191,6 @@ importers:
       vite-tsconfig-paths:
         specifier: ^4.2.0
         version: 4.3.2(rolldown-vite@7.1.19(@types/node@22.18.12)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.90.0)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1))(typescript@5.9.3)
-
-  resource:
-    dependencies:
-      compare-versions:
-        specifier: ^6.1.1
-        version: 6.1.1
-    devDependencies:
-      '@firedragon13/lib-vite':
-        specifier: 'workspace:'
-        version: link:../lib/vite
-      '@types/gecko':
-        specifier: 'workspace:'
-        version: link:../@types/gecko
-      globby:
-        specifier: ^15.0.0
-        version: 15.0.0
-      vite:
-        specifier: 'catalog:'
-        version: rolldown-vite@7.1.19(@types/node@24.8.1)(esbuild@0.25.11)(jiti@2.6.1)(sass-embedded@1.93.2)(sass@1.93.2)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.1)
 
   settings:
     dependencies:

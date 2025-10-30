@@ -1,7 +1,7 @@
 DIRS += [
     "cfg",
+    "modules",
     "newtab",
-    "resource",
     "settings",
     "welcome",
 ]

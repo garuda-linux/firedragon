@@ -2,8 +2,8 @@ packages:
   - '@types/gecko'
   - lib/vite
   - lib/vue
+  - modules
   - newtab
-  - resource
   - settings
   - welcome
 
