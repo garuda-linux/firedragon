@@ -188,7 +188,7 @@ async function source() {
 
     await $`echo -e ${version} > ${buildDir}/browser/config/version_display.txt`;
 
-    await $`tar --zstd -cf ${distDir}/${sourceBasename}.${sourceSuffix} -C ${tmpDir} ${basename}`;
+    await $`tar --zstd -cf ${distDir}/${sourceBasename}${versionSuffix}.${sourceSuffix} -C ${tmpDir} ${basename}`;
 }
 
 async function build() {
