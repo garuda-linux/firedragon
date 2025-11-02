@@ -1,0 +1,26 @@
+{
+    "name": "@firedragon13/content",
+    "type": "module",
+    "scripts": {
+        "dev": "NODE_ENV=development vite build --mode development",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@firedragon13/lib-vue": "workspace:",
+        "@firedragon13/lib-vue-runtime": "workspace:",
+        "vue": "^3.5.22",
+        "vue-i18n": "^11.1.12"
+    },
+    "devDependencies": {
+        "@firedragon13/lib-vite": "workspace:",
+        "@intlify/unplugin-vue-i18n": "^11.0.1",
+        "@types/gecko": "workspace:",
+        "@tsconfig/node22": "^22.0.2",
+        "@vitejs/plugin-vue": "^6.0.1",
+        "@vue/tsconfig": "^0.8.1",
+        "globby": "^15.0.0",
+        "unplugin-auto-import": "^20.2.0",
+        "vite": "catalog:"
+    },
+    "private": true
+}

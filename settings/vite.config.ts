@@ -24,16 +24,13 @@ export default defineConfig({
         }),
         quasar(),
         AutoImport({
+            dts: true,
             dtsMode: 'overwrite',
             imports: [
                 'vue',
                 'quasar',
+                'vue-i18n',
                 unheadVueComposablesImports,
-                {
-                    'vue-i18n': [
-                        'useI18n',
-                    ],
-                },
                 firedragonVuePreset,
             ],
             dirs: [

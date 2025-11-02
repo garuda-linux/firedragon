@@ -1,7 +1,9 @@
 packages:
   - '@types/gecko'
+  - content
   - lib/vite
   - lib/vue
+  - lib/vue-runtime
   - modules
   - newtab
   - settings
