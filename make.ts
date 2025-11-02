@@ -114,7 +114,9 @@ if (argv.target && !(argv.target in targets)) {
 }
 const target = targets[(argv.target ?? `${os.platform()}-${os.arch()}`) as keyof typeof targets];
 
-const basename = `${edition.basename}-v${firedragon.version}`;
+const versionSuffix = `-v${version}`;
+const basename = `${edition.basename}${versionSuffix}`;
+const sourceBasename = appName;
 const sourceSuffix = 'source.tar.zst';
 
 const cacheDir = '.cache';
@@ -150,13 +152,13 @@ async function acAddOptions(buildDir: string, ...options: string[]) {
     }
 }
 
-async function getArtifact(suffix: string) {
-    const artifact = `${basename}.${suffix}`;
+async function getArtifact(basename: string, suffix: string) {
+    const artifact = `${basename}${versionSuffix}.${suffix}`;
     if (await fs.pathExists(`${distDir}/${artifact}`)) {
         return `${distDir}/${artifact}`;
     }
     if (!await fs.pathExists(`${cacheDir}/${artifact}`)) {
-        await $`curl -fL ${repoUrl}/-/releases/v${firedragon.version}/downloads/${edition.basename}.${suffix} -o ${cacheDir}/${artifact}`;
+        await $`curl -fL ${repoUrl}/-/releases/v${firedragon.version}/downloads/${basename}.${suffix} -o ${cacheDir}/${artifact}`;
     }
     return `${cacheDir}/${artifact}`;
 }
@@ -186,14 +188,14 @@ async function source() {
 
     await $`echo -e ${version} > ${buildDir}/browser/config/version_display.txt`;
 
-    await $`tar --zstd -cf ${distDir}/${basename}.${sourceSuffix} -C ${tmpDir} ${basename}`;
+    await $`tar --zstd -cf ${distDir}/${sourceBasename}.${sourceSuffix} -C ${tmpDir} ${basename}`;
 }
 
 async function build() {
     const buildBasename = `${basename}.${target.suffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`;
 
-    await extractArtifactTo(await getArtifact(sourceSuffix), buildDir);
+    await extractArtifactTo(await getArtifact(sourceBasename, sourceSuffix), buildDir);
 
     await sourceMozconfig(buildDir, edition.mozconfig, target.mozconfig);
     await acAddOptions(
@@ -254,7 +256,7 @@ async function appimage() {
     const buildBasename = `${basename}.${target.suffix.replace('linux', 'appimage')}`;
     const buildDir = `${tmpDir}/${buildBasename}`;
 
-    await extractArtifactTo(await getArtifact(`${target.suffix}.tar.xz`), buildDir);
+    await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), buildDir);
 
     await $`sed 's#/usr/lib/${appName}/${appName}#${appName}#' assets/${appName}.desktop > ${buildDir}/${appName}.desktop`;
     await $`cp ${buildDir}/browser/chrome/icons/default/default128.png ${buildDir}/${appName}.png`;
@@ -269,7 +271,7 @@ async function appimage() {
 }
 
 async function dev() {
-    const devArtifacts = await Promise.all(target.artifacts.dev.map((format) => getArtifact(`${target.suffix}.${format}`)));
+    const devArtifacts = await Promise.all(target.artifacts.dev.map((format) => getArtifact(edition.basename, `${target.suffix}.${format}`)));
 
     for (const artifact of devArtifacts) {
         const processedJar = `${artifact}.processed.jar`;
@@ -281,7 +283,7 @@ async function dev() {
     const initialRun = !await fs.pathExists(buildDir);
 
     if (initialRun) {
-        await extractArtifactTo(await getArtifact(sourceSuffix), buildDir);
+        await extractArtifactTo(await getArtifact(sourceBasename, sourceSuffix), buildDir);
 
         await $`rm -rf ${buildDir}/${sourceDir}`;
         await $`ln -s ${path.resolve()} ${buildDir}/${sourceDir}`;
