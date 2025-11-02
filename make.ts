@@ -1,4 +1,4 @@
-import { $, fs, glob, minimist, os, path, tmpdir } from 'zx';
+import { $, echo, fs, glob, minimist, os, path, tmpdir } from 'zx';
 import firedragon from './package.json' with { type: 'json' };
 
 
@@ -268,9 +268,6 @@ async function appimage() {
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${buildDir} ${distDir}/${buildBasename}.AppImage`;
 }
 
-async function release() {
-}
-
 async function dev() {
     const devArtifacts = await Promise.all(target.artifacts.dev.map((format) => getArtifact(`${target.suffix}.${format}`)));
 
@@ -318,6 +315,33 @@ async function dev() {
 
 async function clobber() {
     await $`rm -rf ${buildDir} ${profileDir}`;
+}
+
+async function release() {
+    if (await $`git tag -l v${version}`.text()) {
+        echo(`Tag v${version} already exists`);
+        process.exit(1);
+    }
+
+    await $`git-cliff -c assets/cliff.changelog.toml -u -t v${version} -p CHANGELOG.md`;
+
+    const date = new Date();
+    const release = {
+        '@version': `v${version}`,
+        '@date': `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`,
+        url: {
+            '@type': 'details',
+            '#text': `${repoUrl}/-/releases/v${version}`,
+        },
+        description: null,
+    };
+
+    await $`xq --xml-dtd --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' -x -i assets/org.garudalinux.firedragon.metainfo.xml`;
+    await $`xq --xml-dtd --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' -x -i assets/org.garudalinux.firedragon-catppuccin.metainfo.xml`;
+
+    await $`git add package.json CHANGELOG.md assets/org.garudalinux.firedragon.metainfo.xml assets/org.garudalinux.firedragon-catppuccin.metainfo.xml`;
+    await $`git commit -m 'release: v'${version}`;
+    await $`git tag -m v${version} v${version}`
 }
 
 

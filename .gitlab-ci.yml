@@ -176,7 +176,7 @@ release:
     - |
       jq -r --arg version "$CI_COMMIT_TAG" --arg api "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/$CI_COMMIT_TAG/" --arg dist ".dist/" '.[] | "\(.basename)-\($version)\(.suffix)" | ["\($dist)\(.)", "\($api)\(.)"] | @sh' assets/artifacts.json | xargs -tL1 curl --header "JOB-TOKEN: $CI_JOB_TOKEN" --upload-file
     - |
-      git-cliff -c cliff.release.toml --context --current | jq --slurpfile package package.json --slurpfile artifacts assets/artifacts.json '.[0].extra = {"release": $package[0].release, "artifacts": $artifacts[0]}' | git-cliff -c cliff.release.toml --from-context - -o .dist/release.md
+      git-cliff -c assets/cliff.release.toml --context --current | jq --slurpfile package package.json --slurpfile artifacts assets/artifacts.json '.[0].extra = {"firefox": $package[0].firefox, "artifacts": $artifacts[0]}' | git-cliff -c assets/cliff.release.toml --from-context - -o .dist/release.md
     - |
       release-cli create --tag-name "$CI_COMMIT_TAG" --name "FireDragon $CI_COMMIT_TAG" --description ".dist/release.md" \
         --assets-link "$(jq --arg version "$CI_COMMIT_TAG" --arg api "$CI_API_V4_URL/projects/$CI_PROJECT_ID/packages/generic/firedragon/$CI_COMMIT_TAG/" 'map("\(.basename)-\($version)\(.suffix)" as $filename | { "name": $filename, "url": "\($api)\($filename)", "direct_asset_path": "/\(.basename)\(.suffix)", "link_type": "package" })' assets/artifacts.json)"
