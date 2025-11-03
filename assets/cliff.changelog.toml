@@ -15,7 +15,7 @@ header = """
 # https://keats.github.io/tera/docs/#introduction
 body = """
 {% if version %}\
-    ## [FireDragon {{ version }}](https://gitlab.com/stefanwimmer128/firedragon13/-/releases/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/stefanwimmer128/firedragon13/-/compare/{{ previous.version }}...{{ version }}){% endif %}
+    ## [FireDragon {{ version }}](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/{{ previous.version }}...{{ version }}){% endif %}
 {% else %}\
     ## [unreleased]
 {% endif %}\
@@ -24,7 +24,7 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/stefanwimmer128/firedragon13/-/commit/{{ commit.id }})\
+            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/{{ commit.id }})\
     {% endfor %}
 {% endfor %}
 

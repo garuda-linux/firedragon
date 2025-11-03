@@ -14,7 +14,7 @@ header = """
 
 | Type | Download |
 |------|----------|
-{% for artifact in releases.0.extra.artifacts %}{% if artifact.download %}| {{ artifact.download }} | [{{ artifact.basename }}-{{ version }}{{ artifact.suffix }}](https://gitlab.com/stefanwimmer128/firedragon13/-/releases/{{ version }}/downloads/{{ artifact.basename }}{{ artifact.suffix }}) |
+{% for artifact in releases.0.extra.artifacts %}{% if artifact.download %}| {{ artifact.download }} | [{{ artifact.basename }}-{{ version }}{{ artifact.suffix }}](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/{{ version }}/downloads/{{ artifact.basename }}{{ artifact.suffix }}) |
 {% endif %}{% endfor %}
 
 """
@@ -22,7 +22,7 @@ header = """
 # https://keats.github.io/tera/docs/#introduction
 body = """
 {% if version %}\
-    ## ChangeLog{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/stefanwimmer128/firedragon13/-/compare/{{ previous.version }}...{{ version }}){% endif %}
+    ## ChangeLog{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/{{ previous.version }}...{{ version }}){% endif %}
 {% else %}\
     ## [unreleased]
 {% endif %}\
@@ -31,7 +31,7 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/stefanwimmer128/firedragon13/-/commit/{{ commit.id }})\
+            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/{{ commit.id }})\
     {% endfor %}
 {% endfor %}
 
