@@ -134,6 +134,11 @@ appimage:
       artifacts: false
     - job: build
       artifacts: true
+      parallel:
+        matrix:
+          - EDITION: $[[inputs.edition]]
+            PLATFORM: linux
+            ARCH: $[[inputs.arch]]
   parallel:
     matrix:
       - EDITION: $[[inputs.edition]]
