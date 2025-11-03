@@ -16,12 +16,12 @@
   },
   {
     "basename": "firedragon",
-    "suffix": ".win32-x64.exe",
+    "suffix": ".win32-x64.installer.exe",
     "download": "Dr460nized / Windows / x64"
   },
   {
     "basename": "firedragon",
-    "suffix": ".win32-arm64.exe",
+    "suffix": ".win32-arm64.installer.exe",
     "download": "Dr460nized / Windows / arm64"
   },
   {
@@ -56,12 +56,12 @@
   },
   {
     "basename": "firedragon-catppuccin",
-    "suffix": ".win32-x64.exe",
+    "suffix": ".win32-x64.installer.exe",
     "download": "Catppuccin / Windows / x64"
   },
   {
     "basename": "firedragon-catppuccin",
-    "suffix": ".win32-arm64.exe",
+    "suffix": ".win32-arm64.installer.exe",
     "download": "Catppuccin / Windows / arm64"
   },
   {
