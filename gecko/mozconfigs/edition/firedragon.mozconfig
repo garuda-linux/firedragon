@@ -25,7 +25,6 @@ ac_add_options --disable-debug #[NotOnArtifactBuild]
 ac_add_options --disable-debug-js-modules #[NotOnArtifactBuild]
 ac_add_options --disable-debug-symbols #[NotOnArtifactBuild]
 ac_add_options --disable-rust-tests #[NotOnArtifactBuild]
-ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
 ac_add_options --disable-warnings-as-errors #[NotOnArtifactBuild]
 ac_add_options --enable-av1
