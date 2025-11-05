@@ -15,7 +15,7 @@
     const step = ref(1);
 
     function close() {
-        location.href = 'about:firedragon-newtab';
+        location.href = 'about:home';
     }
 </script>
 
