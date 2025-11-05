@@ -2,10 +2,11 @@ import Component from "@/Component";
 
 window.fdHidePasswdmgr = new class extends Component {
     init() {
-        if (Services.prefs.getBoolPref('firedragon.hidePasswdmgr')) {
-            setTimeout(() => {
+        document!.addEventListener('paneshown', function listener(e: CustomEvent) {
+            if (e.detail.category === 'panePrivacy' && Services.prefs.getBoolPref('firedragon.hidePasswdmgr')) {
+                document!.removeEventListener('paneshown', listener);
                 document!.querySelector('#passwordsGroup')!.remove();
-            });
-        }
+            }
+        });
     }
 };
