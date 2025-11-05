@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.1) — 2025-11-05 — [`v13.0.0-alpha.0`…`v13.0.0-alpha.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.0...v13.0.0-alpha.1)
+
+### 🐛 Bug Fixes
+
+- *(lib-vue)* Define @vue/reactivity as external — [`823bbde8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/823bbde8e2505bfb7d9744a46f585a734173c0e2)
+- *(welcome)* Open about:home at the end — [`a8934914…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a893491467edd976afe0c64288197b6aaeb2af53)
+
+### 🚜 Refactor
+
+- Split content between browser & preferences entrypoints — [`57094a78…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/57094a787bf746f5e62ce59aa074f1a9512b0dbd)
+
+### 📚 Documentation
+
+- Add development commands to README — [`1e067865…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1e067865635e4bbfacf4da0b7976b52f66beab49)
+
 ## [FireDragon v13.0.0-alpha.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.0) — 2025-11-03
 
 ### 🚀 Features
