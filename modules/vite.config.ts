@@ -30,15 +30,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
-                        category: 'browser-idle-startup',
-                        entry: 'resource://firedragon/actors/FDSettingsChild.sys.mjs',
-                        value: 'FDSettingsChild.init',
-                    },
-                    {
-                        type: 'category',
-                        category: 'browser-first-window-ready',
-                        entry: 'resource://firedragon/modules/AboutNewTab.sys.mjs',
-                        value: 'AboutNewTab.init',
+                        category: 'firedragon/browser-startup',
+                        entry: 'resource://firedragon/modules/AboutNewTabRedirector.sys.mjs',
+                        value: 'AboutNewTabRedirectorManager.init',
                     },
                     {
                         type: 'category',

@@ -3,6 +3,7 @@ DIRS += [
     "content",
     "modules",
     "newtab",
+    "pref",
     "settings",
     "welcome",
 ]

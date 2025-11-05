@@ -12,7 +12,6 @@
     "DisableProfileImport": false,
     "DisableSetDesktopBackground": false,
     "DisableTelemetry": true,
-    "OverrideFirstRunPage": "about:welcome",
     "OverridePostUpdatePage": "",
     "DNSOverHTTPS": {
       "Enabled": false,

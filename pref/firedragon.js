@@ -1,0 +1,10 @@
+pref("startup.homepage_welcome_url", "about:firedragon-welcome");
+pref("firedragon.newtab.enable", true);
+pref("firedragon.newtab.config", "{}");
+pref("firedragon.defaultShortcuts.enable", true);
+pref("firedragon.translations.enable", false);
+pref("firedragon.cfg.entry", "dirsvc://GreD/firedragon.cfg");
+pref("firedragon.hidePasswdmgr", false);
+pref("firedragon.moveTabToWindow.enable", true);
+pref("firedragon.translations.enable", false);
+pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);

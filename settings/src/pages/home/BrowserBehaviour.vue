@@ -37,19 +37,21 @@
         t('pages.home.browserBehaviour.allowUserChromeCss.restartDialog.title'),
         t('pages.home.browserBehaviour.allowUserChromeCss.restartDialog.message'),
     );
-    const enablePasswdmgr = toggleRefs(
-        [useBoolPref('firedragon.hidePasswdmgr')],
-        [false],
-        [true],
-    );
+    const hidePasswdmgr = useBoolPref('firedragon.hidePasswdmgr');
     restartOnChange(
-        enablePasswdmgr,
-        t('pages.home.browserBehaviour.enablePasswdmgr.restartDialog.title'),
-        t('pages.home.browserBehaviour.enablePasswdmgr.restartDialog.message'),
+        hidePasswdmgr,
+        t('pages.home.browserBehaviour.hidePasswdmgr.restartDialog.title'),
+        t('pages.home.browserBehaviour.hidePasswdmgr.restartDialog.message'),
     );
     const enableTranslations = useBoolPref('firedragon.translations.enable');
     const enableDefaultShortcuts = useBoolPref('firedragon.defaultShortcuts.enable');
     const enableNewTab = useBoolPref('firedragon.newtab.enable');
+    restartOnChange(
+        enableNewTab,
+        t('pages.home.browserBehaviour.enableNewTab.restartDialog.title'),
+        t('pages.home.browserBehaviour.enableNewTab.restartDialog.message'),
+    );
+    watch(enableNewTab, console.log);
 </script>
 
 <template>
@@ -99,11 +101,11 @@
             </q-item>
             <q-item tag="label" v-ripple>
                 <q-item-section>
-                    <q-item-label>{{ t('pages.home.browserBehaviour.enablePasswdmgr.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.browserBehaviour.enablePasswdmgr.description') }}</q-item-label>
+                    <q-item-label>{{ t('pages.home.browserBehaviour.hidePasswdmgr.title') }}</q-item-label>
+                    <q-item-label caption>{{ t('pages.home.browserBehaviour.hidePasswdmgr.description') }}</q-item-label>
                 </q-item-section>
                 <q-item-section side>
-                    <q-toggle v-model="enablePasswdmgr" />
+                    <q-toggle v-model="hidePasswdmgr" />
                 </q-item-section>
             </q-item>
             <q-item tag="label" v-ripple>

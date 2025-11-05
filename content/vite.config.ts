@@ -11,8 +11,8 @@ import firedragonVuePreset from '@firedragon13/lib-vue/auto-import';
 export default defineConfig(async ({ mode }): Promise<UserConfig> => {
     const input: Record<string, string> = {};
 
-    for (const fileName of await globby('src/entrypoints/*{.ts{,x},.css,/index.{ts{,x},css}}')) {
-        input[fileName.split('/')[2].replace(/\.(tsx?|css)$/, '')] = fileName;
+    for (const fileName of await globby('src/entrypoints/*/*{.ts{,x},.css,/index.{ts{,x},css}}')) {
+        input[fileName.split('/').slice(2, 4).join('-').replace(/\.(tsx?|css)$/, '')] = fileName;
     }
 
     const base = 'chrome://firedragon/content/';
@@ -53,29 +53,35 @@ export default defineConfig(async ({ mode }): Promise<UserConfig> => {
                 ],
             }),
             {
-                name: 'browser-head.inc.xhtml',
+                name: 'generate-inc.xhtml',
                 generateBundle(_output, bundle) {
-                    let source = '';
+                    const files = new Map();
                     for (const chunk of Object.values(bundle)) {
                         if (chunk.type === 'chunk' && chunk.isEntry) {
+                            const file = `${chunk.fileName.split('-')[0]}.inc.xhtml`;
                             if (chunk.code !== '') {
-                                source += `<script type="module" src="${base}${chunk.fileName}"></script>\n`;
+                                files.set(file, (files.get(file) ?? '') + `<script type="module" src="${base}${chunk.fileName}"></script>\n`);
                             }
                             for (const css of chunk.viteMetadata?.importedCss ?? []) {
-                                source += `<link rel="stylesheet" href="${base}${css}" />\n`;
+                                files.set(file, (files.get(file) ?? '') + `<link rel="stylesheet" href="${base}${css}" />\n`);
                             }
                         }
                     }
-                    this.emitFile({
-                        type: 'asset',
-                        fileName: 'browser-head.inc.xhtml',
-                        source,
-                    });
+                    for (const [fileName, source] of files) {
+                        this.emitFile({
+                            type: 'asset',
+                            fileName,
+                            source,
+                        });
+                    }
                 },
             },
             firedragonVite({
                 prefix: 'content/',
-                exclude: ['browser-head.inc.xhtml'],
+                exclude: [
+                    'browser.inc.xhtml',
+                    'preferences.inc.xhtml',
+                ],
                 registrations: [
                     {
                         type: 'content',

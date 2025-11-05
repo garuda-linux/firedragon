@@ -1,5 +1,5 @@
-import Component from '@/Component';
-import i18n from '@/i18n';
+import Component from '@/Component.ts';
+import i18n from '@/i18n.ts';
 
 window.fdUndoCloseTab = new class extends Component {
     init() {

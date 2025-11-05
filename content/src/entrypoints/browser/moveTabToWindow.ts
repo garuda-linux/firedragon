@@ -1,13 +1,11 @@
-import { useBoolPref } from '@firedragon13/lib-vue';
-
-import Component from '@/Component';
-import { createApp, h, mountBefore } from '@/vue';
+import Component from '@/Component.ts';
+import { createApp, h, mountBefore } from '@/vue.ts';
 
 import view from '@/views/moveTabToWindow.vue';
 
 window.fdMoveTabToWindow = new class extends Component {
-    protected enabled = useBoolPref('firedragon.moveTabToWindow.enable', true);
-    protected targets = shallowRef<Window[]>([]);
+    protected readonly enabled = useBoolPref('firedragon.moveTabToWindow.enable');
+    protected readonly targets = shallowRef<Window[]>([]);
 
     init() {
         const tabContextMenu = document!.querySelector('#tabContextMenu')!;

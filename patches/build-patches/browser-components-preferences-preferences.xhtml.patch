@@ -1,0 +1,13 @@
+diff --git a/browser/components/preferences/preferences.xhtml b/browser/components/preferences/preferences.xhtml
+index 0081bb470c9b..c1ab856f513c 100644
+--- a/browser/components/preferences/preferences.xhtml
++++ b/browser/components/preferences/preferences.xhtml
+@@ -92,6 +92,8 @@
+   <script type="module" src="chrome://browser/content/preferences/widgets/nav-notice.mjs"></script>
+   <script type="module" src="chrome://browser/content/preferences/widgets/setting-group.mjs"></script>
+   <script type="module" src="chrome://browser/content/preferences/widgets/setting-control.mjs"></script>
++
++#include ../../firedragon/content/dist/preferences.inc.xhtml
+ </head>
+ 
+ <html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"

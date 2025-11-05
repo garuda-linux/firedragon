@@ -1,5 +1,5 @@
 diff --git a/browser/base/content/browser.xhtml b/browser/base/content/browser.xhtml
-index ffddea280e2e..ef2f8e138b8e 100644
+index ffddea280e2e..4c4694a2bef2 100644
 --- a/browser/base/content/browser.xhtml
 +++ b/browser/base/content/browser.xhtml
 @@ -100,6 +100,8 @@
@@ -7,7 +7,7 @@ index ffddea280e2e..ef2f8e138b8e 100644
    <script src="chrome://browser/content/global-scripts.js"></script>
    <script src="chrome://browser/content/browser-main.js"></script>
 +
-+#include ../../firedragon/content/dist/browser-head.inc.xhtml
++#include ../../firedragon/content/dist/browser.inc.xhtml
  </head>
  <html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  # All sets except for popupsets (commands, keys, and stringbundles)

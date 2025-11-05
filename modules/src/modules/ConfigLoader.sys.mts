@@ -3,7 +3,15 @@ import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 
 export const ConfigLoader = new class {
     init(): void {
-        this.loadConfig(File.fromDirsvc('GreD').append('firedragon.cfg').url);
+        const entry = Services.prefs.getStringPref('firedragon.cfg.entry');
+        if (entry) {
+            const url = new URL(entry);
+            if (url.protocol === 'dirsvc:') {
+                this.loadConfig(File.fromDirsvc(url.host).append(...url.pathname.replace(/^\//, '').split('/')).url);
+            } else {
+                this.loadConfig(entry);
+            }
+        }
     }
 
     getPrefBranch(prefRoot: string | null = null): nsIPrefBranch {

@@ -26,7 +26,7 @@ export const TranslationFeatureManager = new class {
     }
 
     update() {
-        if (Services.prefs.getBoolPref('firedragon.translations.enable', false)) {
+        if (Services.prefs.getBoolPref(this.PREF)) {
             Services.prefs.setBoolPref('browser.translations.enable', true);
             Services.prefs.setStringPref('services.settings.server', AppConstants.REMOTE_SETTINGS_SERVER_URL);
         } else {
