@@ -11,7 +11,7 @@ export default defineConfig({
             formats: ['es'],
         },
         rolldownOptions: {
-            external: ['globby'],
+            external: ['@vue/reactivity'],
         }
     },
     plugins: [
