@@ -35,6 +35,12 @@
                         </q-item-section>
                         <q-item-section>{{ t('pages.home.title') }}</q-item-section>
                     </q-item>
+                    <q-item to="/design" clickable v-ripple>
+                        <q-item-section avatar>
+                            <q-icon name="design_services" />
+                        </q-item-section>
+                        <q-item-section>{{ t('pages.design.title') }}</q-item-section>
+                    </q-item>
                 </q-list>
             </q-scroll-area>
         </q-drawer>

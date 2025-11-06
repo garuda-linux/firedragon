@@ -79,3 +79,16 @@ pages:
       scanDownloads:
         title: Scan Downloads
         description: Allow Safe Browsing to scan your downloads to identify suspicious files. All the checks happen locally.
+  design:
+    title: Design
+    description: Adjust the appearance of the browser.
+    skin:
+      title: Skin
+      lepton:
+        title: Lepton
+      lepton-photon:
+        title: Lepton Photon
+      lepton-proton:
+        title: Lepton Proton
+      proton:
+        title: Proton
