@@ -1,5 +1,6 @@
 firedragon.jar:
 % skin firedragon classic/1.0 %skin/
+ skin/fluerial (fluerial/**/*)
  skin/lepton (lepton/**/*)
  skin/lepton-photon (lepton-photon/**/*)
  skin/lepton-proton (lepton-proton/**/*)
