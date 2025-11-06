@@ -86,6 +86,8 @@ pages:
       title: Skin
       lepton:
         title: Lepton
+      fluerial:
+        title: Fluerial
       lepton-photon:
         title: Lepton Photon
       lepton-proton:

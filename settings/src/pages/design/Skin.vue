@@ -27,6 +27,16 @@
             </q-item>
             <q-item tag="label" clickable v-ripple>
                 <q-item-section avatar>
+                    <q-img src="@/assets/design/skin/fluerial-dark.svg" width="100px" v-if="dark.isActive" />
+                    <q-img src="@/assets/design/skin/fluerial-light.svg" width="100px" v-else />
+                </q-item-section>
+                <q-item-section>{{ t('pages.design.skin.fluerial.title') }}</q-item-section>
+                <q-item-section side>
+                    <q-radio v-model="skin" val="fluerial" />
+                </q-item-section>
+            </q-item>
+            <q-item tag="label" clickable v-ripple>
+                <q-item-section avatar>
                     <q-img src="@/assets/design/skin/lepton-dark.svg" width="100px" v-if="dark.isActive" />
                     <q-img src="@/assets/design/skin/lepton-light.svg" width="100px" v-else />
                 </q-item-section>
