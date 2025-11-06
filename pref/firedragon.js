@@ -8,3 +8,4 @@ pref("firedragon.hidePasswdmgr", false);
 pref("firedragon.moveTabToWindow.enable", true);
 pref("firedragon.translations.enable", false);
 pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+pref("firedragon.skin", "lepton-proton");
