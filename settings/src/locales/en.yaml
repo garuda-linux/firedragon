@@ -84,13 +84,18 @@ pages:
     description: Adjust the appearance of the browser.
     skin:
       title: Skin
-      lepton:
-        title: Lepton
-      fluerial:
-        title: Fluerial
-      lepton-photon:
-        title: Lepton Photon
-      lepton-proton:
-        title: Lepton Proton
       proton:
         title: Proton
+        description: The default Firefox skin
+      fluerial:
+        title: Fluerial
+        description: Floorp's legacy UI
+      lepton:
+        title: Lepton
+        description: A custom skin by black7375
+      lepton-photon:
+        title: Lepton Photon
+        description: Lepton but Photon styled
+      lepton-proton:
+        title: Lepton Proton
+        description: Lepton but Proton styled
