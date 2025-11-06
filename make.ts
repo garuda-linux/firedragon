@@ -289,7 +289,7 @@ async function dev() {
         await $`ln -s ${path.resolve()} ${buildDir}/${sourceDir}`;
     }
 
-    await $`pnpm run -r dev`;
+    await $`pnpm run -r build `;
 
     const $$ = $({
         env: {
