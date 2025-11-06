@@ -52,6 +52,12 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     {
                         type: 'category',
                         category: 'browser-idle-startup',
+                        entry: 'resource://firedragon/modules/SkinManager.sys.mjs',
+                        value: 'SkinManager.init',
+                    },
+                    {
+                        type: 'category',
+                        category: 'browser-idle-startup',
                         entry: 'resource://firedragon/modules/TranslationFeatureManager.sys.mjs',
                         value: 'TranslationFeatureManager.init',
                     },
