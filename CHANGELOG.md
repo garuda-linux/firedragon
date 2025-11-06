@@ -1,5 +1,27 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.2) — 2025-11-06 — [`v13.0.0-alpha.1`…`v13.0.0-alpha.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.1...v13.0.0-alpha.2)
+
+### 🚀 Features
+
+- *(lib-vite)* Add skin registration type — [`d7959fb0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d7959fb0718ab2d06ab8ca4eebd95d27a44e0841)
+- *(skin)* Add skin files — [`0b3faf50…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0b3faf50f0867883c515c2f0f6dc1249aec85343)
+- *(modules)* Add SkinManager to update skin — [`7ebc3020…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7ebc3020b3a97710d7b02c221071524844fbb09f)
+- *(pref)* Set default skin to lepton-proton — [`13bd0dbe…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/13bd0dbe92bfcce07d34bc178807351d4a42bd1f)
+- *(settings)* Add design page with skin setting — [`044067a0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/044067a04593af0c8813e812a63dbe85cfe2989e)
+- *(skin)* Add fluerial skin — [`66568c44…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/66568c4476ba4451cbdadee5c5bd3079ce070ece)
+- *(settings)* Add fluerial skin to settings — [`4bf65eef…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4bf65eeff94aed9f649bba6aa15ae255bf317d6a)
+- *(settings)* Add description to skins and increase image size — [`774fcc08…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/774fcc08338d75ff3b5499d6deb63f8a40326b36)
+
+### 🐛 Bug Fixes
+
+- *(content)* Fix hidePasswdmgr on preferences page — [`ca7cb8e4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ca7cb8e4e60f671603ceba8387d1b053708807b6)
+- *(cfg)* Remove obsolete skin prefs from firedragon.cfg — [`735201d1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/735201d17c9d056858b3c8e5be5f3f05056d8714)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove separate dev build script — [`02fb6896…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/02fb68963fbcd98acfee75c0720f59e9629836ec)
+
 ## [FireDragon v13.0.0-alpha.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.1) — 2025-11-05 — [`v13.0.0-alpha.0`…`v13.0.0-alpha.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.0...v13.0.0-alpha.1)
 
 ### 🐛 Bug Fixes
