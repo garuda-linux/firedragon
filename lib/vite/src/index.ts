@@ -31,7 +31,15 @@ export interface ResourceRegistration {
     flags?: RegistrationFlags,
 }
 
-export type Registration = CategoryRegistration | ContentRegistration | ResourceRegistration;
+export interface SkinRegistration {
+    type: 'skin',
+    package: string,
+    name: string,
+    path: string,
+    flags?: RegistrationFlags,
+}
+
+export type Registration = CategoryRegistration | ContentRegistration | ResourceRegistration | SkinRegistration;
 
 export function buildRegistrationFlag<K extends keyof RegistrationFlags>(key: K, value: RegistrationFlags[K]) {
     switch (key) {
@@ -63,6 +71,8 @@ export function buildRegistration(registration: Registration): string {
             return `content ${registration.name} ${registration.path}${flags}`;
         case 'resource':
             return `resource ${registration.name} ${registration.path}${flags}`;
+        case 'skin':
+            return `skin ${registration.package} ${registration.name} ${registration.path}${flags}`;
     }
 }
 
