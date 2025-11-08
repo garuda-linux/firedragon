@@ -51,9 +51,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
-                        category: 'browser-idle-startup',
+                        category: 'browser-before-ui-startup',
                         entry: 'resource://firedragon/modules/SkinManager.sys.mjs',
-                        value: 'SkinManager.init',
+                        value: 'SkinManager.loadUserJs',
                     },
                     {
                         type: 'category',
