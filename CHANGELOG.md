@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.3) — 2025-11-08 — [`v13.0.0-alpha.2`…`v13.0.0-alpha.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.2...v13.0.0-alpha.3)
+
+### 🚀 Features
+
+- *(settings)* Add full lepton userChrome settings — [`a6863036…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a686303611b123673be12bcbaadf4716e17b39ea)
+
+### 🐛 Bug Fixes
+
+- Fix skin implementation to include userChrome & userContent separately based on window type — [`13a7e9d2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/13a7e9d29ee1d412018ba6c1f85f969cda94d7e4)
+- *(make)* Don't resume session in dev mode since it will mess up the windows — [`3e063f6c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3e063f6c56a734e690efa56d12644ecd2e941e15)
+
 ## [FireDragon v13.0.0-alpha.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.2) — 2025-11-06 — [`v13.0.0-alpha.1`…`v13.0.0-alpha.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.1...v13.0.0-alpha.2)
 
 ### 🚀 Features
