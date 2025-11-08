@@ -131,6 +131,7 @@ const userPrefs = {
     'devtools.debugger.remote-enabled': true,
     'devtools.chrome.enabled': true,
     'browser.newtabpage.enabled': true,
+    'browser.startup.page': 1,
 };
 
 const tmpDir = tmpdir();
