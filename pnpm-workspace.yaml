@@ -3,6 +3,7 @@ packages:
   - content
   - lib/vite
   - lib/vue
+  - lib/vue-router
   - lib/vue-runtime
   - modules
   - newtab

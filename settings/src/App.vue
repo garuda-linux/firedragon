@@ -24,20 +24,20 @@
                 <q-list padding>
                     <q-item href="about:preferences" clickable v-ripple>
                         <q-item-section avatar>
-                            <q-icon name="arrow_back" />
+                            <q-icon name="sym_o_arrow_back" />
                         </q-item-section>
                         <q-item-section>{{ t('back') }}</q-item-section>
                     </q-item>
                     <q-separator />
                     <q-item to="/" clickable v-ripple>
                         <q-item-section avatar>
-                            <q-icon name="home" />
+                            <q-icon name="sym_o_home" />
                         </q-item-section>
                         <q-item-section>{{ t('pages.home.title') }}</q-item-section>
                     </q-item>
                     <q-item to="/design" clickable v-ripple>
                         <q-item-section avatar>
-                            <q-icon name="design_services" />
+                            <q-icon name="sym_o_design_services" />
                         </q-item-section>
                         <q-item-section>{{ t('pages.design.title') }}</q-item-section>
                     </q-item>

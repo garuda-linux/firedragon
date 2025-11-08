@@ -30,6 +30,7 @@ export default defineConfig({
                 'vue',
                 'quasar',
                 'vue-i18n',
+                '@vueuse/core',
                 unheadVueComposablesImports,
                 firedragonVuePreset,
             ],

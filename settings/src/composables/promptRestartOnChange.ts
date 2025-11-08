@@ -1,4 +1,4 @@
-export default function restartOnChange(ref: Ref<any>, title: string, message: string) {
+export default function promptRestartOnChange(ref: Ref<any>, title: string, message: string) {
     const { dialog } = useQuasar();
 
     watch(ref, () => {

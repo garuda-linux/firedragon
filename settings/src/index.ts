@@ -1,4 +1,5 @@
 import { Quasar, Dialog } from 'quasar';
+import iconSet from 'quasar/icon-set/material-symbols-outlined';
 import { createHead } from '@unhead/vue/client';
 
 import App from './App.vue';
@@ -8,6 +9,7 @@ import router from './router.ts';
 const app = createApp(App);
 
 app.use(Quasar, {
+    iconSet,
     plugins: [
         Dialog,
     ],

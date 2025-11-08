@@ -19,9 +19,9 @@
     <h1 class="text-h3">{{ t('steps.default.header') }}</h1>
     <p>{{ t('steps.default.text') }}</p>
     <p>
-        <q-btn color="primary" icon="open_in_browser" :loading="loading" @click="makeDefault">{{ t('steps.default.makeDefault') }}</q-btn>
+        <q-btn color="primary" icon="sym_o_open_in_browser" :loading="loading" @click="makeDefault">{{ t('steps.default.makeDefault') }}</q-btn>
     </p>
     <p>
-        <q-btn color="primary" icon="arrow_forward" @click="emit('next')">{{ t('steps.default.next') }}</q-btn>
+        <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.default.next') }}</q-btn>
     </p>
 </template>

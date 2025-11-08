@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+    import ToggleItem from '@/components/ToggleItem.vue';
+
     const { t } = useI18n();
 
     const enableIPv6 = toggleRefs(
@@ -12,20 +14,12 @@
     <q-card>
         <q-card-section>
             <h2 class="text-h6 no-margin">
-                <q-icon name="cloud" class="q-mb-xs q-mr-xs" />
+                <q-icon name="sym_o_cloud" class="q-mb-xs q-mr-xs" />
                 {{ t('pages.home.networking.title') }}
             </h2>
         </q-card-section>
         <q-list>
-            <q-item tag="label" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.networking.enableIPv6.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.networking.enableIPv6.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="enableIPv6" />
-                </q-item-section>
-            </q-item>
+            <ToggleItem :title="t('pages.home.networking.enableIPv6.title')" :description="t('pages.home.networking.enableIPv6.description')" v-model="enableIPv6" />
         </q-list>
     </q-card>
 </template>

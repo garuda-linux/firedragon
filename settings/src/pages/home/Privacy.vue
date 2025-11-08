@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    import { useIntPref } from "@/composables/usePref.ts";
+    import ToggleItem from '@/components/ToggleItem.vue';
 
     const { t } = useI18n();
 
@@ -19,29 +19,13 @@
     <q-card>
         <q-card-section>
             <h2 class="text-h6 no-margin">
-                <q-icon name="visibility" class="q-mb-xs q-mr-xs" />
+                <q-icon name="sym_o_visibility" class="q-mb-xs q-mr-xs" />
                 {{ t('pages.home.privacy.title') }}
             </h2>
         </q-card-section>
         <q-list>
-            <q-item tag="label" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.privacy.limitCrossOriginReferrers.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.privacy.limitCrossOriginReferrers.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="limitCrossOriginReferrers" />
-                </q-item-section>
-            </q-item>
-            <q-item tag="label" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.privacy.autoRefuseCookies.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.privacy.autoRefuseCookies.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="autoRefuseCookies" />
-                </q-item-section>
-            </q-item>
+            <ToggleItem :title="t('pages.home.privacy.limitCrossOriginReferrers.title')" :description="t('pages.home.networking.limitCrossOriginReferrers.description')" v-model="limitCrossOriginReferrers" />
+            <ToggleItem :title="t('pages.home.privacy.autoRefuseCookies.title')" :description="t('pages.home.networking.autoRefuseCookies.description')" v-model="autoRefuseCookies" />
         </q-list>
     </q-card>
 </template>

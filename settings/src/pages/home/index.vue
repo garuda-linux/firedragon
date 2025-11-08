@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-    import BrowserBehaviour from "@/pages/home/BrowserBehaviour.vue";
-    import Networking from "@/pages/home/Networking.vue";
-    import Fingerprinting from "@/pages/home/Fingerprinting.vue";
-    import Security from "@/pages/home/Security.vue";
+    import BrowserBehaviour from '@/pages/home/BrowserBehaviour.vue';
+    import Networking from '@/pages/home/Networking.vue';
+    import Fingerprinting from '@/pages/home/Fingerprinting.vue';
+    import Security from '@/pages/home/Security.vue';
 
     const { t } = useI18n();
 </script>

@@ -1,0 +1,9 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "lib": ["DOM"],
+        "types": ["@types/gecko"],
+
+        "erasableSyntaxOnly": false
+    }
+}

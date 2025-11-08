@@ -47,6 +47,6 @@
         <q-skeleton type="QInput" v-else />
     </p>
     <p>
-        <q-btn color="primary" icon="arrow_forward" @click="emit('next')">{{ t('steps.search.next') }}</q-btn>
+        <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.search.next') }}</q-btn>
     </p>
 </template>

@@ -14,7 +14,7 @@
     <q-list class="q-mb-lg">
         <q-item tag="label" clickable v-ripple>
             <q-item-section avatar>
-                <q-icon name="contrast" />
+                <q-icon name="sym_o_contrast" />
             </q-item-section>
             <q-item-section>{{ t('steps.appearance.theme.system') }}</q-item-section>
             <q-item-section side>
@@ -23,7 +23,7 @@
         </q-item>
         <q-item tag="label" clickable v-ripple>
             <q-item-section avatar>
-                <q-icon name="light_mode" />
+                <q-icon name="sym_o_light_mode" />
             </q-item-section>
             <q-item-section>{{ t('steps.appearance.theme.light') }}</q-item-section>
             <q-item-section side>
@@ -32,7 +32,7 @@
         </q-item>
         <q-item tag="label" clickable v-ripple>
             <q-item-section avatar>
-                <q-icon name="dark_mode" />
+                <q-icon name="sym_o_dark_mode" />
             </q-item-section>
             <q-item-section>{{ t('steps.appearance.theme.dark') }}</q-item-section>
             <q-item-section side>
@@ -41,6 +41,6 @@
         </q-item>
     </q-list>
     <p>
-        <q-btn color="primary" icon="arrow_forward" @click="emit('next')">{{ t('steps.appearance.next') }}</q-btn>
+        <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.appearance.next') }}</q-btn>
     </p>
 </template>

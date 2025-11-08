@@ -36,22 +36,22 @@
             <q-page padding>
                 <Suspense>
                     <q-stepper color="primary" header-nav vertical v-model="step">
-                        <q-step :name="1" :title="t('steps.welcome.title')" icon="home" :header-nav="step > 1">
+                        <q-step :name="1" :title="t('steps.welcome.title')" icon="sym_o_home" :header-nav="step > 1">
                             <Welcome @next="step++" />
                         </q-step>
-                        <q-step :name="2" :title="t('steps.language.title')" icon="language" :header-nav="step > 2">
+                        <q-step :name="2" :title="t('steps.language.title')" icon="sym_o_language" :header-nav="step > 2">
                             <Language @next="step++" />
                         </q-step>
-                        <q-step :name="3" :title="t('steps.appearance.title')" icon="color_lens" :header-nav="step > 3">
+                        <q-step :name="3" :title="t('steps.appearance.title')" icon="sym_o_color_lens" :header-nav="step > 3">
                             <Appearance @next="step++" />
                         </q-step>
-                        <q-step :name="4" :title="t('steps.search.title')" icon="search" :header-nav="step > 4">
+                        <q-step :name="4" :title="t('steps.search.title')" icon="sym_o_search" :header-nav="step > 4">
                             <Search @next="step++" />
                         </q-step>
-                        <q-step :name="5" :title="t('steps.default.title')" icon="open_in_browser" :header-nav="step > 5">
+                        <q-step :name="5" :title="t('steps.default.title')" icon="sym_o_open_in_browser" :header-nav="step > 5">
                             <Default @next="step++" />
                         </q-step>
-                        <q-step :name="6" :title="t('steps.finish.title')" icon="check" :header-nav="step > 6">
+                        <q-step :name="6" :title="t('steps.finish.title')" icon="sym_o_check" :header-nav="step > 6">
                             <Finish @next="close" />
                         </q-step>
                     </q-stepper>

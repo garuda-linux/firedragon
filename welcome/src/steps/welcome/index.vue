@@ -11,6 +11,6 @@
     <p>{{ t('steps.welcome.text1') }}</p>
     <p>{{ t('steps.welcome.text2') }}</p>
     <p>
-        <q-btn color="primary" icon="arrow_forward" @click="emit('next')">{{ t('steps.welcome.next') }}</q-btn>
+        <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.welcome.next') }}</q-btn>
     </p>
 </template>

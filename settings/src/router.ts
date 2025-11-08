@@ -1,7 +1,8 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createRouter } from "vue-router";
+import { createHashHistory } from '@firedragon13/lib-vue-router';
 
 export default createRouter({
-    history: createMemoryHistory(),
+    history: createHashHistory(),
     routes: [
         {
             path: '/',
@@ -9,7 +10,16 @@ export default createRouter({
         },
         {
             path: '/design',
-            component: () => import('@/pages/design/index.vue'),
+            children: [
+                {
+                    path: '',
+                    component: () => import('@/pages/design/index.vue'),
+                },
+                {
+                    path: 'lepton',
+                    component: () => import('@/pages/design/lepton/index.vue'),
+                },
+            ],
         },
     ],
 });

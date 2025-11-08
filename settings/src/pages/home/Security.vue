@@ -1,4 +1,7 @@
 <script lang="ts" setup>
+    import BoolPrefItem from '@/components/BoolPrefItem.vue';
+    import ToggleItem from '@/components/ToggleItem.vue';
+
     const { t } = useI18n();
 
     const enforceOCSP = useBoolPref('security.OCSP.require');
@@ -37,38 +40,14 @@
     <q-card>
         <q-card-section>
             <h2 class="text-h6 no-margin">
-                <q-icon name="security" class="q-mb-xs q-mr-xs" />
+                <q-icon name="sym_o_security" class="q-mb-xs q-mr-xs" />
                 {{ t('pages.home.security.title') }}
             </h2>
         </q-card-section>
         <q-list>
-            <q-item tag="label" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.security.enforceOCSP.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.security.enforceOCSP.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="enforceOCSP" />
-                </q-item-section>
-            </q-item>
-            <q-item tag="label" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.security.enableSafeBrowsing.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.security.enableSafeBrowsing.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="enableSafeBrowsing" />
-                </q-item-section>
-            </q-item>
-            <q-item tag="label" class="q-pl-xl" v-ripple>
-                <q-item-section>
-                    <q-item-label>{{ t('pages.home.security.scanDownloads.title') }}</q-item-label>
-                    <q-item-label caption>{{ t('pages.home.security.scanDownloads.description') }}</q-item-label>
-                </q-item-section>
-                <q-item-section side>
-                    <q-toggle v-model="scanDownloads" />
-                </q-item-section>
-            </q-item>
+            <BoolPrefItem pref="security.OCSP.require" :title="t('pages.home.security.enforceOCSP.title')" :description="t('pages.home.security.enforceOCSP.description')" />
+            <ToggleItem :title="t('pages.home.security.enableSafeBrowsing.title')" :description="t('pages.home.security.enableSafeBrowsing.description')" v-model="enableSafeBrowsing" />
+            <BoolPrefItem pref="browser.safebrowsing.downloads.enabled" :title="t('pages.home.security.scanDownloads.title')" :description="t('pages.home.security.scanDownloads.description')" :inset-level="1" :disable="!enableSafeBrowsing" />
         </q-list>
     </q-card>
 </template>
