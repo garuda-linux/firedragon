@@ -73,7 +73,8 @@
                 <TypeSelect v-model="tabCloseButtonAtPinnedType" :options="['none', 'default', 'always']" translation-key="pages.design-lepton.tab.tabCloseButtonAtPinned.type" />
             </Item>
             <BoolPrefItem pref="userChrome.tab.close_button_at_pinned.background" :title="t('pages.design-lepton.tab.tabCloseButtonAtPinnedBackground.title')" :inset-level="1" :disable="!tabCloseButtonAtPinned" />
-            <BoolPrefItemWithUndo pref="userChrome.tab.sound_show_label" :title="t('pages.design-lepton.tab.tabSoundShowLabel.title')" />
+            <BoolPrefItem pref="userChrome.tab.sound_show_label" :title="t('pages.design-lepton.tab.tabSoundShowLabel.title')" />
+            <BoolPrefItem pref="userChrome.tab.supernova_like_contextline" :title="t('pages.design-lepton.tab.tabSupernovaLikeContextline.title')" />
         </q-list>
     </q-card>
 </template>

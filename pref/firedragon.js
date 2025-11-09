@@ -163,12 +163,29 @@ pref('userChrome.tab.close_button_at_pinned', false);
 pref('userChrome.tab.close_button_at_pinned.always', false);
 pref('userChrome.tab.close_button_at_pinned.background', false);
 pref('userChrome.tab.sound_show_label', false);
+pref('userChrome.tab.supernova_like_contextline', false);
+
+
+/* SKIN: LEPTON: PANEL */
+
 pref('userChrome.panel.remove_strip', false);
 pref('userChrome.panel.full_width_separator', false);
 pref('userChrome.panel.full_width_padding', false);
+
+
+/* SKIN: LEPTON: SIDEBAR */
+
 pref('userChrome.sidebar.overlap', false);
+
+
+/* SKIN: LEPTON: FULLSCREEN */
+
 pref('userChrome.fullscreen.overlap', false);
 pref('userChrome.fullscreen.show_bookmarkbar', false);
+
+
+/* SKIN: LEPTON: ICON */
+
 pref('userChrome.icon.panel', true);
 pref('userChrome.icon.library', true);
 pref('userChrome.icon.context_menu', true);
@@ -181,3 +198,33 @@ pref('userChrome.icon.account_image_to_right', false);
 pref('userChrome.icon.account_label_to_right', false);
 pref('userChrome.icon.menu.full', false);
 pref('userChrome.icon.global_menu.mac', false);
+
+
+/* SKIN: LEPTON: PLAYER */
+
+pref('userContent.player.ui', true);
+pref('userContent.player.icon', true);
+pref('userContent.player.noaudio', true);
+pref('userContent.player.size', true);
+pref('userContent.player.click_to_play', true);
+pref('userContent.player.animate', true);
+pref('userContent.player.ui.twoline', false);
+
+
+/* SKIN: LEPTON: NEW TAB */
+
+pref('userContent.newTab.field_border', true);
+pref('userContent.newTab.full_icon', true);
+pref('userContent.newTab.animate', true);
+pref('userContent.newTab.searchbar', true);
+
+
+/* SKIN: LEPTON: PAGE */
+
+pref('userContent.page.illustration', true);
+pref('userContent.page.proton_color', true);
+pref('userContent.page.dark_mode', true);
+pref('userContent.page.proton', true);
+pref('userContent.page.proton_color.dark_blue_accent', false);
+pref('userContent.page.proton_color.system_accent', false);
+pref('userContent.page.monospace', false);

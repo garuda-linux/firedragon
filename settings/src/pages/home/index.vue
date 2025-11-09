@@ -9,11 +9,15 @@
 
 <template>
     <q-page padding>
-        <h1 class="text-h5 q-mt-none q-mb-sm">{{ t('pages.home.title') }}</h1>
-        <div class="text-subtitle1 q-mb-lg">{{ t('pages.home.description') }}</div>
-        <BrowserBehaviour class="q-mb-lg" />
-        <Networking class="q-mb-lg" />
-        <Fingerprinting class="q-mb-lg" />
-        <Security />
+        <div class="column q-gutter-lg">
+            <div>
+                <h1 class="text-h5 q-mt-none q-mb-sm">{{ t('pages.home.title') }}</h1>
+                <div class="text-subtitle1">{{ t('pages.home.description') }}</div>
+            </div>
+            <BrowserBehaviour />
+            <Networking />
+            <Fingerprinting />
+            <Security />
+        </div>
     </q-page>
 </template>

@@ -344,7 +344,7 @@ pages:
       tabBottomRoundedCorner:
         title: Rounded bottom corners
       tabPhotonLikeContextline:
-        title: Add photon-like contextline
+        title: Photon-like contextline
       tabAlwaysShowTabIcon:
         title: Always show tab icon
       tabCloseButtonAtHover:
@@ -363,6 +363,8 @@ pages:
         title: Show close button on pinned background tabs on hover
       tabSoundShowLabel:
         title: Show sound label
+      tabSupernovaLikeContextline:
+        title: Supernova-like contextline
     panel:
       title: Panel
       panelRemoveStrip:
@@ -407,3 +409,47 @@ pages:
         title: Full icon menu
       iconGlobalMenuMac:
         title: Global menu icons on Mac
+    player:
+      title: Media Player
+      playerUi:
+        title: Improved player UI
+      playerIcon:
+        title: Replace player icons
+      playerNoaudio:
+        title: Clearly show no-audio video
+      playerSize:
+        title: Adjust player size when touch mode of fullscreen
+      playerClickToPlay:
+        title: Click to play
+      playerAnimate:
+        title: Player animations
+      playerUiTwoline:
+        title: Two line player UI
+    newTab:
+      title: New Tab
+      newTabFieldBorder:
+        title: Show border around input fields
+      newTabFullIcon:
+        title: Remove padding around icons
+      newTabAnimate:
+        title: New tab animations
+      newTabSearchbar:
+        title: Improved search view
+    page:
+      title: Page
+      pageIllustration:
+        title: Show error illustrations
+      pageProtonColor:
+        title: Provide Proton color
+      pageDarkMode:
+        title: Dark mode contents
+      pageProton:
+        title: Proton theme contents
+      pageProtonColor2:
+        title: Proton accent color
+        type:
+          none: Disabled
+          darkBlueAccent: Dark blue
+          systemAccent: System
+      pageMonospace:
+        title: Use monospace font

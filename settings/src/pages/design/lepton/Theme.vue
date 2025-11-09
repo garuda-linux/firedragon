@@ -28,7 +28,7 @@
                 <BoolPrefItemWithUndo pref="userChrome.theme.fully_dark" :title="t('pages.design-lepton.theme.themeFullyDark.title')" :description="t('pages.design-lepton.default')" :inset-level="1" :disable="!themeProtonColor" />
                 <q-separator spaced />
             </template>
-            <BoolPrefItem pref="userChrome.theme.proton_color.dark_blue_accent" :title="t('pages.design-lepton.theme.themeProtonColorDarkBlueAccent.title')" />
+            <BoolPrefItem pref="userChrome.theme.proton_color.dark_blue_accent" :title="t('pages.design-lepton.theme.themeProtonColorDarkBlueAccent.title')" :disable="!themeProtonColor" />
             <BoolPrefItem pref="userChrome.theme.monospace" :title="t('pages.design-lepton.theme.themeMonospace.title')" />
         </q-list>
     </q-card>
