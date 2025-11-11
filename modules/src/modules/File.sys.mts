@@ -1,6 +1,5 @@
 import { AppConstants } from 'resource://gre/modules/AppConstants.sys.mjs';
 
-
 export class File {
     static fromDirsvc(prop: string): File {
         return new File(Services.dirsvc.get(prop, Ci.nsIFile));
