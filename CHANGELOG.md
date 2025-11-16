@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.4) — 2025-11-16 — [`v13.0.0-alpha.3`…`v13.0.0-alpha.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.3...v13.0.0-alpha.4)
+
+### 🚀 Features
+
+- *(settings)* Add lepton userContent settings — [`b6a3e58b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b6a3e58bee411983839e980eae3d3a7954b07bab)
+
+### 🐛 Bug Fixes
+
+- *(modules)* Use input with strict preserveEntrySignatures instead of lib mode — [`55354cb5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/55354cb58c5d0c842b197f964606c624ebbc8d99)
+
+### 🚜 Refactor
+
+- Remove lib/vue-runtime and replace with external vue-runtime-xul — [`c2adfb61…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c2adfb61e8b682fda11c863c4ebe78223c9ee410)
+
 ## [FireDragon v13.0.0-alpha.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.3) — 2025-11-08 — [`v13.0.0-alpha.2`…`v13.0.0-alpha.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.2...v13.0.0-alpha.3)
 
 ### 🚀 Features
