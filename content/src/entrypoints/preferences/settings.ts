@@ -1,4 +1,5 @@
 import Component from "@/Component";
+import { t } from '@/i18n.ts';
 
 window.fdSettings = new class extends Component {
     init() {
@@ -9,7 +10,7 @@ window.fdSettings = new class extends Component {
                 tooltiptext="FireDragon Settings"
             >
                 <image class="category-icon" src="chrome://branding/content/about-logo.png" />
-                <label class="category-name" flex="1">FireDragon Settings</label>
+                <label class="category-name" flex="1">${t('settings.label')}</label>
             </richlistitem>
         `);
         fragment.querySelector('richlistitem')?.addEventListener('click', () => {

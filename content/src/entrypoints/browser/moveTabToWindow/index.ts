@@ -1,7 +1,7 @@
 import Component from '@/Component.ts';
 import { createApp, h, mountBefore } from '@/vue.ts';
 
-import view from '@/views/moveTabToWindow.vue';
+import view from '@/entrypoints/browser/moveTabToWindow/view.vue';
 
 window.fdMoveTabToWindow = new class extends Component {
     protected readonly enabled = useBoolPref('firedragon.moveTabToWindow.enable');

@@ -1,13 +1,13 @@
 import Component from '@/Component.ts';
-import i18n from '@/i18n.ts';
+import { t } from '@/i18n.ts';
 
 window.fdUndoCloseTab = new class extends Component {
     init() {
         window.CustomizableUI.createWidget({
             id: 'undo-close-tab',
             type: 'button',
-            label: i18n.global.t('undoCloseTab.label'),
-            tooltiptext: i18n.global.t('undoCloseTab.tooltiptext'),
+            label: t('undoCloseTab.label'),
+            tooltiptext: t('undoCloseTab.tooltiptext'),
             removable: true,
             onCommand(event: XULCommandEvent) {
                 (event.view?.document?.querySelector('#toolbar-context-undoCloseTab') as XULElement).doCommand();

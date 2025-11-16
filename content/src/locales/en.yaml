@@ -5,3 +5,6 @@ moveTabToWindow:
 undoCloseTab:
   label: Undo close tab
   tooltiptext: Undo close tab
+
+settings:
+  label: FireDragon Settings

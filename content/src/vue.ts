@@ -1,4 +1,4 @@
-import { createApp as _createApp, h, type App } from '@firedragon13/lib-vue-runtime';
+import { createApp as _createApp, h, type App } from 'vue-runtime-xul';
 
 import i18n from '@/i18n';
 
