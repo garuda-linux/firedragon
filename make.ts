@@ -159,7 +159,8 @@ async function getArtifact(basename: string, suffix: string) {
         return `${distDir}/${artifact}`;
     }
     if (!await fs.pathExists(`${cacheDir}/${artifact}`)) {
-        await $`curl -fL ${repoUrl}/-/releases/v${firedragon.version}/downloads/${basename}.${suffix} -o ${cacheDir}/${artifact}`;
+        await $`curl -fL ${repoUrl}/-/releases/v${firedragon.version}/downloads/${basename}.${suffix} -o ${tmpDir}/${artifact}`;
+        await $`mv ${tmpDir}/${artifact} ${cacheDir}/${artifact}`;
     }
     return `${cacheDir}/${artifact}`;
 }
