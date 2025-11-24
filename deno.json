@@ -7,10 +7,10 @@
     "./src/apps/*"
   ],
   "imports": {
-    "@std/encoding": "jsr:@std/encoding@^1.0.7",
-    "@std/fs": "jsr:@std/fs@^1.0.11",
-    "zod": "npm:zod",
-    "solid-styled-jsx": "npm:solid-styled-jsx",
+    "@std/encoding": "jsr:@std/encoding@^1.0.10",
+    "@std/fs": "jsr:@std/fs@^1.0.20",
+    "zod": "npm:zod@4.1.13",
+    "solid-styled-jsx": "npm:solid-styled-jsx@0.27.1",
     "@swc/core": "npm:@swc/core@1.3.96"
   },
   "compilerOptions": {
