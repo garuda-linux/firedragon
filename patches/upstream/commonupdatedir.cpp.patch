@@ -1,12 +1,12 @@
 diff --git a/toolkit/mozapps/update/common/commonupdatedir.cpp b/toolkit/mozapps/update/common/commonupdatedir.cpp
-index fa5de48e8b..51b62d39fa 100644
+index 0ba9fcef9417..51b62d39fa4a 100644
 --- a/toolkit/mozapps/update/common/commonupdatedir.cpp
 +++ b/toolkit/mozapps/update/common/commonupdatedir.cpp
 @@ -43,7 +43,7 @@
  // this problem in the future, we are including a UUID in the root update
  // directory name to attempt to ensure that it will be created by this code and
  // won't already exist with the wrong permissions.
--#  define ROOT_UPDATE_DIR_NAME "Noraneko-1de4eec8-1241-4177-a864-e594e8d1fb38"
+-#  define ROOT_UPDATE_DIR_NAME "Mozilla-1de4eec8-1241-4177-a864-e594e8d1fb38"
 +#  define ROOT_UPDATE_DIR_NAME "GarudaLinux-1de4eec8-1241-4177-a864-e594e8d1fb38"
  // This describes the directory between the "Mozilla" directory and the install
  // path hash (i.e. C:\ProgramData\Mozilla\<UPDATE_PATH_MID_DIR_NAME>\<hash>)

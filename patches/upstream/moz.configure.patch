@@ -1,13 +1,19 @@
 diff --git a/browser/moz.configure b/browser/moz.configure
-index c4184aa4fa..36b2506efd 100644
+index e8b401a7dfb2..cae85ef14fea 100644
 --- a/browser/moz.configure
 +++ b/browser/moz.configure
-@@ -26,7 +26,7 @@ imply_option("MOZ_DEVTOOLS", "all")
+@@ -13,12 +13,13 @@ imply_option("MOZ_NORMANDY", True)
+ imply_option("MOZ_PROFILE_MIGRATOR", True)
+ 
+ 
+-imply_option("MOZ_APP_VENDOR", "Mozilla")
+ imply_option("MOZ_APP_ID", "{ec8030f7-c20a-464f-9b0e-13a3a9e97384}")
+ # Include the DevTools client, not just the server (which is the default)
+ imply_option("MOZ_DEVTOOLS", "all")
  imply_option("BROWSER_CHROME_URL", "chrome://browser/content/browser.xhtml")
  
- ## Noraneko Patch
--include("../floorp/gecko/config/moz.configure")
 +include("../firedragon/gecko/config/moz.configure")
- ## End of Noraneko Patch
- 
++
  option(
+     "--disable-browser-newtab-as-addon",
+     default=True,

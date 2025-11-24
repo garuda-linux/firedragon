@@ -1,58 +1,72 @@
 diff --git a/intl/l10n/rust/localization-ffi/src/lib.rs b/intl/l10n/rust/localization-ffi/src/lib.rs
-index d21bd8338f..c84d42bc18 100644
+index 8896231786af..c84d42bc1897 100644
 --- a/intl/l10n/rust/localization-ffi/src/lib.rs
 +++ b/intl/l10n/rust/localization-ffi/src/lib.rs
-@@ -102,7 +102,7 @@ pub struct OptionalL10nMessage {
+@@ -102,15 +102,25 @@ pub struct OptionalL10nMessage {
  impl From<FluentL10nMessage<'_>> for L10nMessage {
      fn from(input: FluentL10nMessage) -> Self {
          let value = if let Some(value) = input.value {
--            let modified_value = value.to_string().replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
+-            value.to_string().into()
 +            let modified_value = value.to_string().replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-             modified_value.into()
++            modified_value.into()
          } else {
              let mut s = nsCString::new();
-@@ -111,7 +111,7 @@ impl From<FluentL10nMessage<'_>> for L10nMessage {
+             s.set_is_void(true);
+             s
          };
- 
-         let attributes = input.attributes.into_iter().map(|attr| {
--            let modified_attr_value = attr.value.replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
++
++        let attributes = input.attributes.into_iter().map(|attr| {
 +            let modified_attr_value = attr.value.replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-             FluentL10nAttribute {
-                 name: attr.name,
-                 value: modified_attr_value.into(),
-@@ -211,7 +211,7 @@ impl LocalizationRc {
++            FluentL10nAttribute {
++                name: attr.name,
++                value: modified_attr_value.into(),
++            }.into()
++        }).collect();
++
+         Self {
+             value,
+-            attributes: input.attributes.into_iter().map(Into::into).collect(),
++            attributes,
+         }
+     }
+ }
+@@ -201,7 +211,8 @@ impl LocalizationRc {
              &mut errors,
          ) {
              if let Some(value) = value {
--                let modified_value = value.replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
+-                ret_val.assign(&value);
 +                let modified_value = value.replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-                 ret_val.assign(&modified_value);
++                ret_val.assign(&modified_value);
              } else {
                  ret_val.set_is_void(true);
-@@ -242,7 +242,7 @@ impl LocalizationRc {
+             }
+@@ -231,7 +242,8 @@ impl LocalizationRc {
          {
              for value in values.iter() {
                  if let Some(value) = value {
--                    let modified_value = value.replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
+-                    ret_val.push(value.as_ref().into());
 +                    let modified_value = value.replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-                     ret_val.push(modified_value.into());
++                    ret_val.push(modified_value.into());
                  } else {
                      let mut void_string = nsCString::new();
-@@ -317,7 +317,7 @@ impl LocalizationRc {
+                     void_string.set_is_void(true);
+@@ -305,7 +317,8 @@ impl LocalizationRc {
                  .format_value(&id.to_utf8(), args.as_ref(), &mut errors)
                  .await
              {
--                let modified_value = value.replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
+-                let v: nsCString = value.to_string().into();
 +                let modified_value = value.replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-                 let v: nsCString = modified_value.to_string().into();
++                let v: nsCString = modified_value.to_string().into();
                  v
              } else {
-@@ -358,7 +358,7 @@ impl LocalizationRc {
+                 let mut v = nsCString::new();
+@@ -345,7 +358,8 @@ impl LocalizationRc {
                  .into_iter()
                  .map(|value| {
                      if let Some(value) = value {
--                        let modified_value = value.replace("Firefox", "Floorp").replace("Mozilla", "Ablaze");
+-                        nsCString::from(value.as_ref())
 +                        let modified_value = value.replace("Firefox", "FireDragon").replace("Mozilla", "Garuda Linux");
-                         nsCString::from(&modified_value)
++                        nsCString::from(&modified_value)
                      } else {
                          let mut v = nsCString::new();
+                         v.set_is_void(true);

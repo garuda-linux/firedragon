@@ -1,0 +1,31 @@
+diff --git a/toolkit/mozapps/update/nsIUpdateService.idl b/toolkit/mozapps/update/nsIUpdateService.idl
+index be449223cfaf..6e4f0e25da44 100644
+--- a/toolkit/mozapps/update/nsIUpdateService.idl
++++ b/toolkit/mozapps/update/nsIUpdateService.idl
+@@ -228,6 +228,26 @@ interface nsIUpdate : nsISupports
+    * @returns The DOM Element created by the serialization process
+    */
+   Element serialize(in Document updates);
++
++  /**
++   * * NORANEKO PATCH - 0.1.0
++   * * [UPDATER]
++   * * (add version2 for updating source without rebuilding binary)
++   * * START
++   */
++  /**
++   * The Noraneko version of this update.
++   */
++  readonly attribute AString appVersion2;
++  /**
++   * The Noraneko buildid of this update.
++   */
++  readonly attribute AString buildID2;
++  /**
++   * * NORANEKO PATCH - 0.1.0
++   * * [UPDATER]
++   * * END
++   */
+ };
+ 
+ /**

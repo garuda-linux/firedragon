@@ -1,0 +1,45 @@
+diff --git a/python/mozboot/mozboot/bootstrap.py b/python/mozboot/mozboot/bootstrap.py
+index 7e8d5e6b951a..bc1034dc22b9 100644
+--- a/python/mozboot/mozboot/bootstrap.py
++++ b/python/mozboot/mozboot/bootstrap.py
+@@ -44,27 +44,14 @@ from mozboot.void import VoidBootstrapper
+ from mozboot.windows import WindowsBootstrapper
+ 
+ APPLICATION_CHOICE = """
+-Note on Artifact Mode:
+-
+-Artifact builds download prebuilt C++ components rather than building
+-them locally. Artifact builds are faster!
+-
+-Artifact builds are recommended for people working on Firefox or
+-Firefox for Android frontends, or the GeckoView Java API. They are unsuitable
+-for those working on C++ code. For more information see:
+-https://firefox-source-docs.mozilla.org/contributing/build/artifact_builds.html.
+-
+-Please choose the version of Firefox you want to build (see note above):
++Please choose the version of Noraneko you want to build:
+ %s
+ Your choice: """
+ 
+ APPLICATIONS = OrderedDict(
+     [
+-        ("Firefox for Desktop Artifact Mode", "browser_artifact_mode"),
+-        ("Firefox for Desktop", "browser"),
+-        ("GeckoView/Firefox for Android Artifact Mode", "mobile_android_artifact_mode"),
+-        ("GeckoView/Firefox for Android", "mobile_android"),
+-        ("SpiderMonkey JavaScript engine", "js"),
++        ("Noraneko for Desktop Artifact Mode", "browser_artifact_mode"),
++        ("Noraneko for Desktop", "browser"),
+     ]
+ )
+ 
+@@ -450,7 +437,8 @@ class Bootstrapper:
+         elif git and checkout_type == "git":
+             should_configure_git = False
+             if not self.instance.no_interactive:
+-                should_configure_git = self.instance.prompt_yesno(prompt=CONFIGURE_GIT)
++                # ! No need to configure git-cinnabar because of noraneko repo cannot be merged to mozilla-central by compartibility.
++                should_configure_git = False
+             else:
+                 # Assuming default configuration setting applies to all VCS.
+                 should_configure_git = self.hg_configure

@@ -54,7 +54,7 @@ interface Config {
     repoUrl: string;
     sourcePath: string;
     version: string;
-    runtime: string;
+    firefox: string;
     tmpDir: string;
     distDir: string;
     cacheDir: string;
@@ -74,23 +74,14 @@ interface Config {
     withDistHostBin: string | null;
 }
 
-async function getFloorpRuntime(config: Config): Promise<string> {
-    const { runtime, cacheDir } = config;
+async function getFirefoxSource(config: Config): Promise<string> {
+    const { firefox, cacheDir } = config;
 
-    const response = await fetch(`https://api.github.com/repos/Floorp-Projects/Floorp-runtime/releases/${runtime}`);
-    if (!response.ok) {
-        throw `Invalid runtime release: ${runtime}`;
-    }
-
-    const release: {
-        tag_name: string,
-        tarball_url: string,
-    } = await response.json() as any;
-
-    const tarball = `${cacheDir}/floorp-runtime-${release.tag_name}.tar.gz`;
+    const source = `firefox-${firefox}.source.tar.xz`;
+    const tarball = `${cacheDir}/${source}`;
 
     if (!await exists(tarball)) {
-        await $`curl -fL ${release.tarball_url} -o ${tarball}`
+        await $`curl -fL https://archive.mozilla.org/pub/firefox/releases/${firefox}/source/${source} -o ${tarball}`
     }
 
     return tarball;
@@ -132,10 +123,9 @@ async function prepareSource(config: Config, dir: string): Promise<void> {
     const { sourcePath, version } = config;
 
     // Extract floorp runtime and inject this repo
-    const runtimeTarball = await getFloorpRuntime(config);
+    const runtimeTarball = await getFirefoxSource(config);
     await $`mkdir ${dir}`;
     await $`tar -xf ${runtimeTarball} --strip-components=1 -C ${dir}`;
-    await $`rm -d ${dir}/floorp`;
     await $`rsync -a --exclude=/.git --filter=':- .gitignore' ./ ${dir}/${sourcePath}/`;
 
     // Copy branding
@@ -557,7 +547,7 @@ try {
             repoUrl: REPO_URL,
             sourcePath: SOURCE_PATH,
             version,
-            runtime: argv.runtime ?? packageJson.runtime,
+            firefox: packageJson.firefox,
             tmpDir,
             distDir,
             cacheDir,

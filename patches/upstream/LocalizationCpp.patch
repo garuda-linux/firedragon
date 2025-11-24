@@ -1,70 +1,83 @@
 diff --git a/intl/l10n/Localization.cpp b/intl/l10n/Localization.cpp
-index e741783bbb..06a17feb40 100644
+index 81b79093e1bc..e43aefb8d804 100644
 --- a/intl/l10n/Localization.cpp
 +++ b/intl/l10n/Localization.cpp
-@@ -78,8 +78,8 @@ static nsTArray<ffi::L10nKey> ConvertFromL10nKeys(
+@@ -76,13 +76,24 @@ static nsTArray<ffi::L10nKey> ConvertFromL10nKeys(
+ 
+     L10nMessage& m = msg->SetValue();
      if (!entry.message.value.IsVoid()) {
-       nsCString value;
-       value.Assign(entry.message.value);
--      value.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--      value.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
+-      m.mValue = entry.message.value;
++      nsCString value;
++      value.Assign(entry.message.value);
 +      value.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +      value.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
-       m.mValue = value;
++      m.mValue = value;
      }
      if (!entry.message.attributes.IsEmpty()) {
-@@ -90,8 +90,8 @@ static nsTArray<ffi::L10nKey> ConvertFromL10nKeys(
-       for (auto& attr : value) {
-         nsCString attrValue;
-         attrValue.Assign(attr.mValue);
--        attrValue.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--        attrValue.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
+       auto& value = m.mAttributes.SetValue();
+       if (!ConvertToAttributeNameValue(entry.message.attributes, value)) {
+         return false;
+       }
++      for (auto& attr : value) {
++        nsCString attrValue;
++        attrValue.Assign(attr.mValue);
 +        attrValue.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +        attrValue.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
-         attr.mValue = attrValue;
-       }
++        attr.mValue = attrValue;
++      }
      }
-@@ -300,8 +300,8 @@ already_AddRefed<Promise> Localization::FormatValue(
+   }
+ 
+@@ -301,7 +312,11 @@ already_AddRefed<Promise> Localization::FormatValue(
+                                      promise->GetParentObject())) {
+           promise->MaybeReject(std::move(rv));
          } else {
-           nsCString value;
-           value.Assign(*aValue);
--          value.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--          value.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
+-          promise->MaybeResolve(aValue);
++          nsCString value;
++          value.Assign(*aValue);
 +          value.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +          value.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
-           promise->MaybeResolve(value);
++          promise->MaybeResolve(value);
          }
        });
-@@ -337,8 +337,8 @@ already_AddRefed<Promise> Localization::FormatValues(
-           for (const auto& value : *aValues) {
-             nsCString modifiedValue;
-             modifiedValue.Assign(value);
--            modifiedValue.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--            modifiedValue.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
+ 
+@@ -330,7 +345,18 @@ already_AddRefed<Promise> Localization::FormatValues(
+                                      promise->GetParentObject())) {
+           promise->MaybeReject(std::move(rv));
+         } else {
+-          promise->MaybeResolve(*aValues);
++          nsTArray<nsCString> modifiedValues;
++          modifiedValues.SetCapacity(aValues->Length());
++
++          for (const auto& value : *aValues) {
++            nsCString modifiedValue;
++            modifiedValue.Assign(value);
 +            modifiedValue.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +            modifiedValue.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
-             modifiedValues.AppendElement(modifiedValue);
-           }
++            modifiedValues.AppendElement(modifiedValue);
++          }
++
++          promise->MaybeResolve(modifiedValues);
+         }
+       });
  
-@@ -399,8 +399,8 @@ void Localization::FormatValueSync(const nsACString& aId,
+@@ -387,6 +413,8 @@ void Localization::FormatValueSync(const nsACString& aId,
                                                  &aRetVal, &errors);
  
    if (rv) {
--    aRetVal.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--    aRetVal.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
 +    aRetVal.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +    aRetVal.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
      MaybeReportErrorsToGecko(errors, aRv, GetParentObject());
    } else {
      aRv.ThrowInvalidStateError(
-@@ -436,8 +436,8 @@ void Localization::FormatValuesSync(
+@@ -421,6 +449,10 @@ void Localization::FormatValuesSync(
+                                                  &aRetVal, &errors);
  
    if (rv) {
-     for (auto& value : aRetVal) {
--      value.ReplaceSubstring("Firefox"_ns, "Floorp"_ns);
--      value.ReplaceSubstring("Mozilla"_ns, "Ablaze"_ns);
++    for (auto& value : aRetVal) {
 +      value.ReplaceSubstring("Firefox"_ns, "FireDragon"_ns);
 +      value.ReplaceSubstring("Mozilla"_ns, "Garuda Linux"_ns);
-     }
++    }
      MaybeReportErrorsToGecko(errors, aRv, GetParentObject());
    } else {
+     aRv.ThrowInvalidStateError(

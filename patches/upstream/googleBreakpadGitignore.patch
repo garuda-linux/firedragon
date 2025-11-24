@@ -1,0 +1,12 @@
+diff --git a/toolkit/crashreporter/google-breakpad/.gitignore b/toolkit/crashreporter/google-breakpad/.gitignore
+index 058e18361b91..f1ac2327674c 100644
+--- a/toolkit/crashreporter/google-breakpad/.gitignore
++++ b/toolkit/crashreporter/google-breakpad/.gitignore
+@@ -85,6 +85,6 @@ src/Makefile
+ 
+ # Ignore directories gclient syncs.
+ src/testing
+-src/third_party/lss
++# src/third_party/lss
+ src/third_party/protobuf
+ src/tools/gyp
