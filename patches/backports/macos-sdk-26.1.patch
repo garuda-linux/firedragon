@@ -1,0 +1,42 @@
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index caab1873ff61..ba02e03caa65 100644
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -233,7 +233,7 @@ with only_when(host_is_osx | target_is_osx):
+     )
+ 
+     def mac_sdk_min_version():
+-        return "26.0"
++        return "26.1"
+ 
+     @depends(
+         "--with-macos-sdk",
+diff --git a/taskcluster/kinds/toolchain/macos-sdk.yml b/taskcluster/kinds/toolchain/macos-sdk.yml
+index 34683fa9799e..0e252fa48093 100644
+--- a/taskcluster/kinds/toolchain/macos-sdk.yml
++++ b/taskcluster/kinds/toolchain/macos-sdk.yml
+@@ -41,10 +41,23 @@ macosx64-sdk-26.0:
+             - Library/Developer/CommandLineTools/SDKs/MacOSX26.0.sdk
+         toolchain-artifact: project/gecko/mac-sdk/MacOSX26.0.sdk.tar.zst
+         toolchain-alias:
+-            - macosx64-sdk
+             - macosx64-sdk-toolchain
+             - MacOSX26.0.sdk
+ 
++macosx64-sdk-26.1:
++    description: "macOS 26.1 SDK"
++    treeherder:
++        symbol: TM(sdk26.1)
++    run:
++        arguments:
++            - https://swcdn.apple.com/content/downloads/22/09/093-00219-A_WIA1LP39TY/evbam2mb02xqr05ju9ddb95y8qil8kz9tm/CLTools_macOSNMOS_SDK.pkg
++            - f6a5f44b3652f5abdf7ad2602f54ad38774404f45264a4e70cfccc58b8b39aed2a89f74ef22c44bf932d0a55b062ebc3651f73fa06ff755ee5da53b9dcc62fba
++            - Library/Developer/CommandLineTools/SDKs/MacOSX26.1.sdk
++        toolchain-artifact: project/gecko/mac-sdk/MacOSX26.1.sdk.tar.zst
++        toolchain-alias:
++            - macosx64-sdk
++            - MacOSX26.1.sdk
++
+ ios-sdk-18.4:
+     description: "iPhoneOS18.4 SDK"
+     treeherder:
