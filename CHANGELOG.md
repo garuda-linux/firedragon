@@ -1,5 +1,21 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.6.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.0) — 2025-11-30 — [`v12.5.1`…`v12.6.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.1...v12.6.0)
+
+### 🚀 Features
+
+- Update to Firefox 145.0.1 — [`b8dfe0e0…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/b8dfe0e041dabbe40effbe4ad1a8a969369973ef)
+
+### 🐛 Bug Fixes
+
+- Backport "Bug 1998070 - Update macOS SDK to 26.1." — [`5e95f6ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5e95f6ad793315675d1c081826841cd05674ab9d)
+- *(patches)* Fix patch to update macOS SDK to 26.1 — [`ad374e7c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/ad374e7cee07ef679c753f43a85c3ce38c380baf)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps — [`c38050e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/c38050e7e48c71c787edf879374a4d19ae6f6801)
+- Update firefox to 145.0.2 — [`5e807e79…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/5e807e79a8c53a1aba2dac8024860b8a1a123eb3)
+
 ## [FireDragon v12.5.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.5.1) — 2025-10-17 — [`v12.5.0.1`…`v12.5.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.0.1...v12.5.1)
 
 ### 🚀 Features

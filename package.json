@@ -1,9 +1,9 @@
 {
   "name": "noraneko-bin",
-  "version": "12.5.1",
+  "version": "12.6.0",
   "firefox": "145.0.2",
   "release": {
-    "firefox": "145.0.1",
+    "firefox": "145.0.2",
     "floorp": "12.2.1-dev"
   },
   "description": "",
