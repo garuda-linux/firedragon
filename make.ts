@@ -288,7 +288,7 @@ async function dev() {
         await extractArtifactTo(await getArtifact(sourceBasename, sourceSuffix), buildDir);
 
         await $`rm -rf ${buildDir}/${sourceDir}`;
-        await $`ln -s ${path.resolve()} ${buildDir}/${sourceDir}`;
+        await $`ln -s ${path.relative(path.dirname(`${buildDir}/${sourceDir}`), '')} ${buildDir}/${sourceDir}`;
     }
 
     await $`pnpm run -r build `;
