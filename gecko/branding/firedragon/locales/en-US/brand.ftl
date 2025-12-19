@@ -15,6 +15,7 @@
 -brand-shorter-name = FireDragon
 -brand-short-name = FireDragon
 -brand-full-name = FireDragon
+-brand-shortcut-name = FireDragon
 # This brand name can be used in messages where the product name needs to
 # remain unchanged across different versions (Nightly, Beta, etc.).
 -brand-product-name = FireDragon
