@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.6.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.1) — 2025-12-19 — [`v12.6.0`…`v12.6.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.0...v12.6.1)
+
+### 🚀 Features
+
+- *(branding)* Add -brand-shortcut-name label — [`24d14934…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/24d14934c9fdfe90690d3847bb57afb27419bde4)
+
+### 📚 Documentation
+
+- Add downloads & support documentation to README.md — [`232bea4c…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/232bea4ccc7a0a0e055f342cfeac7bbe8989b81c)
+
 ## [FireDragon v12.6.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.0) — 2025-11-30 — [`v12.5.1`…`v12.6.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.5.1...v12.6.0)
 
 ### 🚀 Features
