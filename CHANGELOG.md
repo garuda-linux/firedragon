@@ -1,5 +1,11 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.7.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.7.0) — 2025-12-20 — [`v12.6.1`…`v12.7.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.1...v12.7.0)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 146.0.1 — [`e010df4d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e010df4d3099d426b6ba151515aea91e69c6fbd9)
+
 ## [FireDragon v12.6.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.1) — 2025-12-19 — [`v12.6.0`…`v12.6.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.0...v12.6.1)
 
 ### 🚀 Features
