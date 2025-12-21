@@ -1,0 +1,25 @@
+diff --git a/browser/app/macbuild/Contents/Info.plist.in b/browser/app/macbuild/Contents/Info.plist.in
+index 0c4fb837a244..ea28831b9066 100644
+--- a/browser/app/macbuild/Contents/Info.plist.in
++++ b/browser/app/macbuild/Contents/Info.plist.in
+@@ -190,8 +190,6 @@
+ 	<string>@MAC_APP_NAME@ @APP_VERSION@</string>
+ 	<key>CFBundleIconFile</key>
+ 	<string>firefox.icns</string>
+-	<key>CFBundleIconName</key>
+-	<string>AppIcon</string>
+ 	<key>CFBundleIdentifier</key>
+ 	<string>@MOZ_MACBUNDLE_ID@</string>
+ 	<key>CFBundleInfoDictionaryVersion</key>
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index d3ef68f4c184..abd4e165e990 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -42,7 +42,6 @@
+ @APPNAME@/Contents/PkgInfo
+ @RESPATH@/firefox.icns
+ @RESPATH@/document.icns
+-@RESPATH@/Assets.car
+ @RESPATH@/@LPROJ_ROOT@.lproj/*
+ #endif
+ 
