@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.7.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.7.0) — 2025-12-21 — [`v12.6.1`…`v12.7.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.1...v12.7.0)
+
+### 🐛 Bug Fixes
+
+- *(patches)* Remove liquid glass icons — [`70c3f8d9…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/70c3f8d93f0b534d7403e068df0a588340a8248d)
+- *(patches)* Fully remove liquid glass icons — [`bb6193ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/bb6193ede65c7dae0982e41d89fab3118c6714ed)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 146.0.1 — [`e010df4d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/e010df4d3099d426b6ba151515aea91e69c6fbd9)
+
 ## [FireDragon v12.6.1](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.6.1) — 2025-12-19 — [`v12.6.0`…`v12.6.1`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.0...v12.6.1)
 
 ### 🚀 Features
