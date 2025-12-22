@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.5) — 2025-12-22 — [`v13.0.0-alpha.4`…`v13.0.0-alpha.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.4...v13.0.0-alpha.5)
+
+### 🐛 Bug Fixes
+
+- Ensure cache dir only contains completed download — [`ff58075f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ff58075fcf581730d5720c7ed7f64212ca2944ad)
+- *(make)* Make dev target use relative path for symlink — [`7676e918…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7676e9183e62830499ac6e70c03dd1e144c5cadd)
+- *(branding)* Add -brand-shortcut-name label — [`9dca53d2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9dca53d2ca441257519c73d376d830f5fa1559aa)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to Firefox 146.0.1 — [`7badc4f3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7badc4f3da101d98ed810adb41530df773403710)
+
 ## [FireDragon v13.0.0-alpha.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.4) — 2025-11-16 — [`v13.0.0-alpha.3`…`v13.0.0-alpha.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.3...v13.0.0-alpha.4)
 
 ### 🚀 Features

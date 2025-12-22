@@ -1,6 +1,6 @@
 {
     "name": "firedragon13",
-    "version": "13.0.0-alpha.4",
+    "version": "13.0.0-alpha.5",
     "firefox": {
         "version": "146.0.1"
     },
