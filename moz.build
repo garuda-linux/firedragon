@@ -1,10 +1,10 @@
 DIRS += [
-    "cfg",
-    "content",
-    "modules",
-    "newtab",
-    "pref",
-    "settings",
-    "skin",
-    "welcome",
+    'app',
+    'content',
+    'modules',
+    'newtab',
+    'profile',
+    'settings',
+    'skin',
+    'welcome',
 ]

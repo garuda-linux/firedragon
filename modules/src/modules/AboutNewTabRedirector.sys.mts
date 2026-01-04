@@ -4,15 +4,13 @@ const PREF = 'firedragon.newtab.enable';
 const URI = 'chrome://firedragon-newtab/content/index.html';
 
 export class AboutNewTabRedirector extends AboutRedirector {
-    getURI(_aURI: nsIURI): nsIURI {
+    getChromeURI(_aURI: nsIURI): nsIURI {
         return Services.io.newURI(URI);
     }
 }
 
 export class AboutNewTabRedirectorFactory implements nsIFactory {
-    readonly QueryInterface = ChromeUtils.generateQI([
-        Ci.nsIFactory,
-    ]);
+    readonly QueryInterface = ChromeUtils.generateQI([Ci.nsIFactory]);
 
     protected readonly instance = new AboutNewTabRedirector();
 
@@ -21,7 +19,7 @@ export class AboutNewTabRedirectorFactory implements nsIFactory {
     }
 }
 
-export const AboutNewTabRedirectorManager = new class {
+export const AboutNewTabRedirectorManager = new (class {
     readonly registrar: nsIComponentRegistrar;
 
     constructor() {
@@ -47,4 +45,4 @@ export const AboutNewTabRedirectorManager = new class {
             );
         }
     }
-};
+})();

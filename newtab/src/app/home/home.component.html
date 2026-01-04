@@ -1,13 +1,13 @@
 <div class="mb-5 md:mb-0 md:px-10">
-  <app-search></app-search>
-  @if (configService.settings().jokesEnabled) {
-    <app-jokes></app-jokes>
-  }
-  @if (configService.settings().topPagesEnabled) {
-    <app-top-pages></app-top-pages>
-  }
-  <app-links></app-links>
-  @if (configService.settings().defaultLinks) {
-    <app-contact-links></app-contact-links>
-  }
+    <app-search></app-search>
+    @if (configService.settings().jokesEnabled) {
+        <app-jokes></app-jokes>
+    }
+    @if (configService.settings().topPagesEnabled) {
+        <app-top-pages></app-top-pages>
+    }
+    <app-links></app-links>
+    @if (configService.settings().defaultLinks) {
+        <app-contact-links></app-contact-links>
+    }
 </div>

@@ -1,5 +1,5 @@
 diff --git a/build/application.ini.in b/build/application.ini.in
-index 6df13230a4..9231f4bf37 100644
+index 6df13230a45b..7e85ff54455a 100644
 --- a/build/application.ini.in
 +++ b/build/application.ini.in
 @@ -52,5 +52,9 @@ ServerURL=@MOZ_CRASHREPORTER_URL@/submit?id=@MOZ_APP_ID@&version=@MOZ_APP_VERSIO

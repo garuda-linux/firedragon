@@ -2,12 +2,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": [
-      "@types/gecko"
-    ]
+    "types": ["@types/gecko"]
   },
   "files": ["src/main.ts"],
-  "include": [
-    "src/**/*.d.ts"
-  ]
+  "include": ["src/**/*.d.ts"]
 }

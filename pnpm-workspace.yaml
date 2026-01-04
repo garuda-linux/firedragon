@@ -1,16 +1,22 @@
 packages:
   - '@types/gecko'
+  - build
   - content
-  - lib/vite
-  - lib/vue
-  - lib/vue-router
   - modules
   - newtab
   - settings
   - welcome
 
 catalog:
-  vite: npm:rolldown-vite@^7.1.19
+  vite: npm:rolldown-vite@^7.3.1
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - esbuild
+  - lmdb
+  - msgpackr-extract
+  - spawn-sync
+  - unrs-resolver
+
+overrides:
+  wxt>vite: 'catalog:'

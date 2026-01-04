@@ -1,11 +1,11 @@
-FROM node:22-trixie
+FROM node:24-trixie
 
 # Update system
 RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y msitools p7zip-full python3-pip rsync rustup zstd
+RUN apt-get install -y glab msitools p7zip-full python3-pip rsync rustup zstd
 
 # Setup corepack
 RUN corepack enable

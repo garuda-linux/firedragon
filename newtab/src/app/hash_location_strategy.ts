@@ -1,93 +1,69 @@
-import { Injectable, OnDestroy, Provider } from "@angular/core";
-import {
-  LocationChangeListener,
-  LocationStrategy,
-  PlatformLocation,
-} from "@angular/common";
+import { LocationChangeListener, LocationStrategy, PlatformLocation } from '@angular/common';
+import { Injectable, OnDestroy, Provider } from '@angular/core';
 
 export function normalizeQueryParams(params: string): string {
-  return params && params[0] !== "?" ? `?${params}` : params;
+    return params && params[0] !== '?' ? `?${params}` : params;
 }
 
 @Injectable()
-export class HashLocationStrategy extends LocationStrategy
-  implements OnDestroy {
-  private _removeListenerFns: (() => void)[] = [];
+export class HashLocationStrategy extends LocationStrategy implements OnDestroy {
+    private _removeListenerFns: (() => void)[] = [];
 
-  constructor(
-    private _platformLocation: PlatformLocation,
-  ) {
-    super();
-  }
-
-  ngOnDestroy(): void {
-    while (this._removeListenerFns.length) {
-      this._removeListenerFns.pop()!();
+    constructor(private _platformLocation: PlatformLocation) {
+        super();
     }
-  }
 
-  override onPopState(fn: LocationChangeListener): void {
-    this._removeListenerFns.push(
-      this._platformLocation.onPopState(fn),
-      this._platformLocation.onHashChange(fn),
-    );
-  }
+    ngOnDestroy(): void {
+        while (this._removeListenerFns.length) {
+            this._removeListenerFns.pop()!();
+        }
+    }
 
-  override getBaseHref(): string {
-    return "";
-  }
+    override onPopState(fn: LocationChangeListener): void {
+        this._removeListenerFns.push(this._platformLocation.onPopState(fn), this._platformLocation.onHashChange(fn));
+    }
 
-  override path(includeHash: boolean = false): string {
-    const path = this._platformLocation.hash ?? "#";
-    return path.length > 0 ? path.substring(1) : path;
-  }
+    override getBaseHref(): string {
+        return '';
+    }
 
-  override prepareExternalUrl(internal: string): string {
-    return internal.length > 0 ? "#" + internal : internal;
-  }
+    override path(includeHash: boolean = false): string {
+        const path = this._platformLocation.hash ?? '#';
+        return path.length > 0 ? path.substring(1) : path;
+    }
 
-  override pushState(
-    state: any,
-    title: string,
-    path: string,
-    queryParams: string,
-  ) {
-    location.hash = this.prepareExternalUrl(
-      path + normalizeQueryParams(queryParams),
-    );
-  }
+    override prepareExternalUrl(internal: string): string {
+        return internal.length > 0 ? '#' + internal : internal;
+    }
 
-  override replaceState(
-    state: any,
-    title: string,
-    path: string,
-    queryParams: string,
-  ) {
-    location.hash = this.prepareExternalUrl(
-      path + normalizeQueryParams(queryParams),
-    );
-  }
+    override pushState(state: any, title: string, path: string, queryParams: string) {
+        location.hash = this.prepareExternalUrl(path + normalizeQueryParams(queryParams));
+    }
 
-  override forward(): void {
-    this._platformLocation.forward();
-  }
+    override replaceState(state: any, title: string, path: string, queryParams: string) {
+        location.hash = this.prepareExternalUrl(path + normalizeQueryParams(queryParams));
+    }
 
-  override back(): void {
-    this._platformLocation.back();
-  }
+    override forward(): void {
+        this._platformLocation.forward();
+    }
 
-  override getState(): unknown {
-    return null;
-  }
+    override back(): void {
+        this._platformLocation.back();
+    }
 
-  override historyGo(relativePosition: number = 0): void {
-    this._platformLocation.historyGo?.(relativePosition);
-  }
+    override getState(): unknown {
+        return null;
+    }
+
+    override historyGo(relativePosition: number = 0): void {
+        this._platformLocation.historyGo?.(relativePosition);
+    }
 }
 
 export function provideHashLocationStrategy(): Provider {
-  return {
-    provide: LocationStrategy,
-    useClass: HashLocationStrategy,
-  };
+    return {
+        provide: LocationStrategy,
+        useClass: HashLocationStrategy,
+    };
 }

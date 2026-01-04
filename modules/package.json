@@ -1,17 +1,17 @@
 {
-    "name": "@firedragon13/resource",
-    "type": "module",
-    "scripts": {
-        "build": "vite build"
-    },
-    "dependencies": {
-        "compare-versions": "^6.1.1"
-    },
-    "devDependencies": {
-        "@firedragon13/lib-vite": "workspace:",
-        "@types/gecko": "workspace:",
-        "globby": "^15.0.0",
-        "vite": "catalog:"
-    },
-    "private": true
+  "name": "@firedragon/modules",
+  "private": true,
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build"
+  },
+  "dependencies": {
+    "compare-versions": "^6.1.1"
+  },
+  "devDependencies": {
+    "@firedragon/build": "workspace:^",
+    "@types/gecko": "workspace:^",
+    "globby": "^16.1.0",
+    "vite": "catalog:"
+  }
 }

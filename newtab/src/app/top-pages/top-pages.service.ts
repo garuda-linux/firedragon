@@ -1,5 +1,6 @@
-import { Injectable } from "@angular/core";
-import { AboutNewTab } from 'resource:///modules/AboutNewTab.sys.mjs'
+import { Injectable } from '@angular/core';
+
+import { AboutNewTab } from 'resource:///modules/AboutNewTab.sys.mjs';
 
 @Injectable({
     providedIn: 'root',

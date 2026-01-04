@@ -1,21 +1,24 @@
 {
-    "name": "firedragon13",
-    "version": "13.0.0-alpha.5",
-    "firefox": {
-        "version": "146.0.1"
-    },
-    "scripts": {
-        "make": "tsx make.ts"
-    },
-    "type": "module",
-    "devDependencies": {
-        "tsx": "^4.21.0",
-        "zx": "^8.8.5"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
-    },
-    "private": true,
-    "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa"
+  "name": "firedragon",
+  "version": "13.0.0-alpha.5",
+  "firefoxVersion": "146.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier -w .",
+    "make": "tsx make.ts"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
+    "git-cliff": "^2.11.0",
+    "prettier": "^3.7.4",
+    "tsx": "^4.21.0",
+    "zx": "^8.8.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
+  },
+  "license": "MPL-2.0",
+  "packageManager": "pnpm@10.28.0+sha512.05df71d1421f21399e053fde567cea34d446fa02c76571441bfc1c7956e98e363088982d940465fd34480d4d90a0668bc12362f8aa88000a64e83d0b0e47be48"
 }

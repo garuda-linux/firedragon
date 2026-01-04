@@ -1,8 +1,8 @@
 diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
-index 5f17dbf9c66d..2c882d9ba26f 100644
+index 6e68d12c5e5b..7d703575cc59 100644
 --- a/python/mozbuild/mozbuild/artifacts.py
 +++ b/python/mozbuild/mozbuild/artifacts.py
-@@ -91,7 +91,7 @@ UNFILTERED_PROJECT_PACKAGE_PROCESSED_SUFFIX = (
+@@ -92,7 +92,7 @@ UNFILTERED_PROJECT_PACKAGE_PROCESSED_SUFFIX = (
  
  class GeckoJobConfiguration:
      trust_domain = "gecko"
@@ -11,7 +11,7 @@ index 5f17dbf9c66d..2c882d9ba26f 100644
      default_candidate_trees = [
          "releases/mozilla-release",
      ]
-@@ -1209,9 +1209,6 @@ class Artifacts:
+@@ -1213,9 +1213,6 @@ class Artifacts:
          unfiltered_project_package=False,
          mozbuild=None,
      ):

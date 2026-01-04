@@ -1,8 +1,10 @@
-export const SkinManager = new class {
+export const SkinManager = new (class {
     readonly PREF = 'firedragon.skin';
     readonly BASE_URI = 'chrome://firedragon/skin';
 
-    protected readonly styleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService);
+    protected readonly styleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].getService(
+        Ci.nsIStyleSheetService,
+    );
 
     readonly skin: string;
 
@@ -13,12 +15,23 @@ export const SkinManager = new class {
         this.skin = Services.prefs.getStringPref(this.PREF);
 
         if (this.skin) {
-            this.chromeCss = this.styleSheetService.preloadSheet(Services.io.newURI(`${this.BASE_URI}/${this.skin}/userChrome.css`), Ci.nsIStyleSheetService.USER_SHEET!);
-            this.contentCss = this.styleSheetService.preloadSheet(Services.io.newURI(`${this.BASE_URI}/${this.skin}/userContent.css`), Ci.nsIStyleSheetService.USER_SHEET!);
+            this.chromeCss = this.styleSheetService.preloadSheet(
+                Services.io.newURI(`${this.BASE_URI}/${this.skin}/userChrome.css`),
+                Ci.nsIStyleSheetService.USER_SHEET!,
+            );
+            this.contentCss = this.styleSheetService.preloadSheet(
+                Services.io.newURI(`${this.BASE_URI}/${this.skin}/userContent.css`),
+                Ci.nsIStyleSheetService.USER_SHEET!,
+            );
         }
     }
 
-    loadUserJs() {
+    onBrowserStartup() {
+        this.loadUserJs();
+        this.registerWindowActor();
+    }
+
+    protected loadUserJs() {
         const defaultBranch = Services.prefs.getDefaultBranch(null);
 
         function user_pref(key: string, value: boolean | number | string) {
@@ -42,4 +55,16 @@ export const SkinManager = new class {
 
         Services.scriptloader.loadSubScript(`${this.BASE_URI}/${this.skin}/user.js`, sandbox);
     }
-};
+
+    protected registerWindowActor() {
+        ChromeUtils.registerWindowActor('FDSkin', {
+            allFrames: true,
+            child: {
+                esModuleURI: 'resource://firedragon/actors/FDSkinChild.sys.mjs',
+                events: {
+                    DOMDocElementInserted: {},
+                },
+            },
+        });
+    }
+})();

@@ -1,11 +1,11 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ESNext", "DOM"],
+    "types": ["@types/gecko", "vite/client"],
+    "paths": {
+      "@/*": ["./*"],
+      "resource://firedragon/*": ["../modules/src/*"]
     }
-  ]
+  }
 }

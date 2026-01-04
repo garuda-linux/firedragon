@@ -1,1 +1,1 @@
-JAR_MANIFESTS += ["dist/jar.mn"]
+JAR_MANIFESTS += ['dist/jar.mn']

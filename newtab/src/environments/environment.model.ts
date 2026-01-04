@@ -1,4 +1,4 @@
 export interface EnvironmentModel {
-  availableLanguages: string[];
-  defaultLanguage: string;
+    availableLanguages: string[];
+    defaultLanguage: string;
 }

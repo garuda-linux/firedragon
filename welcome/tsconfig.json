@@ -1,11 +1,6 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.app.json"
-    }
-  ]
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "types": ["@types/gecko"]
+  }
 }

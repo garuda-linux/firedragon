@@ -1,16 +1,10 @@
 import { AppConstants } from 'resource://gre/modules/AppConstants.sys.mjs';
 
-export const TranslationFeatureManager = new class {
-    readonly QueryInterface = ChromeUtils.generateQI([
-        Ci.nsIObserver,
-    ]);
+export const TranslationFeatureManager = new (class {
+    readonly QueryInterface = ChromeUtils.generateQI([Ci.nsIObserver]);
 
     readonly PREF = 'firedragon.translations.enable';
-    readonly PREFS = [
-        'firedragon.translations.enable',
-        'browser.translations.enable',
-        'services.settings.server',
-    ];
+    readonly PREFS = ['firedragon.translations.enable', 'browser.translations.enable', 'services.settings.server'];
 
     init() {
         for (const pref of this.PREFS) {
@@ -34,4 +28,4 @@ export const TranslationFeatureManager = new class {
             Services.prefs.setStringPref('services.settings.server', 'https://%.invalid');
         }
     }
-}
+})();

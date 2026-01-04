@@ -1,0 +1,25 @@
+import { createHead } from '@unhead/vue/client';
+import { Dialog, Quasar } from 'quasar';
+import iconSet from 'quasar/icon-set/material-symbols-outlined';
+
+import i18n from '@/utils/i18n';
+import router from '@/utils/router';
+
+import App from './App.vue';
+
+const app = createApp(App);
+
+app.use(i18n);
+app.use(router);
+app.use(createHead());
+app.use(Quasar, {
+    config: {
+        dark: 'auto',
+    },
+    iconSet,
+    plugins: {
+        Dialog,
+    },
+});
+
+app.mount('#app');

@@ -1,16 +1,10 @@
 export class AboutRedirector implements nsIAboutModule {
-    readonly QueryInterface = ChromeUtils.generateQI([
-        Ci.nsIAboutModule,
-    ]);
-
-    getURI(aURI: nsIURI): nsIURI {
-        return Services.io.newURI(`chrome://${aURI.filePath}/content/index.html`);
-    }
+    readonly QueryInterface = ChromeUtils.generateQI([Ci.nsIAboutModule]);
 
     newChannel(aURI: nsIURI, aLoadInfo: nsILoadInfo): nsIChannel {
-        const channel = Services.io.newChannelFromURIWithLoadInfo(this.getURI(aURI), aLoadInfo);
-        channel.owner = Services.scriptSecurityManager.getSystemPrincipal();
+        const channel = Services.io.newChannelFromURIWithLoadInfo(this.getChromeURI(aURI), aLoadInfo);
         channel.originalURI = aURI;
+        channel.owner = Services.scriptSecurityManager.getSystemPrincipal();
         return channel;
     }
 
@@ -18,7 +12,7 @@ export class AboutRedirector implements nsIAboutModule {
         return Ci.nsIAboutModule.ALLOW_SCRIPT! | Ci.nsIAboutModule.IS_SECURE_CHROME_UI!;
     }
 
-    getChromeURI(aURI: nsIURI): nsIURI {
-        return this.getURI(aURI);
+    getChromeURI(_aURI: nsIURI): nsIURI {
+        return Services.io.newURI('chrome://firedragon/content/about.html');
     }
 }

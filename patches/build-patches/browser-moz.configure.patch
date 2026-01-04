@@ -1,5 +1,5 @@
 diff --git a/browser/moz.configure b/browser/moz.configure
-index e8b401a7dfb2..776d458cf4ef 100644
+index e8b401a7dfb2..f1dc45dfb63b 100644
 --- a/browser/moz.configure
 +++ b/browser/moz.configure
 @@ -5,20 +5,21 @@

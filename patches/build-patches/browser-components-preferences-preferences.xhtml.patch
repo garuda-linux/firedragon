@@ -1,5 +1,5 @@
 diff --git a/browser/components/preferences/preferences.xhtml b/browser/components/preferences/preferences.xhtml
-index 993554d64efa..8d606440edca 100644
+index 993554d64efa..8e2050115aed 100644
 --- a/browser/components/preferences/preferences.xhtml
 +++ b/browser/components/preferences/preferences.xhtml
 @@ -99,6 +99,8 @@
@@ -7,7 +7,7 @@ index 993554d64efa..8d606440edca 100644
    <script type="module" src="chrome://global/content/elements/moz-input-color.mjs"></script>
    <script type="module" src="chrome://browser/content/preferences/widgets/sync-device-name.mjs"></script>
 +
-+#include ../../firedragon/content/dist/preferences.inc.xhtml
++#include ../../firedragon/content/dist/preferences.inc.html
  </head>
  
  <html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"

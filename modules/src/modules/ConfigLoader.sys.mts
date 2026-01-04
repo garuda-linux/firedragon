@@ -1,7 +1,7 @@
 import { File } from 'resource://firedragon/modules/File.sys.mjs';
 import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 
-export const ConfigLoader = new class {
+export const ConfigLoader = new (class {
     init(): void {
         const entry = Services.prefs.getStringPref('firedragon.cfg.entry');
         if (entry) {
@@ -14,7 +14,7 @@ export const ConfigLoader = new class {
         }
     }
 
-    getPrefBranch(prefRoot: string | null = null): nsIPrefBranch {
+    getPrefBranch(prefRoot: string = ''): nsIPrefBranch {
         return Services.prefs.getBranch(prefRoot);
     }
 
@@ -39,26 +39,31 @@ export const ConfigLoader = new class {
     }
 
     defaultPref(prefName: string, value: any): void {
-        this.setPrefInBranch(Services.prefs.getDefaultBranch(null), prefName, value);
+        this.setPrefInBranch(Services.prefs.getDefaultBranch(''), prefName, value);
     }
 
     defaultJson(prefName: string, value: any): void {
         const defaultPrefBranch = this.getPrefBranch('defaultJson.');
         const prefBranch = this.getPrefBranch();
-        prefBranch.setStringPref(prefName, JSON.stringify((function updateJson(value, d, u) {
-            for (const key in value) {
-                if ([ value[key], d[key], u[key] ].every(x => typeof x === 'object' && x)) {
-                    u[key] = updateJson(value[key], d[key], u[key]);
-                } else if (d[key] === u[key]) {
-                    u[key] = value[key];
-                }
-            }
-            return u;
-        })(
-            value,
-            JSON.parse(defaultPrefBranch.getStringPref(prefName, '{}')),
-            JSON.parse(prefBranch.getStringPref(prefName, '{}')),
-        )));
+        prefBranch.setStringPref(
+            prefName,
+            JSON.stringify(
+                (function updateJson(value, d, u) {
+                    for (const key in value) {
+                        if ([value[key], d[key], u[key]].every((x) => typeof x === 'object' && x)) {
+                            u[key] = updateJson(value[key], d[key], u[key]);
+                        } else if (d[key] === u[key]) {
+                            u[key] = value[key];
+                        }
+                    }
+                    return u;
+                })(
+                    value,
+                    JSON.parse(defaultPrefBranch.getStringPref(prefName, '{}')),
+                    JSON.parse(prefBranch.getStringPref(prefName, '{}')),
+                ),
+            ),
+        );
         defaultPrefBranch.setStringPref(prefName, JSON.stringify(value));
     }
 
@@ -115,7 +120,7 @@ export const ConfigLoader = new class {
             return;
         }
 
-        const sandbox = Cu.Sandbox(null, {
+        const sandbox = Cu.Sandbox(Services.scriptSecurityManager.createNullPrincipal({}), {
             wantGlobalProperties: ['URL'],
         });
 
@@ -168,4 +173,4 @@ export const ConfigLoader = new class {
             globalThis.console.error(`[ConfigLoader] Error while loading ${file.url}:`, e);
         }
     }
-};
+})();

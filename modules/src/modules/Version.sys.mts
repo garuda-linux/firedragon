@@ -1,8 +1,8 @@
-import { compare, type CompareOperator } from 'compare-versions';
+import { type CompareOperator, compare } from 'compare-versions';
 
 import { AppConstants } from 'resource://gre/modules/AppConstants.sys.mjs';
 
-export const Version = new class {
+export const Version = new (class {
     readonly PREF_LAST_VERSION = 'firedragon.lastVersion';
 
     readonly version: string;
@@ -17,4 +17,4 @@ export const Version = new class {
     compare(v1: string, operator: CompareOperator, v2: string): boolean {
         return compare(v1, v2, operator);
     }
-};
+})();

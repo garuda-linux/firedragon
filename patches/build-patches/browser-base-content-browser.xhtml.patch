@@ -7,7 +7,7 @@ index ffddea280e2e..4c4694a2bef2 100644
    <script src="chrome://browser/content/global-scripts.js"></script>
    <script src="chrome://browser/content/browser-main.js"></script>
 +
-+#include ../../firedragon/content/dist/browser.inc.xhtml
++#include ../../firedragon/content/dist/browser.inc.html
  </head>
  <html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  # All sets except for popupsets (commands, keys, and stringbundles)

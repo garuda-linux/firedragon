@@ -6,7 +6,7 @@ export class File {
     }
 
     static fromPath(path: string): File {
-        const file: nsIFile = Cc["@mozilla.org/file/local;1"].createInstance(Ci.nsIFile);
+        const file: nsIFile = Cc['@mozilla.org/file/local;1'].createInstance(Ci.nsIFile);
         file.initWithPath(path);
         return new File(file);
     }
@@ -25,9 +25,7 @@ export class File {
         return File.fromPath(filePath);
     }
 
-    private constructor(
-        private file: nsIFile,
-    ) {}
+    private constructor(private file: nsIFile) {}
 
     get path(): string {
         return this.file.path;
@@ -68,7 +66,7 @@ export class File {
         const directoryEntries = this.file.directoryEntries;
 
         let nextFile;
-        while (nextFile = directoryEntries.nextFile) {
+        while ((nextFile = directoryEntries.nextFile)) {
             yield new File(nextFile);
         }
 

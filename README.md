@@ -6,18 +6,18 @@ This repository is a testbed for a new build system for the upcoming FireDragon 
 
 First install the required dependencies:
 
-``` shell
+```shell
 pnpm install
 ```
 
 Afterwards you can start the browser in development mode using:
 
-``` shell
+```shell
 pnpm make dev
 ```
 
 To release a new version, update the version in `package.json` and run:
 
-``` shell
+```shell
 pnpm make release
 ```

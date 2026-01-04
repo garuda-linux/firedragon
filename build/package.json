@@ -1,0 +1,26 @@
+{
+  "name": "@firedragon/build",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./vite": "./dist/vite.js",
+    "./wxt-client": "./dist/wxt-client.js",
+    "./wxt-config": "./dist/wxt-config.js",
+    "./wxt-module": "./dist/wxt-module.js"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build"
+  },
+  "dependencies": {
+    "globby": "^16.1.0"
+  },
+  "peerDependencies": {
+    "vite": "catalog:",
+    "wxt": "^0.20.13"
+  },
+  "devDependencies": {
+    "vite": "catalog:",
+    "vite-plugin-dts": "^4.5.4"
+  }
+}

@@ -1,22 +1,21 @@
 <div class="grid grid-cols-12 md:p-10">
-  @for (link of configService.settings().customLinks; track link.title) {
-    <a
-      [href]="link.link"
-      [class]='    configService.settings().autoGridCols
-      ? "col-span-6 cursor-pointer p-2 text-center lg:col-span-4 xl:col-span-2 3xl:col-span-1"
-      : gridCols()'
-      target="_blank"
-    >
-      <div>
-        <p-panel
-          [header]="link.title"
-          styleClass="hover:scale-105 animation duration-300 h-auto"
+    @for (link of configService.settings().customLinks; track link.title) {
+        <a
+            [href]="link.link"
+            [class]="
+                configService.settings().autoGridCols
+                    ? 'col-span-6 cursor-pointer p-2 text-center lg:col-span-4 xl:col-span-2 3xl:col-span-1'
+                    : gridCols()
+            "
+            target="_blank"
         >
-          <div>
-            <img [alt]="link.title" class="mx-auto my-2.5" [src]="link.icon" />
-          </div>
-        </p-panel>
-      </div>
-    </a>
-  }
+            <div>
+                <p-panel [header]="link.title" styleClass="hover:scale-105 animation duration-300 h-auto">
+                    <div>
+                        <img [alt]="link.title" class="mx-auto my-2.5" [src]="link.icon" />
+                    </div>
+                </p-panel>
+            </div>
+        </a>
+    }
 </div>

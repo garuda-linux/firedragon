@@ -1,3 +1,0 @@
-JS_PREFERENCE_FILES += [
-    "firedragon.js",
-]

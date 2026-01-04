@@ -1,34 +1,30 @@
 {
-  "name": "@firedragon13/settings",
+  "name": "@firedragon/settings",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build"
+    "build": "wxt build",
+    "dev": "wxt"
   },
   "dependencies": {
-    "@firedragon13/lib-vue": "workspace:",
-    "@firedragon13/lib-vue-router": "workspace:",
     "@quasar/extras": "^1.17.0",
-    "@unhead/vue": "^2.0.19",
-    "@vueuse/core": "^14.0.0",
-    "quasar": "^2.18.5",
-    "vue": "^3.5.24",
-    "vue-i18n": "^11.1.12",
-    "vue-router": "^4.6.3"
+    "@unhead/vue": "^2.1.2",
+    "quasar": "^2.18.6",
+    "vue": "^3.5.26",
+    "vue-i18n": "^11.2.8",
+    "vue-router": "^4.6.4"
   },
   "devDependencies": {
-    "@firedragon13/lib-vite": "workspace:",
-    "@intlify/unplugin-vue-i18n": "^11.0.1",
+    "@firedragon/build": "workspace:^",
+    "@intlify/unplugin-vue-i18n": "^11.0.3",
     "@quasar/vite-plugin": "^1.10.0",
-    "@tsconfig/node22": "^22.0.2",
-    "@types/gecko": "workspace:",
-    "@types/node": "^22.18.11",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "@vue/tsconfig": "^0.8.1",
-    "npm-run-all2": "^8.0.4",
-    "sass-embedded": "^1.93.2",
-    "typescript": "~5.9.0",
-    "unplugin-auto-import": "^20.2.0",
-    "vite": "catalog:"
+    "@types/gecko": "workspace:^",
+    "@vueuse/core": "^14.1.0",
+    "@wxt-dev/browser": "^0.1.32",
+    "@wxt-dev/module-vue": "^1.0.3",
+    "typescript": "^5.9.3",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.2",
+    "wxt": "^0.20.13"
   }
 }

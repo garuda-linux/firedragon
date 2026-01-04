@@ -1,343 +1,317 @@
 <ng-container *transloco="let t">
-  <div class="mx-auto max-w-7xl px-2.5 md:px-10">
-    <app-title [title]='t("settings.title")'></app-title>
-    <p-panel [header]='t("settings.general")'>
-      <div class="mt-5 grid grid-cols-1 gap-5 text-color md:grid-cols-2">
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("defaultLinks", $event)'
-            [(ngModel)]="defaultLinks"
-            [binary]="true"
-            id="default-links"
-          />
-          <label class="ml-2" for="default-links">{{
-              t("settings.defaultLinksLabel")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("jokesEnabled", $event)'
-            [(ngModel)]="jokesEnabled"
-            [binary]="true"
-            id="jokes-enabled"
-          />
-          <label class="ml-2" for="jokes-enabled">{{
-              t("settings.jokesEnabledLabel")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("fitWallpaper", $event)'
-            [(ngModel)]="fitWallpaper"
-            [binary]="true"
-            id="fit-wp"
-          />
-          <label class="ml-2" for="fit-wp">{{
-              t("settings.fitWallpaper")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("blurBackground", $event)'
-            [(ngModel)]="blurBackground"
-            [binary]="true"
-            id="blur-bg"
-          />
-          <label class="ml-2" for="blur-bg">{{
-              t("settings.blurBackground")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("darkMode", $event)'
-            [(ngModel)]="darkMode"
-            [binary]="true"
-            id="dark-mode"
-          />
-          <label class="ml-2" for="dark-mode">{{
-              t("settings.darkMode")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("avatarEnabled", $event)'
-            [(ngModel)]="avatarEnabled"
-            [binary]="true"
-            id="avatar-enabled"
-          />
-          <label class="ml-2" for="avatar-enabled">{{
-              t("settings.avatarEnabled")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("autoGridCols", $event)'
-            [(ngModel)]="autoGridCols"
-            [binary]="true"
-            id="auto-grid-cols"
-          />
-          <label class="ml-2" for="auto-grid-cols">{{
-              t("settings.autoGridCols")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("topPagesEnabled", $event)'
-            [(ngModel)]="topPagesEnabled"
-            [binary]="true"
-            id="top-pages-enabled"
-          />
-          <label class="ml-2" for="top-pages-enabled">{{
-              t("settings.topPagesEnabled")
-            }}</label>
-        </div>
-        <div class="ml-10">
-          <p-checkbox
-            (ngModelChange)='updateConfig("disableAutofocus", $event)'
-            [(ngModel)]="disableAutofocus"
-            [binary]="true"
-            id="disable-autofocus"
-          />
-          <label class="ml-2" for="disable-autofocus">{{
-              t("settings.disableAutofocus")
-            }}</label>
-        </div>
-      </div>
+    <div class="mx-auto max-w-7xl px-2.5 md:px-10">
+        <app-title [title]="t('settings.title')"></app-title>
+        <p-panel [header]="t('settings.general')">
+            <div class="mt-5 grid grid-cols-1 gap-5 text-color md:grid-cols-2">
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('defaultLinks', $event)"
+                        [(ngModel)]="defaultLinks"
+                        [binary]="true"
+                        id="default-links"
+                    />
+                    <label class="ml-2" for="default-links">{{ t('settings.defaultLinksLabel') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('jokesEnabled', $event)"
+                        [(ngModel)]="jokesEnabled"
+                        [binary]="true"
+                        id="jokes-enabled"
+                    />
+                    <label class="ml-2" for="jokes-enabled">{{ t('settings.jokesEnabledLabel') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('fitWallpaper', $event)"
+                        [(ngModel)]="fitWallpaper"
+                        [binary]="true"
+                        id="fit-wp"
+                    />
+                    <label class="ml-2" for="fit-wp">{{ t('settings.fitWallpaper') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('blurBackground', $event)"
+                        [(ngModel)]="blurBackground"
+                        [binary]="true"
+                        id="blur-bg"
+                    />
+                    <label class="ml-2" for="blur-bg">{{ t('settings.blurBackground') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('darkMode', $event)"
+                        [(ngModel)]="darkMode"
+                        [binary]="true"
+                        id="dark-mode"
+                    />
+                    <label class="ml-2" for="dark-mode">{{ t('settings.darkMode') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('avatarEnabled', $event)"
+                        [(ngModel)]="avatarEnabled"
+                        [binary]="true"
+                        id="avatar-enabled"
+                    />
+                    <label class="ml-2" for="avatar-enabled">{{ t('settings.avatarEnabled') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('autoGridCols', $event)"
+                        [(ngModel)]="autoGridCols"
+                        [binary]="true"
+                        id="auto-grid-cols"
+                    />
+                    <label class="ml-2" for="auto-grid-cols">{{ t('settings.autoGridCols') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('topPagesEnabled', $event)"
+                        [(ngModel)]="topPagesEnabled"
+                        [binary]="true"
+                        id="top-pages-enabled"
+                    />
+                    <label class="ml-2" for="top-pages-enabled">{{ t('settings.topPagesEnabled') }}</label>
+                </div>
+                <div class="ml-10">
+                    <p-checkbox
+                        (ngModelChange)="updateConfig('disableAutofocus', $event)"
+                        [(ngModel)]="disableAutofocus"
+                        [binary]="true"
+                        id="disable-autofocus"
+                    />
+                    <label class="ml-2" for="disable-autofocus">{{ t('settings.disableAutofocus') }}</label>
+                </div>
+            </div>
 
-      <div class="mx-auto mt-10 w-3/4 md:ml-10 md:flex">
-        <p-button
-          (click)="downloadSettings()"
-          [label]='t("settings.saveSettings")'
-          icon="pi pi-download"
-        >
-        </p-button>
-        <p-fileupload
-          (onSelect)="restoreSettings($event)"
-          [chooseLabel]='t("settings.restoreSettings")'
-          accept=".json"
-          auto
-          chooseIcon="pi pi-upload"
-          maxFileSize="1000000"
-          mode="basic"
-          class="mt-2.5 md:mt-0 md:ml-2.5"
-        >
-        </p-fileupload>
-        <p-button
-          (click)="resetSettings()"
-          [label]='t("settings.resetSettings")'
-          icon="pi pi-refresh"
-          class="mt-2.5 md:mt-0 md:ml-5"
-        >
-        </p-button>
-        <p-button
-          (click)="disableNewTab()"
-          [label]='t("settings.disableFiredragonStart")'
-          icon="pi pi-ban"
-          class="mt-2.5 md:mt-0 md:ml-5"
-        >
-        </p-button>
-      </div>
-    </p-panel>
+            <div class="mx-auto mt-10 w-3/4 md:ml-10 md:flex">
+                <p-button (click)="downloadSettings()" [label]="t('settings.saveSettings')" icon="pi pi-download">
+                </p-button>
+                <p-fileupload
+                    (onSelect)="restoreSettings($event)"
+                    [chooseLabel]="t('settings.restoreSettings')"
+                    accept=".json"
+                    auto
+                    chooseIcon="pi pi-upload"
+                    maxFileSize="1000000"
+                    mode="basic"
+                    class="mt-2.5 md:mt-0 md:ml-2.5"
+                >
+                </p-fileupload>
+                <p-button
+                    (click)="resetSettings()"
+                    [label]="t('settings.resetSettings')"
+                    icon="pi pi-refresh"
+                    class="mt-2.5 md:mt-0 md:ml-5"
+                >
+                </p-button>
+                <p-button
+                    (click)="disableNewTab()"
+                    [label]="t('settings.disableFiredragonStart')"
+                    icon="pi pi-ban"
+                    class="mt-2.5 md:mt-0 md:ml-5"
+                >
+                </p-button>
+            </div>
+        </p-panel>
 
-    <p-panel [header]='t("settings.customize")' styleClass="mt-2.5">
-      <div class="mt-5 grid grid-cols-1 gap-5 text-color md:grid-cols-2">
-        <div class="flex flex-col gap-2">
-          <label for="theme">{{ t("settings.themeLabel") }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("activeTheme", $event)'
-            [(ngModel)]="activeTheme"
-            [options]="availableThemes"
-            fluid
-            id="theme"
-          />
-        </div>
+        <p-panel [header]="t('settings.customize')" styleClass="mt-2.5">
+            <div class="mt-5 grid grid-cols-1 gap-5 text-color md:grid-cols-2">
+                <div class="flex flex-col gap-2">
+                    <label for="theme">{{ t('settings.themeLabel') }}</label>
+                    <p-select
+                        (ngModelChange)="updateConfig('activeTheme', $event)"
+                        [(ngModel)]="activeTheme"
+                        [options]="availableThemes"
+                        fluid
+                        id="theme"
+                    />
+                </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="search-engine">{{ t("settings.language") }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("language", $event)'
-            [(ngModel)]="language"
-            [options]="availableLanguages"
-            fluid
-            id="language"
-            optionLabel="prettyName"
-            optionValue="name"
-          />
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="search-engine">{{ t('settings.language') }}</label>
+                    <p-select
+                        (ngModelChange)="updateConfig('language', $event)"
+                        [(ngModel)]="language"
+                        [options]="availableLanguages"
+                        fluid
+                        id="language"
+                        optionLabel="prettyName"
+                        optionValue="name"
+                    />
+                </div>
 
-        @if (configService.settings().jokesEnabled) {
-          <div class="flex flex-col gap-2">
-            <label for="active-joke">{{ t("settings.activeJoke") }}</label>
-            <p-select
-              (ngModelChange)='updateConfig("activeJoke", $event)'
-              [(ngModel)]="activeJoke"
-              [options]="jokeSources"
-              fluid
-              id="active-joke"
-              optionLabel="prettyName"
-              optionValue="name"
-            />
-          </div>
-        }
+                @if (configService.settings().jokesEnabled) {
+                    <div class="flex flex-col gap-2">
+                        <label for="active-joke">{{ t('settings.activeJoke') }}</label>
+                        <p-select
+                            (ngModelChange)="updateConfig('activeJoke', $event)"
+                            [(ngModel)]="activeJoke"
+                            [options]="jokeSources"
+                            fluid
+                            id="active-joke"
+                            optionLabel="prettyName"
+                            optionValue="name"
+                        />
+                    </div>
+                }
 
-        <div class="flex flex-col gap-2">
-          <label for="wallpaper">{{ t("settings.wallpaperLabel") }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("wallpaper", $event)'
-            [(ngModel)]="wallpaper"
-            [options]="wallpapers"
-            fluid
-            group
-            id="wallpaper"
-          >
-          </p-select>
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="wallpaper">{{ t('settings.wallpaperLabel') }}</label>
+                    <p-select
+                        (ngModelChange)="updateConfig('wallpaper', $event)"
+                        [(ngModel)]="wallpaper"
+                        [options]="wallpapers"
+                        fluid
+                        group
+                        id="wallpaper"
+                    >
+                    </p-select>
+                </div>
 
-        @if (configService.settings().wallpaper === "custom") {
-          <div class="flex flex-col gap-2">
-            <label for="custom-wallpaper">{{
-                t("settings.wallpaperCustomLabel")
-              }}</label>
-            <input
-              pInputText
-              id="custom-wallpaper"
-              (ngModelChange)='updateConfig("wallpaperUrl", $event)'
-              [placeholder]='t("settings.wallpaperCustomPlaceholder")'
-              [(ngModel)]="wallpaperUrl"
-            />
-          </div>
-        }
+                @if (configService.settings().wallpaper === 'custom') {
+                    <div class="flex flex-col gap-2">
+                        <label for="custom-wallpaper">{{ t('settings.wallpaperCustomLabel') }}</label>
+                        <input
+                            pInputText
+                            id="custom-wallpaper"
+                            (ngModelChange)="updateConfig('wallpaperUrl', $event)"
+                            [placeholder]="t('settings.wallpaperCustomPlaceholder')"
+                            [(ngModel)]="wallpaperUrl"
+                        />
+                    </div>
+                }
 
-        <div class="flex flex-col gap-2">
-          <label for="logo">{{ t("settings.logoLabel") }}</label>
-          <p-select
-            (ngModelChange)='updateConfig("logo", $event)'
-            [(ngModel)]="logo"
-            [options]="logos"
-            fluid
-            group
-            id="logo"
-          >
-          </p-select>
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="logo">{{ t('settings.logoLabel') }}</label>
+                    <p-select
+                        (ngModelChange)="updateConfig('logo', $event)"
+                        [(ngModel)]="logo"
+                        [options]="logos"
+                        fluid
+                        group
+                        id="logo"
+                    >
+                    </p-select>
+                </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="blur-strength">{{ t("settings.blurStrength") }}</label>
-          <p-input-number
-            (ngModelChange)='updateConfig("blurStrength", $event)'
-            [(ngModel)]="blurStrength"
-            [max]="6"
-            [min]="1"
-            id="blur-strength"
-            inputId="grid-cols"
-            mode="decimal"
-            showButtons
-          />
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="blur-strength">{{ t('settings.blurStrength') }}</label>
+                    <p-input-number
+                        (ngModelChange)="updateConfig('blurStrength', $event)"
+                        [(ngModel)]="blurStrength"
+                        [max]="6"
+                        [min]="1"
+                        id="blur-strength"
+                        inputId="grid-cols"
+                        mode="decimal"
+                        showButtons
+                    />
+                </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="title">{{ t("settings.customTitle") }}</label>
-          <input
-            (ngModelChange)='updateConfig("customTitle", $event)'
-            [(ngModel)]="customTitle"
-            [placeholder]='t("settings.customTitlePlaceholder")'
-            id="title"
-            pInputText
-          />
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="title">{{ t('settings.customTitle') }}</label>
+                    <input
+                        (ngModelChange)="updateConfig('customTitle', $event)"
+                        [(ngModel)]="customTitle"
+                        [placeholder]="t('settings.customTitlePlaceholder')"
+                        id="title"
+                        pInputText
+                    />
+                </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="name">{{ t("settings.name") }}</label>
-          <input
-            (ngModelChange)='updateConfig("username", $event)'
-            [(ngModel)]="username"
-            [placeholder]='t("settings.namePlaceholder")'
-            id="name"
-            pInputText
-          />
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="name">{{ t('settings.name') }}</label>
+                    <input
+                        (ngModelChange)="updateConfig('username', $event)"
+                        [(ngModel)]="username"
+                        [placeholder]="t('settings.namePlaceholder')"
+                        id="name"
+                        pInputText
+                    />
+                </div>
 
-        <div class="flex flex-col gap-2">
-          <label for="welcome">{{ t("settings.welcomeText") }}</label>
-          <input
-            (ngModelChange)='updateConfig("welcomeText", $event)'
-            [(ngModel)]="welcomeText"
-            [placeholder]='t("settings.welcomeTextPlaceholder")'
-            id="welcome"
-            pInputText
-          />
-        </div>
+                <div class="flex flex-col gap-2">
+                    <label for="welcome">{{ t('settings.welcomeText') }}</label>
+                    <input
+                        (ngModelChange)="updateConfig('welcomeText', $event)"
+                        [(ngModel)]="welcomeText"
+                        [placeholder]="t('settings.welcomeTextPlaceholder')"
+                        id="welcome"
+                        pInputText
+                    />
+                </div>
 
-        @if (configService.settings().avatarEnabled) {
-          <div class="flex flex-col gap-2">
-            <label for="avatar-url">{{ t("settings.avatarUrl") }}</label>
-            <input
-              pInputText
-              id="avatar-url"
-              (ngModelChange)='updateConfig("avatarUrl", $event)'
-              [(ngModel)]="avatarUrl"
-              [placeholder]='t("settings.avatarUrlPlaceholder")'
-            />
-          </div>
-        }
+                @if (configService.settings().avatarEnabled) {
+                    <div class="flex flex-col gap-2">
+                        <label for="avatar-url">{{ t('settings.avatarUrl') }}</label>
+                        <input
+                            pInputText
+                            id="avatar-url"
+                            (ngModelChange)="updateConfig('avatarUrl', $event)"
+                            [(ngModel)]="avatarUrl"
+                            [placeholder]="t('settings.avatarUrlPlaceholder')"
+                        />
+                    </div>
+                }
 
-        @if (configService.settings().logo === "custom") {
-          <div class="flex flex-col gap-2">
-            <label for="custom-logo">{{ t("settings.customLogo") }}</label>
-            <input
-              pInputText
-              id="custom-logo"
-              (ngModelChange)='updateConfig("logoUrl", $event)'
-              [placeholder]='t("settings.logoUrlPlaceholder")'
-              [(ngModel)]="logoUrl"
-            />
-          </div>
-        }
+                @if (configService.settings().logo === 'custom') {
+                    <div class="flex flex-col gap-2">
+                        <label for="custom-logo">{{ t('settings.customLogo') }}</label>
+                        <input
+                            pInputText
+                            id="custom-logo"
+                            (ngModelChange)="updateConfig('logoUrl', $event)"
+                            [placeholder]="t('settings.logoUrlPlaceholder')"
+                            [(ngModel)]="logoUrl"
+                        />
+                    </div>
+                }
 
-        @if (!autoGridCols()) {
-          <div class="flex flex-col gap-2">
-            <label for="grid-cols">{{ t("settings.gridCols") }}</label>
-            <p-input-number
-              [(ngModel)]="gridCols"
-              [max]="12"
-              [min]="1"
-              (ngModelChange)='updateConfig("gridCols", $event)'
-              showButtons
-              id="grid-cols"
-              inputId="grid-cols"
-              mode="decimal"
-            />
-          </div>
-        }
+                @if (!autoGridCols()) {
+                    <div class="flex flex-col gap-2">
+                        <label for="grid-cols">{{ t('settings.gridCols') }}</label>
+                        <p-input-number
+                            [(ngModel)]="gridCols"
+                            [max]="12"
+                            [min]="1"
+                            (ngModelChange)="updateConfig('gridCols', $event)"
+                            showButtons
+                            id="grid-cols"
+                            inputId="grid-cols"
+                            mode="decimal"
+                        />
+                    </div>
+                }
 
-        @if (configService.settings().topPagesEnabled) {
-          <div class="flex flex-col gap-2">
-            <label for="top-pages-limit">{{
-                t("settings.topPagesLimit")
-              }}</label>
-            <p-input-number
-              (ngModelChange)='updateConfig("topPagesLimit", $event)'
-              [(ngModel)]="topPagesLimit"
-              [max]="24"
-              [min]="6"
-              id="top-pages-limit"
-              inputId="grid-cols"
-              mode="decimal"
-              showButtons
-            />
-          </div>
-        }
-      </div>
-    </p-panel>
+                @if (configService.settings().topPagesEnabled) {
+                    <div class="flex flex-col gap-2">
+                        <label for="top-pages-limit">{{ t('settings.topPagesLimit') }}</label>
+                        <p-input-number
+                            (ngModelChange)="updateConfig('topPagesLimit', $event)"
+                            [(ngModel)]="topPagesLimit"
+                            [max]="24"
+                            [min]="6"
+                            id="top-pages-limit"
+                            inputId="grid-cols"
+                            mode="decimal"
+                            showButtons
+                        />
+                    </div>
+                }
+            </div>
+        </p-panel>
 
-    <p-panel [header]='t("settings.customLinks")' styleClass="mt-2.5">
-      <app-links-editor></app-links-editor>
-    </p-panel>
+        <p-panel [header]="t('settings.customLinks')" styleClass="mt-2.5">
+            <app-links-editor></app-links-editor>
+        </p-panel>
 
-    <p-panel [header]='t("settings.customMenu")' styleClass="mt-2.5">
-      <app-menu-editor></app-menu-editor>
-    </p-panel>
-  </div>
+        <p-panel [header]="t('settings.customMenu')" styleClass="mt-2.5">
+            <app-menu-editor></app-menu-editor>
+        </p-panel>
+    </div>
 
-  <p-confirmDialog />
+    <p-confirmDialog />
 </ng-container>

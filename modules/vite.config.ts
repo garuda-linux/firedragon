@@ -1,8 +1,8 @@
-import firedragonVite from '@firedragon13/lib-vite';
+import { vite } from '@firedragon/build/vite';
 import { globby } from 'globby';
-import { defineConfig, type UserConfig } from 'vite';
+import { defineConfig } from 'vite';
 
-export default defineConfig(async (): Promise<UserConfig> => {
+export default defineConfig(async () => {
     const input: Record<string, string> = {};
 
     for (const fileName of await globby('**/*.sys.mts', { cwd: 'src' })) {
@@ -22,7 +22,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
             },
         },
         plugins: [
-            firedragonVite({
+            vite({
                 registrations: [
                     {
                         type: 'resource',
@@ -52,9 +52,9 @@ export default defineConfig(async (): Promise<UserConfig> => {
                     },
                     {
                         type: 'category',
-                        category: 'browser-before-ui-startup',
+                        category: 'firedragon/browser-startup',
                         entry: 'resource://firedragon/modules/SkinManager.sys.mjs',
-                        value: 'SkinManager.loadUserJs',
+                        value: 'SkinManager.onBrowserStartup',
                     },
                     {
                         type: 'category',

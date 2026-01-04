@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { SearchSuggestionController } from 'moz-src:///toolkit/components/search/SearchSuggestionController.sys.mjs';
+
 import { FormHistory } from 'resource://gre/modules/FormHistory.sys.mjs';
 import { PrivateBrowsingUtils } from 'resource://gre/modules/PrivateBrowsingUtils.sys.mjs';
-import { SearchSuggestionController } from 'moz-src:///toolkit/components/search/SearchSuggestionController.sys.mjs';
 
 @Injectable({
     providedIn: 'root',
@@ -35,7 +36,11 @@ export class SearchService {
     async performSearch(engineId: string, searchTerm: string) {
         const engine = Services.search.getEngineById(engineId);
         const submission = engine.getSubmission(searchTerm);
-        if (FormHistory.enabled && !this.privateMode && searchTerm.length <= SearchSuggestionController.SEARCH_HISTORY_MAX_VALUE_LENGTH) {
+        if (
+            FormHistory.enabled &&
+            !this.privateMode &&
+            searchTerm.length <= SearchSuggestionController.SEARCH_HISTORY_MAX_VALUE_LENGTH
+        ) {
             const controller = new SearchSuggestionController();
             await FormHistory.update({
                 op: 'bump',
