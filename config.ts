@@ -114,14 +114,14 @@ export const profileDir = '.profile';
 export const defaultEdition = 'dr460nized';
 export const defaultTarget = `${process.platform}-${process.arch}`;
 
-export function getEdition(edition: string = defaultEdition) {
+export function getEdition(edition: string = process.env.FIREDRAGON_EDITION ?? defaultEdition) {
     if (edition in editions) {
         return editions[edition as keyof typeof editions];
     }
     return null;
 }
 
-export function getTarget(target: string = defaultTarget) {
+export function getTarget(target: string = process.env.FIREDRAGON_TARGET ?? defaultTarget) {
     if (target in targets) {
         return targets[target as keyof typeof targets];
     }

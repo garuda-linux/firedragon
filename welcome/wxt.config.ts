@@ -28,7 +28,7 @@ export default defineConfig({
                 include: [fileURLToPath(new URL('./assets/locales/*', import.meta.url))],
             }),
             quasar({
-                sassVariables: getEdition(process.env.FIREDRAGON_EDITION)?.quasar,
+                sassVariables: getEdition()?.quasar,
             }),
             devtools({
                 appendTo: '/entrypoints/index/main.ts',
