@@ -4,6 +4,7 @@ packages:
   - content
   - modules
   - newtab
+  - notes
   - settings
   - welcome
 

@@ -1,0 +1,34 @@
+{
+  "name": "@firedragon/notes",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "wxt build",
+    "dev": "wxt"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.17.0",
+    "@unhead/vue": "^2.1.2",
+    "@webext-core/storage": "^1.2.0",
+    "deep-equal": "^2.2.3",
+    "quasar": "^2.18.6",
+    "vue": "^3.5.26",
+    "vue-i18n": "^11.2.8",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@firedragon/build": "workspace:^",
+    "@intlify/unplugin-vue-i18n": "^11.0.3",
+    "@paralleldrive/cuid2": "^3.0.6",
+    "@quasar/vite-plugin": "^1.10.0",
+    "@types/deep-equal": "^1.0.4",
+    "@types/gecko": "workspace:^",
+    "@vueuse/core": "^14.1.0",
+    "@wxt-dev/browser": "^0.1.32",
+    "@wxt-dev/module-vue": "^1.0.3",
+    "typescript": "^5.9.3",
+    "vite-plugin-vue-devtools": "^8.0.5",
+    "vue-tsc": "^3.2.2",
+    "wxt": "^0.20.13"
+  }
+}
