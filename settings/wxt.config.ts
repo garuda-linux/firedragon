@@ -13,7 +13,7 @@ export default defineConfig({
         name: 'firedragon-settings',
     },
     imports: {
-        presets: ['@vueuse/core', 'quasar', 'vue-i18n'],
+        presets: ['@vueuse/core', 'quasar', 'vue-i18n', 'vue-router'],
     },
     vue: {
         vite: {
