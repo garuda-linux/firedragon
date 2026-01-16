@@ -1,5 +1,11 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.6) — 2026-01-16 — [`v13.0.0-alpha.5`…`v13.0.0-alpha.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.5...v13.0.0-alpha.6)
+
+### 🚜 Refactor
+
+- Major refactor — [`592376a8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/592376a8a9476be4e3d1e614badf86d182f0a256)
+
 ## [FireDragon v13.0.0-alpha.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.5) — 2025-12-22 — [`v13.0.0-alpha.4`…`v13.0.0-alpha.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.4...v13.0.0-alpha.5)
 
 ### 🐛 Bug Fixes
