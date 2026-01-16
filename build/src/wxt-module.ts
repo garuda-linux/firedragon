@@ -3,7 +3,7 @@ import { writeFile } from 'node:fs/promises';
 import { globby } from 'globby';
 import { defineWxtModule } from 'wxt/modules';
 
-import { firefoxVersion } from '../../config.ts';
+import { firefoxVersion, version } from '../../config.ts';
 import generateJarManifest, { type File, type Options as JarManifestOptions, match } from './lib/jarManifest';
 import type { ExperimentApiOptions } from './types/wxt';
 
@@ -28,6 +28,10 @@ export default defineWxtModule<Options>({
         options!.jarManifest ??= {};
         options!.jarManifest.jar ??= 'browser';
         options!.jarManifest.prefix ??= `builtin-addons/${options!.name}/`;
+
+        wxt.hooks.hook('config:resolved', () => {
+            wxt.config.manifest.version = version;
+        });
 
         wxt.hooks.hook('build:manifestGenerated', (_, manifest) => {
             manifest.browser_specific_settings = {
