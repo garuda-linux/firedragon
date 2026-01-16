@@ -14,6 +14,7 @@ import {
     repoUrl,
     sourceDir,
     targets,
+    userPrefs,
     version,
 } from './config';
 
@@ -41,14 +42,6 @@ const versionSuffix = `-v${version}`;
 const basename = `${edition.basename}${versionSuffix}`;
 const sourceBasename = appName;
 const sourceSuffix = 'source.tar.zst';
-
-const userPrefs = {
-    'devtools.debugger.prompt-connection': false,
-    'devtools.debugger.remote-enabled': true,
-    'devtools.chrome.enabled': true,
-    'browser.newtabpage.enabled': true,
-    'browser.startup.page': 1,
-};
 
 const tmpDir = tmpdir();
 process.on('exit', () => {

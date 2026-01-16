@@ -104,6 +104,15 @@ export const targets = {
     },
 };
 
+export const userPrefs = {
+    'devtools.debugger.prompt-connection': false,
+    'devtools.debugger.remote-enabled': true,
+    'devtools.chrome.enabled': true,
+    'browser.newtabpage.enabled': true,
+    'browser.startup.page': 1,
+    'devtools.aboutdebugging.showHiddenAddons': true,
+};
+
 export const cacheDir = '.cache';
 export const distDir = '.dist';
 
