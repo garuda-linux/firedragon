@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.7) — 2026-01-17 — [`v13.0.0-alpha.6`…`v13.0.0-alpha.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.6...v13.0.0-alpha.7)
+
+### 🚀 Features
+
+- Have getEdition and getTarget function in config.ts use environment variable by default — [`ee2b3d99…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ee2b3d99b6f88f3acb19d9d4f17622438ae24e38)
+- _(notes)_ Initial notes implementation — [`3a533f24…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3a533f241fcd886db7b29f8ac6c24a0f3728e6c3)
+- _(app)_ Add default sidebar configuration and remove unused floorp configs — [`baf8b6a8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/baf8b6a88b9ef6d07b86015e33e7766dca318917)
+- _(build)_ Automatically set version for builtin addons — [`f6ce7aed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f6ce7aedeb803c64f98228ba11b24bf09ff73ca8)
+- _(make)_ Move userPrefs const to config.ts and add pref to show builtin addons on about:debugging — [`e4637e17…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e4637e17f3ca1e97923460b98182ab243386eef3)
+
+### ⚙️ Miscellaneous Tasks
+
+- Add LICENSE — [`02700872…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0270087248a4eaf104ba702bf796caa9dea8fa05)
+- _(settings)_ Add vue-router auto import — [`5a31fe81…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5a31fe810d13e232f2478e011d1c1390ba095120)
+
 ## [FireDragon v13.0.0-alpha.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.6) — 2026-01-16 — [`v13.0.0-alpha.5`…`v13.0.0-alpha.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.5...v13.0.0-alpha.6)
 
 ### 🚜 Refactor
