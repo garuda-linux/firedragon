@@ -297,6 +297,11 @@ async function ciRelease() {
                 downloads.push(
                     `| ${edition.displayName} ${target.displayName} | [${firstArtifact.name}](${repoUrl}/-/releases/${version}/downloads${firstArtifact.direct_asset_path}) |`,
                 );
+                if (target.suffix.includes('linux')) {
+                    downloads.push(
+                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'AppImage')} | [${firstArtifact.name.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}](${repoUrl}/-/releases/${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}) |`,
+                    );
+                }
             }
         }
     }
