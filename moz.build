@@ -8,4 +8,5 @@ DIRS += [
     'settings',
     'skin',
     'welcome',
+    'workspaces',
 ]
