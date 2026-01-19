@@ -6,7 +6,7 @@
     const { t } = useI18n();
     const router = useRouter();
 
-    const split = await useSyncExtStorage('split', 50);
+    const split = await useLocalExtStorage('split', 50);
     const notes = await useSyncExtStorage('notes', []);
 
     async function addNote() {

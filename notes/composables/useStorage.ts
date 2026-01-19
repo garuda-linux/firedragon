@@ -1,7 +1,7 @@
 import type { ExtensionStorage } from '@webext-core/storage';
 import deepEqual from 'deep-equal';
 
-import { syncExtStorage } from '@/utils/storage';
+import { localExtStorage, syncExtStorage } from '@/utils/storage';
 
 function createStorage<T extends Record<string, any>>(storage: ExtensionStorage<T>) {
     return async function <K extends keyof T>(key: MaybeRefOrGetter<K>, defaults: MaybeRefOrGetter<Required<T>[K]>) {
@@ -32,4 +32,5 @@ function createStorage<T extends Record<string, any>>(storage: ExtensionStorage<
     };
 }
 
+export const useLocalExtStorage = createStorage(localExtStorage);
 export const useSyncExtStorage = createStorage(syncExtStorage);
