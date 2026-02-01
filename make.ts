@@ -89,7 +89,8 @@ async function source() {
 
     const firefoxSource = `firefox-${firefoxVersion}.source.tar.xz`;
     if (!(await fs.pathExists(`${cacheDir}/${firefoxSource}`))) {
-        await $`curl -fL https://archive.mozilla.org/pub/firefox/releases/${firefoxVersion}/source/${firefoxSource} -o ${cacheDir}/${firefoxSource}`;
+        await $`curl -fL https://archive.mozilla.org/pub/firefox/releases/${firefoxVersion}/source/${firefoxSource} -o ${tmpDir}/${firefoxSource}`;
+        await $`mv ${tmpDir}/${firefoxSource} ${cacheDir}/${firefoxSource}`;
     }
     await extractArtifactTo(`${cacheDir}/${firefoxSource}`, buildDir);
 
