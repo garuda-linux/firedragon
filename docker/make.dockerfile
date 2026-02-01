@@ -2,12 +2,15 @@ FROM denoland/deno:bin-2.5.0 AS deno
 
 FROM ubuntu:latest
 
+# Enable 32-bit support
+RUN dpkg --add-architecture i386
+
 # Update system
 RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y curl file msitools nodejs p7zip-full patch python3-pip ripgrep rsync rustup watchman zip zstd
+RUN apt-get install -y curl file libc6:i386 msitools nodejs p7zip-full patch python3-pip ripgrep rsync rustup watchman zip zstd
 
 # Setup rust with all required toolchains
 ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
