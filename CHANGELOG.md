@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v12.8.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.8.0) — 2026-02-01 — [`v12.7.0`…`v12.8.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.7.0...v12.8.0)
+
+### 🐛 Bug Fixes
+
+- *(docker)* Add 32-bit support — [`19ed5e8d…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/19ed5e8df76a4652c7e5b2a49c24e8534f7147e5)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 147.0.2 — [`4f190021…`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/commit/4f190021ed1c79b8596e5e059e9b2a7f3151e7b6)
+
 ## [FireDragon v12.7.0](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases/v12.7.0) — 2025-12-21 — [`v12.6.1`…`v12.7.0`](https://gitlab.com/garuda-linux/firedragon/firedragon12/-/compare/v12.6.1...v12.7.0)
 
 ### 🐛 Bug Fixes
