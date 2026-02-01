@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.8) — 2026-02-01 — [`v13.0.0-alpha.7`…`v13.0.0-alpha.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.7...v13.0.0-alpha.8)
+
+### 🐛 Bug Fixes
+
+- _(make)_ Readd AppImage downloads to release — [`08e5c744…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/08e5c74478431e55ca3a207e1bf015441a934f0f)
+- _(notes)_ Move UI split storage item from sync to local storage — [`3b3edb27…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3b3edb278c7906a84e9b9448d164fa92065039f1)
+- _(make)_ Support interruption of firefox source download — [`6c7b539d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6c7b539d70808975ac44e04477d9a6af9fd30bac)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 147.0.2 — [`8c170866…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8c1708663c714514876f9b7c73711b063cc7261e)
+
 ## [FireDragon v13.0.0-alpha.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.7) — 2026-01-17 — [`v13.0.0-alpha.6`…`v13.0.0-alpha.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.6...v13.0.0-alpha.7)
 
 ### 🚀 Features
