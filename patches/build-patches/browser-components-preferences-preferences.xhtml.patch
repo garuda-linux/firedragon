@@ -1,11 +1,11 @@
 diff --git a/browser/components/preferences/preferences.xhtml b/browser/components/preferences/preferences.xhtml
-index 993554d64efa..8e2050115aed 100644
+index a1aec823d626..bc23b312c23e 100644
 --- a/browser/components/preferences/preferences.xhtml
 +++ b/browser/components/preferences/preferences.xhtml
-@@ -99,6 +99,8 @@
-   <script type="module" src="chrome://browser/content/preferences/widgets/security-privacy-card.mjs"></script>
+@@ -101,6 +101,8 @@
    <script type="module" src="chrome://global/content/elements/moz-input-color.mjs"></script>
    <script type="module" src="chrome://browser/content/preferences/widgets/sync-device-name.mjs"></script>
+   <script type="module" src="chrome://browser/content/preferences/widgets/sync-engines-list.mjs"></script>
 +
 +#include ../../firedragon/content/dist/preferences.inc.html
  </head>
