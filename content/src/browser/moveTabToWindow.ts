@@ -1,7 +1,7 @@
 import { effect, shallowRef } from '@vue/reactivity';
 
-import { useBoolPref } from '@/composables/usePref.ts';
-import { t } from '@/utils/i18n.ts';
+import { useBoolPref } from '@/composables/usePref';
+import { t } from '@/utils/i18n';
 
 document!.addEventListener(
     'DOMContentLoaded',

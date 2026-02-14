@@ -1,6 +1,6 @@
 import { effect } from '@vue/reactivity';
 
-import { useBoolPref } from '@/composables/usePref.ts';
+import { useBoolPref } from '@/composables/usePref';
 
 document!.addEventListener(
     'DOMContentLoaded',

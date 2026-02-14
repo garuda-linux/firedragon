@@ -1,4 +1,4 @@
-import { t } from '@/utils/i18n.ts';
+import { t } from '@/utils/i18n';
 
 document!.addEventListener(
     'DOMContentLoaded',
