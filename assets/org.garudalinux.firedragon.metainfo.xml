@@ -40,6 +40,7 @@
     <keyword>internet</keyword>
   </keywords>
   <url type="homepage">https://firedragon.garudalinux.org/</url>
+  <url type="vcs-browser">https://gitlab.com/garuda-linux/firedragon/firedragon13</url>
   <screenshots>
     <screenshot type="default">
       <caption>Welcome</caption>
