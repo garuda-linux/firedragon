@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.9) — 2026-02-14 — [`v13.0.0-alpha.8`…`v13.0.0-alpha.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.8...v13.0.0-alpha.9)
+
+### 🚀 Features
+
+- _(metainfo)_ Add vcs-browser url — [`94de4eb7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/94de4eb7f4f1df42fa9bedd1cf88c7845f62b5bd)
+- _(app)_ Enable global menu by default — [`b4e38965…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b4e38965ea55c18e70da5342aa57d2ab8d0a9cb3)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(build)_ Complete type checking — [`07b0fd83…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07b0fd83f8de957f985b8db336ba92bbca0d21bf)
+- Add preinstall script for builtin extensions — [`a2ff073b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2ff073b5029a89f9ef2f42137d30e1d1afcd558)
+- Update pnpm — [`fa363f67…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fa363f671f4fdd23f006a42c6835efd7cd9dd1f1)
+- Remove .ts from imports — [`369a0de5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/369a0de56bcb595614935ea4bbd13a6837b08e9a)
+- Update to firefox 147.0.3 — [`5cb76b55…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5cb76b5593c5313ec2598d16805418f55e5e8337)
+
 ## [FireDragon v13.0.0-alpha.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.8) — 2026-02-01 — [`v13.0.0-alpha.7`…`v13.0.0-alpha.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.7...v13.0.0-alpha.8)
 
 ### 🐛 Bug Fixes
