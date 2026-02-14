@@ -9,6 +9,7 @@
     "./wxt-module": "./dist/wxt-module.js"
   },
   "scripts": {
+    "postinstall": "vite build",
     "build": "vite build",
     "dev": "vite build"
   },
@@ -20,6 +21,7 @@
     "wxt": "^0.20.13"
   },
   "devDependencies": {
+    "typescript": "~5.9.3",
     "vite": "catalog:",
     "vite-plugin-dts": "^4.5.4"
   }

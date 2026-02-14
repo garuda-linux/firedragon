@@ -18,8 +18,8 @@ importOrderParserPlugins:
   - decorators-legacy
 overrides:
   - files:
-      - '*.json'
-      - '*.yaml'
-      - '*.yml'
+      - '**/*.json'
+      - '**/*.yaml'
+      - '**/*.yml'
     options:
       tabWidth: 2

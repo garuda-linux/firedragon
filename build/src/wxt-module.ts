@@ -119,7 +119,9 @@ export default defineWxtModule<Options>({
                     });
                     wxt.hooks.hook('vite:build:extendConfig', (entrypoints, config) => {
                         if (entrypoints[0]?.inputPath === path) {
+                            // @ts-ignore
                             config.build!.lib!.name = name;
+                            // @ts-ignore
                             config.plugins = config.plugins!.filter((plugin) => plugin?.name !== 'wxt:iife-footer');
                         }
                     });
