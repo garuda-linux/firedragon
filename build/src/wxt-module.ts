@@ -9,7 +9,6 @@ import type { ExperimentApiOptions } from './types/wxt';
 
 export interface Options {
     id: string;
-    name: string;
     vendor?: string;
     jarManifest?: JarManifestOptions;
 }
@@ -35,7 +34,6 @@ export default defineWxtModule<Options>({
         });
 
         wxt.hooks.hook('build:manifestGenerated', (_, manifest) => {
-            manifest.name = options!.name;
             manifest.browser_specific_settings = {
                 gecko: {
                     id: `${options!.id}@${options!.vendor}`,

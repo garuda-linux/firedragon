@@ -11,7 +11,6 @@ export default defineConfig({
     modules: ['@wxt-dev/module-vue'],
     firedragon: {
         id: 'firedragon-notes',
-        name: 'FireDragon Notes',
     },
     imports: {
         presets: ['@vueuse/core', 'quasar', 'vue-i18n', 'vue-router'],
@@ -24,6 +23,7 @@ export default defineConfig({
         },
     },
     manifest: {
+        name: 'FireDragon Notes',
         permissions: ['storage'],
     },
     vite: () => ({

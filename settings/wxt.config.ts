@@ -11,7 +11,6 @@ export default defineConfig({
     modules: ['@wxt-dev/module-vue'],
     firedragon: {
         id: 'firedragon-settings',
-        name: 'FireDragon Settings',
     },
     imports: {
         presets: ['@vueuse/core', 'quasar', 'vue-i18n', 'vue-router'],
@@ -22,6 +21,9 @@ export default defineConfig({
                 transformAssetUrls,
             },
         },
+    },
+    manifest: {
+        name: 'FireDragon Settings',
     },
     vite: () => ({
         plugins: [
