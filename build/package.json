@@ -18,10 +18,10 @@
   },
   "peerDependencies": {
     "vite": "catalog:",
-    "wxt": "^0.20.13"
+    "wxt": "catalog:"
   },
   "devDependencies": {
-    "typescript": "~5.9.3",
+    "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-dts": "^4.5.4"
   }

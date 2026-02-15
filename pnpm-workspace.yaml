@@ -9,7 +9,9 @@ packages:
   - welcome
 
 catalog:
+  typescript: ~5.9.3
   vite: npm:rolldown-vite@^7.3.1
+  wxt: ^0.20.17
 
 onlyBuiltDependencies:
   - '@parcel/watcher'

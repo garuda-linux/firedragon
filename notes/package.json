@@ -27,9 +27,9 @@
     "@vueuse/core": "^14.1.0",
     "@wxt-dev/browser": "^0.1.32",
     "@wxt-dev/module-vue": "^1.0.3",
-    "typescript": "^5.9.3",
+    "typescript": "catalog:",
     "vite-plugin-vue-devtools": "^8.0.5",
     "vue-tsc": "^3.2.2",
-    "wxt": "^0.20.13"
+    "wxt": "catalog:"
   }
 }

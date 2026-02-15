@@ -12,6 +12,7 @@
     "@firedragon/build": "workspace:^",
     "@types/gecko": "workspace:^",
     "globby": "^16.1.0",
+    "typescript": "catalog:",
     "vite": "catalog:"
   }
 }
