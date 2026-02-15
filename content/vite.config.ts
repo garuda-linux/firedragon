@@ -8,7 +8,7 @@ import { type Plugin, defineConfig } from 'vite';
 export default defineConfig(async () => ({
     base: 'chrome://firedragon/content/',
     build: {
-        rolldownOptions: {
+        rollupOptions: {
             input: await globby('*.html'),
         },
     },

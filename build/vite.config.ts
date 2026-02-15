@@ -7,7 +7,7 @@ export default defineConfig({
             entry: ['./src/vite.ts', './src/wxt-client.ts', './src/wxt-config.ts', './src/wxt-module.ts'],
             formats: ['es'],
         },
-        rolldownOptions: {
+        rollupOptions: {
             external: ['node:fs/promises', 'node:url', 'globby', 'vite', 'wxt', 'wxt/modules', '../../config.ts'],
         },
     },

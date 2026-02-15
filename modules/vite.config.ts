@@ -13,7 +13,7 @@ export default defineConfig(async () => {
         base: 'resource://firedragon/',
         build: {
             assetsDir: 'vendor',
-            rolldownOptions: {
+            rollupOptions: {
                 input,
                 output: {
                     entryFileNames: '[name].mjs',
