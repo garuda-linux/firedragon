@@ -10,7 +10,8 @@ import { getEdition } from '../config';
 export default defineConfig({
     modules: ['@wxt-dev/module-vue'],
     firedragon: {
-        name: 'firedragon-settings',
+        id: 'firedragon-settings',
+        name: 'FireDragon Settings',
     },
     imports: {
         presets: ['@vueuse/core', 'quasar', 'vue-i18n', 'vue-router'],

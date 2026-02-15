@@ -8,6 +8,7 @@ import generateJarManifest, { type File, type Options as JarManifestOptions, mat
 import type { ExperimentApiOptions } from './types/wxt';
 
 export interface Options {
+    id: string;
     name: string;
     vendor?: string;
     jarManifest?: JarManifestOptions;
@@ -27,16 +28,17 @@ export default defineWxtModule<Options>({
         options!.vendor ??= 'firedragon.garudalinux.org';
         options!.jarManifest ??= {};
         options!.jarManifest.jar ??= 'browser';
-        options!.jarManifest.prefix ??= `builtin-addons/${options!.name}/`;
+        options!.jarManifest.prefix ??= `builtin-addons/${options!.id}/`;
 
         wxt.hooks.hook('config:resolved', () => {
             wxt.config.manifest.version = version;
         });
 
         wxt.hooks.hook('build:manifestGenerated', (_, manifest) => {
+            manifest.name = options!.name;
             manifest.browser_specific_settings = {
                 gecko: {
-                    id: `${options!.name}@${options!.vendor}`,
+                    id: `${options!.id}@${options!.vendor}`,
                     strict_min_version: firefoxVersion.split('.').slice(0, 2).join('.'),
                 },
             };
