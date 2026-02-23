@@ -2,6 +2,8 @@ import type { ExperimentApiDefinition } from './types/wxt';
 
 declare global {
     export abstract class ExtensionAPI {
+        constructor(extension: any);
+
         abstract getAPI(context: any): any;
     }
     export namespace ExtensionCommon {

@@ -19,164 +19,170 @@ declare module '@wxt-dev/browser' {
 }
 
 export default defineExperimentApi({
-    namespace: 'prefs',
-    events: [
-        {
-            name: 'onPrefChanged',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-            ],
-        },
-    ],
-    functions: [
-        {
-            name: 'getBoolPref',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-                {
-                    name: 'aDefaultValue',
+    registration: {
+        scope: 'parent',
+        paths: [['prefs']],
+    },
+    definitions: {
+        namespace: 'prefs',
+        events: [
+            {
+                name: 'onPrefChanged',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                ],
+            },
+        ],
+        functions: [
+            {
+                name: 'getBoolPref',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aDefaultValue',
+                        type: 'boolean',
+                        optional: true,
+                    },
+                ],
+                returns: {
                     type: 'boolean',
                     optional: true,
                 },
-            ],
-            returns: {
-                type: 'boolean',
-                optional: true,
             },
-        },
-        {
-            name: 'setBoolPref',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
+            {
+                name: 'setBoolPref',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aValue',
+                        type: 'boolean',
+                    },
+                ],
+            },
+            {
+                name: 'getIntPref',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aDefaultValue',
+                        type: 'integer',
+                        optional: true,
+                    },
+                ],
+                returns: {
+                    type: 'integer',
+                    optional: true,
                 },
-                {
-                    name: 'aValue',
+            },
+            {
+                name: 'setIntPref',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aValue',
+                        type: 'integer',
+                    },
+                ],
+            },
+            {
+                name: 'getStringPref',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aDefaultValue',
+                        type: 'string',
+                        optional: true,
+                    },
+                ],
+                returns: {
+                    type: 'string',
+                    optional: true,
+                },
+            },
+            {
+                name: 'setStringPref',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                    {
+                        name: 'aValue',
+                        type: 'string',
+                    },
+                ],
+            },
+            {
+                name: 'prefHasUserValue',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                ],
+                returns: {
                     type: 'boolean',
                 },
-            ],
-        },
-        {
-            name: 'getIntPref',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-                {
-                    name: 'aDefaultValue',
-                    type: 'integer',
-                    optional: true,
-                },
-            ],
-            returns: {
-                type: 'integer',
-                optional: true,
             },
-        },
-        {
-            name: 'setIntPref',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-                {
-                    name: 'aValue',
-                    type: 'integer',
-                },
-            ],
-        },
-        {
-            name: 'getStringPref',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-                {
-                    name: 'aDefaultValue',
-                    type: 'string',
-                    optional: true,
-                },
-            ],
-            returns: {
-                type: 'string',
-                optional: true,
+            {
+                name: 'clearUserPref',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'aPrefName',
+                        type: 'string',
+                    },
+                ],
             },
-        },
-        {
-            name: 'setStringPref',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-                {
-                    name: 'aValue',
-                    type: 'string',
-                },
-            ],
-        },
-        {
-            name: 'prefHasUserValue',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-            ],
-            returns: {
-                type: 'boolean',
-            },
-        },
-        {
-            name: 'clearUserPref',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'aPrefName',
-                    type: 'string',
-                },
-            ],
-        },
-        {
-            name: 'getChildList',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'aStartingAt',
-                    type: 'string',
-                },
-            ],
-            returns: {
-                type: 'array',
-                items: {
-                    type: 'string',
+            {
+                name: 'getChildList',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'aStartingAt',
+                        type: 'string',
+                    },
+                ],
+                returns: {
+                    type: 'array',
+                    items: {
+                        type: 'string',
+                    },
                 },
             },
-        },
-    ],
+        ],
+    },
     main() {
         return class extends ExtensionAPI {
             getAPI(context: any) {

@@ -41,12 +41,22 @@ export type MaybeOptional<T extends TypeDefinition> = T & {
     optional?: boolean;
 };
 
-export interface ExperimentApiOptions {
-    type?: 'parent' | 'child';
+export interface ExperimentApiRegistration {
+    scope: 'parent' | 'child';
+    events?: string[];
+    paths?: string[][];
+}
+
+export interface ExperimentApiDefinitions {
     namespace?: string;
     description?: string;
     events?: Named<FunctionTypeDefinition>[];
     functions?: Named<FunctionTypeDefinition>[];
+}
+
+export interface ExperimentApiOptions {
+    registration: ExperimentApiRegistration;
+    definitions: ExperimentApiDefinitions;
 }
 
 export interface ExperimentApiDefinition extends ExperimentApiOptions {

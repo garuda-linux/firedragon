@@ -96,23 +96,22 @@ export default defineWxtModule<Options>({
                         manifest.experiment_apis ??= {};
                         manifest.experiment_apis[name] = {
                             schema: `experiment-api/${name}.json`,
-                            [options.type ?? 'parent']: {
-                                scopes: [`addon_${options.type ?? 'parent'}`],
+                            [options.registration.scope]: {
                                 script: `experiment-api/${name}.js`,
+                                scopes: [`addon_${options.registration.scope}`],
+                                events: options.registration.events,
+                                paths: options.registration.paths,
                             },
                         };
-                        if (options.namespace) {
-                            manifest.experiment_apis[name][options.type ?? 'parent'].paths = [[options.namespace]];
-                        }
                     });
                     wxt.hooks.hookOnce('build:publicAssets', (_, assets) => {
                         assets.push({
                             relativeDest: `experiment-api/${name}.json`,
                             contents: JSON.stringify([
                                 {
-                                    namespace: options.namespace,
-                                    events: options.events,
-                                    functions: options.functions,
+                                    namespace: options.definitions.namespace,
+                                    events: options.definitions.events,
+                                    functions: options.definitions.functions,
                                 },
                             ]),
                         });

@@ -66,37 +66,43 @@ const languagePackType: TypeDefinition = {
 };
 
 export default defineExperimentApi({
-    namespace: 'language',
-    functions: [
-        {
-            name: 'getLocaleInfo',
-            type: 'function',
-            async: true,
-            parameters: [],
-            returns: localeInfoType,
-        },
-        {
-            name: 'getLanguagePacks',
-            type: 'function',
-            async: true,
-            parameters: [],
-            returns: {
-                type: 'array',
-                items: languagePackType,
+    registration: {
+        scope: 'parent',
+        paths: [['language']],
+    },
+    definitions: {
+        namespace: 'language',
+        functions: [
+            {
+                name: 'getLocaleInfo',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: localeInfoType,
             },
-        },
-        {
-            name: 'setLanguagePack',
-            type: 'function',
-            async: true,
-            parameters: [
-                {
-                    name: 'languagePack',
-                    ...languagePackType,
+            {
+                name: 'getLanguagePacks',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: {
+                    type: 'array',
+                    items: languagePackType,
                 },
-            ],
-        },
-    ],
+            },
+            {
+                name: 'setLanguagePack',
+                type: 'function',
+                async: true,
+                parameters: [
+                    {
+                        name: 'languagePack',
+                        ...languagePackType,
+                    },
+                ],
+            },
+        ],
+    },
     main() {
         const { LangPackMatcher } = ChromeUtils.importESModule('resource://gre/modules/LangPackMatcher.sys.mjs');
         const { MozIntl } = ChromeUtils.importESModule('resource://gre/modules/mozIntl.sys.mjs');

@@ -32,36 +32,42 @@ const searchEngineType: TypeDefinition = {
 };
 
 export default defineExperimentApi({
-    namespace: 'searchEngine',
-    functions: [
-        {
-            name: 'getAll',
-            type: 'function',
-            async: true,
-            parameters: [],
-            returns: {
-                type: 'array',
-                items: searchEngineType,
-            },
-        },
-        {
-            name: 'getDefault',
-            type: 'function',
-            async: true,
-            parameters: [],
-            returns: searchEngineType,
-        },
-        {
-            name: 'setDefault',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'id',
-                    type: 'string',
+    registration: {
+        scope: 'parent',
+        paths: [['searchEngine']],
+    },
+    definitions: {
+        namespace: 'searchEngine',
+        functions: [
+            {
+                name: 'getAll',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: {
+                    type: 'array',
+                    items: searchEngineType,
                 },
-            ],
-        },
-    ],
+            },
+            {
+                name: 'getDefault',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: searchEngineType,
+            },
+            {
+                name: 'setDefault',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'id',
+                        type: 'string',
+                    },
+                ],
+            },
+        ],
+    },
     main() {
         async function mapSearchEngine(engine: any): Promise<Browser.searchEngine.SearchEngine> {
             return {

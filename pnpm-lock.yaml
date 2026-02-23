@@ -9,9 +9,6 @@ catalogs:
     typescript:
       specifier: ~5.9.3
       version: 5.9.3
-    vite:
-      specifier: npm:vite@^7.3.1
-      version: 7.3.1
     wxt:
       specifier: ^0.20.17
       version: 0.20.17

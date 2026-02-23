@@ -9,34 +9,40 @@ declare module '@wxt-dev/browser' {
 }
 
 export default defineExperimentApi({
-    namespace: 'browser',
-    functions: [
-        {
-            name: 'getLogo',
-            type: 'function',
-            async: true,
-            parameters: [],
-            returns: {
-                type: 'string',
-            },
-        },
-        {
-            name: 'setDefault',
-            type: 'function',
-            async: true,
-            parameters: [],
-        },
-        {
-            name: 'open',
-            type: 'function',
-            parameters: [
-                {
-                    name: 'url',
+    registration: {
+        scope: 'parent',
+        paths: [['browser']],
+    },
+    definitions: {
+        namespace: 'browser',
+        functions: [
+            {
+                name: 'getLogo',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: {
                     type: 'string',
                 },
-            ],
-        },
-    ],
+            },
+            {
+                name: 'setDefault',
+                type: 'function',
+                async: true,
+                parameters: [],
+            },
+            {
+                name: 'open',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'url',
+                        type: 'string',
+                    },
+                ],
+            },
+        ],
+    },
     main() {
         const { ShellService } = ChromeUtils.importESModule('moz-src:///browser/components/shell/ShellService.sys.mjs');
         const { ExtensionParent } = ChromeUtils.importESModule('resource://gre/modules/ExtensionParent.sys.mjs');
