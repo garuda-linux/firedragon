@@ -1,5 +1,28 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.10) — 2026-02-24 — [`v13.0.0-alpha.9`…`v13.0.0-alpha.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.9...v13.0.0-alpha.10)
+
+### 🚀 Features
+
+- [__breaking__] Add manual name settings to wxt-module config — [`da6fdf5a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/da6fdf5a8edcdb0f32f23f9e8918812cb494d2ec)
+- _(notes)_ Use context-fill & context-fill-opacity for icon — [`9a60e07f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9a60e07fe02c7b90eec8d99e7814bcdec0e023cf)
+- [__breaking__] Move name setting from wxt-module to manifest — [`9adb1951…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9adb1951184346157784d007b93b8e52a0809ca2)
+- _(workspaces)_ Initial workspaces implementation — [`a689ecdf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a689ecdfc49a64480b9d9e1fcfc370fc276752fa)
+
+### 🐛 Bug Fixes
+
+- Use standard vite instead of rollup due to WXT issues — [`e75edb81…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e75edb8145228c30ea3faca174b21423a72f9cea)
+
+### 🚜 Refactor
+
+- Separate experiment api registration and definitions options — [`0466c1a3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0466c1a3647606a57acddd0093711a0c956e74d6)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & wxt — [`f04500d3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f04500d3f7a13cc149e4688138adef5098c39701)
+- Update package.json — [`3acd8d26…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3acd8d26c61394356ea098cea155d9c358bee95f)
+- Update firefox version to 147.0.4 — [`721b5ad4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/721b5ad42b892c8c52b0cba9f59598e16b2f465f)
+
 ## [FireDragon v13.0.0-alpha.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.9) — 2026-02-14 — [`v13.0.0-alpha.8`…`v13.0.0-alpha.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.8...v13.0.0-alpha.9)
 
 ### 🚀 Features
