@@ -1,5 +1,12 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-alpha.11](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.11) — 2026-02-24 — [`v13.0.0-alpha.10`…`v13.0.0-alpha.11`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.10...v13.0.0-alpha.11)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm to 10.30.2 — [`afa31f34…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/afa31f3442811609fb8a8d2b7b3b8b9ed719a9ca)
+- Update firefox to 148.0 — [`d17207d9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d17207d9612bc396ad425238c12f47b1bda3790b)
+
 ## [FireDragon v13.0.0-alpha.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.10) — 2026-02-24 — [`v13.0.0-alpha.9`…`v13.0.0-alpha.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.9...v13.0.0-alpha.10)
 
 ### 🚀 Features
