@@ -12,8 +12,8 @@ packages:
 
 catalog:
   typescript: ~5.9.3
-  vite: npm:vite@^7.3.1
-  wxt: ^0.20.17
+  vite: ^7.3.1
+  wxt: ^0.20.18
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
