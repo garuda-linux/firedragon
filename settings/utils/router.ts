@@ -20,5 +20,9 @@ export default createRouter({
                 },
             ],
         },
+        {
+            path: '/keyboard-shortcuts',
+            component: () => import('@/pages/keyboard-shortcuts/index.vue'),
+        },
     ],
 });

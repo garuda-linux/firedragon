@@ -1,18 +1,59 @@
+export type Transformer<T, R> =
+    | {
+          deserialize(value: T): R;
+          serialize(value: R): T;
+      }
+    | {
+          parse(value: T): R;
+          stringify(value: R): T;
+      };
+
+export interface PrefOptions<T, R> {
+    transformer?: Transformer<T, R>;
+}
+
 function createUsePref<T>(
     get: (aPrefName: string, aDefaultValue?: T) => Promise<T>,
     set: (aPrefName: string, aValue: T) => void,
 ) {
-    return async function (aPrefName: MaybeRefOrGetter<string>, aDefaultValue?: MaybeRefOrGetter<T>) {
-        const prefName = toRef(aPrefName);
-        const value = ref(await get(prefName.value, toValue(aDefaultValue)));
+    return async function <R = T>(
+        aPrefName: MaybeRefOrGetter<string>,
+        aDefaultValue?: MaybeRefOrGetter<T>,
+        options: PrefOptions<T, R> = {},
+    ) {
+        function deserialize(value: any) {
+            if (options.transformer) {
+                if ('deserialize' in options.transformer) {
+                    return options.transformer.deserialize(value);
+                }
+                return options.transformer.parse(value);
+            }
+            return value;
+        }
+        function serialize(value: any) {
+            if (options.transformer) {
+                if ('serialize' in options.transformer) {
+                    return options.transformer.serialize(value);
+                }
+                return options.transformer.stringify(value);
+            }
+            return value;
+        }
 
-        watch(value, (value) => {
-            set(prefName.value, value);
-        });
+        const prefName = toRef(aPrefName);
+        const value: Ref<R> = ref(deserialize(await get(prefName.value, toValue(aDefaultValue))));
+
+        watch(
+            value,
+            (value) => {
+                set(prefName.value, serialize(value));
+            },
+            { deep: true },
+        );
 
         async function onChange(aPrefName: string) {
             if (aPrefName === prefName.value) {
-                value.value = await get(prefName.value, toValue(aDefaultValue));
+                value.value = deserialize(await get(prefName.value, toValue(aDefaultValue)));
             }
         }
         browser.prefs.onPrefChanged.addListener(onChange);

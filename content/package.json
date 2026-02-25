@@ -6,6 +6,7 @@
     "dev": "vite build"
   },
   "dependencies": {
+    "@firedragon/shared": "workspace:^",
     "@vue/reactivity": "^3.5.26",
     "vue-i18n": "^11.2.8"
   },

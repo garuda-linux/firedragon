@@ -1,6 +1,7 @@
 pref('firedragon.newtab.enable', true);
 pref('firedragon.newtab.config', '{}');
-pref('firedragon.defaultShortcuts.enable', true);
+pref('firedragon.keyboardShortcuts.defaults', true);
+pref('firedragon.keyboardShortcuts.custom', '[]');
 pref('firedragon.translations.enable', false);
 pref('firedragon.cfg.entry', 'dirsvc://GreD/firedragon.cfg');
 pref('firedragon.hidePasswdmgr', false);

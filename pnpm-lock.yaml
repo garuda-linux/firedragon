@@ -9,6 +9,9 @@ catalogs:
     typescript:
       specifier: ~5.9.3
       version: 5.9.3
+    vite:
+      specifier: npm:vite@^7.3.1
+      version: 7.3.1
     wxt:
       specifier: ^0.20.17
       version: 0.20.17
@@ -59,6 +62,9 @@ importers:
 
   content:
     dependencies:
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@vue/reactivity':
         specifier: ^3.5.26
         version: 3.5.26
@@ -294,6 +300,12 @@ importers:
 
   settings:
     dependencies:
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../shared
+      '@paralleldrive/cuid2':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@quasar/extras':
         specifier: ^1.17.0
         version: 1.17.0
@@ -343,6 +355,18 @@ importers:
       wxt:
         specifier: 'catalog:'
         version: 0.20.17(@types/node@25.0.8)(eslint@9.39.2(jiti@2.6.1))(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+
+  shared:
+    devDependencies:
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vite:
+        specifier: 'catalog:'
+        version: 7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2)
+      vite-plugin-dts:
+        specifier: ^4.5.4
+        version: 4.5.4(@types/node@25.0.8)(rollup@4.55.1)(typescript@5.9.3)(vite@7.3.1(@types/node@25.0.8)(jiti@2.6.1)(lightningcss@1.30.2)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.2))
 
   welcome:
     dependencies:

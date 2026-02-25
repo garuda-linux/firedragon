@@ -10,7 +10,7 @@ document!.addEventListener(
             tooltiptext: t('browser.undoCloseTab.tooltiptext'),
             removable: true,
             onCommand(event: XULCommandEvent) {
-                (event.view?.document?.querySelector('#toolbar-context-undoCloseTab') as XULElement).doCommand();
+                window.SessionWindowUI.undoCloseTab(event.view);
             },
         });
 

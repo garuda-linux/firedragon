@@ -6,6 +6,7 @@ packages:
   - newtab
   - notes
   - settings
+  - shared
   - welcome
   - workspaces
 
