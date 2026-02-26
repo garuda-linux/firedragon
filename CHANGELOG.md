@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.0) — 2026-02-26 — [`v13.0.0-alpha.11`…`v13.0.0-beta.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.11...v13.0.0-beta.0)
+
+### 🚀 Features
+
+- Refactor default shortcut control and add custom shortcut manager — [`f40af9ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f40af9add9e3c590275eecf56103f707a9985159)
+- Block AI enhancements by default — [`779d3aae…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/779d3aae89939b308d9c1bb2b0d3451fd7cf62ef)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update all dependencies — [`26f1c358…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/26f1c358a7713b47b1e97daae2965749c6a2be02)
+- Update pnpm-lock.yaml — [`eb04a460…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/eb04a460d1aef5511d0c08a40c20b0d165cfc961)
+
 ## [FireDragon v13.0.0-alpha.11](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-alpha.11) — 2026-02-24 — [`v13.0.0-alpha.10`…`v13.0.0-alpha.11`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.10...v13.0.0-alpha.11)
 
 ### ⚙️ Miscellaneous Tasks
