@@ -8,6 +8,7 @@
     "dev": "wxt"
   },
   "dependencies": {
+    "@firedragon/shared": "workspace:^",
     "@paralleldrive/cuid2": "^3.3.0",
     "@quasar/extras": "^1.17.0",
     "@unhead/vue": "^2.1.9",

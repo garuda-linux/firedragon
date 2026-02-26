@@ -236,6 +236,9 @@ importers:
 
   notes:
     dependencies:
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@paralleldrive/cuid2':
         specifier: ^3.3.0
         version: 3.3.0
@@ -357,7 +360,35 @@ importers:
         version: 0.20.18(@types/node@25.3.2)(eslint@9.39.2(jiti@2.6.1))(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
 
   shared:
+    dependencies:
+      '@firedragon/build':
+        specifier: 'workspace:'
+        version: link:../build
+      '@vue/reactivity':
+        specifier: ^3.5.29
+        version: 3.5.29
+      '@webext-core/storage':
+        specifier: ^1.2.0
+        version: 1.2.0
+      deep-equal:
+        specifier: ^2.2.3
+        version: 2.2.3
+      webextension-polyfill:
+        specifier: ^0.12.0
+        version: 0.12.0
+      wxt:
+        specifier: 'catalog:'
+        version: 0.20.18(@types/node@25.3.2)(eslint@9.39.2(jiti@2.6.1))(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
     devDependencies:
+      '@types/deep-equal':
+        specifier: ^1.0.4
+        version: 1.0.4
+      '@types/gecko':
+        specifier: 'workspace:'
+        version: link:../@types/gecko
+      '@wxt-dev/browser':
+        specifier: ^0.1.37
+        version: 0.1.37
       typescript:
         specifier: 'catalog:'
         version: 5.9.3
@@ -370,6 +401,9 @@ importers:
 
   welcome:
     dependencies:
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../shared
       '@quasar/extras':
         specifier: ^1.17.0
         version: 1.17.0

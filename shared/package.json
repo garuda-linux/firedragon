@@ -3,14 +3,28 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./types": "./dist/types.js"
+    "./experiment-api": "./dist/experiment-api.js",
+    "./types": "./dist/types.js",
+    "./vue": "./dist/vue.js"
   },
   "scripts": {
     "postinstall": "vite build",
     "build": "vite build",
     "dev": "vite build"
   },
+  "dependencies": {
+    "deep-equal": "^2.2.3"
+  },
+  "peerDependencies": {
+    "@firedragon/build": "workspace:",
+    "@vue/reactivity": "^3.5.29",
+    "@webext-core/storage": "^1.2.0",
+    "wxt": "catalog:"
+  },
   "devDependencies": {
+    "@types/deep-equal": "^1.0.4",
+    "@types/gecko": "workspace:",
+    "@wxt-dev/browser": "^0.1.37",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-dts": "^4.5.4"
