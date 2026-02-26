@@ -10,7 +10,7 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^3.3.0",
     "@quasar/extras": "^1.17.0",
-    "@unhead/vue": "^2.1.7",
+    "@unhead/vue": "^2.1.9",
     "@vueuse/core": "^14.2.1",
     "@webext-core/storage": "^1.2.0",
     "deep-equal": "^2.2.3",
