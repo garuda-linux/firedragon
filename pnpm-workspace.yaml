@@ -20,6 +20,7 @@ onlyBuiltDependencies:
   - esbuild
   - lmdb
   - msgpackr-extract
+  - nx
   - spawn-sync
   - unrs-resolver
 

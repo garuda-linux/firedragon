@@ -119,7 +119,7 @@ async function build() {
     );
 
     await $`pnpm install -C ${buildDir}/${sourceDir} --frozen-lockfile`;
-    await $`pnpm run -C ${buildDir}/${sourceDir} -r build`;
+    await $({ cwd: `${buildDir}/${sourceDir}` })`pnpm lerna run --stream build`;
 
     await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
     await $`${buildDir}/mach configure`;
@@ -204,7 +204,7 @@ async function dev() {
         await $`ln -s ${path.relative(path.dirname(`${buildDir}/${sourceDir}`), '')} ${buildDir}/${sourceDir}`;
     }
 
-    $`pnpm run -r dev`;
+    $`pnpm lerna run --stream dev`;
     await sleep('10s');
 
     const $$ = $({
