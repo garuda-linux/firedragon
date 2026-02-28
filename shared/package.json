@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@types/deep-equal": "^1.0.4",
-    "@types/gecko": "workspace:",
+    "@types/gecko": "workspace:^",
     "@wxt-dev/browser": "^0.1.37",
     "typescript": "catalog:",
     "vite": "catalog:",
