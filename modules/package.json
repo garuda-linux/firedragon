@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "vite build"
+    "dev": "NODE_ENV=development vite build --mode development"
   },
   "dependencies": {
     "compare-versions": "^6.1.1"

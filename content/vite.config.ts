@@ -5,9 +5,10 @@ import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { globby } from 'globby';
 import { type Plugin, defineConfig } from 'vite';
 
-export default defineConfig(async () => ({
+export default defineConfig(async ({ mode }) => ({
     base: 'chrome://firedragon/content/',
     build: {
+        minify: mode === 'production',
         rollupOptions: {
             input: await globby('*.html'),
         },

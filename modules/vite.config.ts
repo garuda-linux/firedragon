@@ -1,8 +1,8 @@
 import { vite } from '@firedragon/build/vite';
 import { globby } from 'globby';
-import { defineConfig } from 'vite';
+import { type UserConfig, defineConfig } from 'vite';
 
-export default defineConfig(async () => {
+export default defineConfig(async ({ mode }) => {
     const input: Record<string, string> = {};
 
     for (const fileName of await globby('**/*.sys.mts', { cwd: 'src' })) {
@@ -65,5 +65,5 @@ export default defineConfig(async () => {
                 ],
             }),
         ],
-    };
+    } as UserConfig;
 });

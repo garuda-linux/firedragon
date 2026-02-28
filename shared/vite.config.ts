@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     build: {
+        minify: mode === 'production',
         lib: {
             entry: ['./src/experiment-api.ts', './src/types.ts', './src/vue.ts'],
             formats: ['es'],
@@ -17,4 +18,4 @@ export default defineConfig({
             include: 'src/**/*.ts',
         }),
     ],
-});
+}));

@@ -10,7 +10,7 @@
   "scripts": {
     "postinstall": "vite build",
     "build": "vite build",
-    "dev": "vite build"
+    "dev": "NODE_ENV=development vite build --mode development"
   },
   "dependencies": {
     "deep-equal": "^2.2.3"

@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
     build: {
+        minify: mode === 'production',
         lib: {
             entry: ['./src/vite.ts', './src/wxt-client.ts', './src/wxt-config.ts', './src/wxt-module.ts'],
             formats: ['es'],
@@ -17,4 +18,4 @@ export default defineConfig({
             include: 'src/**/*.ts',
         }),
     ],
-});
+}));
