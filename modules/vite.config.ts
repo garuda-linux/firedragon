@@ -3,22 +3,19 @@ import { globby } from 'globby';
 import { type UserConfig, defineConfig } from 'vite';
 
 export default defineConfig(async ({ mode }) => {
-    const input: Record<string, string> = {};
+    const entry: Record<string, string> = {};
 
     for (const fileName of await globby('**/*.sys.mts', { cwd: 'src' })) {
-        input[fileName.replace(/\.mts$/, '')] = `src/${fileName}`;
+        entry[fileName.replace(/\.mts$/, '')] = `src/${fileName}`;
     }
 
     return {
         base: 'resource://firedragon/',
         build: {
-            assetsDir: 'vendor',
-            rollupOptions: {
-                input,
-                output: {
-                    entryFileNames: '[name].mjs',
-                },
-                preserveEntrySignatures: 'strict',
+            minify: mode === 'production',
+            lib: {
+                entry,
+                formats: ['es'],
             },
         },
         plugins: [
