@@ -1,1 +1,1 @@
-export { useBoolPref, useIntPref, useStringPref } from '@firedragon/shared/vue';
+export { type Transformer, useBoolPref, useIntPref, useStringPref } from '@firedragon/shared/vue';
