@@ -1,5 +1,28 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.1) — 2026-02-28 — [`v13.0.0-beta.0`…`v13.0.0-beta.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.0...v13.0.0-beta.1)
+
+### 🚀 Features
+
+- Add additional keyboard shortcut commands — [`7c95632e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7c95632e7020e508495d40b34ce84f85a774f6a8)
+
+### 🐛 Bug Fixes
+
+- _(settings)_ Re-export type Transformer in composables/usePref.ts — [`f067c99e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f067c99e059e11e5e0a556d382cbbc3c00489f13)
+
+### 🚜 Refactor
+
+- Consolidate more shared functionality in `@firedragon/shared` — [`6f513cec…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6f513cecd7812f0b753f8427c5d06bec25feb073)
+- Switch to lerna for proper task orchestration — [`d7b614ae…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d7b614aeba4c0de954087203c30764339b8a92f3)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update dependencies — [`513d884c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/513d884cad1e04ad42ff286dcf148012e50d0fcf)
+- _(workspaces)_ Remove obsolete `useStorage` composable — [`e1864b1a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e1864b1acd2e425f3012085023a9037a29de367c)
+- Disable minification for builds in development mode — [`7bb89cd5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7bb89cd58d296b132424e4f7238fff76a13052ea)
+- _(modules)_ Switch to using library mode — [`afa57fe9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/afa57fe90b12337bfeabca448910b3ab01130245)
+- Update dependencies — [`662046c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/662046c62e11deef1f03924805dcff4f855f21ea)
+
 ## [FireDragon v13.0.0-beta.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.0) — 2026-02-26 — [`v13.0.0-alpha.11`…`v13.0.0-beta.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-alpha.11...v13.0.0-beta.0)
 
 ### 🚀 Features
