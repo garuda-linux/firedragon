@@ -35,7 +35,7 @@ export default defineConfig({
                 sassVariables: getEdition()?.quasar,
             }),
             devtools({
-                appendTo: '/entrypoints/index/main.ts',
+                appendTo: '/entrypoints/sidepanel/main.ts',
             }),
         ],
     }),
