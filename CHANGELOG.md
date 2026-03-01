@@ -1,5 +1,12 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.2) — 2026-03-01 — [`v13.0.0-beta.1`…`v13.0.0-beta.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.1...v13.0.0-beta.2)
+
+### 🚜 Refactor
+
+- [__breaking__] Remove about-url for notes — [`66c2d8f0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/66c2d8f0ec791b7f0928e2ab90b7c33c800c4a89)
+- [__breaking__] Separate shared functionality to prevent side effects — [`f63e5226…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f63e5226c97f301802eac5fbeaf6698b3b1862c4)
+
 ## [FireDragon v13.0.0-beta.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.1) — 2026-02-28 — [`v13.0.0-beta.0`…`v13.0.0-beta.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.0...v13.0.0-beta.1)
 
 ### 🚀 Features
