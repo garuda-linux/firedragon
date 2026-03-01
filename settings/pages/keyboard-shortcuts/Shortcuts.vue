@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-    import { type Shortcut, ShortcutCommand, ShortcutKey, ShortcutModifier } from '@firedragon/shared/types';
+    import {
+        type KeyboardShortcut,
+        KeyboardShortcutCommand,
+        KeyboardShortcutKey,
+        KeyboardShortcutModifier,
+    } from '@firedragon/shared/types/keyboard-shortcuts';
     import { createId } from '@paralleldrive/cuid2';
 
     import type { Transformer } from '@/composables/usePref';
@@ -7,7 +12,7 @@
     const { t } = useI18n();
 
     const shortcuts = await useStringPref('firedragon.keyboardShortcuts.custom', '[]', {
-        transformer: JSON as Transformer<string, Shortcut[]>,
+        transformer: JSON as Transformer<string, KeyboardShortcut[]>,
     });
 
     function deleteShortcut(index: number) {
@@ -24,8 +29,8 @@
         shortcuts.value.push({
             id: createId(),
             modifiers: newShortcut.value.modifiers,
-            key: newShortcut.value.key as unknown as ShortcutKey,
-            command: newShortcut.value.command as unknown as ShortcutCommand,
+            key: newShortcut.value.key as unknown as KeyboardShortcutKey,
+            command: newShortcut.value.command as unknown as KeyboardShortcutCommand,
         });
         newShortcut.value = {
             command: null,
@@ -48,7 +53,7 @@
                 <q-item-section>
                     <q-select
                         v-model="shortcut.command"
-                        :options="Object.entries(ShortcutCommand)"
+                        :options="Object.entries(KeyboardShortcutCommand)"
                         emit-value
                         map-options
                         option-value="1"
@@ -60,7 +65,7 @@
                     <q-select
                         multiple
                         v-model="shortcut.modifiers"
-                        :options="Object.entries(ShortcutModifier)"
+                        :options="Object.entries(KeyboardShortcutModifier)"
                         emit-value
                         map-options
                         option-value="1"
@@ -73,7 +78,7 @@
                 <q-item-section>
                     <q-select
                         v-model="shortcut.key"
-                        :options="Object.entries(ShortcutKey)"
+                        :options="Object.entries(KeyboardShortcutKey)"
                         emit-value
                         map-options
                         option-value="1"
@@ -90,7 +95,7 @@
                 <q-item-section>
                     <q-select
                         v-model="newShortcut.command"
-                        :options="Object.entries(ShortcutCommand)"
+                        :options="Object.entries(KeyboardShortcutCommand)"
                         emit-value
                         map-options
                         option-value="1"
@@ -102,7 +107,7 @@
                     <q-select
                         multiple
                         v-model="newShortcut.modifiers"
-                        :options="Object.entries(ShortcutModifier)"
+                        :options="Object.entries(KeyboardShortcutModifier)"
                         emit-value
                         map-options
                         option-value="1"
@@ -115,7 +120,7 @@
                 <q-item-section>
                     <q-select
                         v-model="newShortcut.key"
-                        :options="Object.entries(ShortcutKey)"
+                        :options="Object.entries(KeyboardShortcutKey)"
                         emit-value
                         map-options
                         option-value="1"

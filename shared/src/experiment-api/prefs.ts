@@ -20,7 +20,7 @@ declare module '@wxt-dev/browser' {
     }
 }
 
-export function prefs() {
+export default function prefs() {
     return defineExperimentApi({
         registration: {
             scope: 'parent',

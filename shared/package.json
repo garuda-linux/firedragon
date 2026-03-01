@@ -3,9 +3,10 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./experiment-api": "./dist/experiment-api.js",
-    "./types": "./dist/types.js",
-    "./vue": "./dist/vue.js"
+    "./experiment-api/prefs": "./dist/experiment-api/prefs.js",
+    "./types/keyboard-shortcuts": "./dist/types/keyboard-shortcuts.js",
+    "./vue/createStorage": "./dist/vue/createStorage.js",
+    "./vue/usePref": "./dist/vue/usePref.js"
   },
   "scripts": {
     "postinstall": "vite build",

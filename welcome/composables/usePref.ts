@@ -1,1 +1,1 @@
-export { useBoolPref, useIntPref, useStringPref } from '@firedragon/shared/vue';
+export * from '@firedragon/shared/vue/usePref';

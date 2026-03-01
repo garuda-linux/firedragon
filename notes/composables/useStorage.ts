@@ -1,4 +1,4 @@
-import { createStorage } from '@firedragon/shared/vue';
+import createStorage from '@firedragon/shared/vue/createStorage';
 
 import { localExtStorage, syncExtStorage } from '@/utils/storage';
 

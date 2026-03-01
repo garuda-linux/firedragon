@@ -1,10 +1,10 @@
-export enum ShortcutModifier {
+export enum KeyboardShortcutModifier {
     ACCEL = 'accel',
     ALT = 'alt',
     META = 'meta',
     SHIFT = 'shift',
 }
-export enum ShortcutKey {
+export enum KeyboardShortcutKey {
     PK_0 = '0',
     PK_1 = '1',
     PK_2 = '2',
@@ -81,7 +81,7 @@ export enum ShortcutKey {
     VK_RETURN = 'VK_RETURN',
 }
 
-export enum ShortcutCommand {
+export enum KeyboardShortcutCommand {
     ADD_BOOKMARK_AS = 'Browser:AddBookmarkAs',
     BACK = 'Browser:Back',
     BOOKMARK_ALL_TABS = 'Browser:BookmarkAllTabs',
@@ -152,9 +152,9 @@ export enum ShortcutCommand {
     VIEW_PROCESSES = 'View:AboutProcesses',
 }
 
-export interface Shortcut {
+export interface KeyboardShortcut {
     id: string;
-    modifiers: ShortcutModifier[];
-    key: ShortcutKey;
-    command: ShortcutCommand;
+    modifiers: KeyboardShortcutModifier[];
+    key: KeyboardShortcutKey;
+    command: KeyboardShortcutCommand;
 }

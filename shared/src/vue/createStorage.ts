@@ -2,7 +2,7 @@ import { type MaybeRefOrGetter, type Ref, ref, toRaw, toRef, toValue, watch } fr
 import type { ExtensionStorage } from '@webext-core/storage';
 import deepEqual from 'deep-equal';
 
-export function createStorage<T extends Record<string, any>>(storage: ExtensionStorage<T>) {
+export default function createStorage<T extends Record<string, any>>(storage: ExtensionStorage<T>) {
     return async function <K extends keyof T>(key: MaybeRefOrGetter<K>, defaults: MaybeRefOrGetter<Required<T>[K]>) {
         const keyRef: Ref<K> = toRef(key) as Ref<K>;
         const value: Ref<Required<T>[K]> = ref((await storage.getItem(keyRef.value)) ?? toValue(defaults));

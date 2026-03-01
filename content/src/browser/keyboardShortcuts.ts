@@ -1,4 +1,4 @@
-import { type Shortcut } from '@firedragon/shared/types';
+import { type KeyboardShortcut } from '@firedragon/shared/types/keyboard-shortcuts';
 import { effect } from '@vue/reactivity';
 
 import { useBoolPref, useStringPref } from '@/composables/usePref';
@@ -24,7 +24,7 @@ document!.addEventListener(
             custom = document!.createXULElement('keyset');
             custom.setAttribute('id', 'firedragonKeyset');
 
-            const shortcuts = JSON.parse(customShortcuts.value) as Shortcut[];
+            const shortcuts = JSON.parse(customShortcuts.value) as KeyboardShortcut[];
             for (const shortcut of shortcuts) {
                 const key = document!.createXULElement('key');
                 if (shortcut.modifiers.length > 0) {
