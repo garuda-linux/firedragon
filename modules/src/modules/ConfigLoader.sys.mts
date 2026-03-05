@@ -83,7 +83,7 @@ export const ConfigLoader = new (class {
         this.getPrefBranch().unlockPref(prefName);
     }
 
-    getPref(prefName: string): any {
+    getPref(prefName: string, defaultValue: any): any {
         const prefBranch = this.getPrefBranch();
 
         switch (prefBranch.getPrefType(prefName)) {
@@ -94,7 +94,11 @@ export const ConfigLoader = new (class {
             case prefBranch.PREF_BOOL:
                 return prefBranch.getBoolPref(prefName);
             default:
-                throw `invalid pref: ${prefName}`;
+                if (typeof defaultValue === 'undefined') {
+                    throw `invalid pref: ${prefName}`;
+                } else {
+                    return defaultValue;
+                }
         }
     }
 
