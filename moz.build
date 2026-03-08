@@ -4,7 +4,6 @@ DIRS += [
     'modules',
     'newtab',
     'notes',
-    'profile',
     'settings',
     'skin',
     'welcome',

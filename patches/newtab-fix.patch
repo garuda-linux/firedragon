@@ -1,0 +1,12 @@
+diff --git a/browser/modules/AboutNewTab.sys.mjs b/browser/modules/AboutNewTab.sys.mjs
+index 66ec2a2..79e4615 100644
+--- a/browser/modules/AboutNewTab.sys.mjs
++++ b/browser/modules/AboutNewTab.sys.mjs
+@@ -195,7 +195,6 @@ export const AboutNewTab = {
+ 
+     const [createdTimestamp] = await Promise.all([
+       profileCreatedAccessorReady,
+-      trainhopFeatureReady,
+       addonInitted,
+     ]);
+     const createdInstant = createdTimestamp

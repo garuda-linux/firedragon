@@ -1,0 +1,28 @@
+diff --git a/toolkit/components/extensions/parent/ext-storage.js b/toolkit/components/extensions/parent/ext-storage.js
+index 0d6109c..3bd8454 100644
+--- a/toolkit/components/extensions/parent/ext-storage.js
++++ b/toolkit/components/extensions/parent/ext-storage.js
+@@ -411,6 +411,23 @@ this.storage = class extends ExtensionAPIPersistent {
+         managed: {
+           async get(keys) {
+             enforceNoTemporaryAddon(extension.id);
++            const assetsBootstrapLocation = Services.prefs.getStringPref(
++              "librewolf.uBO.assetsBootstrapLocation",
++              undefined
++            );
++            if (extension.id == "uBlock0@raymondhill.net" && assetsBootstrapLocation) {
++              let data = {};
++              try {
++                let manifestData = await getManagedStorageManifestData(extension, context);
++                data = await ExtensionStorage._filterProperties(extension.id, manifestData, keys);
++              } catch (e) {
++                // no managed manifest
++              }
++              return {
++                ...data,
++                adminSettings: { ...(data.adminSettings || {}), assetsBootstrapLocation },
++              };
++            }
+             let data = await getManagedStorageManifestData(extension, context);
+             return ExtensionStorage._filterProperties(extension.id, data, keys);
+           },

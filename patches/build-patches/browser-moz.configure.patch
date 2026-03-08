@@ -1,16 +1,7 @@
 diff --git a/browser/moz.configure b/browser/moz.configure
-index e0946a23cd1b..4cb3278ff997 100644
+index e0946a23cd1b..721fb29829cb 100644
 --- a/browser/moz.configure
 +++ b/browser/moz.configure
-@@ -5,7 +5,7 @@
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- 
- imply_option("MOZ_PLACES", True)
--imply_option("MOZ_SERVICES_HEALTHREPORT", True)
-+imply_option("MOZ_SERVICES_HEALTHREPORT", False)
- imply_option("MOZ_SERVICES_SYNC", True)
- imply_option("MOZ_DEDICATED_PROFILES", True)
- imply_option("MOZ_BLOCK_PROFILE_DOWNGRADE", True)
 @@ -13,13 +13,15 @@ imply_option("MOZ_NORMANDY", True)
  imply_option("MOZ_PROFILE_MIGRATOR", True)
  

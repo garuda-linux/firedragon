@@ -1,0 +1,207 @@
+diff --git a/services/settings/Attachments.sys.mjs b/services/settings/Attachments.sys.mjs
+index 3682160..e142950 100644
+--- a/services/settings/Attachments.sys.mjs
++++ b/services/settings/Attachments.sys.mjs
+@@ -160,6 +160,7 @@ export class Downloader {
+    * @param {boolean} [options.fallbackToDump] Use the remote settings dump as a
+    *                                         potential source of the attachment.
+    *                                         (default: `false`)
++   * @param {string} options.serverUrl
+    * @throws {Downloader.DownloadError} if the file could not be fetched.
+    * @throws {Downloader.BadContentError} if the downloaded content integrity is not valid.
+    * @throws {Downloader.ServerInfoError} if the server response is not valid.
+@@ -341,6 +342,7 @@ export class Downloader {
+       fallbackToDump = false,
+       avoidDownload = false,
+       cacheResult = true,
++      serverUrl,
+     } = options || {};
+     if (!attachmentId) {
+       // Check for pre-condition. This should not happen, but it is explicitly
+@@ -401,6 +403,7 @@ export class Downloader {
+         const newBuffer = await this.downloadAsBytes(record, {
+           retries,
+           checkHash,
++          serverUrl,
+         });
+         if (cacheResult) {
+           const blob = new Blob([newBuffer]);
+@@ -512,6 +515,7 @@ export class Downloader {
+    * @param {object} options Some download options.
+    * @param {number} options.retries Number of times download should be retried (default: `3`)
+    * @param {boolean} options.checkHash Check content integrity (default: `true`)
++   * @param {string} options.serverUrl
+    * @throws {Downloader.DownloadError} if the file could not be fetched.
+    * @throws {Downloader.BadContentError} if the downloaded content integrity is not valid.
+    * @returns {ArrayBuffer} the file content.
+@@ -520,17 +524,17 @@ export class Downloader {
+     const {
+       attachment: { location, hash, size },
+     } = record;
++    const { retries = 3, checkHash = true, serverUrl } = options;
+ 
+     let baseURL;
+     try {
+-      baseURL = await lazy.Utils.baseAttachmentsURL();
++      baseURL = await lazy.Utils.baseAttachmentsURL(serverUrl);
+     } catch (error) {
+       throw new Downloader.ServerInfoError(error);
+     }
+ 
+     const remoteFileUrl = baseURL + location;
+ 
+-    const { retries = 3, checkHash = true } = options;
+     let retried = 0;
+     while (true) {
+       try {
+diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
+index 98c72c71a4..2c4c7410cc 100644
+--- a/services/settings/RemoteSettingsClient.sys.mjs
++++ b/services/settings/RemoteSettingsClient.sys.mjs
+@@ -315,6 +315,7 @@ export class RemoteSettingsClient extends EventEmitter {
+       localFields = [],
+       keepAttachmentsIds = [],
+       lastCheckTimePref,
++      serverUrl,
+     } = {}
+   ) {
+     // Remote Settings cannot be used in child processes (no access to disk,
+@@ -344,6 +345,7 @@ export class RemoteSettingsClient extends EventEmitter {
+     this._lastCheckTimePref = lastCheckTimePref;
+     this._verifier = null;
+     this._syncRunning = false;
++    this._serverUrl = serverUrl;
+ 
+     // This attribute allows signature verification to be disabled, when running tests
+     // or when pulling data from a dev server.
+@@ -386,9 +388,12 @@ export class RemoteSettingsClient extends EventEmitter {
+   }
+ 
+   httpClient() {
+-    const api = new lazy.KintoHttpClient(lazy.Utils.SERVER_URL, {
+-      fetchFunc: lazy.Utils.fetch, // Use fetch() wrapper.
+-    });
++    const api = new lazy.KintoHttpClient(
++      this._serverUrl || lazy.Utils.SERVER_URL,
++      {
++        fetchFunc: lazy.Utils.fetch, // Use fetch() wrapper.
++      }
++    );
+     return api.bucket(this.bucketName).collection(this.collectionName);
+   }
+ 
+@@ -656,7 +661,7 @@ export class RemoteSettingsClient extends EventEmitter {
+     // We want to know which timestamp we are expected to obtain in order to leverage
+     // cache busting. We don't provide ETag because we don't want a 304.
+     const { changes } = await lazy.Utils.fetchLatestChanges(
+-      lazy.Utils.SERVER_URL,
++      this._serverUrl || lazy.Utils.SERVER_URL,
+       {
+         filters: {
+           collection: this.collectionName,
+diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
+index 330b49da1e..25ebcce7df 100644
+--- a/services/settings/Utils.sys.mjs
++++ b/services/settings/Utils.sys.mjs
+@@ -299,9 +299,9 @@ export var Utils = {
+    * const attachmentsURL = await Downloader.baseAttachmentsURL();
+    * console.log(attachmentsURL);
+    */
+-  async baseAttachmentsURL() {
+-    if (!_cdnURLs[Utils.SERVER_URL]) {
+-      const resp = await Utils.fetch(`${Utils.SERVER_URL}/`);
++  async baseAttachmentsURL(serverUrl = Utils.SERVER_URL) {
++    if (!_cdnURLs[serverUrl]) {
++      const resp = await Utils.fetch(`${serverUrl}/`);
+       const serverInfo = await resp.json();
+       // Server capabilities expose attachments configuration.
+       const {
+@@ -310,10 +310,9 @@ export var Utils = {
+         },
+       } = serverInfo;
+       // Make sure the URL always has a trailing slash.
+-      _cdnURLs[Utils.SERVER_URL] =
+-        base_url + (base_url.endsWith("/") ? "" : "/");
++      _cdnURLs[serverUrl] = base_url + (base_url.endsWith("/") ? "" : "/");
+     }
+-    return _cdnURLs[Utils.SERVER_URL];
++    return _cdnURLs[serverUrl];
+   },
+ 
+   /**
+diff --git a/toolkit/components/translations/actors/TranslationsParent.sys.mjs b/toolkit/components/translations/actors/TranslationsParent.sys.mjs
+index 7ac327595b..75a361b328 100644
+--- a/toolkit/components/translations/actors/TranslationsParent.sys.mjs
++++ b/toolkit/components/translations/actors/TranslationsParent.sys.mjs
+@@ -2251,7 +2251,10 @@ export class TranslationsParent extends JSWindowActorParent {
+ 
+     /** @type {RemoteSettingsClient} */
+     const client = lazy.RemoteSettings(
+-      lazy.TranslationsUtils.translationsModelsCollectionName
++      lazy.TranslationsUtils.translationsModelsCollectionName,
++      {
++		  serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++	  }
+     );
+     TranslationsParent.#translationModelsRemoteClient = client;
+     client.on("sync", TranslationsParent.#handleTranslationsModelsSync);
+@@ -2612,7 +2615,10 @@ export class TranslationsParent extends JSWindowActorParent {
+ 
+     /** @type {RemoteSettingsClient} */
+     const client = lazy.RemoteSettings(
+-      lazy.TranslationsUtils.translationsWasmCollectionName
++      lazy.TranslationsUtils.translationsWasmCollectionName,
++      {
++		  serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++	  }
+     );
+     TranslationsParent.#translationsWasmRemoteClient = client;
+     client.on("sync", TranslationsParent.#handleTranslationsWasmSync);
+@@ -2742,7 +2748,10 @@ export class TranslationsParent extends JSWindowActorParent {
+       await chaosModeError(1 / 3);
+ 
+       const payload = await client.attachments.download(
+-        await TranslationsParent.#bergamotWasmRecord
++        await TranslationsParent.#bergamotWasmRecord,
++        {
++			serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++		}
+       );
+ 
+       const blob = payload.blob ?? new Blob([payload.buffer]);
+@@ -2820,7 +2829,11 @@ export class TranslationsParent extends JSWindowActorParent {
+       await chaosMode(1 / 6);
+       const download = () => {
+         lazy.console.log("Downloading record", record.name, record.id);
+-        return client.attachments.download(record);
++        return client.attachments.download(record,
++        {
++			serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++		}
++        );
+       };
+       queue.push({ download });
+     }
+@@ -2844,7 +2857,10 @@ export class TranslationsParent extends JSWindowActorParent {
+         onFailure: () => {
+           console.error("Failed to download", record.name);
+         },
+-        download: () => client.attachments.download(record),
++        download: () =>
++          client.attachments.download(record, {
++            serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++          }),
+       });
+     }
+ 
+@@ -3147,7 +3163,9 @@ export class TranslationsParent extends JSWindowActorParent {
+ 
+         await chaosMode(1 / 3);
+ 
+-        const payload = await client.attachments.download(record);
++        const payload = await client.attachments.download(record, {
++          serverUrl: "https://firefox.settings.services.mozilla.com/v1",
++        });
+         const blob = payload.blob ?? new Blob([payload.buffer]);
+ 
+         languageModelFiles[record.fileType] = {

@@ -1,0 +1,70 @@
+diff --git a/dom/canvas/CanvasRenderingContext2D.cpp b/dom/canvas/CanvasRenderingContext2D.cpp
+index ee186c2..ec57312 100644
+--- a/dom/canvas/CanvasRenderingContext2D.cpp
++++ b/dom/canvas/CanvasRenderingContext2D.cpp
+@@ -6554,7 +6554,8 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
+   //
+   // Note that we don't need to clone if we will use the place holder because
+   // the place holder doesn't use actual image data.
+-  if (extractionBehavior == CanvasUtils::ImageExtraction::Randomize) {
++  if (extractionBehavior == CanvasUtils::ImageExtraction::Randomize ||
++      extractionBehavior == CanvasUtils::ImageExtraction::EfficientRandomize) {
+     if (readback) {
+       readback = CreateDataSourceSurfaceByCloning(readback);
+     }
+@@ -6572,7 +6573,9 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
+       // service) after we call JS_GetUint8ClampedArrayData, we will
+       // pre-generate the randomness required for GeneratePlaceholderCanvasData.
+       randomData = TryToGenerateRandomDataForPlaceholderCanvasData();
+-    } else if (extractionBehavior == CanvasUtils::ImageExtraction::Randomize) {
++    } else if (extractionBehavior == CanvasUtils::ImageExtraction::Randomize ||
++               extractionBehavior ==
++                   CanvasUtils::ImageExtraction::EfficientRandomize) {
+       // Apply the random noises if canvan randomization is enabled. We don't
+       // need to calculate random noises if we are going to use the place
+       // holder.
+diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
+index 12492d6..e84280c 100644
+--- a/dom/canvas/ClientWebGLContext.cpp
++++ b/dom/canvas/ClientWebGLContext.cpp
+@@ -3632,7 +3632,9 @@ void ClientWebGLContext::GetBufferSubData(GLenum target, GLintptr srcByteOffset,
+       if (extraction == CanvasUtils::ImageExtraction::Placeholder) {
+         dom::GeneratePlaceholderCanvasData(destView->size_bytes(),
+                                            destView->Elements());
+-      } else if (extraction == CanvasUtils::ImageExtraction::Randomize) {
++      } else if (extraction == CanvasUtils::ImageExtraction::Randomize ||
++                 extraction ==
++                     CanvasUtils::ImageExtraction::EfficientRandomize) {
+         // We have no idea what's in the buffer. So, we randomize it as if each
+         // elemSize bytes is a single element.
+         uint8_t elementsPerGroup = 1,
+@@ -5391,7 +5393,8 @@ void ClientWebGLContext::ReadPixels(GLint x, GLint y, GLsizei width,
+       } else {
+         RecordCanvasUsage(CanvasExtractionAPI::ReadPixels,
+                           CSSIntSize(width, height));
+-        if (extraction == CanvasUtils::ImageExtraction::Randomize) {
++        if (extraction == CanvasUtils::ImageExtraction::Randomize ||
++            extraction == CanvasUtils::ImageExtraction::EfficientRandomize) {
+           const auto pii = webgl::PackingInfoInfo::For(desc.pi);
+           // DoReadPixels() requres pii to be Some().
+           MOZ_ASSERT(pii.isSome());
+diff --git a/toolkit/components/resistfingerprinting/nsRFPService.cpp b/toolkit/components/resistfingerprinting/nsRFPService.cpp
+index 9554fbb..0c1e380 100644
+--- a/toolkit/components/resistfingerprinting/nsRFPService.cpp
++++ b/toolkit/components/resistfingerprinting/nsRFPService.cpp
+@@ -1805,6 +1805,7 @@ nsresult nsRFPService::RandomizeElements(
+     return NS_OK;
+   }
+ 
++  /*
+   // Don't randomize if all groups are uniform.
+   const bool allGroupsMatch = [&]() {
+     auto itr = RangedPtr<const uint8_t>(aData, aSizeInBytes);
+@@ -1819,6 +1820,7 @@ nsresult nsRFPService::RandomizeElements(
+   if (allGroupsMatch) {
+     return NS_OK;
+   }
++  */
+ 
+   auto timerId =
+       glean::fingerprinting_protection::canvas_noise_calculate_time_2.Start();

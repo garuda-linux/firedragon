@@ -1,0 +1,88 @@
+diff --git a/browser/app/macbuild/Contents/MacOS-files.in b/browser/app/macbuild/Contents/MacOS-files.in
+index 2f420f7..3551c66 100644
+--- a/browser/app/macbuild/Contents/MacOS-files.in
++++ b/browser/app/macbuild/Contents/MacOS-files.in
+@@ -17,7 +17,6 @@
+ /crashhelper
+ #endif
+ /nmhproxy
+-/pingsender
+ /pk12util
+ /ssltunnel
+ /xpcshell
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+index dbfb287..7d47b40 100644
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -397,10 +397,6 @@ bin/libfreebl_64int_3.so
+ @BINPATH@/crashhelper@BIN_SUFFIX@
+ #endif
+ 
+-; [ Ping Sender ]
+-;
+-@BINPATH@/pingsender@BIN_SUFFIX@
+-
+ ; [ Native Messaging Host Proxy ]
+ ;
+ #if defined(XP_WIN) || defined(XP_MACOSX)
+diff --git a/browser/installer/windows/nsis/shared.nsh b/browser/installer/windows/nsis/shared.nsh
+index 8e5e75d..1fbc59f 100644
+--- a/browser/installer/windows/nsis/shared.nsh
++++ b/browser/installer/windows/nsis/shared.nsh
+@@ -1765,7 +1765,6 @@ FunctionEnd
+   Push "crashreporter.exe"
+   Push "default-browser-agent.exe"
+   Push "nmhproxy.exe"
+-  Push "pingsender.exe"
+   Push "updater.exe"
+   Push "mozwer.dll"
+   Push "${FileMainEXE}"
+diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
+index c4ab5ea..78100e6 100644
+--- a/python/mozbuild/mozbuild/artifacts.py
++++ b/python/mozbuild/mozbuild/artifacts.py
+@@ -634,7 +634,6 @@ class LinuxArtifactJob(ArtifactJob):
+         "{product}/dependentlibs.list",
+         "{product}/{product}",
+         "{product}/{product}-bin",
+-        "{product}/pingsender",
+         "{product}/plugin-container",
+         "{product}/updater",
+         "{product}/glxtest",
+@@ -732,7 +731,6 @@ class MacArtifactJob(ArtifactJob):
+                 "{product}-bin",
+                 "*.dylib",
+                 "nmhproxy",
+-                "pingsender",
+                 "plugin-container.app/Contents/MacOS/plugin-container",
+                 "updater.app/Contents/MacOS/org.mozilla.updater",
+                 # 'xpcshell',
+diff --git a/toolkit/components/telemetry/app/TelemetrySend.sys.mjs b/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
+index 81dd0bd..8c89ad6 100644
+--- a/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
++++ b/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
+@@ -1692,6 +1692,9 @@ export var TelemetrySendImpl = {
+   },
+ 
+   runPingSender(pings, observer) {
++    throw Components.Exception("", Cr.NS_ERROR_NOT_IMPLEMENTED);
++
++    /* eslint-disable-next-line no-unreachable */
+     if (AppConstants.platform === "android") {
+       throw Components.Exception("", Cr.NS_ERROR_NOT_IMPLEMENTED);
+     }
+diff --git a/toolkit/components/telemetry/moz.build b/toolkit/components/telemetry/moz.build
+index 66b428d..2c4ab5c 100644
+--- a/toolkit/components/telemetry/moz.build
++++ b/toolkit/components/telemetry/moz.build
+@@ -8,10 +8,6 @@ include("/ipc/chromium/chromium-config.mozbuild")
+ 
+ FINAL_LIBRARY = "xul"
+ 
+-DIRS = [
+-    "pingsender",
+-]
+-
+ DEFINES["MOZ_APP_VERSION"] = '"%s"' % CONFIG["MOZ_APP_VERSION"]
+ 
+ LOCAL_INCLUDES += [

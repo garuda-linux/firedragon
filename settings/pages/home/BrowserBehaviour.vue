@@ -62,11 +62,6 @@
                 :description="t('pages.home.browserBehaviour.hidePasswdmgr.description')"
             />
             <BoolPrefItem
-                pref="firedragon.translations.enable"
-                :title="t('pages.home.browserBehaviour.enableTranslations.title')"
-                :description="t('pages.home.browserBehaviour.enableTranslations.description')"
-            />
-            <BoolPrefItem
                 pref="firedragon.newtab.enable"
                 :title="t('pages.home.browserBehaviour.enableNewTab.title')"
                 :description="t('pages.home.browserBehaviour.enableNewTab.description')"

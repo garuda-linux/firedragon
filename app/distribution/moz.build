@@ -1,0 +1,5 @@
+DIST_SUBDIR = ""
+
+FINAL_TARGET_PP_FILES.distribution += [
+    "policies.json"
+]

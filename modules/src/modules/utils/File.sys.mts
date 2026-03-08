@@ -31,8 +31,12 @@ export class File {
         return this.file.path;
     }
 
+    get uri(): nsIURI {
+        return Services.io.newFileURI(this.file);
+    }
+
     get url(): string {
-        return Services.io.newFileURI(this.file).spec;
+        return this.uri.spec;
     }
 
     get leafName(): string {

@@ -1,0 +1,22 @@
+diff --git a/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs b/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
+index 3bf3e12062a2..8032c6d7c4b0 100644
+--- a/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
++++ b/browser/components/asrouter/modules/OnboardingMessageProvider.sys.mjs
+@@ -1591,7 +1591,7 @@ const BASE_MESSAGES = () => [
+     },
+     priority: 3,
+     targeting:
+-      "'messaging-system-action.easyChecklist.open' | preferenceValue == true",
++      "false",
+     trigger: {
+       id: "preferenceObserver",
+       params: ["messaging-system-action.easyChecklist.open"],
+@@ -1795,7 +1795,7 @@ const BASE_MESSAGES = () => [
+     },
+     priority: 3,
+     targeting:
+-      "'messaging-system-action.easyChecklist.open' | preferenceValue == true",
++      "false",
+     trigger: {
+       id: "messagesLoaded",
+     },

@@ -28,12 +28,6 @@ export default defineConfig(async ({ mode }) => {
                     },
                     {
                         type: 'category',
-                        category: 'firedragon/browser-startup',
-                        entry: 'resource://firedragon/modules/AboutNewTabRedirector.sys.mjs',
-                        value: 'AboutNewTabRedirectorManager.init',
-                    },
-                    {
-                        type: 'category',
                         category: 'app-startup',
                         entry: 'BrowserStartup',
                         value: '@firedragon/browser-startup;1',
@@ -44,20 +38,20 @@ export default defineConfig(async ({ mode }) => {
                     {
                         type: 'category',
                         category: 'firedragon/browser-startup',
-                        entry: 'resource://firedragon/modules/ConfigLoader.sys.mjs',
-                        value: 'ConfigLoader.init',
+                        entry: 'resource://firedragon/modules/AboutNewTabRedirector.sys.mjs',
+                        value: 'AboutNewTabRedirectorManager.init',
+                    },
+                    {
+                        type: 'category',
+                        category: 'firedragon/browser-startup',
+                        entry: 'resource://firedragon/modules/config/ConfigLoader.sys.mjs',
+                        value: 'ConfigLoader.loadConfig',
                     },
                     {
                         type: 'category',
                         category: 'firedragon/browser-startup',
                         entry: 'resource://firedragon/modules/SkinManager.sys.mjs',
                         value: 'SkinManager.onBrowserStartup',
-                    },
-                    {
-                        type: 'category',
-                        category: 'browser-idle-startup',
-                        entry: 'resource://firedragon/modules/TranslationFeatureManager.sys.mjs',
-                        value: 'TranslationFeatureManager.init',
                     },
                 ],
             }),

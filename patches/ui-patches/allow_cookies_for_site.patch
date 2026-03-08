@@ -1,0 +1,73 @@
+diff --git a/browser/base/content/browser-siteIdentity.js b/browser/base/content/browser-siteIdentity.js
+index d0ba6ac670f4..a7dc8393e9de 100644
+--- a/browser/base/content/browser-siteIdentity.js
++++ b/browser/base/content/browser-siteIdentity.js
+@@ -204,6 +204,9 @@ var gIdentityHandler = {
+       "identity-popup-clear-sitedata-button": event => {
+         this.clearSiteData(event);
+       },
++      "identity-popup-allow-sitedata-button": () => {
++        this.toggleSiteData();
++      },
+       "identity-popup-remove-cert-exception": () => {
+         this.removeCertException();
+       },
+@@ -457,6 +460,33 @@ var gIdentityHandler = {
+     event.stopPropagation();
+   },
+ 
++  async refreshSiteData() {
++    document.getElementById("identity-popup-allow-sitedata-toggle").toggleAttribute(
++      "pressed",
++      Services.perms.testExactPermissionFromPrincipal(
++        gBrowser.contentPrincipal,
++        "cookie"
++      ) === Services.perms.ALLOW_ACTION
++    );
++  },
++
++  async toggleSiteData() {
++    const pressed = document.getElementById("identity-popup-allow-sitedata-toggle").toggleAttribute(
++      "pressed"
++    );
++
++    if (pressed) {
++      Services.perms.addFromPrincipal(
++        gBrowser.contentPrincipal,
++        "cookie",
++        Services.perms.ALLOW_ACTION,
++        Services.perms.EXPIRE_NEVER
++      );
++    } else {
++      Services.perms.removeFromPrincipal(gBrowser.contentPrincipal, "cookie");
++    }
++  },
++
+   /**
+    * Handler for mouseclicks on the "More Information" button in the
+    * "identity-popup" panel.
+@@ -1217,6 +1247,8 @@ var gIdentityHandler = {
+     this._identityPopupContentOwner.textContent = owner;
+     this._identityPopupContentSupp.textContent = supplemental;
+     this._identityPopupContentVerif.textContent = verifier;
++
++    this.refreshSiteData();
+   },
+ 
+   setURI(uri) {
+diff --git a/browser/components/controlcenter/content/identityPanel.inc.xhtml b/browser/components/controlcenter/content/identityPanel.inc.xhtml
+index 768768c7d448..08602d9460c6 100644
+--- a/browser/components/controlcenter/content/identityPanel.inc.xhtml
++++ b/browser/components/controlcenter/content/identityPanel.inc.xhtml
+@@ -98,6 +98,11 @@
+         <toolbarbutton id="identity-popup-clear-sitedata-button"
+                 data-l10n-id="identity-clear-site-data"
+                 class="subviewbutton"/>
++        <toolbarbutton id="identity-popup-allow-sitedata-button"
++                class="subviewbutton">
++          <label data-l10n-id="identity-allow-site-data" flex="1"></label>
++          <html:moz-toggle id="identity-popup-allow-sitedata-toggle" style="pointer-events: none;"></html:moz-toggle>
++        </toolbarbutton>
+       </vbox>
+     </panelview>
+ 

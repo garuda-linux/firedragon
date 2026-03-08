@@ -1,0 +1,6 @@
+firedragon.jar:
+% content firedragon-config %content/config/
+* content/config/presets/firedragon.js (presets/firedragon.js)
+ content/config/presets/librewolf.js (presets/librewolf.js)
+* content/config/presets/overrides.js (presets/overrides.js)
+ content/config/firedragon.js (firedragon.js)
