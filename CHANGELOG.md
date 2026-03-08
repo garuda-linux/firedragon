@@ -1,28 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v13.0.0-beta.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.3) — 2026-03-08 — [`v13.0.0-beta.2`…`v13.0.0-beta.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.2...v13.0.0-beta.3)
-
-### 🚀 Features
-
-- _(modules)_ Add defaultValue parameter to getPref function in ConfigLoader — [`376071f8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/376071f83f4eb05e00d71f62942f4559f2ac0e54)
-- _(app)_ Update strict mode defaults — [`03cde614…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/03cde61480fa757d3783ba1cfe6cf7b9305cedba)
-- _(modules)_ Add load method to SandboxBuilder — [`a29b6ee4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a29b6ee4742567964fd32f62fab9f27707cfb0c8)
-- _(modules)_ Use SandboxBuilder in SkinManager — [`ba51e56e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba51e56e85ab65a1e7dbc1d9e5924b24f765fe76)
-
-### 🐛 Bug Fixes
-
-- _(newtab)_ Fix update of search history — [`d2db592c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d2db592c865a7794a545c1b104a351aed1d4e9de)
-- _(app/config)_ Disable global menu for now — [`f7e408c8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f7e408c855de4eacef222770490566c29a771ab7)
-- _(patches)_ Remove allow_cookies_for_site.patch — [`a995e356…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a995e356544f1973d2757bc8ddfdb4ddd9a214dd)
-
-### 🚜 Refactor
-
-- [__breaking__] New config loader and update librewolf patches & settings — [`549dc7b0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/549dc7b0f9d9937c41d03fe4103f097576103c4f)
-
-### ⚙️ Miscellaneous Tasks
-
-- Update pnpm & deps — [`d2a37745…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d2a3774531099f3f85c40955b4c551914207b8d6)
-
 ## [FireDragon v13.0.0-beta.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.2) — 2026-03-01 — [`v13.0.0-beta.1`…`v13.0.0-beta.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.1...v13.0.0-beta.2)
 
 ### 🚜 Refactor
