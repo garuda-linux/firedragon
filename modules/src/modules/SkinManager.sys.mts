@@ -1,3 +1,5 @@
+import { SandboxBuilder } from 'resource://firedragon/modules/utils/SandboxBuilder.sys.mjs';
+
 export const SkinManager = new (class {
     readonly PREF = 'firedragon.skin';
     readonly BASE_URI = 'chrome://firedragon/skin';
@@ -34,26 +36,23 @@ export const SkinManager = new (class {
     protected loadUserJs() {
         const defaultBranch = Services.prefs.getDefaultBranch(null);
 
-        function user_pref(key: string, value: boolean | number | string) {
-            if (key !== 'toolkit.legacyUserProfileCustomizations.stylesheets') {
-                switch (typeof value) {
-                    case 'boolean':
-                        defaultBranch.setBoolPref(key, value);
-                        break;
-                    case 'number':
-                        defaultBranch.setIntPref(key, value);
-                        break;
-                    case 'string':
-                        defaultBranch.setStringPref(key, value);
-                        break;
+        SandboxBuilder.create()
+            .defineFunction('user_pref', (key: string, value: boolean | number | string) => {
+                if (key !== 'toolkit.legacyUserProfileCustomizations.stylesheets') {
+                    switch (typeof value) {
+                        case 'boolean':
+                            defaultBranch.setBoolPref(key, value);
+                            break;
+                        case 'number':
+                            defaultBranch.setIntPref(key, value);
+                            break;
+                        case 'string':
+                            defaultBranch.setStringPref(key, value);
+                            break;
+                    }
                 }
-            }
-        }
-
-        const sandbox = Cu.Sandbox(null, {});
-        Cu.exportFunction(user_pref, sandbox, { defineAs: 'user_pref' });
-
-        Services.scriptloader.loadSubScript(`${this.BASE_URI}/${this.skin}/user.js`, sandbox);
+            })
+            .load(`${this.BASE_URI}/${this.skin}/user.js`);
     }
 
     protected registerWindowActor() {
