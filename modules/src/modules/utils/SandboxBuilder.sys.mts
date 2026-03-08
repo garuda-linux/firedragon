@@ -24,4 +24,8 @@ export class SandboxBuilder {
     eval(source: string): void {
         Cu.evalInSandbox(source, this.sandbox);
     }
+
+    load(url: string): void {
+        Services.scriptloader.loadSubScript(url, this.sandbox);
+    }
 }
