@@ -11,6 +11,12 @@
     watch(engine, ({ id }) => {
         browser.searchEngine.setDefault(id);
     });
+
+    const [suggest, suggestionsFirst, suggestPrivate] = await Promise.all([
+        useBoolPref('browser.search.suggest.enabled'),
+        useBoolPref('browser.urlbar.showSearchSuggestionsFirst'),
+        useBoolPref('browser.search.suggest.enabled.private'),
+    ]);
 </script>
 
 <template>
@@ -31,6 +37,13 @@
             </template>
         </q-select>
         <q-skeleton type="QInput" v-else />
+    </p>
+    <p>
+        <q-checkbox v-model="suggest" :label="t('steps.search.suggest')" />
+        <br />
+        <q-checkbox v-model="suggestionsFirst" :label="t('steps.search.suggestionsFirst')" v-if="suggest" />
+        <br />
+        <q-checkbox v-model="suggestPrivate" :label="t('steps.search.suggestPrivate')" v-if="suggest" />
     </p>
     <p>
         <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.search.next') }}</q-btn>

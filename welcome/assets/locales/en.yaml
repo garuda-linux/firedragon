@@ -29,6 +29,9 @@ steps:
     title: Search
     header: Select your preferred search engine
     text: FireDragon comes with a variety of search engines out of the box. You can choose which one you wish to use by default with FireDragon.
+    suggest: Show search suggestions (Support depends on the search engine)
+    suggestionsFirst: Show search suggestions before browsing history in address bar results
+    suggestPrivate: Also show search suggestions in private windows
     next: Continue
   default:
     title: Default browser
