@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.3) — 2026-03-08 — [`v13.0.0-beta.2`…`v13.0.0-beta.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.2...v13.0.0-beta.3)
+
+### 🚀 Features
+
+- _(modules)_ Add defaultValue parameter to getPref function in ConfigLoader — [`376071f8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/376071f83f4eb05e00d71f62942f4559f2ac0e54)
+- _(app)_ Update strict mode defaults — [`03cde614…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/03cde61480fa757d3783ba1cfe6cf7b9305cedba)
+
+### 🐛 Bug Fixes
+
+- _(newtab)_ Fix update of search history — [`d2db592c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d2db592c865a7794a545c1b104a351aed1d4e9de)
+
+### 🚜 Refactor
+
+- [__breaking__] New config loader and update librewolf patches & settings — [`549dc7b0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/549dc7b0f9d9937c41d03fe4103f097576103c4f)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & deps — [`d2a37745…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d2a3774531099f3f85c40955b4c551914207b8d6)
+
 ## [FireDragon v13.0.0-beta.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.2) — 2026-03-01 — [`v13.0.0-beta.1`…`v13.0.0-beta.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.1...v13.0.0-beta.2)
 
 ### 🚜 Refactor
