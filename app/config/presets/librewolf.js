@@ -697,3 +697,4 @@ defaultPref("librewolf.getBrowserInfo.setToFirefoxDefaults", true);
  * allow settings to be overriden with a file placed in the right location
  * https://librewolf.net/docs/settings/#where-do-i-find-my-librewolfoverridescfg
  * ------------------------------- */
+// Removed due to incompatibility

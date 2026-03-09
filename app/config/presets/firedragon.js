@@ -88,12 +88,6 @@ unsetDefault("privacy.clearOnShutdown_v2.browsingHistoryAndDownloads");
 unsetDefault("privacy.sanitize.clearOnShutdown.hasMigratedToNewPrefs3");
 
 /** [SECTION] CACHE AND STORAGE */
-defaultPref("browser.cache.disk.enable", false); // disable disk cache
-/** prevent media cache from being written to disk in pb, but increase max cache size to avoid playback issues */
-defaultPref("browser.privatebrowsing.forceMediaMemoryCache", true);
-defaultPref("media.memory_cache_max_size", 65536);
-defaultPref("browser.shell.shortcutFavicons", false); // disable favicons in profile folder
-defaultPref("browser.helperApps.deleteTempFileOnExit", true); // delete temporary files opened with external apps
 
 /** [SECTION] HISTORY AND SESSION RESTORE
  * since we hide the UI for modes other than custom we want to reset it for
@@ -101,19 +95,13 @@ defaultPref("browser.helperApps.deleteTempFileOnExit", true); // delete temporar
  */
 unsetOverride("privacy.history.custom");
 unsetOverride("browser.privatebrowsing.autostart");
-unsetDefault("browser.formfill.enable"); // disable form history
-defaultPref("browser.sessionstore.privacy_level", 2); // prevent websites from storing session data like cookies and forms
+unsetDefault("browser.formfill.enable");
 
 /** [SECTION] QUERY STRIPPING
  * currently we set the same query stripping and allow list that brave uses:
  * https://github.com/brave/brave-core/blob/31d1281d572590225062ea510bddb9c87bfc06a2/components/query_filter/utils.cc#L26-L127
  * https://github.com/brave/brave-core/blob/31d1281d572590225062ea510bddb9c87bfc06a2/components/query_filter/utils.cc#L166
  */
-defaultPref(
-    "privacy.query_stripping.strip_list",
-    "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
-);
-defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
 
 /** [SECTION] LOGGING
  * these prefs are off by default in the official Mozilla builds,
@@ -342,7 +330,7 @@ defaultPref("app.update.service.enabled", true);
 unlock("app.update.service.enabled");
 
 /** [SECTION] OTHERS */
-unsetOverride("toolkit.winRegisterApplicationRestart", false); // disable automatic start and session restore after reboot
+unsetOverride("toolkit.winRegisterApplicationRestart", false);
 
 /** ------------------------------
  * [CATEGORY] FIREDRAGON
@@ -371,3 +359,4 @@ defaultPref("widget.use-xdg-desktop-portal.file-picker", 1);
  * allow settings to be overriden with a file placed in the right location
  * https://librewolf.net/docs/settings/#where-do-i-find-my-librewolfoverridescfg
  * ------------------------------- */
+// See overrides preset
