@@ -1,0 +1,33 @@
+diff --git a/toolkit/xre/nsXREDirProvider.cpp b/toolkit/xre/nsXREDirProvider.cpp
+index f60d1ab57e2f..07d8f9cfe05c 100644
+--- a/toolkit/xre/nsXREDirProvider.cpp
++++ b/toolkit/xre/nsXREDirProvider.cpp
+@@ -1324,7 +1324,9 @@ nsresult nsXREDirProvider::AppendFromAppData(nsIFile* aFile, bool aIsDotted) {
+   // future?
+   if (gAppData->profile) {
+     nsAutoCString profile;
+-    profile = gAppData->profile;
++    profile = aIsDotted ? "."_ns : ""_ns;
++    profile.Append(gAppData->profile);
++    ToLowerCase(profile);
+     MOZ_TRY(aFile->AppendRelativeNativePath(profile));
+   } else {
+     nsAutoCString vendor;
+@@ -1501,15 +1503,8 @@ nsresult nsXREDirProvider::GetLegacyOrXDGHomePath(const char* aHomeDir,
+       return NS_OK;
+     }
+ 
+-    // If the build was made against a specific profile name, MOZ_APP_PROFILE=
+-    // then make sure we respect this and dont move to XDG directory
+-    if (gAppData->profile) {
+-      MOZ_TRY(NS_NewNativeLocalFile(nsDependentCString(aHomeDir),
+-                                    getter_AddRefs(localDir)));
+-    } else {
+-      MOZ_TRY(GetLegacyOrXDGConfigHome(aHomeDir, getter_AddRefs(localDir)));
+-      MOZ_TRY(localDir->Clone(getter_AddRefs(parentDir)));
+-    }
++    MOZ_TRY(GetLegacyOrXDGConfigHome(aHomeDir, getter_AddRefs(localDir)));
++    MOZ_TRY(localDir->Clone(getter_AddRefs(parentDir)));
+ 
+     MOZ_TRY(AppendFromAppData(localDir, false));
+   }
