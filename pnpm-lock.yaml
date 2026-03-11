@@ -399,6 +399,55 @@ importers:
         specifier: ^4.5.4
         version: 4.5.4(@types/node@25.3.5)(rollup@4.59.0)(typescript@5.9.3)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))
 
+  troubleshooting:
+    dependencies:
+      '@quasar/extras':
+        specifier: ^1.17.0
+        version: 1.17.0
+      '@unhead/vue':
+        specifier: ^2.1.10
+        version: 2.1.10(vue@3.5.29(typescript@5.9.3))
+      '@vueuse/core':
+        specifier: ^14.2.1
+        version: 14.2.1(vue@3.5.29(typescript@5.9.3))
+      quasar:
+        specifier: ^2.18.6
+        version: 2.18.6
+      vue:
+        specifier: ^3.5.29
+        version: 3.5.29(typescript@5.9.3)
+      vue-i18n:
+        specifier: ^11.3.0
+        version: 11.3.0(vue@3.5.29(typescript@5.9.3))
+    devDependencies:
+      '@firedragon/build':
+        specifier: workspace:^
+        version: link:../build
+      '@intlify/unplugin-vue-i18n':
+        specifier: ^11.0.7
+        version: 11.0.7(@vue/compiler-dom@3.5.29)(eslint@9.39.2(jiti@2.6.1))(rollup@4.59.0)(typescript@5.9.3)(vue-i18n@11.3.0(vue@3.5.29(typescript@5.9.3)))(vue@3.5.29(typescript@5.9.3))
+      '@quasar/vite-plugin':
+        specifier: ^1.10.0
+        version: 1.10.0(@vitejs/plugin-vue@6.0.4(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3)))(quasar@2.18.6)(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3))
+      '@types/gecko':
+        specifier: workspace:^
+        version: link:../@types/gecko
+      '@wxt-dev/browser':
+        specifier: ^0.1.37
+        version: 0.1.37
+      '@wxt-dev/module-vue':
+        specifier: ^1.0.3
+        version: 1.0.3(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3))(wxt@0.20.18(@types/node@25.3.5)(eslint@9.39.2(jiti@2.6.1))(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vite-plugin-vue-devtools:
+        specifier: ^8.0.7
+        version: 8.0.7(vite@7.3.1(@types/node@25.3.5)(jiti@2.6.1)(lightningcss@1.31.1)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2))(vue@3.5.29(typescript@5.9.3))
+      wxt:
+        specifier: 'catalog:'
+        version: 0.20.18(@types/node@25.3.5)(eslint@9.39.2(jiti@2.6.1))(jiti@2.6.1)(lightningcss@1.31.1)(rollup@4.59.0)(sass-embedded@1.97.2)(sass@1.97.2)(terser@5.46.0)(tsx@4.21.0)(yaml@2.8.2)
+
   welcome:
     dependencies:
       '@firedragon/shared':

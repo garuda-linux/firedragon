@@ -1,0 +1,5 @@
+title: FireDragon Troubleshooting
+
+restart:
+  safeMode: Restart into safe mode
+  normalMode: Restart into normal mode

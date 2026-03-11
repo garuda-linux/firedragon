@@ -6,6 +6,7 @@ DIRS += [
     'notes',
     'settings',
     'skin',
+    'troubleshooting',
     'welcome',
     'workspaces',
 ]

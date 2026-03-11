@@ -1,0 +1,10 @@
+{
+  "extends": "./.wxt/tsconfig.json",
+  "compilerOptions": {
+    "types": ["@types/gecko"],
+    "paths": {
+      "@/*": ["./*"],
+      "resource://firedragon/*": ["../modules/src/*"]
+    }
+  }
+}
