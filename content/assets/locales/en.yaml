@@ -2,6 +2,12 @@ browser:
   moveTabToWindow:
     label: Move tab to window
 
+  restart:
+    label: Restart
+    normalRestart: Restart
+    clearCacheRestart: Restart and clear cache
+    safeModeRestart: Restart in safe mode
+
   undoCloseTab:
     label: Undo close tab
     tooltiptext: Undo close tab
