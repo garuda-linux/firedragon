@@ -23,6 +23,7 @@ import {
 $.verbose = true;
 
 const argv = minimist(process.argv.slice(2), {
+    '--': true,
     string: ['edition', 'target'],
 });
 
@@ -230,7 +231,7 @@ async function dev() {
         .map(([key, value]) => `user_pref(${JSON.stringify(key)}, ${JSON.stringify(value)});`)
         .join('\n')} > ${profileDir}/user.js`;
 
-    await $`${buildDir}/${objDir}/dist/bin/${target.binFile} --profile ${profileDir} --jsdebugger --wait-for-jsdebugger --remote-debugging-port`;
+    await $`${buildDir}/${objDir}/dist/bin/${target.binFile} --profile ${profileDir} --jsdebugger --wait-for-jsdebugger --remote-debugging-port ${argv['--']}`;
 }
 
 async function clobber() {
