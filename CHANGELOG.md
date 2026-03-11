@@ -1,5 +1,31 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.4) — 2026-03-11 — [`v13.0.0-beta.3`…`v13.0.0-beta.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.3...v13.0.0-beta.4)
+
+### 🚀 Features
+
+- _(content)_ Add restart panel menu — [`dd6b414d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dd6b414de86ec3e571d7841f835ff886fbd87a55)
+- _(make)_ Add ability to pass arbitrary arguments to dev browser — [`bb1917ce…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bb1917cea5a216955ac0d79613627665bd3cac73)
+- _(modules)_ Add SafeModeController to manage feature toggles in safe mode — [`4a022819…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4a022819fc87388f51fc3c423121a76c0cef7c09)
+- Implement safe mode feature toggles in SkinController and skin content script — [`18425fcd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/18425fcdee1f7d376df0c9ca815a392a6a1f5b09)
+- Implement safe mode feature toggles in ConfigLoader — [`98bf125b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/98bf125b2a570e3432f0d87929723383baf79302)
+- Add safe mode troubleshooting UI — [`05b75cd6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/05b75cd67c6f4c015fd672743250a52301f941be)
+
+### 🐛 Bug Fixes
+
+- _(patches/build-patches)_ Fix XDG profile directory handling — [`05f8eef4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/05f8eef418529e34efb1e3cb7743434d4e59f2e9)
+
+### 🚜 Refactor
+
+- Rename SkinManager to SkinController — [`6e7b01e6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6e7b01e630efb6bb925d64384f6ce73a5a4a5513)
+- _(content)_ Create render utilities for creating and mounting dom elements — [`23927d45…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/23927d450e4a3e3468c1b4d839bfb2e3bd19471d)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(app/config)_ Remove more unused overrides from firedragon preset — [`28a34581…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/28a34581712a460a1d1ed71bc047d0f0f51cfa69)
+- _(modules)_ Fix or ignore basic TS errors — [`59b6b4c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/59b6b4c01ffd892af1db9983cdd4887cdfc85b22)
+- Update pnpm and deps — [`5c8a8af6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5c8a8af67542de228a0fa0d25729a6b53830ef17)
+
 ## [FireDragon v13.0.0-beta.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.3) — 2026-03-08 — [`v13.0.0-beta.2`…`v13.0.0-beta.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.2...v13.0.0-beta.3)
 
 ### 🚀 Features
