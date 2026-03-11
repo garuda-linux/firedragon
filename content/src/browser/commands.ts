@@ -1,3 +1,5 @@
+import { h, insertBefore } from '@/utils/render.ts';
+
 const COMMANDS: Record<string, (window: Window, e: Event) => void> = {
     firedragon_duplicateTab: ({ gBrowser }) => {
         gBrowser.duplicateTab(gBrowser.selectedTab);
@@ -46,8 +48,7 @@ const COMMANDS: Record<string, (window: Window, e: Event) => void> = {
 document!.addEventListener(
     'DOMContentLoaded',
     () => {
-        const commandSet = document!.createXULElement('commandset');
-        commandSet.id = 'firedragonCommandSet';
+        const commandSet = h('xul:commandset', { id: 'firedragonCommandSet' });
 
         commandSet.addEventListener('command', (event: Event) => {
             for (const [id, action] of Object.entries(COMMANDS)) {
@@ -58,13 +59,10 @@ document!.addEventListener(
         });
 
         for (const id of Object.keys(COMMANDS)) {
-            const command = document!.createXULElement('command');
-            command.id = id;
-
-            commandSet.append(command);
+            commandSet.append(h('xul:command', { id }));
         }
 
-        document!.body!.insertBefore(commandSet, document!.querySelector('#mainCommandSet')?.nextSibling!);
+        insertBefore(commandSet, document!.querySelector('#mainCommandSet')!.nextSibling!);
     },
     { once: true },
 );

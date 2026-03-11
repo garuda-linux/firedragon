@@ -2,6 +2,7 @@ import { type KeyboardShortcut } from '@firedragon/shared/types/keyboard-shortcu
 import { effect } from '@vue/reactivity';
 
 import { useBoolPref, useStringPref } from '@/composables/usePref';
+import { h, insertBefore } from '@/utils/render.ts';
 
 document!.addEventListener(
     'DOMContentLoaded',
@@ -21,12 +22,13 @@ document!.addEventListener(
         effect(() => {
             custom?.remove();
 
-            custom = document!.createXULElement('keyset');
-            custom.setAttribute('id', 'firedragonKeyset');
+            custom = h('xul:keyset', { id: 'firedragonKeyset' });
 
             const shortcuts = JSON.parse(customShortcuts.value) as KeyboardShortcut[];
             for (const shortcut of shortcuts) {
-                const key = document!.createXULElement('key');
+                const key = h('xul:key', {
+                    command: shortcut.command,
+                });
                 if (shortcut.modifiers.length > 0) {
                     key.setAttribute('modifiers', shortcut.modifiers.join(','));
                 }
@@ -35,11 +37,10 @@ document!.addEventListener(
                 } else {
                     key.setAttribute('key', shortcut.key);
                 }
-                key.setAttribute('command', shortcut.command);
                 custom.append(key);
             }
 
-            document!.body!.insertBefore(custom, defaults.nextSibling);
+            insertBefore(custom, defaults.nextSibling!);
         });
     },
     { once: true },
