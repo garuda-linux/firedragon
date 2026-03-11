@@ -12,7 +12,7 @@
     "@quasar/extras": "^1.17.0",
     "@trpc/client": "^11.12.0",
     "@trpc/server": "^11.12.0",
-    "@unhead/vue": "^2.1.10",
+    "@unhead/vue": "^2.1.12",
     "@vueuse/core": "^14.2.1",
     "@webext-core/storage": "^1.2.0",
     "eventemitter3": "^5.0.4",
@@ -21,7 +21,7 @@
     "p-queue": "^9.1.0",
     "quasar": "^2.18.6",
     "trpc-webext": "^1.0.1",
-    "vue": "^3.5.29",
+    "vue": "^3.5.30",
     "vue-i18n": "^11.3.0",
     "zod": "^4.3.6"
   },
