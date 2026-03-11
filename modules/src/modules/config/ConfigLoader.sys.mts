@@ -1,3 +1,4 @@
+import { SafeModeController } from 'resource://firedragon/modules/SafeModeController.sys.mjs';
 import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 import { ConfigContainer } from 'resource://firedragon/modules/config/ConfigContainer.sys.mjs';
 import { File } from 'resource://firedragon/modules/utils/File.sys.mjs';
@@ -82,6 +83,12 @@ export const ConfigLoader = new (class {
             throw `Invalid preset name: ${name}`;
         }
 
+        if (
+            !SafeModeController.forToggle({ id: `configLoader.preset.${name}`, label: `ConfigLoader: Preset: ${name}` })
+        ) {
+            return;
+        }
+
         const { source, uri } = this.find(`./presets/${name}.js`),
             sandbox = this.createSandbox();
 
@@ -123,6 +130,10 @@ export const ConfigLoader = new (class {
     }
 
     loadConfig() {
+        if (!SafeModeController.forToggle({ id: 'configLoader ', label: 'ConfigLoader' })) {
+            return;
+        }
+
         try {
             const { source, uri } = this.find('./firedragon.js');
 
