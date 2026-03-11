@@ -1,3 +1,4 @@
+import { SafeModeController } from 'resource://firedragon/modules/SafeModeController.sys.mjs';
 import { SandboxBuilder } from 'resource://firedragon/modules/utils/SandboxBuilder.sys.mjs';
 
 export const SkinController = new (class {
@@ -7,6 +8,19 @@ export const SkinController = new (class {
     protected readonly styleSheetService = Cc['@mozilla.org/content/style-sheet-service;1'].getService(
         Ci.nsIStyleSheetService,
     );
+
+    readonly enabledLoadUserJs = SafeModeController.forToggle({
+        id: 'skinController.loadUserJs',
+        label: 'SkinController: Load user.js',
+    });
+    readonly enabledChromeCss = SafeModeController.forToggle({
+        id: 'skinController.chromeCss',
+        label: 'SkinController: Chrome CSS',
+    });
+    readonly enabledContentCss = SafeModeController.forToggle({
+        id: 'skinController.contentCss',
+        label: 'SkinController: Content CSS',
+    });
 
     readonly skin: string;
 
@@ -29,7 +43,9 @@ export const SkinController = new (class {
     }
 
     onBrowserStartup() {
-        this.loadUserJs();
+        if (this.enabledLoadUserJs) {
+            this.loadUserJs();
+        }
         this.registerWindowActor();
     }
 

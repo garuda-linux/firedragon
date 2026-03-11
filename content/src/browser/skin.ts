@@ -5,7 +5,7 @@ const { SkinController } = ChromeUtils.importESModule(
 document!.addEventListener(
     'DOMContentLoaded',
     () => {
-        if (SkinController.chromeCss) {
+        if (SkinController.enabledChromeCss && SkinController.chromeCss) {
             windowUtils.addSheet(SkinController.chromeCss, Ci.nsIStyleSheetService.USER_SHEET!);
         }
     },
