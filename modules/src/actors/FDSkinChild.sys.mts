@@ -1,9 +1,9 @@
-import { SkinManager } from 'resource://firedragon/modules/SkinManager.sys.mjs';
+import { SkinController } from 'resource://firedragon/modules/SkinController.sys.mjs';
 
 export class FFSkinChild extends JSWindowActorChild {
     handleEvent() {
-        if (SkinManager.contentCss) {
-            this.contentWindow!.windowUtils.addSheet(SkinManager.contentCss, Ci.nsIStyleSheetService.USER_SHEET!);
+        if (SkinController.contentCss) {
+            this.contentWindow!.windowUtils.addSheet(SkinController.contentCss, Ci.nsIStyleSheetService.USER_SHEET!);
         }
     }
 }

@@ -1,6 +1,6 @@
 import { SandboxBuilder } from 'resource://firedragon/modules/utils/SandboxBuilder.sys.mjs';
 
-export const SkinManager = new (class {
+export const SkinController = new (class {
     readonly PREF = 'firedragon.skin';
     readonly BASE_URI = 'chrome://firedragon/skin';
 

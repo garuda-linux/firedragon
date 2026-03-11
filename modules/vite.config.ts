@@ -50,8 +50,8 @@ export default defineConfig(async ({ mode }) => {
                     {
                         type: 'category',
                         category: 'firedragon/browser-startup',
-                        entry: 'resource://firedragon/modules/SkinManager.sys.mjs',
-                        value: 'SkinManager.onBrowserStartup',
+                        entry: 'resource://firedragon/modules/SkinController.sys.mjs',
+                        value: 'SkinController.onBrowserStartup',
                     },
                 ],
             }),
