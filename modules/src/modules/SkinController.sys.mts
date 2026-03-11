@@ -34,7 +34,7 @@ export const SkinManager = new (class {
     }
 
     protected loadUserJs() {
-        const defaultBranch = Services.prefs.getDefaultBranch(null);
+        const defaultBranch = Services.prefs.getDefaultBranch('');
 
         SandboxBuilder.create()
             .defineFunction('user_pref', (key: string, value: boolean | number | string) => {

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { BrowserUtils } from 'resource://gre/modules/BrowserUtils.sys.mjs';
 
 export class BrowserStartup {

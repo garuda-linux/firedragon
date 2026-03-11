@@ -1,5 +1,6 @@
 import { type CompareOperator, compare } from 'compare-versions';
 
+// @ts-ignore
 import { AppConstants } from 'resource://gre/modules/AppConstants.sys.mjs';
 
 export const Version = new (class {
