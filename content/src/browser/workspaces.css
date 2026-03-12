@@ -1,0 +1,36 @@
+toolbaritem.unified-extensions-item[data-extensionid="firedragon-workspaces@firedragon.garudalinux.org"] {
+    toolbarbutton.toolbarbutton-1[data-extensionid="firedragon-workspaces@firedragon.garudalinux.org"] {
+        border-radius: var(--tab-border-radius);
+
+        stack.toolbarbutton-badge-stack {
+            width: 100%;
+            margin-right: calc(-100% + var(--toolbarbutton-inner-padding));
+            border-right-radius: 0;
+        }
+        label.toolbarbutton-text {
+            border-left-radius: 0;
+            display: block !important;
+        }
+
+        &:hover, &[open="true"] {
+            background-color: var(--toolbarbutton-hover-background);
+            outline-color: var(--toolbarbutton-hover-outline-color);
+            color: inherit;
+
+            stack.toolbarbutton-badge-stack, label.toolbarbutton-text {
+                background: unset;
+                outline: unset;
+                color: unset;
+            }
+        }
+
+        &:focus-visible {
+            outline: var(--focus-outline);
+            outline-offset: var(--focus-outline-inset);
+
+            stack.toolbarbutton-badge-stack, label.toolbarbutton-text {
+                outline: none;
+            }
+        }
+    }
+}
