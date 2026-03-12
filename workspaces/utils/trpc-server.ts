@@ -67,6 +67,15 @@ export const router = t.router({
         )
         .output(z.void())
         .mutation(({ ctx, input }) => ctx.manager.updateWorkspace(input.workspace)),
+    moveWorkspace: t.procedure
+        .input(
+            z.object({
+                workspaceId: zWorkspaceId,
+                direction: z.literal(-1).or(z.literal(1)),
+            }),
+        )
+        .output(z.void())
+        .mutation(({ ctx, input }) => ctx.manager.moveWorkspace(input.workspaceId, input.direction)),
     deleteWorkspace: t.procedure
         .input(
             z.object({

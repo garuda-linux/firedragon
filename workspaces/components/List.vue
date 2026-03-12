@@ -82,12 +82,26 @@
             clickable
             v-ripple
             @click="trpc.switchWorkspace.mutate({ windowId, workspaceId: workspace.id })"
-            v-for="workspace in workspaces"
+            v-for="(workspace, i) in workspaces"
             :key="workspace.id"
         >
             <q-item-section>{{ workspace.name }}</q-item-section>
             <q-item-section side v-if="editable">
                 <q-btn-group flat>
+                    <q-btn
+                        dense
+                        flat
+                        icon="sym_o_arrow_drop_up"
+                        @click="trpc.moveWorkspace.mutate({ workspaceId: workspace.id, direction: -1 })"
+                        v-if="i > 0"
+                    />
+                    <q-btn
+                        dense
+                        flat
+                        icon="sym_o_arrow_drop_down"
+                        @click="trpc.moveWorkspace.mutate({ workspaceId: workspace.id, direction: 1 })"
+                        v-if="i < workspaces.length - 1"
+                    />
                     <q-btn icon="sym_o_edit" dense flat @click.stop="editWorkspace(workspace)" />
                     <q-btn
                         icon="sym_o_delete"

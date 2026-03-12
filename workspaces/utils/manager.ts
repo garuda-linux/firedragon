@@ -247,6 +247,13 @@ export class WorkspacesManager extends EventEmitter<{
         this.storeData();
     }
 
+    moveWorkspace(workspaceId: WorkspaceId, direction: -1 | 1): void {
+        const i = this.workspaces.findIndex((workspace) => workspace.id === workspaceId);
+        [this.workspaces[i], this.workspaces[i + direction]] = [this.workspaces[i + direction], this.workspaces[i]];
+        this.emit('workspacesChanged', this.workspaces);
+        this.storeData();
+    }
+
     async deleteWorkspace(workspaceId: WorkspaceId): Promise<void> {
         if (workspaceId !== DEFAULT_WORKSPACE_ID) {
             this.workspaces = this.workspaces.filter((workspace) => workspace.id !== workspaceId);
