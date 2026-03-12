@@ -4,6 +4,11 @@ import PQueue from 'p-queue';
 
 declare module '@wxt-dev/browser' {
     export namespace Browser {
+        export namespace browserAction {
+            export interface TitleDetails {
+                windowId?: number;
+            }
+        }
         export namespace contextMenus {
             export enum ContextType {
                 TAB = 'tab',
@@ -328,6 +333,11 @@ export class WorkspacesManager extends EventEmitter<{
                     }
 
                     await browser.tabs.hide(tabsToHide);
+
+                    browser.browserAction.setTitle({
+                        title: this.workspaces.find((workspace) => workspace.id === workspaceId)?.name ?? '',
+                        windowId,
+                    });
                 }),
             );
         });
