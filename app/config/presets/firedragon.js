@@ -294,6 +294,10 @@ defaultPref("app.update.url.manual", "https://gitlab.com/garuda-linux/firedragon
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
  * should also not stress user about being the default one.
  */
+unsetDefault("browser.startup.homepage_override.mstone");
+unsetDefault("startup.homepage_override_url");
+unsetDefault("startup.homepage_welcome_url");
+unsetDefault("startup.homepage_welcome_url.additional");
 
 /** [SECTION] NEW TAB PAGE
  * we want NTP to display nothing but the search bar without anything distracting.
