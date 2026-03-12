@@ -15,7 +15,7 @@
         <q-layout view="hHh LpR fFf">
             <q-page-container>
                 <q-page>
-                    <List new-position="top" />
+                    <List :editable="true" />
                 </q-page>
             </q-page-container>
         </q-layout>

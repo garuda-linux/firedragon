@@ -1,6 +1,6 @@
 <script setup lang="ts">
-    const { newPosition } = defineProps<{
-        newPosition: 'top' | 'bottom';
+    const { editable } = defineProps<{
+        editable: boolean;
     }>();
 
     const { t } = useI18n();
@@ -69,7 +69,7 @@
 
 <template>
     <q-list>
-        <template v-if="newPosition === 'top'">
+        <template v-if="editable">
             <q-item>
                 <q-item-section>
                     <q-btn icon="sym_o_add_2" :label="t('list.add')" flat @click="newWorkspace" />
@@ -86,26 +86,18 @@
             :key="workspace.id"
         >
             <q-item-section>{{ workspace.name }}</q-item-section>
-            <q-item-section side>
-                <q-btn icon="sym_o_edit" dense flat @click.stop="editWorkspace(workspace)" />
-            </q-item-section>
-            <q-item-section side>
-                <q-btn
-                    icon="sym_o_delete"
-                    :disable="workspace.id === DEFAULT_WORKSPACE_ID"
-                    dense
-                    flat
-                    @click.stop="trpc.deleteWorkspace.mutate({ workspaceId: workspace.id })"
-                />
+            <q-item-section side v-if="editable">
+                <q-btn-group flat>
+                    <q-btn icon="sym_o_edit" dense flat @click.stop="editWorkspace(workspace)" />
+                    <q-btn
+                        icon="sym_o_delete"
+                        :disable="workspace.id === DEFAULT_WORKSPACE_ID"
+                        dense
+                        flat
+                        @click.stop="trpc.deleteWorkspace.mutate({ workspaceId: workspace.id })"
+                    />
+                </q-btn-group>
             </q-item-section>
         </q-item>
-        <template v-if="newPosition === 'bottom'">
-            <q-separator />
-            <q-item>
-                <q-item-section>
-                    <q-btn icon="sym_o_add_2" :label="t('list.add')" flat @click="newWorkspace" />
-                </q-item-section>
-            </q-item>
-        </template>
     </q-list>
 </template>
