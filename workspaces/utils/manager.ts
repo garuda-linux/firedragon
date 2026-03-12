@@ -56,6 +56,8 @@ export class WorkspacesManager extends EventEmitter<{
             this.setupContextMenu();
             this.registerEventListeners();
 
+            this.updateTitles();
+
             return this;
         })();
     }
@@ -288,6 +290,7 @@ export class WorkspacesManager extends EventEmitter<{
                 ),
             ]);
             this.redraw();
+            this.updateTitles();
         }
     }
 
@@ -295,6 +298,7 @@ export class WorkspacesManager extends EventEmitter<{
         await setWindowData(windowId, 'workspaceId', workspaceId);
         this.emit('windowDataChanged', windowId);
         this.redraw();
+        this.updateTitles();
     }
 
     private async redraw() {
@@ -333,13 +337,23 @@ export class WorkspacesManager extends EventEmitter<{
                     }
 
                     await browser.tabs.hide(tabsToHide);
-
-                    browser.browserAction.setTitle({
-                        title: this.workspaces.find((workspace) => workspace.id === workspaceId)?.name ?? '',
-                        windowId,
-                    });
                 }),
             );
         });
+    }
+
+    private async updateTitles() {
+        await Promise.all(
+            (await browser.windows.getAll()).map(async (window) => {
+                const windowId = window.id!,
+                    workspaceId = (await getWindowData(windowId, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID,
+                    workspace = this.workspaces.find((workspace) => workspace.id === workspaceId);
+
+                browser.browserAction.setTitle({
+                    title: workspace?.name ?? '',
+                    windowId,
+                });
+            }),
+        );
     }
 }
