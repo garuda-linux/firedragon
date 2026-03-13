@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.5) — 2026-03-13 — [`v13.0.0-beta.4`…`v13.0.0-beta.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.4...v13.0.0-beta.5)
+
+### 🚀 Features
+
+- _(workspaces)_ Add ability to move workspaces up and down the list — [`9770bd3f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9770bd3ff941f093e25b10fca6a167b8ebdfaa5a)
+- _(workspaces)_ Set browser action button title to workspace name — [`0c7b5b0d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0c7b5b0dc96d5c2619ac18d626abcf1f4aa16d03)
+- _(content)_ Add custom browser styles to show toolbarbutton text for workspaces browserAction — [`d9b4ea0d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d9b4ea0d453d2f6584bba977aa17ccb934a990fb)
+
+### 🐛 Bug Fixes
+
+- _(app/config)_ Unset librewolf defaults about newtab and welcome pages — [`0279b483…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0279b483207a52b64f01cc8cda8938e9ec056b6a)
+- _(app/config)_ Re-enable auto-restore session — [`4493b5a9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4493b5a90ef7035d7836af7f206d4c3fce5255be)
+- _(workspaces)_ Disable editing in popup — [`c0533c51…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c0533c51a9ecbe67b3b882bacc9c949751babbb6)
+- _(workspaces)_ Fix when update title logic gets called and ensure it is called on initialization — [`cd49859b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cd49859bc89cae70302dae73cb5d4edbc8afca42)
+
 ## [FireDragon v13.0.0-beta.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.4) — 2026-03-11 — [`v13.0.0-beta.3`…`v13.0.0-beta.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.3...v13.0.0-beta.4)
 
 ### 🚀 Features
