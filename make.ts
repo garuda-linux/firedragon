@@ -297,7 +297,7 @@ async function ciRelease() {
             }
             if (firstArtifact) {
                 downloads.push(
-                    `| ${edition.displayName} ${target.displayName} | [${firstArtifact.name}](${repoUrl}/-/releases/${version}/downloads${firstArtifact.direct_asset_path}) |`,
+                    `| ${edition.displayName} ${target.displayName} | [${firstArtifact.name}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path}) |`,
                 );
                 if (target.suffix.includes('linux')) {
                     downloads.push(
