@@ -301,7 +301,7 @@ async function ciRelease() {
                 );
                 if (target.suffix.includes('linux')) {
                     downloads.push(
-                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'AppImage')} | [${firstArtifact.name.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}](${repoUrl}/-/releases/${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}) |`,
+                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'AppImage')} | [${firstArtifact.name.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}) |`,
                     );
                 }
             }
