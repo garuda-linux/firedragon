@@ -3,15 +3,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./vite": "./dist/vite.js",
-    "./wxt-client": "./dist/wxt-client.js",
-    "./wxt-config": "./dist/wxt-config.js",
-    "./wxt-module": "./dist/wxt-module.js"
+    "./vite": "./dist/vite.mjs",
+    "./wxt-client": "./dist/wxt-client.mjs",
+    "./wxt-config": "./dist/wxt-config.mjs",
+    "./wxt-module": "./dist/wxt-module.mjs"
   },
   "scripts": {
-    "postinstall": "vite build",
-    "build": "vite build",
-    "dev": "NODE_ENV=development vite build --mode development"
+    "postinstall": "tsdown",
+    "build": "tsdown",
+    "dev": "tsdown"
   },
   "dependencies": {
     "globby": "^16.1.1"
@@ -21,8 +21,7 @@
     "wxt": "catalog:"
   },
   "devDependencies": {
-    "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-dts": "^4.5.4"
+    "tsdown": "catalog:",
+    "typescript": "catalog:"
   }
 }

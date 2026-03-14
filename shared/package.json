@@ -3,15 +3,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./experiment-api/prefs": "./dist/experiment-api/prefs.js",
-    "./types/keyboard-shortcuts": "./dist/types/keyboard-shortcuts.js",
-    "./vue/createStorage": "./dist/vue/createStorage.js",
-    "./vue/usePref": "./dist/vue/usePref.js"
+    "./experiment-api/prefs": "./dist/experiment-api/prefs.mjs",
+    "./types/keyboard-shortcuts": "./dist/types/keyboard-shortcuts.mjs",
+    "./vue/createStorage": "./dist/vue/createStorage.mjs",
+    "./vue/usePref": "./dist/vue/usePref.mjs"
   },
   "scripts": {
-    "postinstall": "vite build",
-    "build": "vite build",
-    "dev": "NODE_ENV=development vite build --mode development"
+    "postinstall": "tsdown --dts src/*/*.ts",
+    "build": "tsdown --dts src/*/*.ts",
+    "dev": "tsdown --dts src/*/*.ts"
   },
   "dependencies": {
     "deep-equal": "^2.2.3"
@@ -27,7 +27,6 @@
     "@types/gecko": "workspace:^",
     "@wxt-dev/browser": "^0.1.37",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "vite-plugin-dts": "^4.5.4"
+    "tsdown": "catalog:"
   }
 }
