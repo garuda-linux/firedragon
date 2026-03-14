@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.6) — 2026-03-14 — [`v13.0.0-beta.5`…`v13.0.0-beta.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.5...v13.0.0-beta.6)
+
+### 🐛 Bug Fixes
+
+- _(make)_ Fix release downloads URL — [`fab67d53…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fab67d53c94b9ec4f514178a7f3817c6819dc739)
+
+### 🚜 Refactor
+
+- Refactor directory structure — [`1a088e3e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1a088e3ee5aa73df5de6bd5f07a3a8f40bea89fd)
+- Use tsdown for build & shared instead of vite — [`7a9bca87…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7a9bca8773cc7f707ed970cee35c1299b0517bd9)
+
 ## [FireDragon v13.0.0-beta.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.5) — 2026-03-13 — [`v13.0.0-beta.4`…`v13.0.0-beta.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.4...v13.0.0-beta.5)
 
 ### 🚀 Features
