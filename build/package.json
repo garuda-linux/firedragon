@@ -6,7 +6,8 @@
     "./vite": "./dist/vite.mjs",
     "./wxt-client": "./dist/wxt-client.mjs",
     "./wxt-config": "./dist/wxt-config.mjs",
-    "./wxt-module": "./dist/wxt-module.mjs"
+    "./wxt-module": "./dist/wxt-module.mjs",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "postinstall": "tsdown",
