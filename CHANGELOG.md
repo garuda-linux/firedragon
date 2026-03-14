@@ -1,5 +1,23 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.7) — 2026-03-14 — [`v13.0.0-beta.6`…`v13.0.0-beta.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.6...v13.0.0-beta.7)
+
+### 🚀 Features
+
+- Add QR code generation page action popup — [`5f05ba5d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5f05ba5d7377018df5a2eaa7fbf8b0afc1a6fcef)
+
+### 🐛 Bug Fixes
+
+- Fix quasar branding variables — [`cd65cfbf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cd65cfbff67e715ab3826278a21a8e71a696193c)
+
+### 🚜 Refactor
+
+- Let tsdown manage exports in package.json for build & shared — [`c71f1294…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c71f1294e7da1bc33b869676bed2c91dd0258137)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps — [`bfc9f463…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bfc9f46354017420d325c95b01591f18db021daa)
+
 ## [FireDragon v13.0.0-beta.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.6) — 2026-03-14 — [`v13.0.0-beta.5`…`v13.0.0-beta.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.5...v13.0.0-beta.6)
 
 ### 🐛 Bug Fixes
