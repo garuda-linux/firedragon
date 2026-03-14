@@ -5,7 +5,7 @@ import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import devtools from 'vite-plugin-vue-devtools';
 
-import { getEdition } from '../config';
+import { getEdition } from '../../config';
 
 export default defineConfig({
     modules: ['@wxt-dev/module-vue'],

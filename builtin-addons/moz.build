@@ -1,0 +1,7 @@
+DIRS += [
+    'notes',
+    'settings',
+    'troubleshooting',
+    'welcome',
+    'workspaces',
+]

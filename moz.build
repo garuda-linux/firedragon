@@ -1,12 +1,7 @@
 DIRS += [
     'app',
+    'builtin-addons',
     'content',
     'modules',
     'newtab',
-    'notes',
-    'settings',
-    'skin',
-    'troubleshooting',
-    'welcome',
-    'workspaces',
 ]

@@ -1,1 +1,6 @@
-DIRS += ["config", "distribution", "profile"]
+DIRS += [
+    'config',
+    'distribution',
+    'profile',
+    'skin',
+]

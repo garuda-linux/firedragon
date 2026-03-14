@@ -1,15 +1,15 @@
 packages:
   - '@types/gecko'
   - build
+  - builtin-addons/notes
+  - builtin-addons/settings
+  - builtin-addons/troubleshooting
+  - builtin-addons/welcome
+  - builtin-addons/workspaces
   - content
   - modules
   - newtab
-  - notes
-  - settings
   - shared
-  - troubleshooting
-  - welcome
-  - workspaces
 
 catalog:
   typescript: ~5.9.3

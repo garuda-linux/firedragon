@@ -5,15 +5,15 @@ import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { quasar, transformAssetUrls } from '@quasar/vite-plugin';
 import devtools from 'vite-plugin-vue-devtools';
 
-import { getEdition } from '../config';
+import { getEdition } from '../../config';
 
 export default defineConfig({
     modules: ['@wxt-dev/module-vue'],
     firedragon: {
-        id: 'firedragon-settings',
+        id: 'firedragon-troubleshooting',
     },
     imports: {
-        presets: ['@vueuse/core', 'quasar', 'vue-i18n', 'vue-router'],
+        presets: ['@vueuse/core', 'quasar', 'vue-i18n'],
     },
     vue: {
         vite: {
@@ -23,7 +23,8 @@ export default defineConfig({
         },
     },
     manifest: {
-        name: 'FireDragon Settings',
+        name: 'FireDragon Troubleshooting',
+        permissions: [],
     },
     vite: () => ({
         plugins: [
@@ -34,7 +35,7 @@ export default defineConfig({
                 sassVariables: getEdition()?.quasar,
             }),
             devtools({
-                appendTo: '/entrypoints/index/main.ts',
+                appendTo: /\/entrypoints\/(index|popup|sidepanel)\/main.ts$/,
             }),
         ],
     }),
