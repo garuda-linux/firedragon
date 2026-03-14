@@ -1,5 +1,6 @@
 DIRS += [
     'notes',
+    'qr-code',
     'settings',
     'troubleshooting',
     'welcome',

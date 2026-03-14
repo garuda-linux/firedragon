@@ -2,6 +2,7 @@ packages:
   - '@types/gecko'
   - build
   - builtin-addons/notes
+  - builtin-addons/qr-code
   - builtin-addons/settings
   - builtin-addons/troubleshooting
   - builtin-addons/welcome
