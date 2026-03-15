@@ -19,9 +19,6 @@
             const color = getComputedStyle(container.value)?.getPropertyValue('--q-primary');
             console.log(color);
             const qrqCode = new QRCodeStyling({
-                width: 300,
-                height: 300,
-                type: 'canvas',
                 data: tab[0].url,
                 image,
                 backgroundOptions: {
@@ -30,6 +27,12 @@
                 dotsOptions: {
                     color: color,
                     type: 'rounded',
+                },
+                cornersSquareOptions: {
+                    type: 'extra-rounded',
+                },
+                cornersDotOptions: {
+                    type: 'extra-rounded',
                 },
             });
             qrqCode.append(container.value);
