@@ -17,7 +17,6 @@
         ]);
         if (container.value && tab[0]) {
             const color = getComputedStyle(container.value)?.getPropertyValue('--q-primary');
-            console.log(color);
             const qrqCode = new QRCodeStyling({
                 data: tab[0].url,
                 image,
