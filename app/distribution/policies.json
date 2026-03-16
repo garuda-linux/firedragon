@@ -3,8 +3,6 @@
   "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
   "policies": {
 #ifndef FIREDRAGON_UPDATE
-    "DisableAppUpdate": true,
-#else
     "AppUpdateURL": "https://localhost",
     "DisableAppUpdate": true,
 #endif
