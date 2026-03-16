@@ -190,6 +190,7 @@ unsetDefault("privacy.resistFingerprinting");
 /** [SECTION] SEARCH AND URLBAR
  * disable search suggestion and do not update opensearch engines.
  */
+defaultPref('browser.search.separatePrivateDefault', false);
 
 /** [SECTION] DOWNLOADS
  * user interaction should always be required for downloads, as a way to enhance security by asking
