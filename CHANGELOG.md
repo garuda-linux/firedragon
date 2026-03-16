@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.8) — 2026-03-16 — [`v13.0.0-beta.7`…`v13.0.0-beta.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.7...v13.0.0-beta.8)
+
+### 🐛 Bug Fixes
+
+- _(app/distribution)_ Fix app update — [`2899e8b4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2899e8b46024407d17b240e3747ac301ccd219a2)
+- _(builtin-addons/notes)_ Fix stylesheet tag — [`363ece74…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/363ece747a688dd57140c4b96935bab8c8ea523f)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(qr-code)_ Update QRCodeStyling options — [`d1377f4f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d1377f4fed1fe2fa223f68fa7ec2da69012201d4)
+- _(qr-code)_ Remove left-over debug — [`bc4232a4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bc4232a4c76c73c02a362a7e74ffcb1692ff0ef4)
+
 ## [FireDragon v13.0.0-beta.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.7) — 2026-03-14 — [`v13.0.0-beta.6`…`v13.0.0-beta.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.6...v13.0.0-beta.7)
 
 ### 🚀 Features
