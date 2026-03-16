@@ -12,7 +12,13 @@
         browser.searchEngine.setDefault(id);
     });
 
-    const [suggest, suggestionsFirst, suggestPrivate] = await Promise.all([
+    const privateEngine = ref(await browser.searchEngine.getPrivateDefault());
+    watch(privateEngine, ({ id }) => {
+        browser.searchEngine.setPrivateDefault(id);
+    });
+
+    const [separatePrivateDefault, suggest, suggestionsFirst, suggestPrivate] = await Promise.all([
+        useBoolPref('browser.search.separatePrivateDefault'),
         useBoolPref('browser.search.suggest.enabled'),
         useBoolPref('browser.urlbar.showSearchSuggestionsFirst'),
         useBoolPref('browser.search.suggest.enabled.private'),
@@ -37,6 +43,26 @@
             </template>
         </q-select>
         <q-skeleton type="QInput" v-else />
+    </p>
+    <p>
+        <q-checkbox v-model="separatePrivateDefault" :label="t('steps.search.separatePrivateDefault')" />
+        <template v-if="separatePrivateDefault">
+            <br />
+            <q-select v-model="privateEngine" :options="engines!" option-label="name" option-value="id" v-if="isReady">
+                <template #prepend>
+                    <q-img :src="privateEngine.icon" width="32px" v-if="privateEngine.icon" />
+                </template>
+                <template #option="{ itemProps, opt }">
+                    <q-item v-bind="itemProps">
+                        <q-item-section avatar>
+                            <q-img :src="opt.icon" width="32px" v-if="opt.icon" />
+                        </q-item-section>
+                        <q-item-section>{{ opt.name }}</q-item-section>
+                    </q-item>
+                </template>
+            </q-select>
+            <q-skeleton type="QInput" v-else />
+        </template>
     </p>
     <p>
         <q-checkbox v-model="suggest" :label="t('steps.search.suggest')" />

@@ -12,6 +12,8 @@ declare module '@wxt-dev/browser' {
             export function getAll(): Promise<SearchEngine[]>;
             export function getDefault(): Promise<SearchEngine>;
             export function setDefault(id: string): void;
+            export function getPrivateDefault(): Promise<SearchEngine>;
+            export function setPrivateDefault(id: string): void;
         }
     }
 }
@@ -66,6 +68,23 @@ export default defineExperimentApi({
                     },
                 ],
             },
+            {
+                name: 'getPrivateDefault',
+                type: 'function',
+                async: true,
+                parameters: [],
+                returns: searchEngineType,
+            },
+            {
+                name: 'setPrivateDefault',
+                type: 'function',
+                parameters: [
+                    {
+                        name: 'id',
+                        type: 'string',
+                    },
+                ],
+            },
         ],
     },
     main() {
@@ -85,12 +104,18 @@ export default defineExperimentApi({
                             return Promise.all((await Services.search.getVisibleEngines()).map(mapSearchEngine));
                         },
                         async getDefault(): Promise<Browser.searchEngine.SearchEngine> {
-                            return mapSearchEngine(await Services.search.defaultEngine);
+                            return mapSearchEngine(Services.search.defaultEngine);
                         },
                         setDefault(id: string) {
                             const engine = Services.search.getEngineById(id);
-                            Services.search.setDefault(engine, Services.search.CHANGE_REASON_UITOUR!);
-                            Services.search.setDefaultPrivate(engine, Services.search.CHANGE_REASON_UITOUR!);
+                            Services.search.setDefault(engine, Ci.nsISearchService.CHANGE_REASON_UITOUR!);
+                        },
+                        async getPrivateDefault(): Promise<Browser.searchEngine.SearchEngine> {
+                            return mapSearchEngine(Services.search.defaultPrivateEngine);
+                        },
+                        setPrivateDefault(id: string) {
+                            const engine = Services.search.getEngineById(id);
+                            Services.search.setDefaultPrivate(engine, Ci.nsISearchService.CHANGE_REASON_UITOUR!);
                         },
                     },
                 };
