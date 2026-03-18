@@ -210,6 +210,13 @@ defaultPref("browser.places.speculativeConnect.enabled", false);
 // disable speculative connections and domain guessing from the urlbar
 defaultPref("browser.urlbar.speculativeConnect.enabled", false);
 
+/** [SECTION] Local Network Access */
+defaultPref("network.lna.blocking", true); // This preference controls if we need to fail transactions for Local Network Access (LNA) failures. FF 147 started rolling it out for ETP Strict users.
+defaultPref("network.lna.block_trackers", true); // When this pref is true, loads triggered by scripts classified as trackers will automatically be blocked.
+defaultPref("network.lna.websocket.enabled", true); // When true, WebSocket connections follow normal LNA rules.
+defaultPref("network.lna.allow_top_level_navigation", false); // When this pref is true, top-level document navigation to local network addresses will bypass LNA permission checks.
+defaultPref("network.lna.local-network-to-localhost.skip-checks", false); // When this pref is true, skip LNA checks for requests from private network to localhost (private -> local IP address space transitions).
+
 /** [SECTION] OTHER */
 defaultPref("security.csp.reporting.enabled", false); // https://codeberg.org/librewolf/issues/issues/2688
 
@@ -240,7 +247,7 @@ defaultPref("privacy.globalprivacycontrol.pbmode.enabled", true);
 defaultPref("privacy.globalprivacycontrol.functionality.enabled", true);
 
 /** [SECTION] WEBGL */
-defaultPref("webgl.disabled", true);
+defaultPref("webgl.disabled", false);
 defaultPref("dom.webgpu.enabled", false);
 
 /** ------------------------------
