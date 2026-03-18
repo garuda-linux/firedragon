@@ -59,7 +59,7 @@ export const ConfigLoader = new (class {
                     console.warn(`[ConfigLoader] Could not find file ${url}`);
                     return false;
                 }
-                console.info(`[ConfigLoader] Loading file ${url}`);
+                console.log(`[ConfigLoader] Loading file ${url}`);
                 try {
                     Cu.evalInSandbox(source, sandbox.sandbox);
                 } catch (e) {
@@ -121,7 +121,7 @@ export const ConfigLoader = new (class {
                 return value ?? fallbackValue;
             });
 
-        console.info(`[ConfigLoader] Loading preset ${name} (${uri.spec})`);
+        console.log(`[ConfigLoader] Loading preset ${name} (${uri.spec})`);
         try {
             sandbox.eval(source);
         } catch (e) {
@@ -144,7 +144,7 @@ export const ConfigLoader = new (class {
                 this.loadPreset(name, container);
             });
 
-            console.info(`[ConfigLoader] Loading config ${uri.spec}`);
+            console.log(`[ConfigLoader] Loading config ${uri.spec}`);
             try {
                 sandbox.eval(source);
             } catch (e) {
