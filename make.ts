@@ -116,7 +116,7 @@ async function build() {
     await acAddOptions(
         buildDir,
         '--enable-bootstrap',
-        `--with-firedragon-update=${repoUrl}/-/releases/permalink/latest/downloads/${buildBasename}.update.xml`,
+        `--with-firedragon-update=${repoUrl}/-/releases/permalink/latest/downloads/${edition.basename}.${target.suffix}.update.xml`,
     );
 
     await $`pnpm install -C ${buildDir}/${sourceDir} --frozen-lockfile`;
