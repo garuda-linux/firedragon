@@ -1,0 +1,780 @@
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index c443705..58716a5 100644
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -2185,28 +2185,28 @@ using_msvc_stl = depends(cxx_compiler)(lambda c: c.type == "clang-cl")
+ 
+ using_msvc_stl_202503_or_newer = try_compile(
+     language="C++",
+-    includes=["new"],
++    includes=["version"],
+     body="#if !defined(_MSVC_STL_UPDATE) || _MSVC_STL_UPDATE < 202503L\n#error 1\n#endif",
+     when=using_msvc_stl,
+ )
+ 
+ using_libstdcxx = try_compile(
+     language="C++",
+-    includes=["new"],
++    includes=["version"],
+     body="#ifndef __GLIBCXX__\n#error 1\n#endif",
+     when=~using_msvc_stl,
+ )
+ 
+ using_libcxx = try_compile(
+     language="C++",
+-    includes=["new"],
++    includes=["version"],
+     body="#ifndef _LIBCPP_VERSION\n#error 1\n#endif",
+     when=~using_libstdcxx,
+ )
+ 
+ using_libcxx_19_or_newer = try_compile(
+     language="C++",
+-    includes=["new"],
++    includes=["version"],
+     body="#if _LIBCPP_VERSION < 190000\n#error 1\n#endif",
+     when=using_libcxx,
+ )
+ diff --git a/build/moz.configure/android-ndk.configure b/build/moz.configure/android-ndk.configure
+index 310d757..7dcec4e 100644
+--- a/build/moz.configure/android-ndk.configure
++++ b/build/moz.configure/android-ndk.configure
+@@ -264,7 +264,7 @@ set_config("STLPORT_LIBS", stlport_libs)
+ 
+ 
+ @depends(android_sysroot, android_toolchain)
+-def extra_toolchain_flags(android_sysroot, toolchain_dir):
++def android_toolchain_flags(android_sysroot, toolchain_dir):
+     if not android_sysroot:
+         return []
+     flags = [
+@@ -274,8 +274,8 @@ def extra_toolchain_flags(android_sysroot, toolchain_dir):
+     return flags
+ 
+ 
+-@depends(extra_toolchain_flags)
+-def android_flags(extra_toolchain_flags):
++@depends(android_toolchain_flags)
++def android_flags(android_toolchain_flags):
+     wead_symbols_defines = [
+         "-D__ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__",
+     ]
+@@ -283,18 +283,18 @@ def android_flags(extra_toolchain_flags):
+         "-Werror=unguarded-availability",
+     ]
+     return namespace(
+-        cflags=extra_toolchain_flags
++        cflags=android_toolchain_flags
+         + [
+             "-fno-short-enums",
+         ]
+         + weak_symbols_flags,
+-        cxxflags=extra_toolchain_flags
++        cxxflags=android_toolchain_flags
+         + [
+             "-fno-short-enums",
+         ]
+         + weak_symbols_flags,
+-        ldflags=extra_toolchain_flags,
+-        asflags=extra_toolchain_flags
++        ldflags=android_toolchain_flags,
++        asflags=android_toolchain_flags
+         + [
+             "-DANDROID",
+         ]
+@@ -330,7 +330,7 @@ def android_system_headers(host, ndk):
+ set_config("ANDROID_SYSTEM_HEADERS", android_system_headers)
+ 
+ 
+-@depends(extra_toolchain_flags)
++@depends(android_toolchain_flags)
+ def bindgen_cflags_android(toolchain_flags):
+     return toolchain_flags
+ 
+diff --git a/build/moz.configure/compilers-util.configure b/build/moz.configure/compilers-util.configure
+index 598de3d..3745849 100644
+--- a/build/moz.configure/compilers-util.configure
++++ b/build/moz.configure/compilers-util.configure
+@@ -177,7 +177,7 @@ def compiler_class(compiler, host_or_target):
+             ):
+                 flags = list(flags or [])
+                 if is_target:
+-                    flags += extra_flags or []
++                    flags += extra_flags
+                 header = header or ""
+                 if isinstance(header, (list, tuple)):
+                     header = "\n".join(header)
+diff --git a/build/moz.configure/flags.configure b/build/moz.configure/flags.configure
+index 2662792..a25cfc1 100644
+--- a/build/moz.configure/flags.configure
++++ b/build/moz.configure/flags.configure
+@@ -60,7 +60,7 @@ def link_libstdcxx_statically(
+                     #include <iostream>
+                     int main() { std::cout << 1;}
+                 """,
+-                ["-o", bin_path] + (extra_toolchain_flags or []),
++                ["-o", bin_path] + extra_toolchain_flags,
+                 wrapper=cxx_compiler.wrapper,
+                 onerror=lambda: None,
+             )
+@@ -137,7 +137,7 @@ def linker_supports_icf(
+                                  """,
+                 ["-o", bin_path, "-Wl,--icf=safe", "-ffunction-sections"]
+                 + (["-faddrsig"] if add_addrsig_flag else [])
+-                + (extra_toolchain_flags or []),
++                + extra_toolchain_flags,
+                 wrapper=c_compiler.wrapper,
+                 onerror=lambda: None,
+             )
+@@ -490,7 +490,7 @@ def expand_libs_list_style(c_compiler, link, linker_flags, extra_flags):
+         ):
+             die("couldn't compile a simple C file")
+ 
+-        ldflags = linker_flags + (extra_flags or [])
++        ldflags = linker_flags + extra_flags
+ 
+         if c_compiler.type == "clang-cl":
+             base_linker_cmd = [link] + ldflags + [f"-OUT:{outname}"]
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index c443705..b2ca8b3 100644
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -170,6 +170,20 @@ def compiling_android(compile_env, target):
+ 
+ include("android-ndk.configure", when=compiling_android)
+ 
++
++@depends(target, host)
++def is_windows(target, host):
++    return host.kernel == "WINNT" or target.kernel == "WINNT"
++
++
++include("windows-toolchain.configure", when=is_windows)
++
++@depends(android_toolchain_flags, windows_toolchain_flags)
++def extra_toolchain_flags(android_toolchain_flags,
++                          windows_toolchain_flags):
++    return (android_toolchain_flags or []) + (windows_toolchain_flags or [])
++
++
+ with only_when(target_is_osx):
+     # MacOS deployment target version
+     # ==============================================================
+@@ -735,196 +749,6 @@ def check_compiler(configure_cache, compiler, language, target, android_version)
+     )
+ 
+ 
+-@imports(_from="__builtin__", _import="open")
+-@imports(_from="mozfile", _import="json")
+-@imports("os")
+-def get_vc_paths(host, topsrcdir):
+-    def vswhere(args):
+-        program_files = os.environ.get("PROGRAMFILES(X86)") or os.environ.get(
+-            "PROGRAMFILES"
+-        )
+-        if not program_files:
+-            return []
+-        vswhere = os.path.join(
+-            program_files, "Microsoft Visual Studio", "Installer", "vswhere.exe"
+-        )
+-        if not os.path.exists(vswhere):
+-            return []
+-        return json.loads(check_cmd_output(vswhere, "-format", "json", *args))
+-
+-    variant = "arm64" if host.cpu == "aarch64" else "x86.x64"
+-    for install in vswhere(
+-        [
+-            "-products",
+-            "*",
+-            "-requires",
+-            f"Microsoft.VisualStudio.Component.VC.Tools.{variant}",
+-        ]
+-    ):
+-        path = install["installationPath"]
+-        tools_version = (
+-            open(
+-                os.path.join(
+-                    path, r"VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
+-                ),
+-                "r",
+-            )
+-            .read()
+-            .strip()
+-        )
+-        tools_path = os.path.join(path, r"VC\Tools\MSVC", tools_version)
+-        yield (Version(install["installationVersion"]), tools_path)
+-
+-
+-@depends(target, host)
+-def is_windows(target, host):
+-    return host.kernel == "WINNT" or target.kernel == "WINNT"
+-
+-
+-# Calling this a sysroot is a little weird, but it's the terminology clang went
+-# with with its -winsysroot flag.
+-option(
+-    env="WINSYSROOT",
+-    nargs=1,
+-    when=is_windows,
+-    help='Path to a Windows "sysroot" (directory containing MSVC, SDKs)',
+-)
+-
+-
+-@depends(
+-    "WINSYSROOT",
+-    bootstrap_path(
+-        "vs",
+-        when=depends("WINSYSROOT", when=is_windows)(lambda x: not x),
+-    ),
+-    when=is_windows,
+-)
+-def winsysroot(winsysroot, bootstrapped):
+-    if bootstrapped:
+-        return bootstrapped
+-    if winsysroot:
+-        return winsysroot[0]
+-
+-
+-option(
+-    env="VC_PATH",
+-    nargs=1,
+-    when=is_windows,
+-    help="Path to the Microsoft Visual C/C++ compiler",
+-)
+-
+-
+-@depends(
+-    host,
+-    build_environment,
+-    "VC_PATH",
+-    winsysroot,
+-    when=is_windows,
+-)
+-@imports("os")
+-@imports(_from="operator", _import="itemgetter")
+-def vc_compiler_paths_for_version(host, env, vc_path, winsysroot):
+-    if winsysroot:
+-        if vc_path:
+-            die("WINSYSROOT and VC_PATH cannot be set together.")
+-        base_vc_path = os.path.join(winsysroot, "VC", "Tools", "MSVC")
+-        versions = os.listdir(base_vc_path)
+-        vc_path = [os.path.join(base_vc_path, str(max(Version(v) for v in versions)))]
+-    if vc_path:
+-        # Use an arbitrary version, it doesn't matter.
+-        all_versions = [(Version("15"), vc_path[0])]
+-    elif host.kernel != "WINNT":
+-        # Don't try to do anything when VC_PATH is not set on cross-compiles.
+-        return
+-    else:
+-        all_versions = sorted(get_vc_paths(host, env.topsrcdir), key=itemgetter(0))
+-    if not all_versions:
+-        return
+-    # Choose the newest version.
+-    path = all_versions[-1][1]
+-    host_dir = {
+-        "x86_64": "Hostx64",
+-        "x86": "Hostx86",
+-        "aarch64": "Hostarm64",
+-    }.get(host.cpu)
+-    if host_dir:
+-        path = os.path.join(path, "bin", host_dir)
+-        return {
+-            "x64": [os.path.join(path, "x64")],
+-            # The cross toolchains require DLLs from the native x64 toolchain.
+-            "x86": [os.path.join(path, "x86"), os.path.join(path, "x64")],
+-            "arm64": [os.path.join(path, "arm64"), os.path.join(path, "x64")],
+-        }
+-
+-
+-@depends(target, host, vc_compiler_paths_for_version, when=is_windows)
+-def vc_compiler_path(target, host, paths):
+-    cpu = target.cpu if target.os == "WINNT" else host.cpu
+-    vc_target = {
+-        "x86": "x86",
+-        "x86_64": "x64",
+-        "arm": "arm",
+-        "aarch64": "arm64",
+-    }.get(cpu)
+-    if not paths:
+-        return
+-    return paths.get(vc_target)
+-
+-
+-@depends(vc_compiler_path, original_path)
+-@imports("os")
+-@imports(_from="os", _import="environ")
+-def vc_toolchain_search_path(vc_compiler_path, original_path):
+-    result = list(original_path)
+-
+-    if vc_compiler_path:
+-        # The second item, if there is one, is necessary to have in $PATH for
+-        # Windows to load the required DLLs from there.
+-        if len(vc_compiler_path) > 1:
+-            environ["PATH"] = os.pathsep.join(result + vc_compiler_path[1:])
+-
+-        # The first item is where the programs are going to be
+-        result.append(vc_compiler_path[0])
+-
+-    return result
+-
+-
+-@depends_if(vc_compiler_path, when=is_windows)
+-def vc_compiler_version(vc_compiler_path):
+-    version = Version(
+-        os.path.basename(
+-            os.path.dirname(os.path.dirname(os.path.dirname(vc_compiler_path[0])))
+-        )
+-    )
+-    # MSVC path with version 14.x is actually version 19.x
+-    if version.major == 14:
+-        return Version(f"19.{version.minor}")
+-
+-
+-@depends_if(vc_compiler_version)
+-def msvs_version(vc_compiler_version):
+-    # clang-cl emulates the same version scheme as cl. And MSVS_VERSION needs to
+-    # be set for GYP on Windows.
+-    if vc_compiler_version >= Version("19.30"):
+-        return "2022"
+-    configure_error("Only Visual Studio 2022 or newer are supported")
+-
+-    return ""
+-
+-
+-set_config("MSVS_VERSION", msvs_version)
+-
+-with only_when(target_is_windows):
+-
+-    @depends(target)
+-    def dxc_task_name(target):
+-        return "dxc-" + target.cpu + "-pc-windows-msvc"
+-
+-    @depends_if(bootstrap_path(dxc_task_name))
+-    def dxc_dll_path(bootstrap):
+-        return os.path.join(bootstrap, "dxcompiler.dll")
+-
+-
+ clang_search_path = bootstrap_search_path("clang/bin")
+ 
+ 
+@@ -1935,7 +1759,7 @@ def select_linker_tmpl(host_or_target):
+             dependable(None),
+             host_c_compiler,
+             developer_options,
+-            dependable(None),
++            dependable([]),
+             host,
+             stdcxx_compat,
+             when=is_not_winnt_or_sunos(host_or_target),
+@@ -1981,9 +1805,7 @@ def select_linker_tmpl(host_or_target):
+                 linker_flag = ["-fuse-ld=" + linker]
+             else:
+                 linker_flag = []
+-            cmd = cmd_base + linker_flag + version_check
+-            if toolchain_flags:
+-                cmd += toolchain_flags
++            cmd = cmd_base + linker_flag + version_check + toolchain_flags
+ 
+             # ld64 doesn't have anything to print out a version. It does print out
+             # "ld64: For information on command line options please use 'man ld'."
+@@ -3250,9 +3072,7 @@ def gnu_as(assembler, c_compiler, toolchain_flags):
+         return True
+ 
+     if c_compiler.type == "gcc":
+-        cmd = [assembler] + c_compiler.flags
+-        if toolchain_flags:
+-            cmd += toolchain_flags
++        cmd = [assembler] + c_compiler.flags + toolchain_flags
+         cmd += ["-Wa,--version", "-c", "-o", devnull, "-x", "assembler", "-"]
+         # We don't actually have to provide any input on stdin, `Popen.communicate` will
+         # close the stdin pipe.
+@@ -3709,7 +3529,7 @@ def ar_supports_response_files(c_compiler, extra_toolchain_flags, ar, ar_config)
+                 [c_compiler.compiler] + c_compiler.flags,
+                 c_compiler.language,
+                 "void foo() {}",
+-                ["-c", "-o", obj_path] + (extra_toolchain_flags or []),
++                ["-c", "-o", obj_path] + extra_toolchain_flags,
+                 wrapper=c_compiler.wrapper,
+                 onerror=lambda: None,
+             )
+diff --git a/build/moz.configure/windows-toolchain.configure b/build/moz.configure/windows-toolchain.configure
+new file mode 100644
+index 0000000..6fbd42d
+--- /dev/null
++++ b/build/moz.configure/windows-toolchain.configure
+@@ -0,0 +1,262 @@
++# -*- Mode: python; c-basic-offset: 4; indent-tabs-mode: nil; tab-width: 40 -*-
++# vim: set filetype=python:
++# This Source Code Form is subject to the terms of the Mozilla Public
++# License, v. 2.0. If a copy of the MPL was not distributed with this
++# file, You can obtain one at http://mozilla.org/MPL/2.0/.
++@imports("glob")
++def get_sdk_dirs(sdk, subdir):
++    def get_dirs_containing(sdk, stem, subdir):
++        return [
++            os.path.dirname(p) for p in glob.glob(os.path.join(sdk, stem, "*", subdir))
++        ]
++
++    def categorize(dirs):
++        return {os.path.basename(d): d for d in dirs}
++
++    include_dirs = categorize(get_dirs_containing(sdk, "Include", subdir))
++    lib_dirs = categorize(get_dirs_containing(sdk, "Lib", subdir))
++
++    valid_versions = sorted(set(include_dirs) & set(lib_dirs), reverse=True)
++    return [
++        namespace(
++            path=sdk,
++            lib=lib_dirs[vv],
++            include=include_dirs[vv],
++        )
++        for vv in valid_versions
++    ]
++
++
++option(
++    "--with-windows-version",
++    nargs=1,
++    default="603",
++    help="Windows SDK version to target. Win 8.1 (603) is currently "
++    "the minimum supported version",
++)
++
++
++@depends("--with-windows-version")
++@imports(_from="__builtin__", _import="ValueError")
++def valid_windows_version(value):
++    if not value:
++        die("Cannot build with --without-windows-version")
++    try:
++        version = int(value[0], 16)
++        if version in (0x603,):
++            return version
++    except ValueError:
++        pass
++
++    die("Invalid value for --with-windows-version (%s)", value[0])
++
++
++option(env="WINDOWSSDKDIR", nargs=1, help="Directory containing the Windows SDK")
++
++# Calling this a sysroot is a little weird, but it's the terminology clang went
++# with with its -winsysroot flag.
++option(
++    env="WINSYSROOT",
++    nargs=1,
++    help='Path to a Windows "sysroot" (directory containing MSVC, SDKs)',
++)
++
++
++@depends(
++    "WINSYSROOT",
++    bootstrap_path(
++        "vs",
++        when=depends("WINSYSROOT")(lambda x: not x),
++    ),
++)
++def winsysroot(winsysroot, bootstrapped):
++    if bootstrapped:
++        return bootstrapped
++    if winsysroot:
++        return winsysroot[0]
++
++
++@imports(_from="__builtin__", _import="open")
++@imports(_from="mozfile", _import="json")
++@imports("os")
++def get_vc_paths(host, topsrcdir):
++    def vswhere(args):
++        program_files = os.environ.get("PROGRAMFILES(X86)") or os.environ.get(
++            "PROGRAMFILES"
++        )
++        if not program_files:
++            return []
++        vswhere = os.path.join(
++            program_files, "Microsoft Visual Studio", "Installer", "vswhere.exe"
++        )
++        if not os.path.exists(vswhere):
++            return []
++        return json.loads(check_cmd_output(vswhere, "-format", "json", *args))
++
++    variant = "arm64" if host.cpu == "aarch64" else "x86.x64"
++    for install in vswhere(
++        [
++            "-products",
++            "*",
++            "-requires",
++            f"Microsoft.VisualStudio.Component.VC.Tools.{variant}",
++        ]
++    ):
++        path = install["installationPath"]
++        tools_version = (
++            open(
++                os.path.join(
++                    path, r"VC\Auxiliary\Build\Microsoft.VCToolsVersion.default.txt"
++                ),
++                "r",
++            )
++            .read()
++            .strip()
++        )
++        tools_path = os.path.join(path, r"VC\Tools\MSVC", tools_version)
++        yield (Version(install["installationVersion"]), tools_path)
++
++
++option(
++    env="VC_PATH",
++    nargs=1,
++    help="Path to the Microsoft Visual C/C++ compiler",
++)
++
++
++@depends(
++    host,
++    build_environment,
++    "VC_PATH",
++    winsysroot,
++)
++@imports("os")
++@imports(_from="operator", _import="itemgetter")
++def vc_compiler_paths_for_version(host, env, vc_path, winsysroot):
++    if winsysroot:
++        if vc_path:
++            die("WINSYSROOT and VC_PATH cannot be set together.")
++        base_vc_path = os.path.join(winsysroot, "VC", "Tools", "MSVC")
++        versions = os.listdir(base_vc_path)
++        vc_path = [os.path.join(base_vc_path, str(max(Version(v) for v in versions)))]
++    if vc_path:
++        # Use an arbitrary version, it doesn't matter.
++        all_versions = [(Version("15"), vc_path[0])]
++    elif host.kernel != "WINNT":
++        # Don't try to do anything when VC_PATH is not set on cross-compiles.
++        return
++    else:
++        all_versions = sorted(get_vc_paths(host, env.topsrcdir), key=itemgetter(0))
++    if not all_versions:
++        return
++    # Choose the newest version.
++    path = all_versions[-1][1]
++    host_dir = {
++        "x86_64": "Hostx64",
++        "x86": "Hostx86",
++        "aarch64": "Hostarm64",
++    }.get(host.cpu)
++    if host_dir:
++        path = os.path.join(path, "bin", host_dir)
++        return {
++            "x64": [os.path.join(path, "x64")],
++            # The cross toolchains require DLLs from the native x64 toolchain.
++            "x86": [os.path.join(path, "x86"), os.path.join(path, "x64")],
++            "arm64": [os.path.join(path, "arm64"), os.path.join(path, "x64")],
++        }
++
++
++@depends(target, host, vc_compiler_paths_for_version)
++def vc_compiler_path(target, host, paths):
++    cpu = target.cpu if target.os == "WINNT" else host.cpu
++    vc_target = {
++        "x86": "x86",
++        "x86_64": "x64",
++        "arm": "arm",
++        "aarch64": "arm64",
++    }.get(cpu)
++    if not paths:
++        return
++    return paths.get(vc_target)
++
++
++@depends(vc_compiler_path, original_path)
++@imports("os")
++@imports(_from="os", _import="environ")
++def vc_toolchain_search_path(vc_compiler_path, original_path):
++    result = list(original_path)
++
++    if vc_compiler_path:
++        # The second item, if there is one, is necessary to have in $PATH for
++        # Windows to load the required DLLs from there.
++        if len(vc_compiler_path) > 1:
++            environ["PATH"] = os.pathsep.join(result + vc_compiler_path[1:])
++
++        # The first item is where the programs are going to be
++        result.append(vc_compiler_path[0])
++
++    return result
++
++
++@depends_if(vc_compiler_path)
++def vc_compiler_version(vc_compiler_path):
++    version = Version(
++        os.path.basename(
++            os.path.dirname(os.path.dirname(os.path.dirname(vc_compiler_path[0])))
++        )
++    )
++    # MSVC path with version 14.x is actually version 19.x
++    if version.major == 14:
++        return Version(f"19.{version.minor}")
++
++
++@depends_if(vc_compiler_version)
++def msvs_version(vc_compiler_version):
++    # clang-cl emulates the same version scheme as cl. And MSVS_VERSION needs to
++    # be set for GYP on Windows.
++    if vc_compiler_version >= Version("19.30"):
++        return "2022"
++    configure_error("Only Visual Studio 2022 or newer are supported")
++
++    return ""
++
++
++set_config("MSVS_VERSION", msvs_version)
++
++with only_when(target_is_windows):
++
++    @depends(target)
++    def dxc_task_name(target):
++        return "dxc-" + target.cpu + "-pc-windows-msvc"
++
++    @depends_if(bootstrap_path(dxc_task_name))
++    def dxc_dll_path(bootstrap):
++        return os.path.join(bootstrap, "dxcompiler.dll")
++
++
++@depends(vc_toolchain_search_path)
++@imports("os")
++def vc_path(vc_toolchain_search_path):
++    # In clang-cl builds, we need the headers and libraries from an MSVC installation.
++    vc_program = find_program("cl.exe", paths=vc_toolchain_search_path)
++    if not vc_program:
++        die("Cannot find a Visual C++ install for e.g. ATL headers.")
++
++    result = os.path.dirname(vc_program)
++    while True:
++        next, p = os.path.split(result)
++        if next == result:
++            die(
++                "Cannot determine the Visual C++ directory the compiler (%s) "
++                "is in" % vc_program
++            )
++        result = next
++        if p.lower() == "bin":
++            break
++    return os.path.normpath(result)
++
++
++@depends(vc_path)
++@imports("os")
++def windows_toolchain_flags(vc_path):
++    return [f"-I{os.path.join(vc_path, 'include')}"]
+diff --git a/build/moz.configure/windows.configure b/build/moz.configure/windows.configure
+index e17109e..bc27c75 100644
+--- a/build/moz.configure/windows.configure
++++ b/build/moz.configure/windows.configure
+@@ -4,32 +4,6 @@
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
+-option(
+-    "--with-windows-version",
+-    nargs=1,
+-    default="603",
+-    help="Windows SDK version to target. Win 8.1 (603) is currently "
+-    "the minimum supported version",
+-)
+-
+-
+-@depends("--with-windows-version")
+-@imports(_from="__builtin__", _import="ValueError")
+-def valid_windows_version(value):
+-    if not value:
+-        die("Cannot build with --without-windows-version")
+-    try:
+-        version = int(value[0], 16)
+-        if version in (0x603,):
+-            return version
+-    except ValueError:
+-        pass
+-
+-    die("Invalid value for --with-windows-version (%s)", value[0])
+-
+-
+-option(env="WINDOWSSDKDIR", nargs=1, help="Directory containing the Windows SDK")
+-
+ 
+ @depends(
+     "WINDOWSSDKDIR", "WINSYSROOT", winsysroot, target_windows_abi, host_windows_abi
+@@ -59,30 +33,6 @@ def windows_sdk_dir(
+     )
+ 
+ 
+-@imports("glob")
+-def get_sdk_dirs(sdk, subdir):
+-    def get_dirs_containing(sdk, stem, subdir):
+-        return [
+-            os.path.dirname(p) for p in glob.glob(os.path.join(sdk, stem, "*", subdir))
+-        ]
+-
+-    def categorize(dirs):
+-        return {os.path.basename(d): d for d in dirs}
+-
+-    include_dirs = categorize(get_dirs_containing(sdk, "Include", subdir))
+-    lib_dirs = categorize(get_dirs_containing(sdk, "Lib", subdir))
+-
+-    valid_versions = sorted(set(include_dirs) & set(lib_dirs), reverse=True)
+-    return [
+-        namespace(
+-            path=sdk,
+-            lib=lib_dirs[vv],
+-            include=include_dirs[vv],
+-        )
+-        for vv in valid_versions
+-    ]
+-
+-
+ @imports(_from="mozshellutil", _import="quote")
+ def valid_windows_sdk_dir_result(value):
+     if value:
+@@ -259,31 +209,6 @@ def valid_ucrt_sdk_dir(
+     )
+ 
+ 
+-@depends(target_windows_abi, host_windows_abi, vc_toolchain_search_path)
+-@imports("os")
+-def vc_path(target_windows_abi, host_windows_abi, vc_toolchain_search_path):
+-    if target_windows_abi != "msvc" and host_windows_abi != "msvc":
+-        return
+-
+-    # In clang-cl builds, we need the headers and libraries from an MSVC installation.
+-    vc_program = find_program("cl.exe", paths=vc_toolchain_search_path)
+-    if not vc_program:
+-        die("Cannot find a Visual C++ install for e.g. ATL headers.")
+-
+-    result = os.path.dirname(vc_program)
+-    while True:
+-        next, p = os.path.split(result)
+-        if next == result:
+-            die(
+-                "Cannot determine the Visual C++ directory the compiler (%s) "
+-                "is in" % vc_program
+-            )
+-        result = next
+-        if p.lower() == "bin":
+-            break
+-    return os.path.normpath(result)
+-
+-
+ @depends(vc_path, valid_windows_sdk_dir, valid_ucrt_sdk_dir)
+ @imports("os")
+ def include_path(vc_path, windows_sdk_dir, ucrt_sdk_dir):
+diff --git a/toolkit/moz.configure b/toolkit/moz.configure
+index e1754ee..5aa90d2 100644
+--- a/toolkit/moz.configure
++++ b/toolkit/moz.configure
+@@ -1735,7 +1735,7 @@ with only_when("--enable-compile-environment"):
+                     "int main() { return 0; }\nint (*ptr)() = main;",
+                     pack_rel_relocs
+                     + ["-pie", "-o", path]
+-                    + (extra_toolchain_flags or [])
++                    + extra_toolchain_flags
+                     + linker_ldflags,
+                     wrapper=c_compiler.wrapper,
+                     onerror=lambda: None,
