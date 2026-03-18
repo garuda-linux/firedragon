@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.9) — 2026-03-18 — [`v13.0.0-beta.8`…`v13.0.0-beta.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.8...v13.0.0-beta.9)
+
+### 🚀 Features
+
+- _(app/distribution)_ Add Kagi search engine — [`49865a62…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/49865a626aee92583830609c9a09e9cf890789e0)
+- _(app/config)_ Unset default for separate private default search engine — [`21a3dae4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/21a3dae4954f9ae1cc2f10d95e6770fbaa4ae4f7)
+- _(builtin-addons/welcome)_ Add ability to select separate private search engine — [`1310f064…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1310f064b1d4595801a349643da12094c79035e7)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 148.0.2 — [`2478cc1b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2478cc1b8ed2db1fdf333822bd170203c7528f2a)
+
 ## [FireDragon v13.0.0-beta.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.8) — 2026-03-16 — [`v13.0.0-beta.7`…`v13.0.0-beta.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.7...v13.0.0-beta.8)
 
 ### 🐛 Bug Fixes
