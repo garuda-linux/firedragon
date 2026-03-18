@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-beta.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.10) — 2026-03-18 — [`v13.0.0-beta.9`…`v13.0.0-beta.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.9...v13.0.0-beta.10)
+
+### 🐛 Bug Fixes
+
+- _(make)_ Fix update url — [`e6d8135b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e6d8135b258d5033548e5cc56039208e6872d79e)
+- _(modules)_ Use console.log instead of console.info for logging in ConfigLoader — [`dcc3da5e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dcc3da5e17e74f332528b3950e29268ffc8bb704)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(app/config)_ Update librewolf preset — [`220078c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/220078c6fd52fab468124aba12268f1f8796d945)
+- _(patches)_ Update librewolf patches — [`a845e2c4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a845e2c44c2d96d854cf663a501cfe322b338ad5)
+- _(mozconfig)_ Update from librewolf — [`4747133f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4747133f78beb670a82b1c1d72eacdf9ee244db1)
+- Update deps — [`8cdcbb70…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8cdcbb703beb019ed8cd7215a3ea36f1c42ccaed)
+
 ## [FireDragon v13.0.0-beta.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.9) — 2026-03-18 — [`v13.0.0-beta.8`…`v13.0.0-beta.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.8...v13.0.0-beta.9)
 
 ### 🚀 Features
