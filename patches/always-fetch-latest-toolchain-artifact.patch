@@ -1,0 +1,36 @@
+diff --git a/python/mozbuild/mozbuild/artifact_commands.py b/python/mozbuild/mozbuild/artifact_commands.py
+index 5fbdd8d..1ae96b2 100644
+--- a/python/mozbuild/mozbuild/artifact_commands.py
++++ b/python/mozbuild/mozbuild/artifact_commands.py
+@@ -433,19 +433,19 @@ def artifact_toolchain(
+                 return 1
+ 
+             artifact_name = task.attributes.get(f"{task.kind}-artifact")
+-            command_context.log(
+-                logging.DEBUG,
+-                "artifact",
+-                {
+-                    "name": artifact_name,
+-                    "index": task.optimization.get("index-search"),
+-                },
+-                "Searching for {name} in {index}",
+-            )
+-            deadline = None
+-            task_id = IndexSearch().should_replace_task(
+-                task, {}, deadline, task.optimization.get("index-search", [])
++            # Get the latest toolchain artifact from mozilla-central instead of
++            # the toolchain artifact for our current checkout by retrieving the
++            # task id of the task building the toolchain artifact from the
++            # latest mozilla-central decision task. Using
++            # index.findArtifactFromTask for this would be nicer instead of
++            # hardcoding the URL, but that doesn't follow redirects, so here we
++            # are.
++            label_to_taskid_response = requests.get(
++                "https://firefox-ci-tc.services.mozilla.com/api/index/v1/task/gecko.v2.mozilla-central.latest.taskgraph.decision/artifacts/public%2Flabel-to-taskid.json"
+             )
++            label_to_taskid_response.raise_for_status()
++            label_to_taskid = label_to_taskid_response.json()
++            task_id = label_to_taskid.get(task.label)
+             if task_id in (True, False) or not artifact_name:
+                 command_context.log(
+                     logging.ERROR,

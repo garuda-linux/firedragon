@@ -1,3 +1,6 @@
+permissions-webgl2 =
+    .label = WebGL
+
 firedragon-settings =
     .tooltiptext = FireDragon Settings
 

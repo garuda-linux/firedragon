@@ -1,0 +1,167 @@
+diff --git a/browser/base/content/main-popupset.inc.xhtml b/browser/base/content/main-popupset.inc.xhtml
+index 78030413c4..301e5afabf 100644
+--- a/browser/base/content/main-popupset.inc.xhtml
++++ b/browser/base/content/main-popupset.inc.xhtml
+@@ -782,6 +782,8 @@
+               checked="false"
+               autocheck="false"
+               id="translations-panel-settings-never-translate-site"/>
++    <menuitem data-l10n-id="translations-panel-disable-translations"
++              id="translations-panel-disable-translations"/>
+     <menuseparator/>
+     <menuitem class="manage-languages-menuitem"
+               data-l10n-id="translations-panel-settings-manage-languages"
+diff --git a/browser/base/content/main-popupset.js b/browser/base/content/main-popupset.js
+index 244ff30700..57a0d5a598 100644
+--- a/browser/base/content/main-popupset.js
++++ b/browser/base/content/main-popupset.js
+@@ -346,6 +346,9 @@ document.addEventListener(
+         case "translations-panel-settings-never-translate-site":
+           FullPageTranslationsPanel.onNeverTranslateSite();
+           break;
++        case "translations-panel-disable-translations":
++          FullPageTranslationsPanel.openDisableTranslations();
++          break;
+         case "translations-panel-manage-languages":
+           FullPageTranslationsPanel.openManageLanguages();
+           break;
+diff --git a/browser/components/preferences/main.inc.xhtml b/browser/components/preferences/main.inc.xhtml
+index ff577c035f..3b07de78a6 100644
+--- a/browser/components/preferences/main.inc.xhtml
++++ b/browser/components/preferences/main.inc.xhtml
+@@ -28,6 +28,7 @@
+ 
+   <vbox id="startupPageBox">
+     <html:setting-group groupid="startup"/>
++    <html:a is="moz-support-link" support-page="session-restore" data-l10n-id="session-restore-learn-more" />
+   </vbox>
+ 
+ </groupbox>
+@@ -233,9 +234,17 @@
+           preference="layout.spellcheckDefault"/>
+ 
+   <!-- This Translations UI is the pre-settings-redesign UI and should be removed
+        when getting ready for the settings redesign to fully ship. -->
+-  <vbox id="translationsGroup" data-srd-groupid="translations" hidden="true" data-subcategory="translations">
++  <vbox id="translationsGroup" data-srd-groupid="translations" data-subcategory="translations">
+     <label><html:h2 data-l10n-id="translations-manage-header"/></label>
++    <checkbox id="translations-manage-enable" 
++          data-l10n-id="translations-manage-enable" 
++          preference="browser.translations.enable"
++          data-subcategory="translations-enable" />
++    <vbox id="innerTranslationsGroup" hidden="true">
++    <checkbox id="translations-manage-autopopup" 
++              data-l10n-id="translations-manage-autopopup" 
++              preference="browser.translations.automaticallyPopup" />
+     <hbox id="translations-manage-description" align="center">
+       <description flex="1" data-l10n-id="translations-manage-intro-2"/>
+       <button id="translations-manage-settings-button"
+@@ -255,6 +264,7 @@
+       <description id="translations-manage-error" hidden="true"></description>
+     </vbox>
++    </vbox>
+   </vbox>
+ </groupbox>
+ 
+ <!-- Files and Applications -->
+diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
+index 3720de1..c348d6f 100644
+--- a/browser/components/preferences/main.js
++++ b/browser/components/preferences/main.js
+@@ -237,6 +237,7 @@ Preferences.addAll([
+ 
+   // Translations
+   { id: "browser.translations.automaticallyPopup", type: "bool" },
++  { id: "browser.translations.enable", type: "bool" },
+ ]);
+ 
+ if (AppConstants.HAVE_SHELL_SERVICE) {
+@@ -4916,6 +4917,10 @@ var gMainPane = {
+       document.getElementById("checkSpelling"),
+       () => this.writeCheckSpelling()
+     );
++    Preferences.addSyncFromPrefListener(
++      document.getElementById("translations-manage-enable"),
++      () => this.readEnableTranslations()
++    );
+     this.setInitialized();
+   },
+ 
+@@ -5034,39 +5039,36 @@ var gMainPane = {
+     button.disabled = !preference.value;
+     return undefined;
+   },
++  
++  readEnableTranslations(skipInit = false) {
++    const translationsEnabled = Preferences.get("browser.translations.enable").value;
++    document.getElementById("innerTranslationsGroup").hidden = !translationsEnabled;
++    if (!this._translationsInitialized && !skipInit)
++      this.initTranslations();
++  },
++
++  _translationsInitialized: false,
++
+ 
+   /**
+    * Initialize the translations view.
+    */
+   async initTranslations() {
+-    let legacyTranslationsVisible = Preferences.getSetting(
+-      "legacyTranslationsVisible"
+-    );
++    this.readEnableTranslations(true);
++    
++    if (!Services.prefs.getBoolPref("browser.translations.enable")) {
++       return;
++    }
++    
++    this._translationsInitialized = true;
++    
+     /**
+      * Which phase a language download is in.
+      *
+      * @typedef {"downloaded" | "loading" | "uninstalled"} DownloadPhase
+      */
+ 
+-    let translationsGroup = document.getElementById("translationsGroup");
+-    let setTranslationsGroupVisbility = () => {
+-      // Immediately show the group so that the async load of the component does
+-      // not cause the layout to jump. The group will be empty initially.
+-      translationsGroup.hidden = !legacyTranslationsVisible.visible;
+-      translationsGroup.classList.toggle(
+-        "setting-hidden",
+-        translationsGroup.hidden
+-      );
+-    };
+-    setTranslationsGroupVisbility();
+ 
+-    legacyTranslationsVisible.on("change", setTranslationsGroupVisbility);
+-    window.addEventListener(
+-      "unload",
+-      () =>
+-        legacyTranslationsVisible.off("change", setTranslationsGroupVisbility),
+-      { once: true }
+-    );
+ 
+     class TranslationsState {
+       /**
+diff --git a/browser/components/translations/content/fullPageTranslationsPanel.js b/browser/components/translations/content/fullPageTranslationsPanel.js
+index f437dce2be..b7756bdc4c 100644
+--- a/browser/components/translations/content/fullPageTranslationsPanel.js
++++ b/browser/components/translations/content/fullPageTranslationsPanel.js
+@@ -1298,6 +1298,15 @@ var FullPageTranslationsPanel = new (class {
+     );
+   }
+ 
++  openDisableTranslations() {
++    const window =
++      gBrowser.selectedBrowser.browsingContext.top.embedderElement.ownerGlobal;
++    window.openTrustedLinkIn(
++      "about:preferences#general-translations-enable",
++      "tab"
++    );
++  }
++
+   /**
+    * Redirect the user to about:preferences
+    */

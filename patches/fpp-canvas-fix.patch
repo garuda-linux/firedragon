@@ -1,8 +1,19 @@
 diff --git a/dom/canvas/CanvasRenderingContext2D.cpp b/dom/canvas/CanvasRenderingContext2D.cpp
-index ee186c2..ec57312 100644
+index 7aaa3a6f82a9..dbd67196e375 100644
 --- a/dom/canvas/CanvasRenderingContext2D.cpp
 +++ b/dom/canvas/CanvasRenderingContext2D.cpp
-@@ -6554,7 +6554,8 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
+@@ -2285,7 +2285,9 @@ UniquePtr<uint8_t[]> CanvasRenderingContext2D::GetImageBuffer(
+         PrincipalOrNull(), ret.get(), out_imageSize->width,
+         out_imageSize->height,
+         out_imageSize->width * out_imageSize->height * 4);
+-    if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize) {
++    if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize ||
++        aExtractionBehavior ==
++            CanvasUtils::ImageExtraction::EfficientRandomize) {
+       nsRFPService::RandomizePixels(
+           GetCookieJarSettings(), PrincipalOrNull(), ret.get(),
+           out_imageSize->width, out_imageSize->height,
+@@ -6612,7 +6614,8 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
    //
    // Note that we don't need to clone if we will use the place holder because
    // the place holder doesn't use actual image data.
@@ -12,7 +23,7 @@ index ee186c2..ec57312 100644
      if (readback) {
        readback = CreateDataSourceSurfaceByCloning(readback);
      }
-@@ -6572,7 +6573,9 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
+@@ -6634,7 +6637,9 @@ nsresult CanvasRenderingContext2D::GetImageDataArray(
        // service) after we call JS_GetUint8ClampedArrayData, we will
        // pre-generate the randomness required for GeneratePlaceholderCanvasData.
        randomData = TryToGenerateRandomDataForPlaceholderCanvasData();
@@ -24,10 +35,20 @@ index ee186c2..ec57312 100644
        // need to calculate random noises if we are going to use the place
        // holder.
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
-index 12492d6..e84280c 100644
+index a9e56030607f..06253c113a0c 100644
 --- a/dom/canvas/ClientWebGLContext.cpp
 +++ b/dom/canvas/ClientWebGLContext.cpp
-@@ -3632,7 +3632,9 @@ void ClientWebGLContext::GetBufferSubData(GLenum target, GLintptr srcByteOffset,
+@@ -1362,7 +1362,8 @@ UniquePtr<uint8_t[]> ClientWebGLContext::GetImageBuffer(
+   *out_imageSize = dataSurface->GetSize();
+ 
+   nsRFPService::PotentiallyDumpImage(PrincipalOrNull(), dataSurface);
+-  if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize) {
++  if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize ||
++      aExtractionBehavior == CanvasUtils::ImageExtraction::EfficientRandomize) {
+     return gfxUtils::GetImageBufferWithRandomNoise(
+         dataSurface, premultAlpha, GetCookieJarSettings(), PrincipalOrNull(),
+         out_format);
+@@ -3632,7 +3633,9 @@ void ClientWebGLContext::GetBufferSubData(GLenum target, GLintptr srcByteOffset,
        if (extraction == CanvasUtils::ImageExtraction::Placeholder) {
          dom::GeneratePlaceholderCanvasData(destView->size_bytes(),
                                             destView->Elements());
@@ -38,7 +59,7 @@ index 12492d6..e84280c 100644
          // We have no idea what's in the buffer. So, we randomize it as if each
          // elemSize bytes is a single element.
          uint8_t elementsPerGroup = 1,
-@@ -5391,7 +5393,8 @@ void ClientWebGLContext::ReadPixels(GLint x, GLint y, GLsizei width,
+@@ -5391,7 +5394,8 @@ void ClientWebGLContext::ReadPixels(GLint x, GLint y, GLsizei width,
        } else {
          RecordCanvasUsage(CanvasExtractionAPI::ReadPixels,
                            CSSIntSize(width, height));
@@ -48,6 +69,20 @@ index 12492d6..e84280c 100644
            const auto pii = webgl::PackingInfoInfo::For(desc.pi);
            // DoReadPixels() requres pii to be Some().
            MOZ_ASSERT(pii.isSome());
+diff --git a/dom/canvas/OffscreenCanvasDisplayHelper.cpp b/dom/canvas/OffscreenCanvasDisplayHelper.cpp
+index fddca1cd46f6..4dafeeaf0c7e 100644
+--- a/dom/canvas/OffscreenCanvasDisplayHelper.cpp
++++ b/dom/canvas/OffscreenCanvasDisplayHelper.cpp
+@@ -615,7 +615,8 @@ UniquePtr<uint8_t[]> OffscreenCanvasDisplayHelper::GetImageBuffer(
+       principal, imageBuffer.get(), dataSurface->GetSize().width,
+       dataSurface->GetSize().height,
+       dataSurface->GetSize().width * dataSurface->GetSize().height * 4);
+-  if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize) {
++  if (aExtractionBehavior == CanvasUtils::ImageExtraction::Randomize ||
++      aExtractionBehavior == CanvasUtils::ImageExtraction::EfficientRandomize) {
+     nsRFPService::RandomizePixels(
+         cookieJarSettings, principal, imageBuffer.get(),
+         dataSurface->GetSize().width, dataSurface->GetSize().height,
 diff --git a/toolkit/components/resistfingerprinting/nsRFPService.cpp b/toolkit/components/resistfingerprinting/nsRFPService.cpp
 index 9554fbb..0c1e380 100644
 --- a/toolkit/components/resistfingerprinting/nsRFPService.cpp

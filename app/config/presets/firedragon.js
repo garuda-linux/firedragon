@@ -150,7 +150,6 @@ unsetDefault("browser.formfill.enable");
 unsetDefault("privacy.resistFingerprinting");
 
 /** [SECTION] WEBGL */
-defaultPref("webgl.disabled", true);
 
 /** ------------------------------
  * [CATEGORY] SECURITY

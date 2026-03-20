@@ -1,3 +1,8 @@
+urlbar-webgl-notification-anchor =
+    .tooltiptext = Manage WebGL context creation permission
+urlbar-webgl-blocked =
+    .tooltiptext = You have blocked WebGL context creation for this website.
+
 firedragon-undo-close-tab =
     .label = Undo Close Tab
     .tooltiptext = Undo Close Tab
