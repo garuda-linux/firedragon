@@ -1,7 +1,6 @@
 import { effect, shallowRef } from '@vue/reactivity';
 
 import { useBoolPref } from '@/composables/usePref';
-import { t } from '@/utils/i18n';
 import { h, insertBefore } from '@/utils/render.ts';
 
 document!.addEventListener(
@@ -15,7 +14,7 @@ document!.addEventListener(
             'xul:menu',
             {
                 id: 'context_MoveTabToWindow',
-                label: t('browser.moveTabToWindow.label'),
+                'data-lazy-l10n-id': 'firedragon-move-tab-to-window',
             },
             [menupopup],
         );

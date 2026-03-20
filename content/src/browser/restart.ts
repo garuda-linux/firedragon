@@ -1,4 +1,3 @@
-import { t } from '@/utils/i18n.ts';
 import { h, insertBefore } from '@/utils/render.ts';
 
 document!.addEventListener(
@@ -12,7 +11,7 @@ document!.addEventListener(
                     h('xul:toolbarbutton', {
                         closemenu: 'none',
                         class: 'subviewbutton',
-                        label: t('browser.restart.normalRestart'),
+                        'data-l10n-id': 'firedragon-restart',
                         on: {
                             command() {
                                 Services.startup.quit(Ci.nsIAppStartup.eForceQuit! | Ci.nsIAppStartup.eRestart!);
@@ -23,7 +22,7 @@ document!.addEventListener(
                     h('xul:toolbarbutton', {
                         closemenu: 'none',
                         class: 'subviewbutton',
-                        label: t('browser.restart.clearCacheRestart'),
+                        'data-l10n-id': 'firedragon-restart-clear-cache',
                         on: {
                             command() {
                                 Services.appinfo.invalidateCachesOnRestart();
@@ -34,7 +33,7 @@ document!.addEventListener(
                     h('xul:toolbarbutton', {
                         closemenu: 'none',
                         class: 'subviewbutton',
-                        label: t('browser.restart.safeModeRestart'),
+                        'data-l10n-id': 'firedragon-restart-safe-mode',
                         on: {
                             command() {
                                 Services.obs.notifyObservers(window as nsISupports, 'restart-in-safe-mode');
@@ -49,7 +48,7 @@ document!.addEventListener(
             h('xul:toolbarbutton', {
                 closemenu: 'none',
                 class: 'subviewbutton subviewbutton-nav',
-                label: t('browser.restart.label'),
+                'data-l10n-id': 'firedragon-restart',
                 on: {
                     command(e: Event) {
                         window.PanelUI.showSubView('PanelUI-restart', e.target);

@@ -1,13 +1,10 @@
-import { t } from '@/utils/i18n';
-
 document!.addEventListener(
     'DOMContentLoaded',
     () => {
         window.CustomizableUI.createWidget({
             id: 'undo-close-tab',
             type: 'button',
-            label: t('browser.undoCloseTab.label'),
-            tooltiptext: t('browser.undoCloseTab.tooltiptext'),
+            l10nId: 'firedragon-undo-close-tab',
             removable: true,
             onCommand(event: XULCommandEvent) {
                 window.SessionWindowUI.undoCloseTab(event.view);

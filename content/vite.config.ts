@@ -1,7 +1,6 @@
 import { URL, fileURLToPath } from 'node:url';
 
 import { vite } from '@firedragon/build/vite';
-import vueI18n from '@intlify/unplugin-vue-i18n/vite';
 import { globby } from 'globby';
 import { type Plugin, defineConfig } from 'vite';
 
@@ -24,9 +23,6 @@ export default defineConfig(async ({ mode }) => ({
                     path: '%content/',
                 },
             ],
-        }),
-        vueI18n({
-            include: [fileURLToPath(new URL('./assets/locales/*', import.meta.url))],
         }),
         {
             name: 'firedragon/content/xhtml-fix',

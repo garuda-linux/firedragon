@@ -449,16 +449,10 @@ importers:
       '@vue/reactivity':
         specifier: ^3.5.30
         version: 3.5.30
-      vue-i18n:
-        specifier: ^11.3.0
-        version: 11.3.0(vue@3.5.30(typescript@5.9.3))
     devDependencies:
       '@firedragon/build':
         specifier: workspace:^
         version: link:../build
-      '@intlify/unplugin-vue-i18n':
-        specifier: ^11.0.7
-        version: 11.0.7(@vue/compiler-dom@3.5.30)(eslint@9.39.2(jiti@2.6.1))(rollup@4.59.0)(typescript@5.9.3)(vue-i18n@11.3.0(vue@3.5.30(typescript@5.9.3)))(vue@3.5.30(typescript@5.9.3))
       '@types/gecko':
         specifier: workspace:^
         version: link:../@types/gecko

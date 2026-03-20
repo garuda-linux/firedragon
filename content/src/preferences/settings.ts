@@ -1,5 +1,3 @@
-import { t } from '@/utils/i18n';
-
 const { BuiltinAddons } = ChromeUtils.importESModule(
     'resource://firedragon/modules/BuiltinAddons.sys.mjs',
 ) as typeof import('resource://firedragon/modules/BuiltinAddons.sys.mjs');
@@ -11,10 +9,11 @@ document!.addEventListener(
             <richlistitem
                 class="category"
                 align="center"
-                tooltiptext="${t('preferences.settings.tooltip')}"
+                data-l10n-id="firedragon-settings"
+                data-l10n-attrs="tooltiptext"
             >
                 <image class="category-icon" src="chrome://branding/content/about-logo.png" />
-                <label class="category-name" flex="1">${t('preferences.settings.label')}</label>
+                <label class="category-name" flex="1" data-l10n-id="firedragon-settings-title"></label>
             </richlistitem>
         `);
         fragment.querySelector('richlistitem')?.addEventListener('click', () => {
