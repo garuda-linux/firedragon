@@ -1,6 +1,7 @@
 ac_add_options --with-app-basename=FireDragon
 ac_add_options --with-app-name=firedragon
 ac_add_options --enable-application=browser
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --with-l10n-base=$(pwd)/browser/firedragon/l10n
 
 # Branding
 ac_add_options --allow-addon-sideload

@@ -103,6 +103,35 @@ async function source() {
 
     await $`echo -e ${version} > ${buildDir}/browser/config/version_display.txt`;
 
+    const l10nDir = `${buildDir}/${sourceDir}/l10n`,
+        locales = await $({ verbose: false })`cat ${buildDir}/browser/locales/l10n-changesets.json`.json();
+    for (const [locale, { revision }] of Object.entries(locales) as [string, { revision: string }][]) {
+        if (!(await fs.pathExists(`${cacheDir}/firefox-l10n-${revision}.tar.gz`))) {
+            await $`curl -fL https://github.com/mozilla-l10n/firefox-l10n/archive/${revision}.tar.gz -o ${tmpDir}/firefox-l10n-${revision}.tar.gz`;
+            await $`mv ${tmpDir}/firefox-l10n-${revision}.tar.gz ${cacheDir}/firefox-l10n-${revision}.tar.gz`;
+        }
+
+        if (!(await fs.pathExists(`${tmpDir}/firefox-l10n-${revision}`))) {
+            await $`mkdir -p ${tmpDir}/firefox-l10n-${revision}`;
+            await $`tar --strip-components=1 -xf ${cacheDir}/firefox-l10n-${revision}.tar.gz -C ${tmpDir}/firefox-l10n-${revision}`;
+        }
+
+        await $`mkdir -p ${l10nDir}/${locale}`;
+        await $`rsync -a ${tmpDir}/firefox-l10n-${revision}/${locale}/ ${l10nDir}/${locale}/`;
+    }
+
+    for (const inc of await glob(`**/*.inc.ftl`, { cwd: l10nDir })) {
+        let source = inc.replace(/\.inc\.ftl$/, '.ftl');
+        const [locale, category, ...rest] = source.split('/');
+        if (locale === 'en-US') {
+            source = `${buildDir}/${category}/locales/en-US/${rest.join('/')}`;
+            await $`cat ${source} ${l10nDir}/${inc} | sponge ${source}`;
+        } else {
+            await $`cat ${l10nDir}/${source} ${l10nDir}/${inc} | sponge ${l10nDir}/${source}`;
+        }
+        await $`rm ${l10nDir}/${inc}`;
+    }
+
     await $`tar --zstd -cf ${distDir}/${sourceBasename}${versionSuffix}.${sourceSuffix} -C ${tmpDir} ${basename}`;
 }
 
@@ -127,7 +156,7 @@ async function build() {
 
     await $`${buildDir}/mach build`;
 
-    await $`${buildDir}/mach package`;
+    await $`cat ${buildDir}/browser/locales/shipped-locales | xargs ${buildDir}/mach package-multi-locale --locales`;
 
     const objDistDir = `${buildDir}/${objDir}/dist`;
     const packageName = (await $`cat ${objDistDir}/package_name.txt`.lines())[0];
