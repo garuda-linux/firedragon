@@ -120,8 +120,8 @@ async function source() {
         await $`rsync -a ${tmpDir}/firefox-l10n-${revision}/${locale}/ ${l10nDir}/${locale}/`;
     }
 
-    for (const inc of await glob(`**/*.inc.ftl`, { cwd: l10nDir })) {
-        let source = inc.replace(/\.inc\.ftl$/, '.ftl');
+    for (const inc of await glob(`**/*.inc.{ftl,properties}`, { cwd: l10nDir })) {
+        let source = inc.replace(/\.inc\.(ftl|properties)$/, '.$1');
         const [locale, category, ...rest] = source.split('/');
         if (locale === 'en-US') {
             source = `${buildDir}/${category}/locales/en-US/${rest.join('/')}`;
