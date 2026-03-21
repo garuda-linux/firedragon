@@ -28,7 +28,7 @@
     <color type="primary" scheme_preference="light">#d281ca</color>
     <color type="primary" scheme_preference="dark">#d281ca</color>
   </branding>
-  <launchable type="desktop-id">org.garudalinux.firedragon.desktop</launchable>
+  <launchable type="desktop-id">firedragon.desktop</launchable>
   <categories>
     <category>Network</category>
     <category>WebBrowser</category>

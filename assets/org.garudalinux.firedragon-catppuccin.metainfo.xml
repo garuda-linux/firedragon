@@ -28,7 +28,7 @@
     <color type="primary" scheme_preference="light">#cba6f7</color>
     <color type="primary" scheme_preference="dark">#cba6f7</color>
   </branding>
-  <launchable type="desktop-id">org.garudalinux.firedragon-catppuccin.desktop</launchable>
+  <launchable type="desktop-id">firedragon.desktop</launchable>
   <categories>
     <category>Network</category>
     <category>WebBrowser</category>
