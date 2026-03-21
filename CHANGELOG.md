@@ -1,5 +1,27 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.0) — 2026-03-21 — [`v13.0.0-beta.10`…`v13.0.0-rc.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.10...v13.0.0-rc.0)
+
+### 🚀 Features
+
+- Add support for in-built l10n — [`a616883e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a616883e74a09d3a7f880dc977bb683dac5dddfc)
+- _(branding)_ Update pbmode icons — [`ab622cfc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ab622cfc87772d962a1f190d58883831f462a419)
+- _(make)_ Add support for properties files in l10n — [`831682b9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/831682b96304c0fb42aca0e33a85dc4bd0b5908c)
+
+### 🐛 Bug Fixes
+
+- _(assets)_ Generalize metainfo desktop file — [`4489fd88…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4489fd889e313fd75985ba0ef0fab874a1154fde)
+
+### 🚜 Refactor
+
+- Move localizations from content into l10n and remove vue-i18n — [`9d6de6a7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9d6de6a71488f07dd272787c51f59e2d11a419fa)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update & add librewolf patches with translations — [`e5662982…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e5662982afc6b478c774091ae062277738976668)
+- _(patches)_ Remove obsolete flatpak-autoconf.patch — [`44197610…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/44197610a4511f67b6f380e4bf2e8dfe58ee5bce)
+- _(patches)_ Add final newline to webgl-permission.patch — [`4cc189db…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4cc189db9f0e8fe4468bb04a39bb9dfb0bd0ac1d)
+
 ## [FireDragon v13.0.0-beta.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.10) — 2026-03-18 — [`v13.0.0-beta.9`…`v13.0.0-beta.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.9...v13.0.0-beta.10)
 
 ### 🐛 Bug Fixes
