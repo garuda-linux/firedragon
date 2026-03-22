@@ -6,6 +6,7 @@
     "./experiment-api/prefs": "./dist/experiment-api/prefs.mjs",
     "./types/keyboard-shortcuts": "./dist/types/keyboard-shortcuts.mjs",
     "./vue/createStorage": "./dist/vue/createStorage.mjs",
+    "./vue/toggleRefs": "./dist/vue/toggleRefs.mjs",
     "./vue/usePref": "./dist/vue/usePref.mjs",
     "./package.json": "./package.json"
   },

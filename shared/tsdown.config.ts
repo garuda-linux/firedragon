@@ -5,6 +5,7 @@ export default defineConfig({
         'src/experiment-api/prefs.ts',
         'src/types/keyboard-shortcuts.ts',
         'src/vue/createStorage.ts',
+        'src/vue/toggleRefs.ts',
         'src/vue/usePref.ts',
     ],
     dts: true,
