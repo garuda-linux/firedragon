@@ -66,10 +66,12 @@
     </p>
     <p>
         <q-checkbox v-model="suggest" :label="t('steps.search.suggest')" />
-        <br />
-        <q-checkbox v-model="suggestionsFirst" :label="t('steps.search.suggestionsFirst')" v-if="suggest" />
-        <br />
-        <q-checkbox v-model="suggestPrivate" :label="t('steps.search.suggestPrivate')" v-if="suggest" />
+        <template v-if="suggest">
+            <br />
+            <q-checkbox v-model="suggestionsFirst" :label="t('steps.search.suggestionsFirst')" class="q-ml-lg" />
+            <br />
+            <q-checkbox v-model="suggestPrivate" :label="t('steps.search.suggestPrivate')" class="q-ml-lg" />
+        </template>
     </p>
     <p>
         <q-btn color="primary" icon="sym_o_arrow_forward" @click="emit('next')">{{ t('steps.search.next') }}</q-btn>
