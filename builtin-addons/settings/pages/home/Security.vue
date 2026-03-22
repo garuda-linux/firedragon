@@ -23,7 +23,7 @@
             'https://safebrowsing.google.com/safebrowsing/gethash?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2',
             'https://safebrowsing.google.com/safebrowsing/downloads?client=SAFEBROWSING_ID&appver=%MAJOR_VERSION%&pver=2.2&key=%GOOGLE_SAFEBROWSING_API_KEY%',
         ],
-        [false, false, false, '', '', ''],
+        [false, false, false, '', '', '', ''],
     );
 </script>
 
