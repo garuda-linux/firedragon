@@ -34,6 +34,13 @@ steps:
     suggestionsFirst: Show search suggestions before browsing history in address bar results
     suggestPrivate: Also show search suggestions in private windows
     next: Continue
+  quickSettings:
+    title: Quick settings
+    hidePasswdmgr: Hide password manager
+    enableRFP: Enable ResistFingerprinting
+    enableRFPLetterboxing: Enable letterboxing
+    enablePrefetchConfig: Enable prefetching
+    next: Continue
   default:
     title: Default browser
     header: Do you want to use FireDragon as your default browser? (optional)

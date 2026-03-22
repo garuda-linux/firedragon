@@ -6,6 +6,7 @@
     import Default from '@/components/steps/Default.vue';
     import Finish from '@/components/steps/Finish.vue';
     import Language from '@/components/steps/Language.vue';
+    import QuickSettings from '@/components/steps/QuickSettings.vue';
     import Search from '@/components/steps/Search.vue';
     import Welcome from '@/components/steps/Welcome.vue';
 
@@ -61,13 +62,21 @@
                         </q-step>
                         <q-step
                             :name="5"
+                            :title="t('steps.quickSettings.title')"
+                            icon="sym_o_settings"
+                            :header-nav="step > 5"
+                        >
+                            <QuickSettings @next="step++" />
+                        </q-step>
+                        <q-step
+                            :name="6"
                             :title="t('steps.default.title')"
                             icon="sym_o_open_in_browser"
-                            :header-nav="step > 5"
+                            :header-nav="step > 6"
                         >
                             <Default @next="step++" />
                         </q-step>
-                        <q-step :name="6" :title="t('steps.finish.title')" icon="sym_o_check" :header-nav="step > 6">
+                        <q-step :name="7" :title="t('steps.finish.title')" icon="sym_o_check" :header-nav="step > 7">
                             <Finish @next="close" />
                         </q-step>
                     </q-stepper>
