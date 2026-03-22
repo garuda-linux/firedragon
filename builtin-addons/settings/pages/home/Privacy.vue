@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+    import BoolPrefItem from '@/components/BoolPrefItem.vue';
     import ToggleItem from '@/components/ToggleItem.vue';
 
     const { t } = useI18n();
@@ -23,6 +24,11 @@
             </h2>
         </q-card-section>
         <q-list>
+            <BoolPrefItem
+                pref="firedragon.config.prefetch.enable"
+                :title="t('pages.home.privacy.enablePrefetchConfig.title')"
+                :description="t('pages.home.privacy.enablePrefetchConfig.description')"
+            />
             <ToggleItem
                 :title="t('pages.home.privacy.limitCrossOriginReferrers.title')"
                 :description="t('pages.home.networking.limitCrossOriginReferrers.description')"

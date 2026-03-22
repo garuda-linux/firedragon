@@ -42,6 +42,9 @@ pages:
         description: Allow FireDragon to connect using IPv6. Instead of blocking IPv6 in the browser, we suggest enabling the IPv6 privacy extension in your OS.
     privacy:
       title: Privacy
+      enablePrefetchConfig:
+        title: Enable prefetching
+        description: Prefetching is a browser feature that allows the browser to download resources in the background while the user is browsing. This can improve performance and reduce bandwidth usage.
       limitCrossOriginReferrers:
         title: Limit cross-origin referrers
         description: Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed.
