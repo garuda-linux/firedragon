@@ -158,6 +158,7 @@ unsetDefault("privacy.resistFingerprinting");
 /** [SECTION] CERTIFICATES */
 
 /** [SECTION] TLS/SSL */
+unsetOverride("security.tls.enable_0rtt_data", false);
 
 /** [SECTION] PERMISSIONS */
 
