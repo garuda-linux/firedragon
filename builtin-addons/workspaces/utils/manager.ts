@@ -213,6 +213,7 @@ export class WorkspacesManager extends EventEmitter<{
         browser.windows.onCreated.addListener(async (window) => {
             await updateWindowData(window.id!, 'workspaceId', (workspaceId) => workspaceId ?? DEFAULT_WORKSPACE_ID);
             this.emit('windowDataChanged', window.id!);
+            this.updateTitles();
         });
     }
 
