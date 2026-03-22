@@ -136,6 +136,13 @@ unsetDefault("browser.formfill.enable");
 /** [SECTION] PREFETCHING AND SPECULATIVE CONNECTIONS
  * disable prefecthing for different things such as links, bookmarks and predictions.
  */
+if (getPref('firedragon.config.prefetch.enable')) {
+    unsetOverride("network.prefetch-next");
+    unsetOverride("network.http.speculative-parallel-limit");
+    unsetOverride("network.early-hints.preconnect.max_connections");
+    unsetDefault("browser.places.speculativeConnect.enabled");
+    unsetDefault("browser.urlbar.speculativeConnect.enabled");
+}
 
 /** [SECTION] OTHER */
 
