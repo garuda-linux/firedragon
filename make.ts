@@ -187,7 +187,7 @@ async function build() {
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <updates>
     <update type="minor" displayVersion="${version}" appVersion="${firefoxVersion}" platformVersion="${firefoxVersion}" buildID="${buildID}" detailsURL="${repoUrl}/-/releases/v${version}">
-        <patch type="complete" URL="${repoUrl}/-/releases/v${version}/downloads/${buildBasename}.mar" hashFunction="sha512" hashValue="${hashValue}" size="${size}"/>
+        <patch type="complete" URL="${repoUrl}/-/releases/v${version}/downloads/${edition.basename}.${target.suffix}.mar" hashFunction="sha512" hashValue="${hashValue}" size="${size}"/>
     </update>
 </updates>
 `;
