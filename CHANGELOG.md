@@ -1,5 +1,31 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.1) — 2026-03-23 — [`v13.0.0-rc.0`…`v13.0.0-rc.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.0...v13.0.0-rc.1)
+
+### 🚀 Features
+
+- _(app/config)_ Enable TLS 1.3 0-RTT — [`072f52da…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/072f52da650a661225e422f4dae79850531cc3c9)
+- _(app/config)_ Enable prefetching using `firedragon.config.prefetch.enable` pref — [`b910929f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b910929f7d7f775fc645eee40601eee093675ea4)
+- _(app/profile)_ Set `firedragon.config.prefetch.enable` pref to default `false` — [`ec0f7e77…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ec0f7e7720676631b71d94c6e0b06e5ee97b244b)
+- _(builtin-addons/settings)_ Add toggle for `firedragon.config.prefetch.enable` pref to privacy settings — [`5debe775…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5debe775b5ec2e01fa1795928330ce6a79a693bc)
+- _(builtin-addons/settings)_ Indent additional search suggestion settings — [`76452950…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/76452950155c931c8b0044aafddfb91cfb25ccb7)
+
+### 🐛 Bug Fixes
+
+- _(builtin-addons/welcome)_ Update popup title for new windows — [`7868c3ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7868c3edbb949ccd2edbfff6bfeda62a3b6a2c32)
+- _(builtin-addons/settings)_ Fix safe browsing toggle values — [`32b5254d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/32b5254d40a939429ba9d1c7bb2eba1549a228ac)
+- _(make)_ Fix mar url in update.xml — [`fe8993e5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fe8993e5256a910630108b7ccfb18479d41b6667)
+- _(builtin-addons/welcome)_ Update quick settings labels — [`95ce7956…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/95ce79566e890825d44c298154cf7a840647a0c0)
+
+### 🚜 Refactor
+
+- Move toggleRefs composable from builtin-addons/settings to shared — [`ad2e81d3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ad2e81d3a6cba5969543170a950ad5d5ef47d205)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(builtin-addons/welcome)_ Add quick settings step — [`bb9b041a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bb9b041a5f2d21e47b8918e9c0e9cbd595dfd8f9)
+- Update deps — [`b7cb6d91…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b7cb6d91f278478e36ef31ba91b771e3b15a0445)
+
 ## [FireDragon v13.0.0-rc.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.0) — 2026-03-21 — [`v13.0.0-beta.10`…`v13.0.0-rc.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.10...v13.0.0-rc.0)
 
 ### 🚀 Features
