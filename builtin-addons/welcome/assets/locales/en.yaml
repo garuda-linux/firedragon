@@ -36,9 +36,8 @@ steps:
     next: Continue
   quickSettings:
     title: Quick settings
-    hidePasswdmgr: Hide password manager
+    hidePasswdmgr: Hide password manager (requires restart)
     enableRFP: Enable ResistFingerprinting
-    enableRFPLetterboxing: Enable letterboxing
     enablePrefetchConfig: Enable prefetching
     next: Continue
   default:
