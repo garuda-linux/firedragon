@@ -15,7 +15,7 @@ packages:
 catalog:
   tsdown: ^0.21.4
   typescript: ~5.9.3
-  vite: ^8.0.0
+  vite: ^8.0.2
   wxt: ^0.20.20
 
 onlyBuiltDependencies:
@@ -26,6 +26,3 @@ onlyBuiltDependencies:
   - nx
   - spawn-sync
   - unrs-resolver
-
-overrides:
-  wxt>vite: 'catalog:'
