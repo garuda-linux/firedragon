@@ -37,6 +37,7 @@ steps:
   quickSettings:
     title: Quick settings
     hidePasswdmgr: Hide password manager (requires restart)
+    enable0rtt: Enable TLS 1.3 0-RTT
     enableRFP: Enable ResistFingerprinting
     enablePrefetchConfig: Enable prefetching
     next: Continue

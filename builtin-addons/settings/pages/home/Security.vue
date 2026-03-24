@@ -37,6 +37,11 @@
         </q-card-section>
         <q-list>
             <BoolPrefItem
+                pref="security.tls.enable_0rtt_data"
+                :title="t('pages.home.security.enable0rtt.title')"
+                :description="t('pages.home.security.enable0rtt.description')"
+            />
+            <BoolPrefItem
                 pref="security.OCSP.require"
                 :title="t('pages.home.security.enforceOCSP.title')"
                 :description="t('pages.home.security.enforceOCSP.description')"

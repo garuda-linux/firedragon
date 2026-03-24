@@ -67,6 +67,9 @@ pages:
       enforceOCSP:
         title: Enforce OCSP hard-fail
         description: Prevent connecting to a website if the OCSP check cannot be performed. This increases security, but it will cause breakage when an OCSP server is down.
+      enable0rtt:
+        title: Enable TLS 1.3 0-RTT
+        description: Enable 0-RTT (Zero Round Trip Time) for TLS connections. This can improve performance but may increase security risks.
       enableSafeBrowsing:
         title: Enable Google Safe Browsing
         description: If you are worried about malware and phishing, consider enabling it. Disabled over censorship concerns but recommended for less advanced users. All the checks happen locally.
