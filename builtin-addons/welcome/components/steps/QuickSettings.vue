@@ -6,7 +6,6 @@
     }>();
 
     const hidePasswdmgr = await useBoolPref('firedragon.hidePasswdmgr');
-    const enable0rtt = await useBoolPref('security.tls.enable_0rtt_data');
     const enableRFP = await useBoolPref('privacy.resistFingerprinting');
     const enablePrefetchConfig = await useBoolPref('firedragon.config.prefetch.enable');
 </script>
@@ -14,8 +13,6 @@
 <template>
     <p>
         <q-checkbox v-model="hidePasswdmgr" :label="t('steps.quickSettings.hidePasswdmgr')" />
-        <br />
-        <q-checkbox v-model="enable0rtt" :label="t('steps.quickSettings.enable0rtt')" />
         <br />
         <q-checkbox v-model="enableRFP" :label="t('steps.quickSettings.enableRFP')" />
         <br />
