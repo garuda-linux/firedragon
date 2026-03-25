@@ -1,5 +1,5 @@
 diff --git a/browser/base/content/navigator-toolbox.inc.xhtml b/browser/base/content/navigator-toolbox.inc.xhtml
-index 4d4223c508..92861e533e 100644
+index 3f7b85086d..0a4dcfbccc 100644
 --- a/browser/base/content/navigator-toolbox.inc.xhtml
 +++ b/browser/base/content/navigator-toolbox.inc.xhtml
 @@ -264,6 +264,8 @@
@@ -39,10 +39,10 @@ index cb57017aa9..c982089198 100644
                         buttonhighlight="true"
                         hidden="true">
 diff --git a/browser/components/preferences/dialogs/sitePermissions.js b/browser/components/preferences/dialogs/sitePermissions.js
-index 7d94dca1ea..c2560ba82f 100644
+index a993c1bb8d..3cd8e34fa8 100644
 --- a/browser/components/preferences/dialogs/sitePermissions.js
 +++ b/browser/components/preferences/dialogs/sitePermissions.js
-@@ -30,6 +30,10 @@ const sitePermissionsL10n = {
+@@ -33,6 +33,10 @@ const sitePermissionsL10n = {
      disableLabel: "permissions-site-xr-disable-label",
      disableDescription: "permissions-site-xr-disable-desc",
    },
@@ -54,10 +54,10 @@ index 7d94dca1ea..c2560ba82f 100644
      window: "permissions-site-camera-window2",
      description: "permissions-site-camera-desc",
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 3d3258fd12..5259891f9e 100644
+index e77dfebdf3..3b93aae2ca 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -3520,6 +3520,16 @@ SettingGroupManager.registerGroups({
+@@ -4153,6 +4153,16 @@ SettingGroupManager.registerGroups({
                  "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
              },
            },
@@ -75,18 +75,18 @@ index 3d3258fd12..5259891f9e 100644
        },
        {
 diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
-index b55091a342..94857f1d4c 100644
+index cb84b9206a..3f49316f49 100644
 --- a/browser/components/preferences/privacy.js
 +++ b/browser/components/preferences/privacy.js
-@@ -294,6 +294,7 @@ Preferences.addAll([
+@@ -293,6 +293,7 @@ Preferences.addAll([
  
    // Permissions
    { id: "media.setsinkid.enabled", type: "bool" },
 +  { id: "webgl.disabled", type: "bool" },
- ]);
  
- if (SECURITY_PRIVACY_STATUS_CARD_ENABLED) {
-@@ -2489,6 +2490,18 @@ Preferences.addSetting({
+   // Security and Privacy Warnings
+   { id: "browser.preferences.config_warning.dismissAll", type: "bool" },
+@@ -2083,6 +2084,18 @@ Preferences.addSetting({
    id: "xrSettingsButton",
    onUserClick: () => gPrivacyPane.showXRExceptions(),
  });
@@ -105,7 +105,7 @@ index b55091a342..94857f1d4c 100644
  
  Preferences.addSetting({
    id: "dohBox",
-@@ -5023,6 +5036,22 @@ var gPrivacyPane = {
+@@ -4609,6 +4622,22 @@ var gPrivacyPane = {
      );
    },
  
@@ -293,10 +293,10 @@ index 0000000000..b5555e84fd
 +  },
 +};
 diff --git a/browser/modules/moz.build b/browser/modules/moz.build
-index e9744d0e01..ebcc380f37 100644
+index a4224e117a..bc4542bc2b 100644
 --- a/browser/modules/moz.build
 +++ b/browser/modules/moz.build
-@@ -154,6 +154,7 @@ MOZ_SRC_FILES += [
+@@ -153,6 +153,7 @@ MOZ_SRC_FILES += [
      "PrivateBrowsingUI.sys.mjs",
      "UnexpectedScriptObserver.sys.mjs",
      "WebAuthnPromptHelper.sys.mjs",
@@ -352,10 +352,10 @@ index 0000000000..ffbf97c74d
 +       id="path26"
 +       d="m 96.625679,239.87424 a 0.625,0.625 0 0 0 -0.625,0.625 0.625,0.625 0 0 0 0.625,0.625 h 0.626953 c 0.422091,-7e-5 0.751953,0.32791 0.751953,0.75 v 11.37109 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.624997,-0.625 v -1.35547 h 8.749998 c 1.095,0 1.99494,-0.90304 1.99219,-1.99804 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 h -8.730468 v -1.00391 c 0,-1.09772 -0.904231,-2.00019 -2.00195,-2 z m 2.628903,4.25391 h 8.730468 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 10e-4,0.41835 -0.32385,0.74415 -0.74219,0.74414 h -8.749998 z m 3.246088,1.74609 a 1.4999924,1.4999924 0 0 0 -1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,-1.5 1.4999924,1.4999924 0 0 0 -1.5,-1.5 z" /></g></svg>
 diff --git a/browser/themes/shared/jar.inc.mn b/browser/themes/shared/jar.inc.mn
-index ccae208d64..8b0f412636 100644
+index 94de6f280e..882b27147d 100644
 --- a/browser/themes/shared/jar.inc.mn
 +++ b/browser/themes/shared/jar.inc.mn
-@@ -190,6 +190,9 @@
+@@ -191,6 +191,9 @@
    skin/classic/browser/calendar-24.svg                (../shared/icons/calendar-24.svg)
    skin/classic/browser/canvas.svg                     (../shared/icons/canvas.svg)
    skin/classic/browser/canvas-blocked.svg             (../shared/icons/canvas-blocked.svg)
@@ -448,7 +448,7 @@ index 1cfe9a9eef..c5d12beef7 100644
    list-style-image: url(chrome://browser/skin/notification-icons/camera.svg);
  }
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
-index 12492d606c..94447b2f9f 100644
+index a9e5603060..7ea09e134b 100644
 --- a/dom/canvas/ClientWebGLContext.cpp
 +++ b/dom/canvas/ClientWebGLContext.cpp
 @@ -25,7 +25,9 @@
@@ -621,10 +621,10 @@ index 12492d606c..94447b2f9f 100644
  
      auto useOop = IsWebglOutOfProcessEnabled();
 diff --git a/dom/ipc/BrowserParent.cpp b/dom/ipc/BrowserParent.cpp
-index dd3310d2d6..9f2d46cd51 100644
+index 7d405ed7d3..95718de445 100644
 --- a/dom/ipc/BrowserParent.cpp
 +++ b/dom/ipc/BrowserParent.cpp
-@@ -4111,6 +4111,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
+@@ -4115,6 +4115,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
    return IPC_OK();
  }
  
@@ -655,10 +655,10 @@ index dd3310d2d6..9f2d46cd51 100644
      nsIURI* aURI, nsIURI* aLastVisitedURI, const uint32_t& aFlags,
      const uint64_t& aBrowserId) {
 diff --git a/dom/ipc/BrowserParent.h b/dom/ipc/BrowserParent.h
-index fd178a5baa..590d29b88d 100644
+index 94d5cb546a..c98d7a6a9c 100644
 --- a/dom/ipc/BrowserParent.h
 +++ b/dom/ipc/BrowserParent.h
-@@ -742,6 +742,8 @@ class BrowserParent final : public PBrowserParent,
+@@ -741,6 +741,8 @@ class BrowserParent final : public PBrowserParent,
    mozilla::ipc::IPCResult RecvShowCanvasPermissionPrompt(
        const nsCString& aOrigin, const bool& aHideDoorHanger);
  
@@ -668,10 +668,10 @@ index fd178a5baa..590d29b88d 100644
    mozilla::ipc::IPCResult RecvGetSystemFont(nsCString* aFontName);
  
 diff --git a/dom/ipc/PBrowser.ipdl b/dom/ipc/PBrowser.ipdl
-index 66f77eb554..7a4087928b 100644
+index 76dd02a60d..f045291425 100644
 --- a/dom/ipc/PBrowser.ipdl
 +++ b/dom/ipc/PBrowser.ipdl
-@@ -641,6 +641,14 @@ parent:
+@@ -642,6 +642,14 @@ parent:
       */
      async ShowCanvasPermissionPrompt(nsCString aOrigin,
                                       bool aHideDoorHanger);
@@ -687,10 +687,10 @@ index 66f77eb554..7a4087928b 100644
      sync SetSystemFont(nsCString aFontName);
      sync GetSystemFont() returns (nsCString retval);
 diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
-index 2de28d8df4..c0e5da2713 100644
+index 262eee800b..109c04fc9d 100644
 --- a/modules/libpref/init/StaticPrefList.yaml
 +++ b/modules/libpref/init/StaticPrefList.yaml
-@@ -11288,6 +11288,20 @@
+@@ -11368,6 +11368,20 @@
    value: false
    mirror: always
  

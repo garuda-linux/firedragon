@@ -1,0 +1,21 @@
+diff --git a/browser/components/BrowserGlue.sys.mjs b/browser/components/BrowserGlue.sys.mjs
+index 938b7aa842..03b6b0c966 100644
+--- a/browser/components/BrowserGlue.sys.mjs
++++ b/browser/components/BrowserGlue.sys.mjs
+@@ -400,6 +400,16 @@ BrowserGlue.prototype = {
+ 
+     // handle any UI migration
+     this._migrateUI();
++    
++    const removeLangpacks = async () => {
++      for (const addon of await lazy.AddonManager.getAddonsByTypes(["locale"])) {
++        await addon.uninstall();
++      }
++    };
++    
++    removeLangpacks().catch(err => {
++      console.error("Could not remove langpacks", err);
++    });
+ 
+     if (!Services.prefs.prefHasUserValue(PREF_PDFJS_ISDEFAULT_CACHE_STATE)) {
+       lazy.PdfJs.checkIsDefault(this._isNewProfile);

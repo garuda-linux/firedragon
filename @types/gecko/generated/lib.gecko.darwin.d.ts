@@ -17,6 +17,7 @@ interface nsIAccessibleMacInterface extends nsISupports {
   readonly actionNames: string[];
   getAttributeValue(attributeName: string): any;
   getParameterizedAttributeValue(attributeName: string, parameter: any): any;
+  getActionDescription(actionName: string): string;
   performAction(actionName: string): void;
   isAttributeSettable(attributeName: string): boolean;
   setAttributeValue(attributeName: string, attributeValue: any): void;
@@ -168,13 +169,9 @@ interface nsIMacPreferencesReader extends nsISupports {
 // https://searchfox.org/mozilla-central/source/xpcom/io/nsILocalFileMac.idl
 
 interface nsILocalFileMac extends nsIFile {
-  readonly fileSizeWithResFork: i64;
   launchWithDoc(aDocToLoad: nsIFile, aLaunchInBackground: boolean): void;
-  openDocWithApp(aAppToOpenWith: nsIFile, aLaunchInBackground: boolean): void;
   isPackage(): boolean;
   readonly bundleDisplayName: string;
-  readonly bundleIdentifier: string;
-  readonly bundleContentsLastModifiedTime: i64;
   hasXAttr(aAttrName: string): boolean;
   getXAttr(aAttrName: string): u8[];
   setXAttr(aAttrName: string, aAttrValue: u8[]): void;
@@ -208,7 +205,10 @@ interface nsIXPCComponents_Interfaces {
 }  // global
 
 // Typedefs from xpidl.
+type CSPDirective = nsIContentSecurityPolicy.CSPDirective;
 type PRTime = i64;
+type RequireTrustedTypesForDirectiveState = nsIContentSecurityPolicy.RequireTrustedTypesForDirectiveState;
+type nsContentPolicyType = nsIContentPolicy.nsContentPolicyType;
 type nsTaskbarProgressState = i32;
 
 // XPCOM internal utility types.

@@ -17,11 +17,59 @@
       "chrome://browser/content/aboutlogins/components/login-message-popup.mjs": [
         "browser/components/aboutlogins/content/components/login-message-popup.mjs"
       ],
-      "chrome://browser/content/asrouter/components/fxa-menu-message.mjs": [
-        "browser/components/asrouter/content/components/fxa-menu-message/fxa-menu-message.mjs"
+      "chrome://browser/content/aiwindow/components/ai-chat-content.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-content/ai-chat-content.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/ai-chat-message.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-message/ai-chat-message.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/ai-chat-search-button.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-search-button/ai-chat-search-button.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/ai-website-chip.mjs": [
+        "browser/components/aiwindow/ui/components/ai-website-chip/ai-website-chip.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/applied-memories-button.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-content/chat-assistant-footer/applied-memories-button.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/assistant-message-footer.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-content/chat-assistant-footer/assistant-message-footer.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/chat-assistant-error.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-content/chat-assistant-error/chat-assistant-error.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/chat-assistant-loader.mjs": [
+        "browser/components/aiwindow/ui/components/ai-chat-content/chat-assistant-loader/chat-assistant-loader.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/context-icon-button.mjs": [
+        "browser/components/aiwindow/ui/components/context-icon-button/context-icon-button.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/input-cta.mjs": [
+        "browser/components/aiwindow/ui/components/input-cta/input-cta.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/memories-icon-button.mjs": [
+        "browser/components/aiwindow/ui/components/memories-icon-button/memories-icon-button.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/smartwindow-prompts.mjs": [
+        "browser/components/aiwindow/ui/components/smartwindow-prompts/smartwindow-prompts.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/suggestions-panel-list.mjs": [
+        "browser/components/aiwindow/ui/components/suggestions-panel-list/suggestions-panel-list.mjs"
+      ],
+      "chrome://browser/content/aiwindow/components/website-chip-container.mjs": [
+        "browser/components/aiwindow/ui/components/website-chip-container/website-chip-container.mjs"
+      ],
+      "chrome://browser/content/aiwindow/modules/TokenStreamParser.mjs": [
+        "browser/components/aiwindow/ui/modules/TokenStreamParser.mjs"
+      ],
+      "chrome://browser/content/asrouter/components/menu-message.mjs": [
+        "browser/components/asrouter/content/components/menu-message/menu-message.mjs"
       ],
       "chrome://browser/content/backup/backup-constants.mjs": [
         "browser/components/backup/common/backup-constants.mjs"
+      ],
+      "chrome://browser/content/backup/backup-errors.mjs": [
+        "browser/components/backup/common/backup-errors.mjs"
       ],
       "chrome://browser/content/backup/disable-backup-encryption.mjs": [
         "browser/components/backup/content/disable-backup-encryption.mjs"
@@ -44,8 +92,17 @@
       "chrome://browser/content/backup/turn-on-scheduled-backups.mjs": [
         "browser/components/backup/content/turn-on-scheduled-backups.mjs"
       ],
+      "chrome://browser/content/contentSearchHandoffUI.mjs": [
+        "browser/components/search/content/contentSearchHandoffUI.mjs"
+      ],
       "chrome://browser/content/firefoxview/card-container.mjs": [
         "browser/components/firefoxview/card-container.mjs"
+      ],
+      "chrome://browser/content/firefoxview/chats-tab-list.mjs": [
+        "browser/components/firefoxview/chats-tab-list.mjs"
+      ],
+      "chrome://browser/content/firefoxview/chats.mjs": [
+        "browser/components/firefoxview/chats.mjs"
       ],
       "chrome://browser/content/firefoxview/fxview-empty-state.mjs": [
         "browser/components/firefoxview/fxview-empty-state.mjs"
@@ -56,14 +113,29 @@
       "chrome://browser/content/firefoxview/helpers.mjs": [
         "browser/components/firefoxview/helpers.mjs"
       ],
+      "chrome://browser/content/firefoxview/history.mjs": [
+        "browser/components/firefoxview/history.mjs"
+      ],
       "chrome://browser/content/firefoxview/opentabs-tab-list.mjs": [
         "browser/components/firefoxview/opentabs-tab-list.mjs"
+      ],
+      "chrome://browser/content/firefoxview/opentabs.mjs": [
+        "browser/components/firefoxview/opentabs.mjs"
+      ],
+      "chrome://browser/content/firefoxview/recentbrowsing.mjs": [
+        "browser/components/firefoxview/recentbrowsing.mjs"
+      ],
+      "chrome://browser/content/firefoxview/recentlyclosed.mjs": [
+        "browser/components/firefoxview/recentlyclosed.mjs"
       ],
       "chrome://browser/content/firefoxview/search-helpers.mjs": [
         "browser/components/firefoxview/search-helpers.mjs"
       ],
       "chrome://browser/content/firefoxview/syncedtabs-tab-list.mjs": [
         "browser/components/firefoxview/syncedtabs-tab-list.mjs"
+      ],
+      "chrome://browser/content/firefoxview/syncedtabs.mjs": [
+        "browser/components/firefoxview/syncedtabs.mjs"
       ],
       "chrome://browser/content/genai/content/link-preview-card-onboarding.mjs": [
         "browser/components/genai/content/link-preview-card-onboarding.mjs"
@@ -74,20 +146,23 @@
       "chrome://browser/content/genai/content/model-optin.mjs": [
         "browser/components/genai/content/model-optin.mjs"
       ],
+      "chrome://browser/content/ipprotection/bandwidth-usage.mjs": [
+        "browser/components/ipprotection/content/bandwidth-usage.mjs"
+      ],
       "chrome://browser/content/ipprotection/ipprotection-constants.mjs": [
         "browser/components/ipprotection/content/ipprotection-constants.mjs"
-      ],
-      "chrome://browser/content/ipprotection/ipprotection-flag.mjs": [
-        "browser/components/ipprotection/content/ipprotection-flag.mjs"
-      ],
-      "chrome://browser/content/ipprotection/ipprotection-header.mjs": [
-        "browser/components/ipprotection/content/ipprotection-header.mjs"
       ],
       "chrome://browser/content/ipprotection/ipprotection-message-bar.mjs": [
         "browser/components/ipprotection/content/ipprotection-message-bar.mjs"
       ],
-      "chrome://browser/content/ipprotection/ipprotection-signedout.mjs": [
-        "browser/components/ipprotection/content/ipprotection-signedout.mjs"
+      "chrome://browser/content/ipprotection/ipprotection-status-box.mjs": [
+        "browser/components/ipprotection/content/ipprotection-status-box.mjs"
+      ],
+      "chrome://browser/content/ipprotection/ipprotection-status-card.mjs": [
+        "browser/components/ipprotection/content/ipprotection-status-card.mjs"
+      ],
+      "chrome://browser/content/ipprotection/ipprotection-unauthenticated.mjs": [
+        "browser/components/ipprotection/content/ipprotection-unauthenticated.mjs"
       ],
       "chrome://browser/content/migration/migration-wizard-constants.mjs": [
         "browser/components/migration/content/migration-wizard-constants.mjs"
@@ -95,8 +170,23 @@
       "chrome://browser/content/migration/migration-wizard.mjs": [
         "browser/components/migration/content/migration-wizard.mjs"
       ],
+      "chrome://browser/content/multilineeditor/multiline-editor.mjs": [
+        "browser/components/multilineeditor/multiline-editor.mjs"
+      ],
+      "chrome://browser/content/multilineeditor/plugins/MentionsPlugin.mjs": [
+        "browser/components/multilineeditor/plugins/MentionsPlugin.mjs"
+      ],
+      "chrome://browser/content/multilineeditor/prosemirror.bundle.mjs": [
+        "third_party/js/prosemirror/prosemirror.bundle.mjs"
+      ],
       "chrome://browser/content/nsContextMenu.sys.mjs": [
         "browser/base/content/nsContextMenu.sys.mjs"
+      ],
+      "chrome://browser/content/preferences/OnDeviceModelManager.mjs": [
+        "browser/components/preferences/OnDeviceModelManager.mjs"
+      ],
+      "chrome://browser/content/preferences/config/SettingGroupManager.mjs": [
+        "browser/components/preferences/config/SettingGroupManager.mjs"
       ],
       "chrome://browser/content/preferences/widgets/dialog-button.mjs": [
         "browser/components/preferences/widgets/dialog-button/dialog-button.mjs"
@@ -104,11 +194,26 @@
       "chrome://browser/content/preferences/widgets/nav-notice.mjs": [
         "browser/components/preferences/widgets/nav-notice/nav-notice.mjs"
       ],
+      "chrome://browser/content/preferences/widgets/placeholder-message.mjs": [
+        "browser/components/preferences/widgets/placeholder-message/placeholder-message.mjs"
+      ],
       "chrome://browser/content/preferences/widgets/setting-control.mjs": [
         "browser/components/preferences/widgets/setting-control/setting-control.mjs"
       ],
+      "chrome://browser/content/preferences/widgets/setting-element.mjs": [
+        "browser/components/preferences/widgets/setting-element/setting-element.mjs"
+      ],
       "chrome://browser/content/preferences/widgets/setting-group.mjs": [
         "browser/components/preferences/widgets/setting-group/setting-group.mjs"
+      ],
+      "chrome://browser/content/preferences/widgets/setting-pane.mjs": [
+        "browser/components/preferences/widgets/setting-pane/setting-pane.mjs"
+      ],
+      "chrome://browser/content/preferences/widgets/sync-device-name.mjs": [
+        "browser/components/preferences/widgets/sync-device-name/sync-device-name.mjs"
+      ],
+      "chrome://browser/content/preferences/widgets/sync-engines-list.mjs": [
+        "browser/components/preferences/widgets/sync-engine-list/sync-engines-list.mjs"
       ],
       "chrome://browser/content/profiles/avatar.mjs": [
         "browser/components/profiles/content/avatar.mjs"
@@ -137,6 +242,12 @@
       "chrome://browser/content/sidebar/sidebar-panel-header.mjs": [
         "browser/components/sidebar/sidebar-panel-header.mjs"
       ],
+      "chrome://browser/content/sidebar/sidebar-permissions-ui.mjs": [
+        "browser/components/sidebar/sidebar-permissions-ui.mjs"
+      ],
+      "chrome://browser/content/sidebar/sidebar-permissions.mjs": [
+        "browser/components/sidebar/sidebar-permissions.mjs"
+      ],
       "chrome://browser/content/sidebar/sidebar-pins-promo.mjs": [
         "browser/components/sidebar/sidebar-pins-promo.mjs"
       ],
@@ -145,6 +256,18 @@
       ],
       "chrome://browser/content/translations/TranslationsPanelShared.sys.mjs": [
         "browser/components/translations/content/TranslationsPanelShared.sys.mjs"
+      ],
+      "chrome://browser/content/urlbar/SmartbarInput.mjs": [
+        "browser/components/urlbar/content/SmartbarInput.mjs"
+      ],
+      "chrome://browser/content/urlbar/SmartbarInputController.mjs": [
+        "browser/components/urlbar/content/SmartbarInputController.mjs"
+      ],
+      "chrome://browser/content/urlbar/SmartbarInputUtils.mjs": [
+        "browser/components/urlbar/content/SmartbarInputUtils.mjs"
+      ],
+      "chrome://browser/content/urlbar/UrlbarInput.mjs": [
+        "browser/components/urlbar/content/UrlbarInput.mjs"
       ],
       "chrome://browser/content/webrtc/webrtc-preview.mjs": [
         "browser/components/webrtc/content/webrtc-preview/webrtc-preview.mjs"
@@ -170,6 +293,12 @@
       "chrome://global/content/aboutLogging/profileSaveUploadLogic.mjs": [
         "toolkit/content/aboutLogging/profileSaveUploadLogic.mjs"
       ],
+      "chrome://global/content/aboutLogging/profileStorage.mjs": [
+        "toolkit/content/aboutLogging/profileStorage.mjs"
+      ],
+      "chrome://global/content/aboutLogging/uploadedProfilesManager.mjs": [
+        "toolkit/content/aboutLogging/uploadedProfilesManager.mjs"
+      ],
       "chrome://global/content/aboutNetErrorHelpers.mjs": [
         "toolkit/content/aboutNetErrorHelpers.mjs"
       ],
@@ -188,11 +317,17 @@
       "chrome://global/content/aboutwebrtc/graphdb.mjs": [
         "toolkit/content/aboutwebrtc/graphdb.mjs"
       ],
+      "chrome://global/content/bindings/colorpicker-common.mjs": [
+        "toolkit/content/widgets/colorpicker-common.mjs"
+      ],
       "chrome://global/content/certviewer/certDecoder.mjs": [
         "toolkit/components/certviewer/content/certDecoder.mjs"
       ],
       "chrome://global/content/certviewer/certviewer.mjs": [
         "toolkit/components/certviewer/content/certviewer.mjs"
+      ],
+      "chrome://global/content/certviewer/components/utils.mjs": [
+        "toolkit/components/certviewer/content/components/utils.mjs"
       ],
       "chrome://global/content/elements/browser-custom-element.mjs": [
         "toolkit/content/widgets/browser-custom-element.mjs"
@@ -218,6 +353,12 @@
       "chrome://global/content/elements/moz-fieldset.mjs": [
         "toolkit/content/widgets/moz-fieldset/moz-fieldset.mjs"
       ],
+      "chrome://global/content/elements/moz-input-folder.mjs": [
+        "toolkit/content/widgets/moz-input-folder/moz-input-folder.mjs"
+      ],
+      "chrome://global/content/elements/moz-input-search.mjs": [
+        "toolkit/content/widgets/moz-input-search/moz-input-search.mjs"
+      ],
       "chrome://global/content/elements/moz-input-text.mjs": [
         "toolkit/content/widgets/moz-input-text/moz-input-text.mjs"
       ],
@@ -226,6 +367,9 @@
       ],
       "chrome://global/content/elements/moz-message-bar.mjs": [
         "toolkit/content/widgets/moz-message-bar/moz-message-bar.mjs"
+      ],
+      "chrome://global/content/elements/moz-page-nav.mjs": [
+        "toolkit/content/widgets/moz-page-nav/moz-page-nav.mjs"
       ],
       "chrome://global/content/elements/moz-support-link.mjs": [
         "toolkit/content/widgets/moz-support-link/moz-support-link.mjs"
@@ -254,6 +398,12 @@
       "chrome://global/content/megalist/components/password-card/password-card.mjs": [
         "toolkit/components/satchel/megalist/content/components/password-card/password-card.mjs"
       ],
+      "chrome://global/content/megalist/components/virtual-passwords-list/virtual-passwords-list.mjs": [
+        "toolkit/components/satchel/megalist/content/components/virtual-passwords-list/virtual-passwords-list.mjs"
+      ],
+      "chrome://global/content/ml/AIFeature.sys.mjs": [
+        "toolkit/components/ml/AIFeature.sys.mjs"
+      ],
       "chrome://global/content/ml/BlockWords.sys.mjs": [
         "toolkit/components/ml/content/BlockWords.sys.mjs"
       ],
@@ -266,8 +416,8 @@
       "chrome://global/content/ml/EngineProcess.sys.mjs": [
         "toolkit/components/ml/content/EngineProcess.sys.mjs"
       ],
-      "chrome://global/content/ml/HttpInference.sys.mjs": [
-        "toolkit/components/ml/content/HttpInference.sys.mjs"
+      "chrome://global/content/ml/MLTelemetry.sys.mjs": [
+        "toolkit/components/ml/MLTelemetry.sys.mjs"
       ],
       "chrome://global/content/ml/ModelHub.sys.mjs": [
         "toolkit/components/ml/content/ModelHub.sys.mjs"
@@ -278,8 +428,8 @@
       "chrome://global/content/ml/StopWords.sys.mjs": [
         "toolkit/components/ml/content/nlp/StopWords.sys.mjs"
       ],
-      "chrome://global/content/ml/ThomSample.sys.mjs": [
-        "toolkit/components/ml/content/ThomSample.sys.mjs"
+      "chrome://global/content/ml/backends/LlamaCppPipeline.mjs": [
+        "toolkit/components/ml/content/backends/LlamaCppPipeline.mjs"
       ],
       "chrome://global/content/ml/backends/LlamaPipeline.mjs": [
         "toolkit/components/ml/content/backends/LlamaPipeline.mjs"
@@ -287,11 +437,41 @@
       "chrome://global/content/ml/backends/ONNXPipeline.mjs": [
         "toolkit/components/ml/content/backends/ONNXPipeline.mjs"
       ],
+      "chrome://global/content/ml/backends/OpenAIPipeline.mjs": [
+        "toolkit/components/ml/content/backends/OpenAIPipeline.mjs"
+      ],
       "chrome://global/content/ml/backends/Pipeline.mjs": [
         "toolkit/components/ml/content/backends/Pipeline.mjs"
       ],
+      "chrome://global/content/ml/backends/StaticEmbeddingsPipeline.mjs": [
+        "toolkit/components/ml/content/backends/StaticEmbeddingsPipeline.mjs"
+      ],
+      "chrome://global/content/ml/openai-dev.mjs": [
+        "toolkit/components/ml/vendor/openai/dist/openai-dev.mjs"
+      ],
+      "chrome://global/content/ml/openai.mjs": [
+        "toolkit/components/ml/vendor/openai/dist/openai.mjs"
+      ],
       "chrome://global/content/ml/ort.webgpu-dev.mjs": [
         "toolkit/components/ml/vendor/ort.webgpu-dev.mjs"
+      ],
+      "chrome://global/content/ml/security/ConditionEvaluator.sys.mjs": [
+        "toolkit/components/ml/security/ConditionEvaluator.sys.mjs"
+      ],
+      "chrome://global/content/ml/security/DecisionTypes.sys.mjs": [
+        "toolkit/components/ml/security/DecisionTypes.sys.mjs"
+      ],
+      "chrome://global/content/ml/security/PolicyEvaluator.sys.mjs": [
+        "toolkit/components/ml/security/PolicyEvaluator.sys.mjs"
+      ],
+      "chrome://global/content/ml/security/SecurityLogger.sys.mjs": [
+        "toolkit/components/ml/security/SecurityLogger.sys.mjs"
+      ],
+      "chrome://global/content/ml/security/SecurityOrchestrator.sys.mjs": [
+        "toolkit/components/ml/security/SecurityOrchestrator.sys.mjs"
+      ],
+      "chrome://global/content/ml/security/SecurityUtils.sys.mjs": [
+        "toolkit/components/ml/security/SecurityUtils.sys.mjs"
       ],
       "chrome://global/content/ml/transformers-dev.js": [
         "toolkit/components/ml/vendor/transformers-dev.js"
@@ -308,8 +488,23 @@
       "chrome://global/content/net-error-card.mjs": [
         "toolkit/content/net-error-card.mjs"
       ],
+      "chrome://global/content/preferences/AsyncSetting.mjs": [
+        "toolkit/content/preferences/AsyncSetting.mjs"
+      ],
+      "chrome://global/content/preferences/Preference.mjs": [
+        "toolkit/content/preferences/Preference.mjs"
+      ],
+      "chrome://global/content/preferences/Preferences.mjs": [
+        "toolkit/content/preferences/Preferences.mjs"
+      ],
+      "chrome://global/content/preferences/Setting.mjs": [
+        "toolkit/content/preferences/Setting.mjs"
+      ],
       "chrome://global/content/reader/moz-slider.mjs": [
         "toolkit/components/reader/moz-slider.mjs"
+      ],
+      "chrome://global/content/translations/TranslationsFeature.sys.mjs": [
+        "toolkit/components/translations/TranslationsFeature.sys.mjs"
       ],
       "chrome://global/content/translations/TranslationsTelemetry.sys.mjs": [
         "toolkit/components/translations/TranslationsTelemetry.sys.mjs"
@@ -331,9 +526,6 @@
       ],
       "chrome://global/content/vendor/Redux.sys.mjs": [
         "toolkit/content/vendor/react/Redux.sys.mjs"
-      ],
-      "chrome://global/content/vendor/lit.all.mjs": [
-        "toolkit/content/widgets/vendor/lit.all.mjs"
       ],
       "chrome://mochikit/content/ShutdownLeaksCollector.sys.mjs": [
         "testing/mochitest/ShutdownLeaksCollector.sys.mjs"
@@ -365,6 +557,12 @@
       "chrome://mochitests/content/browser/devtools/shared/test-helpers/allocation-tracker.js": [
         "devtools/shared/test-helpers/allocation-tracker.js"
       ],
+      "chrome://mochitests/content/browser/devtools/shared/test-helpers/cc-analyzer.sys.mjs": [
+        "devtools/shared/test-helpers/cc-analyzer.sys.mjs"
+      ],
+      "chrome://mochitests/content/browser/devtools/shared/test-helpers/trace-objects.sys.mjs": [
+        "devtools/shared/test-helpers/trace-objects.sys.mjs"
+      ],
       "chrome://mochitests/content/browser/dom/serviceworkers/test/browser_head.js": [
         "dom/serviceworkers/test/browser_head.js"
       ],
@@ -376,9 +574,6 @@
       ],
       "chrome://mochitests/content/browser/toolkit/components/translations/tests/browser/translations-test.mjs": [
         "toolkit/components/translations/tests/browser/translations-test.mjs"
-      ],
-      "chrome://mochitests/content/browser/tools/profiler/tests/browser/value_summary_reader.mjs": [
-        "tools/profiler/tests/browser/value_summary_reader.mjs"
       ],
       "chrome://mochitests/content/chrome/dom/network/tests/tcpsocket_test.sys.mjs": [
         "dom/network/tests/tcpsocket_test.sys.mjs"
@@ -400,9 +595,6 @@
       ],
       "chrome://mochitests/content/chrome/toolkit/components/workerloader/tests/moduleD-circular.js": [
         "toolkit/components/workerloader/tests/moduleD-circular.js"
-      ],
-      "chrome://pocket/content/pktApi.sys.mjs": [
-        "browser/components/pocket/content/pktApi.sys.mjs"
       ],
       "chrome://remote/content/components/Marionette.sys.mjs": [
         "remote/components/Marionette.sys.mjs"
@@ -491,6 +683,9 @@
       "chrome://remote/content/shared/AsyncQueue.sys.mjs": [
         "remote/shared/AsyncQueue.sys.mjs"
       ],
+      "chrome://remote/content/shared/BiMap.sys.mjs": [
+        "remote/shared/BiMap.sys.mjs"
+      ],
       "chrome://remote/content/shared/Browser.sys.mjs": [
         "remote/shared/Browser.sys.mjs"
       ],
@@ -512,6 +707,9 @@
       "chrome://remote/content/shared/MobileTabBrowser.sys.mjs": [
         "remote/shared/MobileTabBrowser.sys.mjs"
       ],
+      "chrome://remote/content/shared/NavigableManager.sys.mjs": [
+        "remote/shared/NavigableManager.sys.mjs"
+      ],
       "chrome://remote/content/shared/Navigate.sys.mjs": [
         "remote/shared/Navigate.sys.mjs"
       ],
@@ -520,6 +718,9 @@
       ],
       "chrome://remote/content/shared/NetworkCacheManager.sys.mjs": [
         "remote/shared/NetworkCacheManager.sys.mjs"
+      ],
+      "chrome://remote/content/shared/NetworkDataBytes.sys.mjs": [
+        "remote/shared/NetworkDataBytes.sys.mjs"
       ],
       "chrome://remote/content/shared/NetworkDecodedBodySizeMap.sys.mjs": [
         "remote/shared/NetworkDecodedBodySizeMap.sys.mjs"
@@ -572,8 +773,8 @@
       "chrome://remote/content/shared/js-process-actors/WebDriverDocumentInsertedActor.sys.mjs": [
         "remote/shared/js-process-actors/WebDriverDocumentInsertedActor.sys.mjs"
       ],
-      "chrome://remote/content/shared/js-window-actors/WebProgressListenerActor.sys.mjs": [
-        "remote/shared/js-window-actors/WebProgressListenerActor.sys.mjs"
+      "chrome://remote/content/shared/js-process-actors/WebDriverWorkerListenerActor.sys.mjs": [
+        "remote/shared/js-process-actors/WebDriverWorkerListenerActor.sys.mjs"
       ],
       "chrome://remote/content/shared/listeners/BeforeStopRequestListener.sys.mjs": [
         "remote/shared/listeners/BeforeStopRequestListener.sys.mjs"
@@ -583,6 +784,9 @@
       ],
       "chrome://remote/content/shared/listeners/CachedResourceListener.sys.mjs": [
         "remote/shared/listeners/CachedResourceListener.sys.mjs"
+      ],
+      "chrome://remote/content/shared/listeners/ChromeWindowListener.sys.mjs": [
+        "remote/shared/listeners/ChromeWindowListener.sys.mjs"
       ],
       "chrome://remote/content/shared/listeners/ConsoleAPIListener.sys.mjs": [
         "remote/shared/listeners/ConsoleAPIListener.sys.mjs"
@@ -595,6 +799,12 @@
       ],
       "chrome://remote/content/shared/listeners/DataChannelListener.sys.mjs": [
         "remote/shared/listeners/DataChannelListener.sys.mjs"
+      ],
+      "chrome://remote/content/shared/listeners/DownloadListener.sys.mjs": [
+        "remote/shared/listeners/DownloadListener.sys.mjs"
+      ],
+      "chrome://remote/content/shared/listeners/FilePickerListener.sys.mjs": [
+        "remote/shared/listeners/FilePickerListener.sys.mjs"
       ],
       "chrome://remote/content/shared/listeners/LoadListener.sys.mjs": [
         "remote/shared/listeners/LoadListener.sys.mjs"
@@ -680,6 +890,9 @@
       "chrome://remote/content/shared/webdriver/Event.sys.mjs": [
         "remote/shared/webdriver/Event.sys.mjs"
       ],
+      "chrome://remote/content/shared/webdriver/FilePickerHandler.sys.mjs": [
+        "remote/shared/webdriver/FilePickerHandler.sys.mjs"
+      ],
       "chrome://remote/content/shared/webdriver/KeyData.sys.mjs": [
         "remote/shared/webdriver/KeyData.sys.mjs"
       ],
@@ -707,6 +920,9 @@
       "chrome://remote/content/webdriver-bidi/RemoteValue.sys.mjs": [
         "remote/webdriver-bidi/RemoteValue.sys.mjs"
       ],
+      "chrome://remote/content/webdriver-bidi/UserPromptHandlerManager.sys.mjs": [
+        "remote/webdriver-bidi/UserPromptHandlerManager.sys.mjs"
+      ],
       "chrome://remote/content/webdriver-bidi/WebDriverBiDi.sys.mjs": [
         "remote/webdriver-bidi/WebDriverBiDi.sys.mjs"
       ],
@@ -721,6 +937,9 @@
       ],
       "chrome://remote/content/webdriver-bidi/modules/WindowGlobalBiDiModule.sys.mjs": [
         "remote/webdriver-bidi/modules/WindowGlobalBiDiModule.sys.mjs"
+      ],
+      "chrome://remote/content/webdriver-bidi/modules/root/_configuration.sys.mjs": [
+        "remote/webdriver-bidi/modules/root/_configuration.sys.mjs"
       ],
       "chrome://remote/content/webdriver-bidi/modules/root/browser.sys.mjs": [
         "remote/webdriver-bidi/modules/root/browser.sys.mjs"
@@ -757,6 +976,9 @@
       ],
       "chrome://remote/content/webdriver-bidi/modules/windowglobal-in-root/browsingContext.sys.mjs": [
         "remote/webdriver-bidi/modules/windowglobal-in-root/browsingContext.sys.mjs"
+      ],
+      "chrome://remote/content/webdriver-bidi/modules/windowglobal-in-root/input.sys.mjs": [
+        "remote/webdriver-bidi/modules/windowglobal-in-root/input.sys.mjs"
       ],
       "chrome://remote/content/webdriver-bidi/modules/windowglobal-in-root/log.sys.mjs": [
         "remote/webdriver-bidi/modules/windowglobal-in-root/log.sys.mjs"
@@ -809,9 +1031,6 @@
       "resource:///actors/ClickHandlerParent.sys.mjs": [
         "browser/actors/ClickHandlerParent.sys.mjs"
       ],
-      "resource:///actors/ContentSearchParent.sys.mjs": [
-        "browser/actors/ContentSearchParent.sys.mjs"
-      ],
       "resource:///actors/ContextMenuChild.sys.mjs": [
         "browser/actors/ContextMenuChild.sys.mjs"
       ],
@@ -851,17 +1070,8 @@
       "resource:///modules/AccountsGlue.sys.mjs": [
         "browser/components/AccountsGlue.sys.mjs"
       ],
-      "resource:///modules/ActionsProvider.sys.mjs": [
-        "browser/components/urlbar/ActionsProvider.sys.mjs"
-      ],
-      "resource:///modules/ActionsProviderContextualSearch.sys.mjs": [
-        "browser/components/urlbar/ActionsProviderContextualSearch.sys.mjs"
-      ],
-      "resource:///modules/ActionsProviderQuickActions.sys.mjs": [
-        "browser/components/urlbar/ActionsProviderQuickActions.sys.mjs"
-      ],
-      "resource:///modules/ActionsProviderTabGroups.sys.mjs": [
-        "browser/components/urlbar/ActionsProviderTabGroups.sys.mjs"
+      "resource:///modules/BrowserContentHandler.sys.mjs": [
+        "browser/components/BrowserContentHandler.sys.mjs"
       ],
       "resource:///modules/BrowserGlue.sys.mjs": [
         "browser/components/BrowserGlue.sys.mjs"
@@ -881,6 +1091,9 @@
       "resource:///modules/BuiltInThemes.sys.mjs": [
         "browser/themes/BuiltInThemes.sys.mjs"
       ],
+      "resource:///modules/ChatsController.sys.mjs": [
+        "browser/components/firefoxview/ChatsController.sys.mjs"
+      ],
       "resource:///modules/ChromeMacOSLoginCrypto.sys.mjs": [
         "browser/components/migration/ChromeMacOSLoginCrypto.sys.mjs"
       ],
@@ -896,6 +1109,9 @@
       "resource:///modules/ContentCrashHandlers.sys.mjs": [
         "browser/modules/ContentCrashHandlers.sys.mjs"
       ],
+      "resource:///modules/CustomKeys.sys.mjs": [
+        "browser/components/customkeys/CustomKeys.sys.mjs"
+      ],
       "resource:///modules/Dedupe.sys.mjs": [
         "browser/modules/Dedupe.sys.mjs"
       ],
@@ -904,12 +1120,6 @@
       ],
       "resource:///modules/Discovery.sys.mjs": [
         "browser/modules/Discovery.sys.mjs"
-      ],
-      "resource:///modules/DownloadsCommon.sys.mjs": [
-        "browser/components/downloads/DownloadsCommon.sys.mjs"
-      ],
-      "resource:///modules/DownloadsViewUI.sys.mjs": [
-        "browser/components/downloads/DownloadsViewUI.sys.mjs"
       ],
       "resource:///modules/ESEDBReader.sys.mjs": [
         "browser/components/migration/ESEDBReader.sys.mjs"
@@ -986,6 +1196,9 @@
       "resource:///modules/OpenTabs.sys.mjs": [
         "browser/components/firefoxview/OpenTabs.sys.mjs"
       ],
+      "resource:///modules/OpenTabsController.sys.mjs": [
+        "browser/components/firefoxview/OpenTabsController.sys.mjs"
+      ],
       "resource:///modules/PageActions.sys.mjs": [
         "browser/modules/PageActions.sys.mjs"
       ],
@@ -995,17 +1208,11 @@
       "resource:///modules/PermissionUI.sys.mjs": [
         "browser/modules/PermissionUI.sys.mjs"
       ],
-      "resource:///modules/PopupBlockerObserver.sys.mjs": [
-        "browser/modules/PopupBlockerObserver.sys.mjs"
+      "resource:///modules/PopupAndRedirectBlockerObserver.sys.mjs": [
+        "browser/modules/PopupAndRedirectBlockerObserver.sys.mjs"
       ],
       "resource:///modules/ProcessHangMonitor.sys.mjs": [
         "browser/modules/ProcessHangMonitor.sys.mjs"
-      ],
-      "resource:///modules/QuickActionsLoaderDefault.sys.mjs": [
-        "browser/components/urlbar/QuickActionsLoaderDefault.sys.mjs"
-      ],
-      "resource:///modules/QuickSuggest.sys.mjs": [
-        "browser/components/urlbar/QuickSuggest.sys.mjs"
       ],
       "resource:///modules/SafariProfileMigrator.sys.mjs": [
         "browser/components/migration/SafariProfileMigrator.sys.mjs"
@@ -1018,9 +1225,6 @@
       ],
       "resource:///modules/ScreenshotsUtils.sys.mjs": [
         "browser/components/screenshots/ScreenshotsUtils.sys.mjs"
-      ],
-      "resource:///modules/SearchModeSwitcher.sys.mjs": [
-        "browser/components/urlbar/SearchModeSwitcher.sys.mjs"
       ],
       "resource:///modules/SelectionChangedMenulist.sys.mjs": [
         "browser/modules/SelectionChangedMenulist.sys.mjs"
@@ -1049,102 +1253,6 @@
       "resource:///modules/URILoadingHelper.sys.mjs": [
         "browser/modules/URILoadingHelper.sys.mjs"
       ],
-      "resource:///modules/UnitConverterSimple.sys.mjs": [
-        "browser/components/urlbar/unitconverters/UnitConverterSimple.sys.mjs"
-      ],
-      "resource:///modules/UnitConverterTemperature.sys.mjs": [
-        "browser/components/urlbar/unitconverters/UnitConverterTemperature.sys.mjs"
-      ],
-      "resource:///modules/UnitConverterTimezone.sys.mjs": [
-        "browser/components/urlbar/unitconverters/UnitConverterTimezone.sys.mjs"
-      ],
-      "resource:///modules/UrlbarController.sys.mjs": [
-        "browser/components/urlbar/UrlbarController.sys.mjs"
-      ],
-      "resource:///modules/UrlbarEventBufferer.sys.mjs": [
-        "browser/components/urlbar/UrlbarEventBufferer.sys.mjs"
-      ],
-      "resource:///modules/UrlbarInput.sys.mjs": [
-        "browser/components/urlbar/UrlbarInput.sys.mjs"
-      ],
-      "resource:///modules/UrlbarPrefs.sys.mjs": [
-        "browser/components/urlbar/UrlbarPrefs.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderAutofill.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderAutofill.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderCalculator.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderCalculator.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderClipboard.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderClipboard.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderGlobalActions.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderGlobalActions.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderInterventions.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderInterventions.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderOpenTabs.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderOpenTabs.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderPlaces.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderPlaces.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderQuickSuggest.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderQuickSuggest.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderQuickSuggestContextualOptIn.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderQuickSuggestContextualOptIn.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderRecentSearches.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderRecentSearches.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderSearchSuggestions.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderSearchSuggestions.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderSearchTips.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderSearchTips.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderSemanticHistorySearch.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderSemanticHistorySearch.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderTabToSearch.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderTabToSearch.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderTopSites.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderTopSites.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProviderUnitConversion.sys.mjs": [
-        "browser/components/urlbar/UrlbarProviderUnitConversion.sys.mjs"
-      ],
-      "resource:///modules/UrlbarProvidersManager.sys.mjs": [
-        "browser/components/urlbar/UrlbarProvidersManager.sys.mjs"
-      ],
-      "resource:///modules/UrlbarResult.sys.mjs": [
-        "browser/components/urlbar/UrlbarResult.sys.mjs"
-      ],
-      "resource:///modules/UrlbarSearchOneOffs.sys.mjs": [
-        "browser/components/urlbar/UrlbarSearchOneOffs.sys.mjs"
-      ],
-      "resource:///modules/UrlbarSearchTermsPersistence.sys.mjs": [
-        "browser/components/urlbar/UrlbarSearchTermsPersistence.sys.mjs"
-      ],
-      "resource:///modules/UrlbarSearchUtils.sys.mjs": [
-        "browser/components/urlbar/UrlbarSearchUtils.sys.mjs"
-      ],
-      "resource:///modules/UrlbarTokenizer.sys.mjs": [
-        "browser/components/urlbar/UrlbarTokenizer.sys.mjs"
-      ],
-      "resource:///modules/UrlbarUtils.sys.mjs": [
-        "browser/components/urlbar/UrlbarUtils.sys.mjs"
-      ],
-      "resource:///modules/UrlbarValueFormatter.sys.mjs": [
-        "browser/components/urlbar/UrlbarValueFormatter.sys.mjs"
-      ],
-      "resource:///modules/UrlbarView.sys.mjs": [
-        "browser/components/urlbar/UrlbarView.sys.mjs"
-      ],
       "resource:///modules/WebProtocolHandlerRegistrar.sys.mjs": [
         "browser/components/protocolhandler/WebProtocolHandlerRegistrar.sys.mjs"
       ],
@@ -1168,6 +1276,9 @@
       ],
       "resource:///modules/aboutwelcome/AboutWelcomeTelemetry.sys.mjs": [
         "browser/components/aboutwelcome/modules/AboutWelcomeTelemetry.sys.mjs"
+      ],
+      "resource:///modules/aiwindow/ui/modules/ChatStore.sys.mjs": [
+        "browser/components/aiwindow/ui/modules/ChatStore.sys.mjs"
       ],
       "resource:///modules/asrouter/ASRouter.sys.mjs": [
         "browser/components/asrouter/modules/ASRouter.sys.mjs"
@@ -1274,6 +1385,9 @@
       "resource:///modules/backup/BackupService.sys.mjs": [
         "browser/components/backup/BackupService.sys.mjs"
       ],
+      "resource:///modules/backup/BookmarksBackupResource.sys.mjs": [
+        "browser/components/backup/resources/BookmarksBackupResource.sys.mjs"
+      ],
       "resource:///modules/backup/CookiesBackupResource.sys.mjs": [
         "browser/components/backup/resources/CookiesBackupResource.sys.mjs"
       ],
@@ -1298,6 +1412,9 @@
       "resource:///modules/backup/SessionStoreBackupResource.sys.mjs": [
         "browser/components/backup/resources/SessionStoreBackupResource.sys.mjs"
       ],
+      "resource:///modules/backup/SiteSettingsBackupResource.sys.mjs": [
+        "browser/components/backup/resources/SiteSettingsBackupResource.sys.mjs"
+      ],
       "resource:///modules/distribution.sys.mjs": [
         "browser/components/distribution.sys.mjs"
       ],
@@ -1306,21 +1423,6 @@
       ],
       "resource:///modules/firefox-view-tabs-setup-manager.sys.mjs": [
         "browser/components/firefoxview/firefox-view-tabs-setup-manager.sys.mjs"
-      ],
-      "resource:///modules/ipprotection/GuardianClient.sys.mjs": [
-        "browser/components/ipprotection/GuardianClient.sys.mjs"
-      ],
-      "resource:///modules/ipprotection/IPPChannelFilter.sys.mjs": [
-        "browser/components/ipprotection/IPPChannelFilter.sys.mjs"
-      ],
-      "resource:///modules/ipprotection/IPProtection.sys.mjs": [
-        "browser/components/ipprotection/IPProtection.sys.mjs"
-      ],
-      "resource:///modules/ipprotection/IPProtectionPanel.sys.mjs": [
-        "browser/components/ipprotection/IPProtectionPanel.sys.mjs"
-      ],
-      "resource:///modules/ipprotection/IPProtectionService.sys.mjs": [
-        "browser/components/ipprotection/IPProtectionService.sys.mjs"
       ],
       "resource:///modules/policies/BookmarksPolicies.sys.mjs": [
         "browser/components/enterprisepolicies/helpers/BookmarksPolicies.sys.mjs"
@@ -1454,26 +1556,8 @@
       "resource:///modules/topsites/constants.mjs": [
         "browser/components/topsites/constants.mjs"
       ],
-      "resource:///modules/urlbar/private/AmpSuggestions.sys.mjs": [
-        "browser/components/urlbar/private/AmpSuggestions.sys.mjs"
-      ],
       "resource:///modules/urlbar/private/GeolocationUtils.sys.mjs": [
         "browser/components/urlbar/private/GeolocationUtils.sys.mjs"
-      ],
-      "resource:///modules/urlbar/private/ImpressionCaps.sys.mjs": [
-        "browser/components/urlbar/private/ImpressionCaps.sys.mjs"
-      ],
-      "resource:///modules/urlbar/private/MLSuggest.sys.mjs": [
-        "browser/components/urlbar/private/MLSuggest.sys.mjs"
-      ],
-      "resource:///modules/urlbar/private/RealtimeSuggestProvider.sys.mjs": [
-        "browser/components/urlbar/private/RealtimeSuggestProvider.sys.mjs"
-      ],
-      "resource:///modules/urlbar/private/SuggestBackendRust.sys.mjs": [
-        "browser/components/urlbar/private/SuggestBackendRust.sys.mjs"
-      ],
-      "resource:///modules/urlbar/private/SuggestFeature.sys.mjs": [
-        "browser/components/urlbar/private/SuggestFeature.sys.mjs"
       ],
       "resource:///modules/webrtcUI.sys.mjs": [
         "browser/modules/webrtcUI.sys.mjs"
@@ -1850,6 +1934,15 @@
       "resource://devtools/client/accessibility/utils/l10n.js": [
         "devtools/client/accessibility/utils/l10n.js"
       ],
+      "resource://devtools/client/anti-tracking/debugger-fsm-context.js": [
+        "devtools/client/anti-tracking/debugger-fsm-context.js"
+      ],
+      "resource://devtools/client/anti-tracking/panel.js": [
+        "devtools/client/anti-tracking/panel.js"
+      ],
+      "resource://devtools/client/anti-tracking/webcompat-tracker-debugger.js": [
+        "devtools/client/anti-tracking/webcompat-tracker-debugger.js"
+      ],
       "resource://devtools/client/application/panel.js": [
         "devtools/client/application/panel.js"
       ],
@@ -1861,6 +1954,9 @@
       ],
       "resource://devtools/client/application/src/actions/page.js": [
         "devtools/client/application/src/actions/page.js"
+      ],
+      "resource://devtools/client/application/src/actions/session-history.js": [
+        "devtools/client/application/src/actions/session-history.js"
       ],
       "resource://devtools/client/application/src/actions/ui.js": [
         "devtools/client/application/src/actions/ui.js"
@@ -1931,6 +2027,12 @@
       "resource://devtools/client/application/src/components/service-workers/WorkersPage.js": [
         "devtools/client/application/src/components/service-workers/WorkersPage.js"
       ],
+      "resource://devtools/client/application/src/components/session-history/SessionHistory.js": [
+        "devtools/client/application/src/components/session-history/SessionHistory.js"
+      ],
+      "resource://devtools/client/application/src/components/session-history/SessionHistoryPage.js": [
+        "devtools/client/application/src/components/session-history/SessionHistoryPage.js"
+      ],
       "resource://devtools/client/application/src/components/ui/UIButton.js": [
         "devtools/client/application/src/components/ui/UIButton.js"
       ],
@@ -1957,6 +2059,9 @@
       ],
       "resource://devtools/client/application/src/reducers/page-state.js": [
         "devtools/client/application/src/reducers/page-state.js"
+      ],
+      "resource://devtools/client/application/src/reducers/session-history-state.js": [
+        "devtools/client/application/src/reducers/session-history-state.js"
       ],
       "resource://devtools/client/application/src/reducers/ui-state.js": [
         "devtools/client/application/src/reducers/ui-state.js"
@@ -2749,6 +2854,9 @@
       ],
       "resource://devtools/client/jsonview/converter-child.js": [
         "devtools/client/jsonview/converter-child.js"
+      ],
+      "resource://devtools/client/jsonview/json-size-profiler.mjs": [
+        "devtools/client/jsonview/json-size-profiler.mjs"
       ],
       "resource://devtools/client/memory/actions/allocations.js": [
         "devtools/client/memory/actions/allocations.js"
@@ -3668,50 +3776,20 @@
       "resource://devtools/client/shared/components/reps/index.mjs": [
         "devtools/client/shared/components/reps/index.mjs"
       ],
-      "resource://devtools/client/shared/components/reps/reps/accessible.mjs": [
-        "devtools/client/shared/components/reps/reps/accessible.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/accessor.mjs": [
-        "devtools/client/shared/components/reps/reps/accessor.mjs"
-      ],
       "resource://devtools/client/shared/components/reps/reps/array.mjs": [
         "devtools/client/shared/components/reps/reps/array.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/attribute.mjs": [
-        "devtools/client/shared/components/reps/reps/attribute.mjs"
       ],
       "resource://devtools/client/shared/components/reps/reps/big-int.mjs": [
         "devtools/client/shared/components/reps/reps/big-int.mjs"
       ],
-      "resource://devtools/client/shared/components/reps/reps/comment-node.mjs": [
-        "devtools/client/shared/components/reps/reps/comment-node.mjs"
-      ],
       "resource://devtools/client/shared/components/reps/reps/constants.mjs": [
         "devtools/client/shared/components/reps/reps/constants.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/custom-formatter.mjs": [
-        "devtools/client/shared/components/reps/reps/custom-formatter.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/date-time.mjs": [
-        "devtools/client/shared/components/reps/reps/date-time.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/document-type.mjs": [
-        "devtools/client/shared/components/reps/reps/document-type.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/document.mjs": [
-        "devtools/client/shared/components/reps/reps/document.mjs"
       ],
       "resource://devtools/client/shared/components/reps/reps/element-node.mjs": [
         "devtools/client/shared/components/reps/reps/element-node.mjs"
       ],
       "resource://devtools/client/shared/components/reps/reps/error.mjs": [
         "devtools/client/shared/components/reps/reps/error.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/event.mjs": [
-        "devtools/client/shared/components/reps/reps/event.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/function.mjs": [
-        "devtools/client/shared/components/reps/reps/function.mjs"
       ],
       "resource://devtools/client/shared/components/reps/reps/grip-array.mjs": [
         "devtools/client/shared/components/reps/reps/grip-array.mjs"
@@ -3722,42 +3800,6 @@
       "resource://devtools/client/shared/components/reps/reps/grip-map.mjs": [
         "devtools/client/shared/components/reps/reps/grip-map.mjs"
       ],
-      "resource://devtools/client/shared/components/reps/reps/grip.mjs": [
-        "devtools/client/shared/components/reps/reps/grip.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/infinity.mjs": [
-        "devtools/client/shared/components/reps/reps/infinity.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/json-number.mjs": [
-        "devtools/client/shared/components/reps/reps/json-number.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/nan.mjs": [
-        "devtools/client/shared/components/reps/reps/nan.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/null.mjs": [
-        "devtools/client/shared/components/reps/reps/null.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/number.mjs": [
-        "devtools/client/shared/components/reps/reps/number.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/object-with-text.mjs": [
-        "devtools/client/shared/components/reps/reps/object-with-text.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/object-with-url.mjs": [
-        "devtools/client/shared/components/reps/reps/object-with-url.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/object.mjs": [
-        "devtools/client/shared/components/reps/reps/object.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/promise.mjs": [
-        "devtools/client/shared/components/reps/reps/promise.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/prop-rep.mjs": [
-        "devtools/client/shared/components/reps/reps/prop-rep.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/regexp.mjs": [
-        "devtools/client/shared/components/reps/reps/regexp.mjs"
-      ],
       "resource://devtools/client/shared/components/reps/reps/rep-utils.mjs": [
         "devtools/client/shared/components/reps/reps/rep-utils.mjs"
       ],
@@ -3767,26 +3809,11 @@
       "resource://devtools/client/shared/components/reps/reps/string.mjs": [
         "devtools/client/shared/components/reps/reps/string.mjs"
       ],
-      "resource://devtools/client/shared/components/reps/reps/stylesheet.mjs": [
-        "devtools/client/shared/components/reps/reps/stylesheet.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/symbol.mjs": [
-        "devtools/client/shared/components/reps/reps/symbol.mjs"
-      ],
       "resource://devtools/client/shared/components/reps/reps/text-node.mjs": [
         "devtools/client/shared/components/reps/reps/text-node.mjs"
       ],
-      "resource://devtools/client/shared/components/reps/reps/undefined.mjs": [
-        "devtools/client/shared/components/reps/reps/undefined.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/reps/window.mjs": [
-        "devtools/client/shared/components/reps/reps/window.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/shared/dom-node-constants.mjs": [
-        "devtools/client/shared/components/reps/shared/dom-node-constants.mjs"
-      ],
-      "resource://devtools/client/shared/components/reps/shared/grip-length-bubble.mjs": [
-        "devtools/client/shared/components/reps/shared/grip-length-bubble.mjs"
+      "resource://devtools/client/shared/components/reps/reps/value-summary-reader.mjs": [
+        "devtools/client/shared/components/reps/reps/value-summary-reader.mjs"
       ],
       "resource://devtools/client/shared/components/splitter/Draggable.js": [
         "devtools/client/shared/components/splitter/Draggable.js"
@@ -4481,6 +4508,9 @@
       "resource://devtools/server/actors/errordocs.js": [
         "devtools/server/actors/errordocs.js"
       ],
+      "resource://devtools/server/actors/events/events.js": [
+        "devtools/server/actors/events/events.js"
+      ],
       "resource://devtools/server/actors/frame.js": [
         "devtools/server/actors/frame.js"
       ],
@@ -4586,6 +4616,9 @@
       "resource://devtools/server/actors/string.js": [
         "devtools/server/actors/string.js"
       ],
+      "resource://devtools/server/actors/stylesheets/style-utils.js": [
+        "devtools/server/actors/stylesheets/style-utils.js"
+      ],
       "resource://devtools/server/actors/targets/base-target-actor.js": [
         "devtools/server/actors/targets/base-target-actor.js"
       ],
@@ -4609,6 +4642,9 @@
       ],
       "resource://devtools/server/actors/tracer.js": [
         "devtools/server/actors/tracer.js"
+      ],
+      "resource://devtools/server/actors/utils/HTMLSourcesCache.sys.mjs": [
+        "devtools/server/actors/utils/HTMLSourcesCache.sys.mjs"
       ],
       "resource://devtools/server/actors/utils/actor-registry.js": [
         "devtools/server/actors/utils/actor-registry.js"
@@ -4648,12 +4684,6 @@
       ],
       "resource://devtools/server/actors/utils/stack.js": [
         "devtools/server/actors/utils/stack.js"
-      ],
-      "resource://devtools/server/actors/utils/style-utils.js": [
-        "devtools/server/actors/utils/style-utils.js"
-      ],
-      "resource://devtools/server/actors/utils/track-change-emitter.js": [
-        "devtools/server/actors/utils/track-change-emitter.js"
       ],
       "resource://devtools/server/actors/utils/walker-search.js": [
         "devtools/server/actors/utils/walker-search.js"
@@ -4925,6 +4955,9 @@
       "resource://devtools/shared/loader/worker-loader.sys.mjs": [
         "devtools/shared/loader/worker-loader.sys.mjs"
       ],
+      "resource://devtools/shared/mdn.mjs": [
+        "devtools/shared/mdn.mjs"
+      ],
       "resource://devtools/shared/natural-sort.js": [
         "devtools/shared/natural-sort.js"
       ],
@@ -5015,15 +5048,6 @@
       "resource://devtools/shared/protocol/utils.js": [
         "devtools/shared/protocol/utils.js"
       ],
-      "resource://devtools/shared/qrcode/decoder/index.js": [
-        "devtools/shared/qrcode/decoder/index.js"
-      ],
-      "resource://devtools/shared/qrcode/encoder/index.js": [
-        "devtools/shared/qrcode/encoder/index.js"
-      ],
-      "resource://devtools/shared/qrcode/index.js": [
-        "devtools/shared/qrcode/index.js"
-      ],
       "resource://devtools/shared/security/DevToolsSocketStatus.sys.mjs": [
         "devtools/shared/security/DevToolsSocketStatus.sys.mjs"
       ],
@@ -5050,9 +5074,6 @@
       ],
       "resource://devtools/shared/specs/breakpoint-list.js": [
         "devtools/shared/specs/breakpoint-list.js"
-      ],
-      "resource://devtools/shared/specs/changes.js": [
-        "devtools/shared/specs/changes.js"
       ],
       "resource://devtools/shared/specs/compatibility.js": [
         "devtools/shared/specs/compatibility.js"
@@ -5294,11 +5315,14 @@
       "resource://gre/actors/NetErrorParent.sys.mjs": [
         "toolkit/actors/NetErrorParent.sys.mjs"
       ],
+      "resource://gre/actors/PageExtractorParent.sys.mjs": [
+        "toolkit/components/pageextractor/PageExtractorParent.sys.mjs"
+      ],
       "resource://gre/actors/PictureInPictureChild.sys.mjs": [
         "toolkit/actors/PictureInPictureChild.sys.mjs"
       ],
-      "resource://gre/actors/PopupBlockingParent.sys.mjs": [
-        "toolkit/actors/PopupBlockingParent.sys.mjs"
+      "resource://gre/actors/PopupAndRedirectBlockingParent.sys.mjs": [
+        "toolkit/actors/PopupAndRedirectBlockingParent.sys.mjs"
       ],
       "resource://gre/actors/RemotePageChild.sys.mjs": [
         "toolkit/actors/RemotePageChild.sys.mjs"
@@ -5396,6 +5420,9 @@
       "resource://gre/modules/CanonicalJSON.sys.mjs": [
         "toolkit/modules/CanonicalJSON.sys.mjs"
       ],
+      "resource://gre/modules/CanvasHashData.sys.mjs": [
+        "toolkit/components/resistfingerprinting/CanvasHashData.sys.mjs"
+      ],
       "resource://gre/modules/CaptchaDetectionPingUtils.sys.mjs": [
         "toolkit/components/captchadetection/CaptchaDetectionPingUtils.sys.mjs"
       ],
@@ -5486,17 +5513,20 @@
       "resource://gre/modules/CustomElementsListener.sys.mjs": [
         "toolkit/components/processsingleton/CustomElementsListener.sys.mjs"
       ],
+      "resource://gre/modules/DAPIncrementality.sys.mjs": [
+        "toolkit/components/dap/DAPIncrementality.sys.mjs"
+      ],
       "resource://gre/modules/DAPReportController.sys.mjs": [
-        "toolkit/components/telemetry/dap/DAPReportController.sys.mjs"
+        "toolkit/components/dap/DAPReportController.sys.mjs"
+      ],
+      "resource://gre/modules/DAPSender.sys.mjs": [
+        "toolkit/components/dap/DAPSender.sys.mjs"
       ],
       "resource://gre/modules/DAPTelemetrySender.sys.mjs": [
-        "toolkit/components/telemetry/dap/DAPTelemetrySender.sys.mjs"
+        "toolkit/components/dap/DAPTelemetrySender.sys.mjs"
       ],
       "resource://gre/modules/DAPVisitCounter.sys.mjs": [
-        "toolkit/components/telemetry/dap/DAPVisitCounter.sys.mjs"
-      ],
-      "resource://gre/modules/DateTimePickerPanel.sys.mjs": [
-        "toolkit/modules/DateTimePickerPanel.sys.mjs"
+        "toolkit/components/dap/DAPVisitCounter.sys.mjs"
       ],
       "resource://gre/modules/DeferredTask.sys.mjs": [
         "toolkit/modules/DeferredTask.sys.mjs"
@@ -5906,6 +5936,9 @@
       "resource://gre/modules/LoginManagerPrompter.sys.mjs": [
         "toolkit/components/passwordmgr/LoginManagerPrompter.sys.mjs"
       ],
+      "resource://gre/modules/LoginManagerRustMirror.sys.mjs": [
+        "toolkit/components/passwordmgr/LoginManagerRustMirror.sys.mjs"
+      ],
       "resource://gre/modules/LoginRecipes.sys.mjs": [
         "toolkit/components/passwordmgr/LoginRecipes.sys.mjs"
       ],
@@ -6107,9 +6140,6 @@
       "resource://gre/modules/Schemas.sys.mjs": [
         "toolkit/components/extensions/Schemas.sys.mjs"
       ],
-      "resource://gre/modules/SearchService.sys.mjs": [
-        "toolkit/components/search/SearchService.sys.mjs"
-      ],
       "resource://gre/modules/SecurityInfo.sys.mjs": [
         "toolkit/components/extensions/webrequest/SecurityInfo.sys.mjs"
       ],
@@ -6224,8 +6254,14 @@
       "resource://gre/modules/UrlClassifierRemoteSettingsService.sys.mjs": [
         "toolkit/components/url-classifier/UrlClassifierRemoteSettingsService.sys.mjs"
       ],
+      "resource://gre/modules/UrlUtils.sys.mjs": [
+        "toolkit/modules/UrlUtils.sys.mjs"
+      ],
       "resource://gre/modules/UsageReporting.sys.mjs": [
         "toolkit/components/telemetry/app/UsageReporting.sys.mjs"
+      ],
+      "resource://gre/modules/UserCharacteristicsPageService.sys.mjs": [
+        "toolkit/components/resistfingerprinting/UserCharacteristicsPageService.sys.mjs"
       ],
       "resource://gre/modules/ValueExtractor.sys.mjs": [
         "dom/manifest/ValueExtractor.sys.mjs"
@@ -6383,6 +6419,9 @@
       "resource://gre/modules/psm/DER.sys.mjs": [
         "security/manager/ssl/DER.sys.mjs"
       ],
+      "resource://gre/modules/psm/QWACs.sys.mjs": [
+        "security/manager/ssl/QWACs.sys.mjs"
+      ],
       "resource://gre/modules/psm/RemoteSecuritySettings.sys.mjs": [
         "security/manager/ssl/RemoteSecuritySettings.sys.mjs"
       ],
@@ -6494,6 +6533,9 @@
       "resource://gre/modules/storage-json.sys.mjs": [
         "toolkit/components/passwordmgr/storage-json.sys.mjs"
       ],
+      "resource://gre/modules/storage-rust.sys.mjs": [
+        "toolkit/components/passwordmgr/storage-rust.sys.mjs"
+      ],
       "resource://gre/modules/subprocess/subprocess_common.sys.mjs": [
         "toolkit/modules/subprocess/subprocess_common.sys.mjs"
       ],
@@ -6545,9 +6587,6 @@
       "resource://newtab/common/Reducers.sys.mjs": [
         "browser/extensions/newtab/common/Reducers.sys.mjs"
       ],
-      "resource://newtab/data/content/activity-stream.bundle.js": [
-        "browser/extensions/newtab/data/content/activity-stream.bundle.js"
-      ],
       "resource://newtab/lib/AboutPreferences.sys.mjs": [
         "browser/extensions/newtab/lib/AboutPreferences.sys.mjs"
       ],
@@ -6572,8 +6611,14 @@
       "resource://newtab/lib/DownloadsManager.sys.mjs": [
         "browser/extensions/newtab/lib/DownloadsManager.sys.mjs"
       ],
+      "resource://newtab/lib/ExternalComponentsFeed.sys.mjs": [
+        "browser/extensions/newtab/lib/ExternalComponentsFeed.sys.mjs"
+      ],
       "resource://newtab/lib/FaviconFeed.sys.mjs": [
         "browser/extensions/newtab/lib/FaviconFeed.sys.mjs"
+      ],
+      "resource://newtab/lib/FrecencyBoostProvider/FrecencyBoostProvider.mjs": [
+        "browser/extensions/newtab/lib/FrecencyBoostProvider/FrecencyBoostProvider.mjs"
       ],
       "resource://newtab/lib/HighlightsFeed.sys.mjs": [
         "browser/extensions/newtab/lib/HighlightsFeed.sys.mjs"
@@ -6581,11 +6626,23 @@
       "resource://newtab/lib/InferredModel/FeatureModel.sys.mjs": [
         "browser/extensions/newtab/lib/InferredModel/FeatureModel.sys.mjs"
       ],
+      "resource://newtab/lib/InferredModel/GreedyContentRanker.mjs": [
+        "browser/extensions/newtab/lib/InferredModel/GreedyContentRanker.mjs"
+      ],
       "resource://newtab/lib/InferredModel/InferredConstants.sys.mjs": [
         "browser/extensions/newtab/lib/InferredModel/InferredConstants.sys.mjs"
       ],
       "resource://newtab/lib/InferredPersonalizationFeed.sys.mjs": [
         "browser/extensions/newtab/lib/InferredPersonalizationFeed.sys.mjs"
+      ],
+      "resource://newtab/lib/NewTabActorRegistry.sys.mjs": [
+        "browser/extensions/newtab/lib/NewTabActorRegistry.sys.mjs"
+      ],
+      "resource://newtab/lib/NewTabAttributionFeed.sys.mjs": [
+        "browser/extensions/newtab/lib/NewTabAttributionFeed.sys.mjs"
+      ],
+      "resource://newtab/lib/NewTabAttributionService.sys.mjs": [
+        "browser/extensions/newtab/lib/NewTabAttributionService.sys.mjs"
       ],
       "resource://newtab/lib/NewTabContentPing.sys.mjs": [
         "browser/extensions/newtab/lib/NewTabContentPing.sys.mjs"
@@ -6602,47 +6659,35 @@
       "resource://newtab/lib/PersistentCache.sys.mjs": [
         "browser/extensions/newtab/lib/PersistentCache.sys.mjs"
       ],
-      "resource://newtab/lib/PersonalityProvider/NaiveBayesTextTagger.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/NaiveBayesTextTagger.mjs"
-      ],
-      "resource://newtab/lib/PersonalityProvider/NmfTextTagger.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/NmfTextTagger.mjs"
-      ],
-      "resource://newtab/lib/PersonalityProvider/PersonalityProvider.sys.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/PersonalityProvider.sys.mjs"
-      ],
-      "resource://newtab/lib/PersonalityProvider/PersonalityProviderWorkerClass.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/PersonalityProviderWorkerClass.mjs"
-      ],
-      "resource://newtab/lib/PersonalityProvider/RecipeExecutor.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/RecipeExecutor.mjs"
-      ],
-      "resource://newtab/lib/PersonalityProvider/Tokenize.mjs": [
-        "browser/extensions/newtab/lib/PersonalityProvider/Tokenize.mjs"
-      ],
       "resource://newtab/lib/PlacesFeed.sys.mjs": [
         "browser/extensions/newtab/lib/PlacesFeed.sys.mjs"
       ],
       "resource://newtab/lib/PrefsFeed.sys.mjs": [
         "browser/extensions/newtab/lib/PrefsFeed.sys.mjs"
       ],
-      "resource://newtab/lib/RecommendationProvider.sys.mjs": [
-        "browser/extensions/newtab/lib/RecommendationProvider.sys.mjs"
-      ],
       "resource://newtab/lib/Screenshots.sys.mjs": [
         "browser/extensions/newtab/lib/Screenshots.sys.mjs"
       ],
+      "resource://newtab/lib/SectionsLayoutManager.sys.mjs": [
+        "browser/extensions/newtab/lib/SectionsLayoutManager.sys.mjs"
+      ],
       "resource://newtab/lib/SectionsManager.sys.mjs": [
         "browser/extensions/newtab/lib/SectionsManager.sys.mjs"
-      ],
-      "resource://newtab/lib/ShortcutsRanker.sys.mjs": [
-        "browser/extensions/newtab/lib/ShortcutsRanker.sys.mjs"
       ],
       "resource://newtab/lib/SiteClassifier.sys.mjs": [
         "browser/extensions/newtab/lib/SiteClassifier.sys.mjs"
       ],
       "resource://newtab/lib/SmartShortcutsFeed.sys.mjs": [
         "browser/extensions/newtab/lib/SmartShortcutsFeed.sys.mjs"
+      ],
+      "resource://newtab/lib/SmartShortcutsRanker/RankShortcuts.mjs": [
+        "browser/extensions/newtab/lib/SmartShortcutsRanker/RankShortcuts.mjs"
+      ],
+      "resource://newtab/lib/SmartShortcutsRanker/RankShortcutsWorkerClass.mjs": [
+        "browser/extensions/newtab/lib/SmartShortcutsRanker/RankShortcutsWorkerClass.mjs"
+      ],
+      "resource://newtab/lib/SmartShortcutsRanker/ThomSample.mjs": [
+        "browser/extensions/newtab/lib/SmartShortcutsRanker/ThomSample.mjs"
       ],
       "resource://newtab/lib/StartupCacheInit.sys.mjs": [
         "browser/extensions/newtab/lib/StartupCacheInit.sys.mjs"
@@ -6662,14 +6707,11 @@
       "resource://newtab/lib/TopStoriesFeed.sys.mjs": [
         "browser/extensions/newtab/lib/TopStoriesFeed.sys.mjs"
       ],
-      "resource://newtab/lib/TrendingSearchFeed.sys.mjs": [
-        "browser/extensions/newtab/lib/TrendingSearchFeed.sys.mjs"
-      ],
       "resource://newtab/lib/UTEventReporting.sys.mjs": [
         "browser/extensions/newtab/lib/UTEventReporting.sys.mjs"
       ],
-      "resource://newtab/lib/WallpaperFeed.sys.mjs": [
-        "browser/extensions/newtab/lib/WallpaperFeed.sys.mjs"
+      "resource://newtab/lib/Wallpapers/WallpaperFeed.sys.mjs": [
+        "browser/extensions/newtab/lib/Wallpapers/WallpaperFeed.sys.mjs"
       ],
       "resource://newtab/lib/WeatherFeed.sys.mjs": [
         "browser/extensions/newtab/lib/WeatherFeed.sys.mjs"
@@ -6679,6 +6721,9 @@
       ],
       "resource://newtab/lib/Widgets/TimerFeed.sys.mjs": [
         "browser/extensions/newtab/lib/Widgets/TimerFeed.sys.mjs"
+      ],
+      "resource://newtab/lib/actors/NewTabAttributionParent.sys.mjs": [
+        "browser/extensions/newtab/lib/actors/NewTabAttributionParent.sys.mjs"
       ],
       "resource://nimbus/ExperimentAPI.sys.mjs": [
         "toolkit/components/nimbus/ExperimentAPI.sys.mjs"
@@ -6794,9 +6839,6 @@
       "resource://normandy/lib/NormandyUtils.sys.mjs": [
         "toolkit/components/normandy/lib/NormandyUtils.sys.mjs"
       ],
-      "resource://normandy/lib/PrefUtils.sys.mjs": [
-        "toolkit/components/normandy/lib/PrefUtils.sys.mjs"
-      ],
       "resource://normandy/lib/PreferenceExperiments.sys.mjs": [
         "toolkit/components/normandy/lib/PreferenceExperiments.sys.mjs"
       ],
@@ -6820,6 +6862,9 @@
       ],
       "resource://pdf.js/PdfJs.sys.mjs": [
         "toolkit/components/pdfjs/content/PdfJs.sys.mjs"
+      ],
+      "resource://pdf.js/PdfJsAIFeature.sys.mjs": [
+        "toolkit/components/pdfjs/content/PdfJsAIFeature.sys.mjs"
       ],
       "resource://pdf.js/PdfJsNetwork.sys.mjs": [
         "toolkit/components/pdfjs/content/PdfJsNetwork.sys.mjs"
@@ -7073,17 +7118,8 @@
       "resource://test/es6module_dynamic_import_runtime_error.js": [
         "js/xpconnect/tests/unit/es6module_dynamic_import_runtime_error.js"
       ],
-      "resource://test/es6module_dynamic_import_syntax_error.js": [
-        "js/xpconnect/tests/unit/es6module_dynamic_import_syntax_error.js"
-      ],
       "resource://test/es6module_import_error.js": [
         "js/xpconnect/tests/unit/es6module_import_error.js"
-      ],
-      "resource://test/es6module_parse_error.js": [
-        "js/xpconnect/tests/unit/es6module_parse_error.js"
-      ],
-      "resource://test/es6module_parse_error_in_import.js": [
-        "js/xpconnect/tests/unit/es6module_parse_error_in_import.js"
       ],
       "resource://test/es6module_throws.js": [
         "js/xpconnect/tests/unit/es6module_throws.js"
@@ -7148,6 +7184,9 @@
       "resource://test/webextension-helpers.js": [
         "devtools/server/tests/xpcshell/webextension-helpers.js"
       ],
+      "resource://testing-common/AIWindowTestUtils.sys.mjs": [
+        "browser/components/aiwindow/ui/test/AIWindowTestUtils.sys.mjs"
+      ],
       "resource://testing-common/AddonTestUtils.sys.mjs": [
         "toolkit/mozapps/extensions/internal/AddonTestUtils.sys.mjs"
       ],
@@ -7208,8 +7247,14 @@
       "resource://testing-common/FormHistoryTestUtils.sys.mjs": [
         "toolkit/components/satchel/test/FormHistoryTestUtils.sys.mjs"
       ],
+      "resource://testing-common/GeolocationTestUtils.sys.mjs": [
+        "browser/components/urlbar/tests/quicksuggest/GeolocationTestUtils.sys.mjs"
+      ],
       "resource://testing-common/HandlerServiceTestUtils.sys.mjs": [
         "uriloader/exthandler/tests/HandlerServiceTestUtils.sys.mjs"
+      ],
+      "resource://testing-common/ImageTestUtils.sys.mjs": [
+        "testing/modules/ImageTestUtils.sys.mjs"
       ],
       "resource://testing-common/InflightAssetsMessageProvider.sys.mjs": [
         "browser/components/asrouter/tests/InflightAssetsMessageProvider.sys.mjs"
@@ -7258,6 +7303,9 @@
       ],
       "resource://testing-common/NimbusTestUtils.sys.mjs": [
         "toolkit/components/nimbus/test/NimbusTestUtils.sys.mjs"
+      ],
+      "resource://testing-common/NodeServer.sys.mjs": [
+        "netwerk/test/httpserver/NodeServer.sys.mjs"
       ],
       "resource://testing-common/NormandyTestUtils.sys.mjs": [
         "toolkit/components/normandy/test/NormandyTestUtils.sys.mjs"
@@ -7534,6 +7582,18 @@
       ],
       "resource://testing-common/services/sync/utils.sys.mjs": [
         "services/sync/modules-testing/utils.sys.mjs"
+      ],
+      "chrome://global/content/vendor/lit.all.mjs": [
+        "toolkit/content/widgets/vendor/lit.all.d.ts"
+      ],
+      "@lit/reactive-element": [
+        "node_modules/@lit/reactive-element/reactive-element"
+      ],
+      "lit/*": [
+        "node_modules/lit/*"
+      ],
+      "lit-html": [
+        "node_modules/lit-html/lit-html"
       ],
       "moz-src:///*": [
         "./*"

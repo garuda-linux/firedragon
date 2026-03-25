@@ -88,6 +88,10 @@ export default defineExperimentApi({
         ],
     },
     main() {
+        const { SearchService } = ChromeUtils.importESModule(
+            'moz-src:///toolkit/components/search/SearchService.sys.mjs',
+        );
+
         async function mapSearchEngine(engine: any): Promise<Browser.searchEngine.SearchEngine> {
             return {
                 id: engine.id,
@@ -101,21 +105,21 @@ export default defineExperimentApi({
                 return {
                     searchEngine: {
                         async getAll(): Promise<Browser.searchEngine.SearchEngine[]> {
-                            return Promise.all((await Services.search.getVisibleEngines()).map(mapSearchEngine));
+                            return Promise.all((await SearchService.getVisibleEngines()).map(mapSearchEngine));
                         },
                         async getDefault(): Promise<Browser.searchEngine.SearchEngine> {
-                            return mapSearchEngine(Services.search.defaultEngine);
+                            return mapSearchEngine(SearchService.defaultEngine);
                         },
                         setDefault(id: string) {
-                            const engine = Services.search.getEngineById(id);
-                            Services.search.setDefault(engine, Ci.nsISearchService.CHANGE_REASON_UITOUR!);
+                            const engine = SearchService.getEngineById(id);
+                            SearchService.setDefault(engine, SearchService.CHANGE_REASON.UITOUR!);
                         },
                         async getPrivateDefault(): Promise<Browser.searchEngine.SearchEngine> {
-                            return mapSearchEngine(Services.search.defaultPrivateEngine);
+                            return mapSearchEngine(SearchService.defaultPrivateEngine);
                         },
                         setPrivateDefault(id: string) {
-                            const engine = Services.search.getEngineById(id);
-                            Services.search.setDefaultPrivate(engine, Ci.nsISearchService.CHANGE_REASON_UITOUR!);
+                            const engine = SearchService.getEngineById(id);
+                            SearchService.setDefaultPrivate(engine, SearchService.CHANGE_REASON.UITOUR!);
                         },
                     },
                 };

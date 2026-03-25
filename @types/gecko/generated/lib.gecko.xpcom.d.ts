@@ -106,6 +106,7 @@ interface nsIBitsNewRequestCallback extends nsISupports {
 interface nsIBitsRequest extends nsIRequest {
   readonly bitsId: string;
   readonly transferError: nsBitsErrorType;
+  readonly transferErrorCode: i32;
   changeMonitorInterval(monitorIntervalMs: u32, callback: nsIBitsCallback): void;
   cancelAsync(status: nsresult, callback: nsIBitsCallback): void;
   setPriorityHigh(callback: nsIBitsCallback): void;
@@ -389,6 +390,8 @@ interface nsIAccessibleRelation extends nsISupports {
   readonly RELATION_ERRORMSG?: 23;
   readonly RELATION_ERRORMSG_FOR?: 24;
   readonly RELATION_LINKS_TO?: 25;
+  readonly RELATION_ACTION?: 32;
+  readonly RELATION_ACTION_FOR?: 33;
 
   readonly relationType: u32;
   readonly targetsCount: u32;
@@ -792,11 +795,6 @@ interface nsIAccessibleValue extends nsISupports {
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/alerts/nsIAlertsService.idl
 
-interface nsIAlertNotificationImageListener extends nsISupports {
-  onImageReady(aUserData: nsISupports, aRequest: imgIRequest): void;
-  onImageMissing(aUserData: nsISupports): void;
-}
-
 interface nsIAlertAction extends nsISupports {
   readonly action: string;
   readonly title: string;
@@ -807,9 +805,11 @@ interface nsIAlertAction extends nsISupports {
 
 interface nsIAlertNotification extends nsISupports {
   init(aName?: string, aImageURL?: string, aTitle?: string, aText?: string, aTextClickable?: boolean, aCookie?: string, aDir?: string, aLang?: string, aData?: string, aPrincipal?: nsIPrincipal, aInPrivateBrowsing?: boolean, aRequireInteraction?: boolean, aSilent?: boolean, aVibrate?: u32[]): void;
+  initWithObject(aAlertNotification: nsIAlertNotification): void;
   readonly id: string;
   readonly name: string;
   readonly imageURL: string;
+  image: imgIContainer;
   readonly title: string;
   readonly text: string;
   readonly textClickable: boolean;
@@ -828,13 +828,11 @@ interface nsIAlertNotification extends nsISupports {
   readonly source: string;
   readonly origin: string;
   opaqueRelaunchData: string;
-  loadImage(aTimeout: u32, aListener: nsIAlertNotificationImageListener, aUserData?: nsISupports): nsICancelable;
   getAction(aName: string): nsIAlertAction;
 }
 
 interface nsIAlertsService extends nsISupports {
   showAlert(aAlert: nsIAlertNotification, aAlertListener?: nsIObserver): void;
-  showAlertNotification(aImageURL: string, aTitle: string, aText: string, aTextClickable?: boolean, aCookie?: string, aAlertListener?: nsIObserver, aName?: string, aDir?: string, aLang?: string, aData?: string, aPrincipal?: nsIPrincipal, aInPrivateBrowsing?: boolean, aRequireInteraction?: boolean): void;
   closeAlert(aName?: string, aContextClosed?: boolean): void;
   getHistory(): string[];
   teardown(): void;
@@ -882,6 +880,7 @@ interface nsIAppWindow extends nsISupports {
   readonly initialOpenWindowInfo: nsIOpenWindowInfo;
   needFastSnaphot(): void;
   rollupAllPopups(): void;
+  showInitialViewer(): void;
 }
 
 // https://searchfox.org/mozilla-central/source/xpfe/appshell/nsIWindowMediator.idl
@@ -957,7 +956,7 @@ interface nsIAppStartup extends nsISupports, Enums<typeof nsIAppStartup_IDLShutd
   exitLastWindowClosingSurvivalArea(): void;
   readonly automaticSafeModeNecessary: boolean;
   restartInSafeMode(aQuitMode: u32): void;
-  createInstanceWithProfile(aProfile: nsIToolkitProfile): void;
+  createInstanceWithProfile(aProfile: nsIToolkitProfile, aArgs?: string[]): void;
   trackStartupCrashBegin(): boolean;
   trackStartupCrashEnd(): void;
   quit(aMode: u32, aExitCode?: i32): boolean;
@@ -1382,37 +1381,6 @@ interface nsICommandParams extends nsISupports {
   removeValue(name: string): void;
 }
 
-// https://searchfox.org/mozilla-central/source/dom/commandhandler/nsIControllerCommand.idl
-
-interface nsIControllerCommand extends nsISupports {
-  isCommandEnabled(aCommandName: string, aCommandContext: nsISupports): boolean;
-  getCommandStateParams(aCommandName: string, aParams: nsICommandParams, aCommandContext: nsISupports): void;
-  doCommand(aCommandName: string, aCommandContext: nsISupports): void;
-  doCommandParams(aCommandName: string, aParams: nsICommandParams, aCommandContext: nsISupports): void;
-}
-
-// https://searchfox.org/mozilla-central/source/dom/commandhandler/nsIControllerCommandTable.idl
-
-interface nsIControllerCommandTable extends nsISupports {
-  makeImmutable(): void;
-  registerCommand(aCommandName: string, aCommand: nsIControllerCommand): void;
-  unregisterCommand(aCommandName: string, aCommand: nsIControllerCommand): void;
-  findCommandHandler(aCommandName: string): nsIControllerCommand;
-  isCommandEnabled(aCommandName: string, aCommandRefCon: nsISupports): boolean;
-  updateCommandState(aCommandName: string, aCommandRefCon: nsISupports): void;
-  supportsCommand(aCommandName: string, aCommandRefCon: nsISupports): boolean;
-  doCommand(aCommandName: string, aCommandRefCon: nsISupports): void;
-  doCommandParams(aCommandName: string, aParam: nsICommandParams, aCommandRefCon: nsISupports): void;
-  getCommandState(aCommandName: string, aParam: nsICommandParams, aCommandRefCon: nsISupports): void;
-  getSupportedCommands(): string[];
-}
-
-// https://searchfox.org/mozilla-central/source/dom/commandhandler/nsIControllerContext.idl
-
-interface nsIControllerContext extends nsISupports {
-  setCommandContext(aCommandContext: nsISupports): void;
-}
-
 // https://searchfox.org/mozilla-central/source/toolkit/components/commandlines/nsICommandLine.idl
 
 interface nsICommandLine extends nsISupports {
@@ -1510,6 +1478,14 @@ interface mozIGeckoMediaPluginChromeService extends nsISupports {
 interface mozIGeckoMediaPluginService extends nsISupports {
   readonly thread: nsIThread;
   RunPluginCrashCallbacks(pluginId: u32, pluginName: string): void;
+}
+
+// https://searchfox.org/mozilla-central/source/toolkit/components/dap/nsIDAPTelemetry.idl
+
+interface nsIDAPTelemetry extends nsISupports {
+  GetReportPrioSum(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32, task_id: u8[], bits: u32, time_precision: u64, report: OutParam<u8[]>): void;
+  GetReportPrioSumVec(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32[], task_id: u8[], bits: u32, time_precision: u64, report: OutParam<u8[]>): void;
+  GetReportPrioHistogram(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32, task_id: u8[], length: u32, time_precision: u64, report: OutParam<u8[]>): void;
 }
 
 // https://searchfox.org/mozilla-central/source/docshell/base/nsIDocShell.idl
@@ -1693,8 +1669,9 @@ declare enum nsIDocumentViewer_PermitUnloadAction {
 }
 
 declare enum nsIDocumentViewer_PermitUnloadResult {
-  eAllowNavigation = 0,
-  eRequestBlockNavigation = 1,
+  eContinue = 0,
+  eCanceledByBeforeUnload = 1,
+  eCanceledByNavigate = 2,
 }
 
 declare global {
@@ -1978,7 +1955,8 @@ declare enum nsIContentPolicy_nsContentPolicyType {
   TYPE_INTERNAL_EXTERNAL_RESOURCE = 61,
   TYPE_JSON = 62,
   TYPE_INTERNAL_JSON_PRELOAD = 63,
-  TYPE_END = 64,
+  TYPE_INTERNAL_IMAGE_NOTIFICATION = 64,
+  TYPE_END = 65,
 }
 
 declare global {
@@ -2341,6 +2319,7 @@ interface nsIBrowserDOMWindow extends nsISupports {
   readonly OPEN_PRINT_BROWSER?: 4;
   readonly OPEN_NEWTAB_BACKGROUND?: 5;
   readonly OPEN_NEWTAB_FOREGROUND?: 6;
+  readonly OPEN_NEWTAB_AFTER_CURRENT?: 7;
   readonly OPEN_NEW?: 0;
   readonly OPEN_EXTERNAL?: 1;
   readonly OPEN_NO_OPENER?: 4;
@@ -2376,6 +2355,7 @@ interface nsIContentPermissionRequest extends nsISupports {
   readonly hasValidTransientUserGestureActivation: boolean;
   readonly isRequestDelegatedToUnsafeThirdParty: boolean;
   getDelegatePrincipal(aType: string): nsIPrincipal;
+  notifyShown(): void;
   cancel(): void;
   allow(choices?: any): void;
 }
@@ -2603,9 +2583,6 @@ interface nsIDOMWindowUtils extends nsISupports, Enums<typeof nsIDOMWindowUtils_
   isFirstPaint: boolean;
   getPresShellId(): u32;
   isCORSSafelistedRequestHeader(name: string, value: string): boolean;
-  sendTouchEvent(aType: string, aIdentifiers: u32[], aXs: i32[], aYs: i32[], aRxs: u32[], aRys: u32[], aRotationAngles: float[], aForces: float[], aTiltXs: i32[], aTiltYs: i32[], aTwists: i32[], aModifiers: i32, aAsyncEnabled?: nsIDOMWindowUtils.AsyncEnabledOption): boolean;
-  sendTouchEventAsPen(aType: string, aIdentifier: u32, aX: i32, aY: i32, aRx: u32, aRy: u32, aRotationAngle: float, aForce: float, aTiltX: i32, aTiltY: i32, aTwist: i32, aModifier: i32, aAsyncEnabled?: nsIDOMWindowUtils.AsyncEnabledOption): boolean;
-  sendTouchEventToWindow(aType: string, aIdentifiers: u32[], aXs: i32[], aYs: i32[], aRxs: u32[], aRys: u32[], aRotationAngles: float[], aForces: float[], aTiltXs: i32[], aTiltYs: i32[], aTwists: i32[], aModifiers: i32): boolean;
   sendWheelEvent(aX: float, aY: float, aDeltaX: double, aDeltaY: double, aDeltaZ: double, aDeltaMode: u32, aModifiers: i32, aLineOrPageDeltaX: i32, aLineOrPageDeltaY: i32, aOptions: u32, aCallback?: nsISynthesizedEventCallback): void;
   sendNativeKeyEvent(aNativeKeyboardLayout: i32, aNativeKeyCode: i32, aModifierFlags: u32, aCharacters: string, aUnmodifiedCharacters: string, aCallback?: nsISynthesizedEventCallback): void;
   sendNativeMouseEvent(aScreenX: i32, aScreenY: i32, aNativeMessage: u32, aButton: i16, aModifierFlags: u32, aElementOnWidget: Element, aCallback?: nsISynthesizedEventCallback): void;
@@ -2628,7 +2605,6 @@ interface nsIDOMWindowUtils extends nsISupports, Enums<typeof nsIDOMWindowUtils_
   sendSimpleGestureEvent(aType: string, aX: float, aY: float, aDirection: u32, aDelta: double, aModifiers: i32, aClickCount?: u32): void;
   elementFromPoint(aX: float, aY: float, aIgnoreRootScrollFrame: boolean, aFlushLayout: boolean): Element;
   nodesFromRect(aX: float, aY: float, aTopSize: float, aRightSize: float, aBottomSize: float, aLeftSize: float, aIgnoreRootScrollFrame: boolean, aFlushLayout: boolean, aOnlyVisible: boolean, aTransparencyThreshold?: float): NodeList;
-  getTranslationNodes(aRoot: Node): nsITranslationNodeList;
   compareCanvases(aCanvas1: nsISupports, aCanvas2: nsISupports, aMaxDifference: OutParam<u32>): u32;
   readonly isMozAfterPaintPending: boolean;
   readonly isWindowFullyOccluded: boolean;
@@ -2694,6 +2670,7 @@ interface nsIDOMWindowUtils extends nsISupports, Enums<typeof nsIDOMWindowUtils_
   setAsyncZoom(aRootElement: Element, aValue: float): void;
   flushApzRepaints(aElement?: Element): boolean;
   disableApzForElement(aElement: Element): void;
+  isApzDisabledForElement(aElement: Element): boolean;
   zoomToFocusedInput(): void;
   computeAnimationDistance(element: Element, property: string, value1: string, value2: string): double;
   getUnanimatedComputedStyle(aElement: Element, aPseudoElement: string, aProperty: string, aFlushType: i32): string;
@@ -2706,6 +2683,7 @@ interface nsIDOMWindowUtils extends nsISupports, Enums<typeof nsIDOMWindowUtils_
   getViewId(aElement: Element): nsViewID;
   checkAndClearPaintedState(aElement: Element): boolean;
   checkAndClearDisplayListState(aElement: Element): boolean;
+  checkAndClearWRDidRasterize(): boolean;
   getFileId(aFile: any): i64;
   getFilePath(aFile: any): string;
   getFileReferences(aDatabaseName: string, aId: i64, aRefCnt?: OutParam<i32>, aDBRefCnt?: OutParam<i32>): boolean;
@@ -2784,12 +2762,6 @@ interface nsIDOMWindowUtils extends nsISupports, Enums<typeof nsIDOMWindowUtils_
   getWheelScrollTarget(): Element;
   readonly dragSession: nsIDragSession;
   microTaskLevel: u32;
-}
-
-interface nsITranslationNodeList extends nsISupports {
-  readonly length: u32;
-  item(index: u32): Node;
-  isTranslationRootAtIndex(index: u32): boolean;
 }
 
 interface nsIJSRAIIHelper extends nsISupports {
@@ -3817,7 +3789,7 @@ interface nsIContentSecurityPolicy extends nsISerializable, Enums<typeof nsICont
   readonly enforcesFrameAncestors: boolean;
   appendPolicy(policyString: string, reportOnly: boolean, deliveredViaMetaTag: boolean): void;
   readonly requireTrustedTypesForDirectiveState: nsIContentSecurityPolicy.RequireTrustedTypesForDirectiveState;
-  getAllowsInline(aDirective: nsIContentSecurityPolicy.CSPDirective, aHasUnsafeHash: boolean, aNonce: string, aParserCreated: boolean, aTriggeringElement: Element, aCSPEventListener: nsICSPEventListener, aContentOfPseudoScript: string, aLineNumber: u32, aColumnNumber: u32): boolean;
+  getAllowsInline(aDirective: nsIContentSecurityPolicy.CSPDirective, aHasUnsafeHash: boolean, aNonce: string, aParserCreated: boolean, aTriggeringElement: Element, aCSPEventListener: nsICSPEventListener, aSourceText: string, aLineNumber: u32, aColumnNumber: u32): boolean;
   getAllowsEval(shouldReportViolations: OutParam<boolean>): boolean;
   getAllowsWasmEval(shouldReportViolations: OutParam<boolean>): boolean;
   getCSPSandboxFlags(): u32;
@@ -4964,7 +4936,7 @@ interface imgIEncoder extends nsIAsyncInputStream {
   readonly INPUT_FORMAT_RGBA?: 1;
   readonly INPUT_FORMAT_HOSTARGB?: 2;
 
-  initFromData(data: u8[], length: u32, width: u32, height: u32, stride: u32, inputFormat: u32, outputOptions: string): void;
+  initFromData(data: u8[], length: u32, width: u32, height: u32, stride: u32, inputFormat: u32, outputOptions: string, randomizationKey: string): void;
   startImageEncode(width: u32, height: u32, inputFormat: u32, outputOptions: string): void;
   addImageFrame(data: u8[], length: u32, width: u32, height: u32, stride: u32, frameFormat: u32, frameOptions: string): void;
   endImageEncode(): void;
@@ -5403,6 +5375,12 @@ interface mozILocaleService extends nsISupports {
   availableLocales: string[];
   readonly isAppLocaleRTL: boolean;
   readonly packagedLocales: string[];
+  readonly ellipsis: string;
+  readonly alwaysAppendAccesskeys: boolean;
+  readonly insertSeparatorBeforeAccesskeys: boolean;
+  readonly acceptLanguages: string;
+  readonly fontLanguageGroup: string;
+  readonly urlFixupSuffix: string;
 }
 
 // https://searchfox.org/mozilla-central/source/intl/locale/mozIOSPreferences.idl
@@ -5453,12 +5431,18 @@ interface nsILoginManager extends nsISupports {
   addLoginAsync(aLogin: nsILoginInfo): Promise<any>;
   addLogins(aLogins: any): Promise<any>;
   removeLogin(aLogin: nsILoginInfo): void;
+  removeLoginAsync(aLogin: nsILoginInfo): Promise<any>;
   modifyLogin(oldLogin: nsILoginInfo, newLoginData: nsISupports): void;
+  modifyLoginAsync(oldLogin: nsILoginInfo, newLoginData: nsISupports): Promise<any>;
   recordPasswordUse(aLogin: nsILoginInfo, aPrivateContextWithoutExplicitConsent: boolean, aLoginType: string, aFilled: boolean): void;
   removeAllUserFacingLogins(): void;
+  removeAllUserFacingLoginsAsync(): Promise<any>;
   removeAllLogins(): void;
+  removeAllLoginsAsync(): Promise<any>;
   getAllLogins(): Promise<any>;
   getAllLoginsWithCallback(aCallback: nsILoginSearchCallback): void;
+  reencryptAllLogins(): Promise<any>;
+  listInvalidOrigins(): Promise<any>;
   getAllDisabledHosts(): string[];
   getLoginSavingEnabled(aHost: string): boolean;
   setLoginSavingEnabled(aHost: string, isEnabled: boolean): void;
@@ -5629,6 +5613,7 @@ interface nsIMLUtils extends nsISupports {
   readonly totalPhysicalMemory: u64;
   readonly availablePhysicalMemory: u64;
   getOptimalCPUConcurrency(): u8;
+  canUseLlamaCpp(): boolean;
 }
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/find/nsIFind.idl
@@ -5859,6 +5844,10 @@ interface nsIInputStreamReceiver extends nsISupports {
   onInputStreamReady(aStream: nsIInputStream): void;
 }
 
+interface nsICacheEntryWriteHandle extends nsISupports {
+  openAlternativeOutputStream(type: string, predictedSize: i64): nsIAsyncOutputStream;
+}
+
 }  // global
 
 declare enum nsICacheInfoChannel_PreferredAlternativeDataDeliveryType {
@@ -5888,6 +5877,7 @@ interface nsICacheInfoChannel extends nsISupports, Enums<typeof nsICacheInfoChan
   readonly cacheTokenFetchCount: u32;
   readonly cacheTokenExpirationTime: u32;
   isFromCache(): boolean;
+  hasCacheEntry(): boolean;
   isRacing(): boolean;
   getCacheEntryId(): u64;
   cacheKey: u32;
@@ -5898,6 +5888,7 @@ interface nsICacheInfoChannel extends nsISupports, Enums<typeof nsICacheInfoChan
   readonly alternativeDataType: string;
   readonly alternativeDataInputStream: nsIInputStream;
   getOriginalInputStream(aReceiver: nsIInputStreamReceiver): void;
+  getCacheEntryWriteHandle(): nsICacheEntryWriteHandle;
   openAlternativeOutputStream(type: string, predictedSize: i64): nsIAsyncOutputStream;
   getCacheDisposition(): nsICacheInfoChannel.CacheDisposition;
 }
@@ -6332,6 +6323,8 @@ declare enum nsILoadInfo_StoragePermissionState {
   NoStoragePermission = 0,
   HasStoragePermission = 1,
   StoragePermissionAllowListed = 2,
+  DisabledStoragePermission = 3,
+  InactiveStoragePermission = 4,
 }
 
 declare enum nsILoadInfo_IPAddressSpace {
@@ -6447,6 +6440,7 @@ interface nsILoadInfo extends nsISupports, Enums<typeof nsILoadInfo_StoragePermi
   readonly BLOCKING_REASON_CLASSIFY_FINGERPRINTING_URI?: 2008;
   readonly BLOCKING_REASON_CLASSIFY_SOCIALTRACKING_URI?: 2009;
   readonly BLOCKING_REASON_CLASSIFY_EMAILTRACKING_URI?: 2010;
+  readonly BLOCKING_REASON_CLASSIFY_HARMFULADDON_URI?: 2011;
   readonly BLOCKING_REASON_MIXED_BLOCKED?: 3001;
   readonly BLOCKING_REASON_CONTENT_POLICY_GENERAL?: 4000;
   readonly BLOCKING_REASON_CONTENT_POLICY_NO_DATA_PROTOCOL?: 4001;
@@ -6751,30 +6745,6 @@ interface nsINetworkLinkService extends nsISupports {
   readonly platformDNSIndications: u32;
 }
 
-// https://searchfox.org/mozilla-central/source/netwerk/base/nsINetworkPredictor.idl
-
-interface nsINetworkPredictor extends nsISupports {
-  readonly PREDICT_LINK?: 0;
-  readonly PREDICT_LOAD?: 1;
-  readonly PREDICT_STARTUP?: 2;
-  readonly LEARN_LOAD_TOPLEVEL?: 0;
-  readonly LEARN_LOAD_SUBRESOURCE?: 1;
-  readonly LEARN_LOAD_REDIRECT?: 2;
-  readonly LEARN_STARTUP?: 3;
-
-  predict(targetURI: nsIURI, sourceURI: nsIURI, reason: PredictorPredictReason, originAttributes: any, verifier: nsINetworkPredictorVerifier): void;
-  learn(targetURI: nsIURI, sourceURI: nsIURI, reason: PredictorLearnReason, originAttributes: any): void;
-  reset(): void;
-}
-
-// https://searchfox.org/mozilla-central/source/netwerk/base/nsINetworkPredictorVerifier.idl
-
-interface nsINetworkPredictorVerifier extends nsISupports {
-  onPredictPrefetch(uri: nsIURI, status: u32): void;
-  onPredictPreconnect(uri: nsIURI): void;
-  onPredictDNS(uri: nsIURI): void;
-}
-
 // https://searchfox.org/mozilla-central/source/netwerk/base/nsINullChannel.idl
 
 interface nsINullChannel extends nsISupports {
@@ -6972,6 +6942,7 @@ interface nsIProtocolProxyService extends nsISupports {
   asyncResolve(aChannelOrURI: nsISupports, aFlags: u32, aCallback: nsIProtocolProxyCallback, aMainThreadTarget?: nsISerialEventTarget): nsICancelable;
   newProxyInfo(aType: string, aHost: string, aPort: i32, aProxyAuthorizationHeader: string, aConnectionIsolationKey: string, aFlags: u32, aFailoverTimeout: u32, aFailoverProxy: nsIProxyInfo): nsIProxyInfo;
   newProxyInfoWithAuth(aType: string, aHost: string, aPort: i32, aUsername: string, aPassword: string, aProxyAuthorizationHeader: string, aConnectionIsolationKey: string, aFlags: u32, aFailoverTimeout: u32, aFailoverProxy: nsIProxyInfo): nsIProxyInfo;
+  newMASQUEProxyInfo(aHost: string, aPort: i32, aMasqueTemplate: string, aProxyAuthorizationHeader: string, aConnectionIsolationKey: string, aFlags: u32, aFailoverTimeout: u32, aFailoverProxy: nsIProxyInfo): nsIProxyInfo;
   getFailoverForProxy(aProxyInfo: nsIProxyInfo, aURI: nsIURI, aReason: nsresult): nsIProxyInfo;
   registerFilter(aFilter: nsIProtocolProxyFilter, aPosition: u32): void;
   registerChannelFilter(aFilter: nsIProtocolProxyChannelFilter, aPosition: u32): void;
@@ -7010,6 +6981,7 @@ interface nsIProxyInfo extends nsISupports {
   readonly SOCKS_V4?: 4;
   readonly SOCKS_V5?: 5;
   readonly TRANSPARENT_PROXY_RESOLVES_HOST?: 1;
+  readonly ALWAYS_TUNNEL_VIA_PROXY?: 2;
 
   readonly host: string;
   readonly port: i32;
@@ -7023,6 +6995,7 @@ interface nsIProxyInfo extends nsISupports {
   sourceId: string;
   readonly proxyAuthorizationHeader: string;
   readonly connectionIsolationKey: string;
+  masqueTemplate: string;
 }
 
 // https://searchfox.org/mozilla-central/source/netwerk/base/nsIRandomGenerator.idl
@@ -7657,12 +7630,14 @@ interface nsICacheEntry extends nsISupports {
   readonly CONTENT_TYPE_MEDIA?: 4;
   readonly CONTENT_TYPE_STYLESHEET?: 5;
   readonly CONTENT_TYPE_WASM?: 6;
-  readonly CONTENT_TYPE_LAST?: 7;
+  readonly CONTENT_TYPE_DICTIONARY?: 7;
+  readonly CONTENT_TYPE_LAST?: 8;
   readonly NO_EXPIRATION_TIME?: 4294967295;
 
   readonly key: string;
   readonly cacheEntryId: u64;
   readonly persistent: boolean;
+  readonly readyOrRevalidating: boolean;
   readonly fetchCount: u32;
   readonly lastFetched: u32;
   readonly lastModified: u32;
@@ -7682,6 +7657,7 @@ interface nsICacheEntry extends nsISupports {
   asyncDoom(listener: nsICacheEntryDoomCallback): void;
   getMetaDataElement(key: string): string;
   setMetaDataElement(key: string, value: string): void;
+  readonly isEmpty: boolean;
   visitMetaData(visitor: nsICacheEntryMetaDataVisitor): void;
   metaDataReady(): void;
   setValid(): void;
@@ -7694,6 +7670,7 @@ interface nsICacheEntry extends nsISupports {
   openAlternativeOutputStream(type: string, predictedSize: i64): nsIAsyncOutputStream;
   openAlternativeInputStream(type: string): nsIInputStream;
   readonly loadContextInfo: nsILoadContextInfo;
+  setBypassWriterLock(aBypass: boolean): void;
 }
 
 interface nsICacheEntryMetaDataVisitor extends nsISupports {
@@ -7738,8 +7715,11 @@ interface nsICacheStorage extends nsISupports {
   readonly CHECK_MULTITHREADED?: 16;
   readonly OPEN_SECRETLY?: 32;
   readonly OPEN_INTERCEPTED?: 64;
+  readonly OPEN_COMPLETE_ONLY?: 128;
+  readonly OPEN_ALWAYS?: 256;
 
   asyncOpenURI(aURI: nsIURI, aIdExtension: string, aFlags: u32, aCallback: nsICacheEntryOpenCallback): void;
+  asyncOpenURIString(aURI: string, aIdExtension: string, aFlags: u32, aCallback: nsICacheEntryOpenCallback): void;
   openTruncate(aURI: nsIURI, aIdExtension: string): nsICacheEntry;
   exists(aURI: nsIURI, aIdExtension: string): boolean;
   getCacheIndexEntryAttrs(aURI: nsIURI, aIdExtension: string, aHasAltData: OutParam<boolean>, aSizeInKB: OutParam<u32>): void;
@@ -7762,6 +7742,8 @@ interface nsICacheStorageService extends nsISupports {
   clearBaseDomain(aBaseDomain: string): void;
   clearOriginsByOriginAttributes(aOriginAttributes: string): void;
   clear(): void;
+  clearOriginDictionary(aURI: nsIURI): void;
+  clearAllOriginDictionaries(): void;
   purgeFromMemory(aWhat: u32): void;
   readonly ioTarget: nsIEventTarget;
   asyncGetDiskConsumption(aObserver: nsICacheStorageConsumptionObserver): void;
@@ -7786,6 +7768,9 @@ interface nsICacheTesting extends nsISupports {
   suspendCacheIOThread(aLevel: u32): void;
   resumeCacheIOThread(): void;
   flush(aObserver: nsIObserver): void;
+  clearDictionaryCacheMemory(): void;
+  corruptDictionaryHash(aURI: string): void;
+  clearDictionaryDataForTesting(aURI: string): void;
 }
 
 // https://searchfox.org/mozilla-central/source/netwerk/cookie/nsICookie.idl
@@ -7824,6 +7809,7 @@ interface nsICookie extends nsISupports, Enums<typeof nsICookie_schemeType> {
   readonly isSession: boolean;
   readonly isHttpOnly: boolean;
   readonly creationTime: i64;
+  readonly updateTime: i64;
   readonly lastAccessed: i64;
   readonly sameSite: i32;
   readonly schemeMap: nsICookie.schemeType;
@@ -7857,7 +7843,6 @@ interface nsICookieManager extends nsISupports {
   getCookieBehavior(aIsPrivate: boolean): u32;
   remove(aHost: string, aName: string, aPath: string, aOriginAttributes: any): void;
   add(aHost: string, aPath: string, aName: string, aValue: string, aIsSecure: boolean, aIsHttpOnly: boolean, aIsSession: boolean, aExpiry: i64, aOriginAttributes: any, aSameSite: i32, aSchemeMap: nsICookie.schemeType, aIsPartitioned?: boolean): nsICookieValidation;
-  addForAddOn(aHost: string, aPath: string, aName: string, aValue: string, aIsSecure: boolean, aIsHttpOnly: boolean, aIsSession: boolean, aExpiry: i64, aOriginAttributes: any, aSameSite: i32, aSchemeMap: nsICookie.schemeType, aIsPartitioned?: boolean): nsICookieValidation;
   cookieExists(aHost: string, aPath: string, aName: string, aOriginAttributes: any): boolean;
   countCookiesFromHost(aHost: string): u32;
   getCookiesFromHost(aHost: string, aOriginAttributes: any, aSorted?: boolean): nsICookie[];
@@ -8153,6 +8138,7 @@ interface nsIDNSService extends nsISupports, Enums<typeof nsIDNSService_ResolveT
   readonly myHostName: string;
   readonly trrDomain: string;
   readonly TRRDomainKey: string;
+  setHttp3FirstForServer(aServer: string, aEnabled: boolean): void;
 }
 
 // https://searchfox.org/mozilla-central/source/netwerk/dns/nsIEffectiveTLDService.idl
@@ -8374,6 +8360,31 @@ interface nsIHttpActivityDistributor extends nsIHttpActivityObserver {
   observeConnection: boolean;
 }
 
+// https://searchfox.org/mozilla-central/source/netwerk/protocol/http/nsIHttpAuthCache.idl
+
+interface nsIHttpAuthCache extends nsISupports {
+  getEntries(): nsIHttpAuthEntry[];
+  clearEntry(entry: nsIHttpAuthEntry): void;
+}
+
+// https://searchfox.org/mozilla-central/source/netwerk/protocol/http/nsIHttpAuthEntry.idl
+
+interface nsIHttpAuthIdentity extends nsISupports {
+  readonly domain: string;
+  readonly user: string;
+  readonly password: string;
+}
+
+interface nsIHttpAuthEntry extends nsISupports {
+  readonly realm: string;
+  readonly creds: string;
+  readonly challenge: string;
+  readonly domain: string;
+  readonly user: string;
+  readonly password: string;
+  readonly identity: nsIHttpAuthIdentity;
+}
+
 // https://searchfox.org/mozilla-central/source/netwerk/protocol/http/nsIHttpAuthManager.idl
 
 interface nsIHttpAuthManager extends nsISupports {
@@ -8416,7 +8427,6 @@ interface nsIHttpChannel extends nsIIdentChannel {
   visitOriginalResponseHeaders(aVisitor: nsIHttpHeaderVisitor): void;
   isNoStoreResponse(): boolean;
   isNoCacheResponse(): boolean;
-  isPrivateResponse(): boolean;
   redirectTo(aTargetURI: nsIURI): void;
   upgradeToSecure(): void;
   topLevelContentWindowId: u64;
@@ -8531,9 +8541,15 @@ interface nsIHttpProtocolHandler extends nsIProxiedProtocolHandler {
 
 // https://searchfox.org/mozilla-central/source/netwerk/protocol/http/nsINetworkErrorLogging.idl
 
+interface nsINetworkErrorReport extends nsISupports {
+  readonly body: string;
+  readonly group: string;
+  readonly url: string;
+}
+
 interface nsINetworkErrorLogging extends nsISupports {
   registerPolicy(aChannel: nsIHttpChannel): void;
-  generateNELReport(aChannel: nsIHttpChannel): void;
+  generateNELReport(aChannel: nsIHttpChannel): nsINetworkErrorReport;
 }
 
 // https://searchfox.org/mozilla-central/source/netwerk/protocol/http/nsIObliviousHttp.idl
@@ -8845,6 +8861,7 @@ interface nsIWebTransport extends nsISupports, Enums<typeof nsIWebTransport_WebT
   createOutgoingUnidirectionalStream(aListener: nsIWebTransportStreamCallback): void;
   sendDatagram(aData: u8[], aTrackingId: u64): void;
   getMaxDatagramSize(): void;
+  getHttpChannelID(): u64;
 }
 
 }  // global
@@ -8882,6 +8899,19 @@ interface nsIWebTransportStreamCallback extends nsISupports {
 interface nsIWebTransportHash extends nsISupports {
   readonly algorithm: string;
   readonly value: u8[];
+}
+
+// https://searchfox.org/mozilla-central/source/netwerk/protocol/webtransport/nsIWebTransportEventService.idl
+
+interface nsIWebTransportEventListener extends nsISupports {
+  webTransportSessionCreated(aHttpChannelId: u64): void;
+  webTransportSessionClosed(aHttpChannelId: u64, aCode: u16, aReason: string): void;
+}
+
+interface nsIWebTransportEventService extends nsISupports {
+  addListener(aInnerWindowID: u64, aListener: nsIWebTransportEventListener): void;
+  removeListener(aInnerWindowID: u64, aListener: nsIWebTransportEventListener): void;
+  hasListenerFor(aInnerWindowID: u64): boolean;
 }
 
 // https://searchfox.org/mozilla-central/source/netwerk/protocol/webtransport/nsIWebTransportStream.idl
@@ -9246,6 +9276,14 @@ interface nsIDataStorageItem extends nsISupports {
   readonly type: nsIDataStorage.DataType;
 }
 
+// https://searchfox.org/mozilla-central/source/security/manager/ssl/nsIFIPSUtils.idl
+
+interface nsIFIPSUtils extends nsISupports {
+  readonly canToggleFIPS: boolean;
+  toggleFIPSMode(): void;
+  readonly isFIPSEnabled: boolean;
+}
+
 // https://searchfox.org/mozilla-central/source/security/manager/ssl/nsINSSComponent.idl
 
 interface nsINSSComponent extends nsISupports {
@@ -9275,6 +9313,7 @@ interface nsINSSErrorsService extends nsISupports {
   getErrorMessage(aXPCOMErrorCode: nsresult): string;
   getErrorName(aXPCOMErrorCode: nsresult): string;
   getErrorClass(aXPCOMErrorCode: nsresult): u32;
+  isErrorOverridable(aXPCOMErrorCode: nsresult): boolean;
 }
 
 // https://searchfox.org/mozilla-central/source/security/manager/ssl/nsINSSVersion.idl
@@ -9352,9 +9391,6 @@ interface nsIPKCS11ModuleDB extends nsISupports {
   deleteModule(moduleName: string): void;
   addModule(moduleName: string, libraryFullPath: string, cryptoMechanismFlags: i32, cipherFlags: i32): void;
   listModules(): nsISimpleEnumerator;
-  readonly canToggleFIPS: boolean;
-  toggleFIPSMode(): void;
-  readonly isFIPSEnabled: boolean;
 }
 
 // https://searchfox.org/mozilla-central/source/security/manager/ssl/nsIPKCS11Slot.idl
@@ -9520,7 +9556,7 @@ interface nsITransportSecurityInfo extends nsISupports, Enums<typeof nsITranspor
   readonly securityState: u32;
   readonly errorCode: i32;
   readonly errorCodeString: string;
-  readonly failedCertChain: nsIX509Cert[];
+  readonly handshakeCertificates: nsIX509Cert[];
   readonly serverCert: nsIX509Cert;
   readonly succeededCertChain: nsIX509Cert[];
   readonly cipherName: string;
@@ -9574,6 +9610,7 @@ interface nsIX509Cert extends nsISupports {
   readonly certType: u32;
   getRawDER(): u8[];
   getBase64DERString(): string;
+  readonly subjectPublicKeyInfo: u8[];
   readonly sha256SubjectPublicKeyInfoDigest: string;
 }
 
@@ -9602,6 +9639,12 @@ type nsIOpenSignedAppFileCallback = Callable<{
   openSignedAppFileFinished(rv: nsresult, aZipReader: nsIZipReader, aSignatureInfos: nsIAppSignatureInfo[]): void;
 }>
 
+interface nsIPDFVerificationResult extends nsISupports {
+  readonly signatureResult: nsresult;
+  readonly certificateResult: nsresult;
+  readonly signerCertificate: nsIX509Cert;
+}
+
 type nsICertVerificationCallback = Callable<{
   verifyCertFinished(aPRErrorCode: i32, aVerifiedChain: nsIX509Cert[], aHasEVPolicy: boolean): void;
 }>
@@ -9618,13 +9661,25 @@ declare enum nsIX509CertDB_VerifyUsage {
   verifyUsageEmailCA = 7,
 }
 
+declare enum nsIX509CertDB_QWACType {
+  OneQWAC = 0,
+  TwoQWAC = 1,
+}
+
+declare enum nsIX509CertDB_PDFSignatureAlgorithm {
+  ADBE_PKCS7_DETACHED = 0,
+  ADBE_PKCS7_SHA1 = 1,
+}
+
 declare global {
 
 namespace nsIX509CertDB {
   type VerifyUsage = nsIX509CertDB_VerifyUsage;
+  type QWACType = nsIX509CertDB_QWACType;
+  type PDFSignatureAlgorithm = nsIX509CertDB_PDFSignatureAlgorithm;
 }
 
-interface nsIX509CertDB extends nsISupports, Enums<typeof nsIX509CertDB_VerifyUsage> {
+interface nsIX509CertDB extends nsISupports, Enums<typeof nsIX509CertDB_VerifyUsage & typeof nsIX509CertDB_QWACType & typeof nsIX509CertDB_PDFSignatureAlgorithm> {
   readonly UNTRUSTED?: 0;
   readonly TRUSTED_SSL?: 1;
   readonly TRUSTED_EMAIL?: 2;
@@ -9658,12 +9713,14 @@ interface nsIX509CertDB extends nsISupports, Enums<typeof nsIX509CertDB_VerifyUs
   constructX509(certDER: u8[]): nsIX509Cert;
   openSignedAppFileAsync(trustedRoot: AppTrustedRoot, aJarFile: nsIFile, callback: nsIOpenSignedAppFileCallback): void;
   addCert(certDER: string, trust: string): nsIX509Cert;
-  asyncVerifyCertAtTime(aCert: nsIX509Cert, aUsage: nsIX509CertDB.VerifyUsage, aFlags: u32, aHostname: string, aTime: u64, aCallback: nsICertVerificationCallback): void;
+  asyncVerifyCertAtTime(aCert: nsIX509Cert, aUsage: nsIX509CertDB.VerifyUsage, aFlags: u32, aHostname: string, aTime: u64, aSctsFromTls: u8[], aCallback: nsICertVerificationCallback): void;
   clearOCSPCache(): void;
   addCertFromBase64(base64: string, trust: string): nsIX509Cert;
   getCerts(): nsIX509Cert[];
   asPKCS7Blob(certList: nsIX509Cert[]): string;
   getAndroidCertificateFromAlias(alias: string): nsIX509Cert;
+  asyncVerifyQWAC(type: nsIX509CertDB.QWACType, cert: nsIX509Cert, hostname: string, collectedCerts: nsIX509Cert[]): Promise<any>;
+  asyncVerifyPKCS7Object(pkcs7: u8[], data: u8[][], signatureType: nsIX509CertDB.PDFSignatureAlgorithm): Promise<any>;
 }
 
 // https://searchfox.org/mozilla-central/source/security/manager/ssl/nsIX509CertValidity.idl
@@ -9711,23 +9768,35 @@ interface mozIAsyncHistory extends nsISupports {
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/places/mozIPlacesAutoComplete.idl
 
-interface mozIPlacesAutoComplete extends nsISupports {
-  readonly MATCH_ANYWHERE?: 0;
-  readonly MATCH_BOUNDARY_ANYWHERE?: 1;
-  readonly MATCH_BOUNDARY?: 2;
-  readonly MATCH_BEGINNING?: 3;
-  readonly MATCH_ANYWHERE_UNMODIFIED?: 4;
-  readonly MATCH_BEGINNING_CASE_SENSITIVE?: 5;
-  readonly BEHAVIOR_HISTORY?: 1;
-  readonly BEHAVIOR_BOOKMARK?: 2;
-  readonly BEHAVIOR_TAG?: 4;
-  readonly BEHAVIOR_TITLE?: 8;
-  readonly BEHAVIOR_URL?: 16;
-  readonly BEHAVIOR_TYPED?: 32;
-  readonly BEHAVIOR_JAVASCRIPT?: 64;
-  readonly BEHAVIOR_OPENPAGE?: 128;
-  readonly BEHAVIOR_RESTRICT?: 256;
-  readonly BEHAVIOR_SEARCH?: 512;
+}  // global
+
+declare enum mozIPlacesAutoComplete_MatchBehaviors {
+  MATCH_ANYWHERE = 0,
+  MATCH_BOUNDARY = 2,
+  MATCH_ANYWHERE_UNMODIFIED = 4,
+}
+
+declare enum mozIPlacesAutoComplete_SearchBehaviors {
+  BEHAVIOR_HISTORY = 1,
+  BEHAVIOR_BOOKMARK = 2,
+  BEHAVIOR_TAG = 4,
+  BEHAVIOR_TITLE = 8,
+  BEHAVIOR_URL = 16,
+  BEHAVIOR_TYPED = 32,
+  BEHAVIOR_JAVASCRIPT = 64,
+  BEHAVIOR_OPENPAGE = 128,
+  BEHAVIOR_RESTRICT = 256,
+  BEHAVIOR_SEARCH = 512,
+}
+
+declare global {
+
+namespace mozIPlacesAutoComplete {
+  type MatchBehaviors = mozIPlacesAutoComplete_MatchBehaviors;
+  type SearchBehaviors = mozIPlacesAutoComplete_SearchBehaviors;
+}
+
+interface mozIPlacesAutoComplete extends nsISupports, Enums<typeof mozIPlacesAutoComplete_MatchBehaviors & typeof mozIPlacesAutoComplete_SearchBehaviors> {
 }
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/places/mozIPlacesPendingOperation.idl
@@ -9810,6 +9879,13 @@ interface nsIFavicon extends nsISupports {
 
 }  // global
 
+declare enum nsINavBookmarksService_BookmarkType {
+  TYPE_BOOKMARK = 1,
+  TYPE_FOLDER = 2,
+  TYPE_SEPARATOR = 3,
+  TYPE_DYNAMIC_CONTAINER = 4,
+}
+
 declare enum nsINavBookmarksService_ChangeSource {
   SOURCE_DEFAULT = 0,
   SOURCE_SYNC = 1,
@@ -9822,15 +9898,12 @@ declare enum nsINavBookmarksService_ChangeSource {
 declare global {
 
 namespace nsINavBookmarksService {
+  type BookmarkType = nsINavBookmarksService_BookmarkType;
   type ChangeSource = nsINavBookmarksService_ChangeSource;
 }
 
-interface nsINavBookmarksService extends nsISupports, Enums<typeof nsINavBookmarksService_ChangeSource> {
+interface nsINavBookmarksService extends nsISupports, Enums<typeof nsINavBookmarksService_BookmarkType & typeof nsINavBookmarksService_ChangeSource> {
   readonly DEFAULT_INDEX?: -1;
-  readonly TYPE_BOOKMARK?: 1;
-  readonly TYPE_FOLDER?: 2;
-  readonly TYPE_SEPARATOR?: 3;
-  readonly TYPE_DYNAMIC_CONTAINER?: 4;
   readonly SYNC_STATUS_UNKNOWN?: 0;
   readonly SYNC_STATUS_NEW?: 1;
   readonly SYNC_STATUS_NORMAL?: 2;
@@ -9967,33 +10040,48 @@ interface nsINavHistoryQuery extends nsISupports {
   clone(): nsINavHistoryQuery;
 }
 
-interface nsINavHistoryQueryOptions extends nsISupports {
-  readonly SORT_BY_NONE?: 0;
-  readonly SORT_BY_TITLE_ASCENDING?: 1;
-  readonly SORT_BY_TITLE_DESCENDING?: 2;
-  readonly SORT_BY_DATE_ASCENDING?: 3;
-  readonly SORT_BY_DATE_DESCENDING?: 4;
-  readonly SORT_BY_URI_ASCENDING?: 5;
-  readonly SORT_BY_URI_DESCENDING?: 6;
-  readonly SORT_BY_VISITCOUNT_ASCENDING?: 7;
-  readonly SORT_BY_VISITCOUNT_DESCENDING?: 8;
-  readonly SORT_BY_DATEADDED_ASCENDING?: 11;
-  readonly SORT_BY_DATEADDED_DESCENDING?: 12;
-  readonly SORT_BY_LASTMODIFIED_ASCENDING?: 13;
-  readonly SORT_BY_LASTMODIFIED_DESCENDING?: 14;
-  readonly SORT_BY_TAGS_ASCENDING?: 17;
-  readonly SORT_BY_TAGS_DESCENDING?: 18;
-  readonly SORT_BY_FRECENCY_ASCENDING?: 21;
-  readonly SORT_BY_FRECENCY_DESCENDING?: 22;
-  readonly RESULTS_AS_URI?: 0;
-  readonly RESULTS_AS_VISIT?: 1;
-  readonly RESULTS_AS_DATE_QUERY?: 3;
-  readonly RESULTS_AS_SITE_QUERY?: 4;
-  readonly RESULTS_AS_DATE_SITE_QUERY?: 5;
-  readonly RESULTS_AS_TAGS_ROOT?: 6;
-  readonly RESULTS_AS_TAG_CONTENTS?: 7;
-  readonly RESULTS_AS_ROOTS_QUERY?: 8;
-  readonly RESULTS_AS_LEFT_PANE_QUERY?: 9;
+}  // global
+
+declare enum nsINavHistoryQueryOptions_SortByType {
+  SORT_BY_NONE = 0,
+  SORT_BY_TITLE_ASCENDING = 1,
+  SORT_BY_TITLE_DESCENDING = 2,
+  SORT_BY_DATE_ASCENDING = 3,
+  SORT_BY_DATE_DESCENDING = 4,
+  SORT_BY_URI_ASCENDING = 5,
+  SORT_BY_URI_DESCENDING = 6,
+  SORT_BY_VISITCOUNT_ASCENDING = 7,
+  SORT_BY_VISITCOUNT_DESCENDING = 8,
+  SORT_BY_DATEADDED_ASCENDING = 11,
+  SORT_BY_DATEADDED_DESCENDING = 12,
+  SORT_BY_LASTMODIFIED_ASCENDING = 13,
+  SORT_BY_LASTMODIFIED_DESCENDING = 14,
+  SORT_BY_TAGS_ASCENDING = 17,
+  SORT_BY_TAGS_DESCENDING = 18,
+  SORT_BY_FRECENCY_ASCENDING = 21,
+  SORT_BY_FRECENCY_DESCENDING = 22,
+}
+
+declare enum nsINavHistoryQueryOptions_ResultType {
+  RESULTS_AS_URI = 0,
+  RESULTS_AS_VISIT = 1,
+  RESULTS_AS_DATE_QUERY = 3,
+  RESULTS_AS_SITE_QUERY = 4,
+  RESULTS_AS_DATE_SITE_QUERY = 5,
+  RESULTS_AS_TAGS_ROOT = 6,
+  RESULTS_AS_TAG_CONTENTS = 7,
+  RESULTS_AS_ROOTS_QUERY = 8,
+  RESULTS_AS_LEFT_PANE_QUERY = 9,
+}
+
+declare global {
+
+namespace nsINavHistoryQueryOptions {
+  type SortByType = nsINavHistoryQueryOptions_SortByType;
+  type ResultType = nsINavHistoryQueryOptions_ResultType;
+}
+
+interface nsINavHistoryQueryOptions extends nsISupports, Enums<typeof nsINavHistoryQueryOptions_SortByType & typeof nsINavHistoryQueryOptions_ResultType> {
   readonly QUERY_TYPE_HISTORY?: 0;
   readonly QUERY_TYPE_BOOKMARKS?: 1;
 
@@ -10030,7 +10118,7 @@ namespace nsINavHistoryService {
 }
 
 interface nsINavHistoryService extends nsISupports, Enums<typeof nsINavHistoryService_TransitionType> {
-  readonly DATABASE_SCHEMA_VERSION?: 82;
+  readonly DATABASE_SCHEMA_VERSION?: 85;
   readonly DATABASE_STATUS_OK?: 0;
   readonly DATABASE_STATUS_CREATE?: 1;
   readonly DATABASE_STATUS_CORRUPT?: 2;
@@ -10053,8 +10141,8 @@ interface nsINavHistoryService extends nsISupports, Enums<typeof nsINavHistorySe
   queryToQueryString(aQuery: nsINavHistoryQuery, options: nsINavHistoryQueryOptions): string;
   readonly historyDisabled: boolean;
   makeGuid(): string;
+  pageFrecencyThreshold(aVisitAgeInDays: i32, aNumVisits: i32, aBookmarked: boolean): i64;
   hashURL(aSpec: string, aMode?: string): u64;
-  isFrecencyDecaying: boolean;
   readonly isAlternativeFrecencyEnabled: boolean;
   shouldStartFrecencyRecalculation: boolean;
   readonly DBConnection: mozIStorageConnection;
@@ -10079,14 +10167,24 @@ interface nsITaggingService extends nsISupports {
 
 // https://searchfox.org/mozilla-central/source/modules/libpref/nsIPrefBranch.idl
 
-interface nsIPrefBranch extends nsISupports {
-  readonly PREF_INVALID?: 0;
-  readonly PREF_STRING?: 32;
-  readonly PREF_INT?: 64;
-  readonly PREF_BOOL?: 128;
+}  // global
 
+declare enum nsIPrefBranch_PreferenceType {
+  PREF_INVALID = 0,
+  PREF_STRING = 32,
+  PREF_INT = 64,
+  PREF_BOOL = 128,
+}
+
+declare global {
+
+namespace nsIPrefBranch {
+  type PreferenceType = nsIPrefBranch_PreferenceType;
+}
+
+interface nsIPrefBranch extends nsISupports, Enums<typeof nsIPrefBranch_PreferenceType> {
   readonly root: string;
-  getPrefType(aPrefName: string): i32;
+  getPrefType(aPrefName: string): nsIPrefBranch.PreferenceType;
   getBoolPref(aPrefName: string, aDefaultValue?: boolean): boolean;
   setBoolPref(aPrefName: string, aValue: boolean): void;
   getFloatPref(aPrefName: string, aDefaultValue?: float): float;
@@ -10116,6 +10214,13 @@ interface nsIPrefBranch extends nsISupports {
 interface nsIPrefLocalizedString extends nsISupportsString {
 }
 
+// https://searchfox.org/mozilla-central/source/modules/libpref/nsIPrefOverrideMap.idl
+
+interface nsIPrefOverrideMap extends nsISupports {
+  addEntry(aPrefName: string, aPrefValue: any): void;
+  getEntry(aPrefName: string): any;
+}
+
 // https://searchfox.org/mozilla-central/source/modules/libpref/nsIPrefService.idl
 
 type nsIPrefStatsCallback = Callable<{
@@ -10132,7 +10237,7 @@ interface nsIPrefObserver extends nsISupports {
 interface nsIPrefService extends nsISupports {
   resetPrefs(): void;
   savePrefFile(aFile: nsIFile): void;
-  backupPrefFile(aFile: nsIFile): Promise<any>;
+  backupPrefFile(aFile: nsIFile, aOverrideMap?: nsIPrefOverrideMap): Promise<any>;
   getBranch(aPrefRoot: string): nsIPrefBranch;
   getDefaultBranch(aPrefRoot: string): nsIPrefBranch;
   readonly dirty: boolean;
@@ -10142,6 +10247,7 @@ interface nsIPrefService extends nsISupports {
   resetStats(): void;
   parsePrefsFromBuffer(bytes: u8[], observer: nsIPrefObserver, pathLabel?: string): void;
   readonly userPrefsFileLastModifiedAtStartup: PRTime;
+  readonly prefsJsPreamble: string;
 }
 
 // https://searchfox.org/mozilla-central/source/modules/libpref/nsIRelativeFilePref.idl
@@ -10261,11 +10367,16 @@ interface mozISandboxSettings extends nsISupports {
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/satchel/nsIFormFillController.idl
 
+interface nsIFormFillFocusListener extends nsISupports {
+  handleFocus(element: Element): Promise<any>;
+}
+
 interface nsIFormFillController extends nsISupports {
-  readonly focusedElement: Element;
+  controlledElement: Element;
   readonly passwordPopupAutomaticallyOpened: boolean;
   markAsAutoCompletableField(aElement: Element): void;
   showPopup(): void;
+  addFocusListener(listener: nsIFormFillFocusListener): void;
 }
 
 type nsIFormFillCompleteObserver = Callable<{
@@ -10408,6 +10519,8 @@ interface nsISHEntry extends nsISupports {
   GetChildAt(aIndex: i32): nsISHEntry;
   readonly bfcacheID: u64;
   wireframe: any;
+  navigationKey: nsID;
+  navigationId: nsID;
 }
 
 // https://searchfox.org/mozilla-central/source/docshell/shistory/nsISHistory.idl
@@ -10425,6 +10538,8 @@ interface nsISHistory extends nsISupports {
   updateIndex(): void;
   replaceEntry(aIndex: i32, aReplaceEntry: nsISHEntry): void;
   notifyOnHistoryReload(): boolean;
+  notifyOnHistoryCommit(): void;
+  notifyOnEntryTitleUpdated(aEntry: nsISHEntry): void;
   evictOutOfRangeDocumentViewers(aIndex: i32): void;
   evictAllDocumentViewers(): void;
   reload(aReloadFlags: u32): void;
@@ -10442,6 +10557,8 @@ interface nsISHistoryListener extends nsISupports {
   OnHistoryTruncate(aNumEntries: i32): void;
   OnHistoryReplaceEntry(): void;
   OnDocumentViewerEvicted(aNumEvicted: u32): void;
+  OnHistoryCommit(): void;
+  OnEntryTitleUpdated(aEntry: nsISHEntry): void;
 }
 
 // https://searchfox.org/mozilla-central/source/extensions/spellcheck/idl/mozIPersonalDictionary.idl
@@ -10806,14 +10923,6 @@ interface nsITelemetry extends nsISupports {
   gatherMemory(): Promise<any>;
 }
 
-// https://searchfox.org/mozilla-central/source/toolkit/components/telemetry/dap/nsIDAPTelemetry.idl
-
-interface nsIDAPTelemetry extends nsISupports {
-  GetReportPrioSum(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32, task_id: u8[], bits: u32, time_precision: u64, report: OutParam<u8[]>): void;
-  GetReportPrioSumVec(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32[], task_id: u8[], bits: u32, time_precision: u64, report: OutParam<u8[]>): void;
-  GetReportPrioHistogram(leaderHpkeConfig: u8[], helperHpkeConfig: u8[], measurement: u32, task_id: u8[], length: u32, time_precision: u64, report: OutParam<u8[]>): void;
-}
-
 // https://searchfox.org/mozilla-central/source/netwerk/test/httpserver/nsIHttpServer.idl
 
 interface nsIHttpServer extends nsISupports {
@@ -11098,7 +11207,6 @@ interface nsIClearDataService extends nsISupports {
   readonly CLEAR_DOWNLOADS?: 16;
   readonly CLEAR_MEDIA_DEVICES?: 64;
   readonly CLEAR_DOM_QUOTA?: 128;
-  readonly CLEAR_PREDICTOR_NETWORK_DATA?: 256;
   readonly CLEAR_DOM_PUSH_NOTIFICATIONS?: 512;
   readonly CLEAR_HISTORY?: 1024;
   readonly CLEAR_MESSAGING_LAYER_SECURITY_STATE?: 2048;
@@ -11126,7 +11234,7 @@ interface nsIClearDataService extends nsISupports {
   readonly CLEAR_PERMISSIONS?: 2147500032;
   readonly CLEAR_ALL_CACHES?: 12648462;
   readonly CLEAR_DOM_STORAGES?: 262784;
-  readonly CLEAR_FORGET_ABOUT_SITE?: 3218591647;
+  readonly CLEAR_FORGET_ABOUT_SITE?: 3218591391;
   readonly CLEAR_COOKIES_AND_SITE_DATA?: 2013739649;
   readonly CLEAR_STATE_FOR_TRACKER_PURGING?: 2043624143;
 
@@ -11415,11 +11523,6 @@ interface nsICookieBannerService extends nsISupports, Enums<typeof nsICookieBann
   removeAllExecutedRecords(aIsPrivate: boolean): void;
 }
 
-// https://searchfox.org/mozilla-central/source/toolkit/components/cookiebanners/nsICookieBannerTelemetryService.idl
-
-interface nsICookieBannerTelemetryService extends nsISupports {
-}
-
 // https://searchfox.org/mozilla-central/source/toolkit/components/cookiebanners/nsICookieRule.idl
 
 interface nsICookieRule extends nsISupports {
@@ -11533,122 +11636,6 @@ interface nsIUserCharacteristicsPageService extends nsISupports {
   pageLoaded(browsingContext: BrowsingContext, data: any): void;
 }
 
-// https://searchfox.org/mozilla-central/source/toolkit/components/search/nsISearchService.idl
-
-interface nsISearchSubmission extends nsISupports {
-  readonly postData: nsIInputStream;
-  readonly uri: nsIURI;
-}
-
-interface nsISearchEngine extends nsISupports {
-  getSubmission(searchTerms: string, responseType?: string): nsISearchSubmission;
-  readonly searchURLWithNoTerms: nsIURI;
-  searchTermFromResult(uri: nsIURI): string;
-  readonly searchUrlQueryParamName: string;
-  readonly searchUrlPublicSuffix: string;
-  supportsResponseType(responseType: string): boolean;
-  getIconURL(preferredWidth?: u16): Promise<any>;
-  speculativeConnect(options: any): void;
-  alias: string;
-  readonly aliases: string[];
-  hidden: boolean;
-  hideOneOffButton: boolean;
-  readonly name: string;
-  readonly id: string;
-  readonly telemetryId: string;
-  readonly identifier: string;
-  readonly loadPath: string;
-  readonly isAppProvided: boolean;
-  readonly isConfigEngine: boolean;
-  readonly inMemory: boolean;
-  readonly overriddenById: string;
-  readonly isGeneralPurposeEngine: boolean;
-  readonly searchUrlDomain: string;
-  readonly clickUrl: string;
-  readonly searchForm: string;
-  readonly partnerCode: string;
-}
-
-interface nsISearchParseSubmissionResult extends nsISupports {
-  readonly engine: nsISearchEngine;
-  readonly terms: string;
-  readonly termsParameterName: string;
-}
-
-}  // global
-
-declare enum nsISearchService_OpenSearchInstallErrors {
-  ERROR_DOWNLOAD_FAILURE = 1,
-  ERROR_DUPLICATE_ENGINE = 2,
-  ERROR_ENGINE_CORRUPTED = 3,
-}
-
-declare enum nsISearchService_DefaultEngineChangeReason {
-  CHANGE_REASON_UNKNOWN = 0,
-  CHANGE_REASON_USER = 1,
-  CHANGE_REASON_USER_PRIVATE_SPLIT = 2,
-  CHANGE_REASON_USER_SEARCHBAR = 3,
-  CHANGE_REASON_USER_SEARCHBAR_CONTEXT = 4,
-  CHANGE_REASON_ADDON_INSTALL = 5,
-  CHANGE_REASON_ADDON_UNINSTALL = 6,
-  CHANGE_REASON_CONFIG = 7,
-  CHANGE_REASON_LOCALE = 8,
-  CHANGE_REASON_REGION = 9,
-  CHANGE_REASON_EXPERIMENT = 10,
-  CHANGE_REASON_ENTERPRISE = 11,
-  CHANGE_REASON_UITOUR = 12,
-  CHANGE_REASON_ENGINE_UPDATE = 13,
-  CHANGE_REASON_USER_PRIVATE_PREF_ENABLED = 14,
-  CHANGE_REASON_ENGINE_IGNORE_LIST_UPDATED = 15,
-  CHANGE_REASON_NO_EXISTING_DEFAULT_ENGINE = 16,
-}
-
-declare global {
-
-namespace nsISearchService {
-  type OpenSearchInstallErrors = nsISearchService_OpenSearchInstallErrors;
-  type DefaultEngineChangeReason = nsISearchService_DefaultEngineChangeReason;
-}
-
-interface nsISearchService extends nsISupports, Enums<typeof nsISearchService_OpenSearchInstallErrors & typeof nsISearchService_DefaultEngineChangeReason> {
-  init(): Promise<any>;
-  readonly promiseInitialized: Promise<any>;
-  readonly isInitialized: boolean;
-  readonly hasSuccessfullyInitialized: boolean;
-  runBackgroundChecks(): Promise<any>;
-  resetToAppDefaultEngine(): void;
-  addOpenSearchEngine(engineURL: string, iconURL: string): Promise<any>;
-  addUserEngine(formInfo: any): Promise<any>;
-  addEnginesFromExtension(extension: any): Promise<any>;
-  restoreDefaultEngines(): void;
-  getEngineByAlias(alias: string): Promise<any>;
-  getEngineByName(aEngineName: string): nsISearchEngine;
-  getEngineById(aEngineId: string): nsISearchEngine;
-  getEngines(): Promise<any>;
-  getVisibleEngines(): Promise<any>;
-  getAppProvidedEngines(): Promise<any>;
-  getEnginesByExtensionID(extensionID: string): Promise<any>;
-  findContextualSearchEngineByHost(host: string): Promise<any>;
-  shouldShowInstallPrompt(engine: any): Promise<any>;
-  addSearchEngine(engine: any): Promise<any>;
-  moveEngine(engine: nsISearchEngine, newIndex: i32): Promise<any>;
-  removeEngine(engine: nsISearchEngine): Promise<any>;
-  removeWebExtensionEngine(id: string): Promise<any>;
-  readonly appDefaultEngine: nsISearchEngine;
-  readonly appPrivateDefaultEngine: nsISearchEngine;
-  readonly defaultEngine: nsISearchEngine;
-  getDefault(): Promise<any>;
-  setDefault(engine: nsISearchEngine, changeReason: u16): Promise<any>;
-  readonly defaultPrivateEngine: nsISearchEngine;
-  getDefaultPrivate(): Promise<any>;
-  setDefaultPrivate(engine: nsISearchEngine, changeReason: u16): Promise<any>;
-  readonly separatePrivateDefaultUrlbarResultEnabled: boolean;
-  maybeSetAndOverrideDefault(extension: any): Promise<any>;
-  getDefaultEngineInfo(): any;
-  parseSubmissionURL(url: string): nsISearchParseSubmissionResult;
-  getAlternateDomains(domain: string): string[];
-}
-
 // https://searchfox.org/mozilla-central/source/toolkit/components/shell/nsIToolkitShellService.idl
 
 interface nsIToolkitShellService extends nsISupports {
@@ -11752,6 +11739,8 @@ interface nsIToolkitProfileService extends nsISupports, Enums<typeof nsIToolkitP
   getProfileByDir(aRootDir: nsIFile, aLocalDir?: nsIFile): nsIToolkitProfile;
   createProfile(aRootDir: nsIFile, aName: string): nsIToolkitProfile;
   createUniqueProfile(aRootDir: nsIFile, aNamePrefix: string): nsIToolkitProfile;
+  getProfileDescriptor(aRootDir: nsIFile, aIsRelative: OutParam<boolean>): string;
+  getLocalDirFromRootDir(aRootDir: nsIFile): nsIFile;
   readonly profileCount: u32;
   flush(): void;
   asyncFlush(): Promise<any>;
@@ -11914,6 +11903,7 @@ interface nsIApplicationUpdateService extends nsISupports {
   readonly DOWNLOAD_SUCCESS?: 1;
   readonly DOWNLOAD_FAILURE_CANNOT_RESUME_IN_BACKGROUND?: 2;
   readonly DOWNLOAD_FAILURE_GENERIC?: 3;
+  readonly DOWNLOAD_FAILURE_CANNOT_WRITE_STATE?: 4;
   readonly STATE_IDLE?: 1;
   readonly STATE_DOWNLOADING?: 2;
   readonly STATE_STAGING?: 4;
@@ -12346,7 +12336,7 @@ interface nsIUrlClassifierDBService extends nsISupports {
   getTables(c: nsIUrlClassifierCallback): void;
   setHashCompleter(tableName: string, completer: nsIUrlClassifierHashCompleter): void;
   clearLastResults(): void;
-  beginUpdate(updater: nsIUrlClassifierUpdateObserver, tables: string): void;
+  beginUpdate(updater: nsIUrlClassifierUpdateObserver, tables: string, provider: string): void;
   beginStream(table: string): void;
   updateStream(updateChunk: string): void;
   finishStream(): void;
@@ -12421,7 +12411,16 @@ interface nsIUrlClassifierRemoteSettingsService extends nsISupports {
 // https://searchfox.org/mozilla-central/source/toolkit/components/url-classifier/nsIUrlClassifierStreamUpdater.idl
 
 interface nsIUrlClassifierStreamUpdater extends nsISupports {
-  downloadUpdates(aRequestTables: string, aRequestPayload: string, aIsPostRequest: boolean, aUpdateUrl: string, aSuccessCallback: nsIUrlClassifierCallback, aUpdateErrorCallback: nsIUrlClassifierCallback, aDownloadErrorCallback: nsIUrlClassifierCallback): boolean;
+  downloadUpdates(aRequestTables: string, aRequestPayload: string, aRequestQueryParameters: string, aIsPostRequest: boolean, aProvider: string, aUpdateUrl: string, aSuccessCallback: nsIUrlClassifierCallback, aUpdateErrorCallback: nsIUrlClassifierCallback, aDownloadErrorCallback: nsIUrlClassifierCallback): boolean;
+}
+
+// https://searchfox.org/mozilla-central/source/toolkit/components/url-classifier/nsIUrlClassifierTestUtils.idl
+
+interface nsIUrlClassifierTestUtils extends nsISupports {
+  makeUpdateResponseV5(aName: string, aSingleHash: u32): string;
+  makeFindFullHashResponseV5(aFullHash: string): string;
+  generateLookupHash(aFragment: string): u32;
+  generateFullHash(aFragment: string): string;
 }
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/url-classifier/nsIUrlClassifierUtils.idl
@@ -12440,11 +12439,14 @@ interface nsIUrlClassifierUtils extends nsISupports {
   convertListNameToThreatType(listName: string): u32;
   convertServerListNameToLocalListNameV5(serverListName: string): string;
   convertLocalListNameToServerListNameV5(localListName: string): string;
+  convertThreatTypeToListNamesV5(threatType: u32): string;
   makeUpdateRequestV4(aListNames: string[], aStatesBase64: string[]): string;
   makeUpdateRequestV5(aListNames: string[], aStatesBase64: string[]): string;
   makeFindFullHashRequestV4(aListNames: string[], aListStatesBase64: string[], aPrefixes: string[]): string;
+  makeFindFullHashRequestV5(aHashPrefixes: string[]): string;
   makeThreatHitReport(aChannel: nsIChannel, aListName: string, aHashBase64: string): string;
   parseFindFullHashResponseV4(aResponse: string, aCallback: nsIUrlClassifierParseFindFullHashCallback): void;
+  parseFindFullHashResponseV5(aResponse: string, aCallback: nsIUrlClassifierParseFindFullHashCallback): void;
 }
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/url-classifier/nsIUrlListManager.idl
@@ -12513,6 +12515,7 @@ interface nsIWebBrowserChrome extends nsISupports {
   readonly CHROME_ALWAYS_ON_TOP?: 524288;
   readonly CHROME_REMOTE_WINDOW?: 1048576;
   readonly CHROME_FISSION_WINDOW?: 2097152;
+  readonly CHROME_DOCUMENT_PIP?: 4194304;
   readonly CHROME_SUPPRESS_ANIMATION?: 16777216;
   readonly CHROME_CENTER_SCREEN?: 134217728;
   readonly CHROME_DEPENDENT?: 268435456;
@@ -12520,6 +12523,7 @@ interface nsIWebBrowserChrome extends nsISupports {
   readonly CHROME_OPENAS_DIALOG?: 1073741824;
   readonly CHROME_OPENAS_CHROME?: 2147483648;
   readonly CHROME_MINIMAL_POPUP?: 18126;
+  readonly CHROME_DOCUMENT_PICTURE_IN_PICTURE_FLAGS?: 4736718;
 
   setLinkStatus(status: string): void;
   chromeFlags: u32;
@@ -12798,7 +12802,6 @@ interface nsIBaseWindow extends nsISupports {
   getSize(cx: OutParam<i32>, cy: OutParam<i32>): void;
   setPositionAndSize(x: i32, y: i32, cx: i32, cy: i32, flags: u32): void;
   getPositionAndSize(x: OutParam<i32>, y: OutParam<i32>, cx: OutParam<i32>, cy: OutParam<i32>): void;
-  repaint(force: boolean): void;
   readonly nativeHandle: string;
   visibility: boolean;
   enabled: boolean;
@@ -13069,13 +13072,11 @@ namespace nsIGfxInfo {
 }
 
 interface nsIGfxInfo extends nsISupports, Enums<typeof nsIGfxInfo_FontVisibilityDeviceDetermination> {
-  readonly D2DEnabled: boolean;
   readonly DWriteEnabled: boolean;
   readonly EmbeddedInFirefoxReality: boolean;
   readonly AzureCanvasBackend: string;
   readonly AzureContentBackend: string;
   readonly usingGPUProcess: boolean;
-  readonly usingRemoteCanvas: boolean;
   readonly usingAcceleratedCanvas: boolean;
   readonly hasBattery: boolean;
   readonly DWriteVersion: string;
@@ -13466,6 +13467,7 @@ interface nsIOpenWindowInfo extends nsISupports {
   readonly textDirectiveUserActivation: boolean;
   readonly originAttributes: any;
   cancel(): void;
+  cloneWithPrincipals(aPrincipal: nsIPrincipal, aPartitionedPrincipal: nsIPrincipal): nsIOpenWindowInfo;
 }
 
 // https://searchfox.org/mozilla-central/source/toolkit/components/windowwatcher/nsIPromptCollection.idl
@@ -14494,10 +14496,6 @@ interface nsIPipe extends nsISupports {
   readonly outputStream: nsIAsyncOutputStream;
 }
 
-interface nsISearchableInputStream extends nsISupports {
-  search(forString: string, ignoreCase: boolean, found: OutParam<boolean>, offsetSearchedTo: OutParam<u32>): void;
-}
-
 // https://searchfox.org/mozilla-central/source/xpcom/io/nsIRandomAccessStream.idl
 
 interface nsIRandomAccessStream extends nsISeekableStream {
@@ -14853,14 +14851,32 @@ interface nsIEnvironment extends nsISupports {
 
 // https://searchfox.org/mozilla-central/source/xpcom/threads/nsIEventTarget.idl
 
-interface nsIEventTarget extends nsISupports {
-  readonly DISPATCH_NORMAL?: 0;
-  readonly DISPATCH_AT_END?: 2;
-  readonly DISPATCH_EVENT_MAY_BLOCK?: 4;
-  readonly DISPATCH_IGNORE_BLOCK_DISPATCH?: 8;
+}  // global
 
+declare enum nsIEventTarget_DispatchFlags {
+  DISPATCH_NORMAL = 0,
+  DISPATCH_AT_END = 2,
+  DISPATCH_EVENT_MAY_BLOCK = 4,
+  DISPATCH_IGNORE_BLOCK_DISPATCH = 8,
+  DISPATCH_FALLIBLE = 16,
+}
+
+declare enum nsIEventTarget_FeatureFlags {
+  SUPPORTS_BASE = 0,
+  SUPPORTS_SHUTDOWN_TASKS = 1,
+  SUPPORTS_SHUTDOWN_TASK_DISPATCH = 2,
+}
+
+declare global {
+
+namespace nsIEventTarget {
+  type DispatchFlags = nsIEventTarget_DispatchFlags;
+  type FeatureFlags = nsIEventTarget_FeatureFlags;
+}
+
+interface nsIEventTarget extends nsISupports, Enums<typeof nsIEventTarget_DispatchFlags & typeof nsIEventTarget_FeatureFlags> {
   isOnCurrentThread(): boolean;
-  dispatch(event: nsIRunnable, flags: u32): void;
+  dispatch(event: nsIRunnable, flags: nsIEventTarget.DispatchFlags): void;
 }
 
 // https://searchfox.org/mozilla-central/source/xpcom/threads/nsIIdlePeriod.idl
@@ -15064,6 +15080,8 @@ interface nsIXPCComponents_Utils extends nsISupports {
   getUAWidgetScope(principal: nsIPrincipal): any;
   getSandboxMetadata(sandbox: any): any;
   setSandboxMetadata(sandbox: any, metadata: any): void;
+  setSandboxLocaleOverride(sandbox: any, locale: string): void;
+  setSandboxTimezoneOverride(sandbox: any, timezone: string): void;
   isESModuleLoaded(aResourceURI: string): boolean;
   importGlobalProperties(aPropertyList: any): void;
   getWeakReference(obj: any): xpcIJSWeakReference;
@@ -15112,7 +15130,6 @@ interface nsIXPCComponents_Utils extends nsISupports {
   getWebIDLCallerPrincipal(): nsIPrincipal;
   getObjectPrincipal(obj: any): nsIPrincipal;
   getRealmLocation(obj: any): string;
-  now(): double;
   readUTF8File(file: nsIFile): string;
   readUTF8URI(url: nsIURI): string;
   createSpellChecker(): nsIEditorSpellCheck;
@@ -15414,7 +15431,6 @@ interface nsIXPCComponents_Interfaces {
   nsIAccessibleScrollType: nsJSIID<nsIAccessibleScrollType>;
   nsIAccessibleCoordinateType: nsJSIID<nsIAccessibleCoordinateType>;
   nsIAccessibleValue: nsJSIID<nsIAccessibleValue>;
-  nsIAlertNotificationImageListener: nsJSIID<nsIAlertNotificationImageListener>;
   nsIAlertAction: nsJSIID<nsIAlertAction>;
   nsIAlertNotification: nsJSIID<nsIAlertNotification>;
   nsIAlertsService: nsJSIID<nsIAlertsService>;
@@ -15452,9 +15468,6 @@ interface nsIXPCComponents_Interfaces {
   nsIToolkitChromeRegistry: nsJSIID<nsIToolkitChromeRegistry>;
   nsICommandManager: nsJSIID<nsICommandManager>;
   nsICommandParams: nsJSIID<nsICommandParams>;
-  nsIControllerCommand: nsJSIID<nsIControllerCommand>;
-  nsIControllerCommandTable: nsJSIID<nsIControllerCommandTable>;
-  nsIControllerContext: nsJSIID<nsIControllerContext>;
   nsICommandLine: nsJSIID<nsICommandLine>;
   nsICommandLineHandler: nsJSIID<nsICommandLineHandler>;
   nsICommandLineValidator: nsJSIID<nsICommandLineValidator>;
@@ -15465,6 +15478,7 @@ interface nsIXPCComponents_Interfaces {
   nsIEventListenerService: nsJSIID<nsIEventListenerService>;
   mozIGeckoMediaPluginChromeService: nsJSIID<mozIGeckoMediaPluginChromeService>;
   mozIGeckoMediaPluginService: nsJSIID<mozIGeckoMediaPluginService>;
+  nsIDAPTelemetry: nsJSIID<nsIDAPTelemetry>;
   nsIDocShell: nsJSIID<nsIDocShell, typeof nsIDocShell_DocShellEnumeratorDirection & typeof nsIDocShell_AppType & typeof nsIDocShell_BusyFlags & typeof nsIDocShell_LoadCommand>;
   nsIDocShellTreeItem: nsJSIID<nsIDocShellTreeItem>;
   nsIDocShellTreeOwner: nsJSIID<nsIDocShellTreeOwner>;
@@ -15525,7 +15539,6 @@ interface nsIXPCComponents_Interfaces {
   nsIDOMWindow: nsJSIID<nsIDOMWindow>;
   nsISynthesizedEventCallback: nsJSIID<nsISynthesizedEventCallback>;
   nsIDOMWindowUtils: nsJSIID<nsIDOMWindowUtils, typeof nsIDOMWindowUtils_AsyncEnabledOption>;
-  nsITranslationNodeList: nsJSIID<nsITranslationNodeList>;
   nsIJSRAIIHelper: nsJSIID<nsIJSRAIIHelper>;
   nsIFocusManager: nsJSIID<nsIFocusManager>;
   nsIGeckoViewServiceWorker: nsJSIID<nsIGeckoViewServiceWorker>;
@@ -15787,6 +15800,7 @@ interface nsIXPCComponents_Interfaces {
   nsIBufferedOutputStream: nsJSIID<nsIBufferedOutputStream>;
   nsIByteRangeRequest: nsJSIID<nsIByteRangeRequest>;
   nsIInputStreamReceiver: nsJSIID<nsIInputStreamReceiver>;
+  nsICacheEntryWriteHandle: nsJSIID<nsICacheEntryWriteHandle>;
   nsICacheInfoChannel: nsJSIID<nsICacheInfoChannel, typeof nsICacheInfoChannel_PreferredAlternativeDataDeliveryType & typeof nsICacheInfoChannel_CacheDisposition>;
   nsICachingChannel: nsJSIID<nsICachingChannel>;
   nsICancelable: nsJSIID<nsICancelable>;
@@ -15845,8 +15859,6 @@ interface nsIXPCComponents_Interfaces {
   nsIInterceptedChannel: nsJSIID<nsIInterceptedChannel>;
   nsINetworkInterceptController: nsJSIID<nsINetworkInterceptController>;
   nsINetworkLinkService: nsJSIID<nsINetworkLinkService>;
-  nsINetworkPredictor: nsJSIID<nsINetworkPredictor>;
-  nsINetworkPredictorVerifier: nsJSIID<nsINetworkPredictorVerifier>;
   nsINullChannel: nsJSIID<nsINullChannel>;
   nsIParentChannel: nsJSIID<nsIParentChannel>;
   nsIPermission: nsJSIID<nsIPermission>;
@@ -15977,12 +15989,16 @@ interface nsIXPCComponents_Interfaces {
   nsIEarlyHintObserver: nsJSIID<nsIEarlyHintObserver>;
   nsIHttpActivityObserver: nsJSIID<nsIHttpActivityObserver>;
   nsIHttpActivityDistributor: nsJSIID<nsIHttpActivityDistributor>;
+  nsIHttpAuthCache: nsJSIID<nsIHttpAuthCache>;
+  nsIHttpAuthIdentity: nsJSIID<nsIHttpAuthIdentity>;
+  nsIHttpAuthEntry: nsJSIID<nsIHttpAuthEntry>;
   nsIHttpAuthManager: nsJSIID<nsIHttpAuthManager>;
   nsIHttpChannel: nsJSIID<nsIHttpChannel>;
   nsIHttpUpgradeListener: nsJSIID<nsIHttpUpgradeListener>;
   nsIHttpChannelInternal: nsJSIID<nsIHttpChannelInternal>;
   nsIHttpHeaderVisitor: nsJSIID<nsIHttpHeaderVisitor>;
   nsIHttpProtocolHandler: nsJSIID<nsIHttpProtocolHandler>;
+  nsINetworkErrorReport: nsJSIID<nsINetworkErrorReport>;
   nsINetworkErrorLogging: nsJSIID<nsINetworkErrorLogging>;
   nsIObliviousHttpClientResponse: nsJSIID<nsIObliviousHttpClientResponse>;
   nsIObliviousHttpClientRequest: nsJSIID<nsIObliviousHttpClientRequest>;
@@ -16017,6 +16033,8 @@ interface nsIXPCComponents_Interfaces {
   WebTransportSessionEventListener: nsJSIID<WebTransportSessionEventListener, typeof WebTransportSessionEventListener_DatagramOutcome>;
   nsIWebTransportStreamCallback: nsJSIID<nsIWebTransportStreamCallback>;
   nsIWebTransportHash: nsJSIID<nsIWebTransportHash>;
+  nsIWebTransportEventListener: nsJSIID<nsIWebTransportEventListener>;
+  nsIWebTransportEventService: nsJSIID<nsIWebTransportEventService>;
   nsIWebTransportSendStreamStats: nsJSIID<nsIWebTransportSendStreamStats>;
   nsIWebTransportReceiveStreamStats: nsJSIID<nsIWebTransportReceiveStreamStats>;
   nsIWebTransportStreamStatsCallback: nsJSIID<nsIWebTransportStreamStatsCallback>;
@@ -16050,6 +16068,7 @@ interface nsIXPCComponents_Interfaces {
   nsIDataStorageManager: nsJSIID<nsIDataStorageManager, typeof nsIDataStorageManager_DataStorage>;
   nsIDataStorage: nsJSIID<nsIDataStorage, typeof nsIDataStorage_DataType>;
   nsIDataStorageItem: nsJSIID<nsIDataStorageItem>;
+  nsIFIPSUtils: nsJSIID<nsIFIPSUtils>;
   nsINSSComponent: nsJSIID<nsINSSComponent>;
   nsINSSErrorsService: nsJSIID<nsINSSErrorsService>;
   nsINSSVersion: nsJSIID<nsINSSVersion>;
@@ -16070,34 +16089,36 @@ interface nsIXPCComponents_Interfaces {
   nsIX509Cert: nsJSIID<nsIX509Cert>;
   nsIAppSignatureInfo: nsJSIID<nsIAppSignatureInfo, typeof nsIAppSignatureInfo_SignatureAlgorithm>;
   nsIOpenSignedAppFileCallback: nsJSIID<nsIOpenSignedAppFileCallback>;
+  nsIPDFVerificationResult: nsJSIID<nsIPDFVerificationResult>;
   nsICertVerificationCallback: nsJSIID<nsICertVerificationCallback>;
-  nsIX509CertDB: nsJSIID<nsIX509CertDB, typeof nsIX509CertDB_VerifyUsage>;
+  nsIX509CertDB: nsJSIID<nsIX509CertDB, typeof nsIX509CertDB_VerifyUsage & typeof nsIX509CertDB_QWACType & typeof nsIX509CertDB_PDFSignatureAlgorithm>;
   nsIX509CertValidity: nsJSIID<nsIX509CertValidity>;
   mozIVisitInfo: nsJSIID<mozIVisitInfo>;
   mozIPlaceInfo: nsJSIID<mozIPlaceInfo>;
   mozIVisitInfoCallback: nsJSIID<mozIVisitInfoCallback>;
   mozIVisitedStatusCallback: nsJSIID<mozIVisitedStatusCallback>;
   mozIAsyncHistory: nsJSIID<mozIAsyncHistory>;
-  mozIPlacesAutoComplete: nsJSIID<mozIPlacesAutoComplete>;
+  mozIPlacesAutoComplete: nsJSIID<mozIPlacesAutoComplete, typeof mozIPlacesAutoComplete_MatchBehaviors & typeof mozIPlacesAutoComplete_SearchBehaviors>;
   mozIPlacesPendingOperation: nsJSIID<mozIPlacesPendingOperation>;
   mozISyncedBookmarksMirrorProgressListener: nsJSIID<mozISyncedBookmarksMirrorProgressListener>;
   mozISyncedBookmarksMirrorCallback: nsJSIID<mozISyncedBookmarksMirrorCallback>;
   mozISyncedBookmarksMerger: nsJSIID<mozISyncedBookmarksMerger, typeof mozISyncedBookmarksMerger_SyncedItemKinds & typeof mozISyncedBookmarksMerger_SyncedItemValidity>;
   nsIFaviconService: nsJSIID<nsIFaviconService>;
   nsIFavicon: nsJSIID<nsIFavicon>;
-  nsINavBookmarksService: nsJSIID<nsINavBookmarksService, typeof nsINavBookmarksService_ChangeSource>;
+  nsINavBookmarksService: nsJSIID<nsINavBookmarksService, typeof nsINavBookmarksService_BookmarkType & typeof nsINavBookmarksService_ChangeSource>;
   nsINavHistoryResultNode: nsJSIID<nsINavHistoryResultNode, typeof nsINavHistoryResultNode_ResultType>;
   nsINavHistoryContainerResultNode: nsJSIID<nsINavHistoryContainerResultNode>;
   nsINavHistoryQueryResultNode: nsJSIID<nsINavHistoryQueryResultNode>;
   nsINavHistoryResultObserver: nsJSIID<nsINavHistoryResultObserver>;
   nsINavHistoryResult: nsJSIID<nsINavHistoryResult>;
   nsINavHistoryQuery: nsJSIID<nsINavHistoryQuery>;
-  nsINavHistoryQueryOptions: nsJSIID<nsINavHistoryQueryOptions>;
+  nsINavHistoryQueryOptions: nsJSIID<nsINavHistoryQueryOptions, typeof nsINavHistoryQueryOptions_SortByType & typeof nsINavHistoryQueryOptions_ResultType>;
   nsINavHistoryService: nsJSIID<nsINavHistoryService, typeof nsINavHistoryService_TransitionType>;
   nsIPlacesPreviewsHelperService: nsJSIID<nsIPlacesPreviewsHelperService>;
   nsITaggingService: nsJSIID<nsITaggingService>;
-  nsIPrefBranch: nsJSIID<nsIPrefBranch>;
+  nsIPrefBranch: nsJSIID<nsIPrefBranch, typeof nsIPrefBranch_PreferenceType>;
   nsIPrefLocalizedString: nsJSIID<nsIPrefLocalizedString>;
+  nsIPrefOverrideMap: nsJSIID<nsIPrefOverrideMap>;
   nsIPrefStatsCallback: nsJSIID<nsIPrefStatsCallback>;
   nsIPrefObserver: nsJSIID<nsIPrefObserver>;
   nsIPrefService: nsJSIID<nsIPrefService>;
@@ -16113,6 +16134,7 @@ interface nsIXPCComponents_Interfaces {
   nsIApplicationReputationQuery: nsJSIID<nsIApplicationReputationQuery>;
   nsIApplicationReputationCallback: nsJSIID<nsIApplicationReputationCallback>;
   mozISandboxSettings: nsJSIID<mozISandboxSettings>;
+  nsIFormFillFocusListener: nsJSIID<nsIFormFillFocusListener>;
   nsIFormFillController: nsJSIID<nsIFormFillController>;
   nsIFormFillCompleteObserver: nsJSIID<nsIFormFillCompleteObserver>;
   mozIBridgedSyncEngineCallback: nsJSIID<mozIBridgedSyncEngineCallback>;
@@ -16149,7 +16171,6 @@ interface nsIXPCComponents_Interfaces {
   mozIStorageValueArray: nsJSIID<mozIStorageValueArray>;
   nsIFetchTelemetryDataCallback: nsJSIID<nsIFetchTelemetryDataCallback>;
   nsITelemetry: nsJSIID<nsITelemetry>;
-  nsIDAPTelemetry: nsJSIID<nsIDAPTelemetry>;
   nsIHttpServer: nsJSIID<nsIHttpServer>;
   nsIHttpServerStoppedCallback: nsJSIID<nsIHttpServerStoppedCallback>;
   nsIHttpServerIdentity: nsJSIID<nsIHttpServerIdentity>;
@@ -16193,7 +16214,6 @@ interface nsIXPCComponents_Interfaces {
   nsICookieBannerListService: nsJSIID<nsICookieBannerListService>;
   nsICookieBannerRule: nsJSIID<nsICookieBannerRule>;
   nsICookieBannerService: nsJSIID<nsICookieBannerService, typeof nsICookieBannerService_Modes>;
-  nsICookieBannerTelemetryService: nsJSIID<nsICookieBannerTelemetryService>;
   nsICookieRule: nsJSIID<nsICookieRule>;
   nsICrashService: nsJSIID<nsICrashService>;
   nsIFinalizationWitnessService: nsJSIID<nsIFinalizationWitnessService>;
@@ -16209,10 +16229,6 @@ interface nsIXPCComponents_Interfaces {
   nsIRFPService: nsJSIID<nsIRFPService>;
   nsIRFPTargetSetIDL: nsJSIID<nsIRFPTargetSetIDL>;
   nsIUserCharacteristicsPageService: nsJSIID<nsIUserCharacteristicsPageService>;
-  nsISearchSubmission: nsJSIID<nsISearchSubmission>;
-  nsISearchEngine: nsJSIID<nsISearchEngine>;
-  nsISearchParseSubmissionResult: nsJSIID<nsISearchParseSubmissionResult>;
-  nsISearchService: nsJSIID<nsISearchService, typeof nsISearchService_OpenSearchInstallErrors & typeof nsISearchService_DefaultEngineChangeReason>;
   nsIToolkitShellService: nsJSIID<nsIToolkitShellService>;
   nsITerminatorTest: nsJSIID<nsITerminatorTest>;
   nsIXULStore: nsJSIID<nsIXULStore>;
@@ -16277,6 +16293,7 @@ interface nsIXPCComponents_Interfaces {
   nsIUrlClassifierPrefixSet: nsJSIID<nsIUrlClassifierPrefixSet>;
   nsIUrlClassifierRemoteSettingsService: nsJSIID<nsIUrlClassifierRemoteSettingsService>;
   nsIUrlClassifierStreamUpdater: nsJSIID<nsIUrlClassifierStreamUpdater>;
+  nsIUrlClassifierTestUtils: nsJSIID<nsIUrlClassifierTestUtils>;
   nsIUrlClassifierParseFindFullHashCallback: nsJSIID<nsIUrlClassifierParseFindFullHashCallback>;
   nsIUrlClassifierUtils: nsJSIID<nsIUrlClassifierUtils>;
   nsIUrlListManager: nsJSIID<nsIUrlListManager>;
@@ -16452,7 +16469,6 @@ interface nsIXPCComponents_Interfaces {
   nsIObjectOutputStream: nsJSIID<nsIObjectOutputStream>;
   nsIOutputStream: nsJSIID<nsIOutputStream>;
   nsIPipe: nsJSIID<nsIPipe>;
-  nsISearchableInputStream: nsJSIID<nsISearchableInputStream>;
   nsIRandomAccessStream: nsJSIID<nsIRandomAccessStream>;
   nsISafeOutputStream: nsJSIID<nsISafeOutputStream>;
   nsIScriptableBase64Encoder: nsJSIID<nsIScriptableBase64Encoder>;
@@ -16480,7 +16496,7 @@ interface nsIXPCComponents_Interfaces {
   nsIXULAppInfo: nsJSIID<nsIXULAppInfo>;
   nsIXULRuntime: nsJSIID<nsIXULRuntime, typeof nsIXULRuntime_ExperimentStatus & typeof nsIXULRuntime_ContentWin32kLockdownState & typeof nsIXULRuntime_FissionDecisionStatus>;
   nsIEnvironment: nsJSIID<nsIEnvironment>;
-  nsIEventTarget: nsJSIID<nsIEventTarget>;
+  nsIEventTarget: nsJSIID<nsIEventTarget, typeof nsIEventTarget_DispatchFlags & typeof nsIEventTarget_FeatureFlags>;
   nsINamed: nsJSIID<nsINamed>;
   nsIProcess: nsJSIID<nsIProcess>;
   nsIRunnable: nsJSIID<nsIRunnable>;
@@ -16541,8 +16557,6 @@ type DOMTimeStamp = u64;
 type EpochTimeStamp = u64;
 type PRTime = i64;
 type PivotMoveReason = i16;
-type PredictorLearnReason = u32;
-type PredictorPredictReason = u32;
 type RequireTrustedTypesForDirectiveState = nsIContentSecurityPolicy.RequireTrustedTypesForDirectiveState;
 type nsBitsErrorAction = i32;
 type nsBitsErrorStage = i32;

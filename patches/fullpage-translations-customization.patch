@@ -26,19 +26,10 @@ index 244ff30700..57a0d5a598 100644
            FullPageTranslationsPanel.openManageLanguages();
            break;
 diff --git a/browser/components/preferences/main.inc.xhtml b/browser/components/preferences/main.inc.xhtml
-index ff577c035f..3b07de78a6 100644
+index f23beeb5c7..6357c9940b 100644
 --- a/browser/components/preferences/main.inc.xhtml
 +++ b/browser/components/preferences/main.inc.xhtml
-@@ -28,6 +28,7 @@
- 
-   <vbox id="startupPageBox">
-     <html:setting-group groupid="startup"/>
-+    <html:a is="moz-support-link" support-page="session-restore" data-l10n-id="session-restore-learn-more" />
-   </vbox>
- 
- </groupbox>
-@@ -233,9 +234,17 @@
-           preference="layout.spellcheckDefault"/>
+@@ -116,8 +116,16 @@
  
    <!-- This Translations UI is the pre-settings-redesign UI and should be removed
         when getting ready for the settings redesign to fully ship. -->
@@ -56,19 +47,19 @@ index ff577c035f..3b07de78a6 100644
      <hbox id="translations-manage-description" align="center">
        <description flex="1" data-l10n-id="translations-manage-intro-2"/>
        <button id="translations-manage-settings-button"
-@@ -255,6 +264,7 @@
+@@ -138,6 +146,7 @@
+       </html:div>
        <description id="translations-manage-error" hidden="true"></description>
      </vbox>
 +    </vbox>
    </vbox>
  </groupbox>
  
- <!-- Files and Applications -->
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 3720de1..c348d6f 100644
+index e77dfebdf3..4a1c31cecb 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -237,6 +237,7 @@ Preferences.addAll([
+@@ -239,6 +239,7 @@ Preferences.addAll([
  
    // Translations
    { id: "browser.translations.automaticallyPopup", type: "bool" },
@@ -76,18 +67,18 @@ index 3720de1..c348d6f 100644
  ]);
  
  if (AppConstants.HAVE_SHELL_SERVICE) {
-@@ -4916,6 +4917,10 @@ var gMainPane = {
-       document.getElementById("checkSpelling"),
-       () => this.writeCheckSpelling()
-     );
+@@ -5560,6 +5561,10 @@ var gMainPane = {
+     }
+ 
+     // Notify observers that the UI is now ready
 +    Preferences.addSyncFromPrefListener(
 +      document.getElementById("translations-manage-enable"),
 +      () => this.readEnableTranslations()
 +    );
+     Services.obs.notifyObservers(window, "main-pane-loaded");
      this.setInitialized();
    },
- 
-@@ -5034,39 +5039,36 @@ var gMainPane = {
+@@ -5664,39 +5669,36 @@ var gMainPane = {
      button.disabled = !preference.value;
      return undefined;
    },

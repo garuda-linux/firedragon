@@ -18,7 +18,7 @@ export namespace Targets {
     let NavigatorOscpu: number;
     let NavigatorPlatform: number;
     let NavigatorUserAgent: number;
-    let PointerId: number;
+    let PdfjsSpoof: number;
     let StreamVideoFacingMode: number;
     let JSDateTimeUTC: number;
     let JSMathFdlibm: number;
@@ -72,6 +72,13 @@ export namespace Targets {
     let WebCodecs: number;
     let MaxTouchPoints: number;
     let MaxTouchPointsCollapse: number;
+    let NavigatorHWConcurrencyTiered: number;
+    let WebGLRandomization: number;
+    let EfficientCanvasRandomization: number;
+    let WebGLVendorSanitize: number;
+    let WebGLVendorConstant: number;
+    let WebGLVendorRandomize: number;
+    let WebGLRendererConstant: number;
     let IsAlwaysEnabledForPrecompute: number;
     let AllTargets: number;
 }

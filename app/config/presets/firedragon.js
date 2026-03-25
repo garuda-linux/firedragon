@@ -226,6 +226,7 @@ unlock("browser.ai.control.linkPreviewKeyPoints");
 unlock("browser.ai.control.pdfjsAltText");
 unlock("browser.ai.control.sidebarChatbot");
 unlock("browser.ai.control.smartTabGroups");
+unlock("browser.ai.control.smartWindow");
 
 /** ------------------------------
  * [CATEGORY] EXTENSIONS

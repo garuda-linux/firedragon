@@ -15,7 +15,7 @@ export namespace PromiseWorker {
  * - {Array} transfers An array of objects that should be transferred
  *   instead of being copied.
  *
- * @constructor
+ * @class
  */
 declare function Meta(data?: object | undefined, meta?: object | undefined): void;
 declare class Meta {
@@ -32,7 +32,7 @@ declare class Meta {
      * - {Array} transfers An array of objects that should be transferred
      *   instead of being copied.
      *
-     * @constructor
+     * @class
      */
     constructor(data?: object | undefined, meta?: object | undefined);
     data: any;
@@ -104,6 +104,15 @@ declare class AbstractWorker {
     _agent: any;
     _deferredJobs: Map<any, any>;
     _deferredJobId: number;
+    _exceptionNames: {
+        EvalError: string;
+        InternalError: string;
+        RangeError: string;
+        ReferenceError: string;
+        SyntaxError: string;
+        TypeError: string;
+        URIError: string;
+    };
     log(): void;
     _generateDeferredJobId(): string;
     /**
