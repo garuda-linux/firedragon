@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.2) — 2026-03-25 — [`v13.0.0-rc.1`…`v13.0.0-rc.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.1...v13.0.0-rc.2)
+
+### 🚀 Features
+
+- Add 0-RTT toggle to settings and welcome — [`f09ead68…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f09ead68e0920c74c453f8af567a51aa98b55de8)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove 0-RTT toggle from welcome — [`65af49c1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/65af49c1fc8b6025fdf971448342a51bc777caad)
+- Update for firefox 149.0 — [`a5792ab7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a5792ab76cfd267531c56f738e494ca91a2f02ab)
+- Update pnpm and deps — [`48e6b710…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/48e6b71009513c893ba57e75d4f0c86e95425488)
+
 ## [FireDragon v13.0.0-rc.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.1) — 2026-03-23 — [`v13.0.0-rc.0`…`v13.0.0-rc.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.0...v13.0.0-rc.1)
 
 ### 🚀 Features
