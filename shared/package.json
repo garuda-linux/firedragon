@@ -11,9 +11,8 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "postinstall": "tsdown --dts src/*/*.ts",
-    "build": "tsdown --dts src/*/*.ts",
-    "dev": "tsdown --dts src/*/*.ts"
+    "build": "tsdown",
+    "dev": "tsdown"
   },
   "dependencies": {
     "deep-equal": "^2.2.3"

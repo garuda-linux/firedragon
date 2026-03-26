@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "postinstall": "wxt prepare",
     "build": "wxt build",
     "dev": "wxt"
   },
