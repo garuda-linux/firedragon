@@ -27,7 +27,7 @@ document!.addEventListener(
             menupopup.innerHTML = '';
             for (const target of targets.value) {
                 menupopup.append(
-                    h('menuitem', {
+                    h('xul:menuitem', {
                         label: target.document!.title,
                         on: {
                             command() {
