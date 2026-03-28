@@ -354,6 +354,9 @@ defaultPref("browser.startup.page", 3);
 defaultPref("sidebar.revamp", true);
 defaultPref("sidebar.main.tools", "history,bookmarks,firedragon-notes@firedragon.garudalinux.org,firedragon-workspaces@firedragon.garudalinux.org");
 defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+#ifdef XP_LINUX
+defaultPref("browser.tabs.inTitlebar", 0);
+#endif
 // Disabled for now, since it is quite buggy:
 // defaultPref("widget.gtk.global-menu.enabled", true);
 // defaultPref("widget.gtk.global-menu.wayland.enabled", true);
