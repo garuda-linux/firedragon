@@ -1,5 +1,18 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.3) — 2026-03-28 — [`v13.0.0-rc.2`…`v13.0.0-rc.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.2...v13.0.0-rc.3)
+
+### 🐛 Bug Fixes
+
+- Use system-ui font for quasar — [`5dd5148d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5dd5148dcbb26c6aa47d3c7cf8622f091884f4b5)
+- _(app/distribution)_ Remove dark reader — [`16089e8e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/16089e8e34c0b2b4d51efe6b0f67c3d7bf39031c)
+- _(app/config)_ Separate title bar on linux — [`3bfd82af…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3bfd82af68cb09f623465975c32f7b4d37dba534)
+- _(content)_ Fix menuitem tag in moveTabToWindow.ts — [`7bd36c48…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7bd36c4891fcf212e4b89ff15d26c538d0866035)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove all postinstall scripts — [`026ee26a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/026ee26aeb72438dcf7e833449644b000ffda3e1)
+
 ## [FireDragon v13.0.0-rc.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.2) — 2026-03-25 — [`v13.0.0-rc.1`…`v13.0.0-rc.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.1...v13.0.0-rc.2)
 
 ### 🚀 Features
