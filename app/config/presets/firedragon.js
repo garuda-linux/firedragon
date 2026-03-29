@@ -157,6 +157,7 @@ if (getPref('firedragon.config.prefetch.enable')) {
 unsetDefault("privacy.resistFingerprinting");
 
 /** [SECTION] WEBGL */
+defaultPref("librewolf.webgl.prompt.hide", false);
 
 /** ------------------------------
  * [CATEGORY] SECURITY
