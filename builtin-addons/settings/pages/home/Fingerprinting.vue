@@ -34,6 +34,13 @@
                 :description="t('pages.home.fingerprinting.enableWebGL.description')"
                 v-model="enableWebGL"
             />
+            <BoolPrefItem
+                pref="librewolf.webgl.prompt"
+                :title="t('pages.home.fingerprinting.enableWebGLPrompt.title')"
+                :description="t('pages.home.fingerprinting.enableWebGLPrompt.description')"
+                :inset-level="1"
+                :disable="!enableWebGL"
+            />
         </q-list>
     </q-card>
 </template>

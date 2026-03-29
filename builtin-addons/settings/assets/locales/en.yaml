@@ -62,6 +62,9 @@ pages:
       enableWebGL:
         title: Enable WebGL
         description: WebGL is a strong fingerprinting vector. If you need to enable it, consider using an extension like Canvas Blocker.
+      enableWebGLPrompt:
+        title: Enable WebGL permission prompt
+        description: This will prompt you to allow WebGL on websites that require it.
     security:
       title: Security
       enforceOCSP:
