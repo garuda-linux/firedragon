@@ -1,5 +1,21 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.4) — 2026-04-03 — [`v13.0.0-rc.3`…`v13.0.0-rc.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.3...v13.0.0-rc.4)
+
+### 🚀 Features
+
+- _(builtin-addons/settings)_ Add option to enable WebGL permission prompt — [`b592c818…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b592c8181aa1d92e85c2c8d54c1e2d72705a0905)
+- _(builtin-addons/settings)_ Add option to hide WebGL permission prompt — [`b96ea3e4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b96ea3e47c32ceffc5bafc1d92ebd8e9f63e9dca)
+
+### 🐛 Bug Fixes
+
+- _(app/config)_ Do not hide WebGL permission prompt by default — [`35e88a7f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/35e88a7f90525cc585b42aca982fe8a95a0d0188)
+- _(newtab)_ Observe pref changes to update settings — [`3ff84895…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3ff84895975682c7c41308ae892f4ced49172d53)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps — [`abc69358…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/abc693587732cdc8a50cbb035d95c4d99ebf2b03)
+
 ## [FireDragon v13.0.0-rc.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.3) — 2026-03-28 — [`v13.0.0-rc.2`…`v13.0.0-rc.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.2...v13.0.0-rc.3)
 
 ### 🐛 Bug Fixes
