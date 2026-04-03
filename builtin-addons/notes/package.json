@@ -14,8 +14,8 @@
     "@vueuse/core": "^14.2.1",
     "@webext-core/storage": "^1.2.0",
     "deep-equal": "^2.2.3",
-    "quasar": "^2.19.1",
-    "vue": "^3.5.31",
+    "quasar": "^2.19.2",
+    "vue": "^3.5.32",
     "vue-i18n": "^11.3.0",
     "vue-router": "^4.6.4"
   },
@@ -27,7 +27,7 @@
     "@types/gecko": "workspace:^",
     "@wxt-dev/browser": "^0.1.38",
     "@wxt-dev/module-vue": "^1.0.3",
-    "sass-embedded": "^1.98.0",
+    "sass-embedded": "^1.99.0",
     "typescript": "catalog:",
     "vite-plugin-vue-devtools": "^8.1.1",
     "wxt": "catalog:"
