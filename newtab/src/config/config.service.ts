@@ -12,7 +12,9 @@ import type { AppSettings } from './interfaces';
 @Injectable({
     providedIn: 'root',
 })
-export class ConfigService {
+export class ConfigService implements nsIObserver {
+    public readonly QueryInterface = ChromeUtils.generateQI([Ci.nsIObserver]);
+
     private readonly pref = 'firedragon.newtab.config';
 
     defaultSettings: AppSettings = {
@@ -76,6 +78,8 @@ export class ConfigService {
         effect(() => {
             Services.prefs.setStringPref(this.pref, JSON.stringify(this.settings()));
         });
+
+        Services.prefs.addObserver(this.pref, this);
     }
 
     /**
@@ -274,5 +278,18 @@ export class ConfigService {
         }
         this.document.documentElement.style.backgroundColor = backgroundColor!;
         this.document.documentElement.style.scrollbarColor = scrollbarColor!;
+    }
+
+    observe(_subject, topic: string, data: any) {
+        if (topic === 'nsPref:changed') {
+            if (data === this.pref) {
+                this.settings.set(JSON.parse(Services.prefs.getStringPref(this.pref)));
+
+                const settings = this.settings();
+                for (const key of Object.keys(settings)) {
+                    this.updateConfig(key, settings[key]);
+                }
+            }
+        }
     }
 }
