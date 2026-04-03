@@ -65,6 +65,9 @@ pages:
       enableWebGLPrompt:
         title: Enable WebGL permission prompt
         description: This will prompt you to allow WebGL on websites that require it.
+      hideWebGLPrompt:
+        title: Hide WebGL permission prompt
+        description: Hides the permission prompt for WebGL. It will still be accessible from the URL bar.
     security:
       title: Security
       enforceOCSP:

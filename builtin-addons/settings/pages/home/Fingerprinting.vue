@@ -6,6 +6,7 @@
 
     const enableRFP = await useBoolPref('privacy.resistFingerprinting');
     const enableWebGL = toggleRefs([await useBoolPref('webgl.disabled')], [false], [true]);
+    const enableWebGLPrompt = await useBoolPref('librewolf.webgl.prompt');
 </script>
 
 <template>
@@ -40,6 +41,13 @@
                 :description="t('pages.home.fingerprinting.enableWebGLPrompt.description')"
                 :inset-level="1"
                 :disable="!enableWebGL"
+            />
+            <BoolPrefItem
+                pref="librewolf.webgl.prompt.hide"
+                :title="t('pages.home.fingerprinting.hideWebGLPrompt.title')"
+                :description="t('pages.home.fingerprinting.hideWebGLPrompt.description')"
+                :inset-level="2"
+                :disable="!enableWebGL || !enableWebGLPrompt"
             />
         </q-list>
     </q-card>
