@@ -361,17 +361,6 @@ defaultPref("browser.tabs.inTitlebar", 0);
 // Disabled for now, since it is quite buggy:
 // defaultPref("widget.gtk.global-menu.enabled", true);
 // defaultPref("widget.gtk.global-menu.wayland.enabled", true);
-/** Possible values are:
- * 0 – Never
- * 1 – Always
- * 2 – Auto (typically depends on whether Firefox is run from within Flatpak or whether the GDK_DEBUG=portals environment is set)
- * Other settings in the same category are:
- * widget.use-xdg-desktop-portal.mime-handler – Whether to use XDG portal for the mime handler
- * widget.use-xdg-desktop-portal.settings – Whether to try to use XDG portal for settings/look-and-feel information
- * widget.use-xdg-desktop-portal.location – Whether to use XDG portal for geolocation
- * widget.use-xdg-desktop-portal.open-uri – Whether to use XDG portal for opening to a file
- */
-defaultPref("widget.use-xdg-desktop-portal.file-picker", 1);
 
 /** ------------------------------
  * [CATEGORY] OVERRIDES
