@@ -1,5 +1,23 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.5) — 2026-04-07 — [`v13.0.0-rc.4`…`v13.0.0-rc.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.4...v13.0.0-rc.5)
+
+### 🚀 Features
+
+- Add ability to add custom URLs to sidebar — [`8dfdf3c8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8dfdf3c8febe85515fedc7f18ff045eb9704b4f5)
+
+### 🐛 Bug Fixes
+
+- _(builtin-addons/welcome)_ Add note about restart requirement for prefetching option — [`e8d5ad61…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e8d5ad61e5446864a510a3a129791a22d0593713)
+- _(builtin-addons/settings)_ Add restart propt for prefetch option — [`349f06ba…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/349f06baa769886d6793de275477651db0069d4e)
+- _(builtin-addons/settings)_ Actually show privacy settings — [`23476fe2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/23476fe2dd42df9a65a17112607f950b954e9aa3)
+- _(builtin-addons/welcome)_ Toggle `browser.urlbar.suggest.searches` pref as well when toggling search suggestions — [`19471759…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/19471759736cc7f3934c2fde4d54260d47ac1946)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove custom settings for xdg file picker — [`ef32149b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ef32149b9a46839be9b4b83a69f454f3c3efac80)
+- Update deps — [`abdda29e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/abdda29e083a99ac04ad3915ec3184324a343ec2)
+
 ## [FireDragon v13.0.0-rc.4](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.4) — 2026-04-03 — [`v13.0.0-rc.3`…`v13.0.0-rc.4`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.3...v13.0.0-rc.4)
 
 ### 🚀 Features
