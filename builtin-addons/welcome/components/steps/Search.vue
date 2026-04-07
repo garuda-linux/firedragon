@@ -17,9 +17,10 @@
         browser.searchEngine.setPrivateDefault(id);
     });
 
-    const [separatePrivateDefault, suggest, suggestionsFirst, suggestPrivate] = await Promise.all([
+    const [separatePrivateDefault, suggest, suggestUrlbar, suggestionsFirst, suggestPrivate] = await Promise.all([
         useBoolPref('browser.search.separatePrivateDefault'),
         useBoolPref('browser.search.suggest.enabled'),
+        useBoolPref('browser.urlbar.suggest.searches'),
         useBoolPref('browser.urlbar.showSearchSuggestionsFirst'),
         useBoolPref('browser.search.suggest.enabled.private'),
     ]);
@@ -65,7 +66,11 @@
         </template>
     </p>
     <p>
-        <q-checkbox v-model="suggest" :label="t('steps.search.suggest')" />
+        <q-checkbox
+            :model-value="suggest && suggestUrlbar"
+            @update:model-value="(value) => ([suggest, suggestUrlbar] = [value, value])"
+            :label="t('steps.search.suggest')"
+        />
         <template v-if="suggest">
             <br />
             <q-checkbox v-model="suggestionsFirst" :label="t('steps.search.suggestionsFirst')" class="q-ml-lg" />
