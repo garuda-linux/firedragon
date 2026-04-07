@@ -45,6 +45,9 @@ pages:
       enablePrefetchConfig:
         title: Enable prefetching
         description: Prefetching is a browser feature that allows the browser to download resources in the background while the user is browsing. This can improve performance and reduce bandwidth usage.
+        restartDialog:
+          title: Restart required
+          message: FireDragon's restart is required to completely enable or disable prefetching.
       limitCrossOriginReferrers:
         title: Limit cross-origin referrers
         description: Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed.

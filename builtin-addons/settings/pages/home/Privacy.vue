@@ -13,6 +13,12 @@
         [1, 1],
         [0, 0],
     );
+
+    promptRestartOnChange(
+        await useBoolPref('firedragon.config.prefetch.enable'),
+        t('pages.home.privacy.enablePrefetchConfig.restartDialog.title'),
+        t('pages.home.privacy.enablePrefetchConfig.restartDialog.message'),
+    );
 </script>
 
 <template>
