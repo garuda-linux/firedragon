@@ -7,20 +7,20 @@
     "dev": "wxt"
   },
   "dependencies": {
-    "@quasar/extras": "^1.17.0",
-    "@unhead/vue": "^2.1.12",
+    "@quasar/extras": "^1.18.0",
+    "@unhead/vue": "^2.1.13",
     "@vueuse/core": "^14.2.1",
     "qr-code-styling": "^1.9.2",
-    "quasar": "^2.19.2",
+    "quasar": "^2.19.3",
     "vue": "^3.5.32",
-    "vue-i18n": "^11.3.0"
+    "vue-i18n": "^11.3.1"
   },
   "devDependencies": {
     "@firedragon/build": "workspace:^",
     "@intlify/unplugin-vue-i18n": "^11.0.7",
     "@quasar/vite-plugin": "^1.11.0",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.1.38",
+    "@wxt-dev/browser": "^0.1.39",
     "@wxt-dev/module-vue": "^1.0.3",
     "sass-embedded": "^1.99.0",
     "typescript": "catalog:",
