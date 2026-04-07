@@ -37,12 +37,12 @@
             />
             <ToggleItem
                 :title="t('pages.home.privacy.limitCrossOriginReferrers.title')"
-                :description="t('pages.home.networking.limitCrossOriginReferrers.description')"
+                :description="t('pages.home.privacy.limitCrossOriginReferrers.description')"
                 v-model="limitCrossOriginReferrers"
             />
             <ToggleItem
                 :title="t('pages.home.privacy.autoRefuseCookies.title')"
-                :description="t('pages.home.networking.autoRefuseCookies.description')"
+                :description="t('pages.home.privacy.autoRefuseCookies.description')"
                 v-model="autoRefuseCookies"
             />
         </q-list>

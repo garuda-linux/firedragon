@@ -2,6 +2,7 @@
     import BrowserBehaviour from '@/pages/home/BrowserBehaviour.vue';
     import Fingerprinting from '@/pages/home/Fingerprinting.vue';
     import Networking from '@/pages/home/Networking.vue';
+    import Privacy from '@/pages/home/Privacy.vue';
     import Security from '@/pages/home/Security.vue';
 
     const { t } = useI18n();
@@ -15,8 +16,9 @@
                 <div class="text-subtitle1">{{ t('pages.home.description') }}</div>
             </div>
             <BrowserBehaviour />
-            <Networking />
             <Fingerprinting />
+            <Networking />
+            <Privacy />
             <Security />
         </div>
     </q-page>
