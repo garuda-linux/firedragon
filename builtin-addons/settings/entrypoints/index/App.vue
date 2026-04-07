@@ -50,6 +50,12 @@
                             </q-item-section>
                             <q-item-section>{{ t('pages.keyboardShortcuts.title') }}</q-item-section>
                         </q-item>
+                        <q-item to="/sidebar" clickable v-ripple>
+                            <q-item-section avatar>
+                                <q-icon name="sym_o_dock_to_right" />
+                            </q-item-section>
+                            <q-item-section>{{ t('pages.sidebar.title') }}</q-item-section>
+                        </q-item>
                     </q-list>
                 </q-scroll-area>
             </q-drawer>

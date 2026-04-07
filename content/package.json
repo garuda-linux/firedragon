@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "@firedragon/shared": "workspace:^",
-    "@vue/reactivity": "^3.5.32"
+    "@vue/reactivity": "^3.5.32",
+    "p-queue": "^9.1.2"
   },
   "devDependencies": {
     "@firedragon/build": "workspace:^",

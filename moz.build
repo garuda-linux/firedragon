@@ -5,3 +5,6 @@ DIRS += [
     'modules',
     'newtab',
 ]
+
+DEFINES['TOPSRCDIR'] = TOPSRCDIR
+export('DEFINES')

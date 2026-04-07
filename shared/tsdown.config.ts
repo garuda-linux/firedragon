@@ -4,6 +4,7 @@ export default defineConfig({
     entry: [
         'src/experiment-api/prefs.ts',
         'src/types/keyboard-shortcuts.ts',
+        'src/types/sidebar.ts',
         'src/vue/createStorage.ts',
         'src/vue/toggleRefs.ts',
         'src/vue/usePref.ts',

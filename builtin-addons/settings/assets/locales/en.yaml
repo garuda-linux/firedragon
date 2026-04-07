@@ -627,3 +627,11 @@ pages:
           VK_F23: 'F23'
           VK_F24: 'F24'
           VK_RETURN: 'Enter'
+  sidebar:
+    title: Sidebar
+    description: Customize the sidebar.
+    urls:
+      title: Sidebar URLs
+      name: Name
+      url: URL
+      iconUrl: Icon URL

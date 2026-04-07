@@ -7,15 +7,20 @@ import { type Plugin, defineConfig } from 'vite';
 export default defineConfig(async ({ mode }) => ({
     base: 'chrome://firedragon/content/',
     build: {
+        assetsDir: '',
         minify: mode === 'production',
         rollupOptions: {
-            input: await globby('*.html'),
+            input: [...(await globby('*.html')), ...(await globby('src/*.ts'))],
+            output: {
+                entryFileNames: '[name].js',
+            },
         },
     },
     plugins: [
         vite({
             prefix: 'content/',
             exclude: /\.inc\.html$/,
+            preprocess: /sidebar\.xhtml/,
             registrations: [
                 {
                     type: 'content',

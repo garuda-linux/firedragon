@@ -24,5 +24,9 @@ export default createRouter({
             path: '/keyboard-shortcuts',
             component: () => import('@/pages/keyboard-shortcuts/index.vue'),
         },
+        {
+            path: '/sidebar',
+            component: () => import('@/pages/sidebar/index.vue'),
+        },
     ],
 });
