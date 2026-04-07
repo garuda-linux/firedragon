@@ -38,7 +38,7 @@ steps:
     title: Quick settings
     hidePasswdmgr: Hide password manager (requires restart)
     enableRFP: Enable ResistFingerprinting
-    enablePrefetchConfig: Enable prefetching
+    enablePrefetchConfig: Enable prefetching (requires restart)
     next: Continue
   default:
     title: Default browser
