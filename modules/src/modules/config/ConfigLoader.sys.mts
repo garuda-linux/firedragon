@@ -99,7 +99,9 @@ export const ConfigLoader = new (class {
             .defineFunction('setOverride', container.setOverride.bind(container))
             .defineFunction('unsetOverride', container.unsetOverride.bind(container))
             .defineFunction('lock', container.lock.bind(container))
-            .defineFunction('unlock', container.unlock.bind(container));
+            .defineFunction('unlock', container.unlock.bind(container))
+            .defineFunction('getEnv', container.getEnv.bind(container))
+            .defineFunction('setEnv', container.setEnv.bind(container));
 
         // Legacy prefcalls API
         sandbox

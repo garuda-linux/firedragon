@@ -3,6 +3,8 @@ export class ConfigContainer {
     private readonly overrides = new Map<string, any>();
     private readonly locks = new Set<string>();
 
+    private readonly envVars = new Map<string, string>();
+
     private validate(prefName: string, value: any): void {
         if (value !== null) {
             const prefType = Services.prefs.getPrefType(prefName),
@@ -71,6 +73,17 @@ export class ConfigContainer {
         return null;
     }
 
+    getEnv(name: string): string {
+        if (this.envVars.has(name)) {
+            return this.envVars.get(name)!;
+        }
+        return Services.env.get(name);
+    }
+
+    setEnv(name: string, value: string) {
+        this.envVars.set(name, value);
+    }
+
     apply() {
         const defaultBranch = Services.prefs.getDefaultBranch('');
         for (const [prefName, value] of this.defaults) {
@@ -81,6 +94,10 @@ export class ConfigContainer {
         }
         for (const [prefName, value] of this.overrides) {
             this.applyPref(Services.prefs, prefName, value);
+        }
+
+        for (const [name, value] of this.envVars) {
+            Services.env.set(name, value);
         }
     }
 
