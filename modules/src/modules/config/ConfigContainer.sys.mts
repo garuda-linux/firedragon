@@ -85,20 +85,17 @@ export class ConfigContainer {
     }
 
     private applyPref(prefBranch: nsIPrefBranch, prefName: string, value: any) {
-        if (value === null) {
-            prefBranch.clearUserPref(prefName);
-        } else {
-            switch (typeof value) {
-                case 'boolean':
-                    prefBranch.setBoolPref(prefName, value);
-                    break;
-                case 'number':
-                    prefBranch.setIntPref(prefName, value);
-                    break;
-                case 'string':
-                    prefBranch.setStringPref(prefName, value);
-                    break;
-            }
+        prefBranch.clearUserPref(prefName);
+        switch (typeof value) {
+            case 'boolean':
+                prefBranch.setBoolPref(prefName, value);
+                break;
+            case 'number':
+                prefBranch.setIntPref(prefName, value);
+                break;
+            case 'string':
+                prefBranch.setStringPref(prefName, value);
+                break;
         }
     }
 }
