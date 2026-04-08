@@ -93,6 +93,7 @@ export class ConfigContainer {
             Services.prefs.lockPref(prefName);
         }
         for (const [prefName, value] of this.overrides) {
+            Services.prefs.clearUserPref(prefName);
             this.applyPref(Services.prefs, prefName, value);
         }
 
@@ -102,7 +103,6 @@ export class ConfigContainer {
     }
 
     private applyPref(prefBranch: nsIPrefBranch, prefName: string, value: any) {
-        prefBranch.clearUserPref(prefName);
         switch (typeof value) {
             case 'boolean':
                 prefBranch.setBoolPref(prefName, value);
