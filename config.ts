@@ -111,6 +111,7 @@ export const userPrefs = {
     'browser.newtabpage.enabled': true,
     'browser.startup.page': 1,
     'devtools.aboutdebugging.showHiddenAddons': true,
+    'librewolf.devHelpers': true,
 };
 
 export const cacheDir = '.cache';

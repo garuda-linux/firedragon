@@ -154,6 +154,7 @@ if (getPref('firedragon.config.prefetch.enable')) {
 unsetDefault("privacy.resistFingerprinting");
 
 /** [SECTION] WEBGL */
+unsetOverride("webgl.disabled");
 defaultPref("librewolf.webgl.prompt.hide", false);
 
 /** ------------------------------
@@ -164,6 +165,7 @@ defaultPref("librewolf.webgl.prompt.hide", false);
 
 /** [SECTION] TLS/SSL */
 unsetOverride("security.tls.enable_0rtt_data");
+unsetOverride("network.http.http3.enable_0rtt");
 
 /** [SECTION] PERMISSIONS */
 
@@ -248,6 +250,7 @@ unsetDefault("extensions.systemAddon.update.url");
  * defaultPref("extensions.webextensions.base-content-security-policy", "default-src 'none'; script-src 'none'; object-src 'none';");
  * defaultPref("extensions.webextensions.base-content-security-policy.v3", "default-src 'none'; script-src 'none'; object-src 'none';");
  */
+unsetDefault("devtools.aboutdebugging.showHiddenAddons");
 
 /** ------------------------------
  * [CATEGORY] BUILT-IN FEATURES

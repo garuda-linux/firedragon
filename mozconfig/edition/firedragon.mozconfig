@@ -11,6 +11,7 @@ ac_add_options --with-distribution-id=org.garudalinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 export MOZ_APP_REMOTINGNAME=firedragon
 export MOZ_REQUIRE_SIGNING=
+export MOZILLA_OFFICIAL=1
 mk_add_options MOZ_CRASHREPORTER=0
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0

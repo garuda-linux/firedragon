@@ -113,8 +113,10 @@ pref("devtools.console.stdout.chrome", false);
  * ------------------------------- */
 
 /** [SECTION] HTTPS */
-defaultPref("dom.security.https_only_mode", true); // only allow https in all windows, including private browsing
+lockPref("dom.security.https_only_mode", true); // only allow https in all windows, including private browsing
 defaultPref("network.auth.subresource-http-auth-allow", 1); // block HTTP authentication credential dialogs
+defaultPref("network.http.prompt-temp-redirect", true); // // Enable prompts for unsafe HTTP redirects
+defaultPref("dom.security.https_only_mode.upgrade_local", true);
 
 /** [SECTION] REFERERS
  * to enhance privacy but keep a certain level of usability we trim cross-origin
@@ -247,7 +249,7 @@ defaultPref("privacy.globalprivacycontrol.pbmode.enabled", true);
 defaultPref("privacy.globalprivacycontrol.functionality.enabled", true);
 
 /** [SECTION] WEBGL */
-defaultPref("webgl.disabled", false);
+pref("webgl.disabled", false);
 defaultPref("dom.webgpu.enabled", false);
 
 /** ------------------------------
@@ -271,10 +273,27 @@ defaultPref("security.ssl.treat_unsafe_negotiation_as_broken", true);
 defaultPref("security.pki.crlite_mode", 2);
 defaultPref("security.remote_settings.crlite_filters.enabled", true);
 
+// Disable OCSP
+defaultPref("security.OCSP.enabled", 0);
+defaultPref("security.OCSP.require", false);
+
+// Disable third-party/OS-level root certificates
+lockPref("security.certerrors.mitm.auto_enable_enterprise_roots", false);
+lockPref("security.enterprise_roots.enabled", false);
+
+defaultPref("dom.security.https_only_mode_error_page_user_suggestions", true); // Show suggestions when an HTTPS page can not be found
+
 /** [SECTION] TLS/SSL */
 pref("security.tls.enable_0rtt_data", false); // disable 0 RTT to improve tls 1.3 security
+pref("network.http.http3.enable_0rtt", false);
 pref("security.tls.version.enable-deprecated", false); // make TLS downgrades session only by enforcing it with pref(), default
 defaultPref("browser.xul.error_pages.expert_bad_cert", true); // show relevant and advanced issues on warnings and error screens
+
+defaultPref("security.insecure_field_warning.ignore_local_ip_address", false); // Do not ignore local addresses
+defaultPref("security.osclientcerts.autoload", false); // Disable the automatic import of OS client authentication certificates
+
+defaultPref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
+defaultPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
 
 /** [SECTION] PERMISSIONS */
 pref("permissions.manager.defaultsUrl", ""); // revoke special permissions for some mozilla domains
@@ -458,6 +477,10 @@ lockPref("extensions.webcompat-reporter.newIssueEndpoint", "");
  */
 
 defaultPref("privacy.antitracking.isolateContentScriptResources", true);
+
+defaultPref("devtools.aboutdebugging.showHiddenAddons", true); // Disabled for non MOZILLA_OFFICIAL builds
+
+defaultPref("extensions.getAddons.langpacks.url", ""); // Since we do not allow installing langpacks
 
 /** ------------------------------
  * [CATEGORY] BUILT-IN FEATURES
@@ -665,6 +688,9 @@ clearPref("app.update.lastUpdateTime.glean-addons-daily");
 
 lockPref("nimbus.rollouts.enabled", false);
 
+// Added via patches/autoconfig-setEnv.patch
+setEnv("MOZ_GFX_CRASH_MOZ_CRASH", 1); // https://searchfox.org/firefox-main/rev/0989a082704f0bda8d370ccd57402645d834757e/gfx/thebes/gfxPlatform.cpp#381
+
 /** ------------------------------
  * [CATEGORY] WINDOWS
  * the prefs in this section only apply to windows installations and they don't have any
@@ -702,6 +728,9 @@ defaultPref(
 );
 
 defaultPref("librewolf.getBrowserInfo.setToFirefoxDefaults", true);
+
+// Added via patches/moz-official.patch
+defaultPref("librewolf.devHelpers", false);
 
 /** ------------------------------
  * [CATEGORY] OVERRIDES
