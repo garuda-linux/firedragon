@@ -53,6 +53,12 @@ export default defineConfig(async ({ mode }) => {
                         entry: 'resource://firedragon/modules/SkinController.sys.mjs',
                         value: 'SkinController.onBrowserStartup',
                     },
+                    {
+                        type: 'category',
+                        category: 'firedragon/browser-startup',
+                        entry: 'resource://firedragon/modules/UblockCompat.sys.mjs',
+                        value: 'UblockCompat.init',
+                    },
                 ],
             }),
         ],

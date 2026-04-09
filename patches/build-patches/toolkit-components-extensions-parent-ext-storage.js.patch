@@ -1,0 +1,36 @@
+diff --git a/toolkit/components/extensions/parent/ext-storage.js b/toolkit/components/extensions/parent/ext-storage.js
+index 0d6109c25019..46bf5002f2f4 100644
+--- a/toolkit/components/extensions/parent/ext-storage.js
++++ b/toolkit/components/extensions/parent/ext-storage.js
+@@ -411,7 +411,30 @@ this.storage = class extends ExtensionAPIPersistent {
+         managed: {
+           async get(keys) {
+             enforceNoTemporaryAddon(extension.id);
+-            let data = await getManagedStorageManifestData(extension, context);
++
++            let data;
++            if (extension.id == "uBlock0@raymondhill.net") {
++              try {
++                data = await getManagedStorageManifestData(extension, context);
++              } catch (_) {
++                data = ExtensionStorage._serializableMap({});
++              }
++
++              const adminSettings = data.get("adminSettings") ?? {};
++
++              const assetsBootstrapLocation = Services.prefs.getStringPref("librewolf.uBO.assetsBootstrapLocation", null);
++              if (assetsBootstrapLocation) {
++                adminSettings.assetsBootstrapLocation = assetsBootstrapLocation;
++              }
++
++              adminSettings.userSettings ??= {};
++              adminSettings.userSettings.prefetchingDisabled = !Services.prefs.getBoolPref("firedragon.config.prefetch.enable", false);
++
++              data.set("adminSettings", adminSettings);
++            } else {
++              data = await getManagedStorageManifestData(extension, context);
++            }
++
+             return ExtensionStorage._filterProperties(extension.id, data, keys);
+           },
+           async getBytesInUse() {
