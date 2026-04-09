@@ -113,7 +113,7 @@ pref("devtools.console.stdout.chrome", false);
  * ------------------------------- */
 
 /** [SECTION] HTTPS */
-lockPref("dom.security.https_only_mode", true); // only allow https in all windows, including private browsing
+defaultPref("dom.security.https_only_mode", true); // only allow https in all windows, including private browsing
 defaultPref("network.auth.subresource-http-auth-allow", 1); // block HTTP authentication credential dialogs
 defaultPref("network.http.prompt-temp-redirect", true); // // Enable prompts for unsafe HTTP redirects
 defaultPref("dom.security.https_only_mode.upgrade_local", true);
