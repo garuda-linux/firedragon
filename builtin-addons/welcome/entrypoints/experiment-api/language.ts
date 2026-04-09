@@ -14,13 +14,11 @@ declare module '@wxt-dev/browser' {
             export interface LanguagePack {
                 target_locale: string;
                 name: string;
-                url: string;
-                hash: string;
             }
 
             export function getLocaleInfo(): Promise<LocaleInfo>;
             export function getLanguagePacks(): Promise<LanguagePack[]>;
-            export function setLanguagePack(languagePack: LanguagePack): Promise<void>;
+            export function setLanguagePack(locale: string): Promise<void>;
         }
     }
 }
@@ -54,12 +52,6 @@ const languagePackType: TypeDefinition = {
             type: 'string',
         },
         name: {
-            type: 'string',
-        },
-        url: {
-            type: 'string',
-        },
-        hash: {
             type: 'string',
         },
     },
@@ -120,15 +112,12 @@ export default defineExperimentApi({
                             return LangPackMatcher.getAppAndSystemLocaleInfo();
                         },
                         async getLanguagePacks(): Promise<Browser.language.LanguagePack[]> {
-                            return (await LangPackMatcher.mockable.getAvailableLangpacks()).map(
-                                (langPack: Omit<Browser.language.LanguagePack, 'name'>) => ({
-                                    ...langPack,
-                                    name: getLocaleDisplayName(langPack.target_locale),
-                                }),
-                            );
+                            return (await LangPackMatcher.getAvailableLocales()).map((target_locale: string) => ({
+                                target_locale,
+                                name: getLocaleDisplayName(target_locale),
+                            }));
                         },
                         async setLanguagePack(languagePack: Browser.language.LanguagePack): Promise<void> {
-                            await LangPackMatcher.ensureLangPackInstalled(languagePack);
                             LangPackMatcher.setRequestedAppLocales([languagePack.target_locale]);
                         },
                     },
