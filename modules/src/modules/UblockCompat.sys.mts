@@ -13,11 +13,15 @@ export const UblockCompat = new (class implements nsIObserver {
     async observe(_subject: any, topic: string, data: any) {
         if (topic === 'nsPref:changed' && data === 'firedragon.config.prefetch.enable') {
             // Make sure uBlock is restarted at lease 2 times + the browser restart itself when changing prefetching to properly update its setting
-            await (await AddonManager.getAddonByID('uBlock0@raymondhill.net')).reload();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 1000);
-            });
-            await (await AddonManager.getAddonByID('uBlock0@raymondhill.net')).reload();
+            // https://github.com/gorhill/uBlock/blob/e2bd8c146c63b6ff02ee4ac11dcd46d22c9fb7bd/platform/common/vapi-background.js#L1456
+            const addon = await AddonManager.getAddonByID('uBlock0@raymondhill.net');
+            if (addon) {
+                await addon.reload();
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 1000);
+                });
+                await addon.reload();
+            }
         }
     }
 })();
