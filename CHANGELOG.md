@@ -1,5 +1,33 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.6) — 2026-04-09 — [`v13.0.0-rc.5`…`v13.0.0-rc.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.5...v13.0.0-rc.6)
+
+### 🚀 Features
+
+- _(modules)_ Add support for env vars to ConfigContainer and ConfigLoader — [`82e81e6a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/82e81e6aecab66b18edd1d2da37e3c6a24c56c70)
+
+### 🐛 Bug Fixes
+
+- _(modules)_ Always clear user pref when overriding prefs when applying ConfigContainer — [`cd9bcc9e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cd9bcc9eba99c2eff980404be2202cf5234a9647)
+- _(app/config)_ Change unsetOverride to pref call for prefetching prefs — [`e7ab2928…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e7ab2928881921ee9f23b5d202f5e56d58c574bb)
+- _(modules)_ Only clear user pref for overrides — [`12772525…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/12772525a2260f28fc8609720883902adf564905)
+- _(app/distribution)_ Re-add addons — [`df442b8f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/df442b8fe9a9ca1e8ad17df133e96e23fcaab884)
+- Sync firedragon prefetch toggle with uBlock setting — [`808532e1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/808532e17ade62281be6a1df28c961984f68cb4a)
+- Allow top level navigation to local area network addresses — [`73d10258…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/73d10258956dbfa925a18bc481cbe085221ccd32)
+- _(builtin-addons/welcome)_ Only list installed language packs — [`3577cab5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3577cab58e53b164212dbedc336ad22b33f294a4)
+- _(modules)_ Ensure UblockCompat does not error when ublock is not installed — [`d33e1d3b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d33e1d3b65ee69adf394d50c3045f6e49d47173f)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 149.0.2 — [`b7e49428…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b7e4942875847ec902419f3774fd9d62695c7972)
+- Sync with LibreWolf patches & settings — [`38c0e191…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/38c0e191416497aa07875350682995e13061e8bd)
+- _(app/config)_ Sync librewolf settings — [`28f69ef5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/28f69ef5f2ba2e4192d0b1d2c14fb72d92026f50)
+
+### ◀️ Revert
+
+- Fix(modules): Only clear user pref for overrides — [`1f980487…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1f9804872ee5ba75354757cf0c92e3e7806a2966)
+- Fix(modules): Always clear user pref when overriding prefs when applying ConfigContainer — [`ef61fc50…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ef61fc5013fbef1d2ee4ae61bc4421da008498d8)
+
 ## [FireDragon v13.0.0-rc.5](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.5) — 2026-04-07 — [`v13.0.0-rc.4`…`v13.0.0-rc.5`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.4...v13.0.0-rc.5)
 
 ### 🚀 Features
