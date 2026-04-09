@@ -141,6 +141,9 @@ if (getPref('firedragon.config.prefetch.enable')) {
     pref("network.http.speculative-parallel-limit", 6);
 }
 
+/** [SECTION] Local Network Access */
+defaultPref("network.lna.allow_top_level_navigation", true);
+
 /** [SECTION] OTHER */
 
 /** ------------------------------
