@@ -18,7 +18,7 @@ declare module '@wxt-dev/browser' {
 
             export function getLocaleInfo(): Promise<LocaleInfo>;
             export function getLanguagePacks(): Promise<LanguagePack[]>;
-            export function setLanguagePack(locale: string): Promise<void>;
+            export function setLanguagePack(languagePack: LanguagePack): Promise<void>;
         }
     }
 }
