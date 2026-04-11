@@ -1,8 +1,13 @@
 import type { ExperimentApiDefinition } from './types/wxt';
 
 declare global {
+    export interface Extension {
+        readonly id: string;
+    }
     export abstract class ExtensionAPI {
-        constructor(extension: any);
+        readonly extension: Extension;
+
+        protected constructor(extension: Extension);
 
         abstract getAPI(context: any): any;
     }
