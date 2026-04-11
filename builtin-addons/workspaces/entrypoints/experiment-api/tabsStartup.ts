@@ -5,15 +5,14 @@ export default defineExperimentApi({
     },
     definitions: {},
     main() {
-        const lazy = {};
+        const lazy: any = {};
 
         ChromeUtils.defineESModuleGetters(lazy, {
-            BuiltinAddons: 'resource://firedragon/modules/BuiltinAddons.sys.mjs',
             ExtensionSettingsStore: 'resource://gre/modules/ExtensionSettingsStore.sys.mjs',
         });
 
         return class extends ExtensionAPI {
-            constructor(extension: any) {
+            constructor(extension: Extension) {
                 super(extension);
 
                 this.onStartup();
@@ -22,9 +21,9 @@ export default defineExperimentApi({
             async onStartup() {
                 await lazy.ExtensionSettingsStore.initialize();
                 await lazy.ExtensionSettingsStore.addSetting(
-                    lazy.BuiltinAddons.workspaces.id,
+                    this.extension.id,
                     'tabHideNotification',
-                    lazy.BuiltinAddons.workspaces.id,
+                    this.extension.id,
                     true,
                     () => false,
                 );
