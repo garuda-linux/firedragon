@@ -1,5 +1,4 @@
 export const BuiltinAddons = new (class {
-    public readonly newtab: WebExtensionPolicy;
     public readonly notes: WebExtensionPolicy;
     public readonly settings: WebExtensionPolicy;
     public readonly troubleshooting: WebExtensionPolicy;
@@ -7,7 +6,6 @@ export const BuiltinAddons = new (class {
     public readonly workspaces: WebExtensionPolicy;
 
     constructor() {
-        this.newtab = this.get('firedragon-newtab');
         this.notes = this.get('firedragon-notes');
         this.settings = this.get('firedragon-settings');
         this.troubleshooting = this.get('firedragon-troubleshooting');
