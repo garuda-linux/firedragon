@@ -14,7 +14,7 @@
     "@vueuse/core": "^14.2.1",
     "quasar": "^2.19.3",
     "vue": "^3.5.32",
-    "vue-i18n": "^11.3.1",
+    "vue-i18n": "^11.3.2",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
@@ -22,7 +22,7 @@
     "@intlify/unplugin-vue-i18n": "^11.0.7",
     "@quasar/vite-plugin": "^1.11.0",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.1.39",
+    "@wxt-dev/browser": "^0.1.40",
     "@wxt-dev/module-vue": "^1.0.3",
     "sass-embedded": "^1.99.0",
     "typescript": "catalog:",

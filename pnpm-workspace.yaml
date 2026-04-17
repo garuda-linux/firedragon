@@ -13,10 +13,10 @@ packages:
   - shared
 
 catalog:
-  tsdown: ^0.21.7
+  tsdown: ^0.21.9
   typescript: ~5.9.3
-  vite: ^8.0.6
-  wxt: ^0.20.20
+  vite: ^8.0.8
+  wxt: ^0.20.24
 
 onlyBuiltDependencies:
   - '@parcel/watcher'
