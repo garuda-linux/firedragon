@@ -1,27 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v13.0.0-rc.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.7) — 2026-04-17 — [`v13.0.0-rc.6`…`v13.0.0-rc.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.6...v13.0.0-rc.7)
-
-### 🚀 Features
-
-- _(build)_ Extend ExtensionAPI typings — [`5e782b19…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5e782b1991dc0f365b1a9d48e88c850d7ddd6a7d)
-
-### 🐛 Bug Fixes
-
-- _(builtin-addons/welcome)_ Fix typings for language.setLanguagePack experimental API — [`e66e2206…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e66e220631346bae82f59aa89faa799969036296)
-- _(builtin-addons/troubleshooting)_ Fix path to modules in tsconfig.json — [`6f2537a9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6f2537a9524b6efe6077f07a08a26338c2ea9da8)
-- _(content)_ Fix sidebar script url — [`22a0ec27…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/22a0ec2772baa081d50b728343c05f1bb94418a5)
-
-### 🚜 Refactor
-
-- _(builtin-addons/workspaces)_ Use extension property of ExtensionAPI instead of BuiltinAddons — [`cc7567fd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cc7567fd6f749f662a4557220204a0c395725611)
-- Remove obsolete about:firedragon-newtab and webext policy in BuiltinAddons — [`900bdde4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/900bdde46e1762fe73050dbe0eb0804d32fbc00d)
-- _(content)_ Simplify build config — [`da6b4e1c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/da6b4e1c068282a50f8809408fb833f27909c298)
-
-### ⚙️ Miscellaneous Tasks
-
-- Update deps — [`6f1d9931…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6f1d9931ecf847a22cbaaef37a49cddeee05ac00)
-
 ## [FireDragon v13.0.0-rc.6](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.6) — 2026-04-09 — [`v13.0.0-rc.5`…`v13.0.0-rc.6`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.5...v13.0.0-rc.6)
 
 ### 🚀 Features
