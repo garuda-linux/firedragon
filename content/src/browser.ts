@@ -1,10 +1,1 @@
-import './browser/commands';
-import './browser/hidePasswdmgr';
-import './browser/keyboardShortcuts';
-import './browser/moveTabToWindow';
-import './browser/restart';
-import './browser/sidebar';
-import './browser/skin';
-import './browser/undoCloseTab';
-import './browser/undoCloseTab.css';
-import './browser/workspaces.css';
+import.meta.glob('./browser/*', { eager: true });

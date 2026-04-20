@@ -1,2 +1,1 @@
-import './preferences/hidePasswdmgr';
-import './preferences/settings';
+import.meta.glob('./preferences/*', { eager: true });
