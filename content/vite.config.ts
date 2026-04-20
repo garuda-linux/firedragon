@@ -33,4 +33,7 @@ export default defineConfig(async ({ mode }) => ({
             '@': fileURLToPath(new URL('./', import.meta.url)),
         },
     },
+    define: {
+        'process.env.NODE_ENV': JSON.stringify(mode),
+    },
 }));
