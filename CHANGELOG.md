@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.8) — 2026-04-20 — [`v13.0.0-rc.7`…`v13.0.0-rc.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.7...v13.0.0-rc.8)
+
+### 🐛 Bug Fixes
+
+- _(content)_ Define process.env.NODE_ENV — [`ef1ea4c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ef1ea4c0f76b00d4a179e20d7b5ae0fb9b1faeeb)
+
+### 🚜 Refactor
+
+- _(content)_ Use glob import — [`2e252445…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2e25244587799dc530ac014511dde93aae226919)
+
 ## [FireDragon v13.0.0-rc.7](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.7) — 2026-04-18 — [`v13.0.0-rc.6`…`v13.0.0-rc.7`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.6...v13.0.0-rc.7)
 
 ### 🚀 Features
