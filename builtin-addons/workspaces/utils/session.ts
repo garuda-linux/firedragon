@@ -13,10 +13,10 @@ declare module '@wxt-dev/browser' {
 
 export interface TabData {
     workspaceId: WorkspaceId;
+    isActiveTab: boolean;
 }
 export interface WindowData {
     workspaceId: WorkspaceId;
-    activeTabs: Record<WorkspaceId, TabId>;
 }
 
 export function getTabData<K extends keyof TabData>(tabId: TabId, key: K): Promise<TabData[K] | undefined> {

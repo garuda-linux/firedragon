@@ -43,6 +43,7 @@ export class WorkspacesManager extends EventEmitter<{
 
     private readonly storageQueue = new PQueue({ concurrency: 1 });
     private readonly sessionQueue = new PQueue({ concurrency: 1 });
+    private readonly activationQueue = new PQueue({ concurrency: 1 });
     private readonly redrawQueue = new PQueue({ concurrency: 1 });
 
     private workspaces!: Workspace[];
@@ -78,17 +79,14 @@ export class WorkspacesManager extends EventEmitter<{
                 browser.tabs.query({ pinned: false }).then((tabs) =>
                     Promise.all(
                         tabs.map(async (tab) => {
-                            const workspaceId = await updateTabData(
+                            await updateTabData(
                                 tab.id!,
                                 'workspaceId',
                                 (workspaceId) => workspaceId ?? DEFAULT_WORKSPACE_ID,
                             );
 
                             if (tab.active) {
-                                await updateWindowData(tab.windowId!, 'activeTabs', (activeTabs) => ({
-                                    ...(activeTabs ?? {}),
-                                    [workspaceId]: tab.id!,
-                                }));
+                                await setTabData(tab.id!, 'isActiveTab', true);
                             }
                         }),
                     ),
@@ -168,11 +166,8 @@ export class WorkspacesManager extends EventEmitter<{
                 );
                 this.emit('tabDataChanged', tab.id!);
                 if (tab.active) {
-                    await updateWindowData(tab.windowId!, 'activeTabs', (activeTabs) => ({
-                        ...(activeTabs ?? {}),
-                        [workspaceId]: tab.id!,
-                    }));
-                    this.emit('windowDataChanged', tab.windowId!);
+                    this.updateActiveTab(tab.id!, tab.windowId!, workspaceId!);
+                    this.storeData();
                 }
             }
         });
@@ -187,11 +182,7 @@ export class WorkspacesManager extends EventEmitter<{
         browser.tabs.onActivated.addListener(async ({ tabId, windowId }) => {
             const workspaceId = await getTabData(tabId, 'workspaceId');
             if (workspaceId) {
-                updateWindowData(windowId, 'activeTabs', (activeTabs) => ({
-                    ...(activeTabs ?? {}),
-                    [workspaceId]: tabId,
-                }));
-                this.emit('windowDataChanged', windowId);
+                this.updateActiveTab(tabId, windowId, workspaceId);
             }
         });
         browser.tabs.onUpdated.addListener(async (tabId, onUpdateInfo) => {
@@ -229,6 +220,19 @@ export class WorkspacesManager extends EventEmitter<{
         const { workspaces } = this.getData();
         await this.storageQueue.add(async () => {
             await Promise.all([localExtStorage.setItem('workspaces', workspaces)]);
+        });
+    }
+
+    private async updateActiveTab(tabId: TabId, windowId: WindowId, workspaceId: WorkspaceId): Promise<void> {
+        await this.activationQueue.add(async () => {
+            await Promise.all(
+                (await browser.tabs.query({ windowId })).map(async (tab) => {
+                    const tabWorkspaceId = (await getTabData(tab.id!, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID;
+                    if (tabWorkspaceId === workspaceId) {
+                        await setTabData(tab.id!, 'isActiveTab', tab.id === tabId);
+                    }
+                }),
+            );
         });
     }
 
@@ -311,11 +315,19 @@ export class WorkspacesManager extends EventEmitter<{
                         workspaceId = (await getWindowData(windowId, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID,
                         tabsToShow: number[] = [],
                         tabsToHide: number[] = [];
+                    let activeTab: number | null = null;
 
                     await Promise.all(
                         tabs.map(async (tab) => {
-                            if (((await getTabData(tab.id!, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID) === workspaceId) {
+                            const [tabWorkspaceId, isActiveTab] = await Promise.all([
+                                getTabData(tab.id!, 'workspaceId'),
+                                getTabData(tab.id!, 'isActiveTab'),
+                            ]);
+                            if ((tabWorkspaceId ?? DEFAULT_WORKSPACE_ID) === workspaceId) {
                                 tabsToShow.push(tab.id!);
+                                if (isActiveTab) {
+                                    activeTab = tab.id!;
+                                }
                             } else {
                                 tabsToHide.push(tab.id!);
                             }
@@ -324,12 +336,7 @@ export class WorkspacesManager extends EventEmitter<{
 
                     await browser.tabs.show(tabsToShow);
 
-                    const activeTab = (await getWindowData(windowId, 'activeTabs'))?.[workspaceId];
-                    if (
-                        activeTab &&
-                        tabsToShow.includes(activeTab) &&
-                        (await browser.tabs.get(activeTab).catch(() => null))
-                    ) {
+                    if (activeTab) {
                         await browser.tabs.update(activeTab, { active: true });
                     } else if (tabsToShow.length > 0) {
                         await browser.tabs.update(tabsToShow[0], { active: true });
