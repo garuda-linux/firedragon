@@ -723,12 +723,3 @@ index 46034d8d99..9807b024b8 100644
      "logging",
      "mathml",
      "media",
-@@ -142,7 +143,7 @@ GeneratedFile(
-     *gen_all_tuple,
-     script="init/generate_static_pref_list.py",
-     entry_point="emit_code",
--    inputs=gen_inputs
-+    inputs=gen_inputs,
- )
- 
- PYTHON_UNITTEST_MANIFESTS += [

@@ -195,6 +195,7 @@ defaultPref(
 defaultPref("network.trr.mode", 5); // DoH is turned off.
 defaultPref("network.trr.uri", "https://dns10.quad9.net/dns-query"); // Current 'reasonable default' proposal: NON-malware-blocking quad9 endpoint.
 defaultPref("doh-rollout.enabled", false); // Disable DoH rollout
+defaultPref("network.trr.useGET", false);
 
 // Additions by Acideburn in https://codeberg.org/librewolf/issues/issues/1975
 defaultPref(
@@ -278,8 +279,8 @@ defaultPref("security.OCSP.enabled", 0);
 defaultPref("security.OCSP.require", false);
 
 // Disable third-party/OS-level root certificates
-lockPref("security.certerrors.mitm.auto_enable_enterprise_roots", false);
-lockPref("security.enterprise_roots.enabled", false);
+defaultPref("security.certerrors.mitm.auto_enable_enterprise_roots", false);
+defaultPref("security.enterprise_roots.enabled", false);
 
 defaultPref("dom.security.https_only_mode_error_page_user_suggestions", true); // Show suggestions when an HTTPS page can not be found
 
@@ -290,7 +291,6 @@ pref("security.tls.version.enable-deprecated", false); // make TLS downgrades se
 defaultPref("browser.xul.error_pages.expert_bad_cert", true); // show relevant and advanced issues on warnings and error screens
 
 defaultPref("security.insecure_field_warning.ignore_local_ip_address", false); // Do not ignore local addresses
-defaultPref("security.osclientcerts.autoload", false); // Disable the automatic import of OS client authentication certificates
 
 defaultPref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
 defaultPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
@@ -392,9 +392,6 @@ defaultPref("browser.download.start_downloads_in_tmp_dir", true); // Arkenfox us
  */
 pref("browser.urlbar.quicksuggest.enabled", false);
 defaultPref("browser.urlbar.suggest.weather", false); // disable weather suggestions in urlbar once they are no longer behind feature gate
-
-// Allows the user to add a custom search engine in the settings.
-defaultPref("browser.urlbar.update2.engineAliasRefresh", true);
 
 /** [SECTION] DOWNLOADS
  * user interaction should always be required for downloads, as a way to enhance security by asking
