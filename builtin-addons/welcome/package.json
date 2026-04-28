@@ -12,12 +12,12 @@
     "@unhead/vue": "^2.1.13",
     "@vueuse/core": "^14.2.1",
     "quasar": "^2.19.3",
-    "vue": "^3.5.32",
-    "vue-i18n": "^11.3.2"
+    "vue": "^3.5.33",
+    "vue-i18n": "^11.4.0"
   },
   "devDependencies": {
     "@firedragon/build": "workspace:^",
-    "@intlify/unplugin-vue-i18n": "^11.0.7",
+    "@intlify/unplugin-vue-i18n": "^11.1.2",
     "@quasar/vite-plugin": "^1.11.0",
     "@types/gecko": "workspace:^",
     "@wxt-dev/browser": "^0.1.40",
