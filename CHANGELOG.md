@@ -1,5 +1,22 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.9) — 2026-04-29 — [`v13.0.0-rc.8`…`v13.0.0-rc.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.8...v13.0.0-rc.9)
+
+### 🚀 Features
+
+- Add 22x22, 24x24 and 256x256 branding icons — [`10a1e969…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/10a1e969688db6ffd589d1f0ae6506a165a52f08)
+
+### 🐛 Bug Fixes
+
+- Update active tab logic to keep track across browser restarts — [`d7772d77…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d7772d776e1eb2a463e326dc77dedd6aa1a836fe)
+- Backport fix for rust >= 1.95 — [`5948abd4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5948abd4ee922c77644ae5374c3a040b3601a5b7)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 150.0 — [`5a6e4601…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5a6e46012a5ff8d2817771c9a759b56d4a175a30)
+- Sync librewolf patches & settings — [`3a74be34…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3a74be343345487744e8262d6986fe61572f6d1a)
+- Update pnpm & deps — [`f67dd833…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f67dd8336123ed446ff31c106eaba8f07b7476c2)
+
 ## [FireDragon v13.0.0-rc.8](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.8) — 2026-04-20 — [`v13.0.0-rc.7`…`v13.0.0-rc.8`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.7...v13.0.0-rc.8)
 
 ### 🐛 Bug Fixes
