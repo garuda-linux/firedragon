@@ -66,6 +66,11 @@
                 :title="t('pages.home.browserBehaviour.enableNewTab.title')"
                 :description="t('pages.home.browserBehaviour.enableNewTab.description')"
             />
+            <BoolPrefItem
+                pref="browser.tabs.closeWindowWithLastTab"
+                :title="t('pages.home.browserBehaviour.closeWindowWithLastTab.title')"
+                :description="t('pages.home.browserBehaviour.closeWindowWithLastTab.description')"
+            />
         </q-list>
     </q-card>
 </template>
