@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.10) — 2026-05-08 — [`v13.0.0-rc.9`…`v13.0.0-rc.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.9...v13.0.0-rc.10)
+
+### 🚀 Features
+
+- _(builtin-addons/settings)_ Add toggle for `browser.tabs.closeWindowWithLastTab` pref — [`b4b46d2d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b4b46d2d6cd4350728a5f97008da7db123a20065)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(app/config)_ Sync librewolf settings — [`262555d7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/262555d7c81bee1ea17b85e9cd1a4fe7ee875e97)
+- Update to firefox 150.0.2 — [`cf16fd95…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cf16fd95cabc6ef84c08c172688b896fdb0d52ed)
+
 ## [FireDragon v13.0.0-rc.9](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.9) — 2026-04-29 — [`v13.0.0-rc.8`…`v13.0.0-rc.9`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.8...v13.0.0-rc.9)
 
 ### 🚀 Features
