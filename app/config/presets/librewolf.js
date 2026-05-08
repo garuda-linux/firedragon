@@ -95,8 +95,8 @@ defaultPref("browser.sessionstore.privacy_level", 2); // prevent websites from s
  * https://github.com/brave/brave-core/blob/31d1281d572590225062ea510bddb9c87bfc06a2/components/query_filter/utils.cc#L166
  */
 defaultPref(
-    "privacy.query_stripping.strip_list",
-    "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
+  "privacy.query_stripping.strip_list",
+  "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
 );
 defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
 
@@ -149,8 +149,8 @@ defaultPref("network.dns.disablePrefetchFromHTTPS", true); // disable dns prefet
 // For more providers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
 
 defaultPref(
-    "doh-rollout.provider-list",
-    `[
+  "doh-rollout.provider-list",
+  `[
   {
     "UIName": "Quad9 (No Filtering)",
     "uri": "https://dns10.quad9.net/dns-query"
@@ -199,8 +199,8 @@ defaultPref("network.trr.useGET", false);
 
 // Additions by Acideburn in https://codeberg.org/librewolf/issues/issues/1975
 defaultPref(
-    "network.trr.default_provider_uri",
-    "https://doh.dns4all.eu/dns-query"
+  "network.trr.default_provider_uri",
+  "https://doh.dns4all.eu/dns-query"
 ); // Define a fallback DoH server
 
 /** [SECTION] PREFETCHING AND SPECULATIVE CONNECTIONS
@@ -332,8 +332,8 @@ defaultPref("pdfjs.enableScripting", false); // disable js scripting in the buil
  * replace google with beacondb as the default geolocation provide and prevent use of OS location services
  */
 defaultPref(
-    "geo.provider.network.url",
-    "https://api.beacondb.net/v1/geolocate"
+  "geo.provider.network.url",
+  "https://api.beacondb.net/v1/geolocate"
 );
 defaultPref("geo.provider.ms-windows-location", false); // [WINDOWS]
 defaultPref("geo.provider.use_corelocation", false); // [MAC]
@@ -525,18 +525,18 @@ defaultPref("devtools.selfxss.count", 0); // required for devtools console to wo
  */
 defaultPref("app.support.baseURL", "https://support.librewolf.net/");
 defaultPref(
-    "browser.search.searchEnginesURL",
-    "https://librewolf.net/docs/faq/#how-do-i-add-a-search-engine"
+  "browser.search.searchEnginesURL",
+  "https://librewolf.net/docs/faq/#how-do-i-add-a-search-engine"
 );
 defaultPref(
-    "browser.geolocation.warning.infoURL",
-    "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing"
+  "browser.geolocation.warning.infoURL",
+  "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing"
 );
 defaultPref("app.feedback.baseURL", "https://librewolf.net/#questions");
 defaultPref("app.releaseNotesURL", "https://codeberg.org/librewolf/source");
 defaultPref(
-    "app.releaseNotesURL.aboutDialog",
-    "https://codeberg.org/librewolf/source"
+  "app.releaseNotesURL.aboutDialog",
+  "https://codeberg.org/librewolf/source"
 );
 defaultPref("app.update.url.details", "https://codeberg.org/librewolf/source");
 defaultPref("app.update.url.manual", "https://codeberg.org/librewolf/source");
@@ -552,8 +552,8 @@ lockPref("browser.uitour.url", "");
 lockPref("datareporting.policy.dataSubmissionPolicyAcceptedVersion", 999);
 lockPref("datareporting.policy.dataSubmissionPolicyBypassNotification", true);
 lockPref(
-    "datareporting.policy.dataSubmissionPolicyNotifiedTime",
-    "32503679999000"
+  "datareporting.policy.dataSubmissionPolicyNotifiedTime",
+  "32503679999000"
 );
 lockPref("startup.homepage_override_nimbus_disable_wnp", true);
 defaultPref("startup.homepage_override_url", "about:blank");
@@ -568,12 +568,12 @@ lockPref("termsofuse.bypassNotification", true);
  * the three prefs below are just for minimalism and they should be easy to revert for users.
  */
 defaultPref(
-    "browser.newtabpage.activity-stream.section.highlights.includeDownloads",
-    false
+  "browser.newtabpage.activity-stream.section.highlights.includeDownloads",
+  false
 );
 defaultPref(
-    "browser.newtabpage.activity-stream.section.highlights.includeVisited",
-    false
+  "browser.newtabpage.activity-stream.section.highlights.includeVisited",
+  false
 );
 defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
 // hide stories and sponsored content from Firefox Home
@@ -611,12 +611,12 @@ defaultPref("browser.preferences.moreFromMozilla", false);
  * disable all "recommend as you browse" activity.
  */
 lockPref(
-    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
-    false
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
+  false
 );
 lockPref(
-    "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
-    false
+  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
+  false
 );
 
 /** [SECTION] OTHERS
@@ -628,7 +628,7 @@ lockPref("identity.fxaccounts.toolbar.pxiToolbarEnabled", false);
 defaultPref("sidebar.main.tools", "history");
 
 // Avoids the "Firefox Labs" section from shortly appearing on first launch
-defaultPref("browser.preferences.experimental.hidden", true);
+defaultPref("browser.preferences.experimental.hidden", true); 
 
 // Until the new UI is finished upstream
 lockPref("browser.settings-redesign.enabled", false);
@@ -708,20 +708,20 @@ pref("toolkit.winRegisterApplicationRestart", false); // disable automatic start
  * prefs introduced by librewolf-specific patches
  * ------------------------------- */
 defaultPref(
-    "librewolf.uBO.assetsBootstrapLocation",
-    "https://gitlab.com/librewolf-community/browser/source/-/raw/main/assets/uBOAssets.json"
+  "librewolf.uBO.assetsBootstrapLocation",
+  "https://gitlab.com/librewolf-community/browser/source/-/raw/main/assets/uBOAssets.json"
 );
 defaultPref("librewolf.aboutMenu.checkVersion", false);
 defaultPref("librewolf.hidePasswdmgr", false);
 defaultPref("librewolf.debugger.force_detach", false);
 defaultPref("librewolf.console.logging_disabled", false);
 defaultPref(
-    "librewolf.services.settings.allowedCollections",
-    "security-state/*,main/tracking-protection-lists,main/public-suffix-list,main/translations-models-v2,main/translations-wasm-v2,main/translations-identification-models,main/addons-manager-settings,main/anti-tracking-url-decoration,main/hijack-blocklists,blocklists/gfx,blocklists/addons-bloomfilters,main/addons-data-leak-blocker-domains,main/cookie-banner-rules-list,main/query-stripping,blocklists/addons,blocklists/plugins,main/url-parser-default-unknown-schemes-interventions,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/partitioning-exempt-urls,main/password-recipes,main/third-party-cookie-blocking-exempt-urls,main/url-classifier-exceptions,main/url-classifier-skip-urls"
+  "librewolf.services.settings.allowedCollections",
+  "security-state/*,main/tracking-protection-lists,main/public-suffix-list,main/translations-models-v2,main/translations-wasm-v2,main/translations-identification-models,main/addons-manager-settings,main/anti-tracking-url-decoration,main/hijack-blocklists,blocklists/gfx,blocklists/addons-bloomfilters,main/addons-data-leak-blocker-domains,main/cookie-banner-rules-list,main/query-stripping,blocklists/addons,blocklists/plugins,main/url-parser-default-unknown-schemes-interventions,main/webcompat-interventions,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/partitioning-exempt-urls,main/password-recipes,main/third-party-cookie-blocking-exempt-urls,main/url-classifier-exceptions,main/url-classifier-skip-urls"
 );
 defaultPref(
-    "librewolf.services.settings.allowedCollectionsFromDump",
-    "main/search-config-v2,main/search-config-icons,main/bounce-tracking-protection-exceptions"
+  "librewolf.services.settings.allowedCollectionsFromDump",
+  "main/search-config-v2,main/search-config-icons,main/bounce-tracking-protection-exceptions"
 );
 
 defaultPref("librewolf.getBrowserInfo.setToFirefoxDefaults", true);
@@ -733,5 +733,5 @@ defaultPref("librewolf.devHelpers", false);
  * [CATEGORY] OVERRIDES
  * allow settings to be overriden with a file placed in the right location
  * https://librewolf.net/docs/settings/#where-do-i-find-my-librewolfoverridescfg
+ * Moved to patches/profile-directory.patch
  * ------------------------------- */
-// Removed due to incompatibility
