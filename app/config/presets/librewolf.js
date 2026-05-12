@@ -252,6 +252,7 @@ defaultPref("privacy.globalprivacycontrol.functionality.enabled", true);
 /** [SECTION] WEBGL */
 pref("webgl.disabled", false);
 defaultPref("dom.webgpu.enabled", false);
+defaultPref("pdfjs.enableWebGPU", false);
 
 /** ------------------------------
  * [CATEGORY] SECURITY
