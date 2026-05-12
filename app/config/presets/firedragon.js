@@ -158,6 +158,7 @@ unsetDefault("privacy.resistFingerprinting");
 
 /** [SECTION] WEBGL */
 unsetOverride("webgl.disabled");
+unsetDefault("pdfjs.enableWebGPU");
 defaultPref("librewolf.webgl.prompt.hide", false);
 
 /** ------------------------------
