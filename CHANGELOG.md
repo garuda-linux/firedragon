@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.11](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.11) — 2026-05-13 — [`v13.0.0-rc.10`…`v13.0.0-rc.11`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.10...v13.0.0-rc.11)
+
+### 🐛 Bug Fixes
+
+- _(app/config)_ Unset default for `pdfjs.enableWebGPU` — [`2064cd03…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2064cd03618ce702ffc4ade2bb46c282703ee567)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 150.0.3 — [`1e179c69…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1e179c698f675976a718dbc9e0196957b5574787)
+- _(app/config)_ Sync librewolf settings — [`86ff0fe9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/86ff0fe925853ffcb6c7c8c89f98089ee2ac25b9)
+- Update pnpm & deps — [`75e4ffe4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/75e4ffe4b6353904c3b3e302d88687eba56314a4)
+
 ## [FireDragon v13.0.0-rc.10](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.10) — 2026-05-08 — [`v13.0.0-rc.9`…`v13.0.0-rc.10`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.9...v13.0.0-rc.10)
 
 ### 🚀 Features
