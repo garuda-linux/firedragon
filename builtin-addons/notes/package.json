@@ -10,13 +10,13 @@
     "@firedragon/shared": "workspace:^",
     "@paralleldrive/cuid2": "^3.3.0",
     "@quasar/extras": "^1.18.0",
-    "@unhead/vue": "^2.1.13",
-    "@vueuse/core": "^14.2.1",
+    "@unhead/vue": "^2.1.15",
+    "@vueuse/core": "^14.3.0",
     "@webext-core/storage": "^1.2.0",
     "deep-equal": "^2.2.3",
     "quasar": "^2.19.3",
-    "vue": "^3.5.33",
-    "vue-i18n": "^11.4.0",
+    "vue": "^3.5.34",
+    "vue-i18n": "^11.4.2",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
@@ -25,11 +25,11 @@
     "@quasar/vite-plugin": "^1.11.0",
     "@types/deep-equal": "^1.0.4",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.1.40",
+    "@wxt-dev/browser": "^0.1.42",
     "@wxt-dev/module-vue": "^1.0.3",
     "sass-embedded": "^1.99.0",
     "typescript": "catalog:",
-    "vite-plugin-vue-devtools": "^8.1.1",
+    "vite-plugin-vue-devtools": "^8.1.2",
     "wxt": "catalog:"
   }
 }

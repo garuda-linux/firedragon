@@ -12,17 +12,17 @@ packages:
   - newtab
   - shared
 
+allowBuilds:
+  '@parcel/watcher': true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  nx: true
+  spawn-sync: true
+  unrs-resolver: true
+
 catalog:
   tsdown: ^0.21.10
   typescript: ~5.9.3
-  vite: ^8.0.10
-  wxt: ^0.20.25
-
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
-  - lmdb
-  - msgpackr-extract
-  - nx
-  - spawn-sync
-  - unrs-resolver
+  vite: ^8.0.12
+  wxt: ^0.20.26
