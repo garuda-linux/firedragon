@@ -1,3 +1,72 @@
+diff --git a/browser/components/preferences/config/privacy.mjs b/browser/components/preferences/config/privacy.mjs
+index ccbbf54..a4530ce 100644
+--- a/browser/components/preferences/config/privacy.mjs
++++ b/browser/components/preferences/config/privacy.mjs
+@@ -329,6 +329,19 @@ export class PrivacySettingHelpers {
+     );
+   }
+ 
++  /**
++   * Displays the WebGL exceptions dialog where specific site WebGL
++   * preferences can be set.
++   */
++  static showWebGLExceptions() {
++    let params = { permissionType: "webgl" };
++    gSubDialog.open(
++      "chrome://browser/content/preferences/dialogs/sitePermissions.xhtml",
++      { features: "resizable=yes" },
++      params
++    );
++  }
++
+   /**
+    * Displays the camera exceptions dialog where specific site camera
+    * preferences can be set.
+@@ -654,6 +667,7 @@ Preferences.addAll([
+ 
+   // Media
+   { id: "media.autoplay.default", type: "int" },
++  { id: "webgl.disabled", type: "bool" },
+ 
+   // Popups
+   { id: "dom.disable_open_during_load", type: "bool" },
+@@ -1939,6 +1953,16 @@ SettingGroupManager.registerGroups({
+                 "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
+             },
+           },
++          {
++            id: "webglSettingsButton",
++            control: "moz-box-button",
++            l10nId: "permissions-webgl2",
++            controlAttrs: {
++              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
++              "search-l10n-ids":
++               "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
++            },
++          },
+         ],
+       },
+       {
+@@ -4129,6 +4051,19 @@ Preferences.addSetting({
+   onUserClick: () => PrivacySettingHelpers.showXRExceptions(),
+ });
+ 
++Preferences.addSetting({
++  id: "webglDisabled",
++  pref: "webgl.disabled",
++});
++Preferences.addSetting({
++  id: "webglSettingsButton",
++  onUserClick: () => PrivacySettingHelpers.showWebGLExceptions(),
++  deps: ["webglDisabled"],
++  visible: deps => {
++    return !deps.webglDisabled.value;
++  },
++});
++
+ Preferences.addSetting({
+   id: "dohBox",
+ });
 diff --git a/browser/base/content/navigator-toolbox.inc.xhtml b/browser/base/content/navigator-toolbox.inc.xhtml
 index 3f7b85086d..0a4dcfbccc 100644
 --- a/browser/base/content/navigator-toolbox.inc.xhtml
@@ -53,76 +122,22 @@ index a993c1bb8d..3cd8e34fa8 100644
    camera: {
      window: "permissions-site-camera-window2",
      description: "permissions-site-camera-desc",
-diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index e77dfebdf3..3b93aae2ca 100644
---- a/browser/components/preferences/main.js
-+++ b/browser/components/preferences/main.js
-@@ -4153,6 +4153,16 @@ SettingGroupManager.registerGroups({
-                 "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
-             },
-           },
-+          {
-+                   id: "webglSettingsButton",
-+                       control: "moz-box-button",
-+                       l10nId: "permissions-webgl2",
-+                       controlAttrs: {
-+               ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
-+               "search-l10n-ids":
-+               "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
-+                   },
-+                 },
-         ],
-       },
-       {
 diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
 index cb84b9206a..3f49316f49 100644
 --- a/browser/components/preferences/privacy.js
 +++ b/browser/components/preferences/privacy.js
-@@ -293,6 +293,7 @@ Preferences.addAll([
- 
-   // Permissions
-   { id: "media.setsinkid.enabled", type: "bool" },
-+  { id: "webgl.disabled", type: "bool" },
- 
-   // Security and Privacy Warnings
-   { id: "browser.preferences.config_warning.dismissAll", type: "bool" },
-@@ -2083,6 +2084,18 @@ Preferences.addSetting({
-   id: "xrSettingsButton",
-   onUserClick: () => gPrivacyPane.showXRExceptions(),
- });
-+Preferences.addSetting({
-+  id: "webglDisabled",
-+  pref: "webgl.disabled",
-+});
-+Preferences.addSetting({
-+  id: "webglSettingsButton",
-+  onUserClick: () => gPrivacyPane.showWebGLExceptions(),
-+  deps: ["webglDisabled"],
-+  visible: deps => {
-+    return !deps.webglDisabled.value;
-+  },
-+});
- 
- Preferences.addSetting({
-   id: "dohBox",
-@@ -4609,6 +4622,22 @@ var gPrivacyPane = {
-     );
+@@ -1600,6 +1600,16 @@ var gPrivacyPane = {
+     PrivacySettingHelpers.showXRExceptions();
    },
  
 +  // WebGL
 +
 +  /**
-+   * Displays the WebGL exceptions dialog where specific site WebGL
-+   * preferences can be set.
-+   */
++  * Displays the WebGL exceptions dialog where specific site WebGL
++  * preferences can be set.
++  */
 +  showWebGLExceptions() {
-+    let params = { permissionType: "webgl" };
-+
-+    gSubDialog.open(
-+      "chrome://browser/content/preferences/dialogs/sitePermissions.xhtml",
-+      { features: "resizable=yes" },
-+      params
-+    );
++    PrivacySettingHelpers.showWebGLExceptions();
 +  },
 +
    // CAMERA

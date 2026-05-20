@@ -91,12 +91,12 @@ defaultPref("browser.sessionstore.privacy_level", 2); // prevent websites from s
 
 /** [SECTION] QUERY STRIPPING
  * currently we set the same query stripping and allow list that brave uses:
- * https://github.com/brave/brave-core/blob/31d1281d572590225062ea510bddb9c87bfc06a2/components/query_filter/utils.cc#L26-L127
- * https://github.com/brave/brave-core/blob/31d1281d572590225062ea510bddb9c87bfc06a2/components/query_filter/utils.cc#L166
+ * https://github.com/brave/brave-core/blob/3dcdad4c8a5cf62f83ca4f893fc7f0c4d3d086bc/components/query_filter/browser/utils.cc#L33-L138
+ * https://github.com/brave/brave-core/blob/3dcdad4c8a5cf62f83ca4f893fc7f0c4d3d086bc/components/query_filter/browser/utils.cc#L182
  */
 defaultPref(
   "privacy.query_stripping.strip_list",
-  "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _kx _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
+  "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sfmc_activityid sfmc_id sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
 );
 defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
 
@@ -710,7 +710,7 @@ pref("toolkit.winRegisterApplicationRestart", false); // disable automatic start
  * ------------------------------- */
 defaultPref(
   "librewolf.uBO.assetsBootstrapLocation",
-  "https://gitlab.com/librewolf-community/browser/source/-/raw/main/assets/uBOAssets.json"
+  "https://codeberg.org/librewolf/source/raw/branch/main/assets/uBOAssets.json"
 );
 defaultPref("librewolf.aboutMenu.checkVersion", false);
 defaultPref("librewolf.hidePasswdmgr", false);
