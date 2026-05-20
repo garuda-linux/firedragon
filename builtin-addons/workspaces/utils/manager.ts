@@ -123,16 +123,15 @@ export class WorkspacesManager extends EventEmitter<{
 
                 const workspaceId = await getTabData(tab!.id!, 'workspaceId')!;
                 for (const workspace of this.workspaces) {
-                    if (workspace.id !== workspaceId) {
-                        const id = zMenuItemId.encode(workspace.id);
-                        menuItems.push(id);
-                        browser.contextMenus.create({
-                            id,
-                            parentId: CONTEXT_MENU_ID,
-                            title: workspace.name,
-                            contexts: ['tab'],
-                        });
-                    }
+                    const id = zMenuItemId.encode(workspace.id);
+                    menuItems.push(id);
+                    browser.contextMenus.create({
+                        id,
+                        parentId: CONTEXT_MENU_ID,
+                        title: workspace.name,
+                        contexts: ['tab'],
+                        enabled: workspace.id !== workspaceId,
+                    });
                 }
 
                 browser.contextMenus.refresh();
