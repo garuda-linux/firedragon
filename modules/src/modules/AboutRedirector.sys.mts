@@ -13,6 +13,6 @@ export class AboutRedirector implements nsIAboutModule {
     }
 
     getChromeURI(_aURI: nsIURI): nsIURI {
-        return Services.io.newURI('chrome://firedragon/content/about.html');
+        return Services.io.newURI('chrome://firedragon/content/about.xhtml');
     }
 }
