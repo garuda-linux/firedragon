@@ -6,7 +6,7 @@ import * as z from 'zod';
 import { zAsyncIterable } from '@/utils/types';
 
 export interface Context {
-    port: Browser.runtime.Port;
+    port: import('webextension-polyfill').Runtime.Port;
     manager: WorkspacesManager;
 }
 
