@@ -296,7 +296,7 @@ unsetOverride("devtools.debugger.remote-enabled");
 /** [SECTION] BRANDING
 * Set Firedragon support and releases urls in the UI, so that users land in the proper places.
 */
-defaultPref("app.support.baseURL", "https://firedragon.garudalinux.org/faq/");
+unsetDefault("app.support.baseURL");
 defaultPref("browser.search.searchEnginesURL", "https://searx.garudalinux.org/?q={searchTerms}");
 defaultPref("browser.geolocation.warning.infoURL", "https://firedragon.garudalinux.org/faq#how-do-i-enable-location-aware-browsing");
 defaultPref("app.feedback.baseURL", "https://forum.garudalinux.org");
