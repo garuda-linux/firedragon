@@ -7,7 +7,6 @@ import { defineConfig } from 'vite';
 export default defineConfig(async ({ mode }) => ({
     base: 'chrome://firedragon/content/',
     build: {
-        minify: mode === 'production',
         cssCodeSplit: true,
         lib: {
             entry: await globby('src/*.ts'),

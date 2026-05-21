@@ -12,7 +12,6 @@ export default defineConfig(async ({ mode }) => {
     return {
         base: 'resource://firedragon/',
         build: {
-            minify: mode === 'production',
             lib: {
                 entry,
                 formats: ['es'],

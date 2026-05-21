@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "dev": "NODE_ENV=development vite build --mode development"
+    "dev": "vite build"
   },
   "dependencies": {
     "@firedragon/shared": "workspace:^",
