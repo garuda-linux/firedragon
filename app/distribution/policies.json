@@ -1,4 +1,4 @@
-#filter substitution
+#filter dumbComments substitution
 {
   "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
   "policies": {
@@ -35,18 +35,14 @@
         "installation_mode": "normal_installed",
         "private_browsing": true
       },
+      // Flagfox
       "{1018e4d6-728f-4b20-ad56-37578a4de76b}": {
-        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/flagfox/latest.xpi",
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/{1018e4d6-728f-4b20-ad56-37578a4de76b}/latest.xpi",
         "installation_mode": "normal_installed"
       },
-#if FIREDRAGON_THEME == sweetDark
-      "{59f619c8-220b-4a27-8918-bf1537bc060a}": {
-        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/sweet-dark/latest.xpi",
-        "installation_mode": "normal_installed"
-      },
-#elif FIREDRAGON_THEME == catppuccinMochaMauve
-      "{d090b7ee-a385-4d54-b9a4-f7164d17756d}": {
-        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-mauve/latest.xpi",
+#ifdef FIREDRAGON_THEME
+      "@FIREDRAGON_THEME@": {
+        "install_url": "https://addons.mozilla.org/firefox/downloads/latest/@FIREDRAGON_THEME@/latest.xpi",
         "installation_mode": "normal_installed"
       },
 #endif
