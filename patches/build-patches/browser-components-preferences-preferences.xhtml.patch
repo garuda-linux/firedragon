@@ -7,7 +7,7 @@ index b006d5e5e64c..1396026f9189 100644
    <script type="module" src="chrome://browser/content/preferences/widgets/sync-engines-list.mjs"></script>
    <script type="module" src="chrome://browser/content/ipprotection/bandwidth-usage.mjs"></script>
 +
-+#include ../../firedragon/content/dist/preferences.inc.html
++#include ../../firedragon/content/dist/preferences.inc.xhtml
  </head>
  
  <html:body xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
