@@ -125,7 +125,7 @@ export const ConfigLoader = new (class {
 
         console.log(`[ConfigLoader] Loading preset ${name} (${uri.spec})`);
         try {
-            sandbox.eval(source);
+            sandbox.eval(source, undefined, uri.spec, 1);
         } catch (e) {
             throw `Error while loading preset ${name} (${uri.spec}): ${e}`;
         }
@@ -148,7 +148,7 @@ export const ConfigLoader = new (class {
 
             console.log(`[ConfigLoader] Loading config ${uri.spec}`);
             try {
-                sandbox.eval(source);
+                sandbox.eval(source, undefined, uri.spec, 1);
             } catch (e) {
                 throw `Error while loading config ${uri.spec}: ${e}`;
             }

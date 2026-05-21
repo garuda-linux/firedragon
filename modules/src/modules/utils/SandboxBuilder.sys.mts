@@ -21,8 +21,8 @@ export class SandboxBuilder {
         return this;
     }
 
-    eval(source: string): void {
-        Cu.evalInSandbox(source, this.sandbox);
+    eval(source: string, version?: any, filename?: any, lineNo?: i32, enforceFilenameRestrictions?: boolean): void {
+        Cu.evalInSandbox(source, this.sandbox, version, filename, lineNo, enforceFilenameRestrictions);
     }
 
     load(url: string): void {
