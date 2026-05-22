@@ -13,7 +13,7 @@
     "git-cliff": "^2.13.1",
     "lerna": "^9.0.7",
     "prettier": "^3.8.3",
-    "tsx": "^4.21.0",
+    "tsx": "^4.22.3",
     "zx": "^8.8.5"
   },
   "repository": {
@@ -21,5 +21,5 @@
     "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
   },
   "license": "MPL-2.0",
-  "packageManager": "pnpm@11.1.1+sha512.d1fdf5f73c617b64fa1a56a81c3c8dfe0e966e33a6010aa256b517ae77be21d93e05affc0de1a83b0e4f29d569f68b446ae8f068cd7247c0bb3df0fb4d7bdf9a"
+  "packageManager": "pnpm@10.29.3+sha512.498e1fb4cca5aa06c1dcf2611e6fafc50972ffe7189998c409e90de74566444298ffe43e6cd2acdc775ba1aa7cc5e092a8b7054c811ba8c5770f84693d33d2dc"
 }
