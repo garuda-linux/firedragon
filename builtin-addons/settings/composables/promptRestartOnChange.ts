@@ -8,7 +8,7 @@ export default function promptRestartOnChange(ref: Ref, title: string, message: 
             persistent: true,
             cancel: true,
         }).onOk(() => {
-            browser.browser.restart();
+            browser.firedragon.restart();
         });
     });
 }

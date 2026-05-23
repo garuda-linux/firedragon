@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./experiment-api/prefs": "./dist/experiment-api/prefs.mjs",
+    "./types/extensions": "./dist/types/extensions.mjs",
     "./types/keyboard-shortcuts": "./dist/types/keyboard-shortcuts.mjs",
     "./types/sidebar": "./dist/types/sidebar.mjs",
     "./vue/createStorage": "./dist/vue/createStorage.mjs",
@@ -16,10 +16,10 @@
     "dev": "tsdown"
   },
   "dependencies": {
+    "@wxt-dev/browser": "^0.1.42",
     "deep-equal": "^2.2.3"
   },
   "peerDependencies": {
-    "@firedragon/build": "workspace:",
     "@vue/reactivity": "^3.5.29",
     "@webext-core/storage": "^1.2.0",
     "wxt": "catalog:"
@@ -27,7 +27,6 @@
   "devDependencies": {
     "@types/deep-equal": "^1.0.4",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.1.42",
     "tsdown": "catalog:",
     "typescript": "catalog:"
   }

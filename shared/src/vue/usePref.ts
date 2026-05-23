@@ -68,11 +68,11 @@ function createUsePref<T>(
                 value.value = deserialize(await get(prefName.value, toValue(aDefaultValue)));
             }
         }
-        browser.prefs.onPrefChanged.addListener(onChange);
+        browser.firedragon.onPrefChanged.addListener(onChange);
 
         if (getCurrentScope()) {
             onScopeDispose(() => {
-                browser.prefs.onPrefChanged.removeListener(onChange);
+                browser.firedragon.onPrefChanged.removeListener(onChange);
             });
         }
 
@@ -80,6 +80,6 @@ function createUsePref<T>(
     };
 }
 
-export const useBoolPref = createUsePref(browser.prefs.getBoolPref, browser.prefs.setBoolPref);
-export const useIntPref = createUsePref(browser.prefs.getIntPref, browser.prefs.setIntPref);
-export const useStringPref = createUsePref(browser.prefs.getStringPref, browser.prefs.setStringPref);
+export const useBoolPref = createUsePref(browser.firedragon.getBoolPref, browser.firedragon.setBoolPref);
+export const useIntPref = createUsePref(browser.firedragon.getIntPref, browser.firedragon.setIntPref);
+export const useStringPref = createUsePref(browser.firedragon.getStringPref, browser.firedragon.setStringPref);

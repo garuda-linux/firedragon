@@ -1,5 +1,4 @@
 import { writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
 
 import { globby } from 'globby';
 import { defineWxtModule } from 'wxt/modules';
@@ -35,6 +34,9 @@ export default defineWxtModule<Options>({
         });
 
         wxt.hooks.hook('build:manifestGenerated', (_, manifest) => {
+            manifest.permissions ??= [];
+            manifest.permissions.push('firedragon');
+
             manifest.browser_specific_settings = {
                 gecko: {
                     id: `${options!.id}@${options!.vendor}`,
@@ -130,35 +132,7 @@ export default defineWxtModule<Options>({
         });
         wxt.hooks.hook('prepare:types', async (_, entries) => {
             entries.push({
-                path: resolve(wxt.config.wxtDir, 'types/firedragon.d.ts'),
-                text: `declare global {
-    export interface Extension {
-        readonly id: string;
-    }
-    export abstract class ExtensionAPI {
-        readonly extension: Extension;
-
-        protected constructor(extension: Extension);
-
-        abstract getAPI(context: any): any;
-    }
-    export namespace ExtensionCommon {
-        export class EventManager {
-            constructor(options: {
-                context: any;
-                name: string;
-                register(fire: { async: (data: any) => void }): () => void;
-            });
-
-            api(): any;
-        }
-    }
-    export namespace ExtensionUtils {
-        export function makeDataURI(iconUrl: string): Promise<string>;
-    }
-}
-`,
-                tsReference: true,
+                module: '@firedragon/shared/types/extensions',
             });
         });
     },

@@ -1,21 +1,21 @@
 export default async function usePrefHasUserValue(aPrefName: MaybeRefOrGetter<string>) {
     const prefName = toRef(aPrefName);
-    const prefHasUserValue = ref(await browser.prefs.prefHasUserValue(prefName.value));
+    const prefHasUserValue = ref(await browser.firedragon.prefHasUserValue(prefName.value));
 
     async function onChange(aPrefName: string) {
         if (aPrefName === prefName.value) {
-            prefHasUserValue.value = await browser.prefs.prefHasUserValue(prefName.value);
+            prefHasUserValue.value = await browser.firedragon.prefHasUserValue(prefName.value);
         }
     }
-    browser.prefs.onPrefChanged.addListener(onChange);
+    browser.firedragon.onPrefChanged.addListener(onChange);
     tryOnScopeDispose(() => {
-        browser.prefs.onPrefChanged.removeListener(onChange);
+        browser.firedragon.onPrefChanged.removeListener(onChange);
     });
 
     return {
         value: prefHasUserValue,
         clear() {
-            browser.prefs.clearUserPref(prefName.value);
+            browser.firedragon.clearUserPref(prefName.value);
         },
     };
 }

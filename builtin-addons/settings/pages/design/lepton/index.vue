@@ -23,11 +23,11 @@
     const firedragonNewtab = await useBoolPref('firedragon.newtab.enabled');
 
     async function reset() {
-        for (const prefName of await browser.prefs.getChildList('userChrome')) {
-            browser.prefs.clearUserPref(prefName);
+        for (const prefName of await browser.firedragon.getChildList('userChrome')) {
+            browser.firedragon.clearUserPref(prefName);
         }
-        for (const prefName of await browser.prefs.getChildList('userContent')) {
-            browser.prefs.clearUserPref(prefName);
+        for (const prefName of await browser.firedragon.getChildList('userContent')) {
+            browser.firedragon.clearUserPref(prefName);
         }
     }
 </script>

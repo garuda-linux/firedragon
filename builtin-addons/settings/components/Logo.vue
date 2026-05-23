@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    const logo = await browser.browser.getLogo();
+    const logo = await browser.firedragon.getLogo();
 </script>
 
 <template>

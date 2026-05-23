@@ -13,7 +13,7 @@
     onMounted(async () => {
         const [tab, image] = await Promise.all([
             browser.tabs.query({ active: true, currentWindow: true }),
-            browser.browser.getLogo(),
+            browser.firedragon.getLogo(),
         ]);
         if (container.value && tab[0]) {
             const color = getComputedStyle(container.value)?.getPropertyValue('--q-primary');

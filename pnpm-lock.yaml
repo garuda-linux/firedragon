@@ -160,6 +160,9 @@ importers:
       '@firedragon/build':
         specifier: workspace:^
         version: link:../../build
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../../shared
       '@intlify/unplugin-vue-i18n':
         specifier: ^11.2.3
         version: 11.2.3(@vue/compiler-dom@3.5.34)(eslint@9.39.2(jiti@2.7.0))(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))(vue-i18n@11.4.4(vue@3.5.34(typescript@5.9.3)))(vue@3.5.34(typescript@5.9.3))
@@ -273,6 +276,9 @@ importers:
       '@firedragon/build':
         specifier: workspace:^
         version: link:../../build
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../../shared
       '@intlify/unplugin-vue-i18n':
         specifier: ^11.2.3
         version: 11.2.3(@vue/compiler-dom@3.5.34)(eslint@9.39.2(jiti@2.7.0))(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))(vue-i18n@11.4.4(vue@3.5.34(typescript@5.9.3)))(vue@3.5.34(typescript@5.9.3))
@@ -413,6 +419,9 @@ importers:
       '@firedragon/build':
         specifier: workspace:^
         version: link:../../build
+      '@firedragon/shared':
+        specifier: workspace:^
+        version: link:../../shared
       '@intlify/unplugin-vue-i18n':
         specifier: ^11.2.3
         version: 11.2.3(@vue/compiler-dom@3.5.34)(eslint@9.39.2(jiti@2.7.0))(rollup@4.60.4)(typescript@5.9.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(sass-embedded@1.100.0)(sass@1.100.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))(vue-i18n@11.4.4(vue@3.5.34(typescript@5.9.3)))(vue@3.5.34(typescript@5.9.3))
@@ -617,15 +626,15 @@ importers:
 
   shared:
     dependencies:
-      '@firedragon/build':
-        specifier: 'workspace:'
-        version: link:../build
       '@vue/reactivity':
         specifier: ^3.5.29
         version: 3.5.34
       '@webext-core/storage':
         specifier: ^1.2.0
         version: 1.2.0
+      '@wxt-dev/browser':
+        specifier: ^0.1.42
+        version: 0.1.42
       deep-equal:
         specifier: ^2.2.3
         version: 2.2.3
@@ -639,9 +648,6 @@ importers:
       '@types/gecko':
         specifier: workspace:^
         version: link:../@types/gecko
-      '@wxt-dev/browser':
-        specifier: ^0.1.42
-        version: 0.1.42
       tsdown:
         specifier: 'catalog:'
         version: 0.21.10(synckit@0.11.12)(typescript@5.9.3)
