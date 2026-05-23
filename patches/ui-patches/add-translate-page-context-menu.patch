@@ -1,0 +1,82 @@
+diff --git a/browser/base/content/browser-context.inc.xhtml b/browser/base/content/browser-context.inc.xhtml
+index 53130d6c51..7590d56b30 100644
+--- a/browser/base/content/browser-context.inc.xhtml
++++ b/browser/base/content/browser-context.inc.xhtml
+@@ -366,6 +366,8 @@
+       <menuitem id="context-searchselect-private"/>
+       <menuitem id="context-translate-selection"
+                 data-l10n-id="main-context-menu-translate-selection"/>
++      <menuitem id="context-translate-page"
++                data-l10n-id="main-context-menu-translate-page"/>
+       <menu id="context-ask-chat"/>
+ 
+       <menuseparator id="frame-sep"/>
+diff --git a/browser/base/content/browser-context.js b/browser/base/content/browser-context.js
+index aa8104304e..09526bde59 100644
+--- a/browser/base/content/browser-context.js
++++ b/browser/base/content/browser-context.js
+@@ -205,6 +205,9 @@ document.addEventListener(
+         case "context-translate-selection":
+           gContextMenu.openSelectTranslationsPanel(event);
+           break;
++        case "context-translate-page":
++          gContextMenu.openFullPageTranslationsPanel(event);
++          break;
+         case "context-showonlythisframe":
+           gContextMenu.showOnlyThisFrame();
+           break;
+diff --git a/browser/base/content/nsContextMenu.sys.mjs b/browser/base/content/nsContextMenu.sys.mjs
+index 5ee0ee4246..8639ed7900 100644
+--- a/browser/base/content/nsContextMenu.sys.mjs
++++ b/browser/base/content/nsContextMenu.sys.mjs
+@@ -873,6 +873,7 @@ export class nsContextMenu {
+ 
+     this.showAndFormatSearchContextItem();
+     this.showTranslateSelectionItem();
++    this.showTranslatePageItem();
+     lazy.GenAI.buildAskChatMenu(document.getElementById("context-ask-chat"), {
+       browser: this.browser,
+       selectionInfo: this.selectionInfo,
+@@ -2549,6 +2550,42 @@ export class nsContextMenu {
+     this.window.openTrustedLinkIn(drmInfoURL, dest);
+   }
+ 
++  /**
++   * Opens the FullPageTranslationsPanel singleton instance.
++   *
++   * @param {Event} event - The triggering event for opening the panel.
++   */
++  openFullPageTranslationsPanel(event) {
++    this.window.FullPageTranslationsPanel.open(event);
++  }
++
++  /**
++   * Displays or hides the translate-page item in the context menu.
++   */
++  showTranslatePageItem() {
++    const translatePageItem = this.document.getElementById(
++      "context-translate-page"
++    );
++    const translationsEnabled = lazy.TranslationsParent.AIFeature.isEnabled;
++    const isAboutPage = this.browser?.currentURI?.schemeIs?.("about");
++
++    translatePageItem.hidden =
++      // Only show the item if the feature is enabled.
++      !translationsEnabled ||
++      // Only show the item if Translations is supported on this hardware.
++      !lazy.TranslationsParent.getIsTranslationsEngineSupported() ||
++      // Do not show page translation on internal about: pages.
++      isAboutPage ||
++      // Do not show page translation for page contexts where it does not make sense.
++      this.onTextInput ||
++      this.isContentSelected ||
++      this.onLink ||
++      this.onImage ||
++      this.onCanvas ||
++      this.onVideo ||
++      this.onAudio;
++  }
++
+   /**
+    * Opens the SelectTranslationsPanel singleton instance.
+    *

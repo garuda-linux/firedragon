@@ -130,7 +130,7 @@ defaultPref("network.http.referer.XOriginTrimmingPolicy", 2);
  * there is no point in disabling webrtc as mDNS protects the private IP on linux, osx and win10+.
  * the private IP address is only used in trusted environments, eg. allowed camera and mic access.
  */
-defaultPref("media.peerconnection.ice.default_address_only", true); // use a single interface for ICE candidates, the vpn one when a vpn is used
+defaultPref("media.peerconnection.ice.default_address_only", false); // use a single interface for ICE candidates, the vpn one when a vpn is used
 
 /** [SECTION] PROXY */
 defaultPref("network.gio.supported-protocols", ""); // disable gio as it could bypass proxy
@@ -588,6 +588,8 @@ lockPref("browser.newtabpage.activity-stream.default.sites", "");
 // disable weather info fetching (ticket #2048)
 defaultPref("browser.newtabpage.activity-stream.feeds.weatherfeed", false);
 defaultPref("browser.newtabpage.activity-stream.showWeather", false);
+
+defaultPref("browser.newtabpage.activity-stream.nova.enabled", false);
 
 /** [SECTION] ABOUT
  * remove annoying ui elements from the about pages, including about:protections

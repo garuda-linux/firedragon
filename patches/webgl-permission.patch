@@ -160,7 +160,7 @@ index 8cf14355f3..bdecc6c230 100644
  let gObservers = {
    "canvas-permissions-prompt": ["CanvasPermissionPromptHelper"],
    "canvas-permissions-prompt-hide-doorhanger": ["CanvasPermissionPromptHelper"],
-+  
++
 +  "webgl-permissions-prompt": ["WebGLPermissionPromptHelper"],
 +  "webgl-permissions-prompt-hide-doorhanger": ["WebGLPermissionPromptHelper"],
  
@@ -174,7 +174,7 @@ index ee8f09234f..5f558f67aa 100644
          return !SitePermissions.resistFingerprinting;
        },
      },
-+    
++
 +    "webgl": {
 +//      exactHostMatch: true,
 +    },
@@ -183,10 +183,10 @@ index ee8f09234f..5f558f67aa 100644
        exactHostMatch: true,
 diff --git a/browser/modules/WebGLPermissionPromptHelper.sys.mjs b/browser/modules/WebGLPermissionPromptHelper.sys.mjs
 new file mode 100644
-index 0000000000..b5555e84fd
+index 0000000..ead4eef
 --- /dev/null
 +++ b/browser/modules/WebGLPermissionPromptHelper.sys.mjs
-@@ -0,0 +1,120 @@
+@@ -0,0 +1,132 @@
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
 + * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
@@ -221,15 +221,27 @@ index 0000000000..b5555e84fd
 +      return;
 +    }
 +
++    let principal =
++      Services.scriptSecurityManager.createContentPrincipalFromOrigin(aData);
++    let permission = Services.perms.testPermissionFromPrincipal(principal, "webgl");
++    if (permission === Ci.nsIPermissionManager.DENY_ACTION ||
++        permission === Ci.nsIPermissionManager.ALLOW_ACTION) {
++      return;
++    }
++
++    if (window.PopupNotifications.getNotification(
++      this._permissionsPrompt,
++      browser
++    )) {
++      return;
++    }
++
 +    let { gNavigatorBundle, gBrowserBundle } = window;
 +    let message = gNavigatorBundle.getFormattedString(
 +      "webgl.siteprompt2",
 +      ["<>"],
 +      1
 +    );
-+
-+    let principal =
-+      Services.scriptSecurityManager.createContentPrincipalFromOrigin(aData);
 +
 +    function setWebGLPermission(aPerm, aPersistent) {
 +      Services.perms.addFromPrincipal(
