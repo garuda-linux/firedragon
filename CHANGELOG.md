@@ -1,34 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v13.0.0-rc.12](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.12) — 2026-05-22 — [`v13.0.0-rc.11`…`v13.0.0-rc.12`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.11...v13.0.0-rc.12)
-
-### 🚀 Features
-
-- _(builtin-addons/workspaces)_ Only hide current workspace in context menu — [`4e06f79b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4e06f79bf5097653d990e5e29548af43d028d4ed)
-
-### 🐛 Bug Fixes
-
-- _(content)_ Update sidebar template for firefox 151 — [`d3f5142f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d3f5142fcbc1afa1e2b8e9cf0ef370b53074fde2)
-- _(content)_ Update settings button to be consistent with firefox 151 — [`1fd22b71…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1fd22b71ffef28318872dd570c9bde72d3494be3)
-- Reset `app.support.baseURL` pref to fix support urls — [`be4205e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/be4205e7a8d54c0edae8e9ac8924f2dacb1cd923)
-- Properly use script type=module for sidebar script — [`18977279…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/189772795860970ec7f17aabd24fec662cd5362a)
-- Set filename & lineNo for evalInSandbox to show files properly in debugging — [`1b91e92b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1b91e92b692a521947912dfb087232f18e57b90f)
-- _(builtin-addons/workspaces)_ Properly type Context.port property — [`c910869b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c910869b76dd9dfbfbdbabfc420926efccb7f103)
-
-### 🚜 Refactor
-
-- Streamline theme addon in policies.json — [`a7a6b431…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a7a6b4312578dd0d134c79964df021b58126c3a2)
-- Rename inc.html to inc.xhtml to be consitent with firefox — [`f64bec93…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f64bec93ce8fa378545f40269837a622c67b984a)
-- Rename about.html to about.xhtml — [`d830203d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d830203dd927b3fc838a06d2b9851f0eacfc6ef1)
-
-### ⚙️ Miscellaneous Tasks
-
-- Update to firefox 151.0 — [`6a9cb6bf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6a9cb6bf6a5670f0f45d47e8533ab408f3c16c93)
-- Sync librewolf patches & settings — [`1fa95861…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1fa958614645add96f56e45bc1cf57b79ab4759b)
-- _(patches)_ Remove obsolete patch `bug2033279.patch` — [`284d1557…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/284d15575ae28290e0f8f3217860b94c55315c8d)
-- Remove minify option from vite.config.ts in content & modules — [`a20a5f70…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a20a5f70751516f82e9a758b72ef3300d66a64b1)
-- Update pnpm & deps — [`b50c0a2b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b50c0a2b59c5785547cf21682d8c3937c19b83ea)
-
 ## [FireDragon v13.0.0-rc.11](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.11) — 2026-05-13 — [`v13.0.0-rc.10`…`v13.0.0-rc.11`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.10...v13.0.0-rc.11)
 
 ### 🐛 Bug Fixes
