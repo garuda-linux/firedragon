@@ -1,5 +1,5 @@
 {
-  "name": "@firedragon13/newtab",
+  "name": "@firedragon/newtab",
   "private": true,
   "type": "module",
   "scripts": {
