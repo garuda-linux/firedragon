@@ -1,0 +1,54 @@
+diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
+index 5ca00b2b62a1..f1900d1da627 100644
+--- a/build/moz.configure/toolchain.configure
++++ b/build/moz.configure/toolchain.configure
+@@ -252,7 +252,7 @@ with only_when(host_is_osx | target_is_osx):
+     )
+ 
+     def mac_sdk_min_version():
+-        return "26.4"
++        return "26.5"
+ 
+     @depends(
+         "--with-macos-sdk",
+diff --git a/python/mozbuild/mozbuild/test/configure/macos_fake_sdk/SDKSettings.plist b/python/mozbuild/mozbuild/test/configure/macos_fake_sdk/SDKSettings.plist
+index e9ab2a9b715d..8269931fb722 100644
+--- a/python/mozbuild/mozbuild/test/configure/macos_fake_sdk/SDKSettings.plist
++++ b/python/mozbuild/mozbuild/test/configure/macos_fake_sdk/SDKSettings.plist
+@@ -3,6 +3,6 @@
+ <plist version="1.0">
+ <dict>
+         <key>Version</key>
+-        <string>26.4</string>
++        <string>26.5</string>
+ </dict>
+ </plist>
+diff --git a/taskcluster/kinds/toolchain/macos-sdk.yml b/taskcluster/kinds/toolchain/macos-sdk.yml
+index c635a54c6de8..f55a5f6fb547 100644
+--- a/taskcluster/kinds/toolchain/macos-sdk.yml
++++ b/taskcluster/kinds/toolchain/macos-sdk.yml
+@@ -41,10 +41,23 @@ macosx64-sdk-26.4:
+             - Library/Developer/CommandLineTools/SDKs/MacOSX26.4.sdk
+         toolchain-artifact: project/gecko/mac-sdk/MacOSX26.4.sdk.tar.zst
+         toolchain-alias:
+-            - macosx64-sdk
+             - macosx64-sdk-toolchain
+             - MacOSX26.4.sdk
+ 
++macosx64-sdk-26.5:
++    description: "macOS 26.5 SDK"
++    treeherder:
++        symbol: TM(sdk26.5)
++    run:
++        arguments:
++            - https://swcdn.apple.com/content/downloads/09/08/047-91568-A_Y1CFZWQCD4/4xekpyz43i26dbp4enxfro8eb1q7wiujh5/CLTools_macOSNMOS_SDK.pkg
++            - 5db8b5a06a489a7d3ec587ebb7e01be55163128029923fc24edcad47faecd67830193c0d91e2643ee0e92f2ccca37adf20e4c42cf8de5784666f8663638b5cc5
++            - Library/Developer/CommandLineTools/SDKs/MacOSX26.5.sdk
++        toolchain-artifact: project/gecko/mac-sdk/MacOSX26.5.sdk.tar.zst
++        toolchain-alias:
++            - macosx64-sdk
++            - MacOSX26.5.sdk
++
+ ios-sdk-18.4:
+     description: "iPhoneOS18.4 SDK"
+     treeherder:
