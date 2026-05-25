@@ -1,9 +1,12 @@
 DIRS += [
-    'app',
+    'config',
     'builtin-addons',
     'content',
+    'distribution',
     'modules',
     'newtab',
+    'profile',
+    'skin',
 ]
 
 DEFINES['TOPSRCDIR'] = TOPSRCDIR
