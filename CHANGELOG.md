@@ -1,5 +1,22 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.13](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.13) — 2026-05-25 — [`v13.0.0-rc.12`…`v13.0.0-rc.13`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.12...v13.0.0-rc.13)
+
+### 🐛 Bug Fixes
+
+- _(content)_ Fix doctype header in about.xhtml — [`8951f9ca…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8951f9cac26ccd6cd2e47f37eddcb32b0ce6fb61)
+
+### 🚜 Refactor
+
+- Centralize custom extension APIs using special firedragon namespace & permission — [`89e370fe…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/89e370fe84c8b510f79923ca396e145cbfbec6a9)
+
+### ⚙️ Miscellaneous Tasks
+
+- Rename newtab package to be consistent — [`a682cf58…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a682cf58afe5ae58d50f7ecf57cefac516fbbdbe)
+- Update @types/gecko — [`4f150345…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4f150345bd155bde8e5e6c706246f67606f44270)
+- Remove app dir and put child folders into root — [`2cec7281…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2cec7281daf4f721977c9f499fff17ac35866acf)
+- Update pnpm — [`6dd8112e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6dd8112ed89693c243d288874bc17c37f2dacd11)
+
 ## [FireDragon v13.0.0-rc.12](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.12) — 2026-05-23 — [`v13.0.0-rc.11`…`v13.0.0-rc.12`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.11...v13.0.0-rc.12)
 
 ### 🚀 Features
