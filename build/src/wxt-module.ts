@@ -4,7 +4,7 @@ import { globby } from 'globby';
 import { defineWxtModule } from 'wxt/modules';
 
 import { firefoxVersion, version } from '../../config.ts';
-import generateJarManifest, { type File, type Options as JarManifestOptions, match } from './lib/jarManifest';
+import generateJarManifest, { type Options as JarManifestOptions } from './lib/jarManifest';
 import type { ExperimentApiOptions } from './types/wxt';
 
 export interface Options {
@@ -47,35 +47,13 @@ export default defineWxtModule<Options>({
         wxt.hooks.hook('vite:build:extendConfig', (_, config) => {
             config.build ??= {};
             config.build.target = `firefox${firefoxVersion.split('.')[0]}`;
-
-            config.plugins ??= [];
-            config.plugins.push({
-                name: 'wxt-module-firedragon-preprocess',
-                enforce: 'post',
-                generateBundle(_, output) {
-                    Object.values(output).forEach((chunk) => {
-                        const preprocess = match(chunk.fileName, options!.jarManifest!.preprocess);
-                        if (preprocess && options!.jarManifest!.preprocessFilter && chunk.type === 'chunk') {
-                            chunk.code = `#filter ${options!.jarManifest!.preprocessFilter}\n${chunk.code}`;
-                        }
-                    });
-                },
-            });
         });
         wxt.hooks.hook('build:done', async (_, output) => {
-            const files: File[] = output.publicAssets.map((file) => ({
-                fileName: file.fileName,
-                preprocess: match(file.fileName, options!.jarManifest!.preprocess),
-            }));
-            for (const step of output.steps) {
-                for (const chunk of step.chunks) {
-                    files.push({
-                        fileName: chunk.fileName,
-                        preprocess: match(chunk.fileName, options!.jarManifest!.preprocess),
-                    });
-                }
-            }
-            await writeFile(wxt.config.outDir + '/jar.mn', generateJarManifest(files, options!.jarManifest!));
+            const files = [
+                ...output.publicAssets.map(({ fileName }) => fileName),
+                ...output.steps.flatMap(({ chunks }) => chunks.map(({ fileName }) => fileName)),
+            ];
+            await writeFile(wxt.config.outDir + '/jar.mn', generateJarManifest(files, options!.jarManifest));
             output.publicAssets.push({
                 type: 'asset',
                 fileName: 'jar.mn',

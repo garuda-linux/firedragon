@@ -2,7 +2,7 @@ import { globby } from 'globby';
 import type { Plugin } from 'vite';
 
 import { firefoxVersion } from '../../config.ts';
-import generateJarManifest, { type Options, match } from './lib/jarManifest';
+import generateJarManifest, { type Options } from './lib/jarManifest';
 
 export function vite(options: Options): Plugin {
     let publicDir: string;
@@ -21,26 +21,13 @@ export function vite(options: Options): Plugin {
         generateBundle: {
             order: 'post',
             async handler(_options, bundle) {
-                const files = (await globby('**/*', { cwd: publicDir })).map((fileName) => ({
-                    fileName,
-                    preprocess: match(fileName, options.preprocess ?? false),
-                }));
-                Object.values(bundle).forEach((file) => {
-                    const preprocess = match(file.fileName, options.preprocess ?? false);
-                    files.push({
-                        fileName: file.fileName,
-                        preprocess,
-                    });
-                    if (preprocess && options.preprocessFilter && file.type === 'chunk') {
-                        file.code = `#filter ${options.preprocessFilter}\n${file.code}`;
-                    }
-                });
+                const files = [
+                    ...Object.values(bundle).map(({ fileName }) => fileName),
+                    ...(await globby('**/*', { cwd: publicDir })),
+                ];
                 if (manifest) {
                     manifest = typeof manifest === 'boolean' ? '.vite/manifest.json' : manifest;
-                    files.push({
-                        fileName: manifest,
-                        preprocess: match(manifest, options.preprocess ?? false),
-                    });
+                    files.push(manifest);
                 }
                 this.emitFile({
                     type: 'asset',

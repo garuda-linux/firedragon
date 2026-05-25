@@ -69,7 +69,7 @@ export function buildRegistration(registration: Registration): string {
     }
 }
 
-type MatchPattern = boolean | string | RegExp | (string | RegExp)[];
+export type MatchPattern = boolean | string | RegExp | (string | RegExp)[];
 
 export function match(fileName: string, pattern?: MatchPattern): boolean {
     return (
@@ -81,31 +81,30 @@ export function match(fileName: string, pattern?: MatchPattern): boolean {
     );
 }
 
-export interface File {
-    fileName: string;
-    preprocess: boolean;
-}
-
 export interface Options {
     jar?: string;
     prefix?: string;
     include?: MatchPattern;
     exclude?: MatchPattern;
     preprocess?: MatchPattern;
-    preprocessFilter?: string;
     registrations?: Registration[];
 }
 
-export function generateLine(file: File, options: Options) {
-    return `${file.preprocess ? '*' : ' '} ${options.prefix ?? ''}${file.fileName} (${file.fileName})`;
+export function generateLines(files: string[], options?: Options): string[] {
+    return [
+        ...(options?.registrations?.map((registration) => `% ${buildRegistration(registration)}`) ?? []),
+        ...files.map(
+            (file) =>
+                `${match(file, options?.preprocess ?? false) ? '*' : ' '} ${options?.prefix ?? ''}${file} (${file})`,
+        ),
+    ];
 }
 
-export default function generateJarManifest(files: File[], options: Options): string {
-    files.sort((a, b) => (a.fileName < b.fileName ? -1 : a.fileName > b.fileName ? 1 : 0));
-    return `${options.jar ?? 'firedragon'}.jar:${options.registrations ? '\n% ' + options.registrations.map(buildRegistration).join('\n% ') : ''}
-${files
-    .filter(({ fileName }) => match(fileName, options.include ?? true) && !match(fileName, options.exclude ?? false))
-    .map((file) => generateLine(file, options))
-    .join('\n')}
+export default function generateJarManifest(files: string[], options?: Options): string {
+    files = files
+        .filter((file) => match(file, options?.include ?? true) && !match(file, options?.exclude ?? false))
+        .sort();
+    return `${options?.jar ?? 'firedragon'}.jar:
+${generateLines(files, options).join('\n')}
 `;
 }
