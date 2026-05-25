@@ -105,7 +105,9 @@ interface GleanImpl {
     http2UploadThroughput100: GleanCustomDistribution;
     http2UploadThroughput1050: GleanCustomDistribution;
     http2UploadThroughput50100: GleanCustomDistribution;
+    http3CongestionEventCount: GleanCustomDistribution;
     http3CongestionEventReason: Record<"ecn-ce"|"loss", GleanCounter>;
+    http3CongestionWindowGrowth: Record<"had_growth"|"no_growth"|"no_growth_but_exit"|"no_growth_then_exit_then_growth", GleanCounter>;
     http3ConnectionCloseReason: Record<"AckedUnsentPacket"|"Application"|"ApplicationError"|"ConnectionIdLimitExceeded"|"ConnectionIdsExhausted"|"ConnectionRefused"|"ConnectionState"|"CryptoAlert"|"CryptoBufferExceeded"|"CryptoError"|"DecodingFrame"|"DecryptError"|"DisabledVersion"|"EchRetry"|"FinalSizeError"|"FlowControlError"|"FrameEncodingError"|"IdleTimeout"|"IntegerOverflow"|"InternalError"|"InvalidInput"|"InvalidMigration"|"InvalidPacket"|"InvalidResumptionToken"|"InvalidRetry"|"InvalidStreamId"|"InvalidToken"|"KeyUpdateBlocked"|"KeysDiscarded"|"KeysExhausted"|"KeysPending"|"NoAvailablePath"|"NoError"|"NoMoreData"|"NotAvailable"|"NotConnected"|"PacketNumberOverlap"|"PeerApplicationError"|"PeerError"|"ProtocolViolation"|"QlogError"|"StatelessReset"|"StreamLimitError"|"StreamStateError"|"TooMuchData"|"TransportParameterError"|"UnexpectedMessage"|"UnknownConnectionId"|"UnknownFrameType"|"VersionNegotiation"|"WrongRole", GleanCounter>;
     http3DownloadThroughput: GleanCustomDistribution;
     http3DownloadThroughput100: GleanCustomDistribution;
@@ -114,9 +116,22 @@ interface GleanImpl {
     http3EcnCeEct0RatioReceived: GleanCustomDistribution;
     http3EcnCeEct0RatioSent: GleanCustomDistribution;
     http3EcnPathCapability: Record<"black-hole"|"bleaching"|"capable"|"received-unsent-ect-1", GleanCounter>;
+    http3FinalCwnd: GleanMemoryDistribution;
+    http3FinalWMax: GleanMemoryDistribution;
+    http3HystartCssEntries: Record<"exited_ce"|"exited_hystart"|"not_exited", GleanCustomDistribution>;
+    http3HystartCssRoundsFinished: Record<"exited_ce"|"exited_hystart"|"not_exited", GleanCustomDistribution>;
     http3LossRatio: GleanCustomDistribution;
+    http3LossRatioFiltered: GleanCustomDistribution;
+    http3PeerMaxUdpPayload: GleanCustomDistribution;
     http3QuicFrameCount: Record<"ack_frequency_rx"|"ack_frequency_tx"|"ack_rx"|"ack_tx"|"connection_close_rx"|"connection_close_tx"|"crypto_rx"|"crypto_tx"|"data_blocked_rx"|"data_blocked_tx"|"datagram_rx"|"datagram_tx"|"handshake_done_rx"|"handshake_done_tx"|"max_data_rx"|"max_data_tx"|"max_stream_data_rx"|"max_stream_data_tx"|"max_streams_rx"|"max_streams_tx"|"new_connection_id_rx"|"new_connection_id_tx"|"new_token_rx"|"new_token_tx"|"padding_rx"|"padding_tx"|"path_challenge_rx"|"path_challenge_tx"|"path_response_rx"|"path_response_tx"|"ping_rx"|"ping_tx"|"reset_stream_rx"|"reset_stream_tx"|"retire_connection_id_rx"|"retire_connection_id_tx"|"stop_sending_rx"|"stop_sending_tx"|"stream_data_blocked_rx"|"stream_data_blocked_tx"|"stream_rx"|"stream_tx"|"streams_blocked_rx"|"streams_blocked_tx", GleanCounter>;
+    http3SlowStartExitAccuracy: Record<"ce_exit"|"heuristic_exit", GleanCustomDistribution>;
+    http3SlowStartExitAccuracyWMax: Record<"ce_exit"|"heuristic_exit", GleanCustomDistribution>;
+    http3SlowStartExitCwnd: GleanMemoryDistribution;
+    http3SlowStartExitDirectionHeuristic: Record<"exact"|"overshoot"|"undershoot", GleanCounter>;
+    http3SlowStartExitDirectionLoss: Record<"exact"|"overshoot"|"undershoot", GleanCounter>;
+    http3SlowStartExitReason: Record<"ce"|"heuristic", GleanCounter>;
     http3SlowStartExited: Record<"exited"|"not_exited", GleanCounter>;
+    http3SlowStartExitedFiltered: Record<"exited"|"not_exited", GleanCounter>;
     http3SpuriousCongestionEventRatio: GleanCustomDistribution;
     http3UdpDatagramSegmentSizeReceived: GleanMemoryDistribution;
     http3UdpDatagramSegmentSizeSent: GleanMemoryDistribution;
@@ -153,46 +168,22 @@ interface GleanImpl {
     httpsRrPresented: Record<"none"|"presented"|"presented_with_http3", GleanCounter>;
     localNetworkAccess: Record<"failure"|"private_to_local_http"|"private_to_local_https"|"public_to_local_http"|"public_to_local_https"|"public_to_private_http"|"public_to_private_https"|"success", GleanCounter>;
     localNetworkAccessConnection: GleanEventWithExtras<{ initiator?: string, is_secure_context?: string, load_success?: string, prompt_action?: string, protocol?: string, target_host?: string, target_ip?: string, target_port?: string, top_level_site?: string }>;
-    localNetworkAccessPort: GleanCustomDistribution;
     localNetworkAccessPromptsShown: Record<"local_network"|"local_network_cross_site"|"localhost"|"localhost_cross_site", GleanCounter>;
     localNetworkBlockedTracker: GleanCounter;
     osSocketLimitReached: GleanCounter;
-    prcloseTcpBlockingTimeConnectivityChange: GleanTimingDistribution;
-    prcloseTcpBlockingTimeLinkChange: GleanTimingDistribution;
-    prcloseTcpBlockingTimeNormal: GleanTimingDistribution;
-    prcloseTcpBlockingTimeOffline: GleanTimingDistribution;
-    prcloseTcpBlockingTimeShutdown: GleanTimingDistribution;
     prcloseUdpBlockingTimeConnectivityChange: GleanTimingDistribution;
     prcloseUdpBlockingTimeLinkChange: GleanTimingDistribution;
     prcloseUdpBlockingTimeNormal: GleanTimingDistribution;
     prcloseUdpBlockingTimeOffline: GleanTimingDistribution;
     prcloseUdpBlockingTimeShutdown: GleanTimingDistribution;
-    prconnectBlockingTimeConnectivityChange: GleanTimingDistribution;
-    prconnectBlockingTimeLinkChange: GleanTimingDistribution;
-    prconnectBlockingTimeNormal: GleanTimingDistribution;
-    prconnectBlockingTimeOffline: GleanTimingDistribution;
-    prconnectBlockingTimeShutdown: GleanTimingDistribution;
-    prconnectFailBlockingTimeConnectivityChange: GleanTimingDistribution;
-    prconnectFailBlockingTimeLinkChange: GleanTimingDistribution;
-    prconnectFailBlockingTimeNormal: GleanTimingDistribution;
-    prconnectFailBlockingTimeOffline: GleanTimingDistribution;
-    prconnectFailBlockingTimeShutdown: GleanTimingDistribution;
-    prconnectcontinueBlockingTimeConnectivityChange: GleanTimingDistribution;
-    prconnectcontinueBlockingTimeLinkChange: GleanTimingDistribution;
-    prconnectcontinueBlockingTimeNormal: GleanTimingDistribution;
-    prconnectcontinueBlockingTimeOffline: GleanTimingDistribution;
-    prconnectcontinueBlockingTimeShutdown: GleanTimingDistribution;
     proxyInfoType: Record<"direct"|"http"|"https"|"socks4"|"socks4a"|"socks5"|"socks5h"|"unknown", GleanCounter>;
     residualCacheFolderCount: GleanCounter;
     residualCacheFolderRemoval: Record<"failure"|"success", GleanCounter>;
     sqliteCookiesBlockMainThread: GleanTimingDistribution;
     sqliteCookiesTimeToBlockMainThread: GleanTimingDistribution;
-    transactionWaitTime: GleanTimingDistribution;
-    transactionWaitTimeHttpsRr: GleanTimingDistribution;
     trrCompleteLoad: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
     trrDnsEnd: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
     trrDnsStart: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
-    trrFetchDuration: Record<"h1"|"h1_network_only"|"h2"|"h2_network_only"|"h3"|"h3_network_only", GleanTimingDistribution>;
     trrFirstSentToLastReceived: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
     trrOpenToFirstReceived: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
     trrOpenToFirstSent: Record<"dns.shaw.ca"|"dns.shaw.ca_2"|"dns.shaw.ca_3"|"doh.xfinity.com"|"doh.xfinity.com_2"|"doh.xfinity.com_3"|"dooh.cloudflare-dns.com"|"dooh.cloudflare-dns.com_2"|"dooh.cloudflare-dns.com_3"|"firefox.dns.nextdns.io"|"firefox.dns.nextdns.io_2"|"firefox.dns.nextdns.io_3"|"mozilla.cloudflare-dns.com"|"mozilla.cloudflare-dns.com_2"|"mozilla.cloudflare-dns.com_3"|"private.canadianshield.cira.ca"|"private.canadianshield.cira.ca_2"|"private.canadianshield.cira.ca_3", GleanTimingDistribution>;
@@ -236,6 +227,43 @@ interface GleanImpl {
     openProtectionsPopup: GleanEventWithExtras<{ openingReason?: string, smartblockEmbedTogglesShown?: string }>;
     openProtectionspopupCfr: GleanEventWithExtras<{ message?: string, value?: string }>;
     smartblockembedsShown: GleanCounter;
+  }
+
+  smartWindow: {
+    addTabsClick: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, tabs_available?: string, tabs_preselected?: string }>;
+    addTabsSelection: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, tabs_available?: string, tabs_preselected?: string, tabs_selected?: string }>;
+    chatPreviousSession: GleanEventWithExtras<{ tabs?: string }>;
+    chatRetrieved: GleanEventWithExtras<{ chat_id?: string, location?: string, num_messages?: string, time_delta?: string }>;
+    chatSubmit: GleanEventWithExtras<{ chat_id?: string, detected_intent?: string, location?: string, memories?: string, mentions?: string, message_seq?: string, model?: string, submit_type?: string, tabs?: string, tokens?: string }>;
+    getPageContent: GleanEventWithExtras<{ chat_id?: string, length?: string, location?: string, message_seq?: string, time?: string }>;
+    historyClick: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, position?: string, total?: string }>;
+    historyDisplayed: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, reason?: string, total?: string }>;
+    intentChangePreview: GleanEventWithExtras<{ chat_id?: string, current_intent?: string, location?: string, message_seq?: string }>;
+    linkClick: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string }>;
+    memoriesToggle: GleanEventWithExtras<{ chat_id?: string, location?: string, memories?: string, message_seq?: string, toggle?: string }>;
+    memoryApplied: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string }>;
+    memoryAppliedClick: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string }>;
+    memoryRemovedPanel: GleanEventWithExtras<{ memories?: string, trigger?: string }>;
+    mentionRemove: GleanEventWithExtras<{ chat_id?: string, location?: string, mentions?: string, message_seq?: string }>;
+    mentionSelect: GleanEventWithExtras<{ chat_id?: string, length?: string, location?: string, mentions_available?: string, message_seq?: string }>;
+    mentionStart: GleanEventWithExtras<{ chat_id?: string, location?: string, mentions_available?: string, message_seq?: string }>;
+    modelRequest: GleanEventWithExtras<{ chat_id?: string, detected_intent?: string, intent?: string, location?: string, memories?: string, message_seq?: string, request_id?: string, tokens?: string }>;
+    modelResponse: GleanEventWithExtras<{ chat_id?: string, duration?: string, error?: string, intent?: string, latency?: string, location?: string, memories?: string, message_seq?: string, model?: string, request_id?: string, tokens?: string }>;
+    navigateSubmit: GleanEventWithExtras<{ chat_id?: string, detected_intent?: string, location?: string, message_seq?: string, model?: string, submit_type?: string }>;
+    onboardingComplete: GleanEventNoExtras;
+    onboardingModelNavigate: GleanEventWithExtras<{ model?: string }>;
+    onboardingModelSelected: GleanEventWithExtras<{ model?: string }>;
+    onboardingScreenImpression: GleanEventWithExtras<{ message_id?: string }>;
+    openWindow: GleanEventWithExtras<{ fxa?: string, onboarding?: string, trigger?: string }>;
+    quickPromptClicked: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, starter?: string }>;
+    quickPromptDisplayed: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, prompts?: string }>;
+    removeTab: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string, tabs_selected?: string }>;
+    retryNoMemories: GleanEventWithExtras<{ chat_id?: string, location?: string, message_seq?: string }>;
+    searchSubmit: GleanEventWithExtras<{ chat_id?: string, detected_intent?: string, length?: string, location?: string, message_seq?: string, model?: string, provider?: string }>;
+    sidebarClose: GleanEventWithExtras<{ chat_id?: string, message_seq?: string }>;
+    sidebarOpen: GleanEventWithExtras<{ chat_id?: string, message_seq?: string }>;
+    tabsOpened: GleanCounter;
+    uriLoad: GleanEventWithExtras<{ model?: string }>;
   }
 
   messagingSystem: {
@@ -368,7 +396,7 @@ interface GleanImpl {
     restoreEnabled: GleanBoolean;
     restoreFailed: GleanEventWithExtras<{ error_type?: string, restore_id?: string }>;
     restoreFileChosen: GleanEventWithExtras<{ app_name?: string, backup_timestamp?: string, build_id?: string, encryption?: string, location?: string, os_name?: string, os_version?: string, restore_id?: string, telemetry_enabled?: string, valid?: string, version?: string }>;
-    restoreStarted: GleanEventWithExtras<{ restore_id?: string }>;
+    restoreStarted: GleanEventWithExtras<{ replace?: string, restore_id?: string }>;
     restoredProfileData: GleanObject;
     restoredProfileLaunched: GleanEventWithExtras<{ restore_id?: string }>;
     schedulerEnabled: GleanBoolean;
@@ -495,12 +523,18 @@ interface GleanImpl {
   }
 
   ipprotection: {
+    alertButtonClicked: GleanEventWithExtras<{ buttonType?: string, reason?: string }>;
+    bandwidthUsedThreshold: GleanEventWithExtras<{ percentage?: string }>;
     clickUpgradeButton: GleanEventNoExtras;
-    enabled: GleanBoolean;
+    enrollment: GleanEventWithExtras<{ enrolled?: string }>;
+    exclusionToggled: GleanEventWithExtras<{ excluded?: string }>;
+    getStarted: GleanEventNoExtras;
+    removedFromToolbar: GleanEventNoExtras;
     error: GleanEventWithExtras<{ source?: string }>;
-    toggled: GleanEventWithExtras<{ duration?: string, enabled?: string, userAction?: string }>;
-    usageRx: GleanMemoryDistribution;
-    usageTx: GleanMemoryDistribution;
+    exclusionAdded: GleanCounter;
+    paused: GleanEventWithExtras<{ wasActive?: string }>;
+    started: GleanEventWithExtras<{ inPrivateBrowsing?: string, userAction?: string }>;
+    stopped: GleanEventWithExtras<{ duration?: string, userAction?: string }>;
   }
 
   backgroundUpdate: {
@@ -527,6 +561,8 @@ interface GleanImpl {
   }
 
   browser: {
+    aiControlChanged: GleanEventWithExtras<{ feature?: string, selection?: string }>;
+    aiControlIsBlocking: Record<string, GleanBoolean>;
     attributionErrors: Record<"decode_error"|"empty_error"|"null_error"|"quarantine_error"|"read_error"|"write_error", GleanCounter>;
     defaultAtLaunch: GleanBoolean;
     globalAiControlIsBlocking: GleanBoolean;
@@ -583,6 +619,10 @@ interface GleanImpl {
 
   primaryPassword: {
     enabled: GleanBoolean;
+  }
+
+  qrcode: {
+    opened: GleanCounter;
   }
 
   security: {
@@ -1136,6 +1176,7 @@ interface GleanImpl {
     handoff: Record<string, GleanCounter>;
     historymenu: Record<string, GleanCounter>;
     keywordoffer: Record<string, GleanCounter>;
+    messagingSystem: Record<string, GleanCounter>;
     oneoff: Record<string, GleanCounter>;
     other: Record<string, GleanCounter>;
     searchbutton: Record<string, GleanCounter>;
@@ -1298,6 +1339,10 @@ interface GleanImpl {
   }
 
   splitview: {
+    end: GleanEventWithExtras<{ tab_layout?: string, trigger?: string }>;
+    resize: GleanEventWithExtras<{ width?: string }>;
+    reverse: GleanEventWithExtras<{ trigger?: string }>;
+    start: GleanEventWithExtras<{ tab_layout?: string, tabgroup?: string, trigger?: string }>;
     uriCount: Record<"1"|"2", GleanCounter>;
   }
 
@@ -1377,16 +1422,16 @@ interface GleanImpl {
   }
 
   urlbar: {
-    abandonment: GleanEventWithExtras<{ abandonment_type?: string, actions?: string, available_semantic_sources?: string, groups?: string, interaction?: string, n_chars?: string, n_results?: string, n_words?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string }>;
+    abandonment: GleanEventWithExtras<{ abandonment_type?: string, actions?: string, available_semantic_sources?: string, chat_id?: string, groups?: string, intent?: string, interaction?: string, location?: string, model?: string, n_chars?: string, n_results?: string, n_words?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string }>;
     autocompleteFirstResultTime: GleanTimingDistribution;
     autocompleteSixthResultTime: GleanTimingDistribution;
     autofillDeletion: GleanCounter;
-    bounce: GleanEventWithExtras<{ engagement_type?: string, interaction?: string, n_chars?: string, n_results?: string, n_words?: string, provider?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_position?: string, selected_result?: string, threshold?: string, view_time?: string }>;
-    disable: GleanEventWithExtras<{ feature?: string, interaction?: string, n_chars?: string, n_results?: string, n_words?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_result?: string }>;
-    engagement: GleanEventWithExtras<{ actions?: string, available_semantic_sources?: string, engagement_type?: string, groups?: string, interaction?: string, n_chars?: string, n_results?: string, n_words?: string, provider?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_position?: string, selected_result?: string }>;
-    exposure: GleanEventWithExtras<{ results?: string, terminal?: string }>;
+    bounce: GleanEventWithExtras<{ chat_id?: string, engagement_type?: string, intent?: string, interaction?: string, location?: string, model?: string, n_chars?: string, n_results?: string, n_words?: string, provider?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_position?: string, selected_result?: string, threshold?: string, view_time?: string }>;
+    disable: GleanEventWithExtras<{ chat_id?: string, feature?: string, intent?: string, interaction?: string, location?: string, model?: string, n_chars?: string, n_results?: string, n_words?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_result?: string }>;
+    engagement: GleanEventWithExtras<{ actions?: string, available_semantic_sources?: string, chat_id?: string, engagement_type?: string, groups?: string, intent?: string, interaction?: string, location?: string, model?: string, n_chars?: string, n_results?: string, n_words?: string, provider?: string, results?: string, sap?: string, search_engine_default_id?: string, search_mode?: string, selected_position?: string, selected_result?: string }>;
+    exposure: GleanEventWithExtras<{ results?: string, sap?: string, terminal?: string }>;
     heuristicResultMissing: GleanRate;
-    keywordExposure: GleanEventWithExtras<{ keyword?: string, result?: string, terminal?: string }>;
+    keywordExposure: GleanEventWithExtras<{ keyword?: string, result?: string, sap?: string, terminal?: string }>;
     prefMaxResults: GleanQuantity;
     prefSuggestAll: GleanBoolean;
     prefSuggestOnlineAvailable: GleanBoolean;
@@ -1754,6 +1799,8 @@ interface GleanImpl {
     toolTimerFontinspector: GleanEventWithExtras<{ os?: string, session_id?: string, time_open?: string, value?: string }>;
     toolTimerLayoutview: GleanEventWithExtras<{ os?: string, session_id?: string, time_open?: string, value?: string }>;
     toolTimerRuleview: GleanEventWithExtras<{ os?: string, session_id?: string, time_open?: string, value?: string }>;
+    toolboxComponentError: GleanEventWithExtras<{ component_stack?: string, error_name?: string, stack?: string }>;
+    toolboxServerError: GleanEventWithExtras<{ error_name?: string, packet_error?: string, packet_target?: string, packet_type?: string, server_stack?: string, stack?: string }>;
     unregisterWorkerApplication: GleanEventWithExtras<{ session_id?: string, value?: string }>;
     updateConnPromptAboutdebugging: GleanEventWithExtras<{ prompt_enabled?: string, runtime_id?: string, session_id?: string, value?: string }>;
   }
@@ -1810,6 +1857,9 @@ interface GleanImpl {
     cssAnimationIterationCount: GleanCounter;
     cssAnimationName: GleanCounter;
     cssAnimationPlayState: GleanCounter;
+    cssAnimationRange: GleanCounter;
+    cssAnimationRangeEnd: GleanCounter;
+    cssAnimationRangeStart: GleanCounter;
     cssAnimationTimeline: GleanCounter;
     cssAnimationTimingFunction: GleanCounter;
     cssAppearance: GleanCounter;
@@ -2289,6 +2339,7 @@ interface GleanImpl {
     cssTextWrap: GleanCounter;
     cssTextWrapMode: GleanCounter;
     cssTextWrapStyle: GleanCounter;
+    cssTimelineScope: GleanCounter;
     cssTop: GleanCounter;
     cssTouchAction: GleanCounter;
     cssTransform: GleanCounter;
@@ -2520,6 +2571,9 @@ interface GleanImpl {
     cssAnimationIterationCount: GleanCounter;
     cssAnimationName: GleanCounter;
     cssAnimationPlayState: GleanCounter;
+    cssAnimationRange: GleanCounter;
+    cssAnimationRangeEnd: GleanCounter;
+    cssAnimationRangeStart: GleanCounter;
     cssAnimationTimeline: GleanCounter;
     cssAnimationTimingFunction: GleanCounter;
     cssAppearance: GleanCounter;
@@ -2999,6 +3053,7 @@ interface GleanImpl {
     cssTextWrap: GleanCounter;
     cssTextWrapMode: GleanCounter;
     cssTextWrapStyle: GleanCounter;
+    cssTimelineScope: GleanCounter;
     cssTop: GleanCounter;
     cssTouchAction: GleanCounter;
     cssTransform: GleanCounter;
@@ -3225,6 +3280,7 @@ interface GleanImpl {
     externalAddSearchProvider: GleanCounter;
     formSubmissionUntrustedEvent: GleanCounter;
     fullscreenAttribute: GleanCounter;
+    gwtrichTextAreaCompatHack: GleanCounter;
     idbobjectStoreCreateIndexLocale: GleanCounter;
     idbopenDboptionsStorageType: GleanCounter;
     imageBitmapRenderingContextTransferImageBitmap: GleanCounter;
@@ -3252,6 +3308,7 @@ interface GleanImpl {
     navigatorGetUserMedia: GleanCounter;
     nodeIteratorDetach: GleanCounter;
     offscreenCanvasToBlob: GleanCounter;
+    oldZecompatHack: GleanCounter;
     orientationEvent: GleanCounter;
     proximityEvent: GleanCounter;
     rtcpeerConnectionGetStreams: GleanCounter;
@@ -3282,6 +3339,7 @@ interface GleanImpl {
     externalAddSearchProvider: GleanCounter;
     formSubmissionUntrustedEvent: GleanCounter;
     fullscreenAttribute: GleanCounter;
+    gwtrichTextAreaCompatHack: GleanCounter;
     idbobjectStoreCreateIndexLocale: GleanCounter;
     idbopenDboptionsStorageType: GleanCounter;
     imageBitmapRenderingContextTransferImageBitmap: GleanCounter;
@@ -3309,6 +3367,7 @@ interface GleanImpl {
     navigatorGetUserMedia: GleanCounter;
     nodeIteratorDetach: GleanCounter;
     offscreenCanvasToBlob: GleanCounter;
+    oldZecompatHack: GleanCounter;
     orientationEvent: GleanCounter;
     proximityEvent: GleanCounter;
     rtcpeerConnectionGetStreams: GleanCounter;
@@ -3449,7 +3508,8 @@ interface GleanImpl {
     jsUseAsm: GleanCounter;
     jsWasm: GleanCounter;
     jsWasmLegacyExceptions: GleanCounter;
-    locationAncestororigins: GleanCounter;
+    locationAncestororiginsGetter: GleanCounter;
+    locationAncestororiginsSetter: GleanCounter;
     mathMlused: GleanCounter;
     mediadevicesEnumeratedevices: GleanCounter;
     mediadevicesGetdisplaymedia: GleanCounter;
@@ -3482,7 +3542,47 @@ interface GleanImpl {
     mlsSend: GleanCounter;
     mlsStatedelete: GleanCounter;
     mlsStatedeletegroup: GleanCounter;
+    navigateEventInterceptWithPrecommitHandler: GleanCounter;
+    navigateeventDownloadrequestGetter: GleanCounter;
+    navigateeventDownloadrequestSetter: GleanCounter;
+    navigateeventFormdataGetter: GleanCounter;
+    navigateeventFormdataSetter: GleanCounter;
+    navigateeventHasuavisualtransitionGetter: GleanCounter;
+    navigateeventHasuavisualtransitionSetter: GleanCounter;
+    navigateeventIntercept: GleanCounter;
+    navigateeventScroll: GleanCounter;
+    navigateeventSourceelementGetter: GleanCounter;
+    navigateeventSourceelementSetter: GleanCounter;
+    navigationBack: GleanCounter;
+    navigationEntries: GleanCounter;
+    navigationForward: GleanCounter;
+    navigationNavigate: GleanCounter;
+    navigationOncurrententrychange: GleanCounter;
+    navigationOnnavigate: GleanCounter;
+    navigationOnnavigateerror: GleanCounter;
+    navigationOnnavigatesuccess: GleanCounter;
+    navigationReload: GleanCounter;
+    navigationTraverseto: GleanCounter;
+    navigationUpdatecurrententry: GleanCounter;
+    navigationactivationEntryGetter: GleanCounter;
+    navigationactivationEntrySetter: GleanCounter;
+    navigationactivationFromGetter: GleanCounter;
+    navigationactivationFromSetter: GleanCounter;
+    navigationactivationNavigationtypeGetter: GleanCounter;
+    navigationactivationNavigationtypeSetter: GleanCounter;
+    navigationhistoryentryGetstate: GleanCounter;
+    navigationprecommitcontrollerAddhandler: GleanCounter;
+    navigationprecommitcontrollerRedirect: GleanCounter;
+    navigationtransitionCommittedGetter: GleanCounter;
+    navigationtransitionCommittedSetter: GleanCounter;
+    navigationtransitionFinishedGetter: GleanCounter;
+    navigationtransitionFinishedSetter: GleanCounter;
+    navigationtransitionFromGetter: GleanCounter;
+    navigationtransitionFromSetter: GleanCounter;
+    navigationtransitionNavigationtypeGetter: GleanCounter;
+    navigationtransitionNavigationtypeSetter: GleanCounter;
     navigatorMozgetusermedia: GleanCounter;
+    navigatorRequestmidiaccess: GleanCounter;
     notificationoptionsActions: GleanCounter;
     notificationoptionsBadge: GleanCounter;
     notificationoptionsImage: GleanCounter;
@@ -3506,6 +3606,7 @@ interface GleanImpl {
     pushmanagerSubscribe: GleanCounter;
     pushsubscriptionUnsubscribe: GleanCounter;
     rangeCreatecontextualfragment: GleanCounter;
+    reportingobserverConstructor: GleanCounter;
     sanitizerConstructor: GleanCounter;
     sanitizerSanitize: GleanCounter;
     schedulerPosttask: GleanCounter;
@@ -3514,6 +3615,9 @@ interface GleanImpl {
     svgsvgelementGetelementbyid: GleanCounter;
     textDirectiveNotCreated: GleanCounter;
     textDirectivePages: GleanCounter;
+    videodecoderConstructor: GleanCounter;
+    videoencoderConstructor: GleanCounter;
+    wakelockRequest: GleanCounter;
     webgpuRenderOutput: GleanCounter;
     webgpuRequestAdapter: GleanCounter;
     windowAbsoluteorientationsensor: GleanCounter;
@@ -3565,7 +3669,6 @@ interface GleanImpl {
     windowDevicemotioneventacceleration: GleanCounter;
     windowDevicemotioneventrotationrate: GleanCounter;
     windowDomerror: GleanCounter;
-    windowEncodedvideochunk: GleanCounter;
     windowEnterpictureinpictureevent: GleanCounter;
     windowExternal: GleanCounter;
     windowFederatedcredential: GleanCounter;
@@ -3579,14 +3682,6 @@ interface GleanImpl {
     windowKeyboardlayoutmap: GleanCounter;
     windowLinearaccelerationsensor: GleanCounter;
     windowMediasettingsrange: GleanCounter;
-    windowMidiaccess: GleanCounter;
-    windowMidiconnectionevent: GleanCounter;
-    windowMidiinput: GleanCounter;
-    windowMidiinputmap: GleanCounter;
-    windowMidimessageevent: GleanCounter;
-    windowMidioutput: GleanCounter;
-    windowMidioutputmap: GleanCounter;
-    windowMidiport: GleanCounter;
     windowNetworkinformation: GleanCounter;
     windowOffscreenbuffering: GleanCounter;
     windowOnbeforeinstallprompt: GleanCounter;
@@ -3597,7 +3692,8 @@ interface GleanImpl {
     windowOnselectionchange: GleanCounter;
     windowOpenEmptyUrl: GleanCounter;
     windowOpendatabase: GleanCounter;
-    windowOrientation: GleanCounter;
+    windowOrientationGetter: GleanCounter;
+    windowOrientationSetter: GleanCounter;
     windowOrientationsensor: GleanCounter;
     windowOverconstrainederror: GleanCounter;
     windowPasswordcredential: GleanCounter;
@@ -3622,9 +3718,6 @@ interface GleanImpl {
     windowPresentationrequest: GleanCounter;
     windowRelativeorientationsensor: GleanCounter;
     windowRemoteplayback: GleanCounter;
-    windowReport: GleanCounter;
-    windowReportbody: GleanCounter;
-    windowReportingobserver: GleanCounter;
     windowRtcerror: GleanCounter;
     windowRtcerrorevent: GleanCounter;
     windowRtcicetransport: GleanCounter;
@@ -3659,12 +3752,6 @@ interface GleanImpl {
     windowUsbisochronousouttransferpacket: GleanCounter;
     windowUsbisochronousouttransferresult: GleanCounter;
     windowUsbouttransferresult: GleanCounter;
-    windowUseractivation: GleanCounter;
-    windowVideocolorspace: GleanCounter;
-    windowVideodecoder: GleanCounter;
-    windowVideoencoder: GleanCounter;
-    windowVideoframe: GleanCounter;
-    windowWakelock: GleanCounter;
     windowWakelocksentinel: GleanCounter;
     windowWebkitcancelanimationframe: GleanCounter;
     windowWebkitmediastream: GleanCounter;
@@ -3812,7 +3899,8 @@ interface GleanImpl {
     jsUseAsm: GleanCounter;
     jsWasm: GleanCounter;
     jsWasmLegacyExceptions: GleanCounter;
-    locationAncestororigins: GleanCounter;
+    locationAncestororiginsGetter: GleanCounter;
+    locationAncestororiginsSetter: GleanCounter;
     mathMlused: GleanCounter;
     mediadevicesEnumeratedevices: GleanCounter;
     mediadevicesGetdisplaymedia: GleanCounter;
@@ -3845,7 +3933,47 @@ interface GleanImpl {
     mlsSend: GleanCounter;
     mlsStatedelete: GleanCounter;
     mlsStatedeletegroup: GleanCounter;
+    navigateEventInterceptWithPrecommitHandler: GleanCounter;
+    navigateeventDownloadrequestGetter: GleanCounter;
+    navigateeventDownloadrequestSetter: GleanCounter;
+    navigateeventFormdataGetter: GleanCounter;
+    navigateeventFormdataSetter: GleanCounter;
+    navigateeventHasuavisualtransitionGetter: GleanCounter;
+    navigateeventHasuavisualtransitionSetter: GleanCounter;
+    navigateeventIntercept: GleanCounter;
+    navigateeventScroll: GleanCounter;
+    navigateeventSourceelementGetter: GleanCounter;
+    navigateeventSourceelementSetter: GleanCounter;
+    navigationBack: GleanCounter;
+    navigationEntries: GleanCounter;
+    navigationForward: GleanCounter;
+    navigationNavigate: GleanCounter;
+    navigationOncurrententrychange: GleanCounter;
+    navigationOnnavigate: GleanCounter;
+    navigationOnnavigateerror: GleanCounter;
+    navigationOnnavigatesuccess: GleanCounter;
+    navigationReload: GleanCounter;
+    navigationTraverseto: GleanCounter;
+    navigationUpdatecurrententry: GleanCounter;
+    navigationactivationEntryGetter: GleanCounter;
+    navigationactivationEntrySetter: GleanCounter;
+    navigationactivationFromGetter: GleanCounter;
+    navigationactivationFromSetter: GleanCounter;
+    navigationactivationNavigationtypeGetter: GleanCounter;
+    navigationactivationNavigationtypeSetter: GleanCounter;
+    navigationhistoryentryGetstate: GleanCounter;
+    navigationprecommitcontrollerAddhandler: GleanCounter;
+    navigationprecommitcontrollerRedirect: GleanCounter;
+    navigationtransitionCommittedGetter: GleanCounter;
+    navigationtransitionCommittedSetter: GleanCounter;
+    navigationtransitionFinishedGetter: GleanCounter;
+    navigationtransitionFinishedSetter: GleanCounter;
+    navigationtransitionFromGetter: GleanCounter;
+    navigationtransitionFromSetter: GleanCounter;
+    navigationtransitionNavigationtypeGetter: GleanCounter;
+    navigationtransitionNavigationtypeSetter: GleanCounter;
     navigatorMozgetusermedia: GleanCounter;
+    navigatorRequestmidiaccess: GleanCounter;
     notificationoptionsActions: GleanCounter;
     notificationoptionsBadge: GleanCounter;
     notificationoptionsImage: GleanCounter;
@@ -3869,6 +3997,7 @@ interface GleanImpl {
     pushmanagerSubscribe: GleanCounter;
     pushsubscriptionUnsubscribe: GleanCounter;
     rangeCreatecontextualfragment: GleanCounter;
+    reportingobserverConstructor: GleanCounter;
     sanitizerConstructor: GleanCounter;
     sanitizerSanitize: GleanCounter;
     schedulerPosttask: GleanCounter;
@@ -3877,6 +4006,9 @@ interface GleanImpl {
     svgsvgelementGetelementbyid: GleanCounter;
     textDirectiveNotCreated: GleanCounter;
     textDirectivePages: GleanCounter;
+    videodecoderConstructor: GleanCounter;
+    videoencoderConstructor: GleanCounter;
+    wakelockRequest: GleanCounter;
     webgpuRenderOutput: GleanCounter;
     webgpuRequestAdapter: GleanCounter;
     windowAbsoluteorientationsensor: GleanCounter;
@@ -3928,7 +4060,6 @@ interface GleanImpl {
     windowDevicemotioneventacceleration: GleanCounter;
     windowDevicemotioneventrotationrate: GleanCounter;
     windowDomerror: GleanCounter;
-    windowEncodedvideochunk: GleanCounter;
     windowEnterpictureinpictureevent: GleanCounter;
     windowExternal: GleanCounter;
     windowFederatedcredential: GleanCounter;
@@ -3942,14 +4073,6 @@ interface GleanImpl {
     windowKeyboardlayoutmap: GleanCounter;
     windowLinearaccelerationsensor: GleanCounter;
     windowMediasettingsrange: GleanCounter;
-    windowMidiaccess: GleanCounter;
-    windowMidiconnectionevent: GleanCounter;
-    windowMidiinput: GleanCounter;
-    windowMidiinputmap: GleanCounter;
-    windowMidimessageevent: GleanCounter;
-    windowMidioutput: GleanCounter;
-    windowMidioutputmap: GleanCounter;
-    windowMidiport: GleanCounter;
     windowNetworkinformation: GleanCounter;
     windowOffscreenbuffering: GleanCounter;
     windowOnbeforeinstallprompt: GleanCounter;
@@ -3960,7 +4083,8 @@ interface GleanImpl {
     windowOnselectionchange: GleanCounter;
     windowOpenEmptyUrl: GleanCounter;
     windowOpendatabase: GleanCounter;
-    windowOrientation: GleanCounter;
+    windowOrientationGetter: GleanCounter;
+    windowOrientationSetter: GleanCounter;
     windowOrientationsensor: GleanCounter;
     windowOverconstrainederror: GleanCounter;
     windowPasswordcredential: GleanCounter;
@@ -3985,9 +4109,6 @@ interface GleanImpl {
     windowPresentationrequest: GleanCounter;
     windowRelativeorientationsensor: GleanCounter;
     windowRemoteplayback: GleanCounter;
-    windowReport: GleanCounter;
-    windowReportbody: GleanCounter;
-    windowReportingobserver: GleanCounter;
     windowRtcerror: GleanCounter;
     windowRtcerrorevent: GleanCounter;
     windowRtcicetransport: GleanCounter;
@@ -4022,12 +4143,6 @@ interface GleanImpl {
     windowUsbisochronousouttransferpacket: GleanCounter;
     windowUsbisochronousouttransferresult: GleanCounter;
     windowUsbouttransferresult: GleanCounter;
-    windowUseractivation: GleanCounter;
-    windowVideocolorspace: GleanCounter;
-    windowVideodecoder: GleanCounter;
-    windowVideoencoder: GleanCounter;
-    windowVideoframe: GleanCounter;
-    windowWakelock: GleanCounter;
     windowWakelocksentinel: GleanCounter;
     windowWebkitcancelanimationframe: GleanCounter;
     windowWebkitmediastream: GleanCounter;
@@ -4109,7 +4224,10 @@ interface GleanImpl {
     privateBrowsingIdbfactoryOpen: GleanCounter;
     pushmanagerSubscribe: GleanCounter;
     pushsubscriptionUnsubscribe: GleanCounter;
+    reportingobserverConstructor: GleanCounter;
     schedulerPosttask: GleanCounter;
+    videodecoderConstructor: GleanCounter;
+    videoencoderConstructor: GleanCounter;
     webgpuRequestAdapter: GleanCounter;
   }
 
@@ -4174,7 +4292,10 @@ interface GleanImpl {
     privateBrowsingIdbfactoryOpen: GleanCounter;
     pushmanagerSubscribe: GleanCounter;
     pushsubscriptionUnsubscribe: GleanCounter;
+    reportingobserverConstructor: GleanCounter;
     schedulerPosttask: GleanCounter;
+    videodecoderConstructor: GleanCounter;
+    videoencoderConstructor: GleanCounter;
     webgpuRequestAdapter: GleanCounter;
   }
 
@@ -4239,7 +4360,10 @@ interface GleanImpl {
     privateBrowsingIdbfactoryOpen: GleanCounter;
     pushmanagerSubscribe: GleanCounter;
     pushsubscriptionUnsubscribe: GleanCounter;
+    reportingobserverConstructor: GleanCounter;
     schedulerPosttask: GleanCounter;
+    videodecoderConstructor: GleanCounter;
+    videoencoderConstructor: GleanCounter;
     webgpuRequestAdapter: GleanCounter;
   }
 
@@ -4312,7 +4436,7 @@ interface GleanImpl {
     captureStreamUsage: Record<"AudioSourceNodeCaptured"|"CaptureStream"|"MozAudioCaptured"|"MozCaptureStream"|"MozCaptureStreamUntilEnded"|"WindowAudioCaptured", GleanCounter>;
     codecUsed: Record<string, GleanCounter>;
     elementInPageCount: GleanCounter;
-    error: GleanEventWithExtras<{ error_name?: string, error_type?: string, key_system?: string }>;
+    error: GleanDualLabeledCounter;
     mediaPlayTime: Record<string, GleanTimingDistribution>;
     mkvCodecType: Record<"AudioAac"|"AudioFlac"|"AudioMp3"|"AudioOpus"|"AudioPcm"|"AudioVorbis"|"NoCodecSpecified"|"VideoAv1"|"VideoAvc"|"VideoHevc"|"VideoVp8"|"VideoVp9", GleanCounter>;
     mkvContentCount: GleanCounter;
@@ -4334,6 +4458,7 @@ interface GleanImpl {
     videoVisiblePlayTime: Record<string, GleanTimingDistribution>;
     videoWidevinePlayTime: GleanTimingDistribution;
     decoderBackendUsed: GleanCustomDistribution;
+    wmfCodecNoExtension: Record<"av1"|"hevc", GleanBoolean>;
   }
 
   mediaAudio: {
@@ -4342,10 +4467,12 @@ interface GleanImpl {
   }
 
   mediaPlayback: {
-    decodeError: GleanEventWithExtras<{ decoder_name?: string, error_name?: string, is_hardware_accelerated?: string, key_system?: string, mime_type?: string }>;
     deviceHardwareDecoderSupport: Record<"av1"|"h264"|"hevc"|"vp8"|"vp9", GleanBoolean>;
+    encryptedDecodeError: GleanDualLabeledCounter;
     firstFrameLoaded: GleanEventWithExtras<{ buffering_time?: string, decoder_name?: string, first_frame_loaded_time?: string, hls_decoder?: string, is_hardware_decoding?: string, is_hdr?: string, key_system?: string, metadata_loaded_time?: string, playback_type?: string, resolution?: string, total_waiting_data_time?: string, video_codec?: string }>;
     notSupportedVideoPerMimeType: Record<string, GleanCounter>;
+    unencryptedHwDecodeError: GleanDualLabeledCounter;
+    unencryptedSwDecodeError: GleanDualLabeledCounter;
   }
 
   mediaRecorder: {
@@ -4459,6 +4586,8 @@ interface GleanImpl {
     gcInProgress: GleanTimingDistribution;
     gcSliceDuringIdle: GleanCustomDistribution;
     scriptLoadingSource: Record<"AltData"|"Inline"|"Source"|"SourceFallback", GleanCounter>;
+    scriptMemoryCacheEverHit: GleanCustomDistribution;
+    scriptMemoryCacheRefCount: GleanCustomDistribution;
     slowScriptNoticeCount: GleanCounter;
     slowScriptPageCount: GleanCounter;
     storageAccessApiUi: Record<"Allow"|"AllowAutomatically"|"AllowOnAnySite"|"Deny"|"Request", GleanCounter>;
@@ -4492,21 +4621,15 @@ interface GleanImpl {
     coldApplinkMainToLoadUri: GleanTimingDistribution;
     coldApplinkProcessLaunchToLoadUri: GleanTimingDistribution;
     dnsFirstByte: Record<string, GleanTimingDistribution>;
-    h3pFirstContentfulPaint: Record<string, GleanTimingDistribution>;
-    h3pPageLoadTime: Record<string, GleanTimingDistribution>;
     largestContentfulPaint: GleanTimingDistribution;
     largestContentfulPaintFromResponseStart: GleanTimingDistribution;
-    pageLoad: GleanEventWithExtras<{ android_app_link_launch_type?: string, android_app_link_to_navigation_start?: string, android_isolation_category?: string, cache_disposition?: string, delazify_time?: string, dns_lookup_time?: string, document_features?: string, fcp_time?: string, has_ssd?: string, http_ver?: string, js_exec_time?: string, lcp_time?: string, load_time?: string, load_type?: string, network_type?: string, redirect_count?: string, redirect_time?: string, response_time?: string, same_origin_nav?: string, time_to_request_start?: string, tls_handshake_time?: string, trr_domain?: string, user_features?: string, using_webdriver?: string }>;
+    pageLoad: GleanEventWithExtras<{ android_app_link_launch_type?: string, android_app_link_to_navigation_start?: string, android_isolation_category?: string, cache_disposition?: string, delazify_time?: string, dns_lookup_time?: string, document_features?: string, fcp_time?: string, has_ssd?: string, http_ver?: string, js_exec_time?: string, lcp_time?: string, load_time?: string, load_type?: string, network_type?: string, redirect_count?: string, redirect_time?: string, response_time?: string, same_origin_nav?: string, script_from_necko_serialized?: string, script_from_necko_text?: string, script_memory_cache_evicted_dirty?: string, script_memory_cache_revived?: string, script_memory_cache_use?: string, time_to_request_start?: string, tls_handshake_time?: string, trr_domain?: string, user_features?: string, using_webdriver?: string }>;
     pageLoadDomain: GleanEventWithExtras<{ app_version_major?: string, channel?: string, document_features?: string, domain?: string, http_ver?: string, lcp_time?: string, load_type?: string, same_origin_nav?: string }>;
   }
 
   performancePageload: {
     fcp: GleanTimingDistribution;
     fcpResponsestart: GleanTimingDistribution;
-    h3pFcpWithPriority: GleanTimingDistribution;
-    http3FcpHttp3: GleanTimingDistribution;
-    http3FcpSupportsHttp3: GleanTimingDistribution;
-    http3FcpWithoutPriority: GleanTimingDistribution;
     loadTime: GleanTimingDistribution;
     loadTimeResponsestart: GleanTimingDistribution;
   }
@@ -4649,6 +4772,9 @@ interface GleanImpl {
   permissions: {
     defectiveSqlRemoved: GleanCounter;
     sqlCorrupted: GleanCounter;
+    unusedPermissionAgeAtExpiry: GleanCustomDistribution;
+    unusedPermissionModifiedAgeAtExpiry: GleanCustomDistribution;
+    unusedPermissionsExpiredByType: Record<string, GleanCounter>;
   }
 
   apzZoom: {
@@ -4986,6 +5112,8 @@ interface GleanImpl {
     idOnline: Record<"absent"|"present", GleanCounter>;
     ipv4AndIpv6AddressConnectivity: GleanCustomDistribution;
     relPreloadMissRatio: Record<"TYPE_FETCH_UNUSED"|"TYPE_FETCH_USED"|"TYPE_FONT_UNUSED"|"TYPE_FONT_USED"|"TYPE_IMAGE_UNUSED"|"TYPE_IMAGE_USED"|"TYPE_SCRIPT_UNUSED"|"TYPE_SCRIPT_USED"|"TYPE_STYLE_UNUSED"|"TYPE_STYLE_USED", GleanCounter>;
+    sslTokenCacheExpired: GleanCounter;
+    sslTokenCacheHits: Record<"hit"|"miss", GleanCounter>;
     urlclassifierHarmfulAddonBlock: GleanEventWithExtras<{ addon_id?: string, addon_version?: string, etld?: string, table?: string }>;
     alpnMismatchCount: Record<string, GleanCounter>;
     backPressureSuspensionCpType: GleanCustomDistribution;
@@ -5058,7 +5186,6 @@ interface GleanImpl {
   }
 
   dns: {
-    blocklistCount: GleanCustomDistribution;
     byTypeCleanupAge: GleanTimingDistribution;
     byTypeFailedLookupTime: GleanTimingDistribution;
     byTypePrematureEviction: GleanTimingDistribution;
@@ -5114,10 +5241,8 @@ interface GleanImpl {
     channelOnstartSuccess: Record<"false"|"true", GleanCounter>;
     channelPageOnstartSuccessTrr: Record<string, GleanCustomDistribution>;
     channelSubOnstartSuccessTrr: Record<string, GleanCustomDistribution>;
-    connectionCloseReason: Record<string, GleanCustomDistribution>;
     connectionEntryCacheHit: Record<"false"|"true", GleanCounter>;
     contentEncoding: GleanCustomDistribution;
-    dnsHttpssvcConnectionFailedReason: GleanCustomDistribution;
     dnsHttpssvcRecordReceivingStage: GleanCustomDistribution;
     dntUsage: GleanCustomDistribution;
     echconfigSuccessRate: Record<"EchConfigFailed"|"EchConfigSucceeded"|"NoEchConfigFailed"|"NoEchConfigSucceeded", GleanCounter>;
@@ -5139,10 +5264,8 @@ interface GleanImpl {
     transactionEchRetryWithEchCount: GleanCustomDistribution;
     transactionEchRetryWithoutEchCount: GleanCustomDistribution;
     transactionIsSsl: Record<"false"|"true", GleanCounter>;
-    transactionRestartReason: GleanCustomDistribution;
     transactionUseAltsvc: Record<"false"|"true", GleanCounter>;
     transactionWaitTimeHttp: GleanTimingDistribution;
-    transactionWaitTimeHttp2SupHttp3: GleanTimingDistribution;
     transactionWaitTimeHttp3: GleanTimingDistribution;
     transactionWaitTimeSpdy: GleanTimingDistribution;
   }
@@ -5216,6 +5339,7 @@ interface GleanImpl {
 
   certVerifier: {
     certRevocationMechanisms: Record<"CRLite"|"CachedOCSP"|"OCSP"|"OneCRL"|"ShortValidity"|"StapledOCSP", GleanCounter>;
+    crliteNotCoveredCertAge: GleanTimingDistribution;
     crliteStatus: Record<"no_filter"|"not_covered"|"not_enrolled"|"not_revoked"|"revoked_in_filter"|"revoked_in_stash", GleanCounter>;
   }
 
@@ -5251,7 +5375,12 @@ interface GleanImpl {
   dataStorage: {
     alternateServices: GleanQuantity;
     clientAuthRememberList: GleanQuantity;
+    siteIntegrityServiceState: GleanQuantity;
     siteSecurityServiceState: GleanQuantity;
+  }
+
+  nss: {
+    initializationFallbacks: Record<"NO_DB_INIT"|"READ_ONLY"|"RENAME_MODULE_DB"|"RENAME_MODULE_DB_READ_ONLY", GleanCounter>;
   }
 
   ocspRequestTime: {
@@ -5343,7 +5472,6 @@ interface GleanImpl {
   }
 
   uptakeRemotecontentResult: {
-    uptakeNormandy: GleanEventWithExtras<{ age?: string, duration?: string, errorName?: string, source?: string, timestamp?: string, trigger?: string, value?: string }>;
     uptakeRemotesettings: GleanEventWithExtras<{ age?: string, duration?: string, errorName?: string, source?: string, timestamp?: string, trigger?: string, value?: string }>;
   }
 
@@ -5594,6 +5722,11 @@ interface GleanImpl {
     privacyTrackingprotectionPbmEnabled: GleanBoolean;
   }
 
+  privateBrowsingCleanup: {
+    duration: GleanTimingDistribution;
+    errorRate: GleanRate;
+  }
+
   contentAnalysis: {
     agentName: GleanString;
     allowUrlRegexListSet: GleanBoolean;
@@ -5698,7 +5831,7 @@ interface GleanImpl {
   extensionsData: {
     migrateResult: GleanEventWithExtras<{ addon_id?: string, backend?: string, data_migrated?: string, error_name?: string, has_jsonfile?: string, has_olddata?: string }>;
     migrateResultCount: Record<"failure"|"success", GleanCounter>;
-    storageLocalCorruptedReset: GleanEventWithExtras<{ addon_id?: string, after_reset?: string, reason?: string, reset_disabled?: string, reset_error_name?: string }>;
+    storageLocalCorruptedReset: GleanEventWithExtras<{ addon_id?: string, after_reset?: string, is_addon_active?: string, reason?: string, reset_disabled?: string, reset_error_name?: string }>;
     storageLocalError: GleanEventWithExtras<{ addon_id?: string, error_name?: string, method?: string }>;
     syncUsageQuotas: GleanEventWithExtras<{ addon_id?: string, backend?: string, items_count?: string, items_over_quota?: string, total_size_bytes?: string }>;
   }
@@ -5823,6 +5956,7 @@ interface GleanImpl {
     bufferSizes: GleanMemoryDistribution;
     flushDurations: GleanTimingDistribution;
     flushFailures: GleanCounter;
+    flushRejections: GleanCounter;
     replayFailures: GleanCounter;
     shutdownRegistrationFailures: GleanCounter;
   }
@@ -5958,7 +6092,7 @@ interface GleanImpl {
     engineCreationFailure: GleanEventWithExtras<{ engineId?: string, error?: string, featureId?: string, flow_id?: string, modelId?: string, taskName?: string }>;
     engineCreationSuccess: Record<"about-inference"|"autofill-ml"|"default-engine"|"ml-suggest-intent"|"ml-suggest-ner"|"pdfjs"|"smart-intent"|"smart-tab-embedding-engine"|"smart-tab-topic-engine"|"webextension"|"wllamapreview", GleanTimingDistribution>;
     engineCreationSuccessFlow: GleanEventWithExtras<{ duration?: string, engineId?: string, flow_id?: string }>;
-    engineRun: GleanEventWithExtras<{ backend?: string, cores?: string, cpu_milliseconds?: string, cpu_utilization?: string, engine_id?: string, feature_id?: string, flow_id?: string, memory_bytes?: string, model_id?: string, wall_milliseconds?: string }>;
+    engineRun: GleanEventWithExtras<{ backend?: string, character_count?: string, cores?: string, cpu_milliseconds?: string, cpu_utilization?: string, engine_id?: string, feature_id?: string, flow_id?: string, memory_bytes?: string, model_id?: string, token_count?: string, wall_milliseconds?: string }>;
     modelDeletion: GleanEventWithExtras<{ deletedBy?: string, error?: string, modelId?: string, modelRevision?: string }>;
     modelDownload: GleanEventWithExtras<{ duration?: string, engineId?: string, error?: string, featureId?: string, modelDownloadId?: string, modelId?: string, modelRevision?: string, step?: string, when?: string }>;
     runInferenceFailure: GleanEventWithExtras<{ engineId?: string, error?: string, featureId?: string, flow_id?: string, modelId?: string }>;
@@ -6045,7 +6179,7 @@ interface GleanImpl {
 
   nimbusTargetingEnvironment: {
     attrEvalErrors: Record<"activeExperiments"|"activeRollouts"|"addonsInfo"|"addressesSaved"|"archBits"|"attributionData"|"browserSettings"|"buildId"|"currentDate"|"defaultPDFHandler"|"distributionId"|"doesAppNeedPin"|"enrollmentsMap"|"firefoxVersion"|"hasActiveEnterprisePolicies"|"hasPinnedTabs"|"homePageSettings"|"isDefaultBrowser"|"isDefaultHandler"|"isFirstStartup"|"isFxAEnabled"|"isFxASignedIn"|"isMSIX"|"locale"|"memoryMB"|"os"|"primaryResolution"|"profileAgeCreated"|"profileGroupProfileCount"|"region"|"totalBookmarksCount"|"userMonthlyActivity"|"userPrefersReducedMotion"|"usesFirefoxSync"|"version", GleanCounter>;
-    prefTypeErrors: Record<"browser.ai.control.default"|"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons"|"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features"|"browser.newtabpage.activity-stream.feeds.section.highlights"|"browser.newtabpage.activity-stream.feeds.section.topstories"|"browser.newtabpage.activity-stream.feeds.topsites"|"browser.newtabpage.activity-stream.showSearch"|"browser.newtabpage.activity-stream.showSponsoredTopSites"|"browser.newtabpage.enabled"|"browser.profiles.created"|"browser.startup.page"|"browser.toolbars.bookmarks.visibility"|"browser.urlbar.lastUrlbarSearchSeconds"|"browser.urlbar.showSearchSuggestionsFirst"|"browser.urlbar.suggest.quicksuggest.sponsored"|"media.videocontrols.picture-in-picture.enabled"|"media.videocontrols.picture-in-picture.video-toggle.enabled"|"media.videocontrols.picture-in-picture.video-toggle.has-used"|"messaging-system-action.testday"|"network.trr.mode"|"nimbus.qa.pref-1"|"nimbus.qa.pref-2"|"security.sandbox.content.level"|"termsofuse.acceptedDate"|"trailhead.firstrun.didSeeAboutWelcome", GleanCounter>;
+    prefTypeErrors: Record<"browser.ai.control.default"|"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons"|"browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features"|"browser.newtabpage.activity-stream.feeds.section.highlights"|"browser.newtabpage.activity-stream.feeds.section.topstories"|"browser.newtabpage.activity-stream.feeds.topsites"|"browser.newtabpage.activity-stream.showSearch"|"browser.newtabpage.activity-stream.showSponsoredTopSites"|"browser.newtabpage.enabled"|"browser.profiles.created"|"browser.startup.page"|"browser.toolbars.bookmarks.visibility"|"browser.urlbar.lastUrlbarSearchSeconds"|"browser.urlbar.showSearchSuggestionsFirst"|"browser.urlbar.suggest.quicksuggest.sponsored"|"media.videocontrols.picture-in-picture.enabled"|"media.videocontrols.picture-in-picture.video-toggle.enabled"|"media.videocontrols.picture-in-picture.video-toggle.has-used"|"messaging-system-action.testday"|"network.trr.mode"|"nimbus.qa.pref-1"|"nimbus.qa.pref-2"|"security.sandbox.content.level"|"termsofuse.acceptedDate"|"termsofuse.acceptedVersion"|"termsofuse.bypassNotification"|"termsofuse.firstAcceptedDate"|"trailhead.firstrun.didSeeAboutWelcome", GleanCounter>;
     prefValues: GleanObject;
     targetingContextValue: GleanText;
     userSetPrefs: GleanObject;
@@ -6065,7 +6199,6 @@ interface GleanImpl {
     enrollPreferenceStudy: GleanEventWithExtras<{ addonId?: string, addonVersion?: string, branch?: string, experimentType?: string, value?: string }>;
     expPrefChangedPreferenceStudy: GleanEventWithExtras<{ enrollmentId?: string, preferenceName?: string, reason?: string, value?: string }>;
     graduatePreferenceRollout: GleanEventWithExtras<{ enrollmentId?: string, reason?: string, value?: string }>;
-    recipeFreshness: Record<string, GleanQuantity>;
     unenrollAddonRollback: GleanEventWithExtras<{ addonId?: string, addonVersion?: string, branch?: string, changedPref?: string, conflictingSlug?: string, didResetValue?: string, enrollmentId?: string, prefName?: string, prefType?: string, reason?: string, value?: string }>;
     unenrollAddonStudy: GleanEventWithExtras<{ addonId?: string, addonVersion?: string, branch?: string, changedPref?: string, conflictingSlug?: string, didResetValue?: string, enrollmentId?: string, prefName?: string, prefType?: string, reason?: string, value?: string }>;
     unenrollFailedAddonRollback: GleanEventWithExtras<{ caller?: string, changedPref?: string, enrollmentId?: string, originalReason?: string, reason?: string, value?: string }>;
@@ -6226,6 +6359,10 @@ interface GleanImpl {
     settingsDisplayed: GleanEventNoExtras;
     settingsEditAltTextCheck: GleanEventWithExtras<{ status?: string }>;
     userEdit: GleanEventWithExtras<{ total_words?: string, words_added?: string, words_removed?: string }>;
+  }
+
+  pdfjsOrganize: {
+    action: Record<"copy"|"cut"|"delete"|"export_selected"|"move"|"paste"|"save", GleanCounter>;
   }
 
   pdfjsSignature: {
@@ -6473,6 +6610,8 @@ interface GleanImpl {
     audioRate: GleanQuantity;
     audioUniqueSamples: GleanQuantity;
     availHeight: GleanQuantity;
+    availLeft: GleanQuantity;
+    availTop: GleanQuantity;
     availWidth: GleanQuantity;
     buildDate: GleanQuantity;
     cameraCount: GleanQuantity;
@@ -6654,6 +6793,10 @@ interface GleanImpl {
     fontsVariantINonallowlisted: GleanString;
     fpuControlState: GleanString;
     gamepads: GleanStringList;
+    gl2Alpha: GleanString;
+    gl2AlphaSoftware: GleanString;
+    gl2Antialias: GleanString;
+    gl2AntialiasSoftware: GleanString;
     gl2ContextType: GleanString;
     gl2ContextTypeSoftware: GleanString;
     gl2Extensions: GleanText;
@@ -6684,6 +6827,10 @@ interface GleanImpl {
     gl2VersionRawSoftware: GleanString;
     gl2VertexShader: GleanString;
     gl2VertexShaderSoftware: GleanString;
+    glAlpha: GleanString;
+    glAlphaSoftware: GleanString;
+    glAntialias: GleanString;
+    glAntialiasSoftware: GleanString;
     glContextType: GleanString;
     glContextTypeSoftware: GleanString;
     glExtensions: GleanText;
@@ -6793,8 +6940,10 @@ interface GleanImpl {
     screenHeight: GleanQuantity;
     screenWidth: GleanQuantity;
     screens: GleanText;
+    sdpCodecList: GleanText;
     sizeMode: GleanQuantity;
     speakerCount: GleanQuantity;
+    storageQuota: GleanQuantity;
     submissionSchema: GleanQuantity;
     svgBbox: GleanString;
     svgComputedTextLength: GleanString;
@@ -6805,7 +6954,7 @@ interface GleanImpl {
     targetFrameRate: GleanQuantity;
     textAntiAliasing: GleanString;
     timezone: GleanString;
-    timezoneOffsetWeb: GleanQuantity;
+    timezoneOffsetWeb: GleanString;
     timezoneWeb: GleanString;
     touchRotationAngle: GleanString;
     useDocumentColors: GleanBoolean;
@@ -6820,6 +6969,7 @@ interface GleanImpl {
     voicesNonlocalSsdeep: GleanString;
     voicesSample: GleanText;
     voicesSha1: GleanText;
+    webauthnCapabilities: GleanText;
     wgpuIsFallbackAdapter: GleanBoolean;
     wgpuMaxbindgroups: GleanQuantity;
     wgpuMaxbindgroupsplusvertexbuffers: GleanQuantity;
@@ -7006,13 +7156,23 @@ interface GleanImpl {
     enginePerformance: GleanEventWithExtras<{ average_words_per_request?: string, average_words_per_second?: string, from_language?: string, to_language?: string, total_completed_requests?: string, total_inference_seconds?: string, total_translated_words?: string }>;
     error: GleanEventWithExtras<{ flow_id?: string, reason?: string }>;
     identifyPageLanguage: GleanEventWithExtras<{ confident?: string, extracted_code_units?: string, extraction_time?: string, html_lang_attribute?: string, identification_time?: string, identified_language?: string, is_lang_attribute_valid?: string, lang_tags_match?: string, total_time?: string }>;
-    requestCount: Record<"full_page"|"select", GleanCounter>;
+    requestCount: Record<"about_translations"|"full_page"|"select", GleanCounter>;
     restorePage: GleanEventWithExtras<{ flow_id?: string }>;
-    translationRequest: GleanEventWithExtras<{ auto_translate?: string, document_language?: string, flow_id?: string, from_language?: string, request_target?: string, source_text_code_units?: string, source_text_word_count?: string, to_language?: string, top_preferred_language?: string }>;
+    translationRequest: GleanEventWithExtras<{ auto_translate?: string, document_language?: string, flow_id?: string, from_language?: string, request_target?: string, source_text_code_units?: string, source_text_word_count?: string, to_language?: string }>;
   }
 
   translationsAboutTranslationsPage: {
+    clearSourceTextButton: GleanEventWithExtras<{ flow_id?: string }>;
+    copyButton: GleanEventWithExtras<{ flow_id?: string }>;
+    featureBlockedInfoMessage: GleanEventWithExtras<{ flow_id?: string }>;
+    languageLoadErrorMessage: GleanEventWithExtras<{ flow_id?: string }>;
     open: GleanEventWithExtras<{ flow_id?: string }>;
+    policyDisabledInfoMessage: GleanEventWithExtras<{ flow_id?: string }>;
+    swapButton: GleanEventWithExtras<{ flow_id?: string }>;
+    tryAgainButton: GleanEventWithExtras<{ flow_id?: string }>;
+    unblockFeature: GleanEventWithExtras<{ flow_id?: string }>;
+    unsupportedInfoMessage: GleanEventWithExtras<{ flow_id?: string }>;
+    unsupportedLanguageMessage: GleanEventWithExtras<{ detected_language?: string, flow_id?: string, source_text_code_units?: string, source_text_word_count?: string }>;
   }
 
   translationsFeature: {
@@ -7055,7 +7215,7 @@ interface GleanImpl {
     copyButton: GleanEventWithExtras<{ flow_id?: string }>;
     doneButton: GleanEventWithExtras<{ flow_id?: string }>;
     initializationFailureMessage: GleanEventWithExtras<{ flow_id?: string }>;
-    open: GleanEventWithExtras<{ document_language?: string, flow_id?: string, from_language?: string, text_source?: string, to_language?: string, top_preferred_language?: string }>;
+    open: GleanEventWithExtras<{ document_language?: string, flow_id?: string, from_language?: string, text_source?: string, to_language?: string }>;
     openSettingsMenu: GleanEventWithExtras<{ flow_id?: string }>;
     translateButton: GleanEventWithExtras<{ detected_language?: string, flow_id?: string, from_language?: string, to_language?: string }>;
     translateFullPageButton: GleanEventWithExtras<{ flow_id?: string }>;
@@ -7074,9 +7234,14 @@ interface GleanImpl {
     completeTimeout: GleanDualLabeledCounter;
     completion: GleanEventWithExtras<{ hit?: string, table_name?: string }>;
     completionError: GleanCustomDistribution;
+    globalCacheHit: Record<"custom_normal"|"custom_private"|"other_normal"|"other_private"|"standard_normal"|"standard_private"|"strict_normal"|"strict_private", GleanCounter>;
+    globalCacheMiss: Record<"custom_normal"|"custom_private"|"other_normal"|"other_private"|"standard_normal"|"standard_private"|"strict_normal"|"strict_private", GleanCounter>;
     lookupHit: Record<"ads-track-digest256"|"analytics-track-digest256"|"anti-fraud-track-digest256"|"base-cryptomining-track-digest256"|"base-email-track-digest256"|"base-fingerprinting-track-digest256"|"base-track-digest256"|"consent-manager-track-digest256"|"content-cryptomining-track-digest256"|"content-email-track-digest256"|"content-fingerprinting-track-digest256"|"content-track-digest256"|"goog-badbinurl-proto"|"goog-downloadwhite-proto"|"goog-harmful-proto"|"goog-malware-proto"|"goog-phish-proto"|"goog-unwanted-proto"|"google-trackwhite-digest256"|"googpub-phish-proto"|"mozplugin-block-digest256"|"mozstd-trackwhite-digest256"|"social-track-digest256"|"social-tracking-protection-digest256"|"social-tracking-protection-facebook-digest256"|"social-tracking-protection-linkedin-digest256"|"social-tracking-protection-twitter-digest256"|"test-malware-simple"|"test-unwanted-simple", GleanCounter>;
     lookupMiss: Record<"ads-track-digest256"|"analytics-track-digest256"|"anti-fraud-track-digest256"|"base-cryptomining-track-digest256"|"base-email-track-digest256"|"base-fingerprinting-track-digest256"|"base-track-digest256"|"consent-manager-track-digest256"|"content-cryptomining-track-digest256"|"content-email-track-digest256"|"content-fingerprinting-track-digest256"|"content-track-digest256"|"goog-badbinurl-proto"|"goog-downloadwhite-proto"|"goog-harmful-proto"|"goog-malware-proto"|"goog-phish-proto"|"goog-unwanted-proto"|"google-trackwhite-digest256"|"googpub-phish-proto"|"mozplugin-block-digest256"|"mozstd-trackwhite-digest256"|"social-track-digest256"|"social-tracking-protection-digest256"|"social-tracking-protection-facebook-digest256"|"social-tracking-protection-linkedin-digest256"|"social-tracking-protection-twitter-digest256"|"test-malware-simple"|"test-unwanted-simple", GleanCounter>;
     lookupTime2: GleanTimingDistribution;
+    realtimeSimulationRequestCount: Record<"custom_normal"|"custom_private"|"other_normal"|"other_private"|"standard_normal"|"standard_private"|"strict_normal"|"strict_private", GleanCounter>;
+    realtimeSimulationRequestSize: Record<"custom_normal"|"custom_private"|"other_normal"|"other_private"|"standard_normal"|"standard_private"|"strict_normal"|"strict_private", GleanCounter>;
+    realtimeSimulationResponseSize: Record<"custom_normal"|"custom_private"|"other_normal"|"other_private"|"standard_normal"|"standard_private"|"strict_normal"|"strict_private", GleanCounter>;
     shutdownTime: GleanTimingDistribution;
     threathitNetworkError: GleanCustomDistribution;
     threathitRemoteStatus: GleanCustomDistribution;
@@ -7123,6 +7288,10 @@ interface GleanImpl {
     clickReturnButtonAdv: GleanEventWithExtras<{ has_sts?: string, is_frame?: string, value?: string }>;
     clickReturnButtonTop: GleanEventWithExtras<{ has_sts?: string, is_frame?: string, value?: string }>;
     loadAboutcerterror: GleanEventWithExtras<{ channel_status?: string, has_sts?: string, hyphen_compat?: string, is_frame?: string, issued_by_cca?: string, value?: string }>;
+  }
+
+  securityUiNeterror: {
+    loadAboutneterror: GleanEventWithExtras<{ channel_status?: string, is_frame?: string, value?: string }>;
   }
 
   securityUiTlserror: {
@@ -7429,6 +7598,8 @@ interface GleanImpl {
 
   widget: {
     imeNameOnMac: Record<string, GleanBoolean>;
+    macApplicationMenuOpened: GleanCounter;
+    desktopEnvironment: GleanString;
     gtkVersion: GleanString;
     imeNameOnLinux: Record<string, GleanBoolean>;
     darkMode: GleanBoolean;
@@ -7545,6 +7716,7 @@ interface GleanImpl {
   systemOs: {
     distro: GleanString;
     distroVersion: GleanString;
+    libstdcxxVersion: GleanString;
     locale: GleanString;
     name: GleanString;
     servicePackMajor: GleanQuantity;
