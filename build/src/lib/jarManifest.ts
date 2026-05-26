@@ -36,36 +36,32 @@ export interface SkinRegistration {
 
 export type Registration = CategoryRegistration | ContentRegistration | ResourceRegistration | SkinRegistration;
 
-export function buildRegistrationFlag<K extends keyof RegistrationFlags>(key: K, value: RegistrationFlags[K]) {
-    switch (key) {
-        case 'contentaccessible':
-            if (value) {
-                return ' contentaccessible=yes';
-            }
-            return '';
-        case 'application':
-            return ` application=${value}`;
-        case 'process':
-            return ` process=${value}`;
-    }
-}
-
-export function buildRegistrationFlags(flags: RegistrationFlags = {}) {
-    return Object.entries(flags)
-        .map(([key, value]) => buildRegistrationFlag(key as keyof RegistrationFlags, value))
-        .join(' ');
-}
-
 export function buildRegistration(registration: Registration): string {
+    let flags = '';
+    for (const [key, value] of Object.entries(registration.flags ?? {})) {
+        switch (key) {
+            case 'contentaccessible':
+                if (value) {
+                    flags += ' contentaccessible=yes';
+                }
+                break;
+            case 'application':
+                flags += ` application=${value}`;
+                break;
+            case 'process':
+                flags += ` process=${value}`;
+                break;
+        }
+    }
     switch (registration.type) {
         case 'category':
-            return `category ${registration.category} ${registration.entry} ${registration.value}${buildRegistrationFlags(registration.flags)}`;
+            return `category ${registration.category} ${registration.entry} ${registration.value}${flags}`;
         case 'content':
-            return `content ${registration.name} ${registration.path}${buildRegistrationFlags(registration.flags)}`;
+            return `content ${registration.name} ${registration.path}${flags}`;
         case 'resource':
-            return `resource ${registration.name} ${registration.path}${buildRegistrationFlags(registration.flags)}`;
+            return `resource ${registration.name} ${registration.path}${flags}`;
         case 'skin':
-            return `skin ${registration.package} ${registration.name} ${registration.path}${buildRegistrationFlags(registration.flags)}`;
+            return `skin ${registration.package} ${registration.name} ${registration.path}${flags}`;
     }
 }
 
