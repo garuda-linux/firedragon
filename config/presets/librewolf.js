@@ -704,7 +704,7 @@ lockPref("app.update.service.enabled", false);
 
 /** [SECTION] OTHERS */
 lockPref("default-browser-agent.enabled", false); // disable windows specific telemetry
-pref("toolkit.winRegisterApplicationRestart", false); // disable automatic start and session restore after reboot
+clearPref("toolkit.winRegisterApplicationRestart"); // clear previous pref setting https://codeberg.org/librewolf/issues/issues/3056
 
 /** ------------------------------
  * [CATEGORY] LIBREWOLF

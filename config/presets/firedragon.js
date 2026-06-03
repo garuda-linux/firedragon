@@ -349,7 +349,7 @@ defaultPref("app.update.service.enabled", true);
 unlock("app.update.service.enabled");
 
 /** [SECTION] OTHERS */
-unsetOverride("toolkit.winRegisterApplicationRestart", false);
+unsetOverride("toolkit.winRegisterApplicationRestart");
 
 /** ------------------------------
  * [CATEGORY] FIREDRAGON
