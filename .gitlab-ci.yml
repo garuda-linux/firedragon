@@ -92,7 +92,7 @@ source:
     - pnpm make source
   artifacts:
     paths:
-      - .dist/*.source.tar.zst
+      - .dist/*.source.tar.xz
 
 build:
   stage: build
