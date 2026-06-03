@@ -42,7 +42,7 @@ const target = targets[targetKey as keyof typeof targets];
 const versionSuffix = `-v${version}`;
 const basename = `${edition.basename}${versionSuffix}`;
 const sourceBasename = appName;
-const sourceSuffix = 'source.tar.zst';
+const sourceSuffix = 'source.tar.xz';
 
 const tmpDir = tmpdir();
 process.on('exit', () => {
@@ -132,7 +132,7 @@ async function source() {
         await $`rm ${l10nDir}/${inc}`;
     }
 
-    await $`tar --zstd -cf ${distDir}/${sourceBasename}${versionSuffix}.${sourceSuffix} -C ${tmpDir} ${basename}`;
+    await $`tar -cJf ${distDir}/${sourceBasename}${versionSuffix}.${sourceSuffix} -C ${tmpDir} ${basename}`;
 }
 
 async function build() {
@@ -296,9 +296,9 @@ async function release() {
 async function ciRelease() {
     const artifacts = [
         {
-            name: `${appName}-v${version}.source.tar.zst`,
-            url: `${$.env.CI_API_V4_URL}/projects/${$.env.CI_PROJECT_ID}/packages/generic/firedragon/${version}/${appName}-v${version}.source.tar.zst`,
-            direct_asset_path: `/${appName}.source.tar.zst`,
+            name: `${appName}-v${version}.${sourceSuffix}`,
+            url: `${$.env.CI_API_V4_URL}/projects/${$.env.CI_PROJECT_ID}/packages/generic/firedragon/${version}/${appName}-v${version}.${sourceSuffix}`,
+            direct_asset_path: `/${appName}.${sourceSuffix}`,
             link_type: 'package',
         },
     ];
