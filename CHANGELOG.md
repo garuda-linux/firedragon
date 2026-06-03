@@ -1,5 +1,23 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.14](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.14) — 2026-06-03 — [`v13.0.0-rc.13`…`v13.0.0-rc.14`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.13...v13.0.0-rc.14)
+
+### 🚜 Refactor
+
+- Simplify jar manifest generation across vite & wxt — [`c64650c1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c64650c1b249a19e64bb81f007fd7eff0ee76763)
+- _(build)_ Refactor registration flags handling — [`ed439526…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ed4395266f855d1caae68c2bd7d665b50ddab07d)
+- _(make)_ Switch to xz compression for source tarball — [`f64eb261…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f64eb26133cb3e1924b1785f46bf7253a449774d)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update firefox to 151.0.3 — [`dbdf6a49…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dbdf6a4999fce9f543e1f7976f479622b1957223)
+- Update pnpm & deps — [`c2fbe8f8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c2fbe8f8fb4fc8bc1ea6605027e4492c5d661121)
+- Switch to xz compression for source tarball — [`1d88d650…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1d88d65016c578cd42ad6fc054ceba3cad81911f)
+
+### Chroe
+
+- _(config)_ Sync librewolf settings — [`c96a6b58…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c96a6b58262c64857e8ce542bd78d4340fac2c12)
+
 ## [FireDragon v13.0.0-rc.13](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.13) — 2026-05-25 — [`v13.0.0-rc.12`…`v13.0.0-rc.13`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.12...v13.0.0-rc.13)
 
 ### 🐛 Bug Fixes
