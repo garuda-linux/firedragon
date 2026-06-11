@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.15](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.15) — 2026-06-11 — [`v13.0.0-rc.14`…`v13.0.0-rc.15`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.14...v13.0.0-rc.15)
+
+### 🐛 Bug Fixes
+
+- Fix privacy pane in preferences — [`9aa7f054…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9aa7f054dc7dd77f375b76bfe9eb8b84f883484d)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v151.0.4 — [`07af1aef…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07af1aef174e8b97c6924d6a6e9901fa88a02bed)
+- Update to librewolf 151.0.4-1 — [`616d99e3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/616d99e340d6dbeb87c47dfa7d5a374fbe591eee)
+- Update pnpm & deps — [`2f556278…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2f556278e1653662d8fe644e507c31a6d7908598)
+
 ## [FireDragon v13.0.0-rc.14](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.14) — 2026-06-03 — [`v13.0.0-rc.13`…`v13.0.0-rc.14`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.13...v13.0.0-rc.14)
 
 ### 🚜 Refactor
