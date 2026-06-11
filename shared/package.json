@@ -16,7 +16,7 @@
     "dev": "tsdown"
   },
   "dependencies": {
-    "@wxt-dev/browser": "^0.1.42",
+    "@wxt-dev/browser": "^0.1.43",
     "deep-equal": "^2.2.3"
   },
   "peerDependencies": {

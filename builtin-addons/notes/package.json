@@ -16,7 +16,7 @@
     "deep-equal": "^2.2.3",
     "quasar": "^2.19.3",
     "vue": "^3.5.35",
-    "vue-i18n": "^11.4.4",
+    "vue-i18n": "^11.4.5",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
@@ -25,7 +25,7 @@
     "@quasar/vite-plugin": "^1.12.0",
     "@types/deep-equal": "^1.0.4",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.1.42",
+    "@wxt-dev/browser": "^0.1.43",
     "@wxt-dev/module-vue": "^1.0.3",
     "sass-embedded": "^1.100.0",
     "typescript": "catalog:",
