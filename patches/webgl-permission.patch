@@ -1,94 +1,3 @@
-diff --git a/browser/components/preferences/config/privacy.mjs b/browser/components/preferences/config/privacy.mjs
-index ccbbf54..a4530ce 100644
---- a/browser/components/preferences/config/privacy.mjs
-+++ b/browser/components/preferences/config/privacy.mjs
-@@ -329,6 +329,19 @@ export class PrivacySettingHelpers {
-     );
-   }
- 
-+  /**
-+   * Displays the WebGL exceptions dialog where specific site WebGL
-+   * preferences can be set.
-+   */
-+  static showWebGLExceptions() {
-+    let params = { permissionType: "webgl" };
-+    gSubDialog.open(
-+      "chrome://browser/content/preferences/dialogs/sitePermissions.xhtml",
-+      { features: "resizable=yes" },
-+      params
-+    );
-+  }
-+
-   /**
-    * Displays the camera exceptions dialog where specific site camera
-    * preferences can be set.
-@@ -654,6 +667,7 @@ Preferences.addAll([
- 
-   // Media
-   { id: "media.autoplay.default", type: "int" },
-+  { id: "webgl.disabled", type: "bool" },
- 
-   // Popups
-   { id: "dom.disable_open_during_load", type: "bool" },
-@@ -1939,6 +1953,16 @@ SettingGroupManager.registerGroups({
-                 "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
-             },
-           },
-+          {
-+            id: "webglSettingsButton",
-+            control: "moz-box-button",
-+            l10nId: "permissions-webgl2",
-+            controlAttrs: {
-+              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
-+              "search-l10n-ids":
-+               "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
-+            },
-+          },
-         ],
-       },
-       {
-@@ -4129,6 +4051,19 @@ Preferences.addSetting({
-   onUserClick: () => PrivacySettingHelpers.showXRExceptions(),
- });
- 
-+Preferences.addSetting({
-+  id: "webglDisabled",
-+  pref: "webgl.disabled",
-+});
-+Preferences.addSetting({
-+  id: "webglSettingsButton",
-+  onUserClick: () => PrivacySettingHelpers.showWebGLExceptions(),
-+  deps: ["webglDisabled"],
-+  visible: deps => {
-+    return !deps.webglDisabled.value;
-+  },
-+});
-+
- Preferences.addSetting({
-   id: "dohBox",
- });
-diff --git a/browser/base/content/navigator-toolbox.inc.xhtml b/browser/base/content/navigator-toolbox.inc.xhtml
-index 3f7b85086d..0a4dcfbccc 100644
---- a/browser/base/content/navigator-toolbox.inc.xhtml
-+++ b/browser/base/content/navigator-toolbox.inc.xhtml
-@@ -264,6 +264,8 @@
-                       data-l10n-id="urlbar-autoplay-media-blocked"/>
-                 <image data-permission-id="canvas" class="blocked-permission-icon canvas-icon" role="button"
-                       data-l10n-id="urlbar-canvas-blocked"/>
-+                <image data-permission-id="webgl" class="blocked-permission-icon webgl-icon" role="button"
-+                      data-l10n-id="urlbar-webgl-blocked"/>
-                 <image data-permission-id="midi" class="blocked-permission-icon midi-icon" role="button"
-                       data-l10n-id="urlbar-midi-blocked"/>
-                 <image data-permission-id="install" class="blocked-permission-icon install-icon" role="button"
-@@ -293,6 +295,8 @@
-                       data-l10n-id="urlbar-addons-notification-anchor"/>
-               <image id="canvas-notification-icon" class="notification-anchor-icon" role="button"
-                       data-l10n-id="urlbar-canvas-notification-anchor"/>
-+              <image id="webgl-notification-icon" class="notification-anchor-icon" role="button"
-+                      data-l10n-id="urlbar-webgl-notification-anchor"/>
-               <image id="indexedDB-notification-icon" class="notification-anchor-icon indexedDB-icon" role="button"
-                       data-l10n-id="urlbar-indexed-db-notification-anchor"/>
-               <image id="password-notification-icon" class="notification-anchor-icon" role="button"
 diff --git a/browser/base/content/popup-notifications.inc.xhtml b/browser/base/content/popup-notifications.inc.xhtml
 index cb57017aa9..c982089198 100644
 --- a/browser/base/content/popup-notifications.inc.xhtml
@@ -107,42 +16,6 @@ index cb57017aa9..c982089198 100644
      <popupnotification id="contextual-feature-recommendation-notification"
                         buttonhighlight="true"
                         hidden="true">
-diff --git a/browser/components/preferences/dialogs/sitePermissions.js b/browser/components/preferences/dialogs/sitePermissions.js
-index a993c1bb8d..3cd8e34fa8 100644
---- a/browser/components/preferences/dialogs/sitePermissions.js
-+++ b/browser/components/preferences/dialogs/sitePermissions.js
-@@ -33,6 +33,10 @@ const sitePermissionsL10n = {
-     disableLabel: "permissions-site-xr-disable-label",
-     disableDescription: "permissions-site-xr-disable-desc",
-   },
-+  webgl: {
-+    window: "permissions-site-webgl-window2",
-+    description: "permissions-site-webgl-desc",
-+  },
-   camera: {
-     window: "permissions-site-camera-window2",
-     description: "permissions-site-camera-desc",
-diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
-index cb84b9206a..3f49316f49 100644
---- a/browser/components/preferences/privacy.js
-+++ b/browser/components/preferences/privacy.js
-@@ -1600,6 +1600,16 @@ var gPrivacyPane = {
-     PrivacySettingHelpers.showXRExceptions();
-   },
- 
-+  // WebGL
-+
-+  /**
-+  * Displays the WebGL exceptions dialog where specific site WebGL
-+  * preferences can be set.
-+  */
-+  showWebGLExceptions() {
-+    PrivacySettingHelpers.showWebGLExceptions();
-+  },
-+
-   // CAMERA
- 
-   /**
 diff --git a/browser/modules/ObserverForwarder.sys.mjs b/browser/modules/ObserverForwarder.sys.mjs
 index 8cf14355f3..bdecc6c230 100644
 --- a/browser/modules/ObserverForwarder.sys.mjs
@@ -166,21 +39,6 @@ index 8cf14355f3..bdecc6c230 100644
  
    "UnexpectedJavaScriptLoad-Live": ["UnexpectedScriptObserver"],
    "UnexpectedJavaScriptLoad-UserTookAction": ["UnexpectedScriptObserver"],
-diff --git a/browser/modules/SitePermissions.sys.mjs b/browser/modules/SitePermissions.sys.mjs
-index ee8f09234f..5f558f67aa 100644
---- a/browser/modules/SitePermissions.sys.mjs
-+++ b/browser/modules/SitePermissions.sys.mjs
-@@ -1293,6 +1293,10 @@ let gPermissions = {
-         return !SitePermissions.resistFingerprinting;
-       },
-     },
-+
-+    "webgl": {
-+//      exactHostMatch: true,
-+    },
- 
-     midi: {
-       exactHostMatch: true,
 diff --git a/browser/modules/WebGLPermissionPromptHelper.sys.mjs b/browser/modules/WebGLPermissionPromptHelper.sys.mjs
 new file mode 100644
 index 0000000..ead4eef
@@ -319,18 +177,6 @@ index 0000000..ead4eef
 +    );
 +  },
 +};
-diff --git a/browser/modules/moz.build b/browser/modules/moz.build
-index a4224e117a..bc4542bc2b 100644
---- a/browser/modules/moz.build
-+++ b/browser/modules/moz.build
-@@ -153,6 +153,7 @@ MOZ_SRC_FILES += [
-     "PrivateBrowsingUI.sys.mjs",
-     "UnexpectedScriptObserver.sys.mjs",
-     "WebAuthnPromptHelper.sys.mjs",
-+    "WebGLPermissionPromptHelper.sys.mjs",
- ]
- 
- if CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
 diff --git a/browser/themes/shared/icons/webgl-blocked.svg b/browser/themes/shared/icons/webgl-blocked.svg
 new file mode 100644
 index 0000000000..6e18b7cf54
@@ -459,21 +305,6 @@ index 0000000000..ffbf97c74d
 +     transform="translate(-95.002767,-238.87424)"><path
 +       id="path26"
 +       d="m 96.625679,239.87424 a 0.625,0.625 0 0 0 -0.625,0.625 0.625,0.625 0 0 0 0.625,0.625 h 0.626953 c 0.422091,-7e-5 0.751953,0.32791 0.751953,0.75 v 11.37109 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.624997,-0.625 v -1.35547 h 8.749998 c 1.095,0 1.99494,-0.90304 1.99219,-1.99804 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 h -8.730468 v -1.00391 c 0,-1.09772 -0.904231,-2.00019 -2.00195,-2 z m 2.628903,4.25391 h 8.730468 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 10e-4,0.41835 -0.32385,0.74415 -0.74219,0.74414 h -8.749998 z m 3.246088,1.74609 a 1.4999924,1.4999924 0 0 0 -1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,-1.5 1.4999924,1.4999924 0 0 0 -1.5,-1.5 z" /></g></svg>
-diff --git a/browser/themes/shared/preferences/privacy.css b/browser/themes/shared/preferences/privacy.css
-index 1cfe9a9eef..c5d12beef7 100644
---- a/browser/themes/shared/preferences/privacy.css
-+++ b/browser/themes/shared/preferences/privacy.css
-@@ -37,6 +37,10 @@
-   list-style-image: url(chrome://browser/skin/notification-icons/xr.svg);
- }
- 
-+.webgl-icon {
-+  list-style-image: url(chrome://browser/skin/notification-icons/webgl.svg);
-+}
-+
- .camera-icon {
-   list-style-image: url(chrome://browser/skin/notification-icons/camera.svg);
- }
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
 index a9e5603060..7ea09e134b 100644
 --- a/dom/canvas/ClientWebGLContext.cpp

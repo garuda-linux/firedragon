@@ -1,0 +1,35 @@
+diff --git a/dom/media/eme/MediaKeySystemAccess.cpp b/dom/media/eme/MediaKeySystemAccess.cpp
+index fa2a000cab..08664b00c2 100644
+--- a/dom/media/eme/MediaKeySystemAccess.cpp
++++ b/dom/media/eme/MediaKeySystemAccess.cpp
+@@ -131,12 +131,12 @@ MediaKeySystemStatus MediaKeySystemAccess::GetKeySystemStatus(
+     const MediaKeySystemAccessRequest& aRequest, nsACString& aOutMessage) {
+   const nsString& keySystem = aRequest.mKeySystem;
+ 
+-  MOZ_ASSERT(StaticPrefs::media_eme_enabled() ||
+-             IsClearkeyKeySystem(keySystem));
++  MOZ_ASSERT(StaticPrefs::media_eme_enabled());
++//             IsClearkeyKeySystem(keySystem));
+ 
+   LOG("checking if CDM is installed or disabled for %s",
+       NS_ConvertUTF16toUTF8(keySystem).get());
+-  if (IsClearkeyKeySystem(keySystem)) {
++  if (IsClearkeyKeySystem(keySystem) && Preferences::GetBool("librewolf.eme.gmp-clearkey.enabled", false)) {
+     return EnsureCDMInstalled(keySystem, SecureLevel::Software, aOutMessage);
+   }
+ 
+diff --git a/dom/media/eme/MediaKeySystemAccessManager.cpp b/dom/media/eme/MediaKeySystemAccessManager.cpp
+index acdc1030c0..14152b3736 100644
+--- a/dom/media/eme/MediaKeySystemAccessManager.cpp
++++ b/dom/media/eme/MediaKeySystemAccessManager.cpp
+@@ -421,8 +421,8 @@ void MediaKeySystemAccessManager::RequestMediaKeySystemAccess(
+     return;
+   }
+ 
+-  if (!StaticPrefs::media_eme_enabled() &&
+-      !IsClearkeyKeySystem(aRequest->mKeySystem)) {
++  if (!StaticPrefs::media_eme_enabled()) {
++//      !IsClearkeyKeySystem(aRequest->mKeySystem)) {
+     // EME disabled by user, send notification to chrome so UI can inform user.
+     // Clearkey is allowed even when EME is disabled because we want the pref
+     // "media.eme.enabled" only taking effect on proprietary DRMs.

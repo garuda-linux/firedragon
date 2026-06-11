@@ -7,7 +7,6 @@
     "DisableAppUpdate": true,
 #endif
     "OverridePostUpdatePage": "",
-    "DisableSystemAddonUpdate": true,
     "DisableProfileImport": false,
     "DisableFirefoxStudies": true,
     "DisableTelemetry": true,

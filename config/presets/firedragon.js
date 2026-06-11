@@ -246,8 +246,6 @@ unlock("browser.ai.control.smartWindow");
  * built-in extension are not allowed to auto-update. additionally the reporter extension
  * of webcompat is disabled. urls are stripped for defense in depth.
  */
-unsetDefault("extensions.systemAddon.update.enabled");
-unsetDefault("extensions.systemAddon.update.url");
 
 /** [SECTION] EXTENSION FIREWALL
  * the firewall can be enabled with the below prefs, but it is not a sane default:

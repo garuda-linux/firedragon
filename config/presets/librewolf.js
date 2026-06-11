@@ -283,6 +283,10 @@ defaultPref("security.OCSP.require", false);
 defaultPref("security.certerrors.mitm.auto_enable_enterprise_roots", false);
 defaultPref("security.enterprise_roots.enabled", false);
 
+// Disable processing of Qualified Website Authentication Certificates (QWACs)
+// https://codeberg.org/celenity/Phoenix/src/commit/62458a666f8a40a764f185236e45fc4c3c667e78/phoenix-unified.cfg#L1703
+defaultPref("security.qwacs.enabled", false);
+
 defaultPref("dom.security.https_only_mode_error_page_user_suggestions", true); // Show suggestions when an HTTPS page can not be found
 
 /** [SECTION] TLS/SSL */
@@ -346,22 +350,47 @@ defaultPref("geo.provider.use_geoclue", false); // [LINUX]
  */
 //pref("privacy.spoof_english", 2);
 //pref("intl.accept_languages", "en-US, en");
+
 // disable region specific updates from mozilla
 pref("browser.region.network.url", "");
 pref("browser.region.update.enabled", false);
+
+// Enable support for locale switching
+/// (Our builds are multi-locale...)
+/// (For reference, Mozilla also enables this explicitly for some of their multi-locale builds, ex:
+/// https://searchfox.org/firefox-main/rev/a7628a66/browser/installer/windows/msix/distribution/distribution.ini#12)
+defaultPref("intl.multilingual.enabled", true);
+
+// Ensure we never try to download language packs
+/// (Our builds are multi-locale, so we do not need/support them)
+defaultPref("app.update.langpack.enabled", false);
+defaultPref("extensions.getAddons.langpacks.url", "");
+defaultPref("intl.multilingual.aboutWelcome.languageMismatchEnabled", false); // Prevent about:welcome from automatically downloading a language pack for the system locale
+defaultPref("intl.multilingual.downloadEnabled", false);
+
+// Use the system locale by default (instead of just using the default build locale)
+/// https://searchfox.org/firefox-main/rev/a7628a66/intl/docs/locale.rst#333
+/// https://searchfox.org/firefox-main/rev/a7628a66/intl/locale/LocaleService.cpp#87
+/// (For reference, this is also set by Mozilla for their multi-locale builds, ex. GeckoView:
+/// https://searchfox.org/firefox-main/rev/a7628a66/mobile/android/app/geckoview-prefs.js#256)
+defaultPref("intl.locale.requested", "");
 
 /** ------------------------------
  * [CATEGORY] BEHAVIOR
  * ------------------------------- */
 
 /** [SECTION] DRM */
+defaultPref("librewolf.eme.gmp-clearkey.enabled", false); // Whether the Clear Key CDM is enabled (depends on media.eme.enabled)
+defaultPref("librewolf.eme.warning.infoURL", "https://librewolf.net/docs/faq/#how-do-i-allow-playback-of-drm-controlled-content-when-should-i-allow-it");
 defaultPref("media.eme.enabled", false); // master switch for drm content
+defaultPref("media.eme.require-app-approval", true); // Require permission for playback of DRM content
 defaultPref("media.gmp-manager.url", "data:text/plain,"); // prevent checks for plugin updates when drm is disabled
 // disable the widevine and the openh264 plugins
 defaultPref("media.gmp-provider.enabled", false);
 defaultPref("media.gmp-gmpopenh264.enabled", false);
 // but allow h264 itself.
 defaultPref("media.webrtc.hw.h264.enabled", true);
+defaultPref("permissions.default.media-key-system-access", 0); // Default permission for EME - 0: Always ask, 1: Allow, 2: Block
 
 /** [SECTION] SEARCH AND URLBAR
  * disable search suggestion and do not update opensearch engines.
@@ -460,11 +489,8 @@ defaultPref("extensions.enabledScopes", 5); // hidden
 defaultPref("extensions.postDownloadThirdPartyPrompt", false);
 
 /** [SECTION] SYSTEM
- * built-in extension are not allowed to auto-update. additionally the reporter extension
- * of webcompat is disabled. urls are stripped for defense in depth.
+ * The reporter extension of webcompat is disabled, urls are stripped for defense in depth.
  */
-defaultPref("extensions.systemAddon.update.enabled", false);
-defaultPref("extensions.systemAddon.update.url", "");
 lockPref("extensions.webcompat-reporter.enabled", false);
 lockPref("extensions.webcompat-reporter.newIssueEndpoint", "");
 
@@ -477,8 +503,6 @@ lockPref("extensions.webcompat-reporter.newIssueEndpoint", "");
 defaultPref("privacy.antitracking.isolateContentScriptResources", true);
 
 defaultPref("devtools.aboutdebugging.showHiddenAddons", true); // Disabled for non MOZILLA_OFFICIAL builds
-
-defaultPref("extensions.getAddons.langpacks.url", ""); // Since we do not allow installing langpacks
 
 /** ------------------------------
  * [CATEGORY] BUILT-IN FEATURES
