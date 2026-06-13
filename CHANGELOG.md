@@ -1,5 +1,26 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.16](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.16) — 2026-06-13 — [`v13.0.0-rc.15`…`v13.0.0-rc.16`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.15...v13.0.0-rc.16)
+
+### 🚀 Features
+
+- Remove newtab prefs & setting — [`33dea879…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/33dea87924c14ee0823e3cbf424f3bf6b3e9104d)
+
+### 💼 Other
+
+- Update pnpm & deps — [`ba02da56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba02da5688ee9fbf937baee8d1d717de280335b6)
+
+### 🚜 Refactor
+
+- [__breaking__] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(branding)_ Remove obsolete quasar.css files — [`6acab073…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6acab07331df67066c717f6c1dce1fb61b95143d)
+- Add git submodule support — [`c32aa1ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c32aa1ada6566130111080854daae1c0a13c0e6b)
+- Update git-cliff configurations — [`c6d0106d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c6d0106dc000091bba291ccfa0d28f071e47d752)
+- Remove obsolete dependency for @analogjs/platform from workspace root package.json — [`44374f33…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/44374f33d9791e2a8218ad88de3da2b26dacc1d8)
+
 ## [FireDragon v13.0.0-rc.15](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.15) — 2026-06-11 — [`v13.0.0-rc.14`…`v13.0.0-rc.15`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.14...v13.0.0-rc.15)
 
 ### 🐛 Bug Fixes
