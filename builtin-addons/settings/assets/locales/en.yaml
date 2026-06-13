@@ -29,12 +29,6 @@ pages:
       enableTranslations:
         title: Enable Translations
         description: Enable offline translations.
-      enableNewTab:
-        title: Enable FireDragon NewTab
-        description: The FireDragon NewTab page is based on Garuda Linux Startpage with deeper integration with FireDragon.
-        restartDialog:
-          title: Restart required
-          message: FireDragon's restart is required to completely enable or disable the FireDragon NewTab page.
       closeWindowWithLastTab:
         title: Close window with last tab
         description: Close the browser window when the last tab is closed.

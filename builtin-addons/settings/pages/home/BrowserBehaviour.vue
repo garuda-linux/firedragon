@@ -25,11 +25,6 @@
         t('pages.home.browserBehaviour.hidePasswdmgr.restartDialog.title'),
         t('pages.home.browserBehaviour.hidePasswdmgr.restartDialog.message'),
     );
-    promptRestartOnChange(
-        await useBoolPref('firedragon.newtab.enable'),
-        t('pages.home.browserBehaviour.enableNewTab.restartDialog.title'),
-        t('pages.home.browserBehaviour.enableNewTab.restartDialog.message'),
-    );
 </script>
 
 <template>
@@ -60,11 +55,6 @@
                 pref="firedragon.hidePasswdmgr"
                 :title="t('pages.home.browserBehaviour.hidePasswdmgr.title')"
                 :description="t('pages.home.browserBehaviour.hidePasswdmgr.description')"
-            />
-            <BoolPrefItem
-                pref="firedragon.newtab.enable"
-                :title="t('pages.home.browserBehaviour.enableNewTab.title')"
-                :description="t('pages.home.browserBehaviour.enableNewTab.description')"
             />
             <BoolPrefItem
                 pref="browser.tabs.closeWindowWithLastTab"
