@@ -1,6 +1,11 @@
 /// <reference types="@firedragon/shared/types/extensions" />
 
 const { ExtensionParent } = ChromeUtils.importESModule('resource://gre/modules/ExtensionParent.sys.mjs');
+const { PrivateBrowsingUtils } = ChromeUtils.importESModule('resource://gre/modules/PrivateBrowsingUtils.sys.mjs');
+const { SearchService } = ChromeUtils.importESModule('moz-src:///toolkit/components/search/SearchService.sys.mjs');
+const { SearchSuggestionController } = ChromeUtils.importESModule(
+    'moz-src:///toolkit/components/search/SearchSuggestionController.sys.mjs',
+);
 
 globalThis.firedragon = class extends ExtensionAPI {
     getAPI(context) {
@@ -63,6 +68,23 @@ globalThis.firedragon = class extends ExtensionAPI {
 
                 getChildList(aStartingAt: string): string[] {
                     return Services.prefs.getChildList(aStartingAt);
+                },
+
+                async getSearchSuggestions(searchString: string): Promise<string[]> {
+                    const browser = ExtensionParent.apiManager.global.tabTracker.activeTab.linkedBrowser;
+                    const privateMode = PrivateBrowsingUtils.isBrowserPrivate(browser);
+                    const userContextId = browser!.ownerGlobal!.gBrowser.selectedBrowser.getAttribute('userContextId');
+                    const controller = new SearchSuggestionController();
+                    const engine = privateMode ? SearchService.defaultPrivateEngine : SearchService.defaultEngine;
+                    const searchSuggestions = await controller.fetch({
+                        searchString,
+                        inPrivateBrowsing: privateMode,
+                        engine,
+                        userContextId: userContextId,
+                    });
+                    return [...searchSuggestions.local, ...searchSuggestions.remote].map(
+                        (searchSuggestion) => searchSuggestion.value,
+                    );
                 },
             },
         };

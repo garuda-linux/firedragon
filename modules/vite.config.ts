@@ -37,12 +37,6 @@ export default defineConfig(async ({ mode }) => {
                     {
                         type: 'category',
                         category: 'firedragon/browser-startup',
-                        entry: 'resource://firedragon/modules/AboutNewTabRedirector.sys.mjs',
-                        value: 'AboutNewTabRedirectorManager.init',
-                    },
-                    {
-                        type: 'category',
-                        category: 'firedragon/browser-startup',
                         entry: 'resource://firedragon/modules/config/ConfigLoader.sys.mjs',
                         value: 'ConfigLoader.loadConfig',
                     },

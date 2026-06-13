@@ -4,7 +4,6 @@ DIRS += [
     'content',
     'distribution',
     'modules',
-    'newtab',
     'profile',
     'skin',
 ]

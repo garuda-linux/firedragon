@@ -4,22 +4,25 @@ packages:
   - builtin-addons/notes
   - builtin-addons/qr-code
   - builtin-addons/settings
+  - builtin-addons/startpage
   - builtin-addons/troubleshooting
   - builtin-addons/welcome
   - builtin-addons/workspaces
   - content
   - modules
-  - newtab
   - shared
 
 allowBuilds:
   '@parcel/watcher': true
+  '@swc/core': true
   esbuild: true
   lmdb: true
   msgpackr-extract: true
   nx: true
+  sharp: true
   spawn-sync: true
   unrs-resolver: true
+  workerd: true
 
 catalog:
   tsdown: ^0.21.10

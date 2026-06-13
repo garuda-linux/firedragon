@@ -1,0 +1,3 @@
+[submodule "builtin-addons/startpage"]
+	path = builtin-addons/startpage
+	url = git@gitlab.com:garuda-linux/firedragon/startpage.git

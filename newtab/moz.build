@@ -1,1 +1,0 @@
-JAR_MANIFESTS += ["dist/client/jar.mn"]

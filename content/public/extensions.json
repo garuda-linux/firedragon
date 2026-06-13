@@ -195,6 +195,23 @@
             "type": "string"
           }
         }
+      },
+      {
+        "name": "getSearchSuggestions",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "term",
+            "type": "string"
+          }
+        ],
+        "returns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       }
     ]
   }

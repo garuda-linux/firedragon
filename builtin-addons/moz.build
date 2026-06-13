@@ -2,6 +2,7 @@ DIRS += [
     'notes',
     'qr-code',
     'settings',
+    'startpage',
     'troubleshooting',
     'welcome',
     'workspaces',

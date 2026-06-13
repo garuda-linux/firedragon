@@ -21,5 +21,8 @@
     "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
   },
   "license": "MPL-2.0",
-  "packageManager": "pnpm@11.5.3+sha512.7ac1c919341c213a34dc0d02afb7143c5c26ac26ee8c4782deea821b8ac64d2134a081fd8941dae6e29bbb48f58dfc2b7fbceeccc07cb2f09d219d342a4969ed"
+  "packageManager": "pnpm@11.5.3+sha512.7ac1c919341c213a34dc0d02afb7143c5c26ac26ee8c4782deea821b8ac64d2134a081fd8941dae6e29bbb48f58dfc2b7fbceeccc07cb2f09d219d342a4969ed",
+  "dependencies": {
+    "@analogjs/platform": "^1.22.5"
+  }
 }
