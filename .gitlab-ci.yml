@@ -38,6 +38,8 @@ stages:
   - release
 
 variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+  GIT_SUBMODULE_FORCE_HTTPS: true
   MAKE_IMAGE: $CI_REGISTRY_IMAGE/make:ci-$CI_PIPELINE_ID
 
 default:
