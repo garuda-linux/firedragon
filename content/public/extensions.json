@@ -54,6 +54,21 @@
         ]
       },
       {
+        "name": "setDefault",
+        "type": "function",
+        "async": true,
+        "parameters": []
+      },
+      {
+        "name": "getNewTabURL",
+        "type": "function",
+        "async": true,
+        "parameters": [],
+        "returns": {
+          "type": "string"
+        }
+      },
+      {
         "name": "getBoolPref",
         "type": "function",
         "async": true,

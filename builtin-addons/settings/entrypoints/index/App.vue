@@ -25,7 +25,7 @@
             <q-drawer side="left" show-if-above>
                 <q-scroll-area class="fit">
                     <q-list padding>
-                        <q-item @click="browser.browser.open('about:preferences')" clickable v-ripple>
+                        <q-item @click="browser.firedragon.open('about:preferences')" clickable v-ripple>
                             <q-item-section avatar>
                                 <q-icon name="sym_o_arrow_back" />
                             </q-item-section>

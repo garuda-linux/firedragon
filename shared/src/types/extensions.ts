@@ -4,6 +4,7 @@ declare module '@wxt-dev/browser' {
             export function getLogo(): Promise<string>;
             export function restart(): void;
             export function open(url: string): void;
+            export function setDefault(): Promise<void>;
 
             export const onPrefChanged: events.Event<(aPrefName: string) => void>;
 
@@ -18,8 +19,14 @@ declare module '@wxt-dev/browser' {
             export function clearUserPref(aPrefName: string): void;
 
             export function getChildList(aStartingAt: string): Promise<string[]>;
+
+            export function getSearchSuggestions(searchString: string): Promise<string[]>;
         }
     }
+}
+
+declare module 'webextension-polyfill' {
+    export const firedragon: typeof import('@wxt-dev/browser').browser.firedragon;
 }
 
 declare global {
@@ -46,5 +53,8 @@ declare global {
     }
     export namespace ExtensionUtils {
         export function makeDataURI(iconUrl: string): Promise<string>;
+    }
+    export namespace ExtensionParent {
+        export const apiManager: any;
     }
 }

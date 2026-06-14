@@ -18,8 +18,8 @@
 
     const step = ref(1);
 
-    function close() {
-        browser.browser.open('about:home');
+    async function close() {
+        browser.firedragon.open(await browser.firedragon.getNewTabURL());
     }
 </script>
 

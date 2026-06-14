@@ -1,11 +1,13 @@
 /// <reference types="@firedragon/shared/types/extensions" />
 
-const { ExtensionParent } = ChromeUtils.importESModule('resource://gre/modules/ExtensionParent.sys.mjs');
-const { PrivateBrowsingUtils } = ChromeUtils.importESModule('resource://gre/modules/PrivateBrowsingUtils.sys.mjs');
-const { SearchService } = ChromeUtils.importESModule('moz-src:///toolkit/components/search/SearchService.sys.mjs');
-const { SearchSuggestionController } = ChromeUtils.importESModule(
-    'moz-src:///toolkit/components/search/SearchSuggestionController.sys.mjs',
-);
+const lazy: any = {};
+
+ChromeUtils.defineESModuleGetters(lazy, {
+    PrivateBrowsingUtils: 'resource://gre/modules/PrivateBrowsingUtils.sys.mjs',
+    SearchService: 'moz-src:///toolkit/components/search/SearchService.sys.mjs',
+    SearchSuggestionController: 'moz-src:///toolkit/components/search/SearchSuggestionController.sys.mjs',
+    ShellService: 'moz-src:///browser/components/shell/ShellService.sys.mjs',
+});
 
 globalThis.firedragon = class extends ExtensionAPI {
     getAPI(context) {
@@ -24,6 +26,12 @@ globalThis.firedragon = class extends ExtensionAPI {
                             triggeringPrincipal: Services.scriptSecurityManager.getSystemPrincipal(),
                         },
                     );
+                },
+                async setDefault() {
+                    await lazy.ShellService.setDefaultBrowser();
+                },
+                getNewTabURL(): string {
+                    return AboutNewTab.newTabURL;
                 },
 
                 onPrefChanged: new ExtensionCommon.EventManager({
@@ -72,10 +80,12 @@ globalThis.firedragon = class extends ExtensionAPI {
 
                 async getSearchSuggestions(searchString: string): Promise<string[]> {
                     const browser = ExtensionParent.apiManager.global.tabTracker.activeTab.linkedBrowser;
-                    const privateMode = PrivateBrowsingUtils.isBrowserPrivate(browser);
+                    const privateMode = lazy.PrivateBrowsingUtils.isBrowserPrivate(browser);
                     const userContextId = browser!.ownerGlobal!.gBrowser.selectedBrowser.getAttribute('userContextId');
-                    const controller = new SearchSuggestionController();
-                    const engine = privateMode ? SearchService.defaultPrivateEngine : SearchService.defaultEngine;
+                    const controller = new lazy.SearchSuggestionController();
+                    const engine = privateMode
+                        ? lazy.SearchService.defaultPrivateEngine
+                        : lazy.SearchService.defaultEngine;
                     const searchSuggestions = await controller.fetch({
                         searchString,
                         inPrivateBrowsing: privateMode,

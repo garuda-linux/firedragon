@@ -8,7 +8,7 @@
     const loading = ref(false);
     async function makeDefault() {
         loading.value = true;
-        await browser.browser.setDefault();
+        await browser.firedragon.setDefault();
         loading.value = false;
     }
 </script>
