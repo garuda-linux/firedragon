@@ -1,8 +1,8 @@
 diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
-index 6e68d12c5e5b..7d703575cc59 100644
+index 952dd0bd0803..e33c9af768bc 100644
 --- a/python/mozbuild/mozbuild/artifacts.py
 +++ b/python/mozbuild/mozbuild/artifacts.py
-@@ -92,7 +92,7 @@ UNFILTERED_PROJECT_PACKAGE_PROCESSED_SUFFIX = (
+@@ -89,7 +89,7 @@ UNFILTERED_PROJECT_PACKAGE_PROCESSED_SUFFIX = (
  
  class GeckoJobConfiguration:
      trust_domain = "gecko"
@@ -11,13 +11,12 @@ index 6e68d12c5e5b..7d703575cc59 100644
      default_candidate_trees = [
          "releases/mozilla-release",
      ]
-@@ -1213,9 +1213,6 @@ class Artifacts:
-         unfiltered_project_package=False,
+@@ -1217,8 +1217,6 @@ class Artifacts:
          mozbuild=None,
      ):
+         artifact_filters = artifact_filters or []
 -        if (hg and git) or (not hg and not git):
 -            raise ValueError("Must provide path to exactly one of hg and git")
--
+ 
          if no_process and unfiltered_project_package:
              raise ValueError(
-                 "Must provide only one of no_process and unfiltered_project_package"
