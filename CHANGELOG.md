@@ -1,5 +1,18 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.17](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.17) — 2026-06-17 — [`v13.0.0-rc.16`…`v13.0.0-rc.17`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.16...v13.0.0-rc.17)
+
+### 🐛 Bug Fixes
+
+- Fix firedragon specific web extension APIs — [`c0a43530…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c0a43530ba9da7746046d23c4728fcf3ec6e5586)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v152.0 — [`97a9b010…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/97a9b010ac0bcbfbb2f9b107745d38ecb580f6ba)
+- Update librewolf patches & settings to v152.0-1 — [`b532d08d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b532d08da9daa510bebe4cdd979585cb75cd9dab)
+- Update build-patches for firefox v152.0 — [`1580d1ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1580d1ed7cae042196eb6165810968548d7d5f5e)
+- Update pnpm & deps — [`e2664ac6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e2664ac67313c2ba812b0f8b2b0f9ab49852c776)
+
 ## [FireDragon v13.0.0-rc.16](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.16) — 2026-06-13 — [`v13.0.0-rc.15`…`v13.0.0-rc.16`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.15...v13.0.0-rc.16)
 
 ### 🚀 Features
