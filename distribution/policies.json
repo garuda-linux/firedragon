@@ -15,6 +15,7 @@
     "DisableSetDesktopBackground": false,
     "DisableDeveloperTools": false,
     "NoDefaultBookmarks": true,
+    "DefaultSerialGuardSetting": 3,
     "WebsiteFilter": {
       "Block": [
         "https://localhost/*"

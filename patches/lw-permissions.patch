@@ -1,81 +1,22 @@
-diff --git a/browser/components/preferences/config/privacy.mjs b/browser/components/preferences/config/privacy.mjs
-index 8b67ea2befb9..ab0bf7364e46 100644
---- a/browser/components/preferences/config/privacy.mjs
-+++ b/browser/components/preferences/config/privacy.mjs
-@@ -329,6 +329,32 @@ export class PrivacySettingHelpers {
-     );
-   }
- 
-+  /**
-+   * Displays the EME exceptions dialog where specific site EME
-+   * preferences can be set.
-+   */
-+  static showEMEExceptions() {
-+    let params = { permissionType: "media-key-system-access" };
-+    gSubDialog.open(
-+      "chrome://browser/content/preferences/dialogs/sitePermissions.xhtml",
-+      { features: "resizable=yes" },
-+      params
-+    );
-+  }
+diff --git a/browser/components/preferences/config/permissions-data.mjs b/browser/components/preferences/config/permissions-data.mjs
+index 8e0e6d5..6a937c5 100644
+--- a/browser/components/preferences/config/permissions-data.mjs
++++ b/browser/components/preferences/config/permissions-data.mjs
+@@ -63,6 +63,11 @@ Preferences.addAll([
+   { id: PREF_ADDON_RECOMMENDATIONS_ENABLED, type: "bool" },
+   { id: PREF_UPLOAD_ENABLED, type: "bool" },
+   { id: "datareporting.usage.uploadEnabled", type: "bool" },
 +
-+  /**
-+   * Displays the WebGL exceptions dialog where specific site WebGL
-+   * preferences can be set.
-+   */
-+  static showWebGLExceptions() {
-+    let params = { permissionType: "webgl" };
-+    gSubDialog.open(
-+      "chrome://browser/content/preferences/dialogs/sitePermissions.xhtml",
-+      { features: "resizable=yes" },
-+      params
-+    );
-+  }
-+
-   /**
-    * Displays the camera exceptions dialog where specific site camera
-    * preferences can be set.
-@@ -654,6 +680,10 @@ Preferences.addAll([
- 
-   // Media
-   { id: "media.autoplay.default", type: "int" },
 +  { id: "browser.eme.ui.enabled", type: "bool" },
 +  { id: "librewolf.webgl.prompt", type: "bool" },
 +  { id: "media.eme.require-app-approval", type: "bool" },
 +  { id: "webgl.disabled", type: "bool" },
+ ]);
  
-   // Popups
-   { id: "dom.disable_open_during_load", type: "bool" },
-@@ -1967,6 +1997,26 @@ SettingGroupManager.registerGroups({
-                 "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
-             },
-           },
-+          {
-+            id: "webglSettingsButton",
-+            control: "moz-box-button",
-+            l10nId: "permissions-webgl2",
-+            controlAttrs: {
-+              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
-+              "search-l10n-ids":
-+               "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
-+            },
-+          },
-+          {
-+            id: "emeSettingsButton",
-+            control: "moz-box-button",
-+            l10nId: "permissions-eme2",
-+            controlAttrs: {
-+              ".iconSrc": "chrome://browser/skin/drm-icon.svg",
-+              "search-l10n-ids":
-+               "permissions-remove.label,permissions-remove-all.label,permissions-site-eme-window2.title,permissions-site-eme-desc,permissions-site-eme-disable-label,permissions-site-eme-disable-desc",
-+            },
-+          },
-         ],
-       },
-       {
-@@ -4157,6 +4207,44 @@ Preferences.addSetting({
-   onUserClick: () => PrivacySettingHelpers.showXRExceptions(),
- });
+ /**
+@@ -490,6 +495,45 @@ Preferences.addSetting(
+   })
+ );
  
 +Preferences.addSetting({
 +  id: "emeEnabled",
@@ -91,7 +32,7 @@ index 8b67ea2befb9..ab0bf7364e46 100644
 +});
 +Preferences.addSetting({
 +  id: "emeSettingsButton",
-+  onUserClick: () => PrivacySettingHelpers.showEMEExceptions(),
++  onUserClick: () => showPermissionExceptions({ permissionType: "media-key-system-access" }),
 +  deps: ["emeEnabled", "emePermissionPromptEnabled", "emeUIEnabled"],
 +  visible: deps => {
 +    return deps.emeEnabled.value && deps.emePermissionPromptEnabled.value && deps.emeUIEnabled.value;
@@ -108,16 +49,44 @@ index 8b67ea2befb9..ab0bf7364e46 100644
 +});
 +Preferences.addSetting({
 +  id: "webglSettingsButton",
-+  onUserClick: () => PrivacySettingHelpers.showWebGLExceptions(),
++  onUserClick: () => showPermissionExceptions({ permissionType: "webgl" }),
 +  deps: ["webglPermissionPromptEnabled", "webglDisabled"],
 +  visible: deps => {
 +    return deps.webglPermissionPromptEnabled.value && !deps.webglDisabled.value;
 +  },
 +});
 +
- Preferences.addSetting({
-   id: "dohBox",
- });
++
+ SettingGroupManager.registerGroups({
+   permissions: {
+     id: "permissions",
+@@ -600,6 +644,26 @@ SettingGroupManager.registerGroups({
+                 "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
+             },
+           },
++          {
++            id: "webglSettingsButton",
++            control: "moz-box-button",
++            l10nId: "permissions-webgl2",
++            controlAttrs: {
++              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
++              "search-l10n-ids":
++                "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
++            },
++          },
++          {
++            id: "emeSettingsButton",
++            control: "moz-box-button",
++            l10nId: "permissions-eme2",
++            controlAttrs: {
++              ".iconSrc": "chrome://browser/skin/drm-icon.svg",
++              "search-l10n-ids":
++                "permissions-remove.label,permissions-remove-all.label,permissions-site-eme-window2.title,permissions-site-eme-desc,permissions-site-eme-disable-label,permissions-site-eme-disable-desc",
++            },
++          },
+         ],
+       },
+       {
 diff --git a/browser/base/content/navigator-toolbox.inc.xhtml b/browser/base/content/navigator-toolbox.inc.xhtml
 index b23fc2bc15eb..b601c78e213c 100644
 --- a/browser/base/content/navigator-toolbox.inc.xhtml
@@ -163,37 +132,6 @@ index f8d0e2ce84f0..6d8d01a94542 100644
    camera: {
      window: "permissions-site-camera-window2",
      description: "permissions-site-camera-desc",
-diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
-index 51389b365521..dfc31857e589 100644
---- a/browser/components/preferences/privacy.js
-+++ b/browser/components/preferences/privacy.js
-@@ -1600,6 +1600,26 @@ var gPrivacyPane = {
-     PrivacySettingHelpers.showXRExceptions();
-   },
- 
-+  // EME
-+
-+  /**
-+  * Displays the EME exceptions dialog where specific site EME
-+  * preferences can be set.
-+  */
-+  showEMEExceptions() {
-+    PrivacySettingHelpers.showEMEExceptions();
-+  },
-+
-+  // WebGL
-+
-+  /**
-+  * Displays the WebGL exceptions dialog where specific site WebGL
-+  * preferences can be set.
-+  */
-+  showWebGLExceptions() {
-+    PrivacySettingHelpers.showWebGLExceptions();
-+  },
-+
-   // CAMERA
- 
-   /**
 diff --git a/browser/modules/moz.build b/browser/modules/moz.build
 index 360866be9b80..4c54c5c483a6 100644
 --- a/browser/modules/moz.build

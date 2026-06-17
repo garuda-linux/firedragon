@@ -1,0 +1,13 @@
+diff --git a/dom/html/HTMLCanvasElement.cpp b/dom/html/HTMLCanvasElement.cpp
+index 4b79db2..b770959 100644
+--- a/dom/html/HTMLCanvasElement.cpp
++++ b/dom/html/HTMLCanvasElement.cpp
+@@ -908,7 +908,7 @@ already_AddRefed<CanvasCaptureMediaStream> HTMLCanvasElement::CaptureStream(
+   // If no permission, arrange for the frame capture listener to return
+   // all-white, opaque image data.
+   CanvasUtils::ImageExtraction extractionBehaviour =
+-      CanvasUtils::ImageExtractionResult(this, nullptr, &aSubjectPrincipal);
++      CanvasUtils::ImageExtractionResult(this, nsContentUtils::GetCurrentJSContext(), &aSubjectPrincipal);
+ 
+   rv = RegisterFrameCaptureListener(
+       stream->FrameCaptureListener(),

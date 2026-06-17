@@ -54,21 +54,13 @@ index f23beeb5c7..6357c9940b 100644
 +    </vbox>
    </vbox>
  </groupbox>
- 
+
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index e77dfebdf3..4a1c31cecb 100644
+index c86e54b..95dfad7 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -239,6 +239,7 @@ Preferences.addAll([
- 
-   // Translations
-   { id: "browser.translations.automaticallyPopup", type: "bool" },
-+  { id: "browser.translations.enable", type: "bool" },
- ]);
- 
- if (AppConstants.HAVE_SHELL_SERVICE) {
-@@ -5560,6 +5561,10 @@ var gMainPane = {
-     }
+@@ -820,6 +820,10 @@ var gMainPane = {
+     window.addEventListener("unload", this);
  
      // Notify observers that the UI is now ready
 +    Preferences.addSyncFromPrefListener(
@@ -78,7 +70,7 @@ index e77dfebdf3..4a1c31cecb 100644
      Services.obs.notifyObservers(window, "main-pane-loaded");
      this.setInitialized();
    },
-@@ -5664,39 +5669,36 @@ var gMainPane = {
+@@ -920,39 +924,36 @@ var gMainPane = {
      button.disabled = !preference.value;
      return undefined;
    },
@@ -135,7 +127,7 @@ index e77dfebdf3..4a1c31cecb 100644
 -    );
  
      class TranslationsState {
-       /**
+       /** 
 diff --git a/browser/components/translations/content/fullPageTranslationsPanel.js b/browser/components/translations/content/fullPageTranslationsPanel.js
 index f437dce2be..b7756bdc4c 100644
 --- a/browser/components/translations/content/fullPageTranslationsPanel.js
@@ -156,3 +148,15 @@ index f437dce2be..b7756bdc4c 100644
    /**
     * Redirect the user to about:preferences
     */
+diff --git a/browser/components/preferences/config/languages.mjs b/browser/components/preferences/config/languages.mjs
+index 192f581..f56e8b2 100644
+--- a/browser/components/preferences/config/languages.mjs
++++ b/browser/components/preferences/config/languages.mjs
+@@ -20,6 +20,7 @@ Preferences.addAll([
+   { id: "privacy.spoof_english", type: "int" },
+   { id: "layout.spellcheckDefault", type: "int" },
+   { id: "browser.translations.automaticallyPopup", type: "bool" },
++  { id: "browser.translations.enable", type: "bool" },
+ ]);
+ 
+ /**

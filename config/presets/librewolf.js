@@ -234,7 +234,6 @@ defaultPref("security.csp.reporting.enabled", false); // https://codeberg.org/li
 defaultPref("privacy.resistFingerprinting", true);
 // rfp related settings
 defaultPref("privacy.resistFingerprinting.block_mozAddonManager", true); // prevents rfp from breaking AMO
-defaultPref("browser.display.use_system_colors", false); // default, except Win
 /** increase the size of new RFP windows for better usability, while still using a rounded value.
  * if the screen resolution is lower it will stretch to the biggest possible rounded value.
  * also, expose hidden letterboxing pref but do not enable it for now.
@@ -297,11 +296,13 @@ defaultPref("browser.xul.error_pages.expert_bad_cert", true); // show relevant a
 
 defaultPref("security.insecure_field_warning.ignore_local_ip_address", false); // Do not ignore local addresses
 
-defaultPref("security.ssl3.ecdhe_ecdsa_aes_128_sha", false);
 defaultPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
 
 /** [SECTION] PERMISSIONS */
 pref("permissions.manager.defaultsUrl", ""); // revoke special permissions for some mozilla domains
+
+defaultPref("dom.webserial.gated", true); // Ensure webserial is always behind a permissions prompt [DEFAULT]
+defaultPref("permissions.default.serial", 2); // Set webserial to be blocked by default [HIDDEN]
 
 /** [SECTION] SAFE BROWSING
  * disable safe browsing, including the fetch of updates. reverting the 7 prefs below
@@ -659,6 +660,10 @@ defaultPref("browser.preferences.experimental.hidden", true);
 
 // Until the new UI is finished upstream
 lockPref("browser.settings-redesign.enabled", false);
+
+// Disable breach alerts for the time being
+defaultPref("browser.urlbar.trustPanel.breachAlerts.featureGate", false);
+defaultPref("browser.urlbar.trustPanel.breachAlerts", false);
 
 /** ------------------------------
  * [CATEGORY] TELEMETRY

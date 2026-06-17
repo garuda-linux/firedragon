@@ -78,7 +78,7 @@ index 000000000000..c019ce2073bc
 +    // Don't offer "always remember" action in PB mode
 +    options.checkbox = {
 +      show: !lazy.PrivateBrowsingUtils.isWindowPrivate(
-+        this.browser.ownerGlobal
++        this.browser.documentGlobal
 +      ),
 +    };
 +
