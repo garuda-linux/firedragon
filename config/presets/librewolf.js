@@ -733,6 +733,7 @@ lockPref("app.update.service.enabled", false);
 
 /** [SECTION] OTHERS */
 lockPref("default-browser-agent.enabled", false); // disable windows specific telemetry
+defaultPref("browser.startup.windowsLaunchOnLogin.defaultEnabled", false); // prevent autorun from automatically being enabled for new profiles and at each portable launch (since v152)
 clearPref("toolkit.winRegisterApplicationRestart"); // clear previous pref setting https://codeberg.org/librewolf/issues/issues/3056
 
 /** ------------------------------
