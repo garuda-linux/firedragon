@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.18](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.18) — 2026-06-19 — [`v13.0.0-rc.17`…`v13.0.0-rc.18`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.17...v13.0.0-rc.18)
+
+### 🐛 Bug Fixes
+
+- _(startpage)_ Migrate @primeng/themes to @primeuix/themes — [`06171561…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/061715614e65743d0b6f8030c19c6f585408b220)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v152.0.1 — [`3f98f407…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3f98f4073c6b50deab90cdcf00f09d6997d8c13f)
+- Update librewolf settings to v152.0.1-2 — [`3f3a0dcd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3f3a0dcd4be228bec5d4f7604a8cc067e84f3a70)
+- Update pnpm & deps — [`13cbacf5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/13cbacf5917168869bb3ff24c366269f436b532f)
+
 ## [FireDragon v13.0.0-rc.17](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.17) — 2026-06-17 — [`v13.0.0-rc.16`…`v13.0.0-rc.17`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.16...v13.0.0-rc.17)
 
 ### 🐛 Bug Fixes
