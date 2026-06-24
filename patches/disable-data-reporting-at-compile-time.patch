@@ -1,8 +1,8 @@
 diff --git a/browser/moz.configure b/browser/moz.configure
-index e605019172ad..73268e5d353d 100644
+index 3ea3d88..c55951b 100644
 --- a/browser/moz.configure
 +++ b/browser/moz.configure
-@@ -5,11 +5,11 @@
+@@ -3,11 +3,11 @@
  # file, You can obtain one at http://mozilla.org/MPL/2.0/.
  
  imply_option("MOZ_PLACES", True)
@@ -15,12 +15,12 @@ index e605019172ad..73268e5d353d 100644
 +imply_option("MOZ_NORMANDY", False)
  imply_option("MOZ_PROFILE_MIGRATOR", True)
  
- 
+
 diff --git a/python/mach/mach/telemetry.py b/python/mach/mach/telemetry.py
-index 40d5cc221644..36db9a9e45b1 100644
+index 2b70b3f..b111dac 100644
 --- a/python/mach/mach/telemetry.py
 +++ b/python/mach/mach/telemetry.py
-@@ -98,10 +98,7 @@ def is_applicable_telemetry_environment():
+@@ -82,10 +82,7 @@ def is_applicable_telemetry_environment():
  
  
  def is_telemetry_enabled(settings):
@@ -31,4 +31,81 @@ index 40d5cc221644..36db9a9e45b1 100644
 +    return False
  
  
- def arcrc_path():
+ def arcrc_path(): 
+diff --git a/python/sites/mach.txt b/python/sites/mach.txt
+index 8f4aa95..eb1e871 100644
+--- a/python/sites/mach.txt
++++ b/python/sites/mach.txt
+@@ -58,7 +58,7 @@ pth:xpcom/geckoprocesstypes_generator
+ pth:xpcom/idl-parser
+ # glean-sdk may not be installable if a wheel isn't available
+ # and it has to be built from source.
+-pypi-optional:glean-sdk==67.3.2:telemetry will not be collected
++# pypi-optional:glean-sdk==67.3.2:telemetry will not be collected
+ pypi-optional:orjson>=3.10:json operations will be slower in various tools
+ # Mach gracefully handles the case where `psutil` is unavailable.
+ # We aren't (yet) able to pin packages in automation, so we have to
+diff --git a/toolkit/components/glean/src/init/mod.rs b/toolkit/components/glean/src/init/mod.rs
+index 8ebf827..80eaa4c 100644
+--- a/toolkit/components/glean/src/init/mod.rs
++++ b/toolkit/components/glean/src/init/mod.rs
+@@ -189,13 +189,13 @@ fn build_configuration(
+         delay_ping_lifetime_io: true,
+         server_endpoint: Some(server),
+         uploader: None,
+-        use_core_mps: true,
++        use_core_mps: false,
+         trim_data_to_registered_pings: true,
+         log_level: None,
+         rate_limit,
+         enable_event_timestamps: true,
+         experimentation_id: None,
+-        enable_internal_pings: true,
++        enable_internal_pings: false,
+         ping_schedule: pings::ping_schedule(),
+         ping_lifetime_threshold: 0,
+         ping_lifetime_max_time: Duration::ZERO,
+diff --git a/toolkit/components/telemetry/core/Telemetry.cpp b/toolkit/components/telemetry/core/Telemetry.cpp
+index 1e83d34..474bc5c 100644
+--- a/toolkit/components/telemetry/core/Telemetry.cpp
++++ b/toolkit/components/telemetry/core/Telemetry.cpp
+@@ -693,7 +693,7 @@ TelemetryImpl::GetCanRecordBase(bool* ret) {
+ 
+ NS_IMETHODIMP
+ TelemetryImpl::SetCanRecordBase(bool canRecord) {
+-#ifndef FUZZING
++#if false
+   if (canRecord != mCanRecordBase) {
+     TelemetryHistogram::SetCanRecordBase(canRecord);
+     TelemetryScalar::SetCanRecordBase(canRecord);
+@@ -719,7 +719,7 @@ TelemetryImpl::GetCanRecordExtended(bool* ret) {
+ 
+ NS_IMETHODIMP
+ TelemetryImpl::SetCanRecordExtended(bool canRecord) {
+-#ifndef FUZZING
++#if false
+   if (canRecord != mCanRecordExtended) {
+     TelemetryHistogram::SetCanRecordExtended(canRecord);
+     TelemetryScalar::SetCanRecordExtended(canRecord);
+@@ -762,7 +762,7 @@ already_AddRefed<nsITelemetry> TelemetryImpl::CreateTelemetryInstance() {
+   }
+ 
+   bool useTelemetry = false;
+-#ifndef FUZZING
++#if false
+   if (XRE_IsParentProcess() || XRE_IsContentProcess() || XRE_IsGPUProcess() ||
+       XRE_IsRDDProcess() || XRE_IsSocketProcess() || XRE_IsUtilityProcess()) {
+     useTelemetry = true;
+diff --git a/toolkit/library/rust/gkrust-features.mozbuild b/toolkit/library/rust/gkrust-features.mozbuild
+index a3f1cc3..715f58b 100644
+--- a/toolkit/library/rust/gkrust-features.mozbuild
++++ b/toolkit/library/rust/gkrust-features.mozbuild
+@@ -57,7 +57,7 @@ if CONFIG["MOZ_WEBRTC"]:
+ # We need to tell Glean it is being built with Gecko.
+ gkrust_features += ["glean_with_gecko"]
+ 
+-if not CONFIG["MOZILLA_OFFICIAL"]:
++if CONFIG["MOZILLA_OFFICIAL"]:
+     gkrust_features += ["glean_disable_upload"]
+ 
+ if CONFIG["MOZ_ENABLE_DBUS"]:

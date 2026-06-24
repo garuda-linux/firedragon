@@ -20,6 +20,59 @@ index fc3c64110c37..032010493054 100644
        case "geolocation": {
          return new lazy.PermissionUI.GeolocationPermissionPrompt(request);
        }
+diff --git a/dom/media/eme/MediaKeySystemAccessManager.cpp b/dom/media/eme/MediaKeySystemAccessManager.cpp
+index acdc1030c06fa..12f3363549245 100644
+--- a/dom/media/eme/MediaKeySystemAccessManager.cpp
++++ b/dom/media/eme/MediaKeySystemAccessManager.cpp
+@@ -364,9 +364,11 @@ void MediaKeySystemAccessManager::OnDoesAppAllowProtectedMedia(
+                   aIsAllowed ? "true" : "false",
+                   NS_ConvertUTF16toUTF8(aRequest->mKeySystem).get());
+   if (!aIsAllowed) {
+-    aRequest->RejectPromiseWithNotSupportedError(
+-        nsLiteralCString("The application embedding this user agent has "
+-                         "blocked MediaKeySystemAccess"));
++    if (IsClearkeyKeySystem(aRequest->mKeySystem)) {
++      aRequest->RejectPromiseWithNotSupportedError("CDM is not installed"_ns);
++    } else {
++      aRequest->RejectPromiseWithNotSupportedError("EME has been preffed off"_ns);
++    }
+     return;
+   }
+ 
+@@ -421,8 +423,8 @@ void MediaKeySystemAccessManager::RequestMediaKeySystemAccess(
+     return;
+   }
+ 
+-  if (!StaticPrefs::media_eme_enabled() &&
+-      !IsClearkeyKeySystem(aRequest->mKeySystem)) {
++  if (!StaticPrefs::media_eme_enabled()) {
++//      !IsClearkeyKeySystem(aRequest->mKeySystem)) {
+     // EME disabled by user, send notification to chrome so UI can inform user.
+     // Clearkey is allowed even when EME is disabled because we want the pref
+     // "media.eme.enabled" only taking effect on proprietary DRMs.
+@@ -431,12 +433,21 @@ void MediaKeySystemAccessManager::RequestMediaKeySystemAccess(
+       MediaKeySystemAccess::NotifyObservers(mWindow, aRequest->mKeySystem,
+                                             MediaKeySystemStatus::Api_disabled);
+     }
+-    aRequest->RejectPromiseWithNotSupportedError("EME has been preffed off"_ns);
++    if (IsClearkeyKeySystem(aRequest->mKeySystem)) {
++      aRequest->RejectPromiseWithNotSupportedError("CDM is not installed"_ns);
++    } else {
++      aRequest->RejectPromiseWithNotSupportedError("EME has been preffed off"_ns);
++    }
+     aRequest->mDiagnostics.StoreMediaKeySystemAccess(
+         mWindow->GetExtantDoc(), aRequest->mKeySystem, false, __func__);
+     return;
+   }
+ 
++  if (IsClearkeyKeySystem(aRequest->mKeySystem) && !Preferences::GetBool("librewolf.eme.gmp-clearkey.enabled", false)) {
++      aRequest->RejectPromiseWithNotSupportedError("CDM is not installed"_ns);
++      return;
++  }
++
+   nsAutoCString message;
+   MediaKeySystemStatus status =
+       MediaKeySystemAccess::GetKeySystemStatus(*aRequest, message);
 diff --git a/browser/modules/EMEPermissionPrompt.sys.mjs b/browser/modules/EMEPermissionPrompt.sys.mjs
 new file mode 100644
 index 000000000000..c019ce2073bc
