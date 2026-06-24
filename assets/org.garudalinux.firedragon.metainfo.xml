@@ -53,6 +53,10 @@
   </screenshots>
   <content_rating type="oars-1.1"></content_rating>
   <releases>
+    <release version="v13.0.0-rc.19" date="2026-06-24">
+      <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.19</url>
+      <description></description>
+    </release>
     <release version="v13.0.0-rc.18" date="2026-06-19">
       <url type="details">https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.18</url>
       <description></description>

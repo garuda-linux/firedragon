@@ -1,5 +1,18 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.19](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.19) — 2026-06-24 — [`v13.0.0-rc.18`…`v13.0.0-rc.19`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.18...v13.0.0-rc.19)
+
+### 🐛 Bug Fixes
+
+- _(content)_ Fix and simplify workspace button styling — [`0c270ce8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0c270ce8267a0fa9dc54adf37f2f5918bc5f472d)
+- Fix typescript typings for custom web extension apis — [`d4546ee4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d4546ee4ac445d7b27f07f0d34cbc5634c887cb3)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v152.0.2 — [`c3ad4a06…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c3ad4a06c07193c50b70698130c5584c25d8ed80)
+- Update librewolf patches to v152.0.2-1 — [`15513d90…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/15513d90d57b7529f4c428462fb656524d3a1315)
+- Update pnpm & deps — [`4c5b3e3a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4c5b3e3a7f4bd3af18cd1788ceaebdd60975f378)
+
 ## [FireDragon v13.0.0-rc.18](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.18) — 2026-06-19 — [`v13.0.0-rc.17`…`v13.0.0-rc.18`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.17...v13.0.0-rc.18)
 
 ### 🐛 Bug Fixes

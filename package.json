@@ -1,6 +1,6 @@
 {
   "name": "firedragon",
-  "version": "13.0.0-rc.18",
+  "version": "13.0.0-rc.19",
   "firefoxVersion": "152.0.2",
   "private": true,
   "type": "module",
