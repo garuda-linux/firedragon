@@ -6,7 +6,7 @@ declare module '@wxt-dev/browser' {
             export function open(url: string): void;
             export function setDefault(): Promise<void>;
 
-            export const onPrefChanged: events.Event<(aPrefName: string) => void>;
+            export const onPrefChanged: import('@wxt-dev/browser').Browser.events.Event<(aPrefName: string) => void>;
 
             export function getBoolPref(aPrefName: string, aDefaultValue?: boolean): Promise<boolean>;
             export function setBoolPref(aPrefName: string, aValue: boolean): void;
@@ -23,10 +23,6 @@ declare module '@wxt-dev/browser' {
             export function getSearchSuggestions(searchString: string): Promise<string[]>;
         }
     }
-}
-
-declare module 'webextension-polyfill' {
-    export const firedragon: typeof import('@wxt-dev/browser').browser.firedragon;
 }
 
 declare global {
