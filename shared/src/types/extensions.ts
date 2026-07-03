@@ -15,6 +15,8 @@ declare module '@wxt-dev/browser' {
             export function getStringPref(aPrefName: string, aDefaultValue?: string): Promise<string>;
             export function setStringPref(aPrefName: string, aValue: string): void;
 
+            export function prefIsLocked(aPrefName: string): Promise<boolean>;
+
             export function prefHasUserValue(aPrefName: string): Promise<boolean>;
             export function clearUserPref(aPrefName: string): void;
 

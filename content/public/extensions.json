@@ -171,6 +171,20 @@
         ]
       },
       {
+        "name": "prefIsLocked",
+        "type": "function",
+        "async": true,
+        "parameters": [
+          {
+            "name": "aPrefName",
+            "type": "string"
+          }
+        ],
+        "returns": {
+          "type": "boolean"
+        }
+      },
+      {
         "name": "prefHasUserValue",
         "type": "function",
         "async": true,

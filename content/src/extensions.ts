@@ -67,6 +67,10 @@ globalThis.firedragon = class extends ExtensionAPI {
                     Services.prefs.setStringPref(aPrefName, aValue);
                 },
 
+                prefIsLocked(aPrefName: string): boolean {
+                    return Services.prefs.prefIsLocked(aPrefName);
+                },
+
                 prefHasUserValue(aPrefName: string): boolean {
                     return Services.prefs.prefHasUserValue(aPrefName);
                 },
