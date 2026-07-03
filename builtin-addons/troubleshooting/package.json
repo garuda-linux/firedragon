@@ -8,10 +8,10 @@
   },
   "dependencies": {
     "@quasar/extras": "^2.0.1",
-    "@unhead/vue": "^3.1.4",
+    "@unhead/vue": "^3.1.7",
     "@vueuse/core": "^14.3.0",
-    "quasar": "^2.20.1",
-    "vue": "^3.5.38",
+    "quasar": "^2.20.3",
+    "vue": "^3.5.39",
     "vue-i18n": "^11.4.6"
   },
   "devDependencies": {
@@ -20,11 +20,11 @@
     "@intlify/unplugin-vue-i18n": "^11.2.4",
     "@quasar/vite-plugin": "^1.12.0",
     "@types/gecko": "workspace:^",
-    "@wxt-dev/browser": "^0.2.0",
+    "@wxt-dev/browser": "^0.2.2",
     "@wxt-dev/module-vue": "^1.0.3",
     "sass-embedded": "^1.100.0",
     "typescript": "catalog:",
-    "vite-plugin-vue-devtools": "^8.1.3",
+    "vite-plugin-vue-devtools": "^8.1.5",
     "wxt": "catalog:"
   }
 }

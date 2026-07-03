@@ -16,7 +16,7 @@
     "dev": "tsdown"
   },
   "dependencies": {
-    "@wxt-dev/browser": "^0.2.0",
+    "@wxt-dev/browser": "^0.2.2",
     "deep-equal": "^2.2.3",
     "webextension-polyfill": "^0.12.0"
   },
