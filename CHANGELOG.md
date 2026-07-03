@@ -1,5 +1,25 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.20](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.20) — 2026-07-03 — [`v13.0.0-rc.19`…`v13.0.0-rc.20`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.19...v13.0.0-rc.20)
+
+### 🚀 Features
+
+- _(config)_ Add fixes preset with temporary fix for bug with auto-hide navigation buttons — [`541c9347…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/541c93479a7fe2dff88bf822fabb629767625b7f)
+
+### 💼 Other
+
+- Update to firefox v152.0.4 — [`39adad47…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39adad47413bb8956f19aeb4f77c4ab0e3da18f0)
+- Update deps — [`dde57457…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dde574576b0994aa75aad2537ae73b1dd30e4a4e)
+
+### 🚜 Refactor
+
+- Move common dependencies into catalog — [`0225675a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0225675a15b4522fd28d6cc16add70a44dc71d13)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove obsolete deep equal dependencies — [`bc17698a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bc17698aab2985df9c14a44d662a3b3b236fea9e)
+- _(shared)_ Remove obsolete webextension-polyfill dependency — [`72b51c25…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/72b51c256a9ee0c10471bbb045be9d66d57a6f48)
+
 ## [FireDragon v13.0.0-rc.19](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.19) — 2026-06-24 — [`v13.0.0-rc.18`…`v13.0.0-rc.19`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.18...v13.0.0-rc.19)
 
 ### 🐛 Bug Fixes
