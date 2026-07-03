@@ -16,12 +16,12 @@
     "dev": "tsdown"
   },
   "dependencies": {
-    "@wxt-dev/browser": "^0.2.2",
+    "@wxt-dev/browser": "catalog:",
     "deep-equal": "^2.2.3",
     "webextension-polyfill": "^0.12.0"
   },
   "peerDependencies": {
-    "@vue/reactivity": "^3.5.29",
+    "@vue/reactivity": "catalog:",
     "@webext-core/storage": "^1.2.0",
     "wxt": "catalog:"
   },
