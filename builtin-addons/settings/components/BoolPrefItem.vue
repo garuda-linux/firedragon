@@ -10,10 +10,18 @@
     }>();
 
     const value = await useBoolPref(pref);
+
+    const { state: locked } = useAsyncState(() => browser.firedragon.prefIsLocked(pref), false);
 </script>
 
 <template>
-    <ToggleItem :title="title" :description="description" :inset-level="insetLevel" :disable="disable" v-model="value">
+    <ToggleItem
+        :title="title"
+        :description="description"
+        :inset-level="insetLevel"
+        :disable="disable || locked"
+        v-model="value"
+    >
         <template #avatar v-if="$slots.avatar">
             <slot name="avatar" />
         </template>
