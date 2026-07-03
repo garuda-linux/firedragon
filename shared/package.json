@@ -17,8 +17,7 @@
   },
   "dependencies": {
     "@wxt-dev/browser": "catalog:",
-    "deep-equal": "^2.2.3",
-    "webextension-polyfill": "^0.12.0"
+    "deep-equal": "^2.2.3"
   },
   "peerDependencies": {
     "@vue/reactivity": "catalog:",

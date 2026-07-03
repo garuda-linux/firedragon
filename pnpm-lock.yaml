@@ -758,9 +758,6 @@ importers:
       deep-equal:
         specifier: ^2.2.3
         version: 2.2.3
-      webextension-polyfill:
-        specifier: ^0.12.0
-        version: 0.12.0
       wxt:
         specifier: 'catalog:'
         version: 0.20.27(@rspack/core@1.6.8(@swc/helpers@0.5.23))(@types/node@26.1.0)(eslint@10.6.0(jiti@2.7.0))(jiti@2.7.0)(less@4.6.7)(oxc-parser@0.137.0)(rolldown@1.1.4)(rollup@4.62.2)(sass-embedded@1.100.0)(sass@1.101.0)(terser@5.48.0)(tsx@4.22.4)(webpack@5.107.2(@swc/core@1.15.43(@swc/helpers@0.5.23)))(yaml@2.9.0)
