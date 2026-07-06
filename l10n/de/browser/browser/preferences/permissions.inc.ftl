@@ -1,0 +1,11 @@
+permissions-site-eme-window2 =
+    .title = Einstellungen – EME-Berechtigungen
+    .style = { permissions-window2.style }
+permissions-site-eme-desc = Die folgenden Websites haben die Wiedergabe von DRM-geschützten Inhalten angefordert. Sie können festlegen, welche Websites DRM-geschützte Inhalte wiedergeben dürfen. Außerdem können Sie neue Anfragen zur Wiedergabe von DRM-geschützten Inhalten blockieren.
+permissions-site-eme-disable-label =
+    .label = Neue Anfragen zum Abspielen von DRM-geschützten Inhalten blockieren
+permissions-site-eme-disable-desc = Dadurch wird verhindert, dass Websites, die oben nicht aufgeführt sind, die Berechtigung zum Abspielen von DRM-geschützten Inhalten anfordern.
+permissions-site-webgl-window2 =
+    .title = Einstellungen - WebGL-Berechtigungen
+    .style = { permissions-window2.style }
+permissions-site-webgl-desc = Die folgenden Websites haben die Erstellung eines WebGL-Kontexts angefordert. Sie können festlegen, welche Websites einen WebGL-Kontext erstellen dürfen. Außerdem können Sie neue Anfragen zur Erstellung eines WebGL-Kontexts blockieren.
