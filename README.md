@@ -1,6 +1,22 @@
 # FireDragon v13
 
-This repository is a testbed for a new build system for the upcoming FireDragon v13.
+FireDragon is a cross-platform, feature-rich & privacy-focused web browser.
+
+## Download / Installation
+
+### Linux
+
+FireDragon is officially available in the Arch Linux AUR, Chaotic AUR & Garuda Linux repository.
+
+Otherwise, the Linux tarball can be downloaded on the [Releases](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/) page.
+
+### Windows
+
+The Windows installer can be downloaded on the [Releases](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/) page.
+
+### MacOS
+
+The macOS installer can be downloaded on the [Releases](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/) page.
 
 ## Contributing
 
