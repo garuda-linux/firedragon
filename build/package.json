@@ -14,7 +14,7 @@
     "dev": "tsdown"
   },
   "dependencies": {
-    "globby": "^16.2.0"
+    "globby": "^16.2.1"
   },
   "peerDependencies": {
     "vite": "catalog:",

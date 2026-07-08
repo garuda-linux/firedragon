@@ -8,12 +8,12 @@
   "dependencies": {
     "@firedragon/shared": "workspace:^",
     "@vue/reactivity": "catalog:",
-    "p-queue": "^9.3.0"
+    "p-queue": "^9.3.1"
   },
   "devDependencies": {
     "@firedragon/build": "workspace:^",
     "@types/gecko": "workspace:^",
-    "globby": "^16.2.0",
+    "globby": "^16.2.1",
     "typescript": "catalog:",
     "vite": "catalog:"
   }
