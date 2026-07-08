@@ -1,0 +1,13 @@
+{
+  "title": "FireDragon Notes",
+  "list": {
+    "add": "Add Note",
+    "up": "Move up",
+    "down": "Move down",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "show": {
+    "title": "Title"
+  }
+}

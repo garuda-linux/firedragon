@@ -1,0 +1,850 @@
+{
+  "title": "FireDragon Settings",
+  "back": "Back to settings",
+  "pages": {
+    "home": {
+      "title": "FireDragon Settings",
+      "description": "We carefully choose default settings to focus on privacy and security. When changing these settings, read the description to understand the implications of those changes.",
+      "browserBehaviour": {
+        "title": "Browser behaviour",
+        "autoUpdateExtensions": {
+          "title": "Update add-ons automatically",
+          "description": "Keep extensions up to date without manual intervention. A good choice for your security. If you don't review the code of your extensions before every update, you should enable this option."
+        },
+        "enableSync": {
+          "title": "Enable FireDragon Sync",
+          "description": "Sync your data with other browsers. Requires restart. FireDragon Sync encrypts data locally before transmitting it to the server.",
+          "restartDialog": {
+            "title": "Restart required",
+            "message": "FireDragon's restart is required to completely enable or disable FireDragon Sync."
+          }
+        },
+        "enableMiddleClickPaste": {
+          "title": "Enable middle click paste",
+          "description": "Select some text to copy it, then paste it with a middle-mouse click."
+        },
+        "hidePasswdmgr": {
+          "title": "Hide password manager",
+          "description": "Hide password manager menu item and settings.",
+          "restartDialog": {
+            "title": "Restart required",
+            "message": "FireDragon's restart is required to completely show or hide the password manager."
+          }
+        },
+        "enableTranslations": {
+          "title": "Enable Translations",
+          "description": "Enable offline translations."
+        },
+        "closeWindowWithLastTab": {
+          "title": "Close window with last tab",
+          "description": "Close the browser window when the last tab is closed."
+        }
+      },
+      "networking": {
+        "title": "Networking",
+        "enableIPv6": {
+          "title": "Enable IPv6",
+          "description": "Allow FireDragon to connect using IPv6. Instead of blocking IPv6 in the browser, we suggest enabling the IPv6 privacy extension in your OS."
+        }
+      },
+      "privacy": {
+        "title": "Privacy",
+        "enablePrefetchConfig": {
+          "title": "Enable prefetching",
+          "description": "Prefetching is a browser feature that allows the browser to download resources in the background while the user is browsing. This can improve performance and reduce bandwidth usage.",
+          "restartDialog": {
+            "title": "Restart required",
+            "message": "FireDragon's restart is required to completely enable or disable prefetching."
+          }
+        },
+        "limitCrossOriginReferrers": {
+          "title": "Limit cross-origin referrers",
+          "description": "Send a referrer only on same-origin. This may cause breakage. Additionally, even when sent referrers will still be trimmed."
+        },
+        "autoRefuseCookies": {
+          "title": "Automatically refuse cookie banners",
+          "description": "When a site asks if they can use cookies, FireDragon automatically refuses for you. Only on supported sites. Not compatible with blocking all cookies / Strict-Mode."
+        }
+      },
+      "fingerprinting": {
+        "title": "Fingerprinting",
+        "enableRFP": {
+          "title": "Enable ResistFingerprinting",
+          "description": "ResistFingerprinting is the best in class anti-fingerprinting tool. If you need to disable it, consider using an extension like Canvas Blocker."
+        },
+        "enableLetterboxing": {
+          "title": "Enable letterboxing",
+          "description": "Letterboxing applies margins around your windows, in order to return a limited set of rounded resolutions."
+        },
+        "enableWebGL": {
+          "title": "Enable WebGL",
+          "description": "WebGL is a strong fingerprinting vector. If you need to enable it, consider using an extension like Canvas Blocker."
+        },
+        "enableWebGLPrompt": {
+          "title": "Enable WebGL permission prompt",
+          "description": "This will prompt you to allow WebGL on websites that require it."
+        },
+        "hideWebGLPrompt": {
+          "title": "Hide WebGL permission prompt",
+          "description": "Hides the permission prompt for WebGL. It will still be accessible from the URL bar."
+        }
+      },
+      "security": {
+        "title": "Security",
+        "enforceOCSP": {
+          "title": "Enforce OCSP hard-fail",
+          "description": "Prevent connecting to a website if the OCSP check cannot be performed. This increases security, but it will cause breakage when an OCSP server is down."
+        },
+        "enable0rtt": {
+          "title": "Enable TLS 1.3 0-RTT",
+          "description": "Enable 0-RTT (Zero Round Trip Time) for TLS connections. This can improve performance but may increase security risks."
+        },
+        "enableSafeBrowsing": {
+          "title": "Enable Google Safe Browsing",
+          "description": "If you are worried about malware and phishing, consider enabling it. Disabled over censorship concerns but recommended for less advanced users. All the checks happen locally."
+        },
+        "scanDownloads": {
+          "title": "Scan Downloads",
+          "description": "Allow Safe Browsing to scan your downloads to identify suspicious files. All the checks happen locally."
+        }
+      }
+    },
+    "design": {
+      "title": "Design",
+      "description": "Adjust the appearance of the browser.",
+      "skin": {
+        "title": "Skin",
+        "restartDialog": {
+          "title": "Restart required",
+          "message": "FireDragon's restart is required to completely change the skin."
+        },
+        "proton": {
+          "title": "Proton",
+          "description": "The default Firefox skin"
+        },
+        "fluerial": {
+          "title": "Fluerial",
+          "description": "Floorp's legacy UI"
+        },
+        "lepton": {
+          "title": "Lepton",
+          "description": "A custom skin by black7375"
+        },
+        "lepton-photon": {
+          "title": "Lepton Photon",
+          "description": "Lepton but Photon styled"
+        },
+        "lepton-proton": {
+          "title": "Lepton Proton",
+          "description": "Lepton but Proton styled"
+        }
+      },
+      "advanced": {
+        "title": "Advanced",
+        "allowUserChromeCss": {
+          "title": "Allow userChrome.css customization",
+          "description": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme.",
+          "restartDialog": {
+            "title": "Restart required",
+            "message": "FireDragon's restart is required to completely allow or disallow userChrome.css customization."
+          }
+        }
+      }
+    },
+    "design-lepton": {
+      "title": "Lepton Settings",
+      "description": "Adjust the Lepton skin.",
+      "link": "More information",
+      "advanced": "Show advanced settings",
+      "reset": "Reset all to default",
+      "default": "This is a default setting of the Lepton skin and should not be changed.",
+      "distribution": "This is a default setting of the selected Lepton distribution and should not be changed.",
+      "theme": {
+        "title": "Theme",
+        "themeBuiltInContrast": {
+          "title": "Use built-in contrast"
+        },
+        "themeSystemDefault": {
+          "title": "Use system Look & Feel"
+        },
+        "themeProtonColor": {
+          "title": "Provide Proton color"
+        },
+        "themeProtonChrome": {
+          "title": "Use Proton design popups"
+        },
+        "themeFullyColor": {
+          "title": "Fully color components"
+        },
+        "themeFullyDark": {
+          "title": "Improve dark mode support"
+        },
+        "themeProtonColorDarkBlueAccent": {
+          "title": "Use blue accent color"
+        },
+        "themeMonospace": {
+          "title": "Use monospace font"
+        }
+      },
+      "decoration": {
+        "title": "Decoration",
+        "decorationCursor": {
+          "title": "Automatically change cursor shape"
+        },
+        "decorationFieldBorder": {
+          "title": "Show border around input fields"
+        },
+        "decorationDownloadPanel": {
+          "title": "Improve download panel"
+        },
+        "decorationAnimate": {
+          "title": "Enable various small animations"
+        },
+        "decorationDisablePanelAnimate": {
+          "title": "Remove panel animation"
+        },
+        "decorationDisableSidebarAnimate": {
+          "title": "Remove sidebar animation"
+        }
+      },
+      "autohide": {
+        "title": "Auto-hide settings",
+        "autohideTab": {
+          "title": "Automatically hide tabs",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "opacity": "Opacity",
+            "blur": "Blur"
+          }
+        },
+        "autohideNavbar": {
+          "title": "Automatically hide navbar"
+        },
+        "autohideBookmarkbar": {
+          "title": "Automatically hide bookmarkbar"
+        },
+        "autohideSidebar": {
+          "title": "Automatically hide sidebar"
+        },
+        "autohideFillUrlbar": {
+          "title": "Automatically expand urlbar and hide other UI elements"
+        },
+        "autohideBackButton": {
+          "title": "Automatically hide back button"
+        },
+        "autohideForwardButton": {
+          "title": "Automatically hide forward button"
+        },
+        "autohidePageAction": {
+          "title": "Automatically hide buttons in addressbar"
+        },
+        "autohideToolbarOverlap": {
+          "title": "Have toolbar overlap the content when auto-hide is enabled"
+        }
+      },
+      "hidden": {
+        "title": "Hidden",
+        "hiddenTabIcon": {
+          "title": "Hide tab icons",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "always": "Always"
+          }
+        },
+        "hiddenTabbar": {
+          "title": "Hide tabbar"
+        },
+        "hiddenNavbar": {
+          "title": "Hide navbar"
+        },
+        "hiddenSidebarHeader": {
+          "title": "Hide sidebar header",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "verticalTabOnly": "Vertical tabs only"
+          }
+        },
+        "hiddenUrlbarIconbox": {
+          "title": "Hide icons in addressbar"
+        },
+        "hiddenBookmarkbar": {
+          "title": "Hide labels or icons in bookmarkbar",
+          "type": {
+            "none": "Disabled",
+            "icon": "Hide icons",
+            "label": "Hide labels"
+          }
+        },
+        "hiddenDisabledMenu": {
+          "title": "Hide disabled menu items"
+        }
+      },
+      "centered": {
+        "title": "Centered",
+        "centeredTab": {
+          "title": "Center tab",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "label": "Label only"
+          }
+        },
+        "centeredUrlbar": {
+          "title": "Center addressbar"
+        },
+        "centeredBookmarkbar": {
+          "title": "Center bookmarkbar"
+        }
+      },
+      "rounding": {
+        "title": "Rounding",
+        "roundingSquareTab": {
+          "title": "Square tab"
+        },
+        "roundingSquarePanel": {
+          "title": "Square panel"
+        },
+        "roundingSquarePanelitem": {
+          "title": "Square panel items"
+        },
+        "roundingSquareMenupopup": {
+          "title": "Square menu popup"
+        },
+        "roundingSquareMenuitem": {
+          "title": "Square menu items"
+        },
+        "roundingSquareField": {
+          "title": "Square input text fields"
+        },
+        "roundingSquareChecklabel": {
+          "title": "Square input checkboxes"
+        }
+      },
+      "padding": {
+        "title": "Padding",
+        "paddingTabbarWidth": {
+          "title": "Reduce padding in tabbar"
+        },
+        "paddingTabbarHeight": {
+          "title": "Reduce tabbar height"
+        },
+        "paddingToolbarButton": {
+          "title": "Reduce padding in toolbar buttons"
+        },
+        "paddingNavbarWidth": {
+          "title": "Reduce padding in navbar"
+        },
+        "paddingUrlbar": {
+          "title": "Reduce padding in URL bar & view"
+        },
+        "paddingBookmarkbar": {
+          "title": "Reduce padding in bookmarkbar"
+        },
+        "paddingInfobar": {
+          "title": "Reduce padding in infobar"
+        },
+        "paddingMenu": {
+          "title": "Reduce padding in menu"
+        },
+        "paddingBookmarkMenu": {
+          "title": "Reduce padding in bookmark menu"
+        },
+        "paddingGlobalMenubar": {
+          "title": "Stretch global menubar for easier access"
+        },
+        "paddingPanel": {
+          "title": "Reduce padding in panel"
+        },
+        "paddingPopupPanel": {
+          "title": "Reduce padding in popup panel"
+        },
+        "paddingFirstTab": {
+          "title": "Add padding before first tab",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "always": "Always"
+          }
+        },
+        "paddingDragSpace": {
+          "title": "Add drag space",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "maximized": "Keep on maximized"
+          }
+        },
+        "paddingMenuCompact": {
+          "title": "Reduce menu padding"
+        },
+        "paddingBookmarkMenuCompact": {
+          "title": "Reduce bookmark menu padding"
+        },
+        "paddingPanelHeader": {
+          "title": "Reduce panel header padding"
+        },
+        "paddingUrlViewExpanding": {
+          "title": "Reduce padding in expanded URL View"
+        },
+        "paddingUrlViewResults": {
+          "title": "Reduce padding in URL View results"
+        }
+      },
+      "urlView": {
+        "title": "URL View",
+        "urlViewMoveIconToLeft": {
+          "title": "Move icon to left"
+        },
+        "urlViewGoButtonWhenTyping": {
+          "title": "Show go button when typing"
+        },
+        "urlViewAlwaysShowPageActions": {
+          "title": "Always show page actions"
+        }
+      },
+      "tabbar": {
+        "title": "Tabbar",
+        "tabbarAsTitlebar": {
+          "title": "Show tabbar as titlebar"
+        },
+        "tabbarOnBottom": {
+          "title": "Show tabbar on bottom"
+        },
+        "tabbarOnBottomAboveBookmark": {
+          "title": "Show tabbar above bookmarkbar"
+        },
+        "tabbarOnBottomMenubarOnTop": {
+          "title": "Show menubar on top"
+        },
+        "tabbarOnBottomHiddenSingleTab": {
+          "title": "Hide tabbar when there is only one tab"
+        },
+        "tabbarOneLiner": {
+          "title": "Show tabbar in one line"
+        },
+        "tabbarOneLinerCombineNavbar": {
+          "title": "Combine navbar"
+        },
+        "tabbarOneLinerTabbarFirst": {
+          "title": "Show tabbar first"
+        },
+        "tabbarOneLinerResponsive": {
+          "title": "Automatically switch one liner mode when screen width is too small"
+        }
+      },
+      "tab": {
+        "title": "Tab",
+        "tabMultiSelected": {
+          "title": "Adjust contrast of milti selected tabs"
+        },
+        "tabUnloaded": {
+          "title": "Adjust opacity of unloaded tabs"
+        },
+        "tabLettersCleary": {
+          "title": "Clearly truncate text"
+        },
+        "tabSoundHideLabel": {
+          "title": "Hide sound label"
+        },
+        "tabSoundWithFavicons": {
+          "title": "Show sound icons"
+        },
+        "tabPip": {
+          "title": "Show PIP icon"
+        },
+        "tabContainer": {
+          "title": "Adjust container indicator"
+        },
+        "tabCrashed": {
+          "title": "Hide favicon of crashed tabs"
+        },
+        "tabConnectToWindow": {
+          "title": "Connect to Window"
+        },
+        "tabColorLikeToolbar": {
+          "title": "Color like toolbar"
+        },
+        "tabLeptonLikePadding": {
+          "title": "Lepton-like padding"
+        },
+        "tabPhotonLikePadding": {
+          "title": "Photon-like padding"
+        },
+        "tabDynamicSeparator": {
+          "title": "Show dynamic separator"
+        },
+        "tabStaticSeparator": {
+          "title": "Show static separator"
+        },
+        "tabStaticSeparatorSelectedAccent": {
+          "title": "Accent static separator when selected"
+        },
+        "tabNewtabButtonLikeTab": {
+          "title": "Show newtab button like tab"
+        },
+        "tabNewtabButtonSmaller": {
+          "title": "Make newtab button smaller"
+        },
+        "tabNewtabButtonProton": {
+          "title": "Adjust newtab button for proton style"
+        },
+        "tabBoxShadow": {
+          "title": "Add boxshadow at tab"
+        },
+        "tabBottomRoundedCorner": {
+          "title": "Rounded bottom corners"
+        },
+        "tabPhotonLikeContextline": {
+          "title": "Photon-like contextline"
+        },
+        "tabAlwaysShowTabIcon": {
+          "title": "Always show tab icon"
+        },
+        "tabCloseButtonAtHover": {
+          "title": "Show close button on hover",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "always": "Always"
+          }
+        },
+        "tabCloseButtonAtPinned": {
+          "title": "Show close button on selected pinned tab",
+          "type": {
+            "none": "Disabled",
+            "default": "Default",
+            "always": "Always"
+          }
+        },
+        "tabCloseButtonAtPinnedBackground": {
+          "title": "Show close button on pinned background tabs on hover"
+        },
+        "tabSoundShowLabel": {
+          "title": "Show sound label"
+        },
+        "tabSupernovaLikeContextline": {
+          "title": "Supernova-like contextline"
+        }
+      },
+      "panel": {
+        "title": "Panel",
+        "panelRemoveStrip": {
+          "title": "Remove strip from panel header"
+        },
+        "panelFullWidthSeparator": {
+          "title": "Make panel header separator full width"
+        },
+        "panelFullWidthPadding": {
+          "title": "Full width padding"
+        }
+      },
+      "sidebar": {
+        "title": "Sidebar",
+        "panelSidebar": {
+          "title": "Overlap content"
+        }
+      },
+      "fullscreen": {
+        "title": "Fullscreen",
+        "fullscreenOverlap": {
+          "title": "Have toolbar overlap content"
+        },
+        "fullscreenShowBookmarkbar": {
+          "title": "Show bookmarkbar in fullscreen"
+        }
+      },
+      "icon": {
+        "title": "Icons",
+        "iconPanel": {
+          "title": "Show icons in panel"
+        },
+        "iconLibrary": {
+          "title": "Show icons in library"
+        },
+        "iconContextMenu": {
+          "title": "Show icons in context menu"
+        },
+        "iconGlobalMenu": {
+          "title": "Show icons in global menu"
+        },
+        "iconGlobalMenubar": {
+          "title": "Show icons in global menubar"
+        },
+        "iconPanelFull": {
+          "title": "Show full panel icons"
+        },
+        "iconPanelPhoton": {
+          "title": "Photon-like panel icons"
+        },
+        "iconDisabled": {
+          "title": "Disable all icons"
+        },
+        "iconAccountImageToRight": {
+          "title": "Move image to right in account panel"
+        },
+        "iconAccountLabelToRight": {
+          "title": "Move label to right in account panel"
+        },
+        "iconMenuFull": {
+          "title": "Full icon menu"
+        },
+        "iconGlobalMenuMac": {
+          "title": "Global menu icons on Mac"
+        }
+      },
+      "player": {
+        "title": "Media Player",
+        "playerUi": {
+          "title": "Improved player UI"
+        },
+        "playerIcon": {
+          "title": "Replace player icons"
+        },
+        "playerNoaudio": {
+          "title": "Clearly show no-audio video"
+        },
+        "playerSize": {
+          "title": "Adjust player size when touch mode of fullscreen"
+        },
+        "playerClickToPlay": {
+          "title": "Click to play"
+        },
+        "playerAnimate": {
+          "title": "Player animations"
+        },
+        "playerUiTwoline": {
+          "title": "Two line player UI"
+        }
+      },
+      "newTab": {
+        "title": "New Tab",
+        "newTabFieldBorder": {
+          "title": "Show border around input fields"
+        },
+        "newTabFullIcon": {
+          "title": "Remove padding around icons"
+        },
+        "newTabAnimate": {
+          "title": "New tab animations"
+        },
+        "newTabSearchbar": {
+          "title": "Improved search view"
+        }
+      },
+      "page": {
+        "title": "Page",
+        "pageIllustration": {
+          "title": "Show error illustrations"
+        },
+        "pageProtonColor": {
+          "title": "Provide Proton color"
+        },
+        "pageDarkMode": {
+          "title": "Dark mode contents"
+        },
+        "pageProton": {
+          "title": "Proton theme contents"
+        },
+        "pageProtonColor2": {
+          "title": "Proton accent color",
+          "type": {
+            "none": "Disabled",
+            "darkBlueAccent": "Dark blue",
+            "systemAccent": "System"
+          }
+        },
+        "pageMonospace": {
+          "title": "Use monospace font"
+        }
+      }
+    },
+    "keyboardShortcuts": {
+      "title": "Keyboard Shortcuts",
+      "description": "Manage default & custom shortcuts",
+      "general": {
+        "title": "General",
+        "enableDefaultShortcuts": {
+          "title": "Enable default shortcuts",
+          "description": "This will enable or disable all default Firefox shortcuts. Shortcuts defined in the Shortcuts section remain untouched."
+        }
+      },
+      "shortcuts": {
+        "title": "Shortcuts",
+        "command": {
+          "title": "Command",
+          "options": {
+            "ADD_BOOKMARK_AS": "Add bookmark",
+            "BACK": "Back",
+            "BOOKMARK_ALL_TABS": "Bookmark all tabs",
+            "BOOKMARKS_SIDEBAR": "Toggle bookmarks sidebar",
+            "BOOKMARKS_TOOLBAR": "Toggle bookmarks toolbar",
+            "CLOSE_TAB": "Close tab",
+            "CLOSE_WINDOW": "Close window",
+            "CUSTOMIZE_TOOLBARS": "Customize toolbars",
+            "DOWNLOADS": "Open Downloads",
+            "DUPLICATE_TAB": "Duplicate Tab",
+            "FIND": "Find",
+            "FIND_AGAIN": "Find again",
+            "FIND_PREVIOUS": "Find previous",
+            "FIND_SELECTION": "Find selection",
+            "FORCE_RELOAD": "Force reload",
+            "FORWARD": "Forward",
+            "FULL_ZOOM_ENLARGE": "Zoom in",
+            "FULL_ZOOM_REDUCE": "Zoom out",
+            "FULL_ZOOM_RESET": "Reset zoom",
+            "FULL_ZOOM_TOGGLE": "Toggle zoom",
+            "FULLSCREEN": "Toggle fullscreen",
+            "HISTORY_SIDEBAR": "Toggle history sidebar",
+            "IMPORT_FROM_ANOTHER_BROWSER": "Import from another browser",
+            "NEW_NAVIGATOR": "New tab",
+            "NEW_NAVIGATOR_TAB": "New window",
+            "NEXT_TAB": "Next tab",
+            "OPEN_ADDONS_PAGE": "Open addons page",
+            "OPEN_FILE": "Open file",
+            "OPEN_HOME_PAGE": "Open home page",
+            "OPEN_PREFERENCES": "Open preferences",
+            "OPEN_PREFERENCES_PRIVACY": "Open privacy settings",
+            "OPEN_PREFERENCES_CONTAINER": "Open container settings",
+            "OPEN_PREFERENCES_SEARCH": "Open search settings",
+            "OPEN_PREFERENCES_SYNC": "Open sync settings",
+            "PAGE_INFO": "View page info",
+            "PAGE_SOURCE": "View page source",
+            "PREV_TAB": "Previous tab",
+            "PRINT_PAGE": "Print page",
+            "QUIT": "Quit",
+            "READER_VIEW": "Toggle reader view",
+            "RELOAD": "Reload",
+            "RELOAD_ALL_TABS": "Reload all tabs",
+            "SANITIZE": "Forget history",
+            "SAVE_PAGE": "Save page",
+            "SCREENSHOT": "Take screenshot",
+            "SCROLL_BOTTOM": "Scroll to bottom",
+            "SCROLL_LEFT": "Scroll to left",
+            "SCROLL_PAGE_DOWN": "Scroll down",
+            "SCROLL_PAGE_UP": "Scroll up",
+            "SCROLL_RIGHT": "Scroll to right",
+            "SCROLL_TOP": "Scroll to top",
+            "SEARCH_WEB": "Search the web",
+            "SEARCH_BOOKMARKS": "Search bookmarks",
+            "SEARCH_HISTORY": "Search history",
+            "SEND_LINK": "Send link",
+            "SHOW_ALL_TABS_PANEL": "Show all tabs panel",
+            "SIDEBAR_HIDE": "Hide sidebar",
+            "SIDEBAR_REVERSE_POSITION": "Reverse sidebar position",
+            "SIDEBAR_TOGGLE": "Toggle sidebar",
+            "STOP": "Stop",
+            "TABS_SIDEBAR": "Toggle tabs sidebar",
+            "TOGGLE_MUTE": "Toggle mute",
+            "TOGGLE_OFFLINE_MODE": "Toggle offline mode",
+            "TRANSLATE": "Translate",
+            "UNDO_CLOSE_TAB": "Undo close tab",
+            "UNDO_CLOSE_WINDOW": "Undo close window",
+            "VIEW_PIP": "View picture-in-picture",
+            "VIEW_PROCESSES": "Task Manager"
+          }
+        },
+        "modifiers": {
+          "title": "Modifiers",
+          "options": {
+            "ACCEL": "Ctrl (Mac: Meta)",
+            "ALT": "Alt (Mac: Option)",
+            "META": "Meta (Mac: Command)",
+            "SHIFT": "Shift"
+          }
+        },
+        "key": {
+          "title": "Key",
+          "options": {
+            "PK_0": "0",
+            "PK_1": "1",
+            "PK_2": "2",
+            "PK_3": "3",
+            "PK_4": "4",
+            "PK_5": "5",
+            "PK_6": "6",
+            "PK_7": "7",
+            "PK_8": "8",
+            "PK_9": "9",
+            "PK_A": "A",
+            "PK_B": "B",
+            "PK_C": "C",
+            "PK_D": "D",
+            "PK_E": "E",
+            "PK_F": "F",
+            "PK_G": "G",
+            "PK_H": "H",
+            "PK_I": "I",
+            "PK_J": "J",
+            "PK_K": "K",
+            "PK_L": "L",
+            "PK_M": "M",
+            "PK_N": "N",
+            "PK_O": "O",
+            "PK_P": "P",
+            "PK_Q": "Q",
+            "PK_R": "R",
+            "PK_S": "S",
+            "PK_T": "T",
+            "PK_U": "U",
+            "PK_V": "V",
+            "PK_W": "W",
+            "PK_X": "X",
+            "PK_Y": "Y",
+            "PK_Z": "Z",
+            "PK_BACK_QUOTE": "`",
+            "PK_BACK_SLASH": "\\",
+            "PK_CLOSE_BRACKET": "]",
+            "PK_COMMA": ",",
+            "PK_EQUALS": "=",
+            "PK_MINUS": "-",
+            "PK_OPEN_BRACKET": "[",
+            "PK_PERIOD": ".",
+            "PK_PLUS": "+",
+            "PK_QUOTE": "'",
+            "PK_SEMICOLON": ";",
+            "PK_SLASH": "/",
+            "PK_STAR": "*",
+            "VK_F1": "F1",
+            "VK_F2": "F2",
+            "VK_F3": "F3",
+            "VK_F4": "F4",
+            "VK_F5": "F5",
+            "VK_F6": "F6",
+            "VK_F7": "F7",
+            "VK_F8": "F8",
+            "VK_F9": "F9",
+            "VK_F10": "F10",
+            "VK_F11": "F11",
+            "VK_F12": "F12",
+            "VK_F13": "F13",
+            "VK_F14": "F14",
+            "VK_F15": "F15",
+            "VK_F16": "F16",
+            "VK_F17": "F17",
+            "VK_F18": "F18",
+            "VK_F19": "F19",
+            "VK_F20": "F20",
+            "VK_F21": "F21",
+            "VK_F22": "F22",
+            "VK_F23": "F23",
+            "VK_F24": "F24",
+            "VK_RETURN": "Enter"
+          }
+        }
+      }
+    },
+    "sidebar": {
+      "title": "Sidebar",
+      "description": "Customize the sidebar.",
+      "urls": {
+        "title": "Sidebar URLs",
+        "name": "Name",
+        "url": "URL",
+        "iconUrl": "Icon URL"
+      }
+    }
+  }
+}
