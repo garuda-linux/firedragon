@@ -1,5 +1,76 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.21](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.21) — 2026-07-08 — [`v13.0.0-rc.20`…`v13.0.0-rc.21`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.20...v13.0.0-rc.21)
+
+### 🚀 Features
+
+- Add extension api to check if a pref is locked — [`0fc78398…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0fc78398fd6c028fbd65962dfeaedd74c8bbe61f)
+- _(modules)_ Add getAll method to BuiltinAddons — [`c362ca6e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c362ca6e88c90a3f11c1711ac24d16b3e2853fb4)
+- _(content)_ Hide identity box for builtin addons — [`c14398ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c14398ed9e074045211c34a56f796bcef2cea482)
+
+### 🐛 Bug Fixes
+
+- _(settings)_ Disable toggle if pref is locked — [`bcbaa7ce…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bcbaa7ce809549143000f99c1ebc5792364aba6f)
+- _(assets)_ Make desktop file independent of installation path — [`20d03aa0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/20d03aa0828ac71f25c059acb3628ac83d5ecfa3)
+- _(l10n)_ Fix encoding for properties files from ISO-8859-1 to UTF-8 — [`ea66b856…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ea66b856ff81bfc1c3c3f65e3b6123ecebb6ce25)
+
+### 🚜 Refactor
+
+- Use same locale keys for builtin-addons and l10n — [`a884f445…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a884f445149260c97fbf5c045ed112038b070466)
+
+### 📚 Documentation
+
+- _(readme)_ Update for translation using weblate — [`3a341a1d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3a341a1de12c0158c3c72f4debb94ca858c50294)
+- _(readme)_ Update description & add download / installation instructions — [`e2306697…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e23066974bb0fb85ddf271d5255451e0409a614b)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(l10n)_ Add German translation — [`de4dbb95…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/de4dbb958191d56973f43a0ad6536817077bd4f0)
+- _(l10n)_ Add German translation — [`71f14be7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/71f14be7c9aeadc040c3a22093eb2800bd980165)
+- _(l10n)_ Add German translation — [`8cbaf267…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8cbaf2676ccd45ad82489f3d20871c1a2284b8dc)
+- _(l10n)_ Update German translation — [`2b6e4686…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2b6e46868241472145ce58fbe97bd6f0faa1dfc7)
+- _(builtin-addons/welcome)_ Add German translation — [`00c52c0d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/00c52c0d9ea4905605373d826dead0d06e20e461)
+- _(builtin-addons/qr-code)_ Add German translation — [`5b6e425e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5b6e425eaee82797f40a7dcb2a0d6c4067c91b68)
+- _(builtin-addons/workspaces)_ Add German translation — [`d02d9d91…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d02d9d914a07630a23ccecb7e866b5c2b74092f1)
+- _(l10n)_ Add German translation — [`a222910f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a222910f10e29deb89969d472020e49d828edf45)
+- _(l10n)_ Update German translation — [`a41b380f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a41b380f62cf9ba66d89b1d32821b91e388c5735)
+- _(builtin-addons/notes)_ Add German translation — [`28244a6b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/28244a6b7b7d4b752ee65d1d6b164d7adc0e7774)
+- _(builtin-addons/settings)_ Add German translation — [`62050cf5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/62050cf543f2e4b26f70b2a8a82125b97c72e024)
+- _(builtin-addons/troubleshooting)_ Add German translation — [`4e257bad…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4e257bad8fd24a48ce2b279f94aaba6e20d626e2)
+- _(l10n)_ Update German translation — [`cc9c6fa3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cc9c6fa37b587173c462e8f03f1741d184c8275c)
+- _(l10n)_ Update German translation — [`61238333…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/61238333f2b347fec1231051f8a00f109fba3bff)
+- _(l10n)_ Add German translation — [`7ce5268b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7ce5268bb7f73b45f691fbf185e6bea2a90429ae)
+- _(l10n)_ Update German translation — [`83a2a78f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/83a2a78f8f5dcc12f55e28dd1530ab928fbc6d9b)
+- _(l10n)_ Add German translation — [`1b57c52d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1b57c52d87bbe149f639bd9080ee40c6e99d00de)
+- _(l10n)_ Update German translation — [`9ec9b41e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9ec9b41e6cb10b0d2ffa72f01b116f92ae84b75c)
+- _(builtin-addons/settings)_ Add English (United Kingdom) translation — [`d7addb14…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d7addb141d75a8571c8f9299c899a50a080dd923)
+- _(builtin-addons/qr-code)_ Add English (United Kingdom) translation — [`8dfe5cf4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8dfe5cf495854751a3478786d4073327fcf056dc)
+- _(builtin-addons/workspaces)_ Add English (United Kingdom) translation — [`477dc782…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/477dc7826b9693f72868c672c13f12fa1b06f5dd)
+- _(builtin-addons/troubleshooting)_ Add English (United Kingdom) translation — [`3eadde04…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3eadde049bcb55e91b2b04ae7c8160d3ff234ea6)
+- _(l10n)_ Add English (United Kingdom) translation — [`ce98d9c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ce98d9c6d4914b887e6cfdd4411dfc951f9346b6)
+- _(l10n)_ Add English (United Kingdom) translation — [`56a54f67…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/56a54f67bd61116b73f05cccdbf585750c95d058)
+- _(l10n)_ Add English (United Kingdom) translation — [`821809d1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/821809d1878c0ee3fbe5dd91fdec517d9220b9eb)
+- _(l10n)_ Add English (United Kingdom) translation — [`41143d73…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/41143d735bebc5fc5ccccce30f62dfd781c2c725)
+- _(l10n)_ Add English (United Kingdom) translation — [`9f3c805e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9f3c805e543fa301b0f0b5ea065838b1340f14df)
+- _(builtin-addons/notes)_ Add English (United Kingdom) translation — [`f3631a92…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f3631a9228d0933aa157cde46d75e2544a6ceaeb)
+- _(l10n)_ Add English (United Kingdom) translation — [`039801f1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/039801f166fbc94ced8965736b72cc43c2b2a713)
+- _(l10n)_ Add English (United Kingdom) translation — [`a922db25…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a922db25e9c93072838feddd6edd7cd73e3b9d56)
+- _(builtin-addons/troubleshooting)_ Remove English (United Kingdom) translation — [`8126a5a1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8126a5a12a4b47f2fcfb07627147423279268e44)
+- _(builtin-addons/settings)_ Remove English (United Kingdom) translation — [`64ed56c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64ed56c0216ac24ff3f451e62ab7215db327adc9)
+- _(builtin-addons/welcome)_ Remove English (United Kingdom) translation — [`e7466a47…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e7466a47516823302f6673850c8676afad1ef294)
+- _(builtin-addons/qr-code)_ Remove English (United Kingdom) translation — [`76b5e2c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/76b5e2c356b234d6352c7c25943ec6526fd25d1f)
+- _(builtin-addons/notes)_ Remove English (United Kingdom) translation — [`55e970d4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/55e970d4b63bc201ab63920d5c5d639e88887fde)
+- _(builtin-addons/workspaces)_ Remove English (United Kingdom) translation — [`1beda469…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1beda469e8354e3e573ad4de5aa6d78e39444a5c)
+- _(l10n)_ Remove English (United Kingdom) translation — [`1707fa48…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1707fa484592c2a3d9df9cd20a4ab462d55dc2a2)
+- _(l10n)_ Remove English (United Kingdom) translation — [`295fdaa6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/295fdaa654a13a6f125b9ccbba9cf625269cbfb0)
+- _(l10n)_ Remove English (United Kingdom) translation — [`b3b77f03…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b3b77f039b32fecedacf0f148c159aeece4513fd)
+- _(l10n)_ Remove English (United Kingdom) translation — [`aa766e29…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/aa766e29bd14032eb5bdb7f88c80232d47d39a30)
+- _(l10n)_ Remove English (United Kingdom) translation — [`bf019694…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bf019694de3d742c1f8086e227703562c4618408)
+- _(l10n)_ Remove English (United Kingdom) translation — [`3dfddd3a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3dfddd3a865c08a169bf014c3ce510dc039d684c)
+- Change builtin-addons language files from yaml to json — [`d9510c82…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d9510c82cca830bb51fcd1ad9ebd35e1e5e0dd70)
+- Update firefox to v152.0.5 — [`54a61ce3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/54a61ce3ae9dade70cf9ca4eaad143286ffba2e7)
+- Update pnpm & deps — [`4c5704eb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4c5704eb378e2d81aaf2d93bac78e2c1fd212738)
+
 ## [FireDragon v13.0.0-rc.20](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.20) — 2026-07-03 — [`v13.0.0-rc.19`…`v13.0.0-rc.20`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.19...v13.0.0-rc.20)
 
 ### 🚀 Features
