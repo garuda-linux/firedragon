@@ -1,7 +1,7 @@
 {
   "name": "firedragon",
   "version": "13.0.0-rc.20",
-  "firefoxVersion": "152.0.4",
+  "firefoxVersion": "152.0.5",
   "private": true,
   "type": "module",
   "scripts": {
