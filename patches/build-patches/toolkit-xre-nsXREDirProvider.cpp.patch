@@ -1,19 +1,20 @@
 diff --git a/toolkit/xre/nsXREDirProvider.cpp b/toolkit/xre/nsXREDirProvider.cpp
-index f60d1ab57e2f..07d8f9cfe05c 100644
+index b54980f967ab..b2b5d5237886 100644
 --- a/toolkit/xre/nsXREDirProvider.cpp
 +++ b/toolkit/xre/nsXREDirProvider.cpp
-@@ -1324,7 +1324,9 @@ nsresult nsXREDirProvider::AppendFromAppData(nsIFile* aFile, bool aIsDotted) {
-   // future?
+@@ -1336,7 +1336,10 @@ nsresult nsXREDirProvider::AppendFromAppData(nsIFile* aFile, bool aIsDotted) {
    if (gAppData->profile) {
      nsAutoCString profile;
--    profile = gAppData->profile;
-+    profile = aIsDotted ? "."_ns : ""_ns;
-+    profile.Append(gAppData->profile);
+     profile = gAppData->profile;
+-    MOZ_TRY(aFile->AppendRelativeNativePath(profile));
 +    ToLowerCase(profile);
-     MOZ_TRY(aFile->AppendRelativeNativePath(profile));
++
++    MOZ_TRY(aFile->AppendRelativeNativePath(aIsDotted ? ("."_ns + profile)
++                                                      : profile));
    } else {
      nsAutoCString vendor;
-@@ -1501,15 +1503,8 @@ nsresult nsXREDirProvider::GetLegacyOrXDGHomePath(const char* aHomeDir,
+     nsAutoCString appName;
+@@ -1512,15 +1515,8 @@ nsresult nsXREDirProvider::GetLegacyOrXDGHomePath(const char* aHomeDir,
        return NS_OK;
      }
  
