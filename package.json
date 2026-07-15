@@ -12,8 +12,8 @@
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "git-cliff": "^2.13.1",
     "lerna": "^9.0.7",
-    "prettier": "^3.9.4",
-    "tsx": "^4.23.0",
+    "prettier": "^3.9.5",
+    "tsx": "^4.23.1",
     "zx": "^8.8.5"
   },
   "repository": {
@@ -21,5 +21,5 @@
     "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
   },
   "license": "MPL-2.0",
-  "packageManager": "pnpm@11.10.0+sha512.0b7f8b98060031904c017e3a41eb187a16d40eeb829b95c4f8cb03681761fc4ab53dd219115b9b447f4dce1a05a214764461e7d3703392a9f32f9511ce8c86c8"
+  "packageManager": "pnpm@11.13.0+sha512.88d94724d8f2e6c186744a5584c6e59ecac869ec7ba15e9cb4cd628e8dc7066820b2481d8ee3b51ea8da323a7378068aa58c556a3720d32b7c20a051d088363a"
 }
