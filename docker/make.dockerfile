@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y glab libc6:i386 moreutils msitools p7zip-full python3-pip rsync rustup zstd
+RUN apt-get install -y flatpak glab libc6:i386 moreutils msitools p7zip-full python3-pip rsync rustup zstd
 
 # Setup corepack
 RUN corepack enable
@@ -19,3 +19,6 @@ RUN install-rust.sh
 
 # Allow running appimage inside container
 ENV APPIMAGE_EXTRACT_AND_RUN=1
+
+# Allow running flatpak inside container
+ENV FLATPAK_SYSTEM_HELPER_ON_SESSION=''

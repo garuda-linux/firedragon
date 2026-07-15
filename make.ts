@@ -9,6 +9,9 @@ import {
     distDir,
     editions,
     firefoxVersion,
+    flatpakBaseId,
+    flatpakBaseVersion,
+    flatpakBranch,
     objDir,
     profileDir,
     repoUrl,
@@ -213,6 +216,80 @@ async function appimage() {
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${buildDir} ${distDir}/${buildBasename}.AppImage`;
 }
 
+async function flatpak() {
+    const buildBasename = `${basename}.${target.suffix.replace('linux', 'flatpak')}`;
+    const buildDir = `${tmpDir}/${buildBasename}`;
+
+    const appDir = `${buildDir}/build/files`;
+    const libDir = `${appDir}/lib`;
+
+    await $`flatpak remote-add --user --if-not-exists --from flathub https://dl.flathub.org/repo/flathub.flatpakrepo`;
+    await $`flatpak install --user -y flathub ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`;
+
+    const baseFiles = (await $`flatpak info -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim();
+    await $`mkdir -p ${appDir}`;
+    await $`cp -as ${baseFiles}/files/. ${appDir}`;
+
+    const variables = {
+        FLATPAK_ID: edition.flatpakId,
+        ARCH: target.arch,
+        FLATPAK_BASE_ID: flatpakBaseId,
+        FLATPAK_BASE_VERSION: flatpakBaseVersion,
+        FLATPAK_BRANCH: flatpakBranch,
+    };
+    for (const file of await glob('**', { cwd: 'assets/flatpak' })) {
+        await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} assets/flatpak/${file} | sponge ${buildDir}/build/${file}`;
+    }
+    await $`chmod +x ${appDir}/bin/firedragon`;
+
+    await $`mkdir -p ${libDir}`;
+    await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
+
+    await $`install -Dm644 -T assets/firedragon.desktop ${appDir}/share/applications/${edition.flatpakId}.desktop`;
+    await $`desktop-file-edit --set-key=Icon --set-value=${edition.flatpakId} ${appDir}/share/applications/${edition.flatpakId}.desktop`;
+
+    for (const size of [16, 32, 48, 64, 128]) {
+        await $`install -Dm644 -T ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.flatpakId}.png`;
+    }
+
+    await $`install -Dm644 -t ${appDir}/share/appdata assets/${edition.flatpakId}.appdata.xml`;
+
+    const $$ = $({
+        cwd: buildDir,
+    });
+
+    await $$`flatpak build-finish build ${[
+        '--allow=devel',
+        '--share=ipc',
+        '--share=network',
+        '--socket=pulseaudio',
+        '--socket=wayland',
+        '--socket=fallback-x11',
+        '--socket=pcsc',
+        '--socket=cups',
+        '--require-version=0.11.1',
+        '--persist=.firedragon',
+        '--env=DICPATH=/usr/share/hunspell',
+        '--filesystem=xdg-config/gtk-3.0:ro',
+        '--filesystem=xdg-download:rw',
+        '--filesystem=/run/.heim_org.h5l.kcm-socket',
+        '--filesystem=xdg-run/speech-dispatcher:ro',
+        '--device=all',
+        '--talk-name=org.freedesktop.FileManager1',
+        '--system-talk-name=org.freedesktop.NetworkManager',
+        '--talk-name=org.a11y.Bus',
+        '--talk-name=org.gtk.vfs.*',
+        '--own-name=org.mpris.MediaPlayer2.firefox.*',
+        '--own-name=org.mozilla.firedragon.*',
+        `--own-name=${edition.flatpakId}.*`,
+        '--command=firedragon',
+    ]}`;
+
+    await $$`flatpak build-export --arch=${target.arch} --disable-sandbox --no-update-summary --exclude=/share/runtime/locale/*/* repo build ${flatpakBranch}`;
+
+    await $`flatpak build-bundle ${buildDir}/repo ${distDir}/${buildBasename}.flatpak ${edition.flatpakId}`;
+}
+
 async function dev() {
     const devArtifacts = await Promise.all(
         target.artifacts.dev.map((format) => getArtifact(edition.basename, `${target.suffix}.${format}`)),
@@ -286,9 +363,9 @@ async function release() {
         description: null,
     };
 
-    await $`xq --xml-dtd -x -i --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' assets/*.metainfo.xml`;
+    await $`xq --xml-dtd -x -i --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' assets/*.appdata.xml`;
 
-    await $`git add package.json CHANGELOG.md assets/*.metainfo.xml`;
+    await $`git add package.json CHANGELOG.md assets/*.appdata.xml`;
     await $`git commit -m 'release: v'${version}`;
     await $`git tag -m v${version} v${version}`;
 }
@@ -332,6 +409,9 @@ async function ciRelease() {
                     downloads.push(
                         `| ${edition.displayName} ${target.displayName.replace('Linux', 'AppImage')} | [${firstArtifact.name.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}) |`,
                     );
+                    downloads.push(
+                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'Flatpak')} | [${firstArtifact.name.replace('linux', 'flatpak').replace('tar.xz', 'flatpak')}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'flatpak').replace('tar.xz', 'flatpak')}) |`,
+                    );
                 }
             }
         }
@@ -369,6 +449,9 @@ for (const command of argv._) {
             break;
         case 'appimage':
             await appimage();
+            break;
+        case 'flatpak':
+            await flatpak();
             break;
         case 'release':
             await release();

@@ -8,6 +8,9 @@ export const repoUrl = packageJson.repository.url.replace(/\.git$/, '');
 export const sourceDir = 'browser/firedragon';
 export const version = packageJson.version;
 export const firefoxVersion = packageJson.firefoxVersion;
+export const flatpakBaseId = 'org.mozilla.firefox.BaseApp';
+export const flatpakBaseVersion = '25.08';
+export const flatpakBranch = 'master';
 export const objDir = 'obj';
 export const editions = {
     dr460nized: {
@@ -15,16 +18,19 @@ export const editions = {
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-dr460nized.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/dr460nized/quasar.scss', import.meta.url)),
         displayName: 'Dr460nized',
+        flatpakId: 'org.garudalinux.firedragon',
     },
     catppuccin: {
         basename: 'firedragon-catppuccin',
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-catppuccin.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/catppuccin/quasar.scss', import.meta.url)),
         displayName: 'Catppuccin',
+        flatpakId: 'org.garudalinux.firedragon-catppuccin',
     },
 };
 export const targets = {
     'darwin-arm64': {
+        arch: 'aarch64',
         mozconfig: `${sourceDir}/mozconfig/target/darwin-arm64.mozconfig`,
         suffix: 'darwin-arm64',
         artifacts: {
@@ -38,6 +44,7 @@ export const targets = {
         displayName: 'MacOS arm64',
     },
     'darwin-x64': {
+        arch: 'x86_64',
         mozconfig: `${sourceDir}/mozconfig/target/darwin-x64.mozconfig`,
         suffix: 'darwin-x64',
         artifacts: {
@@ -51,6 +58,7 @@ export const targets = {
         displayName: 'MacOS x64',
     },
     'linux-arm64': {
+        arch: 'aarch64',
         mozconfig: `${sourceDir}/mozconfig/target/linux-arm64.mozconfig`,
         suffix: 'linux-arm64',
         artifacts: {
@@ -64,6 +72,7 @@ export const targets = {
         displayName: 'Linux arm64',
     },
     'linux-x64': {
+        arch: 'x86_64',
         mozconfig: `${sourceDir}/mozconfig/target/linux-x64.mozconfig`,
         suffix: 'linux-x64',
         artifacts: {
@@ -75,8 +84,10 @@ export const targets = {
         resourcesDir: appName,
         binFile: appName,
         displayName: 'Linux x64',
+        flatpakArch: 'x86_64',
     },
     'win32-arm64': {
+        arch: 'aarch64',
         mozconfig: `${sourceDir}/mozconfig/target/win32-arm64.mozconfig`,
         suffix: 'win32-arm64',
         artifacts: {
@@ -90,6 +101,7 @@ export const targets = {
         displayName: 'Windows arm64',
     },
     'win32-x64': {
+        arch: 'x86_64',
         mozconfig: `${sourceDir}/mozconfig/target/win32-x64.mozconfig`,
         suffix: 'win32-x64',
         artifacts: {
