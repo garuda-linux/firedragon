@@ -1,5 +1,27 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.22](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.22) — 2026-07-15 — [`v13.0.0-rc.21`…`v13.0.0-rc.22`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.21...v13.0.0-rc.22)
+
+### 🐛 Bug Fixes
+
+- Backport fix for lepton auto-hide navigation buttons — [`cdbbc00d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cdbbc00dd471a3d8a0ecf3a61bd782f394328c0d)
+
+### 🚜 Refactor
+
+- _(patches)_ Refactor toolkit-xre-nsXREDirProvider.cpp.patch to make it more similar to firefox logic — [`cb3bd993…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cb3bd99319fae5d45f5a53a9ea66faecd014db83)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update firefox to v152.0.6 — [`d39e4a1d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d39e4a1dbcbf2dfff29bce6bf8f02ffb71b0c4e3)
+- _(l10n)_ Update German translation — [`d58372cf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d58372cf85f51418b6a60fb2e4c1c3e173c4f541)
+- _(l10n)_ Update English (United States) translation — [`a981e0f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a981e0f9337ba5532c050d21b0522a070a56b50f)
+- _(l10n)_ Update German translation — [`e7b65f21…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e7b65f212a99a5819d04c3871ab5e7fe5284b55a)
+- Update pnpm & deps — [`2123b50b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2123b50b6f244a973b9b69152a19e5db28f3bf2d)
+
+### ◀️ Revert
+
+- "feat(config): Add fixes preset with temporary fix for bug with auto-hide navigation buttons" — [`3cb2adac…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3cb2adac620ab29e83e7498e411bc7b4ab2290d7)
+
 ## [FireDragon v13.0.0-rc.21](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.21) — 2026-07-08 — [`v13.0.0-rc.20`…`v13.0.0-rc.21`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.20...v13.0.0-rc.21)
 
 ### 🚀 Features
