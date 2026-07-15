@@ -1,5 +1,5 @@
 permissions-site-eme-window2 =
-    .title = Einstellungen – EME-Berechtigungen
+    .title = Einstellungen – DRM-Berechtigungen
     .style = { permissions-window2.style }
 permissions-site-eme-desc = Die folgenden Websites haben die Wiedergabe von DRM-geschützten Inhalten angefordert. Sie können festlegen, welche Websites DRM-geschützte Inhalte wiedergeben dürfen. Außerdem können Sie neue Anfragen zur Wiedergabe von DRM-geschützten Inhalten blockieren.
 permissions-site-eme-disable-label =
