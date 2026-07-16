@@ -34,11 +34,13 @@
                                 <q-btn-group flat>
                                     <q-btn
                                         flat
+                                        color="primary"
                                         :label="t('restart.safeMode')"
                                         @click="browser.safeMode.enterSafeMode()"
                                     />
                                     <q-btn
                                         flat
+                                        color="primary"
                                         :label="t('restart.normalMode')"
                                         @click="browser.safeMode.exitSafeMode()"
                                         v-if="isSafeMode.state.value"
