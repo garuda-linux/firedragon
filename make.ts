@@ -202,14 +202,11 @@ async function appimage() {
 
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), buildDir);
 
-    await $`sed 's#/usr/lib/${appName}/${appName}#${appName}#' assets/${appName}.desktop > ${buildDir}/${appName}.desktop`;
-    await $`cp ${buildDir}/browser/chrome/icons/default/default128.png ${buildDir}/${appName}.png`;
+    await $`install -Dm755 -t ${buildDir} assets/AppRun`;
+    await $`install -Dm644 -t ${buildDir} assets/${edition.flatpakId}.desktop`;
+    await $`install -Dm644 ${buildDir}/browser/chrome/icons/default/default128.png ${buildDir}/${edition.flatpakId}.png`;
 
-    await $`cp assets/AppRun ${buildDir}/AppRun`;
-    await $`chmod a+x ${buildDir}/AppRun`;
-
-    await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage -o ${tmpDir}/appimagetool-x86_64.AppImage`;
-    await $`chmod a+x ${tmpDir}/appimagetool-x86_64.AppImage`;
+    await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage | install -Dm755 /dev/stdin ${tmpDir}/appimagetool-x86_64.AppImage`;
 
     await $`${tmpDir}/appimagetool-x86_64.AppImage ${buildDir} ${distDir}/${buildBasename}.AppImage`;
 }
