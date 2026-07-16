@@ -236,10 +236,8 @@ async function flatpak() {
         FLATPAK_BRANCH: flatpakBranch,
     };
     for (const file of await glob('**', { cwd: 'assets/flatpak' })) {
-        await $`mkdir -p ${buildDir}/${path.dirname(file)}`;
-        await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} < assets/flatpak/${file} > ${buildDir}/${file}`;
+        await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} assets/flatpak/${file} | install -Dm${(await $`stat -c %a assets/flatpak/${file}`.text()).trim()} /dev/stdin ${buildDir}/${file}`;
     }
-    await $`chmod +x ${appDir}/bin/firedragon`;
 
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
 
