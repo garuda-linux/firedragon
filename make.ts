@@ -19,13 +19,11 @@ import {
     targets,
     userPrefs,
     version,
-} from './config';
+} from './config.ts';
 
 /* CONFIG */
 
-$.verbose = true;
-
-const argv = minimist(process.argv.slice(2), {
+const argv = minimist(process.argv.slice(4), {
     '--': true,
     string: ['edition', 'target'],
 });

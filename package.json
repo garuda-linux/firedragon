@@ -6,14 +6,13 @@
   "type": "module",
   "scripts": {
     "format": "prettier --experimental-cli -w .",
-    "make": "tsx make.ts"
+    "make": "NODE_OPTIONS='--experimental-strip-types' zx --verbose make.ts"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "git-cliff": "^2.13.1",
     "lerna": "^9.0.7",
     "prettier": "^3.9.5",
-    "tsx": "^4.23.1",
     "zx": "^8.8.5"
   },
   "repository": {
