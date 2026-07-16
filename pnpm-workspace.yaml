@@ -35,11 +35,11 @@ catalog:
   '@wxt-dev/module-vue': ^1.0.3
   quasar: ^2.21.3
   sass-embedded: ^1.100.0
-  tsdown: ^0.22.7
+  tsdown: ^0.22.8
   typescript: ~6.0.3
   vite: ^8.1.4
   vite-plugin-vue-devtools: ^8.1.5
   vue: ^3.5.39
   vue-i18n: ^11.4.6
-  vue-router: ^5.1.0
+  vue-router: ^5.2.0
   wxt: ^0.20.27
