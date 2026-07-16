@@ -218,19 +218,22 @@ async function appimage() {
 
 async function flatpak() {
     const buildBasename = `${basename}.${target.suffix.replace('linux', 'flatpak')}`;
-    const buildDir = `${tmpDir}/${buildBasename}`;
 
-    const appDir = `${buildDir}/build/files`;
+    const buildDir = `${tmpDir}/${buildBasename}/build`;
+    const repoDir = `${tmpDir}/${buildBasename}/repo`;
+
+    const appDir = `${buildDir}/files`;
     const libDir = `${appDir}/lib`;
+
+    await $`mkdir -p ${appDir} ${libDir}`;
 
     await $`flatpak remote-add --user --if-not-exists --from flathub https://dl.flathub.org/repo/flathub.flatpakrepo`;
     await $`flatpak install --user -y flathub ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`;
 
-    const baseFiles = (await $`flatpak info -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim();
-    await $`mkdir -p ${appDir}`;
-    await $`cp -as ${baseFiles}/files/. ${appDir}`;
+    await $`rsync -a ${(await $`flatpak info -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim()}/files/ ${appDir}/`;
 
     const variables = {
+        VERSION: `v${version}`,
         FLATPAK_ID: edition.flatpakId,
         ARCH: target.arch,
         FLATPAK_BASE_ID: flatpakBaseId,
@@ -238,27 +241,21 @@ async function flatpak() {
         FLATPAK_BRANCH: flatpakBranch,
     };
     for (const file of await glob('**', { cwd: 'assets/flatpak' })) {
-        await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} assets/flatpak/${file} | sponge ${buildDir}/build/${file}`;
+        await $`mkdir -p ${buildDir}/${path.dirname(file)}`;
+        await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} < assets/flatpak/${file} > ${buildDir}/${file}`;
     }
     await $`chmod +x ${appDir}/bin/firedragon`;
 
-    await $`mkdir -p ${libDir}`;
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
 
-    await $`install -Dm644 -T assets/firedragon.desktop ${appDir}/share/applications/${edition.flatpakId}.desktop`;
-    await $`desktop-file-edit --set-key=Icon --set-value=${edition.flatpakId} ${appDir}/share/applications/${edition.flatpakId}.desktop`;
+    await $`install -Dm644 -t ${appDir}/share/applications assets/${edition.flatpakId}.desktop`;
+    await $`install -Dm644 -t ${appDir}/share/metainfo assets/${edition.flatpakId}.metainfo.xml`;
 
     for (const size of [16, 32, 48, 64, 128]) {
-        await $`install -Dm644 -T ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.flatpakId}.png`;
+        await $`install -Dm644 ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.flatpakId}.png`;
     }
 
-    await $`install -Dm644 -t ${appDir}/share/appdata assets/${edition.flatpakId}.appdata.xml`;
-
-    const $$ = $({
-        cwd: buildDir,
-    });
-
-    await $$`flatpak build-finish build ${[
+    await $`flatpak build-finish ${buildDir} ${[
         '--allow=devel',
         '--share=ipc',
         '--share=network',
@@ -284,10 +281,8 @@ async function flatpak() {
         `--own-name=${edition.flatpakId}.*`,
         '--command=firedragon',
     ]}`;
-
-    await $$`flatpak build-export --arch=${target.arch} --disable-sandbox --no-update-summary --exclude=/share/runtime/locale/*/* repo build ${flatpakBranch}`;
-
-    await $`flatpak build-bundle ${buildDir}/repo ${distDir}/${buildBasename}.flatpak ${edition.flatpakId}`;
+    await $`flatpak build-export --arch=${target.arch} --disable-sandbox --no-update-summary ${repoDir} ${buildDir} ${flatpakBranch}`;
+    await $`flatpak build-bundle --arch=${target.arch} ${repoDir} ${distDir}/${buildBasename}.flatpak ${edition.flatpakId} ${flatpakBranch}`;
 }
 
 async function dev() {
@@ -354,7 +349,7 @@ async function release() {
 
     const date = new Date();
     const release = {
-        '@version': `v${version}`,
+        '@version': `v${version.replace('-', '~')}`,
         '@date': `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`,
         url: {
             '@type': 'details',
@@ -363,9 +358,9 @@ async function release() {
         description: null,
     };
 
-    await $`xq --xml-dtd -x -i --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' assets/*.appdata.xml`;
+    await $`xq --xml-dtd -x -i --argjson release ${JSON.stringify(release)} '.component.releases.release = [$release] + .component.releases.release' assets/*.metainfo.xml`;
 
-    await $`git add package.json CHANGELOG.md assets/*.appdata.xml`;
+    await $`git add package.json CHANGELOG.md assets/*.metainfo.xml`;
     await $`git commit -m 'release: v'${version}`;
     await $`git tag -m v${version} v${version}`;
 }

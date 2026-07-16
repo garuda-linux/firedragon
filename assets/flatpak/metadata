@@ -3,11 +3,3 @@ name=@FLATPAK_ID@
 runtime=org.freedesktop.Platform/@ARCH@/@FLATPAK_BASE_VERSION@
 sdk=org.freedesktop.Sdk/@ARCH@/@FLATPAK_BASE_VERSION@
 base=app/@FLATPAK_BASE_VERSION@/@ARCH@/@FLATPAK_BASE_VERSION@
-[Extension @FLATPAK_ID@.Locale]
-directory=share/runtime/locale
-autodelete=true
-locale-subset=true
-
-[Extension @FLATPAK_ID@.systemconfig]
-directory=etc/firedragon
-no-autodownload=true

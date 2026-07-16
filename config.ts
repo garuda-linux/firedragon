@@ -10,7 +10,7 @@ export const version = packageJson.version;
 export const firefoxVersion = packageJson.firefoxVersion;
 export const flatpakBaseId = 'org.mozilla.firefox.BaseApp';
 export const flatpakBaseVersion = '25.08';
-export const flatpakBranch = 'master';
+export const flatpakBranch = 'stable';
 export const objDir = 'obj';
 export const editions = {
     dr460nized: {
