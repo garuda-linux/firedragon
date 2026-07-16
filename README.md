@@ -4,10 +4,16 @@
 
 FireDragon is based on Firefox with privacy-focused patches and settings from LibreWolf and adds opinionated default settings to improve the out-of-the-box experience and user-friendliness:
 
-* Dr460nized & Catpuccin editions to visually integrate with Garuda Linux Dr460nized & Mokka respectivly
-* uBlock Origin, Dark Reader & Flagfox Add-Ons installed by default
-* Firefox Sync enabled by default using custom Garuda Linux sync server
-* [Lepton](https://github.com/black7375/Firefox-UI-Fix/#readme) skin with custom default configuration
+- Dr460nized & Catpuccin editions to visually integrate with Garuda Linux Dr460nized & Mokka respectivly
+- uBlock Origin, Dark Reader & Flagfox Add-Ons installed by default
+- Firefox Sync enabled by default using custom Garuda Linux sync server
+- [Lepton](https://github.com/black7375/Firefox-UI-Fix/#readme) skin with custom default configuration
+
+## Screenshots
+
+![Dr460nized edition](assets/screenshots/dr460nized.png)
+
+![Catppuccin edition](assets/screenshots/catppuccin.png)
 
 ## Download / Installation
 
