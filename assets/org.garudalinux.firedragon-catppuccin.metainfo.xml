@@ -36,12 +36,8 @@
   <url type="vcs-browser">https://gitlab.com/garuda-linux/firedragon/firedragon13</url>
   <screenshots>
     <screenshot type="default">
-      <caption>Welcome</caption>
-      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/welcome-catppuccin.png</image>
-    </screenshot>
-    <screenshot type="default">
-      <caption>New Tab</caption>
-      <image>https://gitlab.com/garuda-linux/firedragon/firedragon12/-/raw/main/assets/screenshots/newtab-catppuccin.png</image>
+      <caption>FireDragon (Catppuccin edition)</caption>
+      <image>https://gitlab.com/garuda-linux/firedragon/firedragon13/-/raw/main/assets/screenshots/catppuccin.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"></content_rating>
