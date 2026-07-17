@@ -209,8 +209,8 @@ async function appimage() {
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), buildDir);
 
     await $`install -Dm755 -t ${buildDir} assets/AppRun`;
-    await $`install -Dm644 -t ${buildDir} assets/${edition.flatpakId}.desktop`;
-    await $`install -Dm644 ${buildDir}/browser/chrome/icons/default/default128.png ${buildDir}/${edition.flatpakId}.png`;
+    await $`install -Dm644 -t ${buildDir} assets/${edition.rdns}.desktop`;
+    await $`install -Dm644 ${buildDir}/browser/chrome/icons/default/default128.png ${buildDir}/${edition.rdns}.png`;
 
     await $`curl -L https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage | install -Dm755 /dev/stdin ${tmpDir}/appimagetool-x86_64.AppImage`;
 
@@ -240,7 +240,7 @@ async function flatpak() {
 
     const variables = {
         VERSION: `v${version}`,
-        FLATPAK_ID: edition.flatpakId,
+        FLATPAK_ID: edition.rdns,
         ARCH: target.arch,
         FLATPAK_BASE_ID: flatpakBaseId,
         FLATPAK_BASE_VERSION: flatpakBaseVersion,
@@ -252,11 +252,11 @@ async function flatpak() {
 
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
 
-    await $`install -Dm644 -t ${appDir}/share/applications assets/${edition.flatpakId}.desktop`;
-    await $`install -Dm644 -t ${appDir}/share/metainfo assets/${edition.flatpakId}.metainfo.xml`;
+    await $`install -Dm644 -t ${appDir}/share/applications assets/${edition.rdns}.desktop`;
+    await $`install -Dm644 -t ${appDir}/share/metainfo assets/${edition.rdns}.metainfo.xml`;
 
     for (const size of [16, 32, 48, 64, 128]) {
-        await $`install -Dm644 ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.flatpakId}.png`;
+        await $`install -Dm644 ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.rdns}.png`;
     }
 
     await $`flatpak build-finish ${buildDir} ${[
@@ -282,11 +282,11 @@ async function flatpak() {
         '--talk-name=org.gtk.vfs.*',
         '--own-name=org.mpris.MediaPlayer2.firefox.*',
         '--own-name=org.mozilla.firedragon.*',
-        `--own-name=${edition.flatpakId}.*`,
+        `--own-name=${edition.rdns}.*`,
         '--command=firedragon',
     ]}`;
     await $`flatpak build-export --arch=${target.arch} --disable-sandbox --no-update-summary ${repoDir} ${buildDir} ${flatpakBranch}`;
-    await $`flatpak build-bundle --arch=${target.arch} ${repoDir} ${distDir}/${buildBasename}.flatpak ${edition.flatpakId} ${flatpakBranch}`;
+    await $`flatpak build-bundle --arch=${target.arch} ${repoDir} ${distDir}/${buildBasename}.flatpak ${edition.rdns} ${flatpakBranch}`;
 }
 
 async function dev() {

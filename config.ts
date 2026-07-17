@@ -18,14 +18,14 @@ export const editions = {
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-dr460nized.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/dr460nized/quasar.scss', import.meta.url)),
         displayName: 'Dr460nized',
-        flatpakId: 'org.garudalinux.firedragon',
+        rdns: 'org.garudalinux.firedragon',
     },
     catppuccin: {
         basename: 'firedragon-catppuccin',
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-catppuccin.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/catppuccin/quasar.scss', import.meta.url)),
         displayName: 'Catppuccin',
-        flatpakId: 'org.garudalinux.firedragon-catppuccin',
+        rdns: 'org.garudalinux.firedragon-catppuccin',
     },
 };
 export const targets = {
