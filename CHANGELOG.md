@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.24](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.24) — 2026-07-17 — [`v13.0.0-rc.23`…`v13.0.0-rc.24`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.23...v13.0.0-rc.24)
+
+### 🐛 Bug Fixes
+
+- _(metainfo)_ Fix typo in screenshot url — [`cfa23b51…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cfa23b51f46dea40f97b95187b9cf271dc7490bb)
+
+### ⚙️ Miscellaneous Tasks
+
+- Rename make-image-latest stage & job to make-image:latest — [`112a55bb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/112a55bb244e66cc18611c5bbc5ecd6792ccc0fc)
+
 ## [FireDragon v13.0.0-rc.23](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.23) — 2026-07-17 — [`v13.0.0-rc.22`…`v13.0.0-rc.23`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.22...v13.0.0-rc.23)
 
 ### 🚀 Features
