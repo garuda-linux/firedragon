@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "format": "prettier --experimental-cli -w .",
-    "make": "NODE_OPTIONS='--experimental-strip-types' zx --verbose make.ts"
+    "make": "NODE_OPTIONS='--experimental-strip-types' zx --verbose make.ts",
+    "all:dev": "lerna run --stream dev",
+    "all:build": "lerna run --stream build"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",

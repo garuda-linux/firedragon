@@ -150,8 +150,8 @@ async function build() {
         `--with-firedragon-update=${repoUrl}/-/releases/permalink/latest/downloads/${edition.basename}.${target.suffix}.update.xml`,
     );
 
-    await $`pnpm install -C ${buildDir}/${sourceDir} --frozen-lockfile`;
-    await $({ cwd: `${buildDir}/${sourceDir}` })`pnpm lerna run --stream build`;
+    await $`pnpm -C ${buildDir}/${sourceDir} install --frozen-lockfile`;
+    await $`pnpm -C ${buildDir}/${sourceDir} all:build`;
 
     await $`cd ${buildDir} && ./mach --no-interactive bootstrap --application-choice browser`;
     await $`${buildDir}/mach configure`;
@@ -310,7 +310,7 @@ async function dev() {
         await $`ln -s ${path.relative(path.dirname(`${buildDir}/${sourceDir}`), '')} ${buildDir}/${sourceDir}`;
     }
 
-    $`pnpm lerna run --stream dev`;
+    $`pnpm all:dev`;
     await sleep('10s');
 
     const $$ = $({
