@@ -1,7 +1,6 @@
 # FireDragon v13
 
 [![Latest release](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/badges/release.svg)](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases)
-[![Pipeline status](https://gitlab.com/garuda-linux/firedragon/firedragon13/badges/main/pipeline.svg)](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/pipelines)
 [![Translation status](https://hosted.weblate.org/widget/firedragon13/svg-badge.svg)](https://hosted.weblate.org/engage/firedragon13/)
 
 **FireDragon is a cross-platform, feature-rich and privacy-focused web browser**
