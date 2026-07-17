@@ -64,7 +64,7 @@ export const targets = {
         artifacts: {
             publish: ['tar.xz'],
             dev: ['tar.xz'],
-            release: ['tar.xz', 'mar', 'update.xml', 'AppImage'],
+            release: ['tar.xz', 'mar', 'update.xml', 'AppImage', 'flatpak'],
         },
         packageDir: appName,
         resourcesDir: appName,
@@ -78,7 +78,7 @@ export const targets = {
         artifacts: {
             publish: ['tar.xz'],
             dev: ['tar.xz'],
-            release: ['tar.xz', 'mar', 'update.xml', 'AppImage'],
+            release: ['tar.xz', 'mar', 'update.xml', 'AppImage', 'flatpak'],
         },
         packageDir: appName,
         resourcesDir: appName,

@@ -376,7 +376,7 @@ async function ciRelease() {
         for (const target of Object.values(targets)) {
             let firstArtifact = null;
             for (const format of target.artifacts.release) {
-                const suffix = `${format === 'AppImage' ? target.suffix.replace('linux', 'appimage') : target.suffix}.${format}`;
+                const suffix = `${format === 'AppImage' || format === 'flatpak' ? target.suffix.replace('linux', format.toLowerCase()) : target.suffix}.${format}`;
                 const name = `${edition.basename}-v${version}.${suffix}`;
                 const artifact = {
                     name,
