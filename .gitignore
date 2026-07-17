@@ -5,6 +5,7 @@
 /.dist/
 /.profile/
 
+/.flatpak/
 /.mozbuild/
 /.pnpm/
 

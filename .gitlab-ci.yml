@@ -195,6 +195,11 @@ flatpak:
           - pnpm-lock.yaml
       paths:
         - .pnpm
+    - key: flatpak
+      paths:
+        - .flatpak
+  variables:
+    FLATPAK_USER_DIR: .flatpak
   before_script:
     - pnpm config set store-dir .pnpm
     - pnpm i --frozen-lockfile
