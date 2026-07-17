@@ -33,7 +33,7 @@ workflow:
 
 stages:
   - make-image
-  - make-image-latest
+  - make-image:latest
   - source
   - build
   - appimage
@@ -62,8 +62,8 @@ make-image:
     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
     - docker push $MAKE_IMAGE
 
-make-image-latest:
-  stage: make-image-latest
+make-image:latest:
+  stage: make-image:latest
   needs:
     - job: make-image
       artifacts: false
