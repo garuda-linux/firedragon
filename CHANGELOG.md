@@ -1,39 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v13.0.0-rc.23](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.23) — 2026-07-17 — [`v13.0.0-rc.22`…`v13.0.0-rc.23`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.22...v13.0.0-rc.23)
-
-### 🚀 Features
-
-- Add flatpak bundle generation — [`967e480e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/967e480ea9ffde86d6fa88140a658a761d60301b)
-
-### 🐛 Bug Fixes
-
-- _(flatpak)_ Fix TMPDIR variable — [`a2a6f7c7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2a6f7c7660cefbdc71411ac9eaa768ec0896030)
-- _(troubleshooting)_ Make buttons primary color for better visibility — [`a48cc52f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a48cc52fe3efc34a8065efc854117b2a2bb20fdc)
-- _(make)_ Set flatpak branch based on CI variable — [`68361cac…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/68361cacb52ca0cdec99ab4b05839ba58844be9c)
-- _(metainfo)_ Remove link from description — [`e883f4b2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e883f4b2c554ab5ce8d059e1a79f9b605e4455bc)
-- _(make)_ Properly publish flatpak artifacts — [`31b72a24…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/31b72a24be60202c4548ad4e0adebb837652986b)
-
-### 🚜 Refactor
-
-- Enhance flatpak generation & update description & fix metainfo — [`fe005ce4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fe005ce4c67719a7edc0fa76aa25910eba2356c2)
-- _(make)_ Replace tsx with --experimental-strip-types — [`042fd466…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/042fd46633fe53f1e1539aef17e84839f5c55f00)
-- _(make)_ Fix & streamline appimage generation — [`7d974c52…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7d974c528f0b3917a15c283ba2defafb70650faa)
-- _(make)_ Streamline flatpak template files processing — [`45f84231…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/45f8423191ce30411b9a70e1d994d487a90ad362)
-- _(make)_ Add seperate bundles config to simplify publish & release — [`e2d98e8b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e2d98e8b52a5700c7a48828b196e9913bbf512bd)
-
-### 📚 Documentation
-
-- _(readme)_ Add screenshots — [`1d816dde…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1d816dde1439e18d572e6184e75abf78a9304316)
-- _(readme)_ Add badges — [`57aea687…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/57aea687df4f54324a80df6ca94c8d1313b91c18)
-- _(readme)_ Fix typo & wording — [`0596be61…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0596be61e4dae071104e5294ea2125f1f0a82051)
-- _(readme)_ Remove pipeline status badge — [`b2c61423…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b2c614231488e742b41247f40652207184d10c15)
-
-### ⚙️ Miscellaneous Tasks
-
-- _(metainfo)_ Update screenshots — [`0b0e4a18…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0b0e4a188b6a6dfaf118b13021b6ab8e5e5c56f9)
-- Update pnpm & deps — [`3baed64f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3baed64f93151d07e902fcfa63914b4be0680413)
-
 ## [FireDragon v13.0.0-rc.22](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.22) — 2026-07-15 — [`v13.0.0-rc.21`…`v13.0.0-rc.22`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.21...v13.0.0-rc.22)
 
 ### 🐛 Bug Fixes
