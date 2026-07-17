@@ -3,6 +3,7 @@ import { $, echo, fs, glob, minimist, path, sleep, tmpdir } from 'zx';
 import {
     appName,
     buildDir,
+    bundles,
     cacheDir,
     defaultEdition,
     defaultTarget,
@@ -161,7 +162,7 @@ async function build() {
 
     const objDistDir = `${buildDir}/${objDir}/dist`;
     const packageName = (await $`cat ${objDistDir}/package_name.txt`.lines())[0];
-    for (const format of target.artifacts.publish) {
+    for (const format of target.artifacts.dist) {
         switch (format) {
             case 'installer.exe':
                 await $`cp ${objDistDir}/${packageName.replace(/\.zip$/, `.${format}`)} ${distDir}/${buildBasename}.${format}`;
@@ -197,7 +198,12 @@ async function build() {
 }
 
 async function appimage() {
-    const buildBasename = `${basename}.${target.suffix.replace('linux', 'appimage')}`;
+    if (!(targetKey in bundles) || !('appimage' in bundles[targetKey as keyof typeof bundles])) {
+        throw `AppImage is not supported for target ${targetKey}`;
+    }
+    const bundle = bundles[targetKey as keyof typeof bundles].appimage;
+
+    const buildBasename = `${basename}.${bundle.suffix}`;
     const buildDir = `${tmpDir}/${buildBasename}`;
 
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), buildDir);
@@ -212,7 +218,12 @@ async function appimage() {
 }
 
 async function flatpak() {
-    const buildBasename = `${basename}.${target.suffix.replace('linux', 'flatpak')}`;
+    if (!(targetKey in bundles) || !('flatpak' in bundles[targetKey as keyof typeof bundles])) {
+        throw `Flatpak is not supported for target ${targetKey}`;
+    }
+    const bundle = bundles[targetKey as keyof typeof bundles].flatpak;
+
+    const buildBasename = `${basename}.${bundle.suffix}`;
 
     const buildDir = `${tmpDir}/${buildBasename}/build`;
     const repoDir = `${tmpDir}/${buildBasename}/repo`;
@@ -373,33 +384,25 @@ async function ciRelease() {
         `| Source | [${artifacts[0].name}](${repoUrl}/-/releases/${version}/downloads${artifacts[0].direct_asset_path}) |`,
     ];
     for (const edition of Object.values(editions)) {
-        for (const target of Object.values(targets)) {
-            let firstArtifact = null;
-            for (const format of target.artifacts.release) {
-                const suffix = `${format === 'AppImage' || format === 'flatpak' ? target.suffix.replace('linux', format.toLowerCase()) : target.suffix}.${format}`;
-                const name = `${edition.basename}-v${version}.${suffix}`;
-                const artifact = {
-                    name,
-                    url: `${$.env.CI_API_V4_URL}/projects/${$.env.CI_PROJECT_ID}/packages/generic/firedragon/${version}/${name}`,
-                    direct_asset_path: `/${edition.basename}.${suffix}`,
-                    link_type: 'package',
-                };
-                if (!firstArtifact) {
-                    firstArtifact = artifact;
-                }
-                artifacts.push(artifact);
-            }
-            if (firstArtifact) {
-                downloads.push(
-                    `| ${edition.displayName} ${target.displayName} | [${firstArtifact.name}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path}) |`,
-                );
-                if (target.suffix.includes('linux')) {
-                    downloads.push(
-                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'AppImage')} | [${firstArtifact.name.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'appimage').replace('tar.xz', 'AppImage')}) |`,
-                    );
-                    downloads.push(
-                        `| ${edition.displayName} ${target.displayName.replace('Linux', 'Flatpak')} | [${firstArtifact.name.replace('linux', 'flatpak').replace('tar.xz', 'flatpak')}](${repoUrl}/-/releases/v${version}/downloads${firstArtifact.direct_asset_path.replace('linux', 'flatpak').replace('tar.xz', 'flatpak')}) |`,
-                    );
+        for (const [targetKey, target] of Object.entries(targets)) {
+            for (const targetOrBundle of [target, ...Object.values(bundles[targetKey as keyof typeof bundles] ?? {})]) {
+                for (const format of targetOrBundle.artifacts.publish) {
+                    const suffix = `${targetOrBundle.suffix}.${format}`;
+                    const name = `${edition.basename}-v${version}.${suffix}`;
+                    const path = `${edition.basename}.${suffix}`;
+
+                    artifacts.push({
+                        name,
+                        url: `${$.env.CI_API_V4_URL}/projects/${$.env.CI_PROJECT_ID}/packages/generic/firedragon/${version}/${name}`,
+                        direct_asset_path: `/${path}`,
+                        link_type: 'package',
+                    });
+
+                    if (targetOrBundle.artifacts.release.includes(format)) {
+                        downloads.push(
+                            `| ${edition.displayName} ${targetOrBundle.displayName} | [${name}](${repoUrl}/-/releases/v${version}/downloads/${path}) |`,
+                        );
+                    }
                 }
             }
         }

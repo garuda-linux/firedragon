@@ -34,9 +34,10 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/darwin-arm64.mozconfig`,
         suffix: 'darwin-arm64',
         artifacts: {
-            publish: ['dmg', 'update_framework_artifacts.zip'],
+            dist: ['dmg', 'update_framework_artifacts.zip'],
             dev: ['dmg', 'update_framework_artifacts.zip'],
-            release: ['dmg', 'update_framework_artifacts.zip', 'mar', 'update.xml'],
+            publish: ['dmg', 'update_framework_artifacts.zip', 'mar', 'update.xml'],
+            release: ['dmg'],
         },
         packageDir: `${appName}/${appBasename}.app`,
         resourcesDir: `${appName}/${appBasename}.app/Contents/Resources`,
@@ -48,9 +49,10 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/darwin-x64.mozconfig`,
         suffix: 'darwin-x64',
         artifacts: {
-            publish: ['dmg', 'update_framework_artifacts.zip'],
+            dist: ['dmg', 'update_framework_artifacts.zip'],
             dev: ['dmg', 'update_framework_artifacts.zip'],
-            release: ['dmg', 'update_framework_artifacts.zip', 'mar', 'update.xml'],
+            publish: ['dmg', 'update_framework_artifacts.zip', 'mar', 'update.xml'],
+            release: ['dmg'],
         },
         packageDir: `${appName}/${appBasename}.app`,
         resourcesDir: `${appName}/${appBasename}.app/Contents/Resources`,
@@ -62,9 +64,10 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/linux-arm64.mozconfig`,
         suffix: 'linux-arm64',
         artifacts: {
-            publish: ['tar.xz'],
+            dist: ['tar.xz'],
             dev: ['tar.xz'],
-            release: ['tar.xz', 'mar', 'update.xml', 'AppImage', 'flatpak'],
+            publish: ['tar.xz', 'mar', 'update.xml'],
+            release: ['tar.xz'],
         },
         packageDir: appName,
         resourcesDir: appName,
@@ -76,9 +79,10 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/linux-x64.mozconfig`,
         suffix: 'linux-x64',
         artifacts: {
-            publish: ['tar.xz'],
+            dist: ['tar.xz'],
             dev: ['tar.xz'],
-            release: ['tar.xz', 'mar', 'update.xml', 'AppImage', 'flatpak'],
+            publish: ['tar.xz', 'mar', 'update.xml'],
+            release: ['tar.xz'],
         },
         packageDir: appName,
         resourcesDir: appName,
@@ -91,9 +95,10 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/win32-arm64.mozconfig`,
         suffix: 'win32-arm64',
         artifacts: {
-            publish: ['installer.exe', 'zip'],
+            dist: ['installer.exe', 'zip'],
             dev: ['zip'],
-            release: ['installer.exe', 'zip', 'mar', 'update.xml'],
+            publish: ['installer.exe', 'zip', 'mar', 'update.xml'],
+            release: ['installer.exe'],
         },
         packageDir: appName,
         resourcesDir: appName,
@@ -105,14 +110,53 @@ export const targets = {
         mozconfig: `${sourceDir}/mozconfig/target/win32-x64.mozconfig`,
         suffix: 'win32-x64',
         artifacts: {
-            publish: ['installer.exe', 'zip'],
+            dist: ['installer.exe', 'zip'],
             dev: ['zip'],
-            release: ['installer.exe', 'zip', 'mar', 'update.xml'],
+            publish: ['installer.exe', 'zip', 'mar', 'update.xml'],
+            release: ['installer.exe'],
         },
         packageDir: appName,
         resourcesDir: appName,
         binFile: `${appName}.exe`,
         displayName: 'Windows x64',
+    },
+};
+export const bundles = {
+    'linux-x64': {
+        appimage: {
+            suffix: 'appimage-x64',
+            artifacts: {
+                publish: ['AppImage'],
+                release: ['AppImage'],
+            },
+            displayName: 'AppImage x64',
+        },
+        flatpak: {
+            suffix: 'flatpak-x64',
+            artifacts: {
+                publish: ['flatpak'],
+                release: ['flatpak'],
+            },
+            displayName: 'Flatpak x64',
+        },
+    },
+    'linux-arm64': {
+        appimage: {
+            suffix: 'appimage-arm64',
+            artifacts: {
+                publish: ['AppImage'],
+                release: ['AppImage'],
+            },
+            displayName: 'AppImage arm64',
+        },
+        flatpak: {
+            suffix: 'flatpak-arm64',
+            artifacts: {
+                publish: ['flatpak'],
+                release: ['flatpak'],
+            },
+            displayName: 'Flatpak arm64',
+        },
     },
 };
 
