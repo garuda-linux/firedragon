@@ -24,7 +24,9 @@ FireDragon is based on Firefox with privacy-focused patches and settings from Li
 
 FireDragon is officially available in the Arch Linux AUR, Chaotic AUR & Garuda Linux repository.
 
-Otherwise, the Linux tarball can be downloaded on the [Releases](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/) page.
+FireDragon (Dr460nized edition) is also available as [Flatpak on FlatHub](https://flathub.org/en/apps/org.garudalinux.firedragon).
+
+Otherwise, the AppImage, Flatpak bundle or Linux tarball, can be downloaded on the [Releases](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/) page.
 
 ### Windows
 
