@@ -171,12 +171,14 @@ export class WorkspacesManager extends EventEmitter<{
             }
         });
         browser.tabs.onAttached.addListener(async (tabId, { newWindowId }) => {
-            await setTabData(
-                tabId,
-                'workspaceId',
-                (await getWindowData(newWindowId!, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID,
-            );
+            const workspaceId = (await getWindowData(newWindowId!, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID;
+
+            await setTabData(tabId, 'workspaceId', workspaceId);
             this.emit('tabDataChanged', tabId);
+
+            if ((await browser.tabs.get(tabId).catch(() => null))?.active) {
+                this.updateActiveTab(tabId, newWindowId, workspaceId);
+            }
         });
         browser.tabs.onActivated.addListener(async ({ tabId, windowId }) => {
             const workspaceId = await getTabData(tabId, 'workspaceId');
