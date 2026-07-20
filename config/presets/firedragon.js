@@ -29,6 +29,8 @@ lockPref("firedragon.cfg.version", gVersion.version);
  *
  * - WINDOWS [UPDATES, OTHERS]
  *
+ * - CACHYOS []
+ *
  * - FIREDRAGON []
  *
  */
@@ -349,9 +351,66 @@ unlock("app.update.service.enabled");
 /** [SECTION] OTHERS */
 unsetOverride("toolkit.winRegisterApplicationRestart");
 
+/**
+ * [CATEGORY] CACHYOS
+ * Hardware, performance & UI tweaks from cachyos-firefox-settings
+ * https://github.com/CachyOS/CachyOS-PKGBUILDS/blob/master/cachyos-firefox-settings/cachyos.js
+ */
+// Enable hardware acceleration
+defaultPref("media.hardware-video-decoding.force-enabled", true);
+defaultPref("media.webrtc.hw.h264.enabled", true);
+defaultPref("media.gpu-process-decoder", true);
+
+// Performance & Graphics Tweaks
+defaultPref("browser.cache.disk.enable", false);
+defaultPref("browser.cache.memory.capacity", 1048576);
+defaultPref("gfx.canvas.accelerated.cache-items", 32768);
+defaultPref("gfx.canvas.accelerated.cache-size", 4096);
+defaultPref("gfx.content.skia-font-cache-size", 80);
+defaultPref("gfx.webrender.all", true);
+defaultPref("gfx.webrender.precache-shaders", true);
+defaultPref("gfx.webrender.program-binary-disk", true);
+defaultPref("layers.gpu-process.enabled", true); // Use dedicated GPU process
+
+// JavaScript & Process Tweaks
+defaultPref("javascript.options.baselinejit.threshold", 50); // Lower JIT threshold
+defaultPref("javascript.options.ion.threshold", 500); // Lower Ion threshold
+
+// Memory & Cache Tweaks (Non-Disk)
+defaultPref("image.cache.size", 10485760); // Increase decoded image cache size (10MB)
+defaultPref("image.mem.decode_bytes_at_a_time", 65536); // Increase image decode chunk size
+defaultPref("image.mem.shared.unmap.min_expiration_ms", 120000);
+defaultPref("media.cache_readahead_limit", 7200); // Increase media readahead
+defaultPref("media.cache_resume_threshold", 3600); // Increase media resume threshold
+defaultPref("media.memory_cache_max_size", 1048576); // Increase media memory cache (1GB)
+defaultPref("media.memory_caches_combined_limit_kb", 3145728); // Increase combined media caches limit (3GB)
+defaultPref("network.buffer.cache.size", 65535); // Network buffer size
+defaultPref("network.ssl_tokens_cache_capacity", 32768); // Increase SSL token cache
+
+// Performance tweaks
+defaultPref("browser.tabs.unloadOnLowMemory", true); // Unload unused tabs
+defaultPref("content.notify.interval", 100000); // page reflow timer, lower redrawn rendering timer, increases responsiveness but increase total load time
+defaultPref("network.dnsCacheExpiration", 3600); // Time DNS entries are cached in seconds.
+defaultPref("network.http.max-connections", 1800); //https://kb.mozillazine.org/Network.http.max-connections
+defaultPref("network.http.max-persistent-connections-per-server", 10); //https://kb.mozillazine.org/Network.http.max-persistent-connections-per-server
+defaultPref("network.http.max-urgent-start-excessive-connections-per-host", 5); //Number of connections that we can open beyond the standard parallelism limit defined by max-persistent-connections-per-server/-proxy to handle urgent-start marked requests
+defaultPref("network.http.pacing.requests.enabled", false); //Disable pacing requests
+
+// UI/Behavior Tweaks
+defaultPref("general.smoothScroll.msdPhysics.continuousMotionMaxDeltaMS", 12);
+defaultPref("general.smoothScroll.msdPhysics.enabled", true); // Use physics-based smooth scrolling
+defaultPref("general.smoothScroll.msdPhysics.motionBeginSpringConstant", 200);
+defaultPref("general.smoothScroll.msdPhysics.regularSpringConstant", 250);
+defaultPref("general.smoothScroll.msdPhysics.slowdownMinDeltaMS", 25);
+defaultPref("general.smoothScroll.msdPhysics.slowdownMinDeltaRatio", "2.0"); // Ensure float format if needed
+defaultPref("general.smoothScroll.msdPhysics.slowdownSpringConstant", 250);
+defaultPref("general.smoothScroll.currentVelocityWeighting", "1.0"); // Ensure float format if needed
+defaultPref("general.smoothScroll.stopDecelerationWeighting", "1.0"); // Ensure float format if needed
+defaultPref("mousewheel.default.delta_multiplier_y", 300); // Adjust mouse wheel scroll speed
+
 /** ------------------------------
  * [CATEGORY] FIREDRAGON
- * prefs introduced by FireDragon-specific patches
+ * FireDragon-specific settings
  * ------------------------------- */
 defaultPref("browser.startup.page", 3);
 defaultPref("sidebar.revamp", true);
