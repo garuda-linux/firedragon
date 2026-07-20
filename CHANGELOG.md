@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.25](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25) — 2026-07-20 — [`v13.0.0-rc.24`…`v13.0.0-rc.25`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.24...v13.0.0-rc.25)
+
+### 🚀 Features
+
+- _(config)_ Add hardware, performance & ui tweaks from cachyos-firefox-settings — [`62e0a7b1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/62e0a7b1fbbae82fb9ab42f745dee70b3388e0b0)
+
+### 🐛 Bug Fixes
+
+- _(workspaces)_ Update active tab in onAttached event listener — [`3d06d2ba…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3d06d2bac332dafd3a9684aa7f3b0ac99b7cf019)
+
+### 📚 Documentation
+
+- _(readme)_ Add link to flathub — [`3b4e9f8c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3b4e9f8c6a04d4cd1a1f91be2ddf5673dd9e6ec5)
+- Remove Dark Reader from description — [`4c377142…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4c37714250781f7290e633a1eddf27c7c6e3ce9c)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & deps — [`99b35cc1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/99b35cc12c5f114363555c0176da09cb12a38dfc)
+
 ## [FireDragon v13.0.0-rc.24](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.24) — 2026-07-17 — [`v13.0.0-rc.23`…`v13.0.0-rc.24`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.23...v13.0.0-rc.24)
 
 ### 🐛 Bug Fixes
