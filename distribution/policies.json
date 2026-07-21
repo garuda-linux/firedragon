@@ -2,6 +2,26 @@
 {
   "__COMMENT__ More Information": "https://github.com/mozilla/policy-templates/blob/master/README.md",
   "policies": {
+    "AIControls": {
+      "Translations": {
+        "Value": "available"
+      },
+      "PDFAltText": {
+        "Value": "blocked"
+      },
+      "SmartTabGroups": {
+        "Value": "blocked"
+      },
+      "LinkPreviewKeyPoints": {
+        "Value": "blocked"
+      },
+      "SidebarChatbot": {
+        "Value": "blocked"
+      },
+      "SmartWindow": {
+        "Value": "blocked"
+      }
+    },
 #ifndef FIREDRAGON_UPDATE
     "AppUpdateURL": "https://localhost",
     "DisableAppUpdate": true,
@@ -16,6 +36,28 @@
     "DisableDeveloperTools": false,
     "NoDefaultBookmarks": true,
     "DefaultSerialGuardSetting": 3,
+    "EncryptedMediaExtensions": {
+      "Enabled": false
+    },
+    "FirefoxHome": {
+      "SponsoredTopSites": false,
+      "Highlights": false,
+      "Pocket": false,
+      "Stories": false,
+      "SponsoredPocket": false,
+      "SponsoredStories": false
+    },
+    "FirefoxSuggest": {
+      "WebSuggestions": false,
+      "SponsoredSuggestions": false,
+      "ImproveSuggest": false
+    },
+    "HttpsOnlyMode": "enabled",
+    "LocalNetworkAccess": {
+      "Enabled": true,
+      "BlockTrackers": true,
+      "EnablePrompting": true
+    },
     "WebsiteFilter": {
       "Block": [
         "https://localhost/*"
@@ -197,6 +239,12 @@
     "SupportMenu": {
       "Title": "FireDragon support",
       "URL": "https://forum.garudalinux.org/c/issues-assistance/firedragon-browser-support/47"
+    },
+    "UserMessaging": {
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false,
+      "FirefoxLabs": false
     }
   }
 }
