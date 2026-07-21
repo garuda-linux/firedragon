@@ -109,3 +109,27 @@ index a3f1cc3..715f58b 100644
      gkrust_features += ["glean_disable_upload"]
  
  if CONFIG["MOZ_ENABLE_DBUS"]:
+diff --git a/browser/components/tabbrowser/content/tabbrowser.js b/browser/components/tabbrowser/content/tabbrowser.js
+index c42b1a1a8d..bea12fa0fa 100644
+--- a/browser/components/tabbrowser/content/tabbrowser.js
++++ b/browser/components/tabbrowser/content/tabbrowser.js
+@@ -3330,10 +3330,6 @@
+         );
+       }
+ 
+-      if (!UserInteraction.running("browser.tabs.opening", window)) {
+-        UserInteraction.start("browser.tabs.opening", "initting", window);
+-      }
+-
+       // If we're opening a foreground tab, set the owner by default.
+       ownerTab ??= inBackground ? null : this.selectedTab;
+ 
+@@ -4205,8 +4201,6 @@
+           0,
+           this.tabContainer
+         );
+-      } else {
+-        UserInteraction.update("browser.tabs.opening", "animated", window);
+       }
+ 
+       return t;

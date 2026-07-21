@@ -133,18 +133,16 @@ index f8d0e2ce84f0..6d8d01a94542 100644
      window: "permissions-site-camera-window2",
      description: "permissions-site-camera-desc",
 diff --git a/browser/modules/moz.build b/browser/modules/moz.build
-index 360866be9b80..4c54c5c483a6 100644
+index 5660bf5..76561d8 100644
 --- a/browser/modules/moz.build
 +++ b/browser/modules/moz.build
-@@ -149,10 +149,12 @@ EXTRA_JS_MODULES += [
+@@ -150,8 +150,10 @@ EXTRA_JS_MODULES += [
  MOZ_SRC_FILES += [
      "CanvasPermissionPromptHelper.sys.mjs",
      "ContextId.sys.mjs",
 +    "EMEPermissionPrompt.sys.mjs",
      "ObserverForwarder.sys.mjs",
      "PrivateBrowsingUI.sys.mjs",
-     "UnexpectedScriptObserver.sys.mjs",
-     "WebAuthnPromptHelper.sys.mjs",
 +    "WebGLPermissionPromptHelper.sys.mjs",
  ]
  
