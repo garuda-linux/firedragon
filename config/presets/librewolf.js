@@ -58,6 +58,12 @@ lockPref("librewolf.cfg.version", "8.6");
  * the UI that allows to change mode manually is hidden.
  */
 pref("browser.contentblocking.category", "strict");
+defaultPref("privacy.trackingprotection.allow_list.baseline.enabled", true);
+defaultPref("privacy.trackingprotection.allow_list.convenience.enabled", false);
+lockPref("privacy.trackingprotection.allow_list.hasMigratedCategoryPrefs", true); // https://codeberg.org/librewolf/settings/pulls/139#issuecomment-19660777
+
+defaultPref("network.cookie.cookieBehavior.optInPartitioning", true);
+defaultPref("network.cookie.cookieBehavior.optInPartitioning.pbmode", true);
 
 /** [SECTION] SANITIZING
  * all the cleaning prefs true by default except for siteSettings which is what
@@ -113,7 +119,6 @@ pref("devtools.console.stdout.chrome", false);
  * ------------------------------- */
 
 /** [SECTION] HTTPS */
-defaultPref("dom.security.https_only_mode", true); // only allow https in all windows, including private browsing
 defaultPref("network.auth.subresource-http-auth-allow", 1); // block HTTP authentication credential dialogs
 defaultPref("network.http.prompt-temp-redirect", true); // // Enable prompts for unsafe HTTP redirects
 defaultPref("dom.security.https_only_mode.upgrade_local", true);
@@ -214,14 +219,13 @@ defaultPref("browser.places.speculativeConnect.enabled", false);
 defaultPref("browser.urlbar.speculativeConnect.enabled", false);
 
 /** [SECTION] Local Network Access */
-defaultPref("network.lna.blocking", true); // This preference controls if we need to fail transactions for Local Network Access (LNA) failures. FF 147 started rolling it out for ETP Strict users.
-defaultPref("network.lna.block_trackers", true); // When this pref is true, loads triggered by scripts classified as trackers will automatically be blocked.
 defaultPref("network.lna.websocket.enabled", true); // When true, WebSocket connections follow normal LNA rules.
 defaultPref("network.lna.allow_top_level_navigation", false); // When this pref is true, top-level document navigation to local network addresses will bypass LNA permission checks.
 defaultPref("network.lna.local-network-to-localhost.skip-checks", false); // When this pref is true, skip LNA checks for requests from private network to localhost (private -> local IP address space transitions).
 
 /** [SECTION] OTHER */
 defaultPref("security.csp.reporting.enabled", false); // https://codeberg.org/librewolf/issues/issues/2688
+defaultPref("network.dns.preferIPv6", true); // Fix IPv6 when using DoH https://codeberg.org/divested/brace/pulls/5
 
 /** ------------------------------
  * [CATEGORY] FINGERPRINTING
@@ -301,8 +305,8 @@ defaultPref("security.ssl3.ecdhe_ecdsa_aes_256_sha", false);
 /** [SECTION] PERMISSIONS */
 pref("permissions.manager.defaultsUrl", ""); // revoke special permissions for some mozilla domains
 
-defaultPref("dom.webserial.gated", true); // Ensure webserial is always behind a permissions prompt [DEFAULT]
-defaultPref("permissions.default.serial", 2); // Set webserial to be blocked by default [HIDDEN]
+defaultPref("dom.webserial.enabled", false); // Disable webserial by default https://codeberg.org/librewolf/issues/issues/3079#issuecomment-19112930
+defaultPref("dom.webserial.gated", true); // Have webserial be addon-gated 
 
 /** [SECTION] SAFE BROWSING
  * disable safe browsing, including the fetch of updates. reverting the 7 prefs below
@@ -366,7 +370,6 @@ defaultPref("intl.multilingual.enabled", true);
 /// (Our builds are multi-locale, so we do not need/support them)
 defaultPref("app.update.langpack.enabled", false);
 defaultPref("extensions.getAddons.langpacks.url", "");
-defaultPref("intl.multilingual.aboutWelcome.languageMismatchEnabled", false); // Prevent about:welcome from automatically downloading a language pack for the system locale
 defaultPref("intl.multilingual.downloadEnabled", false);
 
 // Use the system locale by default (instead of just using the default build locale)
@@ -383,7 +386,6 @@ defaultPref("intl.locale.requested", "");
 /** [SECTION] DRM */
 defaultPref("librewolf.eme.gmp-clearkey.enabled", false); // Whether the Clear Key CDM is enabled (depends on media.eme.enabled)
 defaultPref("librewolf.eme.warning.infoURL", "https://librewolf.net/docs/faq/#how-do-i-allow-playback-of-drm-controlled-content-when-should-i-allow-it");
-defaultPref("media.eme.enabled", false); // master switch for drm content
 defaultPref("media.eme.require-app-approval", true); // Require permission for playback of DRM content
 defaultPref("media.gmp-manager.url", "data:text/plain,"); // prevent checks for plugin updates when drm is disabled
 // disable the widevine and the openh264 plugins
@@ -454,28 +456,19 @@ defaultPref("browser.tabs.searchclipboardfor.middleclick", false); // prevent mo
 /** [SECTION] MACHINE LEARNING **/
 // See ticket: #1919 - LibreWolf should delete all AI code - https://codeberg.org/librewolf/issues/issues/1919
 defaultPref("browser.ml.enable", false);
-defaultPref("browser.ml.chat.enabled", false);
 // some leftover menu still appears otherwise:
 defaultPref("browser.ml.chat.menu", false);
 defaultPref("browser.ml.linkPreview.supportedLocales", "null");
 defaultPref("extensions.ui.mlmodel.hidden", true);
 // disable smart tab groups
 defaultPref("browser.tabs.groups.smart.enabled", false);
-defaultPref("browser.tabs.groups.smart.userEnabled", false);
 
 // Removes the AI pane
 lockPref("browser.preferences.aiControls", false);
 
-// These usually get set by the new AI Controls
-
+// Disable all features by default
 lockPref("browser.ai.control.default", "blocked");
-lockPref("browser.ai.control.linkPreviewKeyPoints", "blocked");
-lockPref("browser.ai.control.pdfjsAltText", "blocked");
-lockPref("browser.ai.control.sidebarChatbot", "blocked");
-lockPref("browser.ai.control.smartTabGroups", "blocked");
-lockPref("browser.ai.control.smartWindow", "blocked");
 
-defaultPref("browser.ai.control.translations", "available");
 /** ------------------------------
  * [CATEGORY] EXTENSIONS
  * ------------------------------- */
@@ -542,6 +535,8 @@ defaultPref("privacy.userContext.ui.enabled", true);
 pref("devtools.debugger.remote-enabled", false); // default, but subject to branding so keep it
 defaultPref("devtools.selfxss.count", 0); // required for devtools console to work
 
+defaultPref("browser.shareqrcode.embed_logo", false); // Don't embed logo in QR codes
+
 /** ------------------------------
  * [CATEGORY] UI
  * ------------------------------- */
@@ -571,7 +566,6 @@ defaultPref("app.update.url.manual", "https://codeberg.org/librewolf/source");
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
  * should also not stress user about being the default one.
  */
-defaultPref("browser.shell.checkDefaultBrowser", false);
 defaultPref("browser.startup.homepage_override.mstone", "ignore");
 lockPref("browser.uitour.enabled", false);
 lockPref("browser.uitour.url", "");
@@ -582,11 +576,8 @@ lockPref(
   "32503679999000"
 );
 lockPref("startup.homepage_override_nimbus_disable_wnp", true);
-defaultPref("startup.homepage_override_url", "about:blank");
 defaultPref("startup.homepage_welcome_url", "about:blank");
 defaultPref("startup.homepage_welcome_url.additional", "");
-lockPref("termsofuse.acceptedDate", "32503679999000");
-lockPref("termsofuse.acceptedVersion", 999);
 lockPref("termsofuse.bypassNotification", true);
 
 /** [SECTION] NEW TAB PAGE
@@ -601,20 +592,12 @@ defaultPref(
   "browser.newtabpage.activity-stream.section.highlights.includeVisited",
   false
 );
-defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
-// hide stories and sponsored content from Firefox Home
-lockPref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
-lockPref("browser.newtabpage.activity-stream.showSponsored", false);
-lockPref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
 // disable telemetry in Firefox Home
 lockPref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 lockPref("browser.newtabpage.activity-stream.telemetry", false);
 lockPref("browser.newtabpage.activity-stream.default.sites", "");
 // disable weather info fetching (ticket #2048)
 defaultPref("browser.newtabpage.activity-stream.feeds.weatherfeed", false);
-defaultPref("browser.newtabpage.activity-stream.showWeather", false);
-
-defaultPref("browser.newtabpage.activity-stream.nova.enabled", false);
 
 /** [SECTION] ABOUT
  * remove annoying ui elements from the about pages, including about:protections
@@ -632,20 +615,6 @@ defaultPref("browser.topsites.useRemoteSetting", false); // hide sponsored short
 defaultPref("browser.topsites.contile.enabled", false);
 // ...and about:config
 defaultPref("browser.aboutConfig.showWarning", false);
-// hide about:preferences#moreFromMozilla
-defaultPref("browser.preferences.moreFromMozilla", false);
-
-/** [SECTION] RECOMMENDED
- * disable all "recommend as you browse" activity.
- */
-lockPref(
-  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.features",
-  false
-);
-lockPref(
-  "browser.newtabpage.activity-stream.asrouter.userprefs.cfr.addons",
-  false
-);
 
 /** [SECTION] OTHERS
  * other unwanted UI
@@ -657,9 +626,6 @@ defaultPref("sidebar.main.tools", "history");
 
 // Avoids the "Firefox Labs" section from shortly appearing on first launch
 defaultPref("browser.preferences.experimental.hidden", true); 
-
-// Until the new UI is finished upstream
-lockPref("browser.settings-redesign.enabled", false);
 
 // Disable breach alerts for the time being
 defaultPref("browser.urlbar.trustPanel.breachAlerts.featureGate", false);
