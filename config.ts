@@ -10,7 +10,7 @@ export const version = packageJson.version;
 export const firefoxVersion = packageJson.firefoxVersion;
 export const flatpakBaseId = 'org.mozilla.firefox.BaseApp';
 export const flatpakBaseVersion = '25.08';
-export const flatpakBranch = process.env.CI_COMMIT_TAG ? 'stable' : 'beta';
+export const flatpakBranch = process.env.CI_COMMIT_TAG ? 'stable' : 'test';
 export const objDir = 'obj';
 export const editions = {
     dr460nized: {
