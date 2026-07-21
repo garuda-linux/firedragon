@@ -1,0 +1,13 @@
+diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
+index e95831780d00..f575b737afdd 100644
+--- a/browser/components/preferences/preferences.js
++++ b/browser/components/preferences/preferences.js
+@@ -363,7 +363,7 @@ const CONFIG_PANES = Object.freeze({
+   permissionsData: {
+     l10nId: "permissions-data-section",
+     iconSrc: "chrome://browser/skin/permissions.svg",
+-    groupIds: ["permissions", "dataCollection"],
++    groupIds: ["permissions"],
+     module: "chrome://browser/content/preferences/config/permissions-data.mjs",
+     visible: () => srdSectionEnabled("permissionsData"),
+   },

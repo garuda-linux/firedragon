@@ -1,0 +1,20 @@
+diff --git a/browser/components/preferences/privacy.js b/browser/components/preferences/privacy.js
+index 08e25a225015..26eb7be3b0f8 100644
+--- a/browser/components/preferences/privacy.js
++++ b/browser/components/preferences/privacy.js
+@@ -618,7 +618,6 @@ var gPrivacyPane = {
+     initSettingGroup("securityPrivacyStatus");
+     initSettingGroup("securityPrivacyWarnings");
+     initSettingGroup("httpsOnly");
+-    initSettingGroup("browsingProtection");
+     initSettingGroup("cookiesAndSiteData");
+     initSettingGroup("cookiesAndSiteData2");
+     initSettingGroup("certificates");
+@@ -626,7 +625,6 @@ var gPrivacyPane = {
+     initSettingGroup("history");
+     initSettingGroup("history2");
+     initSettingGroup("permissions");
+-    initSettingGroup("dataCollection");
+     initSettingGroup("privacyPanel");
+     initSettingGroup("dnsOverHttps");
+     initSettingGroup("dnsOverHttpsAdvanced");
