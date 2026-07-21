@@ -1,5 +1,21 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.26](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.26) — 2026-07-21 — [`v13.0.0-rc.25`…`v13.0.0-rc.26`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.25...v13.0.0-rc.26)
+
+### 🐛 Bug Fixes
+
+- Remove unused settings from privacy preferences pane — [`d92680ec…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d92680ec9cca037029dc040ab00a72b256835061)
+
+### ⚙️ Miscellaneous Tasks
+
+- Set default flatpak branch to test — [`add8a8cb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/add8a8cbf9d83233fab8cd4dea12808560c8758f)
+- Update to firefox v153.0 — [`d6265d4a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d6265d4a135f4cf49a6cfc3854553062393dfec2)
+- _(patches)_ Remove obsolete macos sdk patch — [`8f3e6e98…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8f3e6e98f2f02ae69777d7e65841b90062eee7c9)
+- _(patches)_ Update patches from librewolf v153.0-1 — [`15ef9cd3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/15ef9cd393cf17aaab52d118c62b0ad9ea908044)
+- _(config)_ Update config preset from librewolf v153.0-1 — [`24b9f2f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/24b9f2f9659645a5abee970d2fc17f2052c0a8d5)
+- _(distribution)_ Update distribution from librewolf v153.0-1 — [`add8e025…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/add8e025596d23d4ecb3f634d9436d32e63af61b)
+- Update deps — [`26f0a0ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/26f0a0eda8cf8dc0a9aa0736b07603378df86bd4)
+
 ## [FireDragon v13.0.0-rc.25](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25) — 2026-07-20 — [`v13.0.0-rc.24`…`v13.0.0-rc.25`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.24...v13.0.0-rc.25)
 
 ### 🚀 Features
