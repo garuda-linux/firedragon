@@ -14,7 +14,7 @@
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "git-cliff": "^2.13.1",
     "lerna": "^9.0.7",
-    "prettier": "^3.9.5",
+    "prettier": "^3.9.6",
     "zx": "^8.8.5"
   },
   "repository": {

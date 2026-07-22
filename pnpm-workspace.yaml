@@ -33,9 +33,9 @@ catalog:
   '@vue/reactivity': ^3.5.40
   '@wxt-dev/browser': ^0.2.2
   '@wxt-dev/module-vue': ^1.0.3
-  quasar: ^2.21.4
+  quasar: ^2.22.0
   sass-embedded: ^1.100.0
-  tsdown: ^0.22.12
+  tsdown: ^0.22.13
   typescript: ~6.0.3
   vite: ^8.1.5
   vite-plugin-vue-devtools: ^8.1.5

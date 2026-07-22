@@ -16,7 +16,7 @@
     "@webext-core/storage": "^1.2.1",
     "eventemitter3": "^5.0.4",
     "p-event": "^7.1.0",
-    "p-queue": "^9.3.1",
+    "p-queue": "^9.3.2",
     "quasar": "catalog:",
     "trpc-webext": "^2.0.0",
     "vue": "catalog:",
