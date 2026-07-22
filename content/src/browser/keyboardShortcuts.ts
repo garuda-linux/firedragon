@@ -12,9 +12,12 @@ document!.addEventListener(
 
         const defaults = document!.querySelector('#mainKeyset')!;
         effect(() => {
-            const disabled = String(!enableDefaults.value);
             defaults.childNodes.forEach((el) => {
-                (el as Element).setAttribute('disabled', disabled);
+                if (enableDefaults.value) {
+                    (el as Element).removeAttribute('disabled');
+                } else {
+                    (el as Element).setAttribute('disabled', '');
+                }
             });
         });
 
