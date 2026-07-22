@@ -238,6 +238,8 @@ async function flatpak() {
 
     await $`rsync -a ${(await $`flatpak info -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim()}/files/ ${appDir}/`;
 
+    await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
+
     const variables = {
         VERSION: `v${version}`,
         FLATPAK_ID: edition.rdns,
@@ -250,13 +252,11 @@ async function flatpak() {
         await $`sed ${Object.entries(variables).map(([key, value]) => `-e s/@${key}@/${value}/`)} assets/flatpak/${file} | install -Dm${(await $`stat -c %a assets/flatpak/${file}`.text()).trim()} /dev/stdin ${buildDir}/${file}`;
     }
 
-    await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
-
     await $`install -Dm644 -t ${appDir}/share/applications assets/${edition.rdns}.desktop`;
     await $`install -Dm644 -t ${appDir}/share/metainfo assets/${edition.rdns}.metainfo.xml`;
 
-    for (const size of [16, 32, 48, 64, 128]) {
-        await $`install -Dm644 ${libDir}/firedragon/browser/chrome/icons/default/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.rdns}.png`;
+    for (const size of [16, 22, 24, 32, 48, 64, 128, 256]) {
+        await $`install -Dm644 branding/${edition.branding}/default${size}.png ${appDir}/share/icons/hicolor/${size}x${size}/apps/${edition.rdns}.png`;
     }
 
     await $`flatpak build-finish ${buildDir} ${[
