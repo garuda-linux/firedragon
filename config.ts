@@ -15,6 +15,7 @@ export const objDir = 'obj';
 export const editions = {
     dr460nized: {
         basename: 'firedragon',
+        branding: 'dr460nized',
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-dr460nized.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/dr460nized/quasar.scss', import.meta.url)),
         displayName: 'Dr460nized',
@@ -22,6 +23,7 @@ export const editions = {
     },
     catppuccin: {
         basename: 'firedragon-catppuccin',
+        branding: 'catppuccin',
         mozconfig: `${sourceDir}/mozconfig/edition/firedragon-catppuccin.mozconfig`,
         quasar: fileURLToPath(new URL('./branding/catppuccin/quasar.scss', import.meta.url)),
         displayName: 'Catppuccin',
