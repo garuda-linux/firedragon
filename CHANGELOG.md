@@ -263,7 +263,7 @@
 
 ### 🚜 Refactor
 
-- [__breaking__] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
+- [**breaking**] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -688,7 +688,7 @@
 
 ### 🚜 Refactor
 
-- [__breaking__] New config loader and update librewolf patches & settings — [`549dc7b0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/549dc7b0f9d9937c41d03fe4103f097576103c4f)
+- [**breaking**] New config loader and update librewolf patches & settings — [`549dc7b0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/549dc7b0f9d9937c41d03fe4103f097576103c4f)
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -698,8 +698,8 @@
 
 ### 🚜 Refactor
 
-- [__breaking__] Remove about-url for notes — [`66c2d8f0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/66c2d8f0ec791b7f0928e2ab90b7c33c800c4a89)
-- [__breaking__] Separate shared functionality to prevent side effects — [`f63e5226…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f63e5226c97f301802eac5fbeaf6698b3b1862c4)
+- [**breaking**] Remove about-url for notes — [`66c2d8f0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/66c2d8f0ec791b7f0928e2ab90b7c33c800c4a89)
+- [**breaking**] Separate shared functionality to prevent side effects — [`f63e5226…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f63e5226c97f301802eac5fbeaf6698b3b1862c4)
 
 ## [FireDragon v13.0.0-beta.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-beta.1) — 2026-02-28 — [`v13.0.0-beta.0`…`v13.0.0-beta.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-beta.0...v13.0.0-beta.1)
 
@@ -747,9 +747,9 @@
 
 ### 🚀 Features
 
-- [__breaking__] Add manual name settings to wxt-module config — [`da6fdf5a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/da6fdf5a8edcdb0f32f23f9e8918812cb494d2ec)
+- [**breaking**] Add manual name settings to wxt-module config — [`da6fdf5a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/da6fdf5a8edcdb0f32f23f9e8918812cb494d2ec)
 - _(notes)_ Use context-fill & context-fill-opacity for icon — [`9a60e07f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9a60e07fe02c7b90eec8d99e7814bcdec0e023cf)
-- [__breaking__] Move name setting from wxt-module to manifest — [`9adb1951…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9adb1951184346157784d007b93b8e52a0809ca2)
+- [**breaking**] Move name setting from wxt-module to manifest — [`9adb1951…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9adb1951184346157784d007b93b8e52a0809ca2)
 - _(workspaces)_ Initial workspaces implementation — [`a689ecdf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a689ecdfc49a64480b9d9e1fcfc370fc276752fa)
 
 ### 🐛 Bug Fixes

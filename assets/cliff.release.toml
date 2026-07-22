@@ -23,7 +23,7 @@ body = """
     ### {{ group | striptags | trim | upper_first }}
     {% for commit in commits %}
         - {% if commit.scope %}_({{ commit.scope }})_ {% endif %}\
-            {% if commit.breaking %}[__breaking__] {% endif %}\
+            {% if commit.breaking %}[**breaking**] {% endif %}\
             {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/{{ commit.id }})\
     {% endfor %}
 {% endfor %}

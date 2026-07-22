@@ -1,8 +1,12 @@
 {
   "name": "firedragon",
   "version": "13.0.0-rc.27",
-  "firefoxVersion": "153.0",
   "private": true,
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
+  },
   "type": "module",
   "scripts": {
     "format": "prettier --experimental-cli -w .",
@@ -16,10 +20,6 @@
     "oxfmt": "^0.59.0",
     "zx": "^8.8.5"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.com/garuda-linux/firedragon/firedragon13.git"
-  },
-  "license": "MPL-2.0",
-  "packageManager": "pnpm@11.15.1+sha512.81350b07e53c9538a02f1f2303b4290fa2d7be04e56e2a970c4cc4b417dc761de196edabd49d55c7dc9580db81007c44143e4e3d7e462b3000d23c255122d065"
+  "packageManager": "pnpm@11.15.1+sha512.81350b07e53c9538a02f1f2303b4290fa2d7be04e56e2a970c4cc4b417dc761de196edabd49d55c7dc9580db81007c44143e4e3d7e462b3000d23c255122d065",
+  "firefoxVersion": "153.0"
 }

@@ -1,8 +1,8 @@
-import { SafeModeController } from 'resource://firedragon/modules/SafeModeController.sys.mjs';
-import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 import { ConfigContainer } from 'resource://firedragon/modules/config/ConfigContainer.sys.mjs';
+import { SafeModeController } from 'resource://firedragon/modules/SafeModeController.sys.mjs';
 import { File } from 'resource://firedragon/modules/utils/File.sys.mjs';
 import { SandboxBuilder } from 'resource://firedragon/modules/utils/SandboxBuilder.sys.mjs';
+import { Version } from 'resource://firedragon/modules/Version.sys.mjs';
 
 export const ConfigLoader = new (class {
     readonly dirs = [

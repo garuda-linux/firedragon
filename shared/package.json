@@ -19,15 +19,15 @@
     "@wxt-dev/browser": "catalog:",
     "deep-equal": "^2.2.3"
   },
-  "peerDependencies": {
-    "@vue/reactivity": "catalog:",
-    "@webext-core/storage": "^1.2.0",
-    "wxt": "catalog:"
-  },
   "devDependencies": {
     "@types/deep-equal": "^1.0.4",
     "@types/gecko": "workspace:^",
     "tsdown": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "@vue/reactivity": "catalog:",
+    "@webext-core/storage": "^1.2.0",
+    "wxt": "catalog:"
   }
 }

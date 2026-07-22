@@ -1,6 +1,6 @@
 {
   "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
-    "types": ["@types/gecko"],
+    "types": ["@types/gecko"]
   }
 }

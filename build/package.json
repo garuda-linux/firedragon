@@ -16,12 +16,12 @@
   "dependencies": {
     "globby": "^16.2.2"
   },
-  "peerDependencies": {
-    "vite": "catalog:",
-    "wxt": "catalog:"
-  },
   "devDependencies": {
     "tsdown": "catalog:",
     "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "vite": "catalog:",
+    "wxt": "catalog:"
   }
 }
