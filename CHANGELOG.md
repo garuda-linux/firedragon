@@ -1,5 +1,23 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0-rc.27](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27) — 2026-07-22 — [`v13.0.0-rc.26`…`v13.0.0-rc.27`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.26...v13.0.0-rc.27)
+
+### 🚀 Features
+
+- _(config)_ Add branding key to editions config — [`9df28439…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9df28439ccd1f65f5bb236bf1bab3b1ec0d8a712)
+
+### 🐛 Bug Fixes
+
+- _(content)_ Fix default shortcuts — [`1bdbd9b2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1bdbd9b266f11a7f2a79b81feb0f3d3a05eb4b88)
+
+### 🚜 Refactor
+
+- Update flatpak generation to add 22 & 24 icons — [`2e4661d3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2e4661d36c2bdeb60a3db0b954d54b0ccdd9ac6c)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps — [`b1b2e5c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b1b2e5c66a116040a3db9617e5e25d84a7e80f91)
+
 ## [FireDragon v13.0.0-rc.26](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.26) — 2026-07-21 — [`v13.0.0-rc.25`…`v13.0.0-rc.26`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.25...v13.0.0-rc.26)
 
 ### 🐛 Bug Fixes
