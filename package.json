@@ -11,10 +11,9 @@
     "all:build": "lerna run --stream build"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "git-cliff": "^2.13.1",
     "lerna": "^9.0.7",
-    "prettier": "^3.9.6",
+    "oxfmt": "^0.59.0",
     "zx": "^8.8.5"
   },
   "repository": {
