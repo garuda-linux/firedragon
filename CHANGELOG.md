@@ -1,5 +1,11 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0) — 2026-07-25 — [`v13.0.0-rc.27`…`v13.0.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.27...v13.0.0)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & deps — [`a37d2e2f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a37d2e2fdbfccc77d347f74648fa992f7a917b76)
+
 ## [FireDragon v13.0.0-rc.27](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27) — 2026-07-22 — [`v13.0.0-rc.26`…`v13.0.0-rc.27`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.26...v13.0.0-rc.27)
 
 ### 🚀 Features
