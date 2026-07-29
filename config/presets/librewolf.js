@@ -15,7 +15,7 @@ lockPref("librewolf.cfg.version", "8.6");
  * The file is organized in categories, and each one has a number of sections:
  *
  *
- * - PRIVACY [ISOLATION, SANITIZING, CACHE AND STORAGE, HISTORY AND SESSION RESTORE, QUERY STRIPPING]
+ * - PRIVACY [ISOLATION, SANITIZING, CACHE AND STORAGE, HISTORY AND SESSION RESTORE, QUERY STRIPPING, COOKIE BANNERS]
 
  * - NETWORKING [HTTPS, REFERERS, WEBRTC, PROXY, DNS, DOH, PREFETCHING AND SPECULATIVE CONNECTIONS]
  *
@@ -113,6 +113,14 @@ defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
  */
 pref("browser.dom.window.dump.enabled", false);
 pref("devtools.console.stdout.chrome", false);
+
+/** [SECTION] COOKIE BANNERS
+ * 0: Disables all cookie banner handling.
+ * 1: Reject-all if possible, otherwise do nothing.
+ * 2: Reject-all if possible, otherwise accept-all.
+ */
+defaultPref("cookiebanners.service.mode", 1);
+defaultPref("cookiebanners.service.mode.privateBrowsing", 1);
 
 /** ------------------------------
  * [CATEGORY] NETWORKING
