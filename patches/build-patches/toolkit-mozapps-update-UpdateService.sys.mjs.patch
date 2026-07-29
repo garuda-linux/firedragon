@@ -1,0 +1,44 @@
+diff --git a/toolkit/mozapps/update/UpdateService.sys.mjs b/toolkit/mozapps/update/UpdateService.sys.mjs
+index db167b74f040..d4cd59e7ffe4 100644
+--- a/toolkit/mozapps/update/UpdateService.sys.mjs
++++ b/toolkit/mozapps/update/UpdateService.sys.mjs
+@@ -14,6 +14,8 @@ import {
+ import { FileUtils } from "resource://gre/modules/FileUtils.sys.mjs";
+ import { XPCOMUtils } from "resource://gre/modules/XPCOMUtils.sys.mjs";
+ 
++import { Version } from "resource://firedragon/modules/Version.sys.mjs";
++
+ const lazy = {};
+ 
+ ChromeUtils.defineESModuleGetters(lazy, {
+@@ -1951,7 +1953,10 @@ function pingStateAndStatusCodes(aUpdate, aStartup, aStatus) {
+  * This returns true if the passed update is the same version or older than the
+  * version and build ID values passed. Otherwise it returns false.
+  */
+-function updateIsAtLeastAsOldAs(update, version, buildID) {
++function updateIsAtLeastAsOldAs(update, version, buildID, displayVersion) {
++  if (displayVersion && update.displayVersion) {
++    return Version.compare(displayVersion, '>=', update.displayVersion);
++  }
+   if (!update || !update.appVersion || !update.buildID) {
+     return false;
+   }
+@@ -1970,7 +1975,8 @@ function updateIsAtLeastAsOldAsCurrentVersion(update) {
+   return updateIsAtLeastAsOldAs(
+     update,
+     Services.appinfo.version,
+-    Services.appinfo.appBuildID
++    Services.appinfo.appBuildID,
++    Version.version,
+   );
+ }
+ 
+@@ -1990,7 +1996,8 @@ function updateIsAtLeastAsOldAsReadyUpdate(update) {
+   return updateIsAtLeastAsOldAs(
+     update,
+     lazy.UM.internal.readyUpdate.appVersion,
+-    lazy.UM.internal.readyUpdate.buildID
++    lazy.UM.internal.readyUpdate.buildID,
++    lazy.UM.internal.readyUpdate.displayVersion,
+   );
+ }
