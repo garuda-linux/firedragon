@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.1) — 2026-07-29 — [`v13.0.0`…`v13.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0...v13.0.1)
+
+### 🐛 Bug Fixes
+
+- Use display version to compare updates — [`9de8ec6a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9de8ec6a37f374d94333138802a4db48f20b5008)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v153.0.1 — [`bd055c78…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bd055c788d7058f787380c4ac69e0341ffd2efe0)
+- _(config)_ Update librewolf preset to v153.0.1-1 — [`379e0491…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/379e04911ff6bfe855ffa4d7e3cfdeed85824579)
+
 ## [FireDragon v13.0.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0) — 2026-07-25 — [`v13.0.0-rc.27`…`v13.0.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.27...v13.0.0)
 
 ### ⚙️ Miscellaneous Tasks
