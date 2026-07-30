@@ -24,7 +24,9 @@ import {
 
 /* CONFIG */
 
-const argv = minimist(process.argv.slice(4), {
+$.verbose = true;
+
+const argv = minimist(process.argv.slice(2), {
     '--': true,
     string: ['edition', 'target'],
 });
