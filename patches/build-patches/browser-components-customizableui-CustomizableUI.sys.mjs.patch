@@ -1,0 +1,16 @@
+diff --git a/browser/components/customizableui/CustomizableUI.sys.mjs b/browser/components/customizableui/CustomizableUI.sys.mjs
+index d5d4596739cd..ffb56379c1e8 100644
+--- a/browser/components/customizableui/CustomizableUI.sys.mjs
++++ b/browser/components/customizableui/CustomizableUI.sys.mjs
+@@ -3995,6 +3995,11 @@ var CustomizableUIInternal = {
+         } else {
+           area.set("defaultPlacements", [widget.id]);
+         }
++      } else if (aProperties.defaultPosition) {
++        const defaultPlacements = area.get('defaultPlacements'),
++          [direction, target] = aProperties.defaultPosition.split(':', 2),
++          index = defaultPlacements.indexOf(target) + Number(direction === 'after');
++        defaultPlacements.splice(index, 0, widget.id);
+       }
+     }
+ 
