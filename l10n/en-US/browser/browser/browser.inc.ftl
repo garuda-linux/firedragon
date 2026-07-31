@@ -9,6 +9,9 @@ urlbar-webgl-blocked =
 firedragon-undo-close-tab =
     .label = Undo Close Tab
     .tooltiptext = Undo Close Tab
+firedragon-close-private-tabs =
+    .label = Close Private Tabs
+    .tooltiptext = Close Private Tabs
 
 firedragon-move-tab-to-window =
     .label = Move tab to Window

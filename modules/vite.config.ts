@@ -2,7 +2,7 @@ import { vite } from '@firedragon/build/vite';
 import { globby } from 'globby';
 import { type UserConfig, defineConfig } from 'vite';
 
-export default defineConfig(async ({ mode }) => {
+export default defineConfig(async () => {
     const entry: Record<string, string> = {};
 
     for (const fileName of await globby('**/*.sys.mts', { cwd: 'src' })) {
@@ -39,6 +39,12 @@ export default defineConfig(async ({ mode }) => {
                         category: 'firedragon/browser-startup',
                         entry: 'resource://firedragon/modules/config/ConfigLoader.sys.mjs',
                         value: 'ConfigLoader.loadConfig',
+                    },
+                    {
+                        type: 'category',
+                        category: 'browser-window-final-unload',
+                        entry: 'resource://firedragon/modules/PrivateContainer.sys.mjs',
+                        value: 'PrivateContainer.maybeClearData',
                     },
                     {
                         type: 'category',

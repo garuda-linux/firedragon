@@ -1,0 +1,21 @@
+diff --git a/browser/components/sessionstore/SessionStore.sys.mjs b/browser/components/sessionstore/SessionStore.sys.mjs
+index 183543c5f29f..ecefe46c5df9 100644
+--- a/browser/components/sessionstore/SessionStore.sys.mjs
++++ b/browser/components/sessionstore/SessionStore.sys.mjs
+@@ -183,6 +183,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
+   HomePage: "resource:///modules/HomePage.sys.mjs",
+   JsonSchema: "resource://gre/modules/JsonSchema.sys.mjs",
+   PrivacyFilter: "resource://gre/modules/sessionstore/PrivacyFilter.sys.mjs",
++  PrivateContainer: 'resource://firedragon/modules/PrivateContainer.sys.mjs',
+   sessionStoreLogger: "resource:///modules/sessionstore/SessionLogger.sys.mjs",
+   RunState: "resource:///modules/sessionstore/RunState.sys.mjs",
+   SessionCookies: "resource:///modules/sessionstore/SessionCookies.sys.mjs",
+@@ -7519,7 +7520,7 @@ var SessionStoreInternal = {
+       (aTabState.attributes && aTabState.attributes.customizemode == "true") ||
+       (aTabState.entries.length &&
+         aTabState.entries[0].url != "about:privatebrowsing")
+-    );
++    ) && aTabState.userContextId !== lazy.PrivateContainer.userContextId;
+   },
+ 
+   /**
