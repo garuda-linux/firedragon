@@ -12,7 +12,7 @@
     "@quasar/extras": "catalog:",
     "@unhead/vue": "catalog:",
     "@vueuse/core": "catalog:",
-    "@webext-core/storage": "^1.2.1",
+    "@webext-core/storage": "^2.0.0",
     "quasar": "catalog:",
     "vue": "catalog:",
     "vue-i18n": "catalog:",
