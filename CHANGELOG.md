@@ -1,5 +1,24 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.1.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.0) — 2026-08-01 — [`v13.0.1`…`v13.1.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.1...v13.1.0)
+
+### 🚀 Features
+
+- _(patches)_ Add defaultPosition option to CustomizableUI.createWidget — [`5581f56b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5581f56bcec30e33e5e4fc7eb33b369f39d6dbb0)
+- Add private container & tabs — [`2a1b285b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2a1b285b839767fa8d050637fc4376c0fd565851)
+
+### 🐛 Bug Fixes
+
+- Run make.ts with tsx to fix cleanup of tmpdir — [`ba151565…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba15156594299299d273cef28130139b111c7fbf)
+
+### 🚜 Refactor
+
+- _(content)_ Switch to defaultPosition for undo close tap widget — [`ffa68f5d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ffa68f5dd8e42ab3ccd05a037d55af232e5e095c)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & deps — [`87632a3c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/87632a3cc48414ca6dab988fad2a4427ecaa7d8b)
+
 ## [FireDragon v13.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.1) — 2026-07-29 — [`v13.0.0`…`v13.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0...v13.0.1)
 
 ### 🐛 Bug Fixes
