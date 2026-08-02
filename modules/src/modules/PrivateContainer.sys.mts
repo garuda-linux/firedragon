@@ -48,14 +48,14 @@ export const PrivateContainer = new (class {
     private getOrCreatePrivateContainer(): number {
         return (
             lazy.ContextualIdentityService._identities.find(
-                (userContext: any) => userContext.firedragonPrivateContainer,
+                (identity: ContextualIdentity) => identity.firedragonPrivateContainer,
             )?.userContextId ?? this.createPrivateContainer()
         );
     }
 
     private createPrivateContainer(): number {
         const userContextId = ++lazy.ContextualIdentityService._lastUserContextId,
-            identity = {
+            identity: ContextualIdentity = {
                 userContextId,
                 public: true,
                 icon: 'chill',
