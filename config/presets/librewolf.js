@@ -724,11 +724,11 @@ defaultPref("librewolf.debugger.force_detach", false);
 defaultPref("librewolf.console.logging_disabled", false);
 defaultPref(
   "librewolf.services.settings.allowedCollections",
-  "security-state/*,main/tracking-protection-lists,main/public-suffix-list,main/translations-models-v2,main/translations-wasm-v2,main/translations-identification-models,main/addons-manager-settings,main/anti-tracking-url-decoration,main/hijack-blocklists,blocklists/gfx,blocklists/addons-bloomfilters,main/addons-data-leak-blocker-domains,main/cookie-banner-rules-list,main/query-stripping,blocklists/addons,blocklists/plugins,main/url-parser-default-unknown-schemes-interventions,main/webcompat-interventions,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/partitioning-exempt-urls,main/password-recipes,main/third-party-cookie-blocking-exempt-urls,main/url-classifier-exceptions,main/url-classifier-skip-urls"
+  "security-state/*,main/content-classifier-lists,main/change-password-urls,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/vpn-serverlist,main/fxrelay-denylist,main/translations-models-v2,main/translations-wasm-v2,main/mfcdm-origins-list,main/url-classifier-exceptions,main/fxrelay-allowlist,main/ml-model-allow-deny-list,main/third-party-cookie-blocking-exempt-urls,main/backup-common-passwords-list,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/translations-models,main/translations-wasm,main/cookie-banner-rules-list,main/query-stripping,main/password-rules,main/websites-with-shared-credential-backends,main/password-recipes,main/partitioning-exempt-urls,blocklists/addons-bloomfilters,main/tracking-protection-lists,main/anti-tracking-url-decoration,main/hijack-blocklists,main/fxmonitor-breaches,main/language-dictionaries,blocklists/gfx,blocklists/addons,blocklists/plugins"
 );
 defaultPref(
   "librewolf.services.settings.allowedCollectionsFromDump",
-  "main/search-config-v2,main/search-config-icons,main/bounce-tracking-protection-exceptions"
+  "main/moz-essential-domain-fallbacks,main/url-parser-default-unknown-schemes-interventions,main/urlbar-persisted-search-terms,main/newtab-wallpapers-v2,main/newtab-wallpapers,main/devtools-devices,main/devtools-compatibility-browsers,main/ms-images,main/tippytop,main/search-config-icons,main/search-config-v2"
 );
 
 defaultPref("librewolf.getBrowserInfo.setToFirefoxDefaults", true);
