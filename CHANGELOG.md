@@ -1,5 +1,14 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.1.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.1) — 2026-08-04 — [`v13.1.0`…`v13.1.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.0...v13.1.1)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(modules)_ Type identity in PrivateContainer.sys.mts — [`227e02c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/227e02c32ecfc39ceea95cb1bdfcc1eacdd53850)
+- _(patches)_ Update librewolf patches to v153.0.3-1 — [`a4ed1c28…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a4ed1c283a6fa6d38f9509ba707a7e68f39f7daf)
+- _(config)_ Update librewolf preset to v153.0.3-1 — [`78e794bc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/78e794bc165ebfb44162af96abe1bdca18872012)
+- Update pnpm & deps — [`07d09717…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07d09717320bad125a19d6a63a0afc98bc4cca2d)
+
 ## [FireDragon v13.1.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.0) — 2026-08-01 — [`v13.0.1`…`v13.1.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.1...v13.1.0)
 
 ### 🚀 Features
