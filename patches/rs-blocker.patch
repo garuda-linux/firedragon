@@ -1,72 +1,114 @@
+diff --git a/services/settings/RemoteSettings.worker.mjs b/services/settings/RemoteSettings.worker.mjs
+index 3e4e915..a927685 100644
+--- a/services/settings/RemoteSettings.worker.mjs
++++ b/services/settings/RemoteSettings.worker.mjs
+@@ -62,12 +62,16 @@ const Agent = {
+    *
+    * @param {string} bucket
+    * @param {string} collection
++   * @param {string} allowedCollections
++   * @param {string} allowedCollectionsFromDump
+    * @returns {int} Number of records loaded from dump or -1 if no dump found.
+    */
+-  async importJSONDump(bucket, collection) {
++  async importJSONDump(bucket, collection, allowedCollections, allowedCollectionsFromDump) {
+     const { data: records, timestamp } = await SharedUtils.loadJSONDump(
+       bucket,
+-      collection
++      collection,
++      allowedCollections,
++      allowedCollectionsFromDump
+     );
+     if (records === null) {
+       // Return -1 if file is missing.
 diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
-index 418418ba4e..6458bd7230 100644
+index 3ee4ae6..12165e1 100644
 --- a/services/settings/RemoteSettingsClient.sys.mjs
 +++ b/services/settings/RemoteSettingsClient.sys.mjs
-@@ -212,6 +212,11 @@ class AttachmentDownloader extends Downloader {
+@@ -215,6 +215,11 @@ class AttachmentDownloader extends Downloader {
     * @see Downloader.download
     */
    async download(record, options) {
-+    if (!lazy.Utils.isCollectionAllowed(this.bucketName, this.collectionName)) {
++    if (!lazy.SharedUtils.isCollectionAllowed(this.bucketName, this.collectionName, lazy.Utils.allowedCollections)) {
 +      throw Error(
 +        `Download attempt to RS collection "${this.identifier}" was blocked.`
 +      );
 +    }
      await lazy.UptakeTelemetry.report(
-       TELEMETRY_COMPONENT,
        lazy.UptakeTelemetry.STATUS.DOWNLOAD_START,
-@@ -653,6 +658,10 @@ export class RemoteSettingsClient extends EventEmitter {
+       {
+@@ -586,7 +591,9 @@ export class RemoteSettingsClient extends EventEmitter {
+       }
+       ({ data } = await lazy.SharedUtils.loadJSONDump(
+         this.bucketName,
+-        this.collectionName
++        this.collectionName,
++        lazy.Utils.allowedCollections,
++        lazy.Utils.allowedCollectionsFromDump
+       ));
+       if (data !== null) {
+         lazy.console.info(`${this.identifier} falling back to JSON dump`);
+@@ -656,6 +663,10 @@ export class RemoteSettingsClient extends EventEmitter {
        return;
      }
  
-+    if (!lazy.Utils.isCollectionAllowed(this.bucketName, this.collectionName)) {
++    if (!lazy.SharedUtils.isCollectionAllowed(this.bucketName, this.collectionName, lazy.Utils.allowedCollections)) {
 +      return;
 +    }
 +
      // We want to know which timestamp we are expected to obtain in order to leverage
      // cache busting. We don't provide ETag because we don't want a 304.
      const { changes } = await lazy.Utils.fetchLatestChanges(
-@@ -1042,6 +1051,14 @@ export class RemoteSettingsClient extends EventEmitter {
-    * Import the JSON files from services/settings/dump into the local DB.
-    */
-   async _importJSONDump() {
-+    if (
-+      !lazy.Utils.isCollectionAllowedFromDump(
-+        this.bucketName,
-+        this.collectionName
-+      )
-+    ) {
-+      return 0;
-+    }
+@@ -1040,7 +1051,9 @@ export class RemoteSettingsClient extends EventEmitter {
      lazy.console.info(`${this.identifier} try to restore dump`);
      const result = await lazy.RemoteSettingsWorker.importJSONDump(
        this.bucketName,
-diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
-index da12049e14..84e14c5848 100644
---- a/services/settings/Utils.sys.mjs
-+++ b/services/settings/Utils.sys.mjs
-@@ -77,6 +77,18 @@ ChromeUtils.defineLazyGetter(lazy, "allowServerURL", () => {
-   return false;
- });
+-      this.collectionName
++      this.collectionName,
++      lazy.Utils.allowedCollections,
++      lazy.Utils.allowedCollectionsFromDump
+     );
+     if (result < 0) {
+       lazy.console.debug(`${this.identifier} no dump available`);
+diff --git a/services/settings/RemoteSettingsWorker.sys.mjs b/services/settings/RemoteSettingsWorker.sys.mjs
+index 57bfb3f..874b35a 100644
+--- a/services/settings/RemoteSettingsWorker.sys.mjs
++++ b/services/settings/RemoteSettingsWorker.sys.mjs
+@@ -162,8 +162,8 @@ class Worker {
+     ]);
+   }
  
-+ChromeUtils.defineLazyGetter(lazy, "allowedCollections", () =>
-+  Services.prefs
-+    .getStringPref("librewolf.services.settings.allowedCollections", "")
-+    .split(",")
-+);
-+
-+ChromeUtils.defineLazyGetter(lazy, "allowedCollectionsFromDump", () =>
-+  Services.prefs
-+    .getStringPref("librewolf.services.settings.allowedCollectionsFromDump", "")
-+    .split(",")
-+);
-+
- XPCOMUtils.defineLazyPreferenceGetter(
-   lazy,
-   "gServerURL",
-@@ -221,6 +233,75 @@ export var Utils = {
-     return false;
+-  async importJSONDump(bucket, collection) {
+-    return this._execute("importJSONDump", [bucket, collection], {
++  async importJSONDump(bucket, collection, allowedCollections, allowedCollectionsFromDump) {
++    return this._execute("importJSONDump", [bucket, collection, allowedCollections, allowedCollectionsFromDump], {
+       mustComplete: true,
+     });
+   }
+diff --git a/services/settings/SharedUtils.sys.mjs b/services/settings/SharedUtils.sys.mjs
+index e5b20d9..9a71c99 100644
+--- a/services/settings/SharedUtils.sys.mjs
++++ b/services/settings/SharedUtils.sys.mjs
+@@ -34,8 +34,13 @@ export var SharedUtils = {
+    *
+    * @param {string}  bucket
+    * @param {string}  collection
++   * @param {string}  allowedCollections
++   * @param {string}  allowedCollectionsFromDump
+    */
+-  async loadJSONDump(bucket, collection) {
++  async loadJSONDump(bucket, collection, allowedCollections, allowedCollectionsFromDump) {
++    if (!this.isCollectionAllowedFromDump(bucket, collection, allowedCollections, allowedCollectionsFromDump)) {
++      return { data: null, timestamp: null };
++    }
+     // When using the preview bucket, we still want to load the main dump.
+     // But we store it locally in the preview bucket.
+     const jsonBucket = bucket.replace("-preview", "");
+@@ -50,4 +55,75 @@ export var SharedUtils = {
+     // Will throw if JSON is invalid.
+     return response.json();
    },
- 
++
 +  /**
 +   * Internal code to determine whether the bucket and collection are allowed to
 +   * be loaded by the remote settings client for a given list of allowed
@@ -77,7 +119,6 @@ index da12049e14..84e14c5848 100644
 +   * @returns {boolean} whether the bucket and collection are allowed to load
 +   */
 +  _isCollectionAllowedInternal(bucket, collection, allowedCollections) {
-+    bucket = this.actualBucketName(bucket);
 +    return (
 +      allowedCollections.includes(`${bucket}/${collection}`) ||
 +      allowedCollections.includes(`${bucket}/*`) ||
@@ -90,14 +131,15 @@ index da12049e14..84e14c5848 100644
 +   * remote settings client.
 +   * @param {string} bucket
 +   * @param {string} collection
++   * @param {string} allowedCollections
 +   * @returns {boolean} whether the bucket and collection are allowed to load
 +   */
-+  isCollectionAllowed(bucket, collection) {
++  isCollectionAllowed(bucket, collection, allowedCollections) {
 +    if (
 +      this._isCollectionAllowedInternal(
 +        bucket,
 +        collection,
-+        lazy.allowedCollections
++        allowedCollections
 +      )
 +    ) {
 +      return true;
@@ -113,19 +155,21 @@ index da12049e14..84e14c5848 100644
 +   * an in-tree remote settings dump.
 +   * @param {string} bucket
 +   * @param {string} collection
++   * @param {string} allowedCollections
++   * @param {string} allowedCollectionsFromDump
 +   * @returns {boolean} whether the bucket and collection are allowed to load
 +   */
-+  isCollectionAllowedFromDump(bucket, collection) {
++  isCollectionAllowedFromDump(bucket, collection, allowedCollections, allowedCollectionsFromDump) {
 +    if (
 +      this._isCollectionAllowedInternal(
 +        bucket,
 +        collection,
-+        lazy.allowedCollectionsFromDump
++        allowedCollectionsFromDump
 +      ) ||
 +      this._isCollectionAllowedInternal(
 +        bucket,
 +        collection,
-+        lazy.allowedCollections
++        allowedCollections
 +      )
 +    ) {
 +      return true;
@@ -135,17 +179,63 @@ index da12049e14..84e14c5848 100644
 +    );
 +    return false;
 +  },
+ };
+diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
+index 76f69ab..daf715c 100644
+--- a/services/settings/Utils.sys.mjs
++++ b/services/settings/Utils.sys.mjs
+@@ -91,6 +91,18 @@ XPCOMUtils.defineLazyPreferenceGetter(
+   false
+ );
+ 
++ChromeUtils.defineLazyGetter(lazy, "allowedCollections", () =>
++  Services.prefs
++    .getStringPref("librewolf.services.settings.allowedCollections", "")
++    .split(",")
++);
 +
++ChromeUtils.defineLazyGetter(lazy, "allowedCollectionsFromDump", () =>
++  Services.prefs
++    .getStringPref("librewolf.services.settings.allowedCollectionsFromDump", "")
++    .split(",")
++);
++
+ function _isUndefined(value) {
+   return typeof value === "undefined";
+ }
+@@ -105,6 +117,14 @@ export var Utils = {
+       : AppConstants.REMOTE_SETTINGS_SERVER_URLS[0];
+   },
+ 
++  get allowedCollections() {
++    return lazy.allowedCollections;
++  },
++
++  get allowedCollectionsFromDump() {
++    return lazy.allowedCollectionsFromDump;
++  },
++
+   CHANGES_PATH: "/buckets/monitor/collections/changes/changeset",
+ 
    /**
-    * A wrapper around `ServiceRequest` that behaves like `fetch()`.
-    *
-@@ -500,7 +581,9 @@ export var Utils = {
+@@ -393,7 +413,9 @@ export var Utils = {
+     if (lastModified === undefined) {
+       const { timestamp: dumpTimestamp } = await lazy.SharedUtils.loadJSONDump(
+         bucket,
+-        collection
++        collection,
++        this.allowedCollections,
++        this.allowedCollectionsFromDump
+       );
+       // Client recognize -1 as missing dump.
+       lastModified = dumpTimestamp ?? -1;
+@@ -503,7 +525,9 @@ export var Utils = {
      }
  
      return {
 -      changes,
 +      changes: changes.filter(change =>
-+        this.isCollectionAllowed(change.bucket, change.collection)
++        lazy.SharedUtils.isCollectionAllowed(change.bucket, change.collection, this.allowedCollections)
 +      ),
        timestamp,
        serverTimeMillis,
