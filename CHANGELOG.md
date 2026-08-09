@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.2) — 2026-08-09 — [`v13.1.1`…`v13.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.1...v13.1.2)
+
+### 🐛 Bug Fixes
+
+- _(modules)_ Add qr-code to BuiltinAddons.sys.mts — [`d02028b3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d02028b395432f46579bfeaa9f21c277d023faa3)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update pnpm & deps — [`a2069f89…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2069f89715cd5db467dcad5d453cdcbaddcd028)
+
 ## [FireDragon v13.1.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.1) — 2026-08-04 — [`v13.1.0`…`v13.1.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.0...v13.1.1)
 
 ### ⚙️ Miscellaneous Tasks
