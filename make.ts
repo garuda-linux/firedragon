@@ -238,7 +238,7 @@ async function flatpak() {
     await $`flatpak remote-add --user --if-not-exists --from flathub https://dl.flathub.org/repo/flathub.flatpakrepo`;
     await $`flatpak install --user -y flathub ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`;
 
-    await $`rsync -a ${(await $`flatpak info -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim()}/files/ ${appDir}/`;
+    await $`rsync -a ${(await $`flatpak info --user -l ${flatpakBaseId}/${target.arch}/${flatpakBaseVersion}`.text()).trim()}/files/ ${appDir}/`;
 
     await extractArtifactTo(await getArtifact(edition.basename, `${target.suffix}.tar.xz`), `${libDir}/firedragon`);
 
