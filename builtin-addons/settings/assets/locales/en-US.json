@@ -81,8 +81,8 @@
           "description": "WebGL is a strong fingerprinting vector. If you need to enable it, consider using an extension like Canvas Blocker."
         },
         "enableWebGLPrompt": {
-          "title": "Enable WebGL permission prompt",
-          "description": "This will prompt you to allow WebGL on websites that require it."
+          "title": "Enable WebGL permission handling",
+          "description": "This will enable permission handling for WebGL thus prompting you to allow WebGL on sites that require it. When disabled WebGL will be available to all sites."
         },
         "hideWebGLPrompt": {
           "title": "Hide WebGL permission prompt",
