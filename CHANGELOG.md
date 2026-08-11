@@ -1,5 +1,32 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.1.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.3) — 2026-08-11 — [`v13.1.2`…`v13.1.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.2...v13.1.3)
+
+### 🐛 Bug Fixes
+
+- _(build)_ Remove wxt:iife-anonymous plugin for experimental api entrypoints — [`550da53a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/550da53ab8f9acba1693780a52ca5eb0b175e4f1)
+- _(patches)_ Backport ffmpeg63 support — [`d02ebb0e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d02ebb0e50b346a9bac8da60b9083edcce5162be)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(make)_ Force use of userspace firefox base flatpak — [`b85421f4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b85421f40893daa913069abb41511ed14bb01366)
+- Update pnpm & deps — [`e224d473…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e224d47347f145db4c218b94ca1c27ff381ac0f5)
+- _(builtin-addons/startpage)_ Remove unused depdendencies — [`65084073…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/650840735c79820cee7da8c1768f28043521c48b)
+- _(l10n)_ Add French translation — [`869947bc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/869947bca2703b0f4ec75fb91c641f9172c045ac)
+- _(builtin-addons/troubleshooting)_ Add French translation — [`fb6c7f2e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fb6c7f2e8e063f560ce13d8733ee75a45a14a471)
+- _(l10n)_ Add French translation — [`eb7fece9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/eb7fece908768c0f9e2d63943699ca1f7c4e3518)
+- _(builtin-addons/settings)_ Add French translation — [`bec74315…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bec74315d19825dc9adaa4335665d7d7e9fa81ab)
+- _(builtin-addons/settings)_ Update English (United States) translation — [`cfe3cc26…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cfe3cc267ef59e5c5e74d805075ef04c98d8ae20)
+- _(l10n)_ Add French translation — [`f1eea18e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f1eea18eb0dcc9d9a3c3b7b38dcee2461ce21dd5)
+- _(l10n)_ Add French translation — [`62ae5bdf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/62ae5bdfd23e8ca3799855f9578ddc8eac1b0a25)
+- _(l10n)_ Add French translation — [`7cbb448a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7cbb448a231030dd5124fb0121afc9b2aea37031)
+- _(l10n)_ Add French translation — [`f7ca5ebc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f7ca5ebc7c9858dfeb65df7a79de6ddf7e14460c)
+- _(builtin-addons/workspaces)_ Add French translation — [`9117d706…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9117d706e77cf6dd769f9ad71c126920a2d521aa)
+- _(builtin-addons/welcome)_ Add French translation — [`bb2e63f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bb2e63f9d3c8bfc4f39f51bd993a4ec57939f4c5)
+- _(builtin-addons/qr-code)_ Add French translation — [`404339c9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/404339c970459f034853d2f264d16e9e2c7c7926)
+- _(builtin-addons/notes)_ Add French translation — [`ffb20000…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ffb200001490acb1757ba950fc010129da3c032a)
+- Remove obsolete allowBuilds — [`5e68d52b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5e68d52b5b30a79380fe85410e782fa157796545)
+
 ## [FireDragon v13.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.2) — 2026-08-09 — [`v13.1.1`…`v13.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.1...v13.1.2)
 
 ### 🐛 Bug Fixes
