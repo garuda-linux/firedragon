@@ -43,7 +43,3 @@ catalog:
   vue-i18n: ^11.4.8
   vue-router: ^5.2.0
   wxt: ^0.21.3
-
-minimumReleaseAgeExclude:
-  - '@garudalinux/core@2.0.0'
-  - '@garudalinux/themes@2.0.0'
