@@ -19,10 +19,7 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
   nx: true
-  sharp: true
-  spawn-sync: true
   unrs-resolver: true
-  workerd: true
 
 catalog:
   '@intlify/unplugin-vue-i18n': ^11.2.4
