@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.1.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.3) — 2026-08-11 — [`v13.1.2`…`v13.1.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.2...v13.1.3)
+
+### 🐛 Bug Fixes
+
+- _(build)_ Remove wxt:iife-anonymous plugin for experimental api entrypoints — [`550da53a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/550da53ab8f9acba1693780a52ca5eb0b175e4f1)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(make)_ Force use of userspace firefox base flatpak — [`b85421f4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b85421f40893daa913069abb41511ed14bb01366)
+- Update pnpm & deps — [`e224d473…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e224d47347f145db4c218b94ca1c27ff381ac0f5)
+- _(builtin-addons/startpage)_ Remove unused depdendencies — [`65084073…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/650840735c79820cee7da8c1768f28043521c48b)
+
 ## [FireDragon v13.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.2) — 2026-08-09 — [`v13.1.1`…`v13.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.1...v13.1.2)
 
 ### 🐛 Bug Fixes
