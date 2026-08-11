@@ -102,7 +102,7 @@ export default defineWxtModule<Options>({
                             // @ts-ignore
                             config.build!.lib!.name = name;
                             // @ts-ignore
-                            config.plugins = config.plugins!.filter((plugin) => plugin?.name !== 'wxt:iife-footer');
+                            config.plugins = config.plugins!.filter((plugin) => plugin?.name !== 'wxt:iife-anonymous');
                         }
                     });
                 }),
