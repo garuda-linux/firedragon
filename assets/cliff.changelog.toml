@@ -15,9 +15,13 @@ body = """
 {% else %}\
     ## [unreleased]
 {% endif %}\
-{% for group, commits in commits | group_by(attribute="group") %}
+{% set_global groups = commits | map(attribute="group") %}\
+{% for submodule_path, commits in submodule_commits %}\
+    {% set_global groups = groups | concat(with=commits | map(attribute="group")) %}\
+{% endfor %}\
+{% for group in groups | unique | sort %}
     ### {{ group | striptags | trim | upper_first }}
-    {% for commit in commits %}
+    {% for commit in commits | filter(attribute="group", value=group) %}
         - {% if commit.scope %}_({{ commit.scope }})_ {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
             {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](<REPO>/-/commit/{{ commit.id }})\

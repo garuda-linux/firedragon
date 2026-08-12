@@ -34,6 +34,10 @@
 
 - _(modules)_ Add qr-code to BuiltinAddons.sys.mts — [`d02028b3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d02028b395432f46579bfeaa9f21c277d023faa3)
 
+### 🚜 Refactor
+
+- **builtin-addons/startpage:** Angular 22; Typescript 6; OptimusUI — [`e4192e76…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e4192e76e4914f4a8259dcfe8694dcb7e0e15107)
+
 ### ⚙️ Miscellaneous Tasks
 
 - Update pnpm & deps — [`a2069f89…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2069f89715cd5db467dcad5d453cdcbaddcd028)
@@ -411,11 +415,55 @@
 - **builtin-addons/startpage:** Init links & search — [`6b3049b6…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6b3049b6ba32037773437a8f4e5afeb1ede384a6)
 - **builtin-addons/startpage:** Initial commit — [`2918339a…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/2918339af8f200c24af959625662c4103b9ce209)
 
+### 🐛 Bug Fixes
+
+- **builtin-addons/startpage:** Minor issues in mobile mode — [`7fb65fa5…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/7fb65fa5fe9112c022a2d4cb97028f7d554ecf8e)
+- **builtin-addons/startpage:** _(deps)_ Update all patch dependencies — [`55a440eb…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/55a440ebfbfa1540a9e2c1c2765987afad30cae6)
+- **builtin-addons/startpage:** Get rid of the jumping page for good — [`89af8fc8…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/89af8fc8aa09c6cee24d78fcb7317c5606c39409)
+- **builtin-addons/startpage:** TS-992003: No suitable injection token for parameter 'settings' of class 'WallpaperService' — [`8b018fef…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/8b018fef1fab970684b6d83cb0e42689dbd28986)
+- **builtin-addons/startpage:** _(theme)_ Vo1ded scrollbar colors — [`0e4303ac…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0e4303ac2d89fec640dea5000bc2b78b6656c744)
+- **builtin-addons/startpage:** _(theme)_ Background/scrollbar vo1ded — [`0d4ada6d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0d4ada6d52cede1fbb0c32bfeab4e146b77c17e9)
+- **builtin-addons/startpage:** _(theme)_ Strip not needed tokens — [`d0c21798…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d0c217980e217696e147e5cc6220e8fa1c8bc79b)
+- **builtin-addons/startpage:** _(search)_ Broken autocomplete look — [`f6fe72e1…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f6fe72e160ec9a0aa60435682ee948f4fa7a17e8)
+- **builtin-addons/startpage:** _(links)_ Hardcoded icons on creation — [`ad4e5ec6…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ad4e5ec6be41f49781afb11fd530168659ab0e9f)
+- **builtin-addons/startpage:** _(links)_ Different panel heights — [`5e01c509…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/5e01c509add7db13af70ff7bc792f7a7d78d9622)
+- **builtin-addons/startpage:** _(settings)_ Custom logo url yielding broken img — [`d7a45ea1…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d7a45ea1d36b6b77428a34106d524532c4737e28)
+- **builtin-addons/startpage:** _(settings)_ Get rid of weird table behavior — [`dbc54f2e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/dbc54f2ec2fffb5d821e4bf08614da9b8b91d4e5)
+- **builtin-addons/startpage:** Make reset settings clear localstorage too — [`536bb06f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/536bb06f03d39f73dd4fa5d32e4838aca0eaa3b0)
+- **builtin-addons/startpage:** More robust default settings / enable resetting — [`c0639c81…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/c0639c81cbc9731e58fb16ea27a4bed88a21d28b)
+- **builtin-addons/startpage:** _(news)_ Prevent unnecessary action when news are already up to date — [`4a1d20cc…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/4a1d20ccb3a2952335c8377bc7fa7287a767e416)
+- **builtin-addons/startpage:** Theming issues and broken search engine, add new wallpapers/engines — [`d982e0f0…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d982e0f0cc81a8b763915c18d6e2877c681fb274)
+- **builtin-addons/startpage:** Transloco — [`ec878ec3…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ec878ec3b0d03bcb6ae0270e5a4e22342ba61162)
+- **builtin-addons/startpage:** _(menubar)_ Menubar not hiding when shown and touching button again; better route transitions — [`e9a20d70…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e9a20d7085810e877765d6bc95d30d44369bb2bd)
+- **builtin-addons/startpage:** Until https://github.com/nrwl/nx/issues/22576 is fixed — [`6e7c99df…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6e7c99df75fa690dee9aa352f1af99022e9c0410)
+- **builtin-addons/startpage:** Theming — [`3e146552…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3e146552b08136492c8591ae4b573753a86aa147)
+- **builtin-addons/startpage:** Various UI improvements — [`ff094c2e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ff094c2ec5976e288b010d3523fe97639dd689fb)
+- **builtin-addons/startpage:** Menu button missing on mobile; no default logos shown; settings spacing — [`36ba4c0f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/36ba4c0fe861c9e52f7ddb5dbd7e8b0f17283d45)
+- **builtin-addons/startpage:** Account for empty custom links — [`81e99786…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/81e99786145f96e87696c471e85bc1fd048c068f)
+- **builtin-addons/startpage:** Visuals; upgrade deps — [`b6c49ad1…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/b6c49ad14a331eccaf952e4a5f40ecc5018d6eed)
+- **builtin-addons/startpage:** Mobile design — [`fbc6303e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/fbc6303e345009ddc885de0e62a5c9dab33f7e0a)
+- **builtin-addons/startpage:** Design improvements; cache data — [`f4400465…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f4400465239ea1ef04ae9b39e3f5a89fd11da5cd)
+- **builtin-addons/startpage:** Search engine access on gl.org — [`42dceb7d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/42dceb7db3776c7e25860019970e8e791275d6b6)
+- **builtin-addons/startpage:** Add cdr for forum posts; auto show custom inputs — [`e11d5afe…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e11d5afe9f1ef98e25f20841ab3ffb58268e0d22)
+- **builtin-addons/startpage:** Mode — [`b554cec5…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/b554cec56d0c27175a408102b5d15b0407d00003)
+- **builtin-addons/startpage:** Can't paste that in here — [`801e0077…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/801e0077cb36eff7e331076f1d9a9aea7dd59911)
+- **builtin-addons/startpage:** _(startpage-v2)_ Fix typos :-) — [`b70ff668…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/b70ff6684a6573dfcb54545663042169039fe4c0)
+- **builtin-addons/startpage:** Sort topics before slicing; visual fixes — [`34da8d84…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/34da8d8475c593c98b488cd3f81f7257a94b79b7)
+- **builtin-addons/startpage:** _(startpage-v2)_ Clean logo look — [`3848fd18…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3848fd180e471e736f820e2d55e46577b7c719b2)
+- **builtin-addons/startpage:** Icon URL for prod — [`ab432815…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ab4328150d1d4685c74d008ca16b747605aca4d1)
+- **builtin-addons/startpage:** Icons, title, logos — [`3e884ca7…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3e884ca78c560114f06e2485a98132641d7583af)
+- **builtin-addons/startpage:** Url; budget — [`3061850a…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3061850a0acb074880c603d8d2bbcb41b0b9e36d)
+
 ### 🚜 Refactor
 
 - [**breaking**] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
 - **builtin-addons/startpage:** [**breaking**] Replace newtab with new startpage builtin addon — [`ed2c041d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ed2c041da6197a8c682f651c6dc44bbaba589f93)
 - **builtin-addons/startpage:** Don't use primeng, rely on tailwind; Catppuccin theme — [`f57bcf7e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f57bcf7e0e51795d01d660e990c54a95b8267168)
+
+### 📚 Documentation
+
+- **builtin-addons/startpage:** Update; no wallpaper default — [`f7e564b5…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f7e564b55788ed098b4e15070d668d4f79f612d1)
+- **builtin-addons/startpage:** Update README; change favicon to a fitting color — [`e53c3e33…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e53c3e33dffc1b3d591fca0a731c9cc62294cefa)
 
 ### ⚙️ Miscellaneous Tasks
 
