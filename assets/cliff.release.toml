@@ -32,7 +32,7 @@ body = """
     {% endfor %}\
     {% for submodule_path, commits in submodule_commits %}\
         {% for commit in commits | filter(attribute="group", value=group) %}
-            - __{{ submodule_path }}:__ \
+            - **{{ submodule_path }}:** \
                 {% if commit.scope %}_({{ commit.scope }})_ {% endif %}\
                 {% if commit.breaking %}[**breaking**] {% endif %}\
                 {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](<REPO:{{ submodule_path }}>/-/commit/{{ commit.id }})\
