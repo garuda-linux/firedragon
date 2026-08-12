@@ -284,11 +284,6 @@
 
 - _(config)_ Add fixes preset with temporary fix for bug with auto-hide navigation buttons — [`541c9347…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/541c93479a7fe2dff88bf822fabb629767625b7f)
 
-### 💼 Other
-
-- Update to firefox v152.0.4 — [`39adad47…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39adad47413bb8956f19aeb4f77c4ab0e3da18f0)
-- Update deps — [`dde57457…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dde574576b0994aa75aad2537ae73b1dd30e4a4e)
-
 ### 🚜 Refactor
 
 - Move common dependencies into catalog — [`0225675a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0225675a15b4522fd28d6cc16add70a44dc71d13)
@@ -297,6 +292,11 @@
 
 - Remove obsolete deep equal dependencies — [`bc17698a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bc17698aab2985df9c14a44d662a3b3b236fea9e)
 - _(shared)_ Remove obsolete webextension-polyfill dependency — [`72b51c25…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/72b51c256a9ee0c10471bbb045be9d66d57a6f48)
+
+### 💼 Other
+
+- Update to firefox v152.0.4 — [`39adad47…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39adad47413bb8956f19aeb4f77c4ab0e3da18f0)
+- Update deps — [`dde57457…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dde574576b0994aa75aad2537ae73b1dd30e4a4e)
 
 ## [FireDragon v13.0.0-rc.19](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.19) — 2026-06-24 — [`v13.0.0-rc.18`…`v13.0.0-rc.19`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.18...v13.0.0-rc.19)
 
@@ -342,10 +342,6 @@
 
 - Remove newtab prefs & setting — [`33dea879…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/33dea87924c14ee0823e3cbf424f3bf6b3e9104d)
 
-### 💼 Other
-
-- Update pnpm & deps — [`ba02da56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba02da5688ee9fbf937baee8d1d717de280335b6)
-
 ### 🚜 Refactor
 
 - [**breaking**] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
@@ -356,6 +352,10 @@
 - Add git submodule support — [`c32aa1ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c32aa1ada6566130111080854daae1c0a13c0e6b)
 - Update git-cliff configurations — [`c6d0106d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c6d0106dc000091bba291ccfa0d28f071e47d752)
 - Remove obsolete dependency for @analogjs/platform from workspace root package.json — [`44374f33…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/44374f33d9791e2a8218ad88de3da2b26dacc1d8)
+
+### 💼 Other
+
+- Update pnpm & deps — [`ba02da56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba02da5688ee9fbf937baee8d1d717de280335b6)
 
 ## [FireDragon v13.0.0-rc.15](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.15) — 2026-06-11 — [`v13.0.0-rc.14`…`v13.0.0-rc.15`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.14...v13.0.0-rc.15)
 
@@ -383,7 +383,7 @@
 - Update pnpm & deps — [`c2fbe8f8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c2fbe8f8fb4fc8bc1ea6605027e4492c5d661121)
 - Switch to xz compression for source tarball — [`1d88d650…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1d88d65016c578cd42ad6fc054ceba3cad81911f)
 
-### Chroe
+### 💼 Other
 
 - _(config)_ Sync librewolf settings — [`c96a6b58…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c96a6b58262c64857e8ce542bd78d4340fac2c12)
 
@@ -763,6 +763,7 @@
 - _(app)_ Update strict mode defaults — [`03cde614…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/03cde61480fa757d3783ba1cfe6cf7b9305cedba)
 - _(modules)_ Add load method to SandboxBuilder — [`a29b6ee4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a29b6ee4742567964fd32f62fab9f27707cfb0c8)
 - _(modules)_ Use SandboxBuilder in SkinManager — [`ba51e56e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba51e56e85ab65a1e7dbc1d9e5924b24f765fe76)
+- Feat!(app/distribution): Update and add available search engines — [`2321acd6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2321acd609fa8cf8b079b0223598fc8711c82cd3)
 - _(welcome)_ Add search suggestions options to search step — [`6665e21d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6665e21d15c030de861605878bc95e1c04fddfd0)
 
 ### 🐛 Bug Fixes
