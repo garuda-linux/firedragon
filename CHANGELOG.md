@@ -26,6 +26,7 @@
 - _(builtin-addons/qr-code)_ Add French translation — [`404339c9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/404339c970459f034853d2f264d16e9e2c7c7926)
 - _(builtin-addons/notes)_ Add French translation — [`ffb20000…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ffb200001490acb1757ba950fc010129da3c032a)
 - Remove obsolete allowBuilds — [`5e68d52b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5e68d52b5b30a79380fe85410e782fa157796545)
+- __builtin-addons/startpage:__ _(builtin-addons/startpage)_ Remove unused depdendencies — [`3b5e989d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3b5e989daded01592f1e7fd63f30a76094afc8c3)
 
 ## [FireDragon v13.1.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.2) — 2026-08-09 — [`v13.1.1`…`v13.1.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.1...v13.1.2)
 
@@ -36,6 +37,9 @@
 ### ⚙️ Miscellaneous Tasks
 
 - Update pnpm & deps — [`a2069f89…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2069f89715cd5db467dcad5d453cdcbaddcd028)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`645f5a28…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/645f5a28ba00245a284b31a93ec50eb3e3e85ba3)
+- __builtin-addons/startpage:__ _(builtin-addons/startpage)_ Migrate top-pages component to openng — [`636a7b74…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/636a7b7491faebf4d92e951172d7dd1d64cece15)
+- __builtin-addons/startpage:__ Add commitizen template — [`55195aae…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/55195aae2aee565b0e1bcba1102a3534c5b68f93)
 
 ## [FireDragon v13.1.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.1) — 2026-08-04 — [`v13.1.0`…`v13.1.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.0...v13.1.1)
 
@@ -45,6 +49,7 @@
 - _(patches)_ Update librewolf patches to v153.0.3-1 — [`a4ed1c28…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a4ed1c283a6fa6d38f9509ba707a7e68f39f7daf)
 - _(config)_ Update librewolf preset to v153.0.3-1 — [`78e794bc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/78e794bc165ebfb44162af96abe1bdca18872012)
 - Update pnpm & deps — [`07d09717…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07d09717320bad125a19d6a63a0afc98bc4cca2d)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`0f77116e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0f77116e6f3f2f5cf605ed2e0fc4cd6cd31a15c0)
 
 ## [FireDragon v13.1.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.0) — 2026-08-01 — [`v13.0.1`…`v13.1.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.1...v13.1.0)
 
@@ -64,6 +69,8 @@
 ### ⚙️ Miscellaneous Tasks
 
 - Update pnpm & deps — [`87632a3c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/87632a3cc48414ca6dab988fad2a4427ecaa7d8b)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`5d45fde9…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/5d45fde906bca8d987dd897a2906d8ad7b400d23)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`6063a261…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6063a261243839b44d9fe0c707e25080cf5422c1)
 
 ## [FireDragon v13.0.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.1) — 2026-07-29 — [`v13.0.0`…`v13.0.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0...v13.0.1)
 
@@ -81,6 +88,7 @@
 ### ⚙️ Miscellaneous Tasks
 
 - Update pnpm & deps — [`a37d2e2f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a37d2e2fdbfccc77d347f74648fa992f7a917b76)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`cc47a63e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/cc47a63e1199b47525ccb4202f04cd9c55541cb1)
 
 ## [FireDragon v13.0.0-rc.27](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.27) — 2026-07-22 — [`v13.0.0-rc.26`…`v13.0.0-rc.27`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.26...v13.0.0-rc.27)
 
@@ -102,6 +110,7 @@
 - Replace prettier with oxfmt — [`554702c9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/554702c9d384eb53b910cb4c950008e46b869f71)
 - Apply oxfmt — [`51701be8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/51701be838283bb99edd4ce37df1c2b7017bd073)
 - Move firefox version into config property in package.json — [`ba8fc4df…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba8fc4dfc62279d4bd734c1cd08a8ebc11e27bee)
+- __builtin-addons/startpage:__ Update deps — [`d24748f2…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d24748f29628952a81de7c285998aaf9f1940522)
 
 ## [FireDragon v13.0.0-rc.26](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.26) — 2026-07-21 — [`v13.0.0-rc.25`…`v13.0.0-rc.26`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.25...v13.0.0-rc.26)
 
@@ -118,6 +127,7 @@
 - _(config)_ Update config preset from librewolf v153.0-1 — [`24b9f2f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/24b9f2f9659645a5abee970d2fc17f2052c0a8d5)
 - _(distribution)_ Update distribution from librewolf v153.0-1 — [`add8e025…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/add8e025596d23d4ecb3f634d9436d32e63af61b)
 - Update deps — [`26f0a0ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/26f0a0eda8cf8dc0a9aa0736b07603378df86bd4)
+- __builtin-addons/startpage:__ Update deps — [`a2b47fce…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/a2b47fce6a169dd14777d70ec8de3d3162981157)
 
 ## [FireDragon v13.0.0-rc.25](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.25) — 2026-07-20 — [`v13.0.0-rc.24`…`v13.0.0-rc.25`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.24...v13.0.0-rc.25)
 
@@ -137,6 +147,7 @@
 ### ⚙️ Miscellaneous Tasks
 
 - Update pnpm & deps — [`99b35cc1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/99b35cc12c5f114363555c0176da09cb12a38dfc)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`20363ea8…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/20363ea844d390c4823a3d6239ed2e2ec9c9ee90)
 
 ## [FireDragon v13.0.0-rc.24](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.24) — 2026-07-17 — [`v13.0.0-rc.23`…`v13.0.0-rc.24`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.23...v13.0.0-rc.24)
 
@@ -184,6 +195,7 @@
 - _(make)_ Rename flatpakId config to rdns — [`004ec1c4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/004ec1c47d6bbf65f0356dc84e31fe66e53812d0)
 - Add flatpak cache dir — [`eed83598…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/eed83598046ee11b0a286c2b1ce80570b698efb2)
 - Add scripts to run dev/build script in all packages — [`9c4ba48b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9c4ba48bfaa82fe03f334b1a617bdc8957913a0d)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`0a4b6b30…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0a4b6b30e20a02c52339cb493098bb9423822461)
 
 ## [FireDragon v13.0.0-rc.22](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.22) — 2026-07-15 — [`v13.0.0-rc.21`…`v13.0.0-rc.22`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.21...v13.0.0-rc.22)
 
@@ -202,6 +214,7 @@
 - _(l10n)_ Update English (United States) translation — [`a981e0f9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a981e0f9337ba5532c050d21b0522a070a56b50f)
 - _(l10n)_ Update German translation — [`e7b65f21…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e7b65f212a99a5819d04c3871ab5e7fe5284b55a)
 - Update pnpm & deps — [`2123b50b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2123b50b6f244a973b9b69152a19e5db28f3bf2d)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`04021c21…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/04021c21a373acafcc41555a27f976998c5568c8)
 
 ### ◀️ Revert
 
@@ -277,6 +290,7 @@
 - Change builtin-addons language files from yaml to json — [`d9510c82…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d9510c82cca830bb51fcd1ad9ebd35e1e5e0dd70)
 - Update firefox to v152.0.5 — [`54a61ce3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/54a61ce3ae9dade70cf9ca4eaad143286ffba2e7)
 - Update pnpm & deps — [`4c5704eb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4c5704eb378e2d81aaf2d93bac78e2c1fd212738)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`4f43d409…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/4f43d409f1d79e749f2e0635b3873caf10e4c346)
 
 ## [FireDragon v13.0.0-rc.20](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.20) — 2026-07-03 — [`v13.0.0-rc.19`…`v13.0.0-rc.20`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.19...v13.0.0-rc.20)
 
@@ -297,6 +311,7 @@
 
 - Update to firefox v152.0.4 — [`39adad47…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39adad47413bb8956f19aeb4f77c4ab0e3da18f0)
 - Update deps — [`dde57457…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dde574576b0994aa75aad2537ae73b1dd30e4a4e)
+- __builtin-addons/startpage:__ Update deps — [`2ec8c6b9…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/2ec8c6b963e453f233da7d6038e76acb359a42ed)
 
 ## [FireDragon v13.0.0-rc.19](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.19) — 2026-06-24 — [`v13.0.0-rc.18`…`v13.0.0-rc.19`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.18...v13.0.0-rc.19)
 
@@ -304,30 +319,35 @@
 
 - _(content)_ Fix and simplify workspace button styling — [`0c270ce8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0c270ce8267a0fa9dc54adf37f2f5918bc5f472d)
 - Fix typescript typings for custom web extension apis — [`d4546ee4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d4546ee4ac445d7b27f07f0d34cbc5634c887cb3)
+- __builtin-addons/startpage:__ Fix type error for custom firedragon web extension apis — [`6afa6483…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6afa648332c7b6a6dfaabf7e83d6ec6864c999e1)
 
 ### ⚙️ Miscellaneous Tasks
 
 - Update to firefox v152.0.2 — [`c3ad4a06…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c3ad4a06c07193c50b70698130c5584c25d8ed80)
 - Update librewolf patches to v152.0.2-1 — [`15513d90…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/15513d90d57b7529f4c428462fb656524d3a1315)
 - Update pnpm & deps — [`4c5b3e3a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4c5b3e3a7f4bd3af18cd1788ceaebdd60975f378)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`6d2ee780…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6d2ee780f1429d100af521fbb5c03b79ff28696e)
 
 ## [FireDragon v13.0.0-rc.18](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.18) — 2026-06-19 — [`v13.0.0-rc.17`…`v13.0.0-rc.18`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.17...v13.0.0-rc.18)
 
 ### 🐛 Bug Fixes
 
 - _(startpage)_ Migrate @primeng/themes to @primeuix/themes — [`06171561…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/061715614e65743d0b6f8030c19c6f585408b220)
+- __builtin-addons/startpage:__ Migrate @primeng/themes to @primeuix/themes — [`d365b9eb…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d365b9eb733896a0ec1f08472c51355ac037757d)
 
 ### ⚙️ Miscellaneous Tasks
 
 - Update to firefox v152.0.1 — [`3f98f407…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3f98f4073c6b50deab90cdcf00f09d6997d8c13f)
 - Update librewolf settings to v152.0.1-2 — [`3f3a0dcd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3f3a0dcd4be228bec5d4f7604a8cc067e84f3a70)
 - Update pnpm & deps — [`13cbacf5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/13cbacf5917168869bb3ff24c366269f436b532f)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`c36d125f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/c36d125f81c483dae09a14ea2891980a9215bb61)
 
 ## [FireDragon v13.0.0-rc.17](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.17) — 2026-06-17 — [`v13.0.0-rc.16`…`v13.0.0-rc.17`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.16...v13.0.0-rc.17)
 
 ### 🐛 Bug Fixes
 
 - Fix firedragon specific web extension APIs — [`c0a43530…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c0a43530ba9da7746046d23c4728fcf3ec6e5586)
+- __builtin-addons/startpage:__ Fix firedragon specific web extension APIs — [`d9a1c06d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d9a1c06d147b80fd9769c3a718f723635fceb83e)
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -335,16 +355,67 @@
 - Update librewolf patches & settings to v152.0-1 — [`b532d08d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b532d08da9daa510bebe4cdd979585cb75cd9dab)
 - Update build-patches for firefox v152.0 — [`1580d1ed…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1580d1ed7cae042196eb6165810968548d7d5f5e)
 - Update pnpm & deps — [`e2664ac6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e2664ac67313c2ba812b0f8b2b0f9ab49852c776)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`44415c7c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/44415c7cdcc90e0771d8f44f22817a5b122bc1d1)
 
 ## [FireDragon v13.0.0-rc.16](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.16) — 2026-06-13 — [`v13.0.0-rc.15`…`v13.0.0-rc.16`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.15...v13.0.0-rc.16)
 
 ### 🚀 Features
 
 - Remove newtab prefs & setting — [`33dea879…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/33dea87924c14ee0823e3cbf424f3bf6b3e9104d)
+- __builtin-addons/startpage:__ _(i18n)_ Support pt-BR — [`14948f86…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/14948f86abedb293a89ebb9627a5b7cc43ddfb24)
+- __builtin-addons/startpage:__ _(i18n)_ Implement transifex with automerge — [`f4f1e847…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f4f1e847557c08c8d6aeedb400d442d35cf0fbf0)
+- __builtin-addons/startpage:__ Angular 20, garuda themes package — [`3accebf1…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3accebf19f533d61efae29446c7d9742a0872fff)
+- __builtin-addons/startpage:__ Cleanups, updates, fixed blurstrength enabling blur — [`85a3e96d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/85a3e96dc61af657b242f9b42e091d07725645ee)
+- __builtin-addons/startpage:__ Auto-set lang from browser, fix broken json files — [`f483afe0…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f483afe020821ddab33325b87dd2e0f55b1ccf37)
+- __builtin-addons/startpage:__ Updates, more languages and translations — [`57e27f4e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/57e27f4e85f52cdf57328c6835417b16c689c4a7)
+- __builtin-addons/startpage:__ More settings — [`1a11fdcd…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1a11fdcd60559d9e3fc8e0c414322b3592d3fe9b)
+- __builtin-addons/startpage:__ _(themes)_ Added vo1ded theme — [`32c226fe…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/32c226fe437289fa3ec4f85a39a1e76827954ef4)
+- __builtin-addons/startpage:__ _(search)_ Bring opt-in autocomplete, via BYO CORS proxy — [`551f752e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/551f752e295d8b79a90dabe748cbebeefaed813b)
+- __builtin-addons/startpage:__ _(i18n)_ Finally bring more language choices — [`8bb472b8…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/8bb472b83675d4984e7a59826c7c91c1c90f81c6)
+- __builtin-addons/startpage:__ _(blur)_ Moreee, we need more! — [`f81205a0…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f81205a0e09f5d7b7de594acbf977613c7771f78)
+- __builtin-addons/startpage:__ Complete special sauce — [`aa24c239…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/aa24c2399e585fe2ace3156cf84b847cbb2b50aa)
+- __builtin-addons/startpage:__ Add more special sauce — [`f8242a8e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f8242a8eff24ef1e49e883263776492b45dacbc1)
+- __builtin-addons/startpage:__ Add some special sauce — [`9ff371b5…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/9ff371b5f9f51b2b66366820882371bf8b5d0bf7)
+- __builtin-addons/startpage:__ Move darkmode to settings, add custom avatar instead — [`1c75b83b…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1c75b83bd055ab22e0fbbf559027b58733fbe484)
+- __builtin-addons/startpage:__ More Catppuccin themes, theme fixes, outsource link editor — [`d729461c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d729461c6b3509ab677dc35b78eeba5af8995196)
+- __builtin-addons/startpage:__ _(themes)_ Bring some variety via PrimeNG presets — [`879a62c2…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/879a62c25d5c8db1f9e1891f46a57d8a758ab931)
+- __builtin-addons/startpage:__ _(translations)_ Allow persisting translations for one day — [`8e6a810f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/8e6a810f5726af450e95a701610256639513b8e2)
+- __builtin-addons/startpage:__ Make text source configurable (useless facts for now) — [`74d378a6…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/74d378a66f28aa65e01deeab46f47edc77855a9a)
+- __builtin-addons/startpage:__ Allow hiding news feed, make pictures squared, fix badly sized links — [`d81ee9fd…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d81ee9fd031b54776dec67ec84e451abd895091b)
+- __builtin-addons/startpage:__ _(menubar)_ Allow changing menubar links — [`1de9e985…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1de9e985e5bd7152755285bff0d389e67648fa9d)
+- __builtin-addons/startpage:__ _(settings)_ Allow reordering links, fix non-working stuff — [`951ba98f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/951ba98f79164cac7a5461f8c75b9c3243cd928a)
+- __builtin-addons/startpage:__ Make news feed faster by caching and only loading necessary — [`f63fb047…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f63fb04751acf370757c61fecb0bc105783c73d8)
+- __builtin-addons/startpage:__ Refinements to style & presets — [`7af0d412…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/7af0d412edbcca03ed511ca392e1327f4587d735)
+- __builtin-addons/startpage:__ Rewrite the page with primeng/garudang components — [`3a0596e3…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3a0596e3970744732a1711d262c9db1ae613eeff)
+- __builtin-addons/startpage:__ Update all deps, update telegram link, drop dead code — [`dcaca4e5…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/dcaca4e5af5cfc4ae962552db4086dbbf8a67577)
+- __builtin-addons/startpage:__ _(navbar)_ Collapse on click — [`0448660f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0448660fb77bd5d09b1791132a92a3681ed1f761)
+- __builtin-addons/startpage:__ Light wallpaper mode — [`76d94c8c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/76d94c8c5a4efae23dacb9e605b1a7d978c0d572)
+- __builtin-addons/startpage:__ Route transitions — [`1f4bef01…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1f4bef013f3fbae10e0ddf75e2101ca4ed07783e)
+- __builtin-addons/startpage:__ Configurable page title — [`6ad5fff3…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6ad5fff3151e32e83d512f5c539e3019faad452c)
+- __builtin-addons/startpage:__ Add maroon-lavender to logo list — [`38f78cbf…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/38f78cbf25146e6aa8a00d094fda29e34e673df8)
+- __builtin-addons/startpage:__ Display custom link help, allow disabling default links — [`d9bc8909…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d9bc8909ff09cf13156d1c06ec4dbdef924a19ff)
+- __builtin-addons/startpage:__ Allow custom links — [`e5897ded…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e5897dedf8808d1d672a175fa2854224da89852c)
+- __builtin-addons/startpage:__ Allow configuring logo — [`6a1a0201…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6a1a02012e914b3d4ce7fff628c68f184d23ccff)
+- __builtin-addons/startpage:__ Fix fit option & missing scrollbar — [`cc09240d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/cc09240d80352a4f5639e9b078913df01213a4e0)
+- __builtin-addons/startpage:__ Remove fit option for now, in favor of blur; fix settings link — [`c285a28e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/c285a28e2f46b59c272bf40a7bfdf79f98177365)
+- __builtin-addons/startpage:__ Background blur effect; wallpaper fixes — [`144b85fb…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/144b85fb29c4c712a9d311ea76e27d7473329845)
+- __builtin-addons/startpage:__ Change bluesky logo to new and smaller one svg — [`80d93103…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/80d931031dc6267ceea191c66c7dcdfe6ca15e05)
+- __builtin-addons/startpage:__ Allow disabling jokes; don't involve API; make links href; change welcome message after saving — [`a189c408…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/a189c40819853c95c06e9acf3eb6dab52c0e8c2a)
+- __builtin-addons/startpage:__ Version 1.0.0; bump deps — [`badd527b…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/badd527bf14488fb527f6c50e8558a92a94f6ff6)
+- __builtin-addons/startpage:__ Display jokes; visual fixes — [`25cc4be8…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/25cc4be880d06ce99dd6eff928282922dfeac4f3)
+- __builtin-addons/startpage:__ Custom backgrounds; blur more — [`d4510742…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d4510742e52218b296820640332e52fba3ea9bca)
+- __builtin-addons/startpage:__ Settings; custom search engine; etc. — [`fb87722c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/fb87722cb92e12c34ead2f7e9d55e061788b5b15)
+- __builtin-addons/startpage:__ More configuration options; routerLinks; search improvements — [`c4f86156…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/c4f86156e4a529f630db3d588eb68a5859b145dd)
+- __builtin-addons/startpage:__ Top bar blur — [`d04bf303…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d04bf303d4533e334591ebf2f5417a9900efecf7)
+- __builtin-addons/startpage:__ News feed — [`282dbbdd…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/282dbbdd30712b6b197930f8fab685f311d7fb92)
+- __builtin-addons/startpage:__ Init links & search — [`6b3049b6…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6b3049b6ba32037773437a8f4e5afeb1ede384a6)
+- __builtin-addons/startpage:__ Initial commit — [`2918339a…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/2918339af8f200c24af959625662c4103b9ce209)
 
 ### 🚜 Refactor
 
 - [**breaking**] Replace newtab with new startpage builtin addon — [`64885d56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/64885d5641682a85e1acc6f417c5fa1345f9da3a)
+- __builtin-addons/startpage:__ [**breaking**] Replace newtab with new startpage builtin addon — [`ed2c041d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/ed2c041da6197a8c682f651c6dc44bbaba589f93)
+- __builtin-addons/startpage:__ Don't use primeng, rely on tailwind; Catppuccin theme — [`f57bcf7e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/f57bcf7e0e51795d01d660e990c54a95b8267168)
 
 ### ⚙️ Miscellaneous Tasks
 
@@ -352,10 +423,20 @@
 - Add git submodule support — [`c32aa1ad…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c32aa1ada6566130111080854daae1c0a13c0e6b)
 - Update git-cliff configurations — [`c6d0106d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c6d0106dc000091bba291ccfa0d28f071e47d752)
 - Remove obsolete dependency for @analogjs/platform from workspace root package.json — [`44374f33…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/44374f33d9791e2a8218ad88de3da2b26dacc1d8)
+- __builtin-addons/startpage:__ Update deps — [`7e2e6787…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/7e2e6787d8b2773e9f89c29c37b8d8fe76397c8d)
+- __builtin-addons/startpage:__ _(config)_ Migrate config renovate.json — [`23ccadba…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/23ccadbac8ee1c7b907d70779fc0bad6d81f88b5)
+- __builtin-addons/startpage:__ _(i18n)_ Pull Transifex translations — [`74c1ce9c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/74c1ce9c32c4bff9d18352413acab75b21f7300d)
+- __builtin-addons/startpage:__ _(i18n)_ Pull Transifex translations — [`7d258195…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/7d258195579ccb1b8ecf41afad69f1700081ab71)
+- __builtin-addons/startpage:__ Update wrangler.toml — [`d68168b9…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d68168b9158a503483dc05cb526296ca0d5b30df)
+- __builtin-addons/startpage:__ _(package.json)_ Add deploy shortcut — [`9da9bd87…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/9da9bd87514715f4eb93217caea28a9574fb0546)
+- __builtin-addons/startpage:__ Drop language switcher, add wrangler config, cleanup — [`1d97481f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1d97481f2cbc234d7bf38d98e3a8556572670c78)
+- __builtin-addons/startpage:__ Fix eslint config; return to prettier formatting — [`7d6cd24e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/7d6cd24ec2dd713f5f98287a27bc32729b256bce)
 
 ### 💼 Other
 
 - Update pnpm & deps — [`ba02da56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ba02da5688ee9fbf937baee8d1d717de280335b6)
+- __builtin-addons/startpage:__ Update pnpm & deps — [`465ae10e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/465ae10eb0d975fbb5b9866091fc4cd1cf312fe1)
+- __builtin-addons/startpage:__ Update styles.scss change .bg-contain to fix background size and repeat — [`489f255d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/489f255d5e6b572879ab587c39ab9ca9614a249f)
 
 ## [FireDragon v13.0.0-rc.15](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.0.0-rc.15) — 2026-06-11 — [`v13.0.0-rc.14`…`v13.0.0-rc.15`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.0.0-rc.14...v13.0.0-rc.15)
 

@@ -11,7 +11,7 @@ header = """
 # See https://keats.github.io/tera/docs/#introduction
 body = """
 {% if version %}\
-    ## [FireDragon {{ version }}](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/{{ previous.version }}...{{ version }}){% endif %}
+    ## [FireDragon {{ version }}](<REPO>/-/releases/{{ version }}) — {{ timestamp | date(format="%Y-%m-%d") }}{% if previous.version %} — [`{{ previous.version }}`…`{{ version }}`](<REPO>/-/compare/{{ previous.version }}...{{ version }}){% endif %}
 {% else %}\
     ## [unreleased]
 {% endif %}\
@@ -20,7 +20,15 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}_({{ commit.scope }})_ {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/{{ commit.id }})\
+            {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](<REPO>/-/commit/{{ commit.id }})\
+    {% endfor %}\
+    {% for submodule_path, commits in submodule_commits %}\
+        {% for commit in commits | filter(attribute="group", value=group) %}
+            - __{{ submodule_path }}:__ \
+                {% if commit.scope %}_({{ commit.scope }})_ {% endif %}\
+                {% if commit.breaking %}[**breaking**] {% endif %}\
+                {{ commit.message | upper_first }} — [`{{ commit.id | truncate(length=8) }}`](<REPO:{{ submodule_path }}>/-/commit/{{ commit.id }})\
+        {% endfor %}\
     {% endfor %}
 {% endfor %}
 
@@ -33,6 +41,8 @@ render_always = true
 postprocessors = [
   # Replace the placeholder <REPO> with a URL.
   #{ pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" },
+  { pattern = "<REPO>", replace = "https://gitlab.com/garuda-linux/firedragon/firedragon13" },
+  { pattern = "<REPO:builtin-addons/startpage>", replace = "https://gitlab.com/garuda-linux/firedragon/startpage" },
 ]
 # render body even when there are no releases to process
 # render_always = true
@@ -100,4 +110,4 @@ topo_order_commits = true
 # Allowed values: newest, oldest
 sort_commits = "oldest"
 # Process submodules commits
-recurse_submodules = false
+recurse_submodules = true
