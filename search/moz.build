@@ -1,0 +1,19 @@
+FINAL_TARGET_FILES.defaults.settings.main += [
+    "search-config-icons.json",
+    "search-config-v2.json",
+]
+
+FINAL_TARGET_FILES.defaults.settings.main["search-config-icons"] += [
+    "icons/1cc6b8f0-9b1b-4d45-b050-467fc0ba9c91",
+    "icons/1cc6b8f0-9b1b-4d45-b050-467fc0ba9c91.meta.json",
+    "icons/22cb7841-1338-4f2e-ad60-e173930534fb",
+    "icons/22cb7841-1338-4f2e-ad60-e173930534fb.meta.json",
+    "icons/2c4b8834-030c-4097-a887-c7506689095c",
+    "icons/2c4b8834-030c-4097-a887-c7506689095c.meta.json",
+    "icons/3cb63137-5de3-4651-bcf9-b1b80231cb9b",
+    "icons/3cb63137-5de3-4651-bcf9-b1b80231cb9b.meta.json",
+    "icons/a4ccd64f-5c7b-4478-9625-aa8a9afadd70",
+    "icons/a4ccd64f-5c7b-4478-9625-aa8a9afadd70.meta.json",
+    "icons/e4668122-101e-447b-88f0-9cc41f57b1d8",
+    "icons/e4668122-101e-447b-88f0-9cc41f57b1d8.meta.json",
+]

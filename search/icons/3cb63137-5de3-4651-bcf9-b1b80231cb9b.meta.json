@@ -1,0 +1,14 @@
+{
+  "schema": 1785706613505,
+  "imageSize": 32,
+  "attachment": {
+    "hash": "639fd1f8f253f1758c6bdd53e4216d27f39b6427c4ddad12c07bbbd12bb0a2c9",
+    "size": 3312,
+    "filename": "brave-32.png",
+    "location": "main-workspace/search-config-icons/d99e17ee-305b-4f3e-b1c7-ea647e21889a.png",
+    "mimetype": "image/png"
+  },
+  "engineIdentifiers": ["brave"],
+  "id": "3cb63137-5de3-4651-bcf9-b1b80231cb9b",
+  "last_modified": 1786651715520
+}

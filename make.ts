@@ -107,6 +107,8 @@ async function source() {
 
     await $`echo -e ${version} > ${buildDir}/browser/config/version_display.txt`;
 
+    await $`${buildDir}/${sourceDir}/search/search.sh ${buildDir}`;
+
     const l10nDir = `${buildDir}/${sourceDir}/l10n`,
         locales = await $({ verbose: false })`cat ${buildDir}/browser/locales/l10n-changesets.json`.json();
     for (const [locale, { revision }] of Object.entries(locales) as [string, { revision: string }][]) {

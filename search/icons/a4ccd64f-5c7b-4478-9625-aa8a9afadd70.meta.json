@@ -1,0 +1,14 @@
+{
+  "schema": 1785706613505,
+  "imageSize": 32,
+  "attachment": {
+    "hash": "2f7d1fe77e1e39a47bc04510bdb6813e29e366d3ab1d0428a8965a25974c6375",
+    "size": 1393,
+    "filename": "kagi-32.png",
+    "location": "main-workspace/search-config-icons/9ac581fb-1c10-4a09-9c3a-567da8ac46c8.png",
+    "mimetype": "image/png"
+  },
+  "engineIdentifiers": ["kagi"],
+  "id": "a4ccd64f-5c7b-4478-9625-aa8a9afadd70",
+  "last_modified": 1786651715520
+}

@@ -1,0 +1,267 @@
+[
+  {
+    "base": {
+      "aliases": ["brave"],
+      "classification": "general",
+      "name": "Brave",
+      "urls": {
+        "search": {
+          "base": "https://search.brave.com/search",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://search.brave.com/api/suggest",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "87b73be1-f2bb-4618-8c65-4f5f856778ec",
+    "identifier": "brave",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["ddg-noai"],
+      "classification": "general",
+      "name": "DuckDuckGo NoAI",
+      "urls": {
+        "search": {
+          "base": "https://noai.duckduckgo.com/",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://ac.duckduckgo.com/ac/",
+          "params": [
+            {
+              "name": "type",
+              "value": "list"
+            }
+          ],
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "3bb7a743-778d-4d82-bc70-41192eca90da",
+    "identifier": "ddg-noai",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["ddg-lite"],
+      "classification": "general",
+      "name": "DuckDuckGo Lite",
+      "urls": {
+        "search": {
+          "base": "https://start.duckduckgo.com/lite/",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://ac.duckduckgo.com/ac/",
+          "params": [
+            {
+              "name": "type",
+              "value": "list"
+            }
+          ],
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "178453ea-2975-484a-9205-a959e4a4df7c",
+    "identifier": "ddg-lite",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["sx"],
+      "classification": "general",
+      "name": "Garuda's searX",
+      "urls": {
+        "search": {
+          "base": "https://searx.garudalinux.org/search",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "4c055c68-1ceb-4f08-8dd4-406830061993",
+    "identifier": "searx-garuda",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["wg"],
+      "classification": "general",
+      "name": "Garuda's Whoogle",
+      "urls": {
+        "search": {
+          "base": "https://search.garudalinux.org/search",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://search.garudalinux.org/autocomplete",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "57275f55-dcad-44e0-b778-1e0894baca9a",
+    "identifier": "whoogle-garuda",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["kagi"],
+      "classification": "general",
+      "name": "Kagi",
+      "urls": {
+        "search": {
+          "base": "https://kagi.com/search",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://kagisuggest.com/api/autosuggest",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "65a261d0-8530-4e52-b299-c5caa8c45291",
+    "identifier": "kagi",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["metager", "mg"],
+      "classification": "general",
+      "name": "MetaGer",
+      "urls": {
+        "search": {
+          "base": "https://metager.org/meta/meta.ger3",
+          "searchTermParamName": "eingabe"
+        },
+        "suggestions": {
+          "base": "https://metager.org/suggest",
+          "searchTermParamName": "query"
+        }
+      }
+    },
+    "id": "45717c97-5320-465b-93c4-9ce91c78111f",
+    "identifier": "metager",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["mojeek", "mj"],
+      "classification": "general",
+      "name": "Mojeek",
+      "urls": {
+        "search": {
+          "base": "https://www.mojeek.com/search",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "a9f0ac49-bb9c-4da3-9778-a183658388fa",
+    "identifier": "mojeek",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  },
+  {
+    "base": {
+      "aliases": ["privau"],
+      "classification": "general",
+      "name": "PrivAU",
+      "urls": {
+        "search": {
+          "base": "https://priv.au/search",
+          "searchTermParamName": "q"
+        },
+        "suggestions": {
+          "base": "https://priv.au/autocompleter",
+          "searchTermParamName": "q"
+        }
+      }
+    },
+    "id": "843b8e71-f892-4faf-b3fc-5e9bc9a210e5",
+    "identifier": "searx-privau",
+    "last_modified": 1786651715520,
+    "recordType": "engine",
+    "schema": 1718698472747,
+    "variants": [
+      {
+        "environment": {
+          "allRegionsAndLocales": true
+        }
+      }
+    ]
+  }
+]
