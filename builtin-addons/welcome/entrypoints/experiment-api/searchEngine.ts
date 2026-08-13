@@ -96,7 +96,7 @@ export default defineExperimentApi({
             return {
                 id: engine.id,
                 name: engine.name,
-                icon: await engine.getIconURL(),
+                icon: await ExtensionUtils.makeDataURI(await engine.getIconURL()),
             };
         }
 
