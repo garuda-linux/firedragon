@@ -39,4 +39,4 @@ catalog:
   vue: ^3.5.41
   vue-i18n: ^11.4.8
   vue-router: ^5.2.0
-  wxt: ^0.21.3
+  wxt: ^0.21.4
