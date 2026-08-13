@@ -22,10 +22,20 @@ index 3e4e915..a927685 100644
      if (records === null) {
        // Return -1 if file is missing.
 diff --git a/services/settings/RemoteSettingsClient.sys.mjs b/services/settings/RemoteSettingsClient.sys.mjs
-index 3ee4ae6..12165e1 100644
+index 3ee4ae6..e4788a3 100644
 --- a/services/settings/RemoteSettingsClient.sys.mjs
 +++ b/services/settings/RemoteSettingsClient.sys.mjs
-@@ -215,6 +215,11 @@ class AttachmentDownloader extends Downloader {
+@@ -209,12 +209,21 @@ class AttachmentDownloader extends Downloader {
+     return cacheImpl;
+   }
+ 
++  get identifier() {
++    return this._client.identifier;
++  }
++
+   /**
+    * Download attachment and report Telemetry on failure.
+    *
     * @see Downloader.download
     */
    async download(record, options) {
@@ -37,7 +47,7 @@ index 3ee4ae6..12165e1 100644
      await lazy.UptakeTelemetry.report(
        lazy.UptakeTelemetry.STATUS.DOWNLOAD_START,
        {
-@@ -586,7 +591,9 @@ export class RemoteSettingsClient extends EventEmitter {
+@@ -586,7 +595,9 @@ export class RemoteSettingsClient extends EventEmitter {
        }
        ({ data } = await lazy.SharedUtils.loadJSONDump(
          this.bucketName,
@@ -48,7 +58,7 @@ index 3ee4ae6..12165e1 100644
        ));
        if (data !== null) {
          lazy.console.info(`${this.identifier} falling back to JSON dump`);
-@@ -656,6 +663,10 @@ export class RemoteSettingsClient extends EventEmitter {
+@@ -656,6 +667,10 @@ export class RemoteSettingsClient extends EventEmitter {
        return;
      }
  
@@ -59,7 +69,7 @@ index 3ee4ae6..12165e1 100644
      // We want to know which timestamp we are expected to obtain in order to leverage
      // cache busting. We don't provide ETag because we don't want a 304.
      const { changes } = await lazy.Utils.fetchLatestChanges(
-@@ -1040,7 +1051,9 @@ export class RemoteSettingsClient extends EventEmitter {
+@@ -1040,7 +1055,9 @@ export class RemoteSettingsClient extends EventEmitter {
      lazy.console.info(`${this.identifier} try to restore dump`);
      const result = await lazy.RemoteSettingsWorker.importJSONDump(
        this.bucketName,
@@ -240,3 +250,23 @@ index 76f69ab..daf715c 100644
        timestamp,
        serverTimeMillis,
        backoffSeconds,
+
+diff --git a/toolkit/components/search/SearchEngineSelector.sys.mjs b/toolkit/components/search/SearchEngineSelector.sys.mjs
+index 3a42b38..3befe8d 100644
+--- a/toolkit/components/search/SearchEngineSelector.sys.mjs
++++ b/toolkit/components/search/SearchEngineSelector.sys.mjs
+@@ -409,13 +409,7 @@ export class SearchEngineSelector {
+    *   could be obtained.
+    */
+   async #getConfigurationOverrides() {
+-    let result = [];
+-    try {
+-      result = await this.#remoteConfigOverrides.get();
+-    } catch (ex) {
+-      // This data is remote only, so we just return an empty array if it fails.
+-    }
+-    return result;
++    return [];
+   }
+ 
+   /**
