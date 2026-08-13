@@ -31,7 +31,7 @@ lockPref("librewolf.cfg.version", "8.6");
  *
  * - BUILT-IN FEATURES [UPDATER, SYNC, LOCKWISE, CONTAINERS, DEVTOOLS, SHOPPING, OTHERS]
  *
- * - UI [BRANDING, HANDLERS, FIRST LAUNCH, NEW TAB PAGE, ABOUT, RECOMMENDED, OTHERS]
+ * - UI [BRANDING, HANDLERS, FIRST LAUNCH, NEW TAB PAGE, ABOUT, ASROUTER, RECOMMENDED, OTHERS]
  *
  * - TELEMETRY
  *
@@ -97,12 +97,12 @@ defaultPref("browser.sessionstore.privacy_level", 2); // prevent websites from s
 
 /** [SECTION] QUERY STRIPPING
  * currently we set the same query stripping and allow list that brave uses:
- * https://github.com/brave/brave-core/blob/3dcdad4c8a5cf62f83ca4f893fc7f0c4d3d086bc/components/query_filter/browser/utils.cc#L33-L138
+ * https://github.com/brave/adblock-lists/blob/master/brave-lists/query-filter.json
  * https://github.com/brave/brave-core/blob/3dcdad4c8a5cf62f83ca4f893fc7f0c4d3d086bc/components/query_filter/browser/utils.cc#L182
  */
 defaultPref(
   "privacy.query_stripping.strip_list",
-  "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sfmc_activityid sfmc_id sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
+  "__hsfp __hssc __hstc __s _bhlid _branch_match_id _branch_referrer _gl _hsenc _openstat at_recipient_id at_recipient_list bbeml bsft_clkid bsft_uid dclid et_rid fb_action_ids fb_comment_id gbraid fbclid gclid guce_referrer guce_referrer_sig hsCtaTracking irclickid mc_eid ml_subscriber ml_subscriber_hash msclkid mtm_cid oft_c oft_ck oft_d oft_id oft_ids oft_k oft_lk oft_sk oly_anon_id oly_enc_id pk_cid rb_clickid s_cid sc_customer sc_eh sc_uid sfmc_activityid sfmc_id sms_click sms_source sms_uph srsltid ss_email_id syclid ttclid twclid unicorn_click_id vero_conv vero_id vgo_ee wbraid wickedid yclid ymclid ysclid"
 );
 defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
 
@@ -523,13 +523,17 @@ defaultPref("identity.fxaccounts.enabled", false);
 
 /** [SECTION] LOCKWISE
  * disable the default password manager built into the browser, including its autofill
- * capabilities and formless login capture.
+ * capabilities.
  */
 defaultPref("signon.rememberSignons", false);
 defaultPref("signon.autofillForms", false);
 defaultPref("extensions.formautofill.addresses.enabled", false);
 defaultPref("extensions.formautofill.creditCards.enabled", false);
-defaultPref("signon.formlessCapture.enabled", false);
+
+// Disabling breaks saving of passwords in some cases
+// The "scanning" of the page only runs when "signon.rememberSignons" is set to "true"
+// https://codeberg.org/librewolf/issues/issues/3063#issuecomment-20783558
+defaultPref("signon.formlessCapture.enabled", true);
 
 /** [SECTION] CONTAINERS
  * enable containers and show the settings to control them in the stock ui
@@ -624,6 +628,17 @@ defaultPref("browser.topsites.contile.enabled", false);
 // ...and about:config
 defaultPref("browser.aboutConfig.showWarning", false);
 
+/** [SECTION] ASROUTER
+ * Disable Messaging System
+ * https://firefox-source-docs.mozilla.org/browser/components/asrouter/docs/index.html
+ */
+
+// https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/toolkit/components/backgroundtasks/defaults/backgroundtasks_browser.js#26-30
+lockPref("browser.newtabpage.activity-stream.asrouter.providers.cfr", "null");
+lockPref("browser.newtabpage.activity-stream.asrouter.providers.message-groups", "null");
+lockPref("browser.newtabpage.activity-stream.asrouter.providers.messaging-experiments", "null");
+lockPref("browser.newtabpage.activity-stream.asrouter.providers.onboarding", "null");
+
 /** [SECTION] OTHERS
  * other unwanted UI
  */
@@ -638,6 +653,10 @@ defaultPref("browser.preferences.experimental.hidden", true);
 // Disable breach alerts for the time being
 defaultPref("browser.urlbar.trustPanel.breachAlerts.featureGate", false);
 defaultPref("browser.urlbar.trustPanel.breachAlerts", false);
+
+// Never inject region specific mailto handlers
+// https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/uriloader/exthandler/ExtHandlerService.sys.mjs#95-117
+lockPref("gecko.handlerService.defaultHandlersVersion", 999);
 
 /** ------------------------------
  * [CATEGORY] TELEMETRY
@@ -724,7 +743,7 @@ defaultPref("librewolf.debugger.force_detach", false);
 defaultPref("librewolf.console.logging_disabled", false);
 defaultPref(
   "librewolf.services.settings.allowedCollections",
-  "security-state/*,main/content-classifier-lists,main/change-password-urls,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/vpn-serverlist,main/fxrelay-denylist,main/translations-models-v2,main/translations-wasm-v2,main/mfcdm-origins-list,main/url-classifier-exceptions,main/fxrelay-allowlist,main/ml-model-allow-deny-list,main/third-party-cookie-blocking-exempt-urls,main/backup-common-passwords-list,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/translations-models,main/translations-wasm,main/cookie-banner-rules-list,main/query-stripping,main/password-rules,main/websites-with-shared-credential-backends,main/password-recipes,main/partitioning-exempt-urls,blocklists/addons-bloomfilters,main/tracking-protection-lists,main/anti-tracking-url-decoration,main/hijack-blocklists,main/fxmonitor-breaches,main/language-dictionaries,blocklists/gfx,blocklists/addons,blocklists/plugins"
+  "security-state/*,main/content-classifier-lists,main/change-password-urls,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/vpn-serverlist,main/fxrelay-denylist,main/translations-models-v2,main/translations-wasm-v2,main/mfcdm-origins-list,main/url-classifier-exceptions,main/fxrelay-allowlist,main/ml-model-allow-deny-list,main/third-party-cookie-blocking-exempt-urls,main/backup-common-passwords-list,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/translations-models,main/translations-wasm,main/cookie-banner-rules-list,main/password-rules,main/websites-with-shared-credential-backends,main/password-recipes,main/partitioning-exempt-urls,blocklists/addons-bloomfilters,main/tracking-protection-lists,main/anti-tracking-url-decoration,main/hijack-blocklists,main/fxmonitor-breaches,main/language-dictionaries,blocklists/gfx,blocklists/addons,blocklists/plugins"
 );
 defaultPref(
   "librewolf.services.settings.allowedCollectionsFromDump",
