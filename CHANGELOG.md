@@ -1,5 +1,31 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.2.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.2.0) — 2026-08-14 — [`v13.1.3`…`v13.2.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.3...v13.2.0)
+
+### 🐛 Bug Fixes
+
+- _(builtin-addons/welcome)_ Fix search engine icons — [`a26bec68…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a26bec68698462672ecd17ecce07c272c72e1eeb)
+
+### 🚜 Refactor
+
+- Move search engine configuration from distribution policy to setting dumps — [`bd139538…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bd13953870f48f16ebb70a0b3a2def98b2194aa8)
+- _(search)_ Use shared match_engine logic & add bing — [`1e4f46c4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1e4f46c4efe41424ba2fa53d0b98f1c7faad1163)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(changelog)_ Add support for classic revert commits — [`d0fde86f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d0fde86f5002ca0a004b25765b21b3a111ad0870)
+- _(changelog)_ Add git submodule support — [`bea298ba…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bea298ba3f1ad81753be3b2434f28ae7eff4b956)
+- _(changelog)_ Remove v12 changelog — [`cd38c803…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cd38c803aa2dc1a4023882f6b43bf7df080ca86c)
+- _(changelog)_ Fix submodule support — [`dc61291a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dc61291a135ee359e69d8f44e0f0fd70bd0aa0bc)
+- _(changelog)_ Fix submodule support — [`f8001bdb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f8001bdbcd8ae6bf1a8d4e5d870db3d4ad11c4d7)
+- _(changelog)_ Fix submodule support — [`3702b8c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3702b8c3e9928523db30c8f535d102b90695c38c)
+- _(patches)_ Update librewolf patches to v153.0.4-1 — [`39f404b6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39f404b6bfcf79442e045f74b28137433b4e3be4)
+- _(config)_ Update librewolf preset to v153.0.4-1 — [`825aad90…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/825aad9096b3e331255a89d8ef46cfeef42db429)
+- Update firefox to v153.0.4 — [`a2cdb0e6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a2cdb0e62ed2b8995579b608b7eda9408889d5a4)
+- _(docker)_ Add jq dependency — [`2a68a15f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2a68a15f7c126e96d4bc9c6cea5a47e0960c53e6)
+- Update deps — [`bd8289e3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bd8289e3e18aef32773f3a21a3dd1459295bc056)
+- **builtin-addons/startpage:** Update deps — [`a1d08d95…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/a1d08d955be38ba96e7a4f0f847ee48c16b430ec)
+
 ## [FireDragon v13.1.3](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.1.3) — 2026-08-11 — [`v13.1.2`…`v13.1.3`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.2...v13.1.3)
 
 ### 🐛 Bug Fixes
