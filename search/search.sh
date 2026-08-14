@@ -2,7 +2,7 @@
 
 set -eu
 
-set -- "$1" "$(dirname "$0")" 'services/settings/dumps/main'
+set -- "$(dirname "$0")" "$1"/services/settings/dumps/main
 
-jq -f "$2"/search-config-v2.jq --slurpfile search "$2"/search.json "$1"/"$3"/search-config-v2.json > "$2"/search-config-v2.json
-cat "$2"/icons/*.meta.json | jq -f "$2"/search-config-icons.jq --slurpfile icons /dev/stdin "$1"/"$3"/search-config-icons.json > "$2"/search-config-icons.json
+jq -f "$1"/search-config-v2.jq --slurpfile search "$1"/search.json "$2"/search-config-v2.json | sponge "$2"/search-config-v2.json
+cat "$1"/icons/*.meta.json | jq -f "$1"/search-config-icons.jq --slurpfile icons /dev/stdin "$2"/search-config-icons.json | sponge "$2"/search-config-icons.json

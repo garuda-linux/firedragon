@@ -1,8 +1,3 @@
-FINAL_TARGET_FILES.defaults.settings.main += [
-    "search-config-icons.json",
-    "search-config-v2.json",
-]
-
 FINAL_TARGET_FILES.defaults.settings.main["search-config-icons"] += [
     "icons/1cc6b8f0-9b1b-4d45-b050-467fc0ba9c91",
     "icons/1cc6b8f0-9b1b-4d45-b050-467fc0ba9c91.meta.json",
