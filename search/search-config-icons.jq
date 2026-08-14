@@ -1,7 +1,7 @@
 include "./search";
 
 def filter:
-    (.engineIdentifiers | any(test("^(ddg|google|qwant|startpage|wikipedia\\*)$"))) and
+    (.engineIdentifiers | any(match_engines)) and
     if .filter_expression then (.filter_expression | test("env.appinfo.OS == \"(iOS|Android)\"") | not) else true end;
 
 def modify:
