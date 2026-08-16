@@ -5,7 +5,7 @@ DIRS += [
     'distribution',
     'modules',
     'profile',
-    'search',
+    'settings',
     'skin',
 ]
 

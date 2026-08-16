@@ -1,0 +1,7 @@
+DIRS += [
+    "main",
+]
+
+FINAL_TARGET_FILES.defaults.settings += [
+    "last_modified.json",
+]

@@ -1,4 +1,4 @@
-include "./search";
+include "./settings";
 
 def modify_default:
     .globalDefault = "ddg" |
@@ -7,7 +7,13 @@ def modify_default:
     del(.specificDefaults);
 
 def filter_engine:
-    .identifier | match_engines;
+    .identifier |
+    . == "bing" or
+    . == "ddg" or
+    . == "google" or
+    . == "qwant" or
+    . == "startpage" or
+    startswith("wikipedia");
 
 def modify_engine_urls:
     del(.value.excludePartnerCodeFromTelemetry) |
@@ -52,5 +58,5 @@ def modify:
         .
     end;
 
-.data |= [.[] | select(filter) | modify] + $search[0] |
+.data |= [.[] | select(filter) | modify] + input |
 .timestamp = timestamp

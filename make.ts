@@ -107,7 +107,7 @@ async function source() {
 
     await $`echo -e ${version} > ${buildDir}/browser/config/version_display.txt`;
 
-    await $`./search/search.sh ${buildDir}`;
+    await $`${buildDir}/${sourceDir}/settings/settings.sh ${buildDir}`;
 
     const l10nDir = `${buildDir}/${sourceDir}/l10n`,
         locales = await $({ verbose: false })`cat ${buildDir}/browser/locales/l10n-changesets.json`.json();
@@ -313,6 +313,8 @@ async function dev() {
         await $`rm -rf ${buildDir}/${sourceDir}`;
         await $`ln -s ${path.relative(path.dirname(`${buildDir}/${sourceDir}`), '')} ${buildDir}/${sourceDir}`;
     }
+
+    await $`./settings/settings.sh ${buildDir}`;
 
     $`pnpm all:dev`;
     await sleep('10s');

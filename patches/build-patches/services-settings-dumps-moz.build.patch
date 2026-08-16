@@ -1,0 +1,15 @@
+diff --git a/services/settings/dumps/moz.build b/services/settings/dumps/moz.build
+index a3e9e9b3f269..19fa16c62a32 100644
+--- a/services/settings/dumps/moz.build
++++ b/services/settings/dumps/moz.build
+@@ -8,10 +8,6 @@ DIRS += [
+     "security-state",
+ ]
+ 
+-dump_summary = "last_modified.json"
+-GeneratedFile(dump_summary, script="gen_last_modified.py")
+-FINAL_TARGET_FILES.defaults.settings += ["!%s" % dump_summary]
+-
+ if CONFIG["MOZ_BUILD_APP"] == "browser":
+     DIST_SUBDIR = "browser"
+     export("DIST_SUBDIR")
