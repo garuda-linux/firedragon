@@ -1,0 +1,11 @@
+permissions-site-eme-window2 =
+    .title = Inställningar - DRM behörigheter
+    .style = { permissions-window2.style }
+permissions-site-eme-desc = Följande webbplatser har begärt att spela DRM-kontrollerat innehåll. Du kan ange vilka webbplatser som får spela DRM-kontrollerat innehåll. Du kan också blockera nya förfrågningar som ber om att spela DRM-kontrollerat innehåll.
+permissions-site-eme-disable-label =
+    .label = Blockera nya förfrågningar som ber om att spela DRM-kontrollerat innehåll
+permissions-site-eme-disable-desc = Detta förhindrar att webbplatser som inte anges ovan begär tillstånd att spela DRM-kontrollerat innehåll.
+permissions-site-webgl-window2 =
+    .title = Inställningar WebGL behörigheter
+    .style = { permissions-window2.style }
+permissions-site-webgl-desc = Följande webbplatser har begärt att skapa ett WebGL-kontext. Du kan ange vilka webbplatser som får skapa ett WebGL-kontext. Du kan också blockera nya förfrågningar som ber om att skapa ett WebGL-kontext.
