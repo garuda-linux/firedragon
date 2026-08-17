@@ -1,1 +1,7 @@
-{}
+{
+  "title": "FireDragon Felsökning",
+  "restart": {
+    "safeMode": "Starta om i säkert läge",
+    "normalMode": "Starta om i normalläge"
+  }
+}
