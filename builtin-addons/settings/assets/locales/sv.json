@@ -1,1 +1,850 @@
-{}
+{
+  "title": "FireDragon Inställningar",
+  "back": "Tillbaka till inställningar",
+  "pages": {
+    "home": {
+      "title": "FireDragon Inställningar",
+      "description": "Vi väljer noggrant standardinställningar för att fokusera på integritet och säkerhet. När du ändrar dessa inställningar, läs beskrivningen för att förstå konsekvenserna av dessa förändringar.",
+      "browserBehaviour": {
+        "title": "Webbläsarbeteende",
+        "autoUpdateExtensions": {
+          "title": "Uppdatera tillägg automatiskt",
+          "description": "Håll Extensions uppdaterade utan manuellt ingrepp. Ett bra val för din säkerhet. Om du inte granskar koden för dina tillägg innan varje uppdatering, bör du aktivera det här alternativet."
+        },
+        "enableSync": {
+          "title": "Aktivera FireDragon Sync",
+          "description": "Synkronisera dina data med andra webbläsare. Kräver omstart. FireDragon Sync krypterar data lokalt innan du överför den till servern.",
+          "restartDialog": {
+            "title": "Omstart krävs",
+            "message": "FireDragons omstart krävs för att helt aktivera eller inaktivera FireDragon Sync."
+          }
+        },
+        "enableMiddleClickPaste": {
+          "title": "Aktivera klistra in med mellanklick",
+          "description": "Välj text för att kopiera, klistra sedan in den med ett mellanmusklick."
+        },
+        "hidePasswdmgr": {
+          "title": "Dölj lösenordshanterare",
+          "description": "Dölj lösenordshanterarens meny objekt och inställningar.",
+          "restartDialog": {
+            "title": "Omstart krävs",
+            "message": "FireDragons omstart krävs för att helt visa eller dölja lösenordshanteraren."
+          }
+        },
+        "enableTranslations": {
+          "title": "Aktivera översättningar",
+          "description": "Aktivera offline översättningar."
+        },
+        "closeWindowWithLastTab": {
+          "title": "Stäng fönster med sista fliken",
+          "description": "Stäng webbläsarfönstret när den sista fliken är stängd."
+        }
+      },
+      "networking": {
+        "title": "Nätverk",
+        "enableIPv6": {
+          "title": "Aktivera IPv6",
+          "description": "Låt FireDragon ansluta med IPv6. Istället för att blockera IPv6 i webbläsaren, föreslår vi aktivering av IPv6-sekretesstillägg i ditt operativsystem."
+        }
+      },
+      "privacy": {
+        "title": "Sekretess",
+        "enablePrefetchConfig": {
+          "title": "Aktivera prefetching",
+          "description": "Prefetching är en webbläsare funktion som låter webbläsaren ladda ner resurser i bakgrunden medan användaren surfar. Detta kan förbättra prestanda och minska bandbreddsanvändningen.",
+          "restartDialog": {
+            "title": "Omstart krävs",
+            "message": "FireDragons omstart krävs för att helt aktivera eller inaktivera prefetching."
+          }
+        },
+        "limitCrossOriginReferrers": {
+          "title": "Begränsa korsursprungreferenser",
+          "description": "Skicka hänvisare endast på samma ursprung. Detta kan orsaka avbrott. Dessutom kommer även, när skickade, hänvisare fortfarande att trimmas."
+        },
+        "autoRefuseCookies": {
+          "title": "Automatiskt vägra cookiebanners",
+          "description": "När en webbplats frågar om de kan använda cookies vägrar FireDragon automatiskt för dig. Endast på stödda webbplatser. Inte kompatibelt med att blockera alla cookies/Strikt-läge."
+        }
+      },
+      "fingerprinting": {
+        "title": "Fingerprinting",
+        "enableRFP": {
+          "title": "Aktivera ResistFingerprinting",
+          "description": "ResistFingerprinting är ett bäst i klassen anti-fingerprintingverktyg. Om du behöver inaktivera det, överväga att använda en extension som Canvas Blocker."
+        },
+        "enableLetterboxing": {
+          "title": "Aktivera letterboxing",
+          "description": "Letterboxing tillämpar marginaler runt dina fönster, för att returnera en begränsad uppsättning av rundade upplösningar."
+        },
+        "enableWebGL": {
+          "title": "Aktivera WebGL",
+          "description": "WebGL är en stark fingerprintingvektor. Om du behöver aktivera det, överväga att använda en förlängning som Canvas Blocker."
+        },
+        "enableWebGLPrompt": {
+          "title": "Aktivera WebGL tillståndshantering",
+          "description": "Detta kommer att möjliggöra tillståndshantering för WebGL så att du kan tillåta WebGL på webbplatser som kräver det. När avaktiverat kommer WebGL att vara tillgänglig för alla webbplatser."
+        },
+        "hideWebGLPrompt": {
+          "title": "Dölj WebGL tillståndsförfrågan",
+          "description": "Gömmer tillståndsförfrågan för WebGL. Det kommer fortfarande att vara tillgängligt från URL-fältet."
+        }
+      },
+      "security": {
+        "title": "Säkerhet",
+        "enforceOCSP": {
+          "title": "Tvinga OCSP hard-fail",
+          "description": "Förhindra anslutning till en webbplats om OCSP-kontrollen inte kan utföras. Detta ökar säkerheten, men det kommer att orsaka avbrott när en OCSP-server är nere."
+        },
+        "enable0rtt": {
+          "title": "Aktivera TLS 1.3 0-RTT",
+          "description": "Aktivera 0-RTT (Zero Round Trip Time) för TLS-anslutningar. Detta kan förbättra prestanda men kan öka säkerhetsrisker."
+        },
+        "enableSafeBrowsing": {
+          "title": "Aktivera Google Säker Surf",
+          "description": "Om du är orolig för skadlig kod och phishing, överväg att aktivera det. Inaktiverad för censurproblem men rekommenderas för mindre avancerade användare. Alla kontroller sker lokalt."
+        },
+        "scanDownloads": {
+          "title": "Sök igenom nedladdningar",
+          "description": "Tillåt Säker Surf att skanna dina nedladdningar för att identifiera misstänkta filer. Alla kontroller sker lokalt."
+        }
+      }
+    },
+    "design": {
+      "title": "Design",
+      "description": "Justera utseendet på webbläsaren.",
+      "skin": {
+        "title": "Skal",
+        "restartDialog": {
+          "title": "Omstart krävs",
+          "message": "FireDragons omstart krävs för att helt byta skal."
+        },
+        "proton": {
+          "title": "Proton",
+          "description": "Standard Firefox skal"
+        },
+        "fluerial": {
+          "title": "Fluerial",
+          "description": "Floorp's legacy UI"
+        },
+        "lepton": {
+          "title": "Lepton",
+          "description": "Ett anpassat skal av black7375"
+        },
+        "lepton-photon": {
+          "title": "Lepton Photon",
+          "description": "Lepton men med Photon-stil"
+        },
+        "lepton-proton": {
+          "title": "Lepton Proton",
+          "description": "Lepton men med Photon-stil"
+        }
+      },
+      "advanced": {
+        "title": "Avancerad",
+        "allowUserChromeCss": {
+          "title": "Tillåt userChrome.css anpassning",
+          "description": "Aktivera detta om du vill anpassa UI:t med ett manuellt laddat tema. Se till att du litar på leverantören av temat.",
+          "restartDialog": {
+            "title": "Omstart krävs",
+            "message": "FireDragons omstart krävs för att helt tillåta eller ej tillåta userChrome.css anpassning."
+          }
+        }
+      }
+    },
+    "design-lepton": {
+      "title": "Lepton Inställningar",
+      "description": "Justera Lepton skal.",
+      "link": "Mer information",
+      "advanced": "Visa avancerade inställningar",
+      "reset": "Återställ allt till standard",
+      "default": "Detta är en standardinställning av Lepton skalet och bör inte ändras.",
+      "distribution": "Detta är en standardinställning för den valda Lepton-distributionen och bör inte ändras.",
+      "theme": {
+        "title": "Tema",
+        "themeBuiltInContrast": {
+          "title": "Använd inbyggd kontrast"
+        },
+        "themeSystemDefault": {
+          "title": "Använd systemet Look & Feel"
+        },
+        "themeProtonColor": {
+          "title": "Förse Proton med färg"
+        },
+        "themeProtonChrome": {
+          "title": "Använd Proton Design Popups"
+        },
+        "themeFullyColor": {
+          "title": "Färga komponenter fullt ut"
+        },
+        "themeFullyDark": {
+          "title": "Förbättra mörkt läge-stöd"
+        },
+        "themeProtonColorDarkBlueAccent": {
+          "title": "Använd blå accentfärg"
+        },
+        "themeMonospace": {
+          "title": "Använd monospace font"
+        }
+      },
+      "decoration": {
+        "title": "Dekoration",
+        "decorationCursor": {
+          "title": "Automatiskt ändra markörform"
+        },
+        "decorationFieldBorder": {
+          "title": "Visa ram runt inmatningfält"
+        },
+        "decorationDownloadPanel": {
+          "title": "Förbättra nedladdningspanelen"
+        },
+        "decorationAnimate": {
+          "title": "Aktivera diverse småanimationer"
+        },
+        "decorationDisablePanelAnimate": {
+          "title": "Avaktivera panelanimation"
+        },
+        "decorationDisableSidebarAnimate": {
+          "title": "Avaktivera sidofältets animationer"
+        }
+      },
+      "autohide": {
+        "title": "Auto-dölj inställningar",
+        "autohideTab": {
+          "title": "Dölj flikar automatiskt",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "opacity": "Opacitet",
+            "blur": "Suddighet"
+          }
+        },
+        "autohideNavbar": {
+          "title": "Dölj navigationsfältet automatiskt"
+        },
+        "autohideBookmarkbar": {
+          "title": "Dölj bokmärkesfältet automatiskt"
+        },
+        "autohideSidebar": {
+          "title": "Dölj sidofältet automatiskt"
+        },
+        "autohideFillUrlbar": {
+          "title": "Expandera urlbar och dölj andra UI-element automatiskt"
+        },
+        "autohideBackButton": {
+          "title": "Dölj automatiskt tillbakaknappen"
+        },
+        "autohideForwardButton": {
+          "title": "Dölj framåtknappen automatiskt"
+        },
+        "autohidePageAction": {
+          "title": "Automatiskt dölj knappar i adressfältet"
+        },
+        "autohideToolbarOverlap": {
+          "title": "Låt verktygsfältet överlappa sidoinnehållet när auto-hide är aktiverat"
+        }
+      },
+      "hidden": {
+        "title": "Dold",
+        "hiddenTabIcon": {
+          "title": "Dölj flik ikoner",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "always": "Alltid"
+          }
+        },
+        "hiddenTabbar": {
+          "title": "Dölj flikfältet"
+        },
+        "hiddenNavbar": {
+          "title": "Dölj navigationsfältet"
+        },
+        "hiddenSidebarHeader": {
+          "title": "Dölj sidofältets rubrik",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "verticalTabOnly": "Vertikala flikar endast"
+          }
+        },
+        "hiddenUrlbarIconbox": {
+          "title": "Dölj ikoner i adressfältet"
+        },
+        "hiddenBookmarkbar": {
+          "title": "Dölj etiketter eller ikoner i bokmärkesfältet",
+          "type": {
+            "none": "Inaktiverad",
+            "icon": "Dölj ikoner",
+            "label": "Dölj etiketter"
+          }
+        },
+        "hiddenDisabledMenu": {
+          "title": "Dölj avaktiverade menyobjekt"
+        }
+      },
+      "centered": {
+        "title": "Centrerad",
+        "centeredTab": {
+          "title": "Centerflik",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "label": "Endast etiketter"
+          }
+        },
+        "centeredUrlbar": {
+          "title": "Centrera adressfältet"
+        },
+        "centeredBookmarkbar": {
+          "title": "Centrera bokmärkesfältet"
+        }
+      },
+      "rounding": {
+        "title": "Avrundning",
+        "roundingSquareTab": {
+          "title": "fyrkantiga flikar"
+        },
+        "roundingSquarePanel": {
+          "title": "Fyrkantig panel"
+        },
+        "roundingSquarePanelitem": {
+          "title": "fyrkantiga panelobjekt"
+        },
+        "roundingSquareMenupopup": {
+          "title": "Fyrkantiga menypopup"
+        },
+        "roundingSquareMenuitem": {
+          "title": "Fyrkantiga menyobjekt"
+        },
+        "roundingSquareField": {
+          "title": "Fyrkantiga inmatningsfält"
+        },
+        "roundingSquareChecklabel": {
+          "title": "Fyrkantiga kryssrutor"
+        }
+      },
+      "padding": {
+        "title": "Spaltfyllnad",
+        "paddingTabbarWidth": {
+          "title": "Minska spaltfyllnad i flikfältet"
+        },
+        "paddingTabbarHeight": {
+          "title": "Minska flikfältets höjd"
+        },
+        "paddingToolbarButton": {
+          "title": "Minska spaltfyllnad i verktygsfältets knappar"
+        },
+        "paddingNavbarWidth": {
+          "title": "Minska spaltfyllnad i navigationsfältet"
+        },
+        "paddingUrlbar": {
+          "title": "Minska spaltfyllnad i URL-fältet & vy"
+        },
+        "paddingBookmarkbar": {
+          "title": "Minska spaltfyllnad i bokmärkesfältet"
+        },
+        "paddingInfobar": {
+          "title": "Minska spaltfyllnad i informationsfältet"
+        },
+        "paddingMenu": {
+          "title": "Minska spaltfyllnad i menyn"
+        },
+        "paddingBookmarkMenu": {
+          "title": "Minska spaltfyllnad i bokmärkesmenyn"
+        },
+        "paddingGlobalMenubar": {
+          "title": "Sträck ut globaltmenyfält för enklare åtkomst"
+        },
+        "paddingPanel": {
+          "title": "Minska spaltfyllnad i panelen"
+        },
+        "paddingPopupPanel": {
+          "title": "Minska spaltfyllnad i popuppanelen"
+        },
+        "paddingFirstTab": {
+          "title": "Lägg till spaltfyllnad innan första fliken",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "always": "Alltid"
+          }
+        },
+        "paddingDragSpace": {
+          "title": "Lägg till dragyta",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "maximized": "Fortsätt maximerad"
+          }
+        },
+        "paddingMenuCompact": {
+          "title": "Minska spaltfyllnad för meny"
+        },
+        "paddingBookmarkMenuCompact": {
+          "title": "Minska spaltfyllnad för bokmärkesmeny"
+        },
+        "paddingPanelHeader": {
+          "title": "Minska spaltfyllnad för panelrubrik"
+        },
+        "paddingUrlViewExpanding": {
+          "title": "Minska spaltfyllnad i utökad URL-vy"
+        },
+        "paddingUrlViewResults": {
+          "title": "Minska spaltfyllnad i URL Visa resultat"
+        }
+      },
+      "urlView": {
+        "title": "URL-vy",
+        "urlViewMoveIconToLeft": {
+          "title": "Flytta ikon till vänster"
+        },
+        "urlViewGoButtonWhenTyping": {
+          "title": "Visa go knapp när du skriver"
+        },
+        "urlViewAlwaysShowPageActions": {
+          "title": "Visa alltid sidoåtgärder"
+        }
+      },
+      "tabbar": {
+        "title": "Flikfältet",
+        "tabbarAsTitlebar": {
+          "title": "Visa flikfältet som titelfält"
+        },
+        "tabbarOnBottom": {
+          "title": "Visa flikfältet i botten"
+        },
+        "tabbarOnBottomAboveBookmark": {
+          "title": "Visa flikfältet ovanför bokmärkesfältet"
+        },
+        "tabbarOnBottomMenubarOnTop": {
+          "title": "Visa menyfältet överst"
+        },
+        "tabbarOnBottomHiddenSingleTab": {
+          "title": "Dölj flikfältet när det bara finns en flik"
+        },
+        "tabbarOneLiner": {
+          "title": "Visa flikfält i en linje"
+        },
+        "tabbarOneLinerCombineNavbar": {
+          "title": "Kombinera Navigationsfält"
+        },
+        "tabbarOneLinerTabbarFirst": {
+          "title": "Visa flikfält först"
+        },
+        "tabbarOneLinerResponsive": {
+          "title": "Byt automatiskt en linje-läge när skärmbredd är för liten"
+        }
+      },
+      "tab": {
+        "title": "Flik",
+        "tabMultiSelected": {
+          "title": "Justera kontrast av multipla flikar"
+        },
+        "tabUnloaded": {
+          "title": "Justera opacitet av oladdade flikar"
+        },
+        "tabLettersCleary": {
+          "title": "Tydligt avkortande av text"
+        },
+        "tabSoundHideLabel": {
+          "title": "Dölj ljudetikett"
+        },
+        "tabSoundWithFavicons": {
+          "title": "Visa ljudikoner"
+        },
+        "tabPip": {
+          "title": "Visa PIP ikon"
+        },
+        "tabContainer": {
+          "title": "Justera container indikator"
+        },
+        "tabCrashed": {
+          "title": "Dölj favicon av kraschade flikar"
+        },
+        "tabConnectToWindow": {
+          "title": "Anslut till fönster"
+        },
+        "tabColorLikeToolbar": {
+          "title": "Färg som verktygsfält"
+        },
+        "tabLeptonLikePadding": {
+          "title": "Lepton-liknande spaltdjup"
+        },
+        "tabPhotonLikePadding": {
+          "title": "Photon-liknande spaltdjup"
+        },
+        "tabDynamicSeparator": {
+          "title": "Visa dynamisk separation"
+        },
+        "tabStaticSeparator": {
+          "title": "Visa statisk separation"
+        },
+        "tabStaticSeparatorSelectedAccent": {
+          "title": "Accentuera statisk separation när den väljs"
+        },
+        "tabNewtabButtonLikeTab": {
+          "title": "Visa nyflik-knapp som flik"
+        },
+        "tabNewtabButtonSmaller": {
+          "title": "Gör nyflik knappen mindre"
+        },
+        "tabNewtabButtonProton": {
+          "title": "Justera nyflik knapp till proton stil"
+        },
+        "tabBoxShadow": {
+          "title": "Lägg till boxskugga på fliken"
+        },
+        "tabBottomRoundedCorner": {
+          "title": "Avrundade bottenhörn"
+        },
+        "tabPhotonLikeContextline": {
+          "title": "Photonliknande kontextlinje"
+        },
+        "tabAlwaysShowTabIcon": {
+          "title": "Visa alltid flikikon"
+        },
+        "tabCloseButtonAtHover": {
+          "title": "Visa stäng-knapp vid hovrande",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "always": "Alltid"
+          }
+        },
+        "tabCloseButtonAtPinned": {
+          "title": "Visa stäng-knapp på vald nålad flik",
+          "type": {
+            "none": "Inaktiverad",
+            "default": "Standard",
+            "always": "Alltid"
+          }
+        },
+        "tabCloseButtonAtPinnedBackground": {
+          "title": "Visa stäng-knapp på nålade bakgrundsflikar vid hovrande"
+        },
+        "tabSoundShowLabel": {
+          "title": "Visa ljudetikett"
+        },
+        "tabSupernovaLikeContextline": {
+          "title": "Supernova-liknande kontext"
+        }
+      },
+      "panel": {
+        "title": "Panelen",
+        "panelRemoveStrip": {
+          "title": "Ta bort remsa från panelrubrik"
+        },
+        "panelFullWidthSeparator": {
+          "title": "Gör panelrubrik separation full bredd"
+        },
+        "panelFullWidthPadding": {
+          "title": "Full bredd spaltdjup"
+        }
+      },
+      "sidebar": {
+        "title": "Sidofält",
+        "panelSidebar": {
+          "title": "Överlappa innehåll"
+        }
+      },
+      "fullscreen": {
+        "title": "Helskärm",
+        "fullscreenOverlap": {
+          "title": "Låt verktygsfält överlappa innehållet"
+        },
+        "fullscreenShowBookmarkbar": {
+          "title": "Visa bokmärkesfältet i helskärm"
+        }
+      },
+      "icon": {
+        "title": "Ikoner",
+        "iconPanel": {
+          "title": "Visa ikoner i panelen"
+        },
+        "iconLibrary": {
+          "title": "Visa ikoner i biblioteket"
+        },
+        "iconContextMenu": {
+          "title": "Visa ikoner i kontextmeny"
+        },
+        "iconGlobalMenu": {
+          "title": "Visa ikoner i global meny"
+        },
+        "iconGlobalMenubar": {
+          "title": "Visa ikoner i globalt menyfält"
+        },
+        "iconPanelFull": {
+          "title": "Visa hela panelikoner"
+        },
+        "iconPanelPhoton": {
+          "title": "Photon-liknande panelikoner"
+        },
+        "iconDisabled": {
+          "title": "Inaktivera alla ikoner"
+        },
+        "iconAccountImageToRight": {
+          "title": "Flytta bilden till höger i kontopanelen"
+        },
+        "iconAccountLabelToRight": {
+          "title": "Flytta etikett till höger i kontopanelen"
+        },
+        "iconMenuFull": {
+          "title": "Fullständig ikonmeny"
+        },
+        "iconGlobalMenuMac": {
+          "title": "Globala menyikoner på Mac"
+        }
+      },
+      "player": {
+        "title": "Mediaspelare",
+        "playerUi": {
+          "title": "Förbättrad spelar-UI"
+        },
+        "playerIcon": {
+          "title": "Ersätt spelarikoner"
+        },
+        "playerNoaudio": {
+          "title": "Visa tydligt ingen audio/video"
+        },
+        "playerSize": {
+          "title": "Justera spelarens storlek vid touch mode på helskärm"
+        },
+        "playerClickToPlay": {
+          "title": "Klicka för att spela"
+        },
+        "playerAnimate": {
+          "title": "Spelaranimationer"
+        },
+        "playerUiTwoline": {
+          "title": "Tvålinjespelar-UI"
+        }
+      },
+      "newTab": {
+        "title": "Ny flik",
+        "newTabFieldBorder": {
+          "title": "Visa ram runt inmatningfält"
+        },
+        "newTabFullIcon": {
+          "title": "Ta bort spaltbredd runt ikoner"
+        },
+        "newTabAnimate": {
+          "title": "Nya flikanimationer"
+        },
+        "newTabSearchbar": {
+          "title": "Förbättrad sökvy"
+        }
+      },
+      "page": {
+        "title": "Sidan",
+        "pageIllustration": {
+          "title": "Visa felillustrationer"
+        },
+        "pageProtonColor": {
+          "title": "Förse med Proton färg"
+        },
+        "pageDarkMode": {
+          "title": "Mörkt-läge innehåll"
+        },
+        "pageProton": {
+          "title": "Proton temainnehåll"
+        },
+        "pageProtonColor2": {
+          "title": "Proton accentfärg",
+          "type": {
+            "none": "Inaktiverad",
+            "darkBlueAccent": "Mörkblå",
+            "systemAccent": "System"
+          }
+        },
+        "pageMonospace": {
+          "title": "Använd monospace font"
+        }
+      }
+    },
+    "keyboardShortcuts": {
+      "shortcuts": {
+        "key": {
+          "options": {
+            "VK_F1": "F1",
+            "VK_F2": "F2",
+            "VK_F3": "F3",
+            "VK_F4": "F4",
+            "VK_F5": "F5",
+            "VK_F6": "F6",
+            "VK_F7": "F7",
+            "VK_F8": "F8",
+            "VK_F9": "F9",
+            "VK_F10": "F10",
+            "VK_F11": "F11",
+            "VK_F12": "F12",
+            "VK_F13": "F13",
+            "VK_F14": "F14",
+            "VK_F15": "F15",
+            "VK_F16": "F16",
+            "VK_F17": "F17",
+            "VK_F18": "F18",
+            "VK_F19": "F19",
+            "VK_F20": "F20",
+            "VK_F21": "F21",
+            "VK_F22": "F22",
+            "VK_F23": "F23",
+            "VK_F24": "F24",
+            "VK_RETURN": "Enter",
+            "PK_0": "0",
+            "PK_1": "1",
+            "PK_2": "2",
+            "PK_3": "3",
+            "PK_4": "4",
+            "PK_5": "5.5",
+            "PK_6": "6",
+            "PK_7": "7",
+            "PK_8": "8",
+            "PK_9": "9",
+            "PK_A": "A",
+            "PK_B": "B",
+            "PK_C": "C",
+            "PK_D": "D",
+            "PK_E": "E",
+            "PK_F": "F",
+            "PK_G": "G",
+            "PK_H": "H",
+            "PK_I": "I",
+            "PK_J": "J.",
+            "PK_K": "K",
+            "PK_L": "L",
+            "PK_M": "M",
+            "PK_N": "N",
+            "PK_O": "O",
+            "PK_P": "P",
+            "PK_Q": "Q",
+            "PK_R": "R",
+            "PK_S": "S",
+            "PK_T": "T",
+            "PK_U": "U",
+            "PK_V": "V",
+            "PK_W": "W",
+            "PK_X": "X",
+            "PK_Y": "Y",
+            "PK_Z": "Z",
+            "PK_BACK_QUOTE": "`",
+            "PK_BACK_SLASH": "\\",
+            "PK_CLOSE_BRACKET": "]",
+            "PK_COMMA": ",",
+            "PK_EQUALS": "=",
+            "PK_MINUS": "-",
+            "PK_OPEN_BRACKET": "[",
+            "PK_PERIOD": ".",
+            "PK_PLUS": "+",
+            "PK_QUOTE": "'",
+            "PK_SEMICOLON": ";",
+            "PK_SLASH": "/",
+            "PK_STAR": "*"
+          },
+          "title": "Tangent"
+        },
+        "title": "Genvägar",
+        "command": {
+          "title": "Kommando",
+          "options": {
+            "ADD_BOOKMARK_AS": "Lägg till bokmärke",
+            "BACK": "Tillbaka",
+            "BOOKMARK_ALL_TABS": "Bokmärk alla flikar",
+            "BOOKMARKS_SIDEBAR": "Växla bokmärkessidofält",
+            "BOOKMARKS_TOOLBAR": "Växla bokmärkesverktygsfält",
+            "CLOSE_TAB": "Stäng fliken",
+            "CLOSE_WINDOW": "Stäng fönster",
+            "CUSTOMIZE_TOOLBARS": "Anpassa verktygsfält",
+            "DOWNLOADS": "Öppna nedladdningar",
+            "DUPLICATE_TAB": "Duplicera Flik",
+            "FIND": "Hitta",
+            "FIND_AGAIN": "Hitta igen",
+            "FIND_PREVIOUS": "Hitta tidigare",
+            "FIND_SELECTION": "Hitta urval",
+            "FORCE_RELOAD": "Tvinga omladdning",
+            "FORWARD": "Framåt",
+            "FULL_ZOOM_ENLARGE": "Zooma in",
+            "FULL_ZOOM_REDUCE": "Zooma ut",
+            "FULL_ZOOM_RESET": "Återställ zoom",
+            "FULL_ZOOM_TOGGLE": "Växla zoom",
+            "FULLSCREEN": "Växla helskärm",
+            "HISTORY_SIDEBAR": "Växla historiksidoflik",
+            "IMPORT_FROM_ANOTHER_BROWSER": "Importera från en annan webbläsare",
+            "NEW_NAVIGATOR": "Ny flik",
+            "NEW_NAVIGATOR_TAB": "Nytt fönster",
+            "NEXT_TAB": "Nästa flik",
+            "OPEN_ADDONS_PAGE": "Öppna tilläggs-sida",
+            "OPEN_FILE": "Öppna fil",
+            "OPEN_HOME_PAGE": "Öppna hemsida",
+            "OPEN_PREFERENCES": "Öppna preferenser",
+            "OPEN_PREFERENCES_PRIVACY": "Öppna sekretessinställningar",
+            "OPEN_PREFERENCES_CONTAINER": "Öppna containerinställningar",
+            "OPEN_PREFERENCES_SEARCH": "Öppna sökinställningar",
+            "OPEN_PREFERENCES_SYNC": "Öppna sync inställningar",
+            "PAGE_INFO": "Visa sidinfo",
+            "PAGE_SOURCE": "Visa sidokälla",
+            "PREV_TAB": "Föregående flik",
+            "PRINT_PAGE": "Skriv ut sida",
+            "QUIT": "Avsluta",
+            "READER_VIEW": "Växla läsvy",
+            "RELOAD": "Ladda om",
+            "RELOAD_ALL_TABS": "Ladda om alla flikar",
+            "SANITIZE": "Glöm historik",
+            "SAVE_PAGE": "Spara sida",
+            "SCREENSHOT": "Ta skärmdump",
+            "SCROLL_BOTTOM": "Scrolla till botten",
+            "SCROLL_LEFT": "Scroll till vänster",
+            "SCROLL_PAGE_DOWN": "Scrolla ner",
+            "SCROLL_PAGE_UP": "Scrolla upp",
+            "SCROLL_RIGHT": "Scrolla till höger",
+            "SCROLL_TOP": "Scrolla till toppen",
+            "SEARCH_WEB": "Sök på webben",
+            "SEARCH_BOOKMARKS": "Sök bokmärken",
+            "SEARCH_HISTORY": "Sökhistorik",
+            "SEND_LINK": "Skicka länk",
+            "SHOW_ALL_TABS_PANEL": "Visa alla flikar-panel",
+            "SIDEBAR_HIDE": "Dölj sidofält",
+            "SIDEBAR_REVERSE_POSITION": "Återställ sidofältsposition",
+            "SIDEBAR_TOGGLE": "Växla sidofält",
+            "STOP": "Stoppa",
+            "TABS_SIDEBAR": "Växla fliksidofält",
+            "TOGGLE_MUTE": "Tyst läge",
+            "TOGGLE_OFFLINE_MODE": "Växla offline läge",
+            "TRANSLATE": "Översätt",
+            "UNDO_CLOSE_TAB": "Återställ stängd flik",
+            "UNDO_CLOSE_WINDOW": "Återställ stäng fönster",
+            "VIEW_PIP": "Visa bild-i-bild",
+            "VIEW_PROCESSES": "Aktivitetshanteraren"
+          }
+        },
+        "modifiers": {
+          "title": "Modifierare",
+          "options": {
+            "ACCEL": "Ctrl (Mac: Meta)",
+            "ALT": "Alt (Mac: Option)",
+            "META": "Meta (Mac: Command)",
+            "SHIFT": "Skift"
+          }
+        }
+      },
+      "title": "kortkommandon",
+      "description": "Hantera standard & anpassade genvägar",
+      "general": {
+        "title": "Allmänt",
+        "enableDefaultShortcuts": {
+          "title": "Aktivera standardgenvägar",
+          "description": "Detta möjliggör eller inaktiverar alla standard Firefox-genvägar. Genvägar som definieras i genvägssektionen förblir orörda."
+        }
+      }
+    },
+    "sidebar": {
+      "title": "Sidofält",
+      "description": "Anpassa sidofältet.",
+      "urls": {
+        "title": "Sidofält URL:er",
+        "name": "Namn",
+        "url": "URL",
+        "iconUrl": "Ikon URL"
+      }
+    }
+  }
+}
