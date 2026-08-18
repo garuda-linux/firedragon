@@ -438,7 +438,7 @@
       "tab": {
         "title": "Tab",
         "tabMultiSelected": {
-          "title": "Adjust contrast of milti selected tabs"
+          "title": "Adjust contrast of multiple selected tabs"
         },
         "tabUnloaded": {
           "title": "Adjust opacity of unloaded tabs"
