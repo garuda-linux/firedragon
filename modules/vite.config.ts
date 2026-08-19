@@ -15,6 +15,7 @@ export default defineConfig(async () => {
             lib: {
                 entry,
                 formats: ['es'],
+                fileName: (_, entryName) => `${entryName}.mjs`,
             },
         },
         plugins: [

@@ -1,5 +1,5 @@
 diff --git a/browser/components/extensions/ext-browser.json b/browser/components/extensions/ext-browser.json
-index d5f3e0a500f2..3e5a9616365a 100644
+index d5f3e0a500f2..21b8cb775514 100644
 --- a/browser/components/extensions/ext-browser.json
 +++ b/browser/components/extensions/ext-browser.json
 @@ -191,5 +191,11 @@
@@ -8,7 +8,7 @@ index d5f3e0a500f2..3e5a9616365a 100644
      "paths": [["windows"]]
 +  },
 +  "firedragon": {
-+    "url": "chrome://firedragon/content/extensions.mjs",
++    "url": "chrome://firedragon/content/extensions.js",
 +    "schema": "chrome://firedragon/content/extensions.json",
 +    "scopes": ["addon_parent"],
 +    "paths": [["firedragon"]]

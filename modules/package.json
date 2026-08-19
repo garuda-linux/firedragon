@@ -1,6 +1,7 @@
 {
   "name": "@firedragon/modules",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "vite build",
     "dev": "vite build"
