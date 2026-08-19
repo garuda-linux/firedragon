@@ -84,9 +84,11 @@ export namespace Targets {
 }
 export namespace DefaultTargetsBaseline {
     let DESKTOP_DEFAULT: string[];
+    let ANDROID_DEFAULT: string[];
 }
 export namespace DefaultTargetsFPP {
     let DESKTOP_DEFAULT_1: string[];
     export { DESKTOP_DEFAULT_1 as DESKTOP_DEFAULT };
-    export let ANDROID_DEFAULT: string[];
+    let ANDROID_DEFAULT_1: string[];
+    export { ANDROID_DEFAULT_1 as ANDROID_DEFAULT };
 }

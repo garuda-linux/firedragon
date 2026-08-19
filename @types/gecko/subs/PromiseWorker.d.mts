@@ -35,8 +35,8 @@ declare class Meta {
      * @class
      */
     constructor(data?: object | undefined, meta?: object | undefined);
-    data: any;
-    meta: any;
+    data: object | undefined;
+    meta: object | undefined;
 }
 /**
  * Base class for a worker.
