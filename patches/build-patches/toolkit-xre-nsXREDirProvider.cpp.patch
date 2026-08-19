@@ -1,12 +1,19 @@
 diff --git a/toolkit/xre/nsXREDirProvider.cpp b/toolkit/xre/nsXREDirProvider.cpp
-index b54980f967ab..b2b5d5237886 100644
+index dcce3335e14f..81b0b857219d 100644
 --- a/toolkit/xre/nsXREDirProvider.cpp
 +++ b/toolkit/xre/nsXREDirProvider.cpp
-@@ -1336,7 +1336,10 @@ nsresult nsXREDirProvider::AppendFromAppData(nsIFile* aFile, bool aIsDotted) {
+@@ -1337,13 +1337,11 @@ nsresult nsXREDirProvider::AppendFromAppData(nsIFile* aFile, bool aIsDotted) {
+   // future?
    if (gAppData->profile) {
      nsAutoCString profile;
-     profile = gAppData->profile;
+-#  if defined(MOZ_THUNDERBIRD)
+-    if (gAppData->profile[0] != '.') {
+-      profile.Assign('.');
+-    }
+-#  endif
+-    profile.Append(gAppData->profile);
 -    MOZ_TRY(aFile->AppendRelativeNativePath(profile));
++    profile = gAppData->profile;
 +    ToLowerCase(profile);
 +
 +    MOZ_TRY(aFile->AppendRelativeNativePath(aIsDotted ? ("."_ns + profile)
@@ -14,13 +21,26 @@ index b54980f967ab..b2b5d5237886 100644
    } else {
      nsAutoCString vendor;
      nsAutoCString appName;
-@@ -1512,15 +1515,8 @@ nsresult nsXREDirProvider::GetLegacyOrXDGHomePath(const char* aHomeDir,
+@@ -1520,28 +1518,8 @@ nsresult nsXREDirProvider::GetLegacyOrXDGHomePath(const char* aHomeDir,
        return NS_OK;
      }
  
 -    // If the build was made against a specific profile name, MOZ_APP_PROFILE=
 -    // then make sure we respect this and dont move to XDG directory
--    if (gAppData->profile) {
+-    //
+-    // Only do this on Firefox.
+-    //
+-    // For Thunderbird, it always defines MOZ_APP_PROFILE=thunderbird. Hence,
+-    // check if the gAppData->profile value is set to something else, indicating
+-    // of a specific build where legacy needs to be forced, similar to the
+-    // Firefox handling. Both casing are verified to account for systems where
+-    // that matters.
+-    if (gAppData->profile
+-#  if defined(MOZ_THUNDERBIRD)
+-        && strcmp(gAppData->profile, "thunderbird") != 0 &&
+-        strcmp(gAppData->profile, "Thunderbird") != 0
+-#  endif
+-    ) {
 -      MOZ_TRY(NS_NewNativeLocalFile(nsDependentCString(aHomeDir),
 -                                    getter_AddRefs(localDir)));
 -    } else {
