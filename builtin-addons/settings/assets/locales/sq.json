@@ -1,0 +1,850 @@
+{
+  "title": "Cilësimet FireDragon",
+  "back": "Kthehu te cilësimet",
+  "pages": {
+    "home": {
+      "title": "Cilësimet FireDragon",
+      "description": "Ne i zgjedhim me kujdes cilësimet e parazgjedhura duke u fokusuar në privatësinë dhe sigurinë. Kur t'i ndryshoni këto cilësime, lexoni përshkrimin për të kuptuar pasojat e këtyre ndryshimeve.",
+      "browserBehaviour": {
+        "title": "Sjellja e shfletuesit",
+        "autoUpdateExtensions": {
+          "title": "Përditëso zgjerimet automatikisht",
+          "description": "Mbaji zgjerimet të përditësuara pa ndërhyrje manuale. Një zgjedhje e mirë për sigurinë tuaj. Nëse nuk i rishikoni kodet e zgjerimeve tuaja para çdo përditësimi, duhet ta aktivizoni këtë mundësi."
+        },
+        "enableSync": {
+          "title": "Aktivizo FireDragon Sync",
+          "description": "Sinkronizoni të dhënat tuaja me shfletues të tjerë. Kërkon rinisje. FireDragon Sync i kodon të dhënat lokalisht përpara se t'i transmetojë në server.",
+          "restartDialog": {
+            "title": "Kërkohet rinisje",
+            "message": "Kërkohet rinisja e FireDragon për të aktivizuar ose çaktivizuar plotësisht FireDragon Sync."
+          }
+        },
+        "enableMiddleClickPaste": {
+          "title": "Aktivizo ngjitjen me klik të mesëm",
+          "description": "Zgjidhni disa tekste për t'i kopjuar, më pas ngjitini me një klik të mesëm të miut."
+        },
+        "hidePasswdmgr": {
+          "title": "Fshih menaxherin e fjalëkalimeve",
+          "description": "Fshih artikullin e menysë dhe cilësimet e menaxherit të fjalëkalimeve.",
+          "restartDialog": {
+            "title": "Kërkohet rinisje",
+            "message": "Kërkohet rinisja e FireDragon për të shfaqur ose fshehur plotësisht menaxherin e fjalëkalimeve."
+          }
+        },
+        "enableTranslations": {
+          "title": "Aktivizo Përkthimet",
+          "description": "Aktivizo përkthimet jashtë linje."
+        },
+        "closeWindowWithLastTab": {
+          "title": "Mbyll dritaren me skedën e fundit",
+          "description": "Mbyll dritaren e shfletuesit kur mbyllet skeda e fundit."
+        }
+      },
+      "networking": {
+        "title": "Rrjeti",
+        "enableIPv6": {
+          "title": "Aktivizo IPv6",
+          "description": "Lejo FireDragon të lidhet duke përdorur IPv6. Në vend që të bllokoni IPv6 në shfletues, sugjerojmë të aktivizoni zgjerimin e privatësisë IPv6 në sistemin tuaj operativ."
+        }
+      },
+      "privacy": {
+        "title": "Privatësia",
+        "enablePrefetchConfig": {
+          "title": "Aktivizo parafaqimin",
+          "description": "Parafaqimi është një veçori e shfletuesit që i lejon atij të shkarkojë burime në sfond ndërsa përdoruesi shfleton. Kjo mund të përmirësojë performancën dhe të zvogëlojë përdorimin e brezit të gjerë.",
+          "restartDialog": {
+            "title": "Kërkohet rinisje",
+            "message": "Kërkohet rinisja e FireDragon për të aktivizuar ose çaktivizuar plotësisht parafaqimin."
+          }
+        },
+        "limitCrossOriginReferrers": {
+          "title": "Kufizo referuesit ndër-origjinë",
+          "description": "Dërgo një referues vetëm në të njëjtën origjinë. Kjo mund të shkaktojë prishje funksioni. Gjithashtu, edhe kur dërgohen, referuesit do të shkurtohen prapë."
+        },
+        "autoRefuseCookies": {
+          "title": "Refuzo automatikisht banderolat e cookie-ve",
+          "description": "Kur një faqe pyet nëse mund të përdorë cookie, FireDragon refuzon automatikisht në emër tuaj. Vetëm në faqet e mbështetura. Nuk është i pajtueshëm me bllokimin e të gjitha cookie-ve / Modalitetin e Rreptë."
+        }
+      },
+      "fingerprinting": {
+        "title": "Gjurmimi dixhital (Fingerprinting)",
+        "enableRFP": {
+          "title": "Aktivizo ResistFingerprinting",
+          "description": "ResistFingerprinting është mjeti më i mirë i klasës së tij kundër gjurmimit dixhital. Nëse keni nevojë ta çaktivizoni, konsideroni të përdorni një zgjerim si Canvas Blocker."
+        },
+        "enableLetterboxing": {
+          "title": "Aktivizo letterboxing",
+          "description": "Letterboxing vendos margjina rreth dritareve tuaja, në mënyrë që të kthejë një grup të kufizuar rezolucionesh të rrumbullakosura."
+        },
+        "enableWebGL": {
+          "title": "Aktivizo WebGL",
+          "description": "WebGL është një vektor i fortë gjurmimi dixhital. Nëse keni nevojë ta aktivizoni, konsideroni të përdorni një zgjerim si Canvas Blocker."
+        },
+        "enableWebGLPrompt": {
+          "title": "Aktivizo trajtimin e lejeve të WebGL",
+          "description": "Kjo do të mundësojë trajtimin e lejeve për WebGL, duke ju kërkuar kështu të lejoni WebGL në faqet që e kërkojnë. Kur të çaktivizohet, WebGL do të jetë i disponueshëm për të gjitha faqet."
+        },
+        "hideWebGLPrompt": {
+          "title": "Fshih kërkesën e lejes së WebGL",
+          "description": "Fsheh kërkesën e lejes për WebGL. Ajo do të mbetet e arritshme nga shiriti i adresave."
+        }
+      },
+      "security": {
+        "title": "Siguria",
+        "enforceOCSP": {
+          "title": "Zbato dështimin e plotë të OCSP",
+          "description": "Parandalo lidhjen me një faqe interneti nëse kontrolli OCSP nuk mund të kryhet. Kjo rrit sigurinë, por do të shkaktojë prishje funksioni kur një server OCSP është i padisponueshëm."
+        },
+        "enable0rtt": {
+          "title": "Aktivizo TLS 1.3 0-RTT",
+          "description": "Aktivizo 0-RTT (Zero Round Trip Time) për lidhjet TLS. Kjo mund të përmirësojë performancën, por mund të rrisë rreziqet e sigurisë."
+        },
+        "enableSafeBrowsing": {
+          "title": "Aktivizo Google Safe Browsing",
+          "description": "Nëse shqetësoheni për malware dhe phishing, konsideroni ta aktivizoni. E çaktivizuar për shkak të shqetësimeve rreth censurës, por e rekomanduar për përdoruesit më pak të avancuar. Të gjitha kontrollet kryhen lokalisht."
+        },
+        "scanDownloads": {
+          "title": "Skano Shkarkimet",
+          "description": "Lejo Safe Browsing të skanojë shkarkimet tuaja për të identifikuar skedarë të dyshimtë. Të gjitha kontrollet kryhen lokalisht."
+        }
+      }
+    },
+    "design": {
+      "title": "Dizajni",
+      "description": "Rregullo pamjen e shfletuesit.",
+      "skin": {
+        "title": "Lëkura (Skin)",
+        "restartDialog": {
+          "title": "Kërkohet rinisje",
+          "message": "Kërkohet rinisja e FireDragon për të ndryshuar plotësisht lëkurën."
+        },
+        "proton": {
+          "title": "Proton",
+          "description": "Lëkura e parazgjedhur e Firefox"
+        },
+        "fluerial": {
+          "title": "Fluerial",
+          "description": "Ndërfaqja e vjetër e Floorp"
+        },
+        "lepton": {
+          "title": "Lepton",
+          "description": "Një lëkurë e personalizuar nga black7375"
+        },
+        "lepton-photon": {
+          "title": "Lepton Photon",
+          "description": "Lepton me stilin Photon"
+        },
+        "lepton-proton": {
+          "title": "Lepton Proton",
+          "description": "Lepton me stilin Proton"
+        }
+      },
+      "advanced": {
+        "title": "E avancuar",
+        "allowUserChromeCss": {
+          "title": "Lejo personalizimin e userChrome.css",
+          "description": "Aktivizoje këtë nëse dëshiron ta personalizosh ndërfaqen me një temë të ngarkuar manualisht. Sigurohuni se i besoni ofruesit të temës.",
+          "restartDialog": {
+            "title": "Kërkohet rinisje",
+            "message": "Kërkohet rinisja e FireDragon për të lejuar ose ndaluar plotësisht personalizimin e userChrome.css."
+          }
+        }
+      }
+    },
+    "design-lepton": {
+      "title": "Cilësimet Lepton",
+      "description": "Rregullo lëkurën Lepton.",
+      "link": "Më shumë informacion",
+      "advanced": "Shfaq cilësimet e avancuara",
+      "reset": "Rivendos të gjitha si parazgjedhje",
+      "default": "Ky është një cilësim i parazgjedhur i lëkurës Lepton dhe nuk duhet të ndryshohet.",
+      "distribution": "Ky është një cilësim i parazgjedhur i shpërndarjes së zgjedhur Lepton dhe nuk duhet të ndryshohet.",
+      "theme": {
+        "title": "Tema",
+        "themeBuiltInContrast": {
+          "title": "Përdor kontrastin e integruar"
+        },
+        "themeSystemDefault": {
+          "title": "Përdor pamjen e sistemit"
+        },
+        "themeProtonColor": {
+          "title": "Ofro ngjyrën Proton"
+        },
+        "themeProtonChrome": {
+          "title": "Përdor dritaret e dizajnit Proton"
+        },
+        "themeFullyColor": {
+          "title": "Ngjyros plotësisht komponentët"
+        },
+        "themeFullyDark": {
+          "title": "Përmirëso mbështetjen e modalitetit të errët"
+        },
+        "themeProtonColorDarkBlueAccent": {
+          "title": "Përdor ngjyrën e theksit blu"
+        },
+        "themeMonospace": {
+          "title": "Përdor shkronjën monospace"
+        }
+      },
+      "decoration": {
+        "title": "Dekorimi",
+        "decorationCursor": {
+          "title": "Ndrysho automatikisht formën e kursorit"
+        },
+        "decorationFieldBorder": {
+          "title": "Shfaq kufi rreth fushave të hyrjes"
+        },
+        "decorationDownloadPanel": {
+          "title": "Përmirëso panelin e shkarkimeve"
+        },
+        "decorationAnimate": {
+          "title": "Aktivizo animacione të ndryshme të vogla"
+        },
+        "decorationDisablePanelAnimate": {
+          "title": "Hiq animacionin e panelit"
+        },
+        "decorationDisableSidebarAnimate": {
+          "title": "Hiq animacionin e panelit anësor"
+        }
+      },
+      "autohide": {
+        "title": "Cilësimet e vetë-fshehjes",
+        "autohideTab": {
+          "title": "Fshih skedat automatikisht",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "opacity": "Opaciteti",
+            "blur": "Turbullimi (Blur)"
+          }
+        },
+        "autohideNavbar": {
+          "title": "Fshih shiritin e navigimit automatikisht"
+        },
+        "autohideBookmarkbar": {
+          "title": "Fshih shiritin e faqeshënuesve automatikisht"
+        },
+        "autohideSidebar": {
+          "title": "Fshih panelin anësor automatikisht"
+        },
+        "autohideFillUrlbar": {
+          "title": "Zgjero automatikisht shiritin e adresave dhe fshih elementët e tjerë të ndërfaqes"
+        },
+        "autohideBackButton": {
+          "title": "Fshih automatikisht butonin e prapa"
+        },
+        "autohideForwardButton": {
+          "title": "Fshih automatikisht butonin e përpara"
+        },
+        "autohidePageAction": {
+          "title": "Fshih automatikisht butonat në shiritin e adresave"
+        },
+        "autohideToolbarOverlap": {
+          "title": "Bëj që shiriti i veglave të mbivendoset me përmbajtjen kur aktivizohet vetë-fshehja"
+        }
+      },
+      "hidden": {
+        "title": "E fshehur",
+        "hiddenTabIcon": {
+          "title": "Fshih ikonat e skedave",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "always": "Gjithmonë"
+          }
+        },
+        "hiddenTabbar": {
+          "title": "Fshih shiritin e skedave"
+        },
+        "hiddenNavbar": {
+          "title": "Fshih shiritin e navigimit"
+        },
+        "hiddenSidebarHeader": {
+          "title": "Fshih kokën e panelit anësor",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "verticalTabOnly": "Vetëm skedat vertikale"
+          }
+        },
+        "hiddenUrlbarIconbox": {
+          "title": "Fshih ikonat në shiritin e adresave"
+        },
+        "hiddenBookmarkbar": {
+          "title": "Fshih etiketat ose ikonat në shiritin e faqeshënuesve",
+          "type": {
+            "none": "E çaktivizuar",
+            "icon": "Fshih ikonat",
+            "label": "Fshih etiketat"
+          }
+        },
+        "hiddenDisabledMenu": {
+          "title": "Fshih artikujt e çaktivizuar të menysë"
+        }
+      },
+      "centered": {
+        "title": "E përqendruar",
+        "centeredTab": {
+          "title": "Përqendro skedën",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "label": "Vetëm etiketa"
+          }
+        },
+        "centeredUrlbar": {
+          "title": "Përqendro shiritin e adresave"
+        },
+        "centeredBookmarkbar": {
+          "title": "Përqendro shiritin e faqeshënuesve"
+        }
+      },
+      "rounding": {
+        "title": "Rrumbullakimi",
+        "roundingSquareTab": {
+          "title": "Skedë katrore"
+        },
+        "roundingSquarePanel": {
+          "title": "Panel katror"
+        },
+        "roundingSquarePanelitem": {
+          "title": "Artikuj katrorë të panelit"
+        },
+        "roundingSquareMenupopup": {
+          "title": "Dritare kërcyese katrorë e menysë"
+        },
+        "roundingSquareMenuitem": {
+          "title": "Artikuj katrorë të menysë"
+        },
+        "roundingSquareField": {
+          "title": "Fusha teksti hyrëse katrore"
+        },
+        "roundingSquareChecklabel": {
+          "title": "Kutitë e zgjedhjes katrore"
+        }
+      },
+      "padding": {
+        "title": "Hapësira e mbushjes",
+        "paddingTabbarWidth": {
+          "title": "Zvogëlo hapësirën e mbushjes në shiritin e skedave"
+        },
+        "paddingTabbarHeight": {
+          "title": "Zvogëlo lartësinë e shiritit të skedave"
+        },
+        "paddingToolbarButton": {
+          "title": "Zvogëlo hapësirën e mbushjes në butonat e shiritit të veglave"
+        },
+        "paddingNavbarWidth": {
+          "title": "Zvogëlo hapësirën e mbushjes në shiritin e navigimit"
+        },
+        "paddingUrlbar": {
+          "title": "Zvogëlo hapësirën e mbushjes në shiritin e adresave dhe pamjen"
+        },
+        "paddingBookmarkbar": {
+          "title": "Zvogëlo hapësirën e mbushjes në shiritin e faqeshënuesve"
+        },
+        "paddingInfobar": {
+          "title": "Zvogëlo hapësirën e mbushjes në shiritin e informacionit"
+        },
+        "paddingMenu": {
+          "title": "Zvogëlo hapësirën e mbushjes në meny"
+        },
+        "paddingBookmarkMenu": {
+          "title": "Zvogëlo hapësirën e mbushjes në menynë e faqeshënuesve"
+        },
+        "paddingGlobalMenubar": {
+          "title": "Zgjate shiritin global të menysë për akses më të lehtë"
+        },
+        "paddingPanel": {
+          "title": "Zvogëlo hapësirën e mbushjes në panel"
+        },
+        "paddingPopupPanel": {
+          "title": "Zvogëlo hapësirën e mbushjes në panelin e dritares kërcyese"
+        },
+        "paddingFirstTab": {
+          "title": "Shto hapësirë mbushjeje para skedës së parë",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "always": "Gjithmonë"
+          }
+        },
+        "paddingDragSpace": {
+          "title": "Shto hapësirë tërheqjeje",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "maximized": "Mbaj në modalitetin e zmadhuar"
+          }
+        },
+        "paddingMenuCompact": {
+          "title": "Zvogëlo hapësirën e mbushjes së menysë"
+        },
+        "paddingBookmarkMenuCompact": {
+          "title": "Zvogëlo hapësirën e mbushjes së menysë së faqeshënuesve"
+        },
+        "paddingPanelHeader": {
+          "title": "Zvogëlo hapësirën e mbushjes së kokës së panelit"
+        },
+        "paddingUrlViewExpanding": {
+          "title": "Zvogëlo hapësirën e mbushjes në pamjen e zgjeruar të adresave"
+        },
+        "paddingUrlViewResults": {
+          "title": "Zvogëlo hapësirën e mbushjes në rezultatet e pamjes së adresave"
+        }
+      },
+      "urlView": {
+        "title": "Pamja e adresave",
+        "urlViewMoveIconToLeft": {
+          "title": "Zhvendos ikonën majtas"
+        },
+        "urlViewGoButtonWhenTyping": {
+          "title": "Shfaq butonin Shko kur shkruani"
+        },
+        "urlViewAlwaysShowPageActions": {
+          "title": "Shfaq gjithmonë veprimet e faqes"
+        }
+      },
+      "tabbar": {
+        "title": "Shiriti i skedave",
+        "tabbarAsTitlebar": {
+          "title": "Shfaq shiritin e skedave si shirit titulli"
+        },
+        "tabbarOnBottom": {
+          "title": "Shfaq shiritin e skedave në fund"
+        },
+        "tabbarOnBottomAboveBookmark": {
+          "title": "Shfaq shiritin e skedave mbi shiritin e faqeshënuesve"
+        },
+        "tabbarOnBottomMenubarOnTop": {
+          "title": "Shfaq shiritin e menysë sipër"
+        },
+        "tabbarOnBottomHiddenSingleTab": {
+          "title": "Fshih shiritin e skedave kur ka vetëm një skedë"
+        },
+        "tabbarOneLiner": {
+          "title": "Shfaq shiritin e skedave në një rresht"
+        },
+        "tabbarOneLinerCombineNavbar": {
+          "title": "Kombino shiritin e navigimit"
+        },
+        "tabbarOneLinerTabbarFirst": {
+          "title": "Shfaq shiritin e skedave i pari"
+        },
+        "tabbarOneLinerResponsive": {
+          "title": "Kalo automatikisht në modalitetin me një rresht kur gjerësia e ekranit është shumë e vogël"
+        }
+      },
+      "tab": {
+        "title": "Skeda",
+        "tabMultiSelected": {
+          "title": "Rregullo kontrastin e skedave të shumta të zgjedhura"
+        },
+        "tabUnloaded": {
+          "title": "Rregullo opacitetin e skedave të pa ngarkuara"
+        },
+        "tabLettersCleary": {
+          "title": "Trunko tekstin qartë"
+        },
+        "tabSoundHideLabel": {
+          "title": "Fshih etiketën e zërit"
+        },
+        "tabSoundWithFavicons": {
+          "title": "Shfaq ikonat e zërit"
+        },
+        "tabPip": {
+          "title": "Shfaq ikonën e figurës-në-figurë"
+        },
+        "tabContainer": {
+          "title": "Rregullo treguesin e kontejnerit"
+        },
+        "tabCrashed": {
+          "title": "Fshih favikonin e skedave të dështuara"
+        },
+        "tabConnectToWindow": {
+          "title": "Lidh me dritaren"
+        },
+        "tabColorLikeToolbar": {
+          "title": "Ngjyros si shiriti i veglave"
+        },
+        "tabLeptonLikePadding": {
+          "title": "Hapësirë mbushjeje si te Lepton"
+        },
+        "tabPhotonLikePadding": {
+          "title": "Hapësirë mbushjeje si te Photon"
+        },
+        "tabDynamicSeparator": {
+          "title": "Shfaq ndarës dinamik"
+        },
+        "tabStaticSeparator": {
+          "title": "Shfaq ndarës statik"
+        },
+        "tabStaticSeparatorSelectedAccent": {
+          "title": "Thekso ndarësin statik kur zgjidhet"
+        },
+        "tabNewtabButtonLikeTab": {
+          "title": "Shfaq butonin e skedës së re si skedë"
+        },
+        "tabNewtabButtonSmaller": {
+          "title": "Bëj butonin e skedës së re më të vogël"
+        },
+        "tabNewtabButtonProton": {
+          "title": "Rregullo butonin e skedës së re sipas stilit proton"
+        },
+        "tabBoxShadow": {
+          "title": "Shto hije kutie te skeda"
+        },
+        "tabBottomRoundedCorner": {
+          "title": "Qoshe të rrumbullakosura në fund"
+        },
+        "tabPhotonLikeContextline": {
+          "title": "Vijë konteksti si te Photon"
+        },
+        "tabAlwaysShowTabIcon": {
+          "title": "Shfaq gjithmonë ikonën e skedës"
+        },
+        "tabCloseButtonAtHover": {
+          "title": "Shfaq butonin e mbylljes kur kalohet me miun",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "always": "Gjithmonë"
+          }
+        },
+        "tabCloseButtonAtPinned": {
+          "title": "Shfaq butonin e mbylljes në skedën e zgjedhur të fiksuar",
+          "type": {
+            "none": "E çaktivizuar",
+            "default": "Parazgjedhja",
+            "always": "Gjithmonë"
+          }
+        },
+        "tabCloseButtonAtPinnedBackground": {
+          "title": "Shfaq butonin e mbylljes në skedat e fiksuara në sfond kur kalohet me miun"
+        },
+        "tabSoundShowLabel": {
+          "title": "Shfaq etiketën e zërit"
+        },
+        "tabSupernovaLikeContextline": {
+          "title": "Vijë konteksti si te Supernova"
+        }
+      },
+      "panel": {
+        "title": "Paneli",
+        "panelRemoveStrip": {
+          "title": "Hiq shiritin nga koka e panelit"
+        },
+        "panelFullWidthSeparator": {
+          "title": "Bëj ndarësin e kokës së panelit me gjerësi të plotë"
+        },
+        "panelFullWidthPadding": {
+          "title": "Hapësirë mbushjeje me gjerësi të plotë"
+        }
+      },
+      "sidebar": {
+        "title": "Paneli anësor",
+        "panelSidebar": {
+          "title": "Mbivendos përmbajtjen"
+        }
+      },
+      "fullscreen": {
+        "title": "Ekran i plotë",
+        "fullscreenOverlap": {
+          "title": "Bëj që shiriti i veglave të mbivendoset me përmbajtjen"
+        },
+        "fullscreenShowBookmarkbar": {
+          "title": "Shfaq shiritin e faqeshënuesve në ekran të plotë"
+        }
+      },
+      "icon": {
+        "title": "Ikonat",
+        "iconPanel": {
+          "title": "Shfaq ikonat në panel"
+        },
+        "iconLibrary": {
+          "title": "Shfaq ikonat në bibliotekë"
+        },
+        "iconContextMenu": {
+          "title": "Shfaq ikonat në menynë e kontekstit"
+        },
+        "iconGlobalMenu": {
+          "title": "Shfaq ikonat në menynë globale"
+        },
+        "iconGlobalMenubar": {
+          "title": "Shfaq ikonat në shiritin global të menysë"
+        },
+        "iconPanelFull": {
+          "title": "Shfaq ikonat e plota të panelit"
+        },
+        "iconPanelPhoton": {
+          "title": "Ikonat e panelit si te Photon"
+        },
+        "iconDisabled": {
+          "title": "Çaktivizo të gjitha ikonat"
+        },
+        "iconAccountImageToRight": {
+          "title": "Zhvendos imazhin djathtas në panelin e llogarisë"
+        },
+        "iconAccountLabelToRight": {
+          "title": "Zhvendos etiketën djathtas në panelin e llogarisë"
+        },
+        "iconMenuFull": {
+          "title": "Meny e plotë me ikona"
+        },
+        "iconGlobalMenuMac": {
+          "title": "Ikonat e menysë globale në Mac"
+        }
+      },
+      "player": {
+        "title": "Luajtësi i medias",
+        "playerUi": {
+          "title": "Ndërfaqe e përmirësuar e luajtësit"
+        },
+        "playerIcon": {
+          "title": "Zëvendëso ikonat e luajtësit"
+        },
+        "playerNoaudio": {
+          "title": "Shfaq qartë videon pa audio"
+        },
+        "playerSize": {
+          "title": "Rregullo madhësinë e luajtësit në modalitetin me prekje të ekranit të plotë"
+        },
+        "playerClickToPlay": {
+          "title": "Kliko për të luajtur"
+        },
+        "playerAnimate": {
+          "title": "Animacionet e luajtësit"
+        },
+        "playerUiTwoline": {
+          "title": "Ndërfaqe e luajtësit me dy rreshta"
+        }
+      },
+      "newTab": {
+        "title": "Skeda e re",
+        "newTabFieldBorder": {
+          "title": "Shfaq kufi rreth fushave të hyrjes"
+        },
+        "newTabFullIcon": {
+          "title": "Hiq hapësirën e mbushjes rreth ikonave"
+        },
+        "newTabAnimate": {
+          "title": "Animacionet e skedës së re"
+        },
+        "newTabSearchbar": {
+          "title": "Pamje e përmirësuar kërkimi"
+        }
+      },
+      "page": {
+        "title": "Faqja",
+        "pageIllustration": {
+          "title": "Shfaq ilustrimet e gabimeve"
+        },
+        "pageProtonColor": {
+          "title": "Ofro ngjyrën Proton"
+        },
+        "pageDarkMode": {
+          "title": "Përmbajtje në modalitetin e errët"
+        },
+        "pageProton": {
+          "title": "Përmbajtje e temës Proton"
+        },
+        "pageProtonColor2": {
+          "title": "Ngjyra e theksit Proton",
+          "type": {
+            "none": "E çaktivizuar",
+            "darkBlueAccent": "Blu e errët",
+            "systemAccent": "Sistemi"
+          }
+        },
+        "pageMonospace": {
+          "title": "Përdor shkronjën monospace"
+        }
+      }
+    },
+    "keyboardShortcuts": {
+      "title": "Shkurtoret e tastierës",
+      "description": "Menaxho shkurtoret e parazgjedhura dhe të personalizuara",
+      "general": {
+        "title": "Të përgjithshme",
+        "enableDefaultShortcuts": {
+          "title": "Aktivizo shkurtoret e parazgjedhura",
+          "description": "Kjo do të aktivizojë ose çaktivizojë të gjitha shkurtoret e parazgjedhura të Firefox. Shkurtoret e përcaktuara në seksionin e Shkurtoreve mbeten të pandryshuara."
+        }
+      },
+      "shortcuts": {
+        "title": "Shkurtoret",
+        "command": {
+          "title": "Komanda",
+          "options": {
+            "ADD_BOOKMARK_AS": "Shto faqeshënues",
+            "BACK": "Prapa",
+            "BOOKMARK_ALL_TABS": "Faqeshëno të gjitha skedat",
+            "BOOKMARKS_SIDEBAR": "Ndrysho gjendjen e panelit anësor të faqeshënuesve",
+            "BOOKMARKS_TOOLBAR": "Ndrysho gjendjen e shiritit të veglave të faqeshënuesve",
+            "CLOSE_TAB": "Mbyll skedën",
+            "CLOSE_WINDOW": "Mbyll dritaren",
+            "CUSTOMIZE_TOOLBARS": "Personalizo shiritat e veglave",
+            "DOWNLOADS": "Hap Shkarkimet",
+            "DUPLICATE_TAB": "Dubliko skedën",
+            "FIND": "Gjej",
+            "FIND_AGAIN": "Gjej përsëri",
+            "FIND_PREVIOUS": "Gjej të mëparshmen",
+            "FIND_SELECTION": "Gjej përzgjedhjen",
+            "FORCE_RELOAD": "Rifresko me forcë",
+            "FORWARD": "Përpara",
+            "FULL_ZOOM_ENLARGE": "Zmadho",
+            "FULL_ZOOM_REDUCE": "Zvogëlo",
+            "FULL_ZOOM_RESET": "Rivendos zmadhimin",
+            "FULL_ZOOM_TOGGLE": "Ndrysho zmadhimin",
+            "FULLSCREEN": "Ndrysho ekranin e plotë",
+            "HISTORY_SIDEBAR": "Ndrysho gjendjen e panelit anësor të historikut",
+            "IMPORT_FROM_ANOTHER_BROWSER": "Importo nga një shfletues tjetër",
+            "NEW_NAVIGATOR": "Skeda e re",
+            "NEW_NAVIGATOR_TAB": "Dritare e re",
+            "NEXT_TAB": "Skeda tjetër",
+            "OPEN_ADDONS_PAGE": "Hap faqen e zgjerimeve",
+            "OPEN_FILE": "Hap skedarin",
+            "OPEN_HOME_PAGE": "Hap faqen kryesore",
+            "OPEN_PREFERENCES": "Hap preferencat",
+            "OPEN_PREFERENCES_PRIVACY": "Hap cilësimet e privatësisë",
+            "OPEN_PREFERENCES_CONTAINER": "Hap cilësimet e kontejnerëve",
+            "OPEN_PREFERENCES_SEARCH": "Hap cilësimet e kërkimit",
+            "OPEN_PREFERENCES_SYNC": "Hap cilësimet e sinkronizimit",
+            "PAGE_INFO": "Shiko informacionin e faqes",
+            "PAGE_SOURCE": "Shiko burimin e faqes",
+            "PREV_TAB": "Skeda e mëparshme",
+            "PRINT_PAGE": "Printo faqen",
+            "QUIT": "Dil",
+            "READER_VIEW": "Ndrysho pamjen e lexuesit",
+            "RELOAD": "Rifresko",
+            "RELOAD_ALL_TABS": "Rifresko të gjitha skedat",
+            "SANITIZE": "Harro historikun",
+            "SAVE_PAGE": "Ruaj faqen",
+            "SCREENSHOT": "Bëj pamje ekrani",
+            "SCROLL_BOTTOM": "Lëviz deri në fund",
+            "SCROLL_LEFT": "Lëviz majtas",
+            "SCROLL_PAGE_DOWN": "Lëviz poshtë",
+            "SCROLL_PAGE_UP": "Lëviz lart",
+            "SCROLL_RIGHT": "Lëviz djathtas",
+            "SCROLL_TOP": "Lëviz deri në fillim",
+            "SEARCH_WEB": "Kërko në ueb",
+            "SEARCH_BOOKMARKS": "Kërko në faqeshënues",
+            "SEARCH_HISTORY": "Kërko në historik",
+            "SEND_LINK": "Dërgo lidhje",
+            "SHOW_ALL_TABS_PANEL": "Shfaq panelin e të gjitha skedave",
+            "SIDEBAR_HIDE": "Fshih panelin anësor",
+            "SIDEBAR_REVERSE_POSITION": "Përmbys pozicionin e panelit anësor",
+            "SIDEBAR_TOGGLE": "Ndrysho gjendjen e panelit anësor",
+            "STOP": "Ndal",
+            "TABS_SIDEBAR": "Ndrysho gjendjen e panelit anësor të skedave",
+            "TOGGLE_MUTE": "Ndrysho heshtjen",
+            "TOGGLE_OFFLINE_MODE": "Ndrysho modalitetin jashtë linje",
+            "TRANSLATE": "Përkthe",
+            "UNDO_CLOSE_TAB": "Zhbëj mbylljen e skedës",
+            "UNDO_CLOSE_WINDOW": "Zhbëj mbylljen e dritares",
+            "VIEW_PIP": "Shiko figurën-në-figurë",
+            "VIEW_PROCESSES": "Menaxheri i detyrave"
+          }
+        },
+        "modifiers": {
+          "title": "Modifikuesit",
+          "options": {
+            "ACCEL": "Ctrl (Mac: Meta)",
+            "ALT": "Alt (Mac: Option)",
+            "META": "Meta (Mac: Command)",
+            "SHIFT": "Shift"
+          }
+        },
+        "key": {
+          "title": "Tasti",
+          "options": {
+            "PK_0": "0",
+            "PK_1": "1",
+            "PK_2": "2",
+            "PK_3": "3",
+            "PK_4": "4",
+            "PK_5": "5",
+            "PK_6": "6",
+            "PK_7": "7",
+            "PK_8": "8",
+            "PK_9": "9",
+            "PK_A": "A",
+            "PK_B": "B",
+            "PK_C": "C",
+            "PK_D": "D",
+            "PK_E": "E",
+            "PK_F": "F",
+            "PK_G": "G",
+            "PK_H": "H",
+            "PK_I": "I",
+            "PK_J": "J",
+            "PK_K": "K",
+            "PK_L": "L",
+            "PK_M": "M",
+            "PK_N": "N",
+            "PK_O": "O",
+            "PK_P": "P",
+            "PK_Q": "Q",
+            "PK_R": "R",
+            "PK_S": "S",
+            "PK_T": "T",
+            "PK_U": "U",
+            "PK_V": "V",
+            "PK_W": "W",
+            "PK_X": "X",
+            "PK_Y": "Y",
+            "PK_Z": "Z",
+            "PK_BACK_QUOTE": "`",
+            "PK_BACK_SLASH": "\\",
+            "PK_CLOSE_BRACKET": "]",
+            "PK_COMMA": ",",
+            "PK_EQUALS": "=",
+            "PK_MINUS": "-",
+            "PK_OPEN_BRACKET": "[",
+            "PK_PERIOD": ".",
+            "PK_PLUS": "+",
+            "PK_QUOTE": "'",
+            "PK_SEMICOLON": ";",
+            "PK_SLASH": "/",
+            "PK_STAR": "*",
+            "VK_F1": "F1",
+            "VK_F2": "F2",
+            "VK_F3": "F3",
+            "VK_F4": "F4",
+            "VK_F5": "F5",
+            "VK_F6": "F6",
+            "VK_F7": "F7",
+            "VK_F8": "F8",
+            "VK_F9": "F9",
+            "VK_F10": "F10",
+            "VK_F11": "F11",
+            "VK_F12": "F12",
+            "VK_F13": "F13",
+            "VK_F14": "F14",
+            "VK_F15": "F15",
+            "VK_F16": "F16",
+            "VK_F17": "F17",
+            "VK_F18": "F18",
+            "VK_F19": "F19",
+            "VK_F20": "F20",
+            "VK_F21": "F21",
+            "VK_F22": "F22",
+            "VK_F23": "F23",
+            "VK_F24": "F24",
+            "VK_RETURN": "Enter"
+          }
+        }
+      }
+    },
+    "sidebar": {
+      "title": "Paneli anësor",
+      "description": "Personalizo panelin anësor.",
+      "urls": {
+        "title": "URL-të e panelit anësor",
+        "name": "Emri",
+        "url": "URL",
+        "iconUrl": "URL e ikonës"
+      }
+    }
+  }
+}
