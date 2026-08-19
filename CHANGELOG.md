@@ -1,38 +1,5 @@
 # FireDragon ChangeLog
 
-## [FireDragon v13.3.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.3.0) — 2026-08-19 — [`v13.2.0`…`v13.3.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.2.0...v13.3.0)
-
-### 🚀 Features
-
-- **builtin-addons/startpage:** Add toggle for topsites — [`67eb8f96…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/67eb8f964c5043bbfc608e8ec714b50e0e9a7607)
-
-### 🐛 Bug Fixes
-
-- Fix various import paths with firefox v154.0 — [`bdafad6f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bdafad6fd808310f8d54910b6960cd4d0110dd41)
-- _(patches)_ Rebase xdg base dir patch onto firefox v154.0 — [`b7be9837…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b7be9837d0af1e6031249a1e81d9277be0ac8171)
-- **builtin-addons/startpage:** Add missing "type": "module" declarations in package.json files — [`3bf9248f…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/3bf9248fa1f24088ed767632ce3a09d41045b600)
-
-### 🚜 Refactor
-
-- Generalise search settings — [`4067d998…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4067d9982015f1ca8a023dcd66133a50ec7a30ce)
-- Use patches to manage visibility of password manager preferences — [`bdfbe127…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bdfbe1274ccdb6145692523192b2cf10bfca604e)
-- Add missing "type": "module" declarations in package.json files — [`331bb6cd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/331bb6cd8e645a650bcbca6b6c0bf52ce9594917)
-
-### ⚙️ Miscellaneous Tasks
-
-- Remove obsolete publish stage — [`a8a813d3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a8a813d30a041f1ac5a6ebd6ade86cec4f6b9613)
-- Update firefox to v154.0 — [`f38f5a56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f38f5a564a83096323b030d46241e2a0f9a9b1a3)
-- _(patches)_ Update librewolf patches to v154.0-2 — [`8751a79c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8751a79c3ec75032e01ba4bedaf2e06c84736d72)
-- _(config)_ Update librewolf preset to v154.0-2 — [`d8861c6f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d8861c6f122ee1da58a1fa3d8134df0fc22dd27b)
-- _(@types/gecko)_ Update from firefox v154.0 — [`97228475…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/97228475167858ec3348153a19ce111197c54fd5)
-- Update pnpm & deps — [`8aefa4e3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8aefa4e3bb60b17a5efebe053ec4e47a821ab30e)
-- _(builtin-addons/startpage)_ Update submodule — [`dfb4213c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/dfb4213c4b6270391412e1055288a5789912b182)
-- **builtin-addons/startpage:** Update deps — [`e7692662…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e7692662f9feac6d2410b8182ce4b827ffea468b)
-
-### ◀️ Revert
-
-- Revert "fix(patches): Backport ffmpeg63 support" — [`1eca7702…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1eca770211f8430a6a28d95f65ac89fa0dacec1e)
-
 ## [FireDragon v13.2.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.2.0) — 2026-08-14 — [`v13.1.3`…`v13.2.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.1.3...v13.2.0)
 
 ### 🐛 Bug Fixes
