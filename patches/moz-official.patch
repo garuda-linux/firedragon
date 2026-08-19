@@ -1,29 +1,49 @@
-diff --git a/browser/base/content/browser-init.js b/browser/base/content/browser-init.js
-index 288a79e..f0106ba 100644
---- a/browser/base/content/browser-init.js
-+++ b/browser/base/content/browser-init.js
-@@ -504,7 +504,7 @@ var gBrowserInit = {
-       gDataNotificationInfoBar.init();
-     }
+diff --git a/browser/base/content/browser-development-helpers.js b/browser/base/content/browser-development-helpers.js
+index 5155b28..8dea266 100644
+--- a/browser/base/content/browser-development-helpers.js
++++ b/browser/base/content/browser-development-helpers.js
+@@ -9,8 +9,10 @@
  
--    if (!AppConstants.MOZILLA_OFFICIAL) {
+ var DevelopmentHelpers = {
+   init() {
+-    this.quickRestart = this.quickRestart.bind(this);
+-    this.addRestartShortcut();
 +    if (Services.prefs.getBoolPref("librewolf.devHelpers", false)) {
-       DevelopmentHelpers.init();
-     }
-
++      this.quickRestart = this.quickRestart.bind(this);
++      this.addRestartShortcut();
++    }
+   },
+ 
+   quickRestart() {
 diff --git a/browser/base/content/browser-main.js b/browser/base/content/browser-main.js
-index d24bcbb..1c161f3 100644
+index 1ff101a..6b02e5a 100644
 --- a/browser/base/content/browser-main.js
 +++ b/browser/base/content/browser-main.js
-@@ -12,7 +12,7 @@
+@@ -11,9 +11,7 @@
    if (AppConstants.MOZ_DATA_REPORTING) {
      Services.scriptloader.loadSubScript("chrome://browser/content/browser-data-submission-info-bar.js", this);
    }
 -  if (!AppConstants.MOZILLA_OFFICIAL) {
-+  if (Services.prefs.getBoolPref("librewolf.devHelpers", false)) {
-     Services.scriptloader.loadSubScript("chrome://browser/content/browser-development-helpers.js", this);
-   }
+-    Services.scriptloader.loadSubScript("chrome://browser/content/browser-development-helpers.js", this);
+-  }
++  Services.scriptloader.loadSubScript("chrome://browser/content/browser-development-helpers.js", this);
    Services.scriptloader.loadSubScript("chrome://browser/content/browser-pageActions.js", this);
+   Services.scriptloader.loadSubScript("chrome://browser/content/sidebar/browser-sidebar.js", this);
+   Services.scriptloader.loadSubScript("chrome://browser/content/browser-customtitlebar.js", this);
+diff --git a/browser/components/BrowserComponents.manifest b/browser/components/BrowserComponents.manifest
+index 17f4eaf..988d852 100644
+--- a/browser/components/BrowserComponents.manifest
++++ b/browser/components/BrowserComponents.manifest
+@@ -86,9 +86,7 @@ category browser-window-delayed-startup chrome://browser/content/browser-fullScr
+ #ifdef MOZ_DATA_REPORTING
+ category browser-window-delayed-startup chrome://browser/content/browser-data-submission-info-bar.js gDataNotificationInfoBar.init
+ #endif
+-#ifndef MOZILLA_OFFICIAL
+ category browser-window-delayed-startup chrome://browser/content/browser-development-helpers.js DevelopmentHelpers.init
+-#endif
+ category browser-window-delayed-startup chrome://browser/content/browser-addons.js gExtensionsNotifications.init
+ category browser-window-delayed-startup chrome://browser/content/browser-captivePortal.js CaptivePortalWatcher.delayedStartup
+ 
 diff --git a/browser/base/jar.mn b/browser/base/jar.mn
 index 22550de..470b23f 100644
 --- a/browser/base/jar.mn
