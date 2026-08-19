@@ -1,0 +1,11 @@
+permissions-site-eme-window2 =
+    .title = Cilësimet - Lejet DRM
+    .style = { permissions-window2.style }
+permissions-site-eme-desc = Faqet e mëposhtme të internetit kanë kërkuar të riprodhojnë përmbajtje të kontrolluar nga DRM. Ju mund të specifikoni se cilat faqe interneti lejohen të riprodhojnë përmbajtje të kontrolluar nga DRM. Gjithashtu mund të bllokoni kërkesa të reja që kërkojnë të riprodhojnë përmbajtje të kontrolluar nga DRM.
+permissions-site-eme-disable-label =
+    .label = Blloko kërkesat e reja që kërkojnë të riprodhojnë përmbajtje të kontrolluar nga DRM
+permissions-site-eme-disable-desc = Kjo do të parandalojë që çdo faqe interneti që nuk është e listuar më sipër të kërkojë leje për të riprodhuar përmbajtje të kontrolluar nga DRM.
+permissions-site-webgl-window2 =
+    .title = Cilësimet - Lejet WebGL
+    .style = { permissions-window2.style }
+permissions-site-webgl-desc = Faqet e mëposhtme të internetit kanë kërkuar të krijojnë një kontekst WebGL. Ju mund të specifikoni se cilat faqe interneti lejohen të krijojnë një kontekst WebGL. Gjithashtu mund të bllokoni kërkesa të reja që kërkojnë të krijojnë një kontekst WebGL.
