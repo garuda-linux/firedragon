@@ -161,6 +161,10 @@ export const bundles = {
         },
     },
 };
+export const multiLocaleMap: Record<string, string[]> = {
+    hi: ['hi-IN'],
+    sv: ['sv-SE'],
+};
 
 export const userPrefs = {
     'devtools.debugger.prompt-connection': false,

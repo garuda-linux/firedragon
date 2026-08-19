@@ -13,6 +13,7 @@ import {
     flatpakBaseId,
     flatpakBaseVersion,
     flatpakBranch,
+    multiLocaleMap,
     objDir,
     profileDir,
     repoUrl,
@@ -128,12 +129,15 @@ async function source() {
 
     for (const inc of await glob(`**/*.inc.{ftl,properties}`, { cwd: l10nDir })) {
         let source = inc.replace(/\.inc\.(ftl|properties)$/, '.$1');
-        const [locale, category, ...rest] = source.split('/');
+        const [locale, category, ...restSplit] = source.split('/');
+        const rest = restSplit.join('/');
         if (locale === 'en-US') {
-            source = `${buildDir}/${category}/locales/en-US/${rest.join('/')}`;
+            source = `${buildDir}/${category}/locales/en-US/${rest}`;
             await $`cat ${source} ${l10nDir}/${inc} | sponge ${source}`;
         } else {
-            await $`cat ${l10nDir}/${source} ${l10nDir}/${inc} | sponge ${l10nDir}/${source}`;
+            for (const l of multiLocaleMap[locale] ?? [locale]) {
+                await $`cat ${l10nDir}/${l}/${category}/${rest} ${l10nDir}/${inc} | sponge ${l10nDir}/${source}`;
+            }
         }
         await $`rm ${l10nDir}/${inc}`;
     }
