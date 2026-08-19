@@ -37,6 +37,8 @@ lockPref("librewolf.cfg.version", "8.6");
  *
  * - WINDOWS [UPDATES, OTHERS]
  *
+ * - MACOS
+ *
  * - LIBREWOLF []
  *
  */
@@ -228,7 +230,8 @@ defaultPref("browser.urlbar.speculativeConnect.enabled", false);
 
 /** [SECTION] Local Network Access */
 defaultPref("network.lna.websocket.enabled", true); // When true, WebSocket connections follow normal LNA rules.
-defaultPref("network.lna.allow_top_level_navigation", false); // When this pref is true, top-level document navigation to local network addresses will bypass LNA permission checks.
+// Various OAuth implementations fail when they receive the empty connection https://librewolf.dev/librewolf/issues/issues/3155#issuecomment-20233
+//defaultPref("network.lna.allow_top_level_navigation", false); // When this pref is true, top-level document navigation to local network addresses will bypass LNA permission checks.
 defaultPref("network.lna.local-network-to-localhost.skip-checks", false); // When this pref is true, skip LNA checks for requests from private network to localhost (private -> local IP address space transitions).
 
 /** [SECTION] OTHER */
@@ -305,6 +308,7 @@ pref("security.tls.enable_0rtt_data", false); // disable 0 RTT to improve tls 1.
 pref("network.http.http3.enable_0rtt", false);
 pref("security.tls.version.enable-deprecated", false); // make TLS downgrades session only by enforcing it with pref(), default
 defaultPref("browser.xul.error_pages.expert_bad_cert", true); // show relevant and advanced issues on warnings and error screens
+defaultPref("security.tls.enable_mlkem1024", true); // Enable CNSA 2.0 ML-KEM-1024 key agreement https://bugzilla.mozilla.org/show_bug.cgi?id=2052296
 
 defaultPref("security.insecure_field_warning.ignore_local_ip_address", false); // Do not ignore local addresses
 
@@ -611,6 +615,54 @@ lockPref("browser.newtabpage.activity-stream.default.sites", "");
 // disable weather info fetching (ticket #2048)
 defaultPref("browser.newtabpage.activity-stream.feeds.weatherfeed", false);
 
+// Disable widgets by default and make all opt in when enabled
+// https://searchfox.org/firefox-main/rev/6d751cf5d0af4b7fcc1b232b6c2ba0551afabe1d/browser/extensions/newtab/lib/ActivityStream.sys.mjs#1267-1764
+// There are generally two ways a widget can be enabled/disabled.
+// The first/main toggle is widgets.system*, which disables the feature
+// and has no user facing UI. This is what Mozilla uses for nimbus rollouts.
+// We only set the user component, to allow using the UI to enable/disable the widgets.
+
+defaultPref("browser.newtabpage.activity-stream.widgets.enabled", false); // Main user toggle
+defaultPref("browser.newtabpage.activity-stream.widgets.feedback.enabled", false); // Disable feedback
+defaultPref("browser.newtabpage.activity-stream.widgets.hideAllToast.enabled", true); // Hide toast when all widgets are disabled
+
+// Set the individual widgets to be disabled by default
+defaultPref("browser.newtabpage.activity-stream.widgets.clocks.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.crossword.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.focusTimer.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.lists.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.pictureOfTheDay.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.privacy.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.sportsWidget.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.stocks.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.weather.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.weatherForecast.enabled", false);
+
+// Disable smart shortcuts
+defaultPref("browser.newtabpage.activity-stream.discoverystream.shortcuts.personalization.enabled", false);
+
+// Disable web notifications on newtabpage
+// https://bugzilla.mozilla.org/show_bug.cgi?id=2054389
+// feeds.webnotificationsfeed Disables loading of the entire module
+// system.showWebNotifications Is the "system" level toggle
+// showWebNotifications is the user toggle
+defaultPref("browser.newtabpage.activity-stream.showWebNotifications", false);
+
+// Set ad region/locale to empty values
+lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.region-config", "");
+lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.locale-config", "");
+
+// Disable Mozilla Ad Routing Service (MARS) unified ads service 
+// https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/browser/app/profile/firefox.js#1933-1938
+lockPref("browser.newtabpage.activity-stream.unifiedAds.tiles.enabled", false);
+lockPref("browser.newtabpage.activity-stream.unifiedAds.spocs.enabled", false);
+lockPref("browser.newtabpage.activity-stream.unifiedAds.endpoint", "");
+lockPref("browser.newtabpage.activity-stream.unifiedAds.adsFeed.enabled", false);
+lockPref("browser.newtabpage.activity-stream.unifiedAds.ohttp.enabled", true); // Might as well keep it as ohttp enabled
+
+// Add UI for toggling launching a newtab on session restore
+defaultPref("browser.sessionstore.newTabOnRestore.showSetting", true);
+
 /** [SECTION] ABOUT
  * remove annoying ui elements from the about pages, including about:protections
  */
@@ -627,6 +679,9 @@ defaultPref("browser.topsites.useRemoteSetting", false); // hide sponsored short
 defaultPref("browser.topsites.contile.enabled", false);
 // ...and about:config
 defaultPref("browser.aboutConfig.showWarning", false);
+
+// Disable Firefox branding
+defaultPref("browser.shell.displayKitImageBehindSetDefaultBrowserButton", "off");
 
 /** [SECTION] ASROUTER
  * Disable Messaging System
@@ -710,8 +765,14 @@ clearPref("app.update.lastUpdateTime.glean-addons-daily");
 
 lockPref("nimbus.rollouts.enabled", false);
 
+// Disable the Firefox Referral program
+lockPref("browser.referrals.enabled", false);
+lockPref("browser.referrals.pingSubmitted", true);
+lockPref("browser.referrals.code", "");
+
 // Added via patches/autoconfig-setEnv.patch
 setEnv("MOZ_GFX_CRASH_MOZ_CRASH", 1); // https://searchfox.org/firefox-main/rev/0989a082704f0bda8d370ccd57402645d834757e/gfx/thebes/gfxPlatform.cpp#381
+setEnv("MOZ_CRASHREPORTER_DISABLE", 1); // https://searchfox.org/firefox-main/rev/6d751cf5d0af4b7fcc1b232b6c2ba0551afabe1d/mozglue/misc/RuntimeExceptionModule.cpp#98-102
 
 /** ------------------------------
  * [CATEGORY] WINDOWS
@@ -728,6 +789,16 @@ lockPref("app.update.service.enabled", false);
 lockPref("default-browser-agent.enabled", false); // disable windows specific telemetry
 defaultPref("browser.startup.windowsLaunchOnLogin.defaultEnabled", false); // prevent autorun from automatically being enabled for new profiles and at each portable launch (since v152)
 clearPref("toolkit.winRegisterApplicationRestart"); // clear previous pref setting https://codeberg.org/librewolf/issues/issues/3056
+defaultPref("browser.startup.windowsLaunchOnLogin.disableLaunchOnLoginPrompt", true); // Disable launch on login infobar notification
+
+/** ------------------------------
+ * [CATEGORY] MACOS
+ * the prefs in this section only apply to macOS installations and they don't have any
+ * effect on linux, windows and bsd users.
+ * ------------------------------- */
+// Disable Set as Default Browser menu item in app menu
+defaultPref("browser.macAppMenu.setAsDefaultShown", false);
+
 
 /** ------------------------------
  * [CATEGORY] LIBREWOLF
@@ -738,7 +809,6 @@ defaultPref(
   "https://codeberg.org/librewolf/source/raw/branch/main/assets/uBOAssets.json"
 );
 defaultPref("librewolf.aboutMenu.checkVersion", false);
-defaultPref("librewolf.hidePasswdmgr", false);
 defaultPref("librewolf.debugger.force_detach", false);
 defaultPref("librewolf.console.logging_disabled", false);
 defaultPref(
@@ -754,6 +824,9 @@ defaultPref("librewolf.getBrowserInfo.setToFirefoxDefaults", true);
 
 // Added via patches/moz-official.patch
 defaultPref("librewolf.devHelpers", false);
+
+// Toggle for enabling/disabling fetching of the CDN wallpapers
+defaultPref("librewolf.externalWallpapers.enabled", false);
 
 /** ------------------------------
  * [CATEGORY] OVERRIDES
