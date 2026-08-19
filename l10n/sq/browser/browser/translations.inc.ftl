@@ -1,0 +1,9 @@
+translations-panel-disable-translations =
+    .label = Çaktivizo plotësisht përkthimet
+translations-manage-enable =
+    .label = Aktivizo përkthimet e faqes së plotë
+translations-manage-autopopup =
+    .label = Kërko përkthimin e faqeve që nuk janë në gjuhën e konfiguruar të shfletuesit
+main-context-menu-translate-page =
+    .label = Përkthe faqen…
+    .accesskey = T
