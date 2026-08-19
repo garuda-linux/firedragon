@@ -1,0 +1,9 @@
+translations-panel-disable-translations =
+    .label = Inaktivera översättningar helt
+translations-manage-enable =
+    .label = Enable fullsidiga översättningar
+translations-manage-autopopup =
+    .label = Försök att översätta sidor som inte finns i webbläsarens konfigurerade språk
+main-context-menu-translate-page =
+    .label = Översätt sidan...
+    .accesskey = T
