@@ -1,0 +1,13 @@
+{
+  "title": "Shënimet FireDragon",
+  "list": {
+    "add": "Shto shënim",
+    "up": "Lëviz lart",
+    "down": "Lëviz poshtë",
+    "edit": "Redakto",
+    "delete": "Fshi"
+  },
+  "show": {
+    "title": "Titulli"
+  }
+}

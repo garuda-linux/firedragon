@@ -1,0 +1,13 @@
+{
+  "title": "FireDragon Anteckningar",
+  "list": {
+    "add": "Lägg till anteckning",
+    "up": "Flytta upp",
+    "down": "Flytta ner",
+    "edit": "Redigera",
+    "delete": "Radera"
+  },
+  "show": {
+    "title": "Titel"
+  }
+}
