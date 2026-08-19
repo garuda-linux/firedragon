@@ -22,15 +22,15 @@ allowBuilds:
   unrs-resolver: true
 
 catalog:
-  '@intlify/unplugin-vue-i18n': ^11.2.4
-  '@quasar/extras': ^2.0.3
+  '@intlify/unplugin-vue-i18n': ^11.2.5
+  '@quasar/extras': ^2.0.4
   '@quasar/vite-plugin': ^2.0.0
   '@unhead/vue': ^3.3.2
   '@vueuse/core': ^14.4.0
   '@vue/reactivity': ^3.5.41
-  '@wxt-dev/browser': ^0.2.5
+  '@wxt-dev/browser': ^0.2.6
   '@wxt-dev/module-vue': ^1.0.3
-  quasar: ^2.24.0
+  quasar: ^2.25.1
   sass-embedded: ^1.102.0
   tsdown: ^0.22.14
   typescript: ~6.0.3
