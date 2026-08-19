@@ -1,8 +1,24 @@
 diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
-index e95831780d00..f575b737afdd 100644
+index a76699af7525..e7745f7f3f14 100644
 --- a/browser/components/preferences/preferences.js
 +++ b/browser/components/preferences/preferences.js
-@@ -363,7 +363,7 @@ const CONFIG_PANES = Object.freeze({
+@@ -363,6 +363,7 @@ const CONFIG_PANES = Object.freeze({
+     iconSrc: "chrome://browser/skin/notification-icons/geo.svg",
+     module:
+       "chrome://browser/content/preferences/config/passwords-autofill.mjs",
++    visible: () => !Services.prefs.getBoolPref('firedragon.hidePasswdmgr'),
+   },
+   manageMemories: {
+     parent: "personalizeSmartWindow",
+@@ -378,6 +379,7 @@ const CONFIG_PANES = Object.freeze({
+     iconSrc: "chrome://browser/skin/payment-methods-16.svg",
+     module:
+       "chrome://browser/content/preferences/config/passwords-autofill.mjs",
++    visible: () => !Services.prefs.getBoolPref('firedragon.hidePasswdmgr'),
+   },
+   profiles: {
+     parent: srdSectionEnabled("sync") ? "sync" : "general",
+@@ -387,7 +389,7 @@ const CONFIG_PANES = Object.freeze({
    permissionsData: {
      l10nId: "permissions-data-section",
      iconSrc: "chrome://browser/skin/permissions.svg",
@@ -11,3 +27,12 @@ index e95831780d00..f575b737afdd 100644
      module: "chrome://browser/content/preferences/config/permissions-data.mjs",
      visible: () => srdSectionEnabled("permissionsData"),
    },
+@@ -405,7 +407,7 @@ const CONFIG_PANES = Object.freeze({
+     groupIds: ["passwords", "payments", "addresses"],
+     module:
+       "chrome://browser/content/preferences/config/passwords-autofill.mjs",
+-    visible: () => srdSectionEnabled("passwordsAutofill"),
++    visible: () => srdSectionEnabled("passwordsAutofill") && !Services.prefs.getBoolPref('firedragon.hidePasswdmgr'),
+   },
+   privacy: {
+     l10nId: "pane-privacy-section",
