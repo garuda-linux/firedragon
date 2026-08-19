@@ -1,0 +1,63 @@
+{
+  "title": "Välkommen till FireDragon",
+  "restartOnChange": {
+    "ok": "OK",
+    "cancel": "Avbryt"
+  },
+  "steps": {
+    "welcome": {
+      "title": "Välkommen",
+      "header": "Välkommen till FireDragon",
+      "text1": "FireDragon är en snabb och användarvänlig webbläsare som betonar integritet och säkerhet. Denna guide kommer att introducera dig till de viktigaste funktionerna och inställningarna för FireDragon.",
+      "text2": "När du är redo klickar du på knappen nedan för att gå vidare.",
+      "next": "Kom igång"
+    },
+    "language": {
+      "title": "Språk",
+      "header": "Välj ditt språk",
+      "text": "FireDragon stöder flera språk. Här kan du välja vilket språk du vill använda FireDragon med.",
+      "next": "Fortsätt"
+    },
+    "appearance": {
+      "title": "Utseende",
+      "header": "Välj ditt utseende",
+      "text": "FireDragon finns i både ljust och mörkt-läge. Du kan välja att följa ditt systemtema eller välja ett specifikt tema att använda med FireDragon.",
+      "theme": {
+        "system": "Följ systemtema",
+        "light": "Ljust läge",
+        "dark": "Mörkt läge"
+      },
+      "next": "Fortsätt"
+    },
+    "search": {
+      "title": "Sök",
+      "header": "Välj önskad sökmotor",
+      "text": "FireDragon levereras med en mängd olika sökmotorer. Du kan välja vilken du vill använda som standard med FireDragon.",
+      "separatePrivateDefault": "Använd en annan standardsökmotor i privata fönster",
+      "suggest": "Visa sökförslag (Support beror på sökmotorn)",
+      "suggestionsFirst": "Visa sökförslag innan historikvy i adressfältresultat",
+      "suggestPrivate": "Visa också sökförslag i privata fönster",
+      "next": "Fortsätt"
+    },
+    "quickSettings": {
+      "title": "Snabba inställningar",
+      "hidePasswdmgr": "Dölj lösenordshanteraren (kräver omstart)",
+      "enableRFP": "Aktivera Motstå Fingerprinting",
+      "enablePrefetchConfig": "Aktivera prefetching (kräver omstart)",
+      "next": "Fortsätt"
+    },
+    "default": {
+      "title": "Standard webbläsare",
+      "header": "Vill du använda FireDragon som standardwebbläsare? (valfritt)",
+      "text": "FireDragon kan användas som din standardwebbläsare. Detta innebär att när du klickar på en länk någonstans på ditt system öppnas den i FireDragon.",
+      "makeDefault": "Gör FireDragon till min standardwebbläsare (valfrittl)",
+      "next": "Fortsätt"
+    },
+    "finish": {
+      "title": "Slutför",
+      "header": "Du är färdig!",
+      "text": "Du är nu redo att använda FireDragon.",
+      "next": "Fortsätt till FireDragon"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "title": "Mirë se vini te FireDragon",
+  "restartOnChange": {
+    "ok": "OK",
+    "cancel": "Anulo"
+  },
+  "steps": {
+    "welcome": {
+      "title": "Mirë se vini",
+      "header": "Mirë se vini te FireDragon",
+      "text1": "FireDragon është një shfletues interneti i shpejtë dhe i lehtë për t'u përdorur, i cili thekson privatësinë dhe sigurinë. Ky udhëzues do t'ju njohë me veçoritë dhe cilësimet kryesore të FireDragon.",
+      "text2": "Kur të jeni gati, klikoni butonin më poshtë për të vazhduar.",
+      "next": "Fillo tani"
+    },
+    "language": {
+      "title": "Gjuha",
+      "header": "Zgjidhni gjuhën tuaj",
+      "text": "FireDragon mbështet shumë gjuhë. Këtu mund të zgjidhni cilën gjuhë dëshironi të përdorni me FireDragon.",
+      "next": "Vazhdo"
+    },
+    "appearance": {
+      "title": "Pamja",
+      "header": "Zgjidhni pamjen tuaj",
+      "text": "FireDragon është i disponueshëm si në modalitet të çelët ashtu edhe në atë të errët. Mund të zgjidhni të ndiqni temën e sistemit tuaj ose të zgjidhni një temë specifike për t'u përdorur me FireDragon.",
+      "theme": {
+        "system": "Ndiq temën e sistemit",
+        "light": "Modalitet i çelët",
+        "dark": "Modalitet i errët"
+      },
+      "next": "Vazhdo"
+    },
+    "search": {
+      "title": "Kërkim",
+      "header": "Zgjidhni motorin tuaj të preferuar të kërkimit",
+      "text": "FireDragon vjen me një larmi motorësh kërkimi të gatshëm. Ju mund të zgjidhni se cilën dëshironi ta përdorni si parazgjedhje me FireDragon.",
+      "separatePrivateDefault": "Përdor një motor kërkimi parazgjedhës të ndryshëm në dritaret private",
+      "suggest": "Shfaq sugjerime kërkimi (Mbështetja varet nga motori i kërkimit)",
+      "suggestionsFirst": "Shfaq sugjerime kërkimi përpara historikut të shfletimit në rezultatet e shiritit të adresave",
+      "suggestPrivate": "Shfaq gjithashtu sugjerime kërkimi në dritaret private",
+      "next": "Vazhdo"
+    },
+    "quickSettings": {
+      "title": "Cilësime të shpejta",
+      "hidePasswdmgr": "Fshih menaxherin e fjalëkalimeve (kërkon rinisje)",
+      "enableRFP": "Aktivizo ResistFingerprinting",
+      "enablePrefetchConfig": "Aktivizo parafaqim (kërkon rinisje)",
+      "next": "Vazhdo"
+    },
+    "default": {
+      "title": "Shfletuesi parazgjedhës",
+      "header": "Dëshironi ta përdorni FireDragon si shfletuesin tuaj parazgjedhës? (opsionale)",
+      "text": "FireDragon mund të përdoret si shfletuesi juaj parazgjedhës. Kjo do të thotë se kur klikoni një lidhje kudo në sistemin tuaj, ajo do të hapet në FireDragon.",
+      "makeDefault": "Bëj FireDragon shfletuesin tim parazgjedhës (opsionale)",
+      "next": "Vazhdo"
+    },
+    "finish": {
+      "title": "Përfundo",
+      "header": "Keni mbaruar!",
+      "text": "Tani jeni gati të përdorni FireDragon.",
+      "next": "Vazhdo te FireDragon"
+    }
+  }
+}
