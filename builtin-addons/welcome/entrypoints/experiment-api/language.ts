@@ -96,7 +96,7 @@ export default defineExperimentApi({
         ],
     },
     main() {
-        const { LangPackMatcher } = ChromeUtils.importESModule('resource://gre/modules/LangPackMatcher.sys.mjs');
+        const { LangPackMatcher } = ChromeUtils.importESModule('moz-src:///intl/locale/LangPackMatcher.sys.mjs');
         const { MozIntl } = ChromeUtils.importESModule('resource://gre/modules/mozIntl.sys.mjs');
 
         const mozIntl = new MozIntl();

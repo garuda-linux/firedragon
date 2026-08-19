@@ -21,7 +21,7 @@ const lazy = {} as {
 };
 
 ChromeUtils.defineESModuleGetters(lazy, {
-    ContextualIdentityService: 'resource://gre/modules/ContextualIdentityService.sys.mjs',
+    ContextualIdentityService: 'moz-src:///toolkit/components/contextualidentity/ContextualIdentityService.sys.mjs',
 });
 
 export const PrivateContainer = new (class {
