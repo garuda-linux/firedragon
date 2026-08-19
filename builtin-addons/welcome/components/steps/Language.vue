@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-    const { t } = useI18n();
+    const { t, locale } = useI18n();
 
     const emit = defineEmits<{
         (e: 'next'): void;
@@ -21,6 +21,7 @@
             ),
         set: async (langPack) => {
             if (langPack) {
+                locale.value = langPack.target_locale;
                 await browser.language.setLanguagePack(langPack);
                 await refreshLocaleInfo();
             }
