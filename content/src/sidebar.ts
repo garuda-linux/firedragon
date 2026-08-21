@@ -1,38 +1,51 @@
-declare global {
-    interface XULBrowserElement extends XULElement, nsIWebNavigation {}
-}
+const lazy = {} as {
+    PrivateContainer: typeof import('resource://firedragon/modules/PrivateContainer.sys.mjs').PrivateContainer;
+};
+ChromeUtils.defineESModuleGetters(lazy, {
+    PrivateContainer: 'resource://firedragon/modules/PrivateContainer.sys.mjs',
+});
 
-let browser: Promise<XULBrowserElement>;
-function getBrowser() {
-    return (browser ??= new Promise((resolve) => {
-        const stack: XULElement = document!.createXULElement('stack');
-        stack.setAttribute('flex', '1');
-        stack.setAttribute('id', 'webext-panels-stack');
-        document!.documentElement!.appendChild(stack);
+document!.addEventListener(
+    'DOMContentLoaded',
+    async () => {
+        const urlSearchParams = new URLSearchParams(window.location.search.substring(1)),
+            userContextId = urlSearchParams.get('userContextId')!,
+            url = urlSearchParams.get('url')!;
 
-        const browser: XULBrowserElement = document!.createXULElement('browser') as XULBrowserElement;
+        const stack: XULElement = document!.querySelector('#webext-panels-stack')!,
+            browser: XULBrowserElement = document!.createXULElement('browser') as XULBrowserElement;
+
         browser.setAttribute('id', 'webext-panels-browser');
         browser.setAttribute('type', 'content');
         browser.setAttribute('flex', '1');
+        browser.setAttribute('disablehistory', 'true');
         browser.setAttribute('disableglobalhistory', 'true');
-        browser.setAttribute('messagemanagergroup', 'webext-browsers');
+        browser.setAttribute('messagemanagergroup', 'browsers');
         browser.setAttribute('context', 'contentAreaContextMenu');
         browser.setAttribute('tooltip', 'aHTMLTooltip');
         browser.setAttribute('autocompletepopup', 'PopupAutoComplete');
-        browser.setAttribute('remote', 'false');
+        browser.setAttribute('remote', 'true');
         browser.setAttribute('maychangeremoteness', 'true');
-
-        browser.addEventListener('XULFrameLoaderCreated', () => {
-            resolve(browser);
-        });
+        browser.setAttribute('usercontextid', userContextId);
+        browser.setAttribute('src', url);
 
         stack.append(browser);
-    }));
-}
 
-window.loadURL = async function (url: string) {
-    const uri = Services.io.newURI(url),
-        triggeringPrincipal = Services.scriptSecurityManager.createContentPrincipal(uri, {});
+        if (parseInt(userContextId) === lazy.PrivateContainer.userContextId) {
+            lazy.PrivateContainer.disableBrowserHistory(browser);
 
-    (await getBrowser()).loadURI(uri, { triggeringPrincipal });
-};
+            ++lazy.PrivateContainer.additionalUsages;
+            window.addEventListener(
+                'beforeunload',
+                () => {
+                    browser.destroy();
+                    browser.remove();
+                    --lazy.PrivateContainer.additionalUsages;
+                    lazy.PrivateContainer.maybeClearData();
+                },
+                { once: true },
+            );
+        }
+    },
+    { once: true },
+);

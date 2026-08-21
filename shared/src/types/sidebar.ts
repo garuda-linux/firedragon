@@ -4,4 +4,5 @@ export interface SidebarUrl {
     url: string;
     icon: 'default' | 'custom';
     iconUrl: string;
+    userContextId?: number;
 }

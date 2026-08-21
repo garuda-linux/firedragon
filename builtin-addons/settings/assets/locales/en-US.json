@@ -843,7 +843,8 @@
         "title": "Sidebar URLs",
         "name": "Name",
         "url": "URL",
-        "iconUrl": "Icon URL"
+        "iconUrl": "Icon URL",
+        "userContextId": "Container"
       }
     }
   }

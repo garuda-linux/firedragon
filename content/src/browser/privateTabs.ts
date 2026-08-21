@@ -22,12 +22,7 @@ window.addEventListener(
             const { browser, ...rest } = _createBrowserForTab.call(gBrowser, tab, options);
 
             if (tab.userContextId === PrivateContainer.userContextId) {
-                browser.setAttribute('disablehistory', 'true');
-                browser.setAttribute('disableglobalhistory', 'true');
-
-                browser.disableGlobalHistory?.();
-                browser.docShell && (browser.docShell.useGloablHistory = false);
-                browser.browsingContext && (browser.browsingContext.useGloablHistory = true);
+                PrivateContainer.disableBrowserHistory(browser);
             }
 
             return { browser, ...rest };

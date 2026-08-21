@@ -24,8 +24,16 @@ ChromeUtils.defineESModuleGetters(lazy, {
     ContextualIdentityService: 'moz-src:///toolkit/components/contextualidentity/ContextualIdentityService.sys.mjs',
 });
 
+declare global {
+    interface XULBrowserElement extends XULElement, nsIWebNavigation {
+        [key: string]: any;
+    }
+}
+
 export const PrivateContainer = new (class {
     public readonly userContextId: number;
+
+    public additionalUsages: number = 0;
 
     constructor() {
         lazy.ContextualIdentityService.ensureDataReady();
@@ -33,12 +41,25 @@ export const PrivateContainer = new (class {
         this.userContextId = this.getOrCreatePrivateContainer();
     }
 
+    disableBrowserHistory(browser: XULBrowserElement) {
+        browser.setAttribute('disablehistory', 'true');
+        browser.setAttribute('disableglobalhistory', 'true');
+
+        browser.disableGlobalHistory?.();
+        browser.docShell && (browser.docShell.useGloablHistory = false);
+        browser.browsingContext && (browser.browsingContext.useGloablHistory = true);
+    }
+
     closeTabs({ gBrowser }: WindowProxy) {
         gBrowser.removeTabs(gBrowser.tabs.filter((tab: any) => tab.userContextId === this.userContextId));
     }
 
+    isInUse(): boolean {
+        return lazy.ContextualIdentityService.countContainerTabs(this.userContextId) + this.additionalUsages > 0;
+    }
+
     maybeClearData() {
-        if (lazy.ContextualIdentityService.countContainerTabs(this.userContextId) === 0) {
+        if (!this.isInUse()) {
             Services.clearData.deleteDataFromOriginAttributesPattern({
                 userContextId: this.userContextId,
             });

@@ -24,6 +24,7 @@ export default defineConfig({
     },
     manifest: {
         name: 'FireDragon Settings',
+        permissions: ['contextualIdentities'],
     },
     vite: () => ({
         plugins: [

@@ -33,21 +33,21 @@ window!.addEventListener(
                 );
 
                 const toRemove = new Set(added);
-                for (const { id, name, url, iconUrl } of urls) {
+                for (const { id, name, iconUrl, url, userContextId = 0 } of urls) {
                     added.add(id);
                     toRemove.delete(id);
+                    const urlSearchParams = new URLSearchParams();
+                    urlSearchParams.set('url', url);
+                    urlSearchParams.set('userContextId', userContextId.toString());
                     SidebarController.sidebars.set(id, {
                         name: id,
                         title: name,
-                        url: 'chrome://firedragon/content/sidebar.xhtml',
+                        url: 'chrome://firedragon/content/sidebar.xhtml?' + urlSearchParams.toString(),
                         menuId: `menu_${id}`,
                         label: name,
                         icon: `url(${iconUrl})`,
                         iconUrl,
                         extensionId: id,
-                        onload() {
-                            SidebarController.browser.contentWindow.loadURL(url);
-                        },
                     });
                     SidebarController.toolsAndExtensions.set(id, {
                         name: id,
