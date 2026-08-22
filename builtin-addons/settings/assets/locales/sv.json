@@ -843,7 +843,8 @@
         "title": "Sidofält URL:er",
         "name": "Namn",
         "url": "URL",
-        "iconUrl": "Ikon URL"
+        "iconUrl": "Ikon URL",
+        "userContextId": "Container"
       }
     }
   }
