@@ -298,7 +298,7 @@ unsetOverride("devtools.debugger.remote-enabled");
 */
 unsetDefault("app.support.baseURL");
 defaultPref("browser.search.searchEnginesURL", "https://searx.garudalinux.org/?q={searchTerms}");
-defaultPref("browser.geolocation.warning.infoURL", "https://firedragon.garudalinux.org/faq#how-do-i-enable-location-aware-browsing");
+defaultPref("browser.geolocation.warning.infoURL", "https://support.mozilla.org/en-US/kb/does-firefox-share-my-location-websites?redirectslug=does-firefox-share-my-location-web-sites&redirectlocale=en-US#w_location-aware-browsing");
 defaultPref("app.feedback.baseURL", "https://forum.garudalinux.org");
 defaultPref("app.releaseNotesURL", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
 defaultPref("app.releaseNotesURL.aboutDialog", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
