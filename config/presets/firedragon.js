@@ -300,10 +300,10 @@ unsetDefault("app.support.baseURL");
 defaultPref("browser.search.searchEnginesURL", "https://searx.garudalinux.org/?q={searchTerms}");
 defaultPref("browser.geolocation.warning.infoURL", "https://firedragon.garudalinux.org/faq#how-do-i-enable-location-aware-browsing");
 defaultPref("app.feedback.baseURL", "https://forum.garudalinux.org");
-defaultPref("app.releaseNotesURL", "https://firedragon.garudalinux.org/changelogs");
-defaultPref("app.releaseNotesURL.aboutDialog", "https://firedragon.garudalinux.org/changelogs");
-defaultPref("app.update.url.details", "https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases");
-defaultPref("app.update.url.manual", "https://gitlab.com/garuda-linux/firedragon/firedragon12/-/releases");
+defaultPref("app.releaseNotesURL", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
+defaultPref("app.releaseNotesURL.aboutDialog", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
+defaultPref("app.update.url.details", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
+defaultPref("app.update.url.manual", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
 
 /** [SECTION] FIRST LAUNCH
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
