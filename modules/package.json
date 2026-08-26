@@ -12,7 +12,7 @@
   "devDependencies": {
     "@firedragon/build": "workspace:^",
     "@types/gecko": "workspace:^",
-    "globby": "^16.2.3",
+    "globby": "^16.2.4",
     "typescript": "catalog:",
     "vite": "catalog:"
   }
