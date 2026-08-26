@@ -1,0 +1,851 @@
+{
+  "title": "FireDragon அமைப்புகள்",
+  "back": "அமைப்புகளுக்குத் திரும்பு",
+  "pages": {
+    "home": {
+      "title": "FireDragon அமைப்புகள்",
+      "description": "தனியுரிமை மற்றும் பாதுகாப்பில் கவனம் செலுத்த, இயல்புநிலை அமைப்புகளை கவனமாக தேர்வு செய்கிறோம். இந்த அமைப்புகளை மாற்றும்போது, அந்த மாற்றங்களின் தாக்கங்களைப் புரிந்துகொள்ள விளக்கத்தைப் படிக்கவும்.",
+      "browserBehaviour": {
+        "title": "உலாவி நடத்தை",
+        "autoUpdateExtensions": {
+          "title": "துணை நிரல்களைத் தானாகப் புதுப்பிக்கவும்",
+          "description": "கைமுறை தலையீடு இல்லாமல் நீட்டிப்புகளை புதுப்பித்த நிலையில் வைத்திருங்கள். உங்கள் பாதுகாப்பிற்கு ஒரு நல்ல தேர்வு. ஒவ்வொரு புதுப்பிப்புக்கும் முன் உங்கள் நீட்டிப்புகளின் குறியீட்டை நீங்கள் மதிப்பாய்வு செய்யவில்லை என்றால், இந்த விருப்பத்தை நீங்கள் இயக்க வேண்டும்."
+        },
+        "enableSync": {
+          "title": "FireDragon Sync ஐ இயக்கவும்",
+          "description": "பிற உலாவிகளுடன் உங்கள் தரவை ஒத்திசைக்கவும். மறுதொடக்கம் தேவை. FireDragon Sync தரவை சேவையகத்திற்கு அனுப்பும் முன் உள்நாட்டில் குறியாக்கம் செய்கிறது.",
+          "restartDialog": {
+            "title": "மறுதொடக்கம் தேவை",
+            "message": "FireDragon ஒத்திசைவை முழுமையாக இயக்க அல்லது முடக்க FireDragon இன் மறுதொடக்கம் தேவை."
+          }
+        },
+        "enableMiddleClickPaste": {
+          "title": "மிடில் சொடுக்கு பேச்ட்டை இயக்கு",
+          "description": "அதை நகலெடுக்க சில உரையைத் தேர்ந்தெடுத்து, நடுத்தர மவுச் சொடுக்கு மூலம் ஒட்டவும்."
+        },
+        "hidePasswdmgr": {
+          "title": "கடவுச்சொல் நிர்வாகியை மறை",
+          "description": "கடவுச்சொல் நிர்வாகி பட்டியல் உருப்படி மற்றும் அமைப்புகளை மறை.",
+          "restartDialog": {
+            "title": "மறுதொடக்கம் தேவை",
+            "message": "கடவுச்சொல் நிர்வாகியை முழுமையாகக் காட்ட அல்லது மறைக்க FireDragon இன் மறுதொடக்கம் தேவை."
+          }
+        },
+        "enableTranslations": {
+          "title": "மொழிபெயர்ப்புகளை இயக்கு",
+          "description": "இணைப்பில்லாத மொழிபெயர்ப்புகளை இயக்கு."
+        },
+        "closeWindowWithLastTab": {
+          "title": "கடைசி தாவலுடன் சாளரத்தை மூடு",
+          "description": "கடைசி தாவல் மூடப்பட்டவுடன் உலாவி சாளரத்தை மூடு."
+        }
+      },
+      "networking": {
+        "title": "நெட்வொர்க்கிங்",
+        "enableIPv6": {
+          "title": "IPv6 ஐ இயக்கு",
+          "description": "IPv6 ஐப் பயன்படுத்தி FireDragon ஐ இணைக்க அனுமதிக்கவும். உலாவியில் IPv6 ஐத் தடுப்பதற்குப் பதிலாக, உங்கள் OS இல் IPv6 தனியுரிமை நீட்டிப்பை இயக்குமாறு பரிந்துரைக்கிறோம்."
+        }
+      },
+      "privacy": {
+        "title": "தனியுரிமை",
+        "enablePrefetchConfig": {
+          "title": "முன்னெச்சரிக்கையை இயக்கு",
+          "description": "Prefetching என்பது உலாவி அம்சமாகும், இது பயனர் உலாவும்போது பின்னணியில் ஆதாரங்களைப் பதிவிறக்க உலாவியை அனுமதிக்கிறது. இது செயல்திறனை மேம்படுத்தலாம் மற்றும் அலைவரிசை பயன்பாட்டைக் குறைக்கலாம்.",
+          "restartDialog": {
+            "title": "மறுதொடக்கம் தேவை",
+            "message": "ஃபயர்டிராகனின் மறுதொடக்கம், ப்ரீஃபெட்ச்சிங்கை முழுமையாக இயக்க அல்லது முடக்க வேண்டும்."
+          }
+        },
+        "limitCrossOriginReferrers": {
+          "title": "குறுக்கு மூலப் பரிந்துரையாளர்களை வரம்பிடவும்",
+          "description": "ஒரே தோற்றத்தில் மட்டுமே பரிந்துரையை அனுப்பவும். இதனால் உடைப்பு ஏற்படலாம். கூடுதலாக, பரிந்துரைகள் அனுப்பப்பட்டாலும், அவை இன்னும் ஒழுங்கமைக்கப்படும்."
+        },
+        "autoRefuseCookies": {
+          "title": "குக்கீ பேனர்களை தானாக நிராகரிக்கவும்",
+          "description": "குக்கீகளைப் பயன்படுத்த முடியுமா என்று ஒரு தளம் கேட்டால், FireDragon தானாகவே மறுத்துவிடும். ஆதரிக்கப்படும் தளங்களில் மட்டுமே. அனைத்து குக்கீகளையும் / கண்டிப்பான பயன்முறையைத் தடுப்பதற்கு இணங்கவில்லை."
+        }
+      },
+      "fingerprinting": {
+        "title": "கைரேகை",
+        "enableRFP": {
+          "title": "ResistFingerprinting ஐ இயக்கவும்",
+          "description": "கைரேகை எதிர்ப்புக் கருவியில் ரெசிச்ட் ஃபிங்கர் பிரிண்டிங் சிறந்தது. நீங்கள் அதை முடக்க வேண்டும் என்றால், Canvas Blocker போன்ற நீட்டிப்பைப் பயன்படுத்தவும்."
+        },
+        "enableLetterboxing": {
+          "title": "லெட்டர் பாக்சிங்கை இயக்கு",
+          "description": "லெட்டர் பாக்சிங் உங்கள் சாளரங்களைச் சுற்றி ஓரங்களைப் பயன்படுத்துகிறது, இது வரையறுக்கப்பட்ட வட்டமான தீர்மானங்களின் தொகுப்பை வழங்கும்."
+        },
+        "enableWebGL": {
+          "title": "WebGL ஐ இயக்கவும்",
+          "description": "WebGL ஒரு வலுவான கைரேகை திசையன். நீங்கள் அதை இயக்க வேண்டும் என்றால், Canvas Blocker போன்ற நீட்டிப்பைப் பயன்படுத்தவும்."
+        },
+        "enableWebGLPrompt": {
+          "title": "WebGL இசைவு கையாளுதலை இயக்கு",
+          "description": "இது WebGL க்கான இசைவு கையாளுதலை இயக்கும், இதனால் WebGL தேவைப்படும் தளங்களில் அனுமதிக்கும்படி உங்களைத் தூண்டும். முடக்கப்பட்டால் WebGL அனைத்து தளங்களுக்கும் கிடைக்கும்."
+        },
+        "hideWebGLPrompt": {
+          "title": "WebGL இசைவு அறிவிப்பை மறை",
+          "description": "WebGLக்கான இசைவு அறிவிப்பை மறைக்கிறது. முகவரி பட்டியில் இருந்து அதை இன்னும் அணுக முடியும்."
+        }
+      },
+      "security": {
+        "title": "பாதுகாப்பு",
+        "enforceOCSP": {
+          "title": "OCSP கடினமான தோல்வியைச் செயல்படுத்தவும்",
+          "description": "OCSP சரிபார்ப்பைச் செய்ய முடியாவிட்டால், இணையதளத்துடன் இணைப்பதைத் தடுக்கவும். இது பாதுகாப்பை அதிகரிக்கிறது, ஆனால் OCSP சேவையகம் செயலிழந்தால் அது உடைப்பை ஏற்படுத்தும்."
+        },
+        "enable0rtt": {
+          "title": "TLS 1.3 0-RTT ஐ இயக்கு",
+          "description": "TLS இணைப்புகளுக்கு 0-RTTயை (சீரோ ரவுண்ட் ட்ரிப் டைம்) இயக்கவும். இது செயல்திறனை மேம்படுத்தலாம் ஆனால் பாதுகாப்பு அபாயங்களை அதிகரிக்கலாம்."
+        },
+        "enableSafeBrowsing": {
+          "title": "Google பாதுகாப்பான உலாவலை இயக்கவும்",
+          "description": "தீம்பொருள் மற்றும் ஃபிசிங் பற்றி நீங்கள் கவலைப்படுகிறீர்கள் என்றால், அதை இயக்கவும். தணிக்கை தொடர்பான கவலைகளால் முடக்கப்பட்டது ஆனால் குறைந்த மேம்பட்ட பயனர்களுக்கு பரிந்துரைக்கப்படுகிறது. அனைத்து சோதனைகளும் உள்ளூரில் நடக்கும்."
+        },
+        "scanDownloads": {
+          "title": "பதிவிறக்கங்களை வருடு செய்யவும்",
+          "description": "சந்தேகத்திற்கிடமான கோப்புகளை அடையாளம் காண உங்கள் பதிவிறக்கங்களை வருடு செய்ய பாதுகாப்பான உலாவலை அனுமதிக்கவும். அனைத்து சோதனைகளும் உள்ளூரில் நடக்கும்."
+        }
+      }
+    },
+    "design": {
+      "title": "வடிவமைப்பு",
+      "description": "உலாவியின் தோற்றத்தை சரிசெய்யவும்.",
+      "skin": {
+        "title": "தோல்",
+        "restartDialog": {
+          "title": "மறுதொடக்கம் தேவை",
+          "message": "ஃபயர்டிராகனின் மறுதொடக்கம் தோலை முழுவதுமாக மாற்ற வேண்டும்."
+        },
+        "proton": {
+          "title": "நேர்முன்னி",
+          "description": "இயல்புநிலை பயர்பாக்ச் தோல்"
+        },
+        "fluerial": {
+          "title": "ஃப்ளூரியல்",
+          "description": "Floorp இன் மரபு இடைமுகம்"
+        },
+        "lepton": {
+          "title": "மெதுனி",
+          "description": "கருப்பு7375 மூலம் ஒரு தனிப்பயன் தோல்"
+        },
+        "lepton-photon": {
+          "title": "லெப்டன் ஃபோட்டான்",
+          "description": "லெப்டன் ஆனால் ஃபோட்டான் பாணி"
+        },
+        "lepton-proton": {
+          "title": "லெப்டன் புரோட்டான்",
+          "description": "லெப்டன் ஆனால் புரோட்டான் பாணியில்"
+        }
+      },
+      "advanced": {
+        "title": "மேம்பட்ட",
+        "allowUserChromeCss": {
+          "title": "userChrome.css தனிப்பயனாக்கத்தை அனுமதிக்கவும்",
+          "description": "கைமுறையாக ஏற்றப்பட்ட கருப்பொருள் மூலம் இடைமுகம் ஐத் தனிப்பயனாக்க விரும்பினால், இதை இயக்கவும். கருப்பொருள் வழங்குபவரை நீங்கள் நம்புவதை உறுதிசெய்யவும்.",
+          "restartDialog": {
+            "title": "மறுதொடக்கம் தேவை",
+            "message": "userChrome.css தனிப்பயனாக்கத்தை முழுமையாக அனுமதிக்க அல்லது அனுமதிக்காதிருக்க FireDragon இன் மறுதொடக்கம் தேவை."
+          }
+        }
+      }
+    },
+    "design-lepton": {
+      "title": "லெப்டன் அமைப்புகள்",
+      "description": "லெப்டன் தோலை சரிசெய்யவும்.",
+      "link": "மேலும் செய்தி",
+      "advanced": "மேம்பட்ட அமைப்புகளைக் காட்டு",
+      "reset": "அனைத்தையும் இயல்புநிலைக்கு மீட்டமைக்கவும்",
+      "default": "இது லெப்டான் தோலின் இயல்புநிலை அமைப்பாகும், அதை மாற்றக்கூடாது.",
+      "distribution": "இது தேர்ந்தெடுக்கப்பட்ட லெப்டான் விநியோகத்தின் இயல்புநிலை அமைப்பாகும், இதை மாற்றக்கூடாது.",
+      "theme": {
+        "title": "கருப்பொருள்",
+        "themeBuiltInContrast": {
+          "title": "உள்ளமைக்கப்பட்ட மாறுபாட்டைப் பயன்படுத்தவும்"
+        },
+        "themeSystemDefault": {
+          "title": "கணினி தோற்றம் & உணர்வைப் பயன்படுத்தவும்"
+        },
+        "themeProtonColor": {
+          "title": "புரோட்டான் நிறத்தை வழங்கவும்"
+        },
+        "themeProtonChrome": {
+          "title": "புரோட்டான் வடிவமைப்பு பாப்அப்களைப் பயன்படுத்தவும்"
+        },
+        "themeFullyColor": {
+          "title": "முழு வண்ண கூறுகள்"
+        },
+        "themeFullyDark": {
+          "title": "இருண்ட பயன்முறை ஆதரவை மேம்படுத்தவும்"
+        },
+        "themeProtonColorDarkBlueAccent": {
+          "title": "நீல நிற உச்சரிப்பு நிறத்தைப் பயன்படுத்தவும்"
+        },
+        "themeMonospace": {
+          "title": "மோனோச்பேச் எழுத்துருவைப் பயன்படுத்தவும்"
+        }
+      },
+      "decoration": {
+        "title": "ஒப்பனை",
+        "decorationCursor": {
+          "title": "கர்சர் வடிவத்தை தானாக மாற்றவும்"
+        },
+        "decorationFieldBorder": {
+          "title": "உள்ளீட்டு புலங்களைச் சுற்றி பார்டரைக் காட்டு"
+        },
+        "decorationDownloadPanel": {
+          "title": "பதிவிறக்க பேனலை மேம்படுத்தவும்"
+        },
+        "decorationAnimate": {
+          "title": "பல்வேறு சிறிய அனிமேசன்களை இயக்கவும்"
+        },
+        "decorationDisablePanelAnimate": {
+          "title": "பேனல் அனிமேசனை அகற்று"
+        },
+        "decorationDisableSidebarAnimate": {
+          "title": "பக்கப்பட்டி அனிமேசனை அகற்று"
+        }
+      },
+      "autohide": {
+        "title": "அமைப்புகளை தானாக மறை",
+        "autohideTab": {
+          "title": "தாவல்களை தானாக மறை",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "opacity": "ஒளிபுகாநிலை",
+            "blur": "தெளிவின்மை"
+          }
+        },
+        "autohideNavbar": {
+          "title": "navbar தானாக மறை"
+        },
+        "autohideBookmarkbar": {
+          "title": "புத்தகக்குறி பட்டியை தானாக மறை"
+        },
+        "autohideSidebar": {
+          "title": "பக்கப்பட்டியை தானாக மறை"
+        },
+        "autohideFillUrlbar": {
+          "title": "urlbar தானாக விரிவடைந்து மற்ற இடைமுகம் கூறுகளை மறைக்கவும்"
+        },
+        "autohideBackButton": {
+          "title": "பின் தானாக மறை பொத்தானை"
+        },
+        "autohideForwardButton": {
+          "title": "தானாக முன்னோக்கி மறை பொத்தானை"
+        },
+        "autohidePageAction": {
+          "title": "முகவரிப் பட்டியில் உள்ள பொத்தான்களை தானாக மறை"
+        },
+        "autohideToolbarOverlap": {
+          "title": "தானாக மறைத்தல் இயக்கப்பட்டிருக்கும் போது, கருவிப்பட்டியில் உள்ளடக்கத்தை ஒன்றுடன் ஒன்று இணைக்கவும்"
+        }
+      },
+      "hidden": {
+        "title": "மறைக்கப்பட்டது",
+        "hiddenTabIcon": {
+          "title": "தாவல் ஐகான்களை மறை",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "always": "எப்போதும்"
+          }
+        },
+        "hiddenTabbar": {
+          "title": "கண்டிப்பாக மறை"
+        },
+        "hiddenNavbar": {
+          "title": "navbar மறை"
+        },
+        "hiddenSidebarHeader": {
+          "title": "பக்கப்பட்டியின் தலைப்பை மறை",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "verticalTabOnly": "செங்குத்து தாவல்கள் மட்டுமே"
+          }
+        },
+        "hiddenUrlbarIconbox": {
+          "title": "முகவரிப் பட்டியில் ஐகானை மறை"
+        },
+        "hiddenBookmarkbar": {
+          "title": "புக்மார்க்பாரில் லேபிள்கள் அல்லது ஐகான்களை மறைக்கவும்",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "icon": "ஐகான்களை மறை",
+            "label": "லேபிள்களை மறை"
+          }
+        },
+        "hiddenDisabledMenu": {
+          "title": "முடக்கப்பட்ட பட்டியல் உருப்படிகளை மறை"
+        }
+      },
+      "centered": {
+        "title": "மையப்படுத்தப்பட்டது",
+        "centeredTab": {
+          "title": "மைய தாவல்",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "label": "சிட்டை மட்டும்"
+          }
+        },
+        "centeredUrlbar": {
+          "title": "மைய முகவரிப் பட்டி"
+        },
+        "centeredBookmarkbar": {
+          "title": "மைய புக்மார்க்பார்"
+        }
+      },
+      "rounding": {
+        "title": "ரவுண்டிங்",
+        "roundingSquareTab": {
+          "title": "சதுர தாவல்"
+        },
+        "roundingSquarePanel": {
+          "title": "சதுர குழு"
+        },
+        "roundingSquarePanelitem": {
+          "title": "சதுர பேனல் பொருட்கள்"
+        },
+        "roundingSquareMenupopup": {
+          "title": "சதுர பட்டியல் மேல்தோன்றல்"
+        },
+        "roundingSquareMenuitem": {
+          "title": "சதுர பட்டியல் உருப்படிகள்"
+        },
+        "roundingSquareField": {
+          "title": "சதுர உள்ளீடு உரை புலங்கள்"
+        },
+        "roundingSquareChecklabel": {
+          "title": "சதுர உள்ளீட்டு தேர்வுப்பெட்டிகள்"
+        }
+      },
+      "padding": {
+        "title": "திணிப்பு",
+        "paddingTabbarWidth": {
+          "title": "தப்பரில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingTabbarHeight": {
+          "title": "டப்பாரின் உயரத்தைக் குறைக்கவும்"
+        },
+        "paddingToolbarButton": {
+          "title": "கருவிப்பட்டி பொத்தான்களில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingNavbarWidth": {
+          "title": "navbar இல் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingUrlbar": {
+          "title": "முகவரி பட்டியில் திணிப்பைக் குறைக்கவும் & பார்க்கவும்"
+        },
+        "paddingBookmarkbar": {
+          "title": "புக்மார்க்பாரில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingInfobar": {
+          "title": "தகவல்பட்டியில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingMenu": {
+          "title": "பட்டியலில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingBookmarkMenu": {
+          "title": "புத்தகக்குறி பட்டியலில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingGlobalMenubar": {
+          "title": "எளிதாக அணுகுவதற்கு உலகளாவிய மெனுபாரை நீட்டவும்"
+        },
+        "paddingPanel": {
+          "title": "பேனலில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingPopupPanel": {
+          "title": "மேல்தோன்றல் பேனலில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingFirstTab": {
+          "title": "முதல் தாவலுக்கு முன் திணிப்பைச் சேர்க்கவும்",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "always": "எப்போதும்"
+          }
+        },
+        "paddingDragSpace": {
+          "title": "இழுவை இடத்தைச் சேர்க்கவும்",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "maximized": "அதிகபட்சமாக தொடரவும்"
+          }
+        },
+        "paddingMenuCompact": {
+          "title": "பட்டியல் பேடிங்கைக் குறைக்கவும்"
+        },
+        "paddingBookmarkMenuCompact": {
+          "title": "புத்தகக்குறி பட்டியல் பேடிங்கைக் குறைக்கவும்"
+        },
+        "paddingPanelHeader": {
+          "title": "பேனல் எடர் பேடிங்கைக் குறைக்கவும்"
+        },
+        "paddingUrlViewExpanding": {
+          "title": "விரிவாக்கப்பட்ட முகவரி காட்சியில் திணிப்பைக் குறைக்கவும்"
+        },
+        "paddingUrlViewResults": {
+          "title": "முகவரி பார்வை முடிவுகளில் திணிப்பைக் குறைக்கவும்"
+        }
+      },
+      "urlView": {
+        "title": "முகவரி காட்சி",
+        "urlViewMoveIconToLeft": {
+          "title": "ஐகானை இடது பக்கம் நகர்த்தவும்"
+        },
+        "urlViewGoButtonWhenTyping": {
+          "title": "தட்டச்சு செய்யும் போது செல் பொத்தானைக் காட்டு"
+        },
+        "urlViewAlwaysShowPageActions": {
+          "title": "பக்கச் செயல்களை எப்போதும் காட்டு"
+        }
+      },
+      "tabbar": {
+        "title": "நிச்சயமாக",
+        "tabbarAsTitlebar": {
+          "title": "காட்டு tabbar அச் titlebar"
+        },
+        "tabbarOnBottom": {
+          "title": "காட்டு tabbar on கீழே"
+        },
+        "tabbarOnBottomAboveBookmark": {
+          "title": "காட்டு tabbar above bookmarkbar"
+        },
+        "tabbarOnBottomMenubarOnTop": {
+          "title": "காட்டு menubar on மேலே"
+        },
+        "tabbarOnBottomHiddenSingleTab": {
+          "title": "மறை tabbar when there is only one தாவல்"
+        },
+        "tabbarOneLiner": {
+          "title": "காட்டு tabbar in one வரி"
+        },
+        "tabbarOneLinerCombineNavbar": {
+          "title": "navbar ஐ இணைக்கவும்"
+        },
+        "tabbarOneLinerTabbarFirst": {
+          "title": "காட்டு tabbar first"
+        },
+        "tabbarOneLinerResponsive": {
+          "title": "Automatically ஆளி, நிலைமாறி one liner பயன்முறை when screen width is too small"
+        }
+      },
+      "tab": {
+        "title": "தாவல்",
+        "tabMultiSelected": {
+          "title": "Adjust contrast of multiple தேர்ந்தெடுக்கப்பட்டது தாவல்கள்"
+        },
+        "tabUnloaded": {
+          "title": "Adjust opacity of unloaded தாவல்கள்"
+        },
+        "tabLettersCleary": {
+          "title": "Clearly truncate உரை"
+        },
+        "tabSoundHideLabel": {
+          "title": "மறை sound சிட்டை"
+        },
+        "tabSoundWithFavicons": {
+          "title": "காட்டு sound icons"
+        },
+        "tabPip": {
+          "title": "காட்டு PIP icon"
+        },
+        "tabContainer": {
+          "title": "Adjust சரக்குப் பெட்டகம் காட்டொளி"
+        },
+        "tabCrashed": {
+          "title": "மறை favicon of crashed தாவல்கள்"
+        },
+        "tabConnectToWindow": {
+          "title": "இணை பெறுநர் சாளரம்"
+        },
+        "tabColorLikeToolbar": {
+          "title": "Color like கருவிப்பட்டி"
+        },
+        "tabLeptonLikePadding": {
+          "title": "லெப்டன் போன்ற திணிப்பு"
+        },
+        "tabPhotonLikePadding": {
+          "title": "ஃபோட்டான் போன்ற திணிப்பு"
+        },
+        "tabDynamicSeparator": {
+          "title": "காட்டு dynamic பிரிப்பான்"
+        },
+        "tabStaticSeparator": {
+          "title": "காட்டு static பிரிப்பான்"
+        },
+        "tabStaticSeparatorSelectedAccent": {
+          "title": "Accent static பிரிப்பான் when தேர்ந்தெடுக்கப்பட்டது"
+        },
+        "tabNewtabButtonLikeTab": {
+          "title": "காட்டு newtab button like தாவல்"
+        },
+        "tabNewtabButtonSmaller": {
+          "title": "newtab பட்டனை சிறியதாக்கு"
+        },
+        "tabNewtabButtonProton": {
+          "title": "Adjust newtab button க்கு நேர்முன்னி சூல் தண்டு"
+        },
+        "tabBoxShadow": {
+          "title": "கூட்டு boxshadow at தாவல்"
+        },
+        "tabBottomRoundedCorner": {
+          "title": "Rounded கீழே corners"
+        },
+        "tabPhotonLikeContextline": {
+          "title": "ஃபோட்டான் போன்ற சூழல்"
+        },
+        "tabAlwaysShowTabIcon": {
+          "title": "எப்போதும் காட்டு தாவல் icon"
+        },
+        "tabCloseButtonAtHover": {
+          "title": "காட்டு மூடு button on hover",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "always": "எப்போதும்"
+          }
+        },
+        "tabCloseButtonAtPinned": {
+          "title": "காட்டு மூடு button on தேர்ந்தெடுக்கப்பட்டது pinned தாவல்",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "default": "இயல்புநிலை",
+            "always": "எப்போதும்"
+          }
+        },
+        "tabCloseButtonAtPinnedBackground": {
+          "title": "காட்டு மூடு button on pinned பின்னணி தாவல்கள் on hover"
+        },
+        "tabSoundShowLabel": {
+          "title": "காட்டு sound சிட்டை"
+        },
+        "tabSupernovaLikeContextline": {
+          "title": "சூப்பர்நோவா போன்ற சூழல்"
+        }
+      },
+      "panel": {
+        "title": "குழு",
+        "panelRemoveStrip": {
+          "title": "அகற்று strip இருந்து panel தலைப்பி"
+        },
+        "panelFullWidthSeparator": {
+          "title": "Make panel தலைப்பி பிரிப்பான் full width"
+        },
+        "panelFullWidthPadding": {
+          "title": "முழு அகல திணிப்பு"
+        }
+      },
+      "sidebar": {
+        "title": "பக்கப்பட்டி",
+        "panelSidebar": {
+          "title": "உள்ளடக்கம் ஒன்றுடன் ஒன்று"
+        }
+      },
+      "fullscreen": {
+        "title": "முழு திரை",
+        "fullscreenOverlap": {
+          "title": "Have கருவிப்பட்டி overlap content"
+        },
+        "fullscreenShowBookmarkbar": {
+          "title": "காட்டு bookmarkbar in முழு திரை"
+        }
+      },
+      "icon": {
+        "title": "சின்னங்கள்",
+        "iconPanel": {
+          "title": "காட்டு icons in panel"
+        },
+        "iconLibrary": {
+          "title": "காட்டு icons in library"
+        },
+        "iconContextMenu": {
+          "title": "காட்டு icons in context பட்டியல்"
+        },
+        "iconGlobalMenu": {
+          "title": "காட்டு icons in உலகளாவிய பட்டியல்"
+        },
+        "iconGlobalMenubar": {
+          "title": "காட்டு icons in உலகளாவிய menubar"
+        },
+        "iconPanelFull": {
+          "title": "காட்டு full panel icons"
+        },
+        "iconPanelPhoton": {
+          "title": "ஃபோட்டான் போன்ற பேனல் ஐகான்கள்"
+        },
+        "iconDisabled": {
+          "title": "முடக்கு அனைத்தும் icons"
+        },
+        "iconAccountImageToRight": {
+          "title": "Move படம் பெறுநர் வலது in account panel"
+        },
+        "iconAccountLabelToRight": {
+          "title": "Move சிட்டை பெறுநர் வலது in account panel"
+        },
+        "iconMenuFull": {
+          "title": "Full icon பட்டியல்"
+        },
+        "iconGlobalMenuMac": {
+          "title": "உலகளாவிய பட்டியல் icons on Mac"
+        }
+      },
+      "player": {
+        "title": "ஊடகம் Player",
+        "playerUi": {
+          "title": "Improved player இடைமுகம்"
+        },
+        "playerIcon": {
+          "title": "மாற்றவும் player icons"
+        },
+        "playerNoaudio": {
+          "title": "Clearly காட்டு no-audio ஒளிதோற்றம்"
+        },
+        "playerSize": {
+          "title": "Adjust player அளவு when touch பயன்முறை of முழு திரை"
+        },
+        "playerClickToPlay": {
+          "title": "Click பெறுநர் play"
+        },
+        "playerAnimate": {
+          "title": "பிளேயர் அனிமேசன்கள்"
+        },
+        "playerUiTwoline": {
+          "title": "Two வரி player இடைமுகம்"
+        }
+      },
+      "newTab": {
+        "title": "புதிய தாவல்",
+        "newTabFieldBorder": {
+          "title": "காட்டு border around input புலங்கள்"
+        },
+        "newTabFullIcon": {
+          "title": "அகற்று padding around icons"
+        },
+        "newTabAnimate": {
+          "title": "புதிய தாவல் animations"
+        },
+        "newTabSearchbar": {
+          "title": "Improved தேடல் பார்வை"
+        }
+      },
+      "page": {
+        "title": "பக்கம்",
+        "pageIllustration": {
+          "title": "காட்டு பிழை illustrations"
+        },
+        "pageProtonColor": {
+          "title": "Provide நேர்முன்னி color"
+        },
+        "pageDarkMode": {
+          "title": "Dark பயன்முறை contents"
+        },
+        "pageProton": {
+          "title": "நேர்முன்னி theme contents"
+        },
+        "pageProtonColor2": {
+          "title": "நேர்முன்னி accent color",
+          "type": {
+            "none": "முடக்கப்பட்டது",
+            "darkBlueAccent": "Dark நீலம்",
+            "systemAccent": "மண்டலம்"
+          }
+        },
+        "pageMonospace": {
+          "title": "மோனோச்பேச் எழுத்துருவைப் பயன்படுத்தவும்"
+        }
+      }
+    },
+    "keyboardShortcuts": {
+      "title": "விசைப்பலகை குறுக்குவழிகள்",
+      "description": "Manage இயல்புநிலை & தனிப்பயன் shortcuts",
+      "general": {
+        "title": "பொது",
+        "enableDefaultShortcuts": {
+          "title": "Enable இயல்புநிலை shortcuts",
+          "description": "This will enable or முடக்கு அனைத்தும் இயல்புநிலை Firefox shortcuts. Shortcuts defined in the Shortcuts பிரிவு remain untouched."
+        }
+      },
+      "shortcuts": {
+        "title": "குறுக்குவழிகள்",
+        "command": {
+          "title": "கட்டளை",
+          "options": {
+            "ADD_BOOKMARK_AS": "கூட்டு புத்தககுறி",
+            "BACK": "பின்",
+            "BOOKMARK_ALL_TABS": "புத்தககுறி அனைத்தும் தாவல்கள்",
+            "BOOKMARKS_SIDEBAR": "புக்மார்க்குகளின் பக்கப்பட்டியை நிலைமாற்று",
+            "BOOKMARKS_TOOLBAR": "Toggle bookmarks கருவிப்பட்டி",
+            "CLOSE_TAB": "தாவலை மூடு",
+            "CLOSE_WINDOW": "மூடு சாளரம்",
+            "CUSTOMIZE_TOOLBARS": "கருவிப்பட்டிகளைத் தனிப்பயனாக்கு",
+            "DOWNLOADS": "திற Downloads",
+            "DUPLICATE_TAB": "Duplicate தாவல்",
+            "FIND": "கண்டுபிடி",
+            "FIND_AGAIN": "கண்டுபிடி again",
+            "FIND_PREVIOUS": "முந்தையதைக் கண்டறியவும்",
+            "FIND_SELECTION": "கண்டுபிடி தேர்வு",
+            "FORCE_RELOAD": "Force ஏற்றவும்",
+            "FORWARD": "முன்னோக்கி",
+            "FULL_ZOOM_ENLARGE": "பெரிதாக்கு",
+            "FULL_ZOOM_REDUCE": "சிறிதாக்கு",
+            "FULL_ZOOM_RESET": "பெரிதாக்கு மீட்டமைக்கவும்",
+            "FULL_ZOOM_TOGGLE": "பெரிதாக்கு மாற்றவும்",
+            "FULLSCREEN": "மாற்று முழுத்திரை",
+            "HISTORY_SIDEBAR": "Toggle வரலாறு sidebar",
+            "IMPORT_FROM_ANOTHER_BROWSER": "இறக்குமதி இருந்து another browser",
+            "NEW_NAVIGATOR": "புதிய தாவல்",
+            "NEW_NAVIGATOR_TAB": "புதிய சாளரம்",
+            "NEXT_TAB": "அடுத்த தாவல்",
+            "OPEN_ADDONS_PAGE": "திற addons page",
+            "OPEN_FILE": "கோப்பை திற",
+            "OPEN_HOME_PAGE": "திற வீடு page",
+            "OPEN_PREFERENCES": "திற விருப்பத்தேர்வுகள்",
+            "OPEN_PREFERENCES_PRIVACY": "திற privacy அமைப்புகள்",
+            "OPEN_PREFERENCES_CONTAINER": "திற சரக்குப் பெட்டகம் அமைப்புகள்",
+            "OPEN_PREFERENCES_SEARCH": "திற தேடல் அமைப்புகள்",
+            "OPEN_PREFERENCES_SYNC": "திற sync அமைப்புகள்",
+            "PAGE_INFO": "பார்வை page செய்தி",
+            "PAGE_SOURCE": "பார்வை page மூலம்",
+            "PREV_TAB": "முந்தைய தாவல்",
+            "PRINT_PAGE": "அச்சிடுக page",
+            "QUIT": "வெளியேறு",
+            "READER_VIEW": "Toggle reader பார்வை",
+            "RELOAD": "ஏற்றவும்",
+            "RELOAD_ALL_TABS": "ஏற்றவும் அனைத்தும் தாவல்கள்",
+            "SANITIZE": "Forget வரலாறு",
+            "SAVE_PAGE": "சேமி page",
+            "SCREENSHOT": "Take திரைக்காட்சி",
+            "SCROLL_BOTTOM": "Scroll பெறுநர் கீழே",
+            "SCROLL_LEFT": "Scroll பெறுநர் இடது",
+            "SCROLL_PAGE_DOWN": "கீழே உருட்டவும்",
+            "SCROLL_PAGE_UP": "Scroll மேலே",
+            "SCROLL_RIGHT": "Scroll பெறுநர் வலது",
+            "SCROLL_TOP": "Scroll பெறுநர் மேலே",
+            "SEARCH_WEB": "தேடல் the விரலிடைத் தோல்",
+            "SEARCH_BOOKMARKS": "தேடல் bookmarks",
+            "SEARCH_HISTORY": "தேடல் வரலாறு",
+            "SEND_LINK": "Send இணைப்பு",
+            "SHOW_ALL_TABS_PANEL": "காட்டு அனைத்தும் தாவல்கள் panel",
+            "SIDEBAR_HIDE": "மறை sidebar",
+            "SIDEBAR_REVERSE_POSITION": "தலைகீழ் sidebar position",
+            "SIDEBAR_TOGGLE": "பக்கப்பட்டியை மாற்றவும்",
+            "STOP": "நிறுத்து",
+            "TABS_SIDEBAR": "Toggle தாவல்கள் sidebar",
+            "TOGGLE_MUTE": "முடக்கத்தை நிலைமாற்று",
+            "TOGGLE_OFFLINE_MODE": "Toggle இணையமில்லாமல் பயன்முறை",
+            "TRANSLATE": "மொழிபெயர்த்திடு",
+            "UNDO_CLOSE_TAB": "செயல்தவிர் மூடு தாவல்",
+            "UNDO_CLOSE_WINDOW": "செயல்தவிர் மூடு சாளரம்",
+            "VIEW_PIP": "பார்வை picture-in-picture",
+            "VIEW_PROCESSES": "பணி மேலாளர்"
+          }
+        },
+        "modifiers": {
+          "title": "மாற்றியமைப்பவர்கள்",
+          "options": {
+            "ACCEL": "கட்டுப்பாடு (Mac: Meta)",
+            "ALT": "மாற்று (Mac: Option)",
+            "META": "மேவு (Mac: Command)",
+            "SHIFT": "உயர்த்து"
+          }
+        },
+        "key": {
+          "title": "முக்கிய",
+          "options": {
+            "PK_0": "0",
+            "PK_1": "1",
+            "PK_2": "2",
+            "PK_3": "3",
+            "PK_4": "4",
+            "PK_5": "5",
+            "PK_6": "6",
+            "PK_7": "7",
+            "PK_8": "8",
+            "PK_9": "9",
+            "PK_A": "ஏ",
+            "PK_B": "பி",
+            "PK_C": "சி",
+            "PK_D": "டி",
+            "PK_E": "இ",
+            "PK_F": "எஃப்",
+            "PK_G": "ஐயா",
+            "PK_H": "எச்",
+            "PK_I": "ஐ",
+            "PK_J": "சே",
+            "PK_K": "கே",
+            "PK_L": "எல்",
+            "PK_M": "எம்",
+            "PK_N": "N",
+            "PK_O": "O",
+            "PK_P": "P",
+            "PK_Q": "Q",
+            "PK_R": "R",
+            "PK_S": "S",
+            "PK_T": "T",
+            "PK_U": "உ",
+            "PK_V": "V",
+            "PK_W": "W",
+            "PK_X": "ஃச்",
+            "PK_Y": "ஒய்",
+            "PK_Z": "சட்",
+            "PK_BACK_QUOTE": "`",
+            "PK_BACK_SLASH": "\\",
+            "PK_CLOSE_BRACKET": "]",
+            "PK_COMMA": ",",
+            "PK_EQUALS": "=",
+            "PK_MINUS": "-",
+            "PK_OPEN_BRACKET": "[",
+            "PK_PERIOD": ".",
+            "PK_PLUS": "+",
+            "PK_QUOTE": "'",
+            "PK_SEMICOLON": ";",
+            "PK_SLASH": "/",
+            "PK_STAR": "*",
+            "VK_F1": "F1",
+            "VK_F2": "F2",
+            "VK_F3": "F3",
+            "VK_F4": "F4",
+            "VK_F5": "F5",
+            "VK_F6": "F6",
+            "VK_F7": "F7",
+            "VK_F8": "F8",
+            "VK_F9": "F9",
+            "VK_F10": "F10",
+            "VK_F11": "F11",
+            "VK_F12": "F12",
+            "VK_F13": "F13",
+            "VK_F14": "F14",
+            "VK_F15": "F15",
+            "VK_F16": "F16",
+            "VK_F17": "F17",
+            "VK_F18": "F18",
+            "VK_F19": "F19",
+            "VK_F20": "F20",
+            "VK_F21": "F21",
+            "VK_F22": "F22",
+            "VK_F23": "F23",
+            "VK_F24": "F24",
+            "VK_RETURN": "Enter"
+          }
+        }
+      }
+    },
+    "sidebar": {
+      "title": "பக்கப்பட்டி",
+      "description": "பக்கப் பட்டியைத் தனிப்பயனாக்குங்கள்.",
+      "urls": {
+        "title": "பக்கப் பட்டி முகவரிகள்",
+        "name": "பெயர்",
+        "url": "முகவரி",
+        "iconUrl": "Icon முகவரி",
+        "userContextId": "கொள்கலன்"
+      }
+    }
+  }
+}
