@@ -1,0 +1,130 @@
+diff --git a/browser/modules/SitePermissions.sys.mjs b/browser/modules/SitePermissions.sys.mjs
+index d8be7e7644..81aad0a569 100644
+--- a/browser/modules/SitePermissions.sys.mjs
++++ b/browser/modules/SitePermissions.sys.mjs
+@@ -3,6 +3,7 @@
+  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+ 
+ import { XPCOMUtils } from "resource://gre/modules/XPCOMUtils.sys.mjs";
++import { RFPHelper } from "resource://gre/modules/RFPHelper.sys.mjs";
+ 
+ var gStringBundle = Services.strings.createBundle(
+   "chrome://browser/locale/sitePermissions.properties"
+@@ -811,6 +812,67 @@ export var SitePermissions = {
+         return null;
+     }
+   },
++
++  /**
++   * Computes whether the canvas image extraction prompt is enabled
++   * based on Baseline/FPP settings and their respective overrides.
++   *
++   * @returns {boolean} true if CanvasImageExtractionPrompt/AllTargets is active
++   */
++  _computeCanvasImageExtractionEnabled() {
++    const fppEnabled = this.fingerprintingProtectionEnabled;
++    const baselineEnabled = this.baselineFingerprintingProtectionEnabled;
++
++    if (fppEnabled) {
++      const defaults = RFPHelper.getTargetDefaults();
++      const active = new Set(defaults);
++      const overrides = this.fingerprintingProtectionOverrides;
++      this._applyOverrides(active, overrides);
++      if (active.has("CanvasImageExtractionPrompt")) {
++        return true;
++      }
++    }
++
++    if (baselineEnabled) {
++      const defaults = RFPHelper.getTargetDefaultsBaseline();
++      const active = new Set(defaults);
++      const overrides = this.baselineFingerprintingProtectionOverrides;
++      this._applyOverrides(active, overrides);
++      if (active.has("CanvasImageExtractionPrompt")) {
++        return true;
++      }
++    }
++
++    return false;
++  },
++
++  /**
++   * Applies override flags to an active set of targets.
++   *
++   * @param {Set} active - The active targets set
++   * @param {string} overridesString - The override string (e.g., "+CanvasImageExtractionPrompt,+AllTargets")
++   */
++  _applyOverrides(active, overridesString) {
++    for (const flag of overridesString.split(",").filter(Boolean)) {
++      if (flag.startsWith("+")) {
++        const target = flag.slice(1);
++        if (
++          target === "AllTargets" ||
++          target === "CanvasImageExtractionPrompt"
++        ) {
++          active.add("CanvasImageExtractionPrompt");
++        }
++      } else if (flag.startsWith("-")) {
++        const target = flag.slice(1);
++        if (
++          target === "AllTargets" ||
++          target === "CanvasImageExtractionPrompt"
++        ) {
++          active.delete("CanvasImageExtractionPrompt");
++        }
++      }
++    }
++  },
+ };
+ 
+ let gPermissions = {
+@@ -1073,7 +1135,10 @@ let gPermissions = {
+ 
+     canvas: {
+       get disabled() {
+-        return !SitePermissions.resistFingerprinting;
++        return (
++          !SitePermissions.resistFingerprinting &&
++          !SitePermissions._computeCanvasImageExtractionEnabled()
++        );
+       },
+     },
+ 
+@@ -1137,6 +1202,37 @@ XPCOMUtils.defineLazyPreferenceGetter(
+   false,
+   SitePermissions.invalidatePermissionList.bind(SitePermissions)
+ );
++XPCOMUtils.defineLazyPreferenceGetter(
++  SitePermissions,
++  "fingerprintingProtectionEnabled",
++  "privacy.fingerprintingProtection",
++  false,
++  SitePermissions.invalidatePermissionList.bind(SitePermissions)
++);
++
++XPCOMUtils.defineLazyPreferenceGetter(
++  SitePermissions,
++  "fingerprintingProtectionOverrides",
++  "privacy.fingerprintingProtection.overrides",
++  "",
++  SitePermissions.invalidatePermissionList.bind(SitePermissions)
++);
++
++XPCOMUtils.defineLazyPreferenceGetter(
++  SitePermissions,
++  "baselineFingerprintingProtectionEnabled",
++  "privacy.baselineFingerprintingProtection",
++  false,
++  SitePermissions.invalidatePermissionList.bind(SitePermissions)
++);
++
++XPCOMUtils.defineLazyPreferenceGetter(
++  SitePermissions,
++  "baselineFingerprintingProtectionOverrides",
++  "privacy.baselineFingerprintingProtection.overrides",
++  "",
++  SitePermissions.invalidatePermissionList.bind(SitePermissions)
++);
+ 
+ XPCOMUtils.defineLazyPreferenceGetter(
+   SitePermissions,

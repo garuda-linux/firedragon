@@ -1,5 +1,5 @@
 diff --git a/browser/components/preferences/config/permissions-data.mjs b/browser/components/preferences/config/permissions-data.mjs
-index 8e0e6d5..6a937c5 100644
+index dc5499a..d08cc67 100644
 --- a/browser/components/preferences/config/permissions-data.mjs
 +++ b/browser/components/preferences/config/permissions-data.mjs
 @@ -63,6 +63,11 @@ Preferences.addAll([
@@ -14,7 +14,7 @@ index 8e0e6d5..6a937c5 100644
  ]);
  
  /**
-@@ -490,6 +495,45 @@ Preferences.addSetting(
+@@ -498,6 +503,53 @@ Preferences.addSetting(
    })
  );
  
@@ -56,11 +56,19 @@ index 8e0e6d5..6a937c5 100644
 +  },
 +});
 +
++Preferences.addSetting({
++  id: "canvasSettingsButton",
++  onUserClick: () => showPermissionExceptions({ permissionType: "canvas" }),
++  deps: ["resistFingerprinting"],
++  visible: deps => {
++    return deps.resistFingerprinting.value;
++  },
++});
 +
  SettingGroupManager.registerGroups({
    permissions: {
      id: "permissions",
-@@ -600,6 +644,26 @@ SettingGroupManager.registerGroups({
+@@ -608,6 +660,36 @@ SettingGroupManager.registerGroups({
                  "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
              },
            },
@@ -72,6 +80,16 @@ index 8e0e6d5..6a937c5 100644
 +              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
 +              "search-l10n-ids":
 +                "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
++            },
++          },
++          {
++            id: "canvasSettingsButton",
++            control: "moz-box-button",
++            l10nId: "permissions-canvas2",
++            controlAttrs: {
++              ".iconSrc": "chrome://browser/skin/canvas.svg",
++              "search-l10n-ids":
++                "permissions-remove.label,permissions-remove-all.label,permissions-site-canvas-window2.title,permissions-site-canvas-desc",
 +            },
 +          },
 +          {
@@ -112,10 +130,10 @@ index b23fc2bc15eb..b601c78e213c 100644
                        data-l10n-id="urlbar-indexed-db-notification-anchor"/>
                <image id="password-notification-icon" class="notification-anchor-icon" role="button"
 diff --git a/browser/components/preferences/dialogs/sitePermissions.js b/browser/components/preferences/dialogs/sitePermissions.js
-index f8d0e2ce84f0..6d8d01a94542 100644
+index 013c0df..f3e74f3 100644
 --- a/browser/components/preferences/dialogs/sitePermissions.js
 +++ b/browser/components/preferences/dialogs/sitePermissions.js
-@@ -33,6 +33,16 @@ const sitePermissionsL10n = {
+@@ -40,6 +40,20 @@ const sitePermissionsL10n = {
      disableLabel: "permissions-site-xr-disable-label",
      disableDescription: "permissions-site-xr-disable-desc",
    },
@@ -128,6 +146,10 @@ index f8d0e2ce84f0..6d8d01a94542 100644
 +  webgl: {
 +    window: "permissions-site-webgl-window2",
 +    description: "permissions-site-webgl-desc",
++  },
++  canvas: {
++    window: "permissions-site-canvas-window2",
++    description: "permissions-site-canvas-desc",
 +  },
    camera: {
      window: "permissions-site-camera-window2",
