@@ -1,3 +1,6 @@
 [submodule "builtin-addons/startpage"]
 	path = builtin-addons/startpage
 	url = git@gitlab.com:garuda-linux/firedragon/startpage.git
+[submodule "skin"]
+	path = skin
+	url = git@gitlab.com:garuda-linux/firedragon/skin.git
