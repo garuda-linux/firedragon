@@ -539,6 +539,15 @@ defaultPref("extensions.formautofill.creditCards.enabled", false);
 // https://codeberg.org/librewolf/issues/issues/3063#issuecomment-20783558
 defaultPref("signon.formlessCapture.enabled", true);
 
+// https://bugzilla.mozilla.org/show_bug.cgi?id=2063993
+defaultPref("signon.storage.rust.enabled", false);
+
+// https://bugzilla.mozilla.org/show_bug.cgi?id=2063599
+defaultPref("extensions.formautofill.useml", false);
+
+// https://bugzilla.mozilla.org/show_bug.cgi?id=2065145
+defaultPref("extensions.formautofill.addresses.supported", "detect");
+
 /** [SECTION] CONTAINERS
  * enable containers and show the settings to control them in the stock ui
  */
@@ -790,6 +799,10 @@ lockPref("default-browser-agent.enabled", false); // disable windows specific te
 defaultPref("browser.startup.windowsLaunchOnLogin.defaultEnabled", false); // prevent autorun from automatically being enabled for new profiles and at each portable launch (since v152)
 clearPref("toolkit.winRegisterApplicationRestart"); // clear previous pref setting https://codeberg.org/librewolf/issues/issues/3056
 defaultPref("browser.startup.windowsLaunchOnLogin.disableLaunchOnLoginPrompt", true); // Disable launch on login infobar notification
+
+// Disable alternative icons, until we ship our own.
+// This is currently Windows only.
+lockPref("browser.shell.customIcon.enabled", false);
 
 /** ------------------------------
  * [CATEGORY] MACOS
