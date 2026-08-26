@@ -1,5 +1,45 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.4.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.4.0) — 2026-08-26 — [`v13.3.0`…`v13.4.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.3.0...v13.4.0)
+
+### 🚀 Features
+
+- Add container setting for custom sidebar urls — [`f4d11602…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f4d11602f6a0764a806fb414ae6f5d93a7567027)
+
+### 🐛 Bug Fixes
+
+- _(config)_ Fix some outdated links — [`0e8026eb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0e8026eb92ac8c46926c226df2422449db2cbed4)
+- _(config)_ Fix geolocation warning url — [`5d19f1c9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5d19f1c97a0f179b80e7ac59daae17454391f1d7)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update firefox to v154.0.1 — [`8e7cf46b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8e7cf46b77a44c1bb0ebb4531d3b017812d6bb42)
+- _(patches)_ Update & patches from librewolf v154.0.1-2 — [`68f74d85…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/68f74d859ba154ed6ec818e4197e9ff6223f3495)
+- _(config)_ Update librewolf preset to v154.0.1-2 — [`7ae8fed1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7ae8fed171f35a0d1d6f6c113f6d7442b7922f19)
+- _(l10n)_ Add new labels from librewolf v154.0.1-2 — [`eb8b1a61…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/eb8b1a61d60f4ddf4fe849bb4de6bd0d8d3e75d5)
+- _(builtin-addons/workspaces)_ Add Tamil translation — [`095634c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/095634c011c1a71d07e7f849af53744b35cbdbea)
+- _(builtin-addons/notes)_ Add Tamil translation — [`565ebbf5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/565ebbf59c55eae673d4b1ef812020f699d50c2b)
+- _(builtin-addons/welcome)_ Add Tamil translation — [`b8f11e67…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b8f11e670b44960581fe6e2fae032f6ec935ecd1)
+- _(builtin-addons/troubleshooting)_ Add Tamil translation — [`0f3c634b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0f3c634b9374b351128a19978c44ff2563f345d4)
+- _(l10n)_ Add Swedish translation — [`588df77c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/588df77cc4912f266020c8ce3029753dc03c18f7)
+- _(l10n)_ Update Swedish translation — [`0d0dca59…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0d0dca591a2efbf5d25e69f64090388825388f48)
+- _(l10n)_ Add Tamil translation — [`1a66a5c8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1a66a5c8a527001ec4fedabbaf34bdf6a2f85d58)
+- _(builtin-addons/settings)_ Add Tamil translation — [`0957d741…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0957d7411a75ea5409262f7e261a09919a5c1bbf)
+- _(builtin-addons/settings)_ Update Swedish translation — [`ab96e2ef…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ab96e2ef73f790ee6ebbb8ed29f6235c4378987e)
+- _(builtin-addons/settings)_ Update Tamil translation — [`0373b706…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0373b706654ff7bbe29c9f06c3c19384a47ddddf)
+- _(l10n)_ Add Tamil translation — [`ae2b13df…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ae2b13df34161437bbabbf8a2c1a7ecbe39877b0)
+- _(l10n)_ Update Tamil translation — [`9caef1d4…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9caef1d47689065c60e6f66794d49ca1e0d8279c)
+- _(builtin-addons/qr-code)_ Add Tamil translation — [`f1a548f6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f1a548f6675414cd8eed6b58107d766d089d0ad0)
+- _(builtin-addons/qr-code)_ Update Tamil translation — [`1aacdd98…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1aacdd98022fddf9f804d2d9d2af84d109d9dc9c)
+- _(l10n)_ Add Tamil translation — [`12217632…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/122176327c72d57803ffb32cb734120b2928778b)
+- _(l10n)_ Add Tamil translation — [`b78ed381…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b78ed381962aed477878fec1821ac0ab208646fe)
+- _(l10n)_ Add Tamil translation — [`ab30d2f6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ab30d2f66b080d765812f9f66a50b0a2bd096a38)
+- _(l10n)_ Add Tamil translation — [`9cdc7aee…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9cdc7aee556762a0c6ce0df895c6ed5648f2cb49)
+- _(l10n)_ Add Serbian translation — [`7c47143c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7c47143c8579a685d953c7674978585bbf78190a)
+- _(l10n)_ Add Tamil translation — [`a4edbdf5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a4edbdf5f2618910b241d8a14468b9c68eb7e337)
+- Update pnpm & deps — [`6af5dfea…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6af5dfea8c8fb027cf5c7d14a34182938a0fcd3f)
+- **builtin-addons/startpage:** Update pnpm & deps — [`d37c8dd4…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/d37c8dd4b1a7e354bfd90dfd4356a2bb48aad421)
+
 ## [FireDragon v13.3.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.3.0) — 2026-08-19 — [`v13.2.0`…`v13.3.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.2.0...v13.3.0)
 
 ### 🚀 Features
