@@ -9,3 +9,7 @@ permissions-site-webgl-window2 =
     .title = Settings - WebGL Permissions
     .style = { permissions-window2.style }
 permissions-site-webgl-desc = The following websites have requested to create a WebGL context. You can specify which websites are allowed to create a WebGL context. You can also block new requests asking to create a WebGL context.
+permissions-site-canvas-window2 =
+    .title = Settings - Canvas extraction Permissions
+    .style = { permissions-window2.style }
+permissions-site-canvas-desc = The following websites have requested to extract canvas data. You can specify which websites are allowed to extract canvas data. You can also block new requests asking to extract canvas data.
