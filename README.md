@@ -38,6 +38,10 @@ The macOS installer can be downloaded on the [Releases](https://gitlab.com/garud
 
 ## Contributing
 
+### Commits
+
+Please follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification when committing changes.
+
 ### Development
 
 First install the required dependencies:
