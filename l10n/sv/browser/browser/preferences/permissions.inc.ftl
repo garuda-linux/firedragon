@@ -9,3 +9,7 @@ permissions-site-webgl-window2 =
     .title = Inställningar WebGL behörigheter
     .style = { permissions-window2.style }
 permissions-site-webgl-desc = Följande webbplatser har begärt att skapa ett WebGL-kontext. Du kan ange vilka webbplatser som får skapa ett WebGL-kontext. Du kan också blockera nya förfrågningar som ber om att skapa ett WebGL-kontext.
+permissions-site-canvas-window2 =
+    .title = Inställningar - Behörigheter för extrahering av Canvas
+    .style = { permissions-window2.style }
+permissions-site-canvas-desc = Följande webbplatser har begärt att extrahera canvasdata. Du kan ange vilka webbplatser som får extrahera canvasdata. Du kan också blockera nya förfrågningar som begär att extrahera canvasdata.
