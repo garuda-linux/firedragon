@@ -34,6 +34,10 @@ declare module '@wxt-dev/browser' {
     }
 }
 
+function mod(a: number, b: number): number {
+    return ((a % b) + b) % b;
+}
+
 export class WorkspacesManager extends EventEmitter<{
     workspacesChanged: [Workspace[]];
     tabDataChanged: [TabId];
@@ -207,6 +211,69 @@ export class WorkspacesManager extends EventEmitter<{
             this.emit('windowDataChanged', window.id!);
             this.updateTitles();
         });
+
+        browser.commands.onCommand.addListener(async (command, tab) => {
+            if (tab) {
+                const { windowId } = tab;
+                switch (command) {
+                    case 'switchToRelative+1':
+                    case 'switchToRelative-1':
+                    case 'moveTabToRelative+1':
+                    case 'moveTabToRelative-1':
+                        const workspaceId = this.getRelativeWorkspace(
+                            (await getWindowData(tab.windowId!, 'workspaceId')) ?? DEFAULT_WORKSPACE_ID,
+                            parseInt(command.slice(-2)),
+                        ).id;
+                        switch (command.slice(0, -10)) {
+                            case 'switchTo':
+                                await setWindowData(windowId, 'workspaceId', workspaceId);
+                                this.emit('windowDataChanged', windowId);
+                                break;
+                            case 'moveTabTo':
+                                await setTabData(tab.id!, 'workspaceId', workspaceId);
+                                this.emit('tabDataChanged', tab.id!);
+                                break;
+                        }
+                        break;
+                    case 'switchToIndex0':
+                    case 'switchToIndex1':
+                    case 'switchToIndex2':
+                    case 'switchToIndex3':
+                    case 'switchToIndex4':
+                    case 'switchToIndex5':
+                    case 'switchToIndex6':
+                    case 'switchToIndex7':
+                    case 'switchToIndex8':
+                    case 'switchToIndex9':
+                    case 'moveTabToIndex0':
+                    case 'moveTabToIndex1':
+                    case 'moveTabToIndex2':
+                    case 'moveTabToIndex3':
+                    case 'moveTabToIndex4':
+                    case 'moveTabToIndex5':
+                    case 'moveTabToIndex6':
+                    case 'moveTabToIndex7':
+                    case 'moveTabToIndex8':
+                    case 'moveTabToIndex9':
+                        const workspace = this.workspaces[parseInt(command.slice(-1))];
+                        if (workspace) {
+                            switch (command.slice(0, -6)) {
+                                case 'switchTo':
+                                    await setWindowData(windowId, 'workspaceId', workspace.id);
+                                    this.emit('windowDataChanged', windowId);
+                                    break;
+                                case 'moveTabTo':
+                                    await setTabData(tab.id!, 'workspaceId', workspace.id);
+                                    this.emit('tabDataChanged', tab.id!);
+                                    break;
+                            }
+                        }
+                        break;
+                }
+                this.redraw();
+                this.updateTitles();
+            }
+        });
     }
 
     private getData(): {
@@ -239,6 +306,11 @@ export class WorkspacesManager extends EventEmitter<{
 
     getWorkspaces(): Workspace[] {
         return this.workspaces;
+    }
+
+    getRelativeWorkspace(workspaceId: WorkspaceId, relative: number): Workspace {
+        const index = this.workspaces.findIndex((workspace) => workspace.id === workspaceId);
+        return this.workspaces[mod(index + relative, this.workspaces.length)]!;
     }
 
     async getActiveWorkspaceForWindow(windowId: WindowId): Promise<WorkspaceId> {
