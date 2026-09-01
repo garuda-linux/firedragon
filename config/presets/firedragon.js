@@ -8,7 +8,7 @@ lockPref("firedragon.cfg.version", gVersion.version);
  *
  *
  * - PRIVACY [ISOLATION, SANITIZING, CACHE AND STORAGE, HISTORY AND SESSION RESTORE, QUERY STRIPPING]
-
+ *
  * - NETWORKING [HTTPS, REFERERS, WEBRTC, PROXY, DNS, DOH, PREFETCHING AND SPECULATIVE CONNECTIONS]
  *
  * - FINGERPRINTING [RFP, WEBGL]
@@ -23,11 +23,15 @@ lockPref("firedragon.cfg.version", gVersion.version);
  *
  * - BUILT-IN FEATURES [UPDATER, SYNC, LOCKWISE, CONTAINERS, DEVTOOLS, SHOPPING, OTHERS]
  *
- * - UI [BRANDING, HANDLERS, FIRST LAUNCH, NEW TAB PAGE, ABOUT, RECOMMENDED, OTHERS]
+ * - UI [BRANDING, HANDLERS, FIRST LAUNCH, NEW TAB PAGE, ABOUT, ASROUTER, RECOMMENDED, OTHERS]
  *
  * - TELEMETRY
  *
  * - WINDOWS [UPDATES, OTHERS]
+ *
+ * - MACOS
+ *
+ * - LIBREWOLF
  *
  * - CACHYOS []
  *
@@ -323,8 +327,9 @@ unsetDefault("startup.homepage_welcome_url.additional");
  * remove annoying ui elements from the about pages, including about:protections
  */
 
-/** [SECTION] RECOMMENDED
- * disable all "recommend as you browse" activity.
+/** [SECTION] ASROUTER
+ * Disable Messaging System
+ * https://firefox-source-docs.mozilla.org/browser/components/asrouter/docs/index.html
  */
 
 /** [SECTION] OTHERS
@@ -350,6 +355,19 @@ unlock("app.update.service.enabled");
 
 /** [SECTION] OTHERS */
 unsetOverride("toolkit.winRegisterApplicationRestart");
+
+/** ------------------------------
+ * [CATEGORY] MACOS
+ * the prefs in this section only apply to macOS installations and they don't have any
+ * effect on linux, windows and bsd users.
+ * ------------------------------- */
+
+/** ------------------------------
+ * [CATEGORY] LIBREWOLF
+ * prefs introduced by librewolf-specific patches
+ * ------------------------------- */
+// Toggle for enabling/disabling fetching of the CDN wallpapers
+defaultPref("librewolf.externalWallpapers.enabled", true);
 
 /**
  * [CATEGORY] CACHYOS

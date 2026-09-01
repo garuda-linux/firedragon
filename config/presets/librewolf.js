@@ -15,8 +15,8 @@ lockPref("librewolf.cfg.version", "8.6");
  * The file is organized in categories, and each one has a number of sections:
  *
  *
- * - PRIVACY [ISOLATION, SANITIZING, CACHE AND STORAGE, HISTORY AND SESSION RESTORE, QUERY STRIPPING, COOKIE BANNERS]
-
+ * - PRIVACY [ISOLATION, SANITIZING, CACHE AND STORAGE, HISTORY AND SESSION RESTORE, QUERY STRIPPING]
+ *
  * - NETWORKING [HTTPS, REFERERS, WEBRTC, PROXY, DNS, DOH, PREFETCHING AND SPECULATIVE CONNECTIONS]
  *
  * - FINGERPRINTING [RFP, WEBGL]
@@ -115,14 +115,6 @@ defaultPref("privacy.query_stripping.allow_list", "urldefense.com");
  */
 pref("browser.dom.window.dump.enabled", false);
 pref("devtools.console.stdout.chrome", false);
-
-/** [SECTION] COOKIE BANNERS
- * 0: Disables all cookie banner handling.
- * 1: Reject-all if possible, otherwise do nothing.
- * 2: Reject-all if possible, otherwise accept-all.
- */
-defaultPref("cookiebanners.service.mode", 1);
-defaultPref("cookiebanners.service.mode.privateBrowsing", 1);
 
 /** ------------------------------
  * [CATEGORY] NETWORKING
@@ -533,6 +525,7 @@ defaultPref("signon.rememberSignons", false);
 defaultPref("signon.autofillForms", false);
 defaultPref("extensions.formautofill.addresses.enabled", false);
 defaultPref("extensions.formautofill.creditCards.enabled", false);
+defaultPref("extensions.formautofill.passports.enabled", false);
 
 // Disabling breaks saving of passwords in some cases
 // The "scanning" of the page only runs when "signon.rememberSignons" is set to "true"
@@ -553,6 +546,9 @@ defaultPref("extensions.formautofill.addresses.supported", "detect");
  */
 defaultPref("privacy.userContext.enabled", true);
 defaultPref("privacy.userContext.ui.enabled", true);
+
+// Allow associating sites with a container
+defaultPref("privacy.containers.switchDuringNavigation.enabled", true);
 
 /** [SECTION] DEVTOOLS
  * disable remote debugging.
@@ -715,8 +711,26 @@ defaultPref("sidebar.main.tools", "history");
 defaultPref("browser.preferences.experimental.hidden", true); 
 
 // Disable breach alerts for the time being
-defaultPref("browser.urlbar.trustPanel.breachAlerts.featureGate", false);
 defaultPref("browser.urlbar.trustPanel.breachAlerts", false);
+
+// Disable highlighting the blocked tracker count
+defaultPref("browser.urlbar.trackerCount.enabled", false);
+defaultPref("browser.urlbar.trackerCountShown", true);
+
+// Disable Sync promos
+defaultPref("browser.promo.syncPromo.bookmarks.signin.dismissed", true);
+defaultPref("browser.promo.syncPromo.bookmarks.turnonsync.dismissed", true);
+defaultPref("browser.promo.syncPromo.bookmarks.connectdevice.dismissed", true);
+defaultPref("browser.promo.syncPromo.history.connectdevice.dismissed", true);
+defaultPref("browser.promo.syncPromo.history.signin.dismissed", true);
+defaultPref("browser.promo.syncPromo.history.turnonsync.dismissed", true);
+
+// Disable CTA
+// https://bugzilla.mozilla.org/show_bug.cgi?id=2055374
+defaultPref("browser.netError.searchCTA.enabled", false);
+
+// Disable the share button in the urlbar
+defaultPref("browser.urlbar.share-button.enabled", false);
 
 // Never inject region specific mailto handlers
 // https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/uriloader/exthandler/ExtHandlerService.sys.mjs#95-117
