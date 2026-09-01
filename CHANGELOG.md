@@ -1,5 +1,38 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.5.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.0) — 2026-09-01 — [`v13.4.0`…`v13.5.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.4.0...v13.5.0)
+
+### 🚀 Features
+
+- _(builtin-addons/workspaces)_ Add ability to set shortcuts — [`0b0b0c72…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0b0b0c72fc5b7637ed44df3613e081edf88ecf25)
+
+### 📚 Documentation
+
+- Define commit message convention in README — [`fab62cdd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fab62cdd7a394cb9c22d98a1c9b7e4b0aba9e9f1)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(patches)_ Update patches from librewolf v154.0.1-3 — [`ef10beb5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ef10beb5cd93cb52cc39efef045c4e796278d4f0)
+- _(l10n)_ Update labels from librewolf v154.0.1-3 — [`689d6957…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/689d69578e3e4a877c685fb03fdebffefaf78dd8)
+- Update firefox to v155.0 — [`c61925fa…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c61925fa234843778b4416afb70645a688170bea)
+- _(patches)_ Update librewolf patches to v155.0-1 — [`2ff98623…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2ff98623d4d64871a3c3b239afd74d117fcbb89e)
+- _(config)_ Update librewolf preset to v155.0-1 — [`3d502e70…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3d502e700182a93fbcbcb7e54fff94e491571d15)
+- _(l10n)_ Update German translation — [`d231897d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d231897d083b0d96c3bd2ea94df8aa5079d4ace7)
+- _(l10n)_ Update Swedish translation — [`6dae37ca…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6dae37ca86ecd5cdeb2685d50d4f45bc8aa7520e)
+- _(l10n)_ Add German translation — [`34023abb…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/34023abbae3362f90409fd7a50e6e3d0e233978d)
+- _(l10n)_ Add French translation — [`a4b31dc7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a4b31dc70b62e66b9d8b71bbf4cec29f9a53fe90)
+- _(l10n)_ Add Hindi translation — [`d1a9e8e7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d1a9e8e71610c4dbd0db98dfe6fff3d0fadd67ab)
+- _(l10n)_ Add Croatian translation — [`abc3132e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/abc3132e410aec17bb70756636551360e10f8a12)
+- _(l10n)_ Add Albanian translation — [`e037b72e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e037b72e17774cd7d7b151587053915e16192209)
+- _(l10n)_ Add Serbian translation — [`34327412…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/34327412025dfb71a904175af66a846d991abce1)
+- _(l10n)_ Add Swedish translation — [`2f500e1e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2f500e1e83e1c9a9d5b432f5758c20f4b40c03c0)
+- _(l10n)_ Add Tamil translation — [`f62e736b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f62e736b02e2d370073fdcbda7511f3e49f51bb2)
+- _(l10n)_ Update Swedish translation — [`4bb3db8f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4bb3db8ff176e702172e2b2fa25695a8810ad91b)
+- _(l10n)_ Update German translation — [`05c06737…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/05c06737fbf18e3e11a91a8b0c7d89ca25cf2cc1)
+- _(l10n)_ Update Swedish translation — [`df473e50…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/df473e5006125d9c9e31f000d06fea72bbd73354)
+- Update pnpm & deps — [`b866ff19…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b866ff194193b33bcb9b0e989995882a70462c04)
+- **builtin-addons/startpage:** Update pnpm & deps — [`1df2dcab…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/1df2dcab269b5ad016665aee9ba4bcbe7bc40295)
+
 ## [FireDragon v13.4.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.4.0) — 2026-08-26 — [`v13.3.0`…`v13.4.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.3.0...v13.4.0)
 
 ### 🚀 Features
