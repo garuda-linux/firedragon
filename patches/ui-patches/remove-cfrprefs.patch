@@ -1,8 +1,8 @@
 diff --git a/browser/components/preferences/config/tabs-browsing.mjs b/browser/components/preferences/config/tabs-browsing.mjs
-index 0c03ff7..8b8ad18 100644
+index 50fb553..8f3641c 100644
 --- a/browser/components/preferences/config/tabs-browsing.mjs
 +++ b/browser/components/preferences/config/tabs-browsing.mjs
-@@ -548,16 +548,6 @@ Preferences.addSetting({
+@@ -543,16 +543,6 @@ Preferences.addSetting({
    },
  });
  
@@ -19,14 +19,14 @@ index 0c03ff7..8b8ad18 100644
  // Browser layout settings
  Preferences.addSetting({
    id: "browserLayoutRadioGroup",
-@@ -779,25 +769,6 @@ SettingGroupManager.registerGroups({
+@@ -785,25 +775,6 @@ SettingGroupManager.registerGroups({
        },
      ],
    },
 -  recommendations: {
 -    l10nId: "recommendations-group",
 -    headingLevel: 2,
--    iconSrc: "chrome://browser/skin/trending.svg",
+-    iconSrc: "chrome://browser/skin/lightning-bolt.svg",
 -    items: [
 -      {
 -        id: "cfrRecommendations",
@@ -45,7 +45,7 @@ index 0c03ff7..8b8ad18 100644
    // Bug 2028609: the following sections are needed to ensure settings keep
    // working in legacy views, and can be removed when the pref is flipped
    drm: {
-@@ -829,18 +800,6 @@ SettingGroupManager.registerGroups({
+@@ -835,18 +806,6 @@ SettingGroupManager.registerGroups({
            },
          ],
        },
