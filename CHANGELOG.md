@@ -1,5 +1,29 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.5.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1) — 2026-09-05 — [`v13.5.0`…`v13.5.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.5.0...v13.5.1)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(builtin-addons/workspaces)_ Add Serbian translation — [`3cc9ea3a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3cc9ea3ad578ab5959f03ad7f2455ccab393d9fd)
+- _(l10n)_ Add Serbian translation — [`81831bbd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/81831bbd65470959b867fbff5ef8f072b7390f4f)
+- _(builtin-addons/settings)_ Add Serbian translation — [`1bae06c3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1bae06c3f0b3e04037b377c7fd56b1ebb009689f)
+- _(l10n)_ Add Serbian translation — [`c9f7bca1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c9f7bca18fe04e719e547901630268a1e3447baa)
+- _(l10n)_ Add Serbian translation — [`80e59ae2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/80e59ae258d6be0835d6c0a6512569d9a7110af4)
+- _(l10n)_ Add Albanian translation — [`00cdee30…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/00cdee3084bc8a7cd5d011b10a24a12eaf9da902)
+- _(l10n)_ Add Croatian translation — [`9e89078a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9e89078a06c4b393e037ec98b14c34aeb91a0acc)
+- _(l10n)_ Add French translation — [`f808529b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f808529bcbdb5c3181dc8280fd273975ed233636)
+- _(l10n)_ Add German translation — [`368e935c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/368e935c5733966ebee4459bb8f1db7922e5fb7e)
+- _(l10n)_ Add Hindi translation — [`c7a9f8fa…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c7a9f8faaeaeee200eb7355dce431876c4693f43)
+- _(l10n)_ Add Serbian translation — [`5350173f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5350173f639bcef72a7e7721de070f51ca25d324)
+- _(builtin-addons/welcome)_ Add Serbian translation — [`44a4c27f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/44a4c27f525f102089874665c55979ac6ccfd6b6)
+- _(builtin-addons/troubleshooting)_ Add Serbian translation — [`54785dfa…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/54785dfa1bf4b3395f5984a0b0f8e73cf5f05bcc)
+- _(builtin-addons/notes)_ Add Serbian translation — [`709bb293…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/709bb293c45e42a0d3e5ada78e186c40606342d3)
+- _(builtin-addons/qr-code)_ Add Serbian translation — [`07296c7d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07296c7d1f1d911aefa90dbbe14500caae0092b2)
+- Update firefox to v155.0.1 — [`a3b80f44…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a3b80f44cf8fac7fc2445b695fc94a03f01e3b76)
+- _(config)_ Update librewolf preset to v155.0.1-1 — [`92b35308…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/92b353085d75b641a0288a00108529e40230437d)
+- Update deps — [`a6176cdc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a6176cdc473ce6f30c0e286a2129820e3a3f6f3b)
+- **builtin-addons/startpage:** Update deps — [`577b8e62…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/577b8e62f8fd1042d118266b214d7e17cb9b9ae9)
+
 ## [FireDragon v13.5.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.0) — 2026-09-01 — [`v13.4.0`…`v13.5.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.4.0...v13.5.0)
 
 ### 🚀 Features
