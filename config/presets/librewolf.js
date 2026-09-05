@@ -575,13 +575,13 @@ defaultPref(
   "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing"
 );
 defaultPref("app.feedback.baseURL", "https://librewolf.net/#questions");
-defaultPref("app.releaseNotesURL", "https://codeberg.org/librewolf/source");
+defaultPref("app.releaseNotesURL", "https://librewolf.dev/librewolf/source");
 defaultPref(
   "app.releaseNotesURL.aboutDialog",
-  "https://codeberg.org/librewolf/source"
+  "https://librewolf.dev/librewolf/source"
 );
-defaultPref("app.update.url.details", "https://codeberg.org/librewolf/source");
-defaultPref("app.update.url.manual", "https://codeberg.org/librewolf/source");
+defaultPref("app.update.url.details", "https://librewolf.dev/librewolf/source");
+defaultPref("app.update.url.manual", "https://librewolf.dev/librewolf/source");
 
 /** [SECTION] FIRST LAUNCH
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
@@ -833,7 +833,7 @@ defaultPref("browser.macAppMenu.setAsDefaultShown", false);
  * ------------------------------- */
 defaultPref(
   "librewolf.uBO.assetsBootstrapLocation",
-  "https://codeberg.org/librewolf/source/raw/branch/main/assets/uBOAssets.json"
+  "https://librewolf.dev/librewolf/source/raw/branch/main/assets/uBOAssets.json"
 );
 defaultPref("librewolf.aboutMenu.checkVersion", false);
 defaultPref("librewolf.debugger.force_detach", false);
