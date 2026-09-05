@@ -28,15 +28,15 @@ catalog:
   '@unhead/vue': ^3.4.0
   '@vueuse/core': ^14.4.0
   '@vue/reactivity': ^3.5.42
-  '@wxt-dev/browser': ^0.2.7
+  '@wxt-dev/browser': ^0.2.8
   '@wxt-dev/module-vue': ^1.0.3
-  quasar: ^2.28.0
-  sass-embedded: ^1.103.1
-  tsdown: ^0.22.14
+  quasar: ^2.29.0
+  sass-embedded: ^1.104.0
+  tsdown: ^0.23.0
   typescript: ~6.0.3
   vite: ^8.2.2
   vite-plugin-vue-devtools: ^8.2.1
   vue: ^3.5.42
   vue-i18n: ^11.4.10
-  vue-router: ^5.3.0
+  vue-router: ^5.3.1
   wxt: ^0.21.4

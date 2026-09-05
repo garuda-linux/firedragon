@@ -30,7 +30,7 @@
     "@intlify/unplugin-vue-i18n": "catalog:",
     "@quasar/vite-plugin": "catalog:",
     "@types/gecko": "workspace:^",
-    "@types/webextension-polyfill": "^0.12.5",
+    "@types/webextension-polyfill": "^0.12.6",
     "@wxt-dev/browser": "catalog:",
     "@wxt-dev/module-vue": "catalog:",
     "sass-embedded": "catalog:",
