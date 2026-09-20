@@ -337,6 +337,8 @@ pref("browser.safebrowsing.provider.google4.dataSharingURL", "");
 /** [SECTION] OTHERS */
 defaultPref("network.IDN_show_punycode", true); // use punycode in idn to prevent spoofing
 defaultPref("pdfjs.enableScripting", false); // disable js scripting in the built-in pdf reader
+defaultPref("browser.cache.disk.encryption.enabled", true); // Encrypt disk cache
+defaultPref("network.ssl_tokens_cache_persistence", false); // Do not persist SSL tokens
 
 /** ------------------------------
  * [CATEGORY] REGION
@@ -388,15 +390,29 @@ defaultPref("intl.locale.requested", "");
  * ------------------------------- */
 
 /** [SECTION] DRM */
+defaultPref("media.gmp-manager.updateEnabled", false);
+defaultPref("media.gmp-provider.enabled", true);
+defaultPref("media.gmp-manager.allowLocalSources", false);
+
+// Disable fecthing Widevine from Chromium servers
+defaultPref("media.gmp-widevinecdm.allow-chromium-update", false);
+defaultPref("media.gmp-manager.chromium-update-url", "");
+defaultPref("media.gmp-widevinecdm.chromium-guid", "luluglowsatnight");
+defaultPref("media.gmp-widevinecdm.force-chromium-update", false);
+defaultPref("media.gmp-widevinecdm.force-chromium-beta", false);
+
+// h264
+defaultPref("media.gmp-gmpopenh264.enabled", false);
+defaultPref("media.gmp-gmpopenh264.autoupdate", false);
+defaultPref("media.webrtc.hw.h264.enabled", true);
+
+// Widevine
+defaultPref("media.eme.enabled", false);
+defaultPref("media.gmp-widevinecdm.enabled", false);
+defaultPref("media.gmp-widevinecdm.autoupdate", false);
+defaultPref("media.eme.require-app-approval", true); // Require permission for playback of DRM content
 defaultPref("librewolf.eme.gmp-clearkey.enabled", false); // Whether the Clear Key CDM is enabled (depends on media.eme.enabled)
 defaultPref("librewolf.eme.warning.infoURL", "https://librewolf.net/docs/faq/#how-do-i-allow-playback-of-drm-controlled-content-when-should-i-allow-it");
-defaultPref("media.eme.require-app-approval", true); // Require permission for playback of DRM content
-defaultPref("media.gmp-manager.url", "data:text/plain,"); // prevent checks for plugin updates when drm is disabled
-// disable the widevine and the openh264 plugins
-defaultPref("media.gmp-provider.enabled", false);
-defaultPref("media.gmp-gmpopenh264.enabled", false);
-// but allow h264 itself.
-defaultPref("media.webrtc.hw.h264.enabled", true);
 defaultPref("permissions.default.media-key-system-access", 0); // Default permission for EME - 0: Always ask, 1: Allow, 2: Block
 
 /** [SECTION] SEARCH AND URLBAR
@@ -428,7 +444,29 @@ defaultPref("browser.download.start_downloads_in_tmp_dir", true); // Arkenfox us
  * this also includes the best match feature, as it is part of firefox suggest.
  */
 pref("browser.urlbar.quicksuggest.enabled", false);
-defaultPref("browser.urlbar.suggest.weather", false); // disable weather suggestions in urlbar once they are no longer behind feature gate
+
+// Support but disable by default and show full settings UI
+defaultPref("browser.urlbar.quicksuggest.online.available", true);
+defaultPref("browser.urlbar.quicksuggest.online.enabled", false);
+defaultPref("browser.urlbar.suggest.quicksuggest.nonsponsored", false);
+defaultPref("browser.urlbar.suggest.quicksuggest.sponsored", false);
+defaultPref("browser.urlbar.suggest.quicksuggest.all", false);
+defaultPref("browser.urlbar.quicksuggest.mlEnabled", false);
+defaultPref("browser.urlbar.quicksuggest.settingsUi", 0); // https://searchfox.org/firefox-main/rev/0304f5a3e392699f440f0e15f9ea0bc2790309c6/browser/components/urlbar/QuickSuggest.sys.mjs#18-27
+
+defaultPref("browser.urlbar.suggest.addons", false);
+defaultPref("browser.urlbar.suggest.amp", false);
+defaultPref("browser.urlbar.suggest.importantDates", false);
+defaultPref("browser.urlbar.suggest.weather", false);
+defaultPref("browser.urlbar.suggest.wikipedia", false);
+defaultPref("browser.urlbar.suggest.trending", false);
+defaultPref("browser.urlbar.suggest.topsites", false);
+defaultPref("browser.urlbar.suggest.mdn", false);
+defaultPref("browser.urlbar.suggest.yelp", false);
+defaultPref("browser.urlbar.yelp.mlEnabled", false);
+defaultPref("browser.urlbar.sponsoredTopSite", false);
+defaultPref("browser.urlbar.suggest.realtimeOptIn", false);
+defaultPref("browser.urlbar.suggest.sports", false);
 
 /** [SECTION] DOWNLOADS
  * user interaction should always be required for downloads, as a way to enhance security by asking
@@ -466,6 +504,18 @@ defaultPref("browser.ml.linkPreview.supportedLocales", "null");
 defaultPref("extensions.ui.mlmodel.hidden", true);
 // disable smart tab groups
 defaultPref("browser.tabs.groups.smart.enabled", false);
+// Do not preload models
+defaultPref("browser.smartwindow.autoTabGrouping.preloadModels", false);
+// Disable the blocklist
+defaultPref("browser.ml.linkPreview.blockListEnabled", false);
+// Hide top sites
+defaultPref("browser.smartwindow.hideTopSites", true);
+// Disable smart form fill
+defaultPref("browser.smartwindow.smartformfill.enabled", false);
+// Disable Exa snippets
+defaultPref("browser.smartwindow.searchTheWebFast", false);
+// Disable ML for autofill detection
+defaultPref("extensions.formautofill.useml", false);
 
 // Removes the AI pane
 lockPref("browser.preferences.aiControls", false);
@@ -506,10 +556,18 @@ defaultPref("devtools.aboutdebugging.showHiddenAddons", true); // Disabled for n
  * [CATEGORY] BUILT-IN FEATURES
  * ------------------------------- */
 
-/** [SECTION] UPDATER
- * since we do not bake auto-updates in the browser it doesn't make sense at the moment.
- */
-lockPref("app.update.auto", false);
+/** [SECTION] UPDATER **/
+defaultPref("app.update.interval", 14400);
+defaultPref("app.update.promptWaitTime", 0);
+
+defaultPref("app.update.url.manual", "https://librewolf.net/installation/");
+defaultPref("app.update.url.details", "https://librewolf.dev/librewolf/bsys6/releases");
+defaultPref("app.releaseNotesURL", "https://librewolf.dev/librewolf/bsys6/releases/tag/%VERSION_DISPLAY%");
+defaultPref("app.releaseNotesURL.aboutDialog", "https://librewolf.dev/librewolf/bsys6/releases/tag/%VERSION_DISPLAY%");
+defaultPref("app.releaseNotesURL.prompt", "https://librewolf.dev/librewolf/bsys6/releases/tag/%VERSION_DISPLAY%");
+
+defaultPref("app.update.checkInstallTime.days", 7);
+defaultPref("app.update.badgeWaitTime", 0);
 
 /** [SECTION] SYNC
  * this functionality is disabled by default but it can be activated in one click.
@@ -566,22 +624,6 @@ defaultPref("browser.shareqrcode.embed_logo", false); // Don't embed logo in QR 
  * set librewolf support and releases urls in the UI, so that users land in the proper places.
  */
 defaultPref("app.support.baseURL", "https://support.librewolf.net/");
-defaultPref(
-  "browser.search.searchEnginesURL",
-  "https://librewolf.net/docs/faq/#how-do-i-add-a-search-engine"
-);
-defaultPref(
-  "browser.geolocation.warning.infoURL",
-  "https://librewolf.net/docs/faq/#how-do-i-enable-location-aware-browsing"
-);
-defaultPref("app.feedback.baseURL", "https://librewolf.net/#questions");
-defaultPref("app.releaseNotesURL", "https://librewolf.dev/librewolf/source");
-defaultPref(
-  "app.releaseNotesURL.aboutDialog",
-  "https://librewolf.dev/librewolf/source"
-);
-defaultPref("app.update.url.details", "https://librewolf.dev/librewolf/source");
-defaultPref("app.update.url.manual", "https://librewolf.dev/librewolf/source");
 
 /** [SECTION] FIRST LAUNCH
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
@@ -642,9 +684,20 @@ defaultPref("browser.newtabpage.activity-stream.widgets.sportsWidget.enabled", f
 defaultPref("browser.newtabpage.activity-stream.widgets.stocks.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weather.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weatherForecast.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.recentSearches.enabled", false);
+
+// Disable story carousel
+defaultPref("browser.newtabpage.activity-stream.discoverystream.carousel.enabled", false);
 
 // Disable smart shortcuts
 defaultPref("browser.newtabpage.activity-stream.discoverystream.shortcuts.personalization.enabled", false);
+
+// Disable attribution
+defaultPref("browser.newtabpage.activity-stream.discoverystream.attribution.enabled", false);
+
+// Disable the top site feed
+defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
+
 
 // Disable web notifications on newtabpage
 // https://bugzilla.mozilla.org/show_bug.cgi?id=2054389
@@ -657,6 +710,11 @@ defaultPref("browser.newtabpage.activity-stream.showWebNotifications", false);
 lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.region-config", "");
 lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.locale-config", "");
 
+lockPref("browser.newtabpage.activity-stream.discoverystream.reportAds.enabled", false);
+lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.enabled", false);
+lockPref("browser.newtabpage.activity-stream.discoverystream.sections.adAllowedRanks", "");
+lockPref("browser.newtabpage.activity-stream.feeds.adsfeed", false);
+
 // Disable Mozilla Ad Routing Service (MARS) unified ads service 
 // https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/browser/app/profile/firefox.js#1933-1938
 lockPref("browser.newtabpage.activity-stream.unifiedAds.tiles.enabled", false);
@@ -664,6 +722,7 @@ lockPref("browser.newtabpage.activity-stream.unifiedAds.spocs.enabled", false);
 lockPref("browser.newtabpage.activity-stream.unifiedAds.endpoint", "");
 lockPref("browser.newtabpage.activity-stream.unifiedAds.adsFeed.enabled", false);
 lockPref("browser.newtabpage.activity-stream.unifiedAds.ohttp.enabled", true); // Might as well keep it as ohttp enabled
+lockPref("browser.newtabpage.activity-stream.discoverystream.merino-feed-experiment", false);
 
 // Add UI for toggling launching a newtab on session restore
 defaultPref("browser.sessionstore.newTabOnRestore.showSetting", true);
@@ -675,7 +734,6 @@ defaultPref("browser.contentblocking.report.lockwise.enabled", false);
 lockPref("browser.contentblocking.report.hide_vpn_banner", true);
 lockPref("browser.contentblocking.report.show_mobile_app", false);
 lockPref("browser.vpn_promo.enabled", false);
-lockPref("browser.promo.focus.enabled", false);
 // ...about:addons recommendations sections and more
 defaultPref("extensions.htmlaboutaddons.recommendations.enabled", false);
 defaultPref("extensions.getAddons.showPane", false);
@@ -725,6 +783,11 @@ defaultPref("browser.promo.syncPromo.history.connectdevice.dismissed", true);
 defaultPref("browser.promo.syncPromo.history.signin.dismissed", true);
 defaultPref("browser.promo.syncPromo.history.turnonsync.dismissed", true);
 
+// Disable promos
+defaultPref("browser.vpn_promo.enabled", false);
+defaultPref("browser.promo.pin.enabled", false);
+defaultPref("browser.promo.relay.enabled", false);
+
 // Disable CTA
 // https://bugzilla.mozilla.org/show_bug.cgi?id=2055374
 defaultPref("browser.netError.searchCTA.enabled", false);
@@ -773,10 +836,15 @@ pref("network.connectivity-service.enabled", false);
 // disable captive portal
 pref("network.captive-portal-service.enabled", false);
 pref("captivedetect.canonicalURL", "");
-// disable Privacy-Preserving Attribution
-pref("dom.private-attribution.submission.enabled", false);
 // disable daily usage pings
 lockPref("datareporting.usage.uploadEnabled", false);
+// Disable Firefox account ping
+lockPref("identity.fxaccounts.telemetry.clientInfoPing.enabled", false);
+// Disable newtab ping
+lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.enabled", false);
+// Set random ID
+lockPref("browser.newtabpage.activity-stream.impressionId", "{lulu-glows-at-night}");
+lockPref("toolkit.telemetry.site_categories", "{}");
 
 // Disable and deregister the Glean add-on ping scheduler
 // https://codeberg.org/celenity/Phoenix/commit/1ff7ae1dbd3095c993a73af69c6bb2a6ad700c55
@@ -792,6 +860,8 @@ lockPref("nimbus.rollouts.enabled", false);
 lockPref("browser.referrals.enabled", false);
 lockPref("browser.referrals.pingSubmitted", true);
 lockPref("browser.referrals.code", "");
+
+lockPref("browser.ml.onnxNativeAvailabilityReported", true);
 
 // Added via patches/autoconfig-setEnv.patch
 setEnv("MOZ_GFX_CRASH_MOZ_CRASH", 1); // https://searchfox.org/firefox-main/rev/0989a082704f0bda8d370ccd57402645d834757e/gfx/thebes/gfxPlatform.cpp#381
