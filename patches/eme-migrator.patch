@@ -1,0 +1,31 @@
+diff --git a/browser/components/ProfileDataUpgrader.sys.mjs b/browser/components/ProfileDataUpgrader.sys.mjs
+index ca6f1f6..3fa4ef1 100644
+--- a/browser/components/ProfileDataUpgrader.sys.mjs
++++ b/browser/components/ProfileDataUpgrader.sys.mjs
+@@ -1087,6 +1087,26 @@ export let ProfileDataUpgrader = {
+       if (!Services.prefs.prefHasUserValue(IPP_HAS_SEEN_FEATURE_PREF)) {
+         Services.prefs.setBoolPref(IPP_HAS_SEEN_FEATURE_PREF, true);
+       }
++      if (Services.prefs.prefHasUserValue("media.eme.enabled")) {
++        if (!Services.prefs.prefHasUserValue("media.gmp-manager.updateEnabled")) {
++          Services.prefs.setBoolPref("media.gmp-manager.updateEnabled", true);
++        }
++        if (!Services.prefs.prefHasUserValue("media.gmp-widevinecdm.enabled")) {
++          Services.prefs.setBoolPref("media.gmp-widevinecdm.enabled", true);
++        }
++        if (!Services.prefs.prefHasUserValue("media.gmp-widevinecdm.autoupdate")) {
++          Services.prefs.setBoolPref("media.gmp-widevinecdm.autoupdate", true);
++        }
++      }
++
++      if (Services.prefs.prefHasUserValue("media.gmp-gmpopenh264.enabled")) {
++        if (!Services.prefs.prefHasUserValue("media.gmp-manager.updateEnabled")) {
++          Services.prefs.setBoolPref("media.gmp-manager.updateEnabled", true);
++       }
++        if (!Services.prefs.prefHasUserValue("media.gmp-gmpopenh264.autoupdate")) {
++          Services.prefs.setBoolPref("media.gmp-gmpopenh264.autoupdate", true);
++        }
++      }
+     }
+ 
+     if (existingDataVersion < 181) {

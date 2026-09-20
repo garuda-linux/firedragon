@@ -124,27 +124,67 @@ index a3f1cc3..715f58b 100644
      gkrust_features += ["glean_disable_upload"]
  
  if CONFIG["MOZ_ENABLE_DBUS"]:
-diff --git a/browser/components/tabbrowser/content/tabbrowser.js b/browser/components/tabbrowser/content/tabbrowser.js
-index c42b1a1a8d..bea12fa0fa 100644
---- a/browser/components/tabbrowser/content/tabbrowser.js
-+++ b/browser/components/tabbrowser/content/tabbrowser.js
-@@ -3330,10 +3330,6 @@
-         );
-       }
+diff --git a/toolkit/components/telemetry/core/Stopwatch.cpp b/toolkit/components/telemetry/core/Stopwatch.cpp
+index 9fcd929d83..f5f02bb921 100644
+--- a/toolkit/components/telemetry/core/Stopwatch.cpp
++++ b/toolkit/components/telemetry/core/Stopwatch.cpp
+@@ -315,7 +315,7 @@ bool Timers::StartUserInteraction(JSContext* aCx,
+   // Ensure that this ID maps to a UserInteraction that can be recorded
+   // for this product.
+   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
+-    if (!mSuppressErrors) {
++    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
+       LogError(aCx, nsPrintfCString(
+                         "UserInteraction with name \"%s\" cannot be recorded.",
+                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
+@@ -383,7 +383,7 @@ bool Timers::UpdateUserInteraction(JSContext* aCx,
+   // Ensure that this ID maps to a UserInteraction that can be recorded
+   // for this product.
+   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
+-    if (!mSuppressErrors) {
++    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
+       LogError(aCx, nsPrintfCString(
+                         "UserInteraction with name \"%s\" cannot be recorded.",
+                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
+@@ -416,7 +416,7 @@ bool Timers::FinishUserInteraction(
+   // Ensure that this ID maps to a UserInteraction that can be recorded
+   // for this product.
+   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
+-    if (!mSuppressErrors) {
++    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
+       LogError(aCx, nsPrintfCString(
+                         "UserInteraction with id \"%s\" cannot be recorded.",
+                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
+@@ -467,7 +467,7 @@ bool Timers::CancelUserInteraction(JSContext* aCx,
+   // Ensure that this ID maps to a UserInteraction that can be recorded
+   // for this product.
+   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
+-    if (!mSuppressErrors) {
++    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
+       LogError(aCx, nsPrintfCString(
+                         "UserInteraction with id \"%s\" cannot be recorded.",
+                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
+diff --git a/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp b/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
+index c71fe5b6c6..6ea3c93773 100644
+--- a/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
++++ b/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
+@@ -94,3 +94,7 @@ bool TelemetryUserInteraction::CanRecord(const nsAString& aName) {
  
--      if (!UserInteraction.running("browser.tabs.opening", window)) {
--        UserInteraction.start("browser.tabs.opening", "initting", window);
--      }
--
-       // If we're opening a foreground tab, set the owner by default.
-       ownerTab ??= inBackground ? null : this.selectedTab;
+   return false;
+ }
++
++bool TelemetryUserInteraction::IsRecordingEnabled() {
++  return gTelemetryUserInteractionCanRecord;
++}
+diff --git a/toolkit/components/telemetry/core/TelemetryUserInteraction.h b/toolkit/components/telemetry/core/TelemetryUserInteraction.h
+index 0db315684f..39dcbc4cfa 100644
+--- a/toolkit/components/telemetry/core/TelemetryUserInteraction.h
++++ b/toolkit/components/telemetry/core/TelemetryUserInteraction.h
+@@ -13,6 +13,7 @@ void InitializeGlobalState(bool canRecord);
+ void DeInitializeGlobalState();
  
-@@ -4205,8 +4201,6 @@
-           0,
-           this.tabContainer
-         );
--      } else {
--        UserInteraction.update("browser.tabs.opening", "animated", window);
-       }
+ bool CanRecord(const nsAString& aName);
++bool IsRecordingEnabled();
  
-       return t;
+ }  // namespace TelemetryUserInteraction
+ 

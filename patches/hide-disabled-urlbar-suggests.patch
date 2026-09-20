@@ -1,0 +1,29 @@
+diff --git a/browser/components/urlbar/QuickActionsLoaderDefault.sys.mjs b/browser/components/urlbar/QuickActionsLoaderDefault.sys.mjs
+index 691fcea3a1..838512efba 100644
+--- a/browser/components/urlbar/QuickActionsLoaderDefault.sys.mjs
++++ b/browser/components/urlbar/QuickActionsLoaderDefault.sys.mjs
+@@ -11,6 +11,7 @@ ChromeUtils.defineESModuleGetters(lazy, {
+     "moz-src:///browser/components/urlbar/ActionsProviderQuickActions.sys.mjs",
+   BrowserWindowTracker: "resource:///modules/BrowserWindowTracker.sys.mjs",
+   DevToolsShim: "chrome://devtools-startup/content/DevToolsShim.sys.mjs",
++  ExperimentAPI: "resource://nimbus/ExperimentAPI.sys.mjs",
+   ResetProfile: "resource://gre/modules/ResetProfile.sys.mjs",
+   ScreenshotsUtils:
+     "moz-src:///browser/components/screenshots/ScreenshotsUtils.sys.mjs",
+@@ -112,6 +113,8 @@ const DEFAULT_ACTIONS = {
+     icon: "chrome://global/skin/icons/highlights.svg",
+     label: "quickactions-manageai",
+     onPick: openUrlFun("about:preferences#ai"),
++    isUnsupported: () =>
++      !Services.prefs.getBoolPref("browser.preferences.aiControls", false),
+   },
+   downloads: {
+     l10nCommands: ["quickactions-cmd-downloads"],
+@@ -337,6 +340,7 @@ const DEFAULT_ACTIONS = {
+     l10nCommands: ["quickactions-cmd-labs"],
+     icon: "chrome://global/skin/icons/experiments.svg",
+     label: "quickactions-labs",
++    isUnsupported: () => !lazy.ExperimentAPI.labsEnabled,
+     onPick: openUrlFun("about:preferences#experimental"),
+   },
+ };

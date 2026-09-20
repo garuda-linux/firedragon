@@ -1,12 +1,27 @@
-diff --git a/browser/modules/AboutNewTab.sys.mjs b/browser/modules/AboutNewTab.sys.mjs
-index 66ec2a2..79e4615 100644
---- a/browser/modules/AboutNewTab.sys.mjs
-+++ b/browser/modules/AboutNewTab.sys.mjs
-@@ -195,7 +195,6 @@ export const AboutNewTab = {
+diff --git a/toolkit/components/nimbus/ExperimentAPI.sys.mjs b/toolkit/components/nimbus/ExperimentAPI.sys.mjs
+index 681c72b7ff..5e8d70485f 100644
+--- a/toolkit/components/nimbus/ExperimentAPI.sys.mjs
++++ b/toolkit/components/nimbus/ExperimentAPI.sys.mjs
+@@ -549,11 +549,21 @@ export const ExperimentAPI = new (class {
+    * and doing so breaks a lot of tests due to enabling the
+    * RemoteSettingsExperimentLoader et al.
+    *
++   * Resolves immediately if Nimbus is disabled and initialization has not started.
++   *
+    * @returns {Promise}
+    *          A promise that resolves when the API has synchronized to the main
+-   *          store
++   *          store, or immediately when Nimbus is disabled.
+    */
+   async ready() {
++    if (!this.#initializedPromise) {
++      this.#computeEnabled();
++
++      if (!this.enabled) {
++        return Promise.resolve();
++      }
++    }
++
+     return this.manager.store.ready();
+   }
  
-     const [createdTimestamp] = await Promise.all([
-       profileCreatedAccessorReady,
--      trainhopFeatureReady,
-       addonInitted,
-     ]);
-     const createdInstant = createdTimestamp
