@@ -1,5 +1,21 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.6.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0) — 2026-09-20 — [`v13.5.1`…`v13.6.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.5.1...v13.6.0)
+
+### 🚜 Refactor
+
+- Refactor private tab implementation for firefox 156.0 — [`47e0933a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/47e0933ade4d7161b073a69468ab6537e6cc3c57)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(skin)_ Update to lepton v8.7.6 — [`95526373…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9552637355fdb691692b1965805c68a2ed9b3617)
+- Update to firefox 156.0 — [`c5aad73b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c5aad73ba167e7706a5f07877dc9a4b99a7354d2)
+- _(patches)_ Update librewolf patches to v156.0-1 — [`8eb79695…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8eb7969517f905f12de9cf59999e158b83bf68f6)
+- _(config)_ Update librewolf preset to v156.0-1 — [`e707c36a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e707c36af7d1ddb592fa9499f42100d666156092)
+- _(config)_ Update & cleanup branding & update prefs — [`f1aa05c5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f1aa05c5b842cec6fc88466830bb5fca7b786fdd)
+- Update pnpm & deps — [`30f28849…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/30f2884955f1770607e49a76d89e93b509c7c53f)
+- **builtin-addons/startpage:** Update pnpm & deps — [`0c2a50ea…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/0c2a50eafad52d9f6cd7c91549e4c8ef74889e4a)
+
 ## [FireDragon v13.5.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.5.1) — 2026-09-05 — [`v13.5.0`…`v13.5.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.5.0...v13.5.1)
 
 ### ⚙️ Miscellaneous Tasks
