@@ -1,0 +1,34 @@
+diff --git a/browser/components/tabbrowser/Tabbrowser.sys.mjs b/browser/components/tabbrowser/Tabbrowser.sys.mjs
+index f68e37926001..71b043b62d73 100644
+--- a/browser/components/tabbrowser/Tabbrowser.sys.mjs
++++ b/browser/components/tabbrowser/Tabbrowser.sys.mjs
+@@ -34,6 +34,7 @@ const lazy = XPCOMUtils.declareLazy({
+     "moz-src:///toolkit/components/pictureinpicture/PictureInPicture.sys.mjs",
+   PlacesUtils: "resource://gre/modules/PlacesUtils.sys.mjs",
+   PrivateBrowsingUtils: "resource://gre/modules/PrivateBrowsingUtils.sys.mjs",
++  PrivateContainer: 'resource://firedragon/modules/PrivateContainer.sys.mjs',
+   ReducedProtectionNotification:
+     "resource:///modules/ReducedProtectionNotification.sys.mjs",
+   remoteSVGIconDecoding: {
+@@ -4545,6 +4546,10 @@ export class Tabbrowser {
+       );
+     }
+ 
++    if (userContextId === lazy.PrivateContainer.userContextId) {
++      t.setAttribute('historydisabled', 'true');
++    }
++
+     return t;
+   }
+ 
+@@ -4677,6 +4682,10 @@ export class Tabbrowser {
+     // instantaneously, to avoid flickering and improve perceived performance.
+     this.setDefaultIcon(tab, uri);
+ 
++    if (userContextId === lazy.PrivateContainer.userContextId) {
++      lazy.PrivateContainer.disableBrowserHistory(b);
++    }
++
+     return { browser: b, usingPreloadedContent };
+   }
+ 

@@ -6,27 +6,7 @@ window.addEventListener(
     'DOMContentLoaded',
     () => {
         const { gBrowser } = window,
-            { tabContainer, _createTab, _createBrowserForTab } = gBrowser;
-
-        gBrowser._createTab = (options: any) => {
-            const tab = _createTab.call(gBrowser, options);
-
-            if (tab.userContextId === PrivateContainer.userContextId) {
-                tab.setAttribute('historydisabled', 'true');
-            }
-
-            return tab;
-        };
-
-        gBrowser._createBrowserForTab = (tab: any, options: any) => {
-            const { browser, ...rest } = _createBrowserForTab.call(gBrowser, tab, options);
-
-            if (tab.userContextId === PrivateContainer.userContextId) {
-                PrivateContainer.disableBrowserHistory(browser);
-            }
-
-            return { browser, ...rest };
-        };
+            { tabContainer } = gBrowser;
 
         let tabCloseTimeout: any = null;
         tabContainer.addEventListener('TabClose', () => {
