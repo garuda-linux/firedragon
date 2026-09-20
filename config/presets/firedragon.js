@@ -271,6 +271,11 @@ unsetDefault("devtools.aboutdebugging.showHiddenAddons");
 defaultPref("app.update.auto", true);
 unlock("app.update.auto");
 #endif
+defaultPref("app.update.url.manual", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
+defaultPref("app.update.url.details", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
+defaultPref("app.releaseNotesURL", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
+defaultPref("app.releaseNotesURL.aboutDialog", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
+defaultPref("app.releaseNotesURL.prompt", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
 
 /** [SECTION] SYNC
  * this functionality is disabled by default but it can be activated in one click.
@@ -301,13 +306,7 @@ unsetOverride("devtools.debugger.remote-enabled");
 * Set Firedragon support and releases urls in the UI, so that users land in the proper places.
 */
 unsetDefault("app.support.baseURL");
-defaultPref("browser.search.searchEnginesURL", "https://searx.garudalinux.org/?q={searchTerms}");
-defaultPref("browser.geolocation.warning.infoURL", "https://support.mozilla.org/en-US/kb/does-firefox-share-my-location-websites?redirectslug=does-firefox-share-my-location-web-sites&redirectlocale=en-US#w_location-aware-browsing");
 defaultPref("app.feedback.baseURL", "https://forum.garudalinux.org");
-defaultPref("app.releaseNotesURL", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
-defaultPref("app.releaseNotesURL.aboutDialog", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/blob/main/CHANGELOG.md");
-defaultPref("app.update.url.details", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
-defaultPref("app.update.url.manual", "https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases");
 
 /** [SECTION] FIRST LAUNCH
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
