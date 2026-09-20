@@ -15,9 +15,9 @@
     "all:build": "lerna run --stream build"
   },
   "devDependencies": {
-    "git-cliff": "^2.13.1",
+    "git-cliff": "^2.14.2",
     "lerna": "^10.0.1",
-    "oxfmt": "^0.66.0",
+    "oxfmt": "^0.68.0",
     "tsx": "^4.23.13",
     "zx": "^8.8.5"
   },
@@ -26,5 +26,5 @@
       "version": "156.0"
     }
   },
-  "packageManager": "pnpm@11.25.0+sha512.5cde925b4f075f725eb71fbae18a42ffe784524789f19b61c731cb8721ec28aaee160e01a8d5af4fedb2a42cdbf300efe23db356b0d4a17b4d63e11f8ab7c956"
+  "packageManager": "pnpm@12.5.1+sha512.e3f305bc784a2bc89f5ad3b6138889470fae8d2af5f36b61216ec91c2c3d64089775f9de38aac331044ea40f245cb0d5666392dfdf65824e1907ef6a2c62de5f"
 }
