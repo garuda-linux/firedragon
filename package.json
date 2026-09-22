@@ -17,8 +17,8 @@
   "devDependencies": {
     "git-cliff": "^2.14.2",
     "lerna": "^10.0.1",
-    "oxfmt": "^0.68.0",
-    "tsx": "^4.23.13",
+    "oxfmt": "^0.69.0",
+    "tsx": "^4.23.15",
     "zx": "^8.8.5"
   },
   "config": {
