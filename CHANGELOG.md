@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.6.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.1) — 2026-09-22 — [`v13.6.0`…`v13.6.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.6.0...v13.6.1)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(l10n)_ Update Tamil translation — [`20e299cf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/20e299cf3d3840bcd8c43586c6d351be812134ee)
+- Update to firefox 156.0.1 — [`956ab432…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/956ab432a1a4491073561e0c00eca247513f3679)
+- _(patches)_ Update librewolf patches to v156.0.1-1 — [`b94fb4d6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b94fb4d64cf29565375509941748a474419b20be)
+- _(config)_ Update librewolf preset to v156.0.1-1 — [`6dc2114d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6dc2114d47e158f15df88511abfba049c6527985)
+- Update pnpm & deps — [`4264c27b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4264c27b278e78466a9a08a4a169d286a4fac484)
+
 ## [FireDragon v13.6.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.0) — 2026-09-20 — [`v13.5.1`…`v13.6.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.5.1...v13.6.0)
 
 ### 🚜 Refactor
