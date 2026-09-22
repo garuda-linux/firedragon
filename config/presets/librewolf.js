@@ -1,5 +1,4 @@
-null;
-
+// First line gets discared
 /** LIBREWOLF SETTINGS
  *
  * take the time to read and understand, but also to customize the settings to find your own setup.
@@ -394,7 +393,7 @@ defaultPref("media.gmp-manager.updateEnabled", false);
 defaultPref("media.gmp-provider.enabled", true);
 defaultPref("media.gmp-manager.allowLocalSources", false);
 
-// Disable fecthing Widevine from Chromium servers
+// Disable fetching Widevine from Chromium servers
 defaultPref("media.gmp-widevinecdm.allow-chromium-update", false);
 defaultPref("media.gmp-manager.chromium-update-url", "");
 defaultPref("media.gmp-widevinecdm.chromium-guid", "luluglowsatnight");
@@ -403,13 +402,11 @@ defaultPref("media.gmp-widevinecdm.force-chromium-beta", false);
 
 // h264
 defaultPref("media.gmp-gmpopenh264.enabled", false);
-defaultPref("media.gmp-gmpopenh264.autoupdate", false);
 defaultPref("media.webrtc.hw.h264.enabled", true);
 
 // Widevine
 defaultPref("media.eme.enabled", false);
 defaultPref("media.gmp-widevinecdm.enabled", false);
-defaultPref("media.gmp-widevinecdm.autoupdate", false);
 defaultPref("media.eme.require-app-approval", true); // Require permission for playback of DRM content
 defaultPref("librewolf.eme.gmp-clearkey.enabled", false); // Whether the Clear Key CDM is enabled (depends on media.eme.enabled)
 defaultPref("librewolf.eme.warning.infoURL", "https://librewolf.net/docs/faq/#how-do-i-allow-playback-of-drm-controlled-content-when-should-i-allow-it");
@@ -426,7 +423,6 @@ defaultPref("browser.search.separatePrivateDefault", true); // [FF70+] // Arkenf
 defaultPref("browser.search.separatePrivateDefault.ui.enabled", true); // [FF71+]  // Arkenfox user.js v119
 defaultPref("browser.search.serpEventTelemetryCategorization.enabled", false);
 
-defaultPref("browser.urlbar.suggest.mdn", true);
 defaultPref("browser.urlbar.addons.featureGate", false);
 defaultPref("browser.urlbar.mdn.featureGate", false);
 defaultPref("browser.urlbar.trending.featureGate", false);
@@ -460,13 +456,15 @@ defaultPref("browser.urlbar.suggest.importantDates", false);
 defaultPref("browser.urlbar.suggest.weather", false);
 defaultPref("browser.urlbar.suggest.wikipedia", false);
 defaultPref("browser.urlbar.suggest.trending", false);
-defaultPref("browser.urlbar.suggest.topsites", false);
 defaultPref("browser.urlbar.suggest.mdn", false);
 defaultPref("browser.urlbar.suggest.yelp", false);
 defaultPref("browser.urlbar.yelp.mlEnabled", false);
-defaultPref("browser.urlbar.sponsoredTopSite", false);
+defaultPref("browser.urlbar.sponsoredTopSites", false);
 defaultPref("browser.urlbar.suggest.realtimeOptIn", false);
 defaultPref("browser.urlbar.suggest.sports", false);
+
+// Enables local shortcuts
+defaultPref("browser.urlbar.suggest.topsites", true);
 
 /** [SECTION] DOWNLOADS
  * user interaction should always be required for downloads, as a way to enhance security by asking
@@ -669,9 +667,23 @@ defaultPref("browser.newtabpage.activity-stream.feeds.weatherfeed", false);
 // and has no user facing UI. This is what Mozilla uses for nimbus rollouts.
 // We only set the user component, to allow using the UI to enable/disable the widgets.
 
+defaultPref("browser.newtabpage.activity-stream.widgets.system.enabled", true); // Main system toggle
 defaultPref("browser.newtabpage.activity-stream.widgets.enabled", false); // Main user toggle
 defaultPref("browser.newtabpage.activity-stream.widgets.feedback.enabled", false); // Disable feedback
 defaultPref("browser.newtabpage.activity-stream.widgets.hideAllToast.enabled", true); // Hide toast when all widgets are disabled
+
+// Allow the widgets to be available
+defaultPref("browser.newtabpage.activity-stream.widgets.system.clocks.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.crossword.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.focusTimer.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.lists.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.pictureOfTheDay.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.privacy.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.recentSearches.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.sportsWidget.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.stocks.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.weather.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.weatherForecast.enabled", true);
 
 // Set the individual widgets to be disabled by default
 defaultPref("browser.newtabpage.activity-stream.widgets.clocks.enabled", false);
@@ -680,11 +692,14 @@ defaultPref("browser.newtabpage.activity-stream.widgets.focusTimer.enabled", fal
 defaultPref("browser.newtabpage.activity-stream.widgets.lists.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.pictureOfTheDay.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.privacy.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.recentSearches.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.sportsWidget.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.stocks.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weather.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weatherForecast.enabled", false);
-defaultPref("browser.newtabpage.activity-stream.widgets.recentSearches.enabled", false);
+
+// Disable VPN promos
+defaultPref("browser.newtabpage.activity-stream.widgets.privacy.showVpnMessages", false);
 
 // Disable story carousel
 defaultPref("browser.newtabpage.activity-stream.discoverystream.carousel.enabled", false);
