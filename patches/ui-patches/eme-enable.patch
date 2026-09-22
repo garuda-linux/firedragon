@@ -1,13 +1,14 @@
 diff --git a/browser/actors/EncryptedMediaParent.sys.mjs b/browser/actors/EncryptedMediaParent.sys.mjs
-index 8bdeba9..fbf7b05 100644
+index 8bdeba9b88033..0c854f2b8fbe2 100644
 --- a/browser/actors/EncryptedMediaParent.sys.mjs
 +++ b/browser/actors/EncryptedMediaParent.sys.mjs
-@@ -27,6 +27,8 @@ export class EncryptedMediaParent extends JSWindowActorParent {
+@@ -27,6 +27,9 @@ export class EncryptedMediaParent extends JSWindowActorParent {
  
    ensureEMEEnabled(aBrowser, aKeySystem) {
      Services.prefs.setBoolPref("media.eme.enabled", true);
-+    Services.prefs.setBoolPref("media.gmp-manager.updateEnabled", true);
-+    Services.prefs.setBoolPref("media.gmp-widevinecdm.autoupdate", true);
++    if (aKeySystem && aKeySystem == "com.widevine.alpha") {
++      Services.prefs.setBoolPref("media.gmp-manager.updateEnabled", true);
++    }
      if (
        aKeySystem &&
        aKeySystem == "com.widevine.alpha" &&
