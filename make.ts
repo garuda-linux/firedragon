@@ -433,7 +433,7 @@ async function ciRelease() {
         await $`curl --header 'JOB-TOKEN: '${$.env.CI_JOB_TOKEN} --upload-file '.dist/'${artifact.name} ${artifact.url}`;
     }
 
-    const technicalInformation = `Firefox: ${firefoxVersion}`;
+    const technicalInformation = `Firefox: ${firefoxVersion}\nLibreWolf: ${librewolfVersion}`;
     const description = (await $`git-cliff -c assets/cliff.release.toml --latest`.text())
         .replace('<!--DOWNLOADS-->', downloads.join('\n'))
         .replace('<!--TECHNICAL_INFORMATION-->', technicalInformation);
