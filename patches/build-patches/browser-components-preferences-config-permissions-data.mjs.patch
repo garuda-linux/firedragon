@@ -1,8 +1,8 @@
 diff --git a/browser/components/preferences/config/permissions-data.mjs b/browser/components/preferences/config/permissions-data.mjs
-index 8e0e6d5fb32e..9ac14aa05fa7 100644
+index e25447b12a37..7adaa40c4a5e 100644
 --- a/browser/components/preferences/config/permissions-data.mjs
 +++ b/browser/components/preferences/config/permissions-data.mjs
-@@ -639,112 +639,4 @@ SettingGroupManager.registerGroups({
+@@ -646,112 +646,4 @@ SettingGroupManager.registerGroups({
        },
      ],
    },
@@ -13,8 +13,8 @@ index 8e0e6d5fb32e..9ac14aa05fa7 100644
 -        l10nId: "data-collection",
 -        control: "moz-fieldset",
 -        iconSrc: "chrome://global/skin/icons/trending.svg",
+-        headingLevel: 2,
 -        controlAttrs: {
--          headinglevel: 2,
 -          "data-l10n-attrs": "searchkeywords",
 -        },
 -        items: [
