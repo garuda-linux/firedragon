@@ -20,6 +20,11 @@
         </q-card-section>
         <q-list class="q-mb-lg">
             <BoolPrefItem
+                pref="browser.nova.enabled"
+                :title="t('pages.design.advanced.enableNovaRedesign.title')"
+                :description="t('pages.design.advanced.enableNovaRedesign.description')"
+            />
+            <BoolPrefItem
                 pref="toolkit.legacyUserProfileCustomizations.stylesheets"
                 :title="t('pages.design.advanced.allowUserChromeCss.title')"
                 :description="t('pages.design.advanced.allowUserChromeCss.description')"

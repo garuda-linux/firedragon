@@ -141,6 +141,10 @@
       },
       "advanced": {
         "title": "Advanced",
+        "enableNovaRedesign": {
+          "title": "Enable Nova Redesign",
+          "description": "Enable the Nova Redesign theme. May not be compatible with Lepton skins."
+        },
         "allowUserChromeCss": {
           "title": "Allow userChrome.css customization",
           "description": "Enable this if you want to customize the UI with a manually loaded theme. Make sure you trust the provider of the theme.",
