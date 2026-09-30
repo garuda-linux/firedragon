@@ -8,6 +8,7 @@ export const repoUrl = packageJson.repository.url.replace(/\.git$/, '');
 export const sourceDir = 'browser/firedragon';
 export const version = packageJson.version;
 export const firefoxVersion = packageJson.config.firefox.version;
+export const librewolfRelease = packageJson.config.librewolf.release;
 export const flatpakBaseId = 'org.mozilla.firefox.BaseApp';
 export const flatpakBaseVersion = '25.08';
 export const flatpakBranch = process.env.CI_COMMIT_TAG ? 'stable' : 'test';

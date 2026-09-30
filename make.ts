@@ -13,6 +13,7 @@ import {
     flatpakBaseId,
     flatpakBaseVersion,
     flatpakBranch,
+    librewolfRelease,
     multiLocaleMap,
     objDir,
     profileDir,
@@ -89,6 +90,17 @@ async function extractArtifactTo(artifact: string, dir: string) {
 }
 
 /* COMMANDS */
+
+async function patches() {
+    const librewolfVersion = `${firefoxVersion}-${librewolfRelease}`,
+        baseUrl = `https://librewolf.dev/librewolf/source/raw/tag/${librewolfVersion}`;
+    await $`curl ${baseUrl}/assets/patches.txt -o ${tmpDir}/patches.txt`.lines();
+    for (const patch of await $`cat ${tmpDir}/patches.txt`.lines()) {
+        if (await fs.pathExists(patch)) {
+            await $`curl ${baseUrl}/${patch} -o ${patch}`;
+        }
+    }
+}
 
 async function source() {
     const buildDir = `${tmpDir}/${basename}`;
@@ -436,6 +448,9 @@ await $`mkdir -p ${cacheDir} ${distDir}`;
 
 for (const command of argv._) {
     switch (command) {
+        case 'patches':
+            await patches();
+            break;
         case 'source':
             await source();
             break;
