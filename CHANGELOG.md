@@ -1,5 +1,33 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.7.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.7.0) — 2026-09-30 — [`v13.6.1`…`v13.7.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.6.1...v13.7.0)
+
+### 🚀 Features
+
+- _(distribution)_ Disable speech recognition by default — [`d9573dca…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d9573dca53f5d638d480cff1dae1010a032236ec)
+- _(config)_ Disable nova redesign by default — [`cb7e5a31…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/cb7e5a312c37bc5478eb3837f9620484da779cb5)
+- _(builtin-addons/settings)_ Add option to enable nova redesign — [`b5bc1b2a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b5bc1b2ad568a2d4a19f45194aeffad7d901f91f)
+- _(make)_ Add LibreWolf version to release description — [`02894a22…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/02894a22216b50d4cfed3b6de9a36deb9290f7d6)
+
+### 🐛 Bug Fixes
+
+- _(patches)_ Add webgl.svg & webgl-blocked.svg from librewolf repo — [`2faf9ab5…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2faf9ab5030f4c47e04c33bf6767495b950563c8)
+- _(patches)_ Rebase browser-components-preferences-config-permissions-data.mjs.patch for 157.0 — [`221ac45e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/221ac45e7400938c4c16175be7ac6f54ed8a9bf6)
+
+### 🚜 Refactor
+
+- _(make)_ Move librewolfVersion variable into config.ts — [`2201593d…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2201593ded1c2355c03373a60cd05d797216326b)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox 157.0 — [`bf7236c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bf7236c6d698aa9c194873e6d0728873fd84fb9f)
+- _(make)_ Add patches command to update librewolf patches — [`84a250db…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/84a250dba84bc8bf7047d979e8b29f00ed27e4f7)
+- _(patches)_ Update librewolf patches to v157.0-1 — [`786c118e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/786c118e0e6dfcf6603284f9c5d7beefd34276b9)
+- _(config)_ Update librewolf preset to v157.0-1 — [`673adbae…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/673adbae30ec61c83c6d46157cdcea43ffc4d2a2)
+- _(config)_ Add & update comments for firedragon prefs — [`1e200e0f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1e200e0f4402a9858bffadeb0b165ff5f03b0721)
+- Update pnpm & deps — [`a057da56…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a057da5694b7f168f78096bc48f037fc89941b4a)
+- **builtin-addons/startpage:** Update pnpm & deps — [`b27e28d2…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/b27e28d2bd2841c9b84c1ea101e139f791c8243c)
+
 ## [FireDragon v13.6.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.6.1) — 2026-09-22 — [`v13.6.0`…`v13.6.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.6.0...v13.6.1)
 
 ### ⚙️ Miscellaneous Tasks
