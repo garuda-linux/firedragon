@@ -440,7 +440,8 @@ defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 // Disable tabs in titlebar for linux to use SSD
 defaultPref("browser.tabs.inTitlebar", 0);
 #endif
-// Disabled for now, since it is quite buggy:
+// Disable nova redesign
+defaultPref("browser.nova.enabled", false);
 // Enable global menu (disabled for now, since it is quite buggy)
 // defaultPref("widget.gtk.global-menu.enabled", true);
 // defaultPref("widget.gtk.global-menu.wayland.enabled", true);
