@@ -151,7 +151,7 @@ defaultPref("network.dns.disablePrefetchFromHTTPS", true); // disable dns prefet
 /** [SECTION] DOH */
 
 // The current DoH providers are:
-//  ->  LibreDNS, Quad9, Wikimedia, dns4all, Mullvad.
+//  ->  LibreDNS, Quad9, Wikimedia, dns4all.
 // For more providers: https://github.com/curl/curl/wiki/DNS-over-HTTPS
 
 defaultPref(
@@ -180,10 +180,6 @@ defaultPref(
   {
     "UIName": "DNS4All (No Filtering)",
     "uri": "https://doh.dns4all.eu/dns-query"
-  },
-  {
-    "UIName": "Mullvad (No Filtering)",
-    "uri": "https://dns.mullvad.net/dns-query"
   }
 ]`
 );
@@ -252,7 +248,6 @@ defaultPref("browser.toolbars.bookmarks.visibility", "always");
 // Enable GPC ( see issue: https://codeberg.org/librewolf/issues/issues/1840 )
 defaultPref("privacy.globalprivacycontrol.enabled", true);
 defaultPref("privacy.globalprivacycontrol.pbmode.enabled", true);
-defaultPref("privacy.globalprivacycontrol.functionality.enabled", true);
 
 /** [SECTION] WEBGL */
 pref("webgl.disabled", false);
@@ -300,6 +295,7 @@ pref("network.http.http3.enable_0rtt", false);
 pref("security.tls.version.enable-deprecated", false); // make TLS downgrades session only by enforcing it with pref(), default
 defaultPref("browser.xul.error_pages.expert_bad_cert", true); // show relevant and advanced issues on warnings and error screens
 defaultPref("security.tls.enable_mlkem1024", true); // Enable CNSA 2.0 ML-KEM-1024 key agreement https://bugzilla.mozilla.org/show_bug.cgi?id=2052296
+defaultPref("security.tls.enable_mldsa", true); // https://bugzilla.mozilla.org/show_bug.cgi?id=2066588
 
 defaultPref("security.insecure_field_warning.ignore_local_ip_address", false); // Do not ignore local addresses
 
@@ -395,8 +391,6 @@ defaultPref("media.gmp-manager.allowLocalSources", false);
 
 // Disable fetching Widevine from Chromium servers
 defaultPref("media.gmp-widevinecdm.allow-chromium-update", false);
-defaultPref("media.gmp-manager.chromium-update-url", "");
-defaultPref("media.gmp-widevinecdm.chromium-guid", "luluglowsatnight");
 defaultPref("media.gmp-widevinecdm.force-chromium-update", false);
 defaultPref("media.gmp-widevinecdm.force-chromium-beta", false);
 
@@ -514,6 +508,8 @@ defaultPref("browser.smartwindow.smartformfill.enabled", false);
 defaultPref("browser.smartwindow.searchTheWebFast", false);
 // Disable ML for autofill detection
 defaultPref("extensions.formautofill.useml", false);
+// Disable ML speech recognition
+defaultPref("browser.ai.control.speechRecognition", "blocked");
 
 // Removes the AI pane
 lockPref("browser.preferences.aiControls", false);
@@ -567,6 +563,7 @@ defaultPref("app.releaseNotesURL.prompt", "https://librewolf.dev/librewolf/bsys6
 defaultPref("app.update.checkInstallTime.days", 7);
 defaultPref("app.update.badgeWaitTime", 0);
 
+defaultPref("app.update.disabledForTesting", false);
 /** [SECTION] SYNC
  * this functionality is disabled by default but it can be activated in one click.
  * this pref fully controls the feature, including its ui.
@@ -653,6 +650,12 @@ defaultPref(
   "browser.newtabpage.activity-stream.section.highlights.includeVisited",
   false
 );
+
+defaultPref("browser.newtabpage.activity-stream.system.showSponsored", false);
+defaultPref("browser.newtabpage.activity-stream.showSponsored", false);
+defaultPref("browser.newtabpage.activity-stream.showSponsoredCheckboxes", false);
+defaultPref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+
 // disable telemetry in Firefox Home
 lockPref("browser.newtabpage.activity-stream.feeds.telemetry", false);
 lockPref("browser.newtabpage.activity-stream.telemetry", false);
@@ -749,6 +752,7 @@ defaultPref("browser.contentblocking.report.lockwise.enabled", false);
 lockPref("browser.contentblocking.report.hide_vpn_banner", true);
 lockPref("browser.contentblocking.report.show_mobile_app", false);
 lockPref("browser.vpn_promo.enabled", false);
+lockPref("browser.ipProtection.upgradeNotAvailable", true);
 // ...about:addons recommendations sections and more
 defaultPref("extensions.htmlaboutaddons.recommendations.enabled", false);
 defaultPref("extensions.getAddons.showPane", false);
@@ -814,6 +818,10 @@ defaultPref("browser.urlbar.share-button.enabled", false);
 // https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/uriloader/exthandler/ExtHandlerService.sys.mjs#95-117
 lockPref("gecko.handlerService.defaultHandlersVersion", 999);
 
+// Set out toolbar defaults
+defaultPref("browser.uiCustomization.state", '{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":[],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","vertical-spacer","urlbar-container","customizableui-special-spring2","downloads-button","fxa-toolbar-menu-button","reset-pbm-toolbar-button","unified-extensions-button","ublock0_raymondhill_net-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","customizableui-special-spring3","alltabs-button","smartwindow-group-tabs-button","ai-window-toggle"],"vertical-tabs":[],"PersonalToolbar":["personal-bookmarks"]},"seen":["reset-pbm-toolbar-button","developer-button","screenshot-button","ublock0_raymondhill_net-browser-action"],"dirtyAreaCache":["nav-bar","TabsToolbar","vertical-tabs"],"currentVersion":26,"newElementCount":4}');
+defaultPref("browser.toolbarbuttons.introduced.sidebar-button", true);
+
 /** ------------------------------
  * [CATEGORY] TELEMETRY
  * telemetry is already disabled elsewhere and most of the stuff in here is just for redundancy.
@@ -823,11 +831,10 @@ lockPref("toolkit.telemetry.enabled", false); // master switch
 lockPref("toolkit.telemetry.server", "data:,");
 lockPref("toolkit.telemetry.archive.enabled", false);
 lockPref("toolkit.telemetry.newProfilePing.enabled", false);
-lockPref("toolkit.telemetry.updatePing.enabled", false);
 lockPref("toolkit.telemetry.firstShutdownPing.enabled", false);
 lockPref("toolkit.telemetry.shutdownPingSender.enabled", false);
 lockPref("toolkit.telemetry.bhrPing.enabled", false);
-lockPref("toolkit.telemetry.cachedClientID", "");
+lockPref("toolkit.telemetry.cachedClientID", "c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0");
 lockPref("toolkit.telemetry.previousBuildID", "");
 lockPref("toolkit.telemetry.server_owner", "");
 lockPref("toolkit.coverage.opt-out", true); // hidden
@@ -858,8 +865,9 @@ lockPref("identity.fxaccounts.telemetry.clientInfoPing.enabled", false);
 // Disable newtab ping
 lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.enabled", false);
 // Set random ID
-lockPref("browser.newtabpage.activity-stream.impressionId", "{lulu-glows-at-night}");
+lockPref("browser.newtabpage.activity-stream.impressionId", "{some-fake-impression-ID}");
 lockPref("toolkit.telemetry.site_categories", "{}");
+lockPref("toolkit.profiles.newProfileSubmitted", true);
 
 // Disable and deregister the Glean add-on ping scheduler
 // https://codeberg.org/celenity/Phoenix/commit/1ff7ae1dbd3095c993a73af69c6bb2a6ad700c55
@@ -903,6 +911,10 @@ defaultPref("browser.startup.windowsLaunchOnLogin.disableLaunchOnLoginPrompt", t
 // This is currently Windows only.
 lockPref("browser.shell.customIcon.enabled", false);
 
+// Make notification helper available, but disabled by default
+defaultPref("app.backgroundNotifications.helper.available", true);
+defaultPref("app.backgroundNotifications.helper.enabled", false);
+
 /** ------------------------------
  * [CATEGORY] MACOS
  * the prefs in this section only apply to macOS installations and they don't have any
@@ -925,7 +937,7 @@ defaultPref("librewolf.debugger.force_detach", false);
 defaultPref("librewolf.console.logging_disabled", false);
 defaultPref(
   "librewolf.services.settings.allowedCollections",
-  "security-state/*,main/content-classifier-lists,main/change-password-urls,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/vpn-serverlist,main/fxrelay-denylist,main/translations-models-v2,main/translations-wasm-v2,main/mfcdm-origins-list,main/url-classifier-exceptions,main/fxrelay-allowlist,main/ml-model-allow-deny-list,main/third-party-cookie-blocking-exempt-urls,main/backup-common-passwords-list,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/translations-models,main/translations-wasm,main/cookie-banner-rules-list,main/password-rules,main/websites-with-shared-credential-backends,main/password-recipes,main/partitioning-exempt-urls,blocklists/addons-bloomfilters,main/tracking-protection-lists,main/anti-tracking-url-decoration,main/hijack-blocklists,main/fxmonitor-breaches,main/language-dictionaries,blocklists/gfx,blocklists/addons,blocklists/plugins"
+  "security-state/*,main/content-classifier-lists,main/change-password-urls,main/webcompat-interventions,main/addons-data-leak-blocker-domains,main/vpn-serverlist,main/fxrelay-denylist,main/translations-models-v2,main/translations-wasm-v2,main/mfcdm-origins-list,main/url-classifier-exceptions,main/fxrelay-allowlist,main/ml-model-allow-deny-list,main/third-party-cookie-blocking-exempt-urls,main/backup-common-passwords-list,main/bounce-tracking-protection-exceptions,main/fingerprinting-protection-overrides,main/translations-models,main/translations-wasm,main/password-rules,main/websites-with-shared-credential-backends,main/password-recipes,main/partitioning-exempt-urls,blocklists/addons-bloomfilters,main/tracking-protection-lists,main/anti-tracking-url-decoration,main/hijack-blocklists,main/fxmonitor-breaches,main/language-dictionaries,blocklists/gfx,blocklists/addons,blocklists/plugins"
 );
 defaultPref(
   "librewolf.services.settings.allowedCollectionsFromDump",
@@ -939,6 +951,9 @@ defaultPref("librewolf.devHelpers", false);
 
 // Toggle for enabling/disabling fetching of the CDN wallpapers
 defaultPref("librewolf.externalWallpapers.enabled", false);
+
+// Used for determining if the Mullvad DNS migration should be shown
+defaultPref("librewolf.migration.show_doh_notification", false);
 
 /** ------------------------------
  * [CATEGORY] OVERRIDES
