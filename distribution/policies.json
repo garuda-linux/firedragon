@@ -20,6 +20,9 @@
       },
       "SmartWindow": {
         "Value": "blocked"
+      },
+      "SpeechRecognition": {
+        "Value": "blocked"
       }
     },
 #ifndef FIREDRAGON_UPDATE
