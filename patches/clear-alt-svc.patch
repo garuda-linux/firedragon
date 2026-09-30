@@ -1,0 +1,24 @@
+diff --git a/netwerk/protocol/http/nsHttpHandler.cpp b/netwerk/protocol/http/nsHttpHandler.cpp
+index 78da5858bfe5..3f13d96152f9 100644
+--- a/netwerk/protocol/http/nsHttpHandler.cpp
++++ b/netwerk/protocol/http/nsHttpHandler.cpp
+@@ -9,6 +9,7 @@
+ 
+ #include "ASpdySession.h"
+ #include "AltServiceChild.h"
++#include "CacheObserver.h"
+ #include "EventTokenBucket.h"
+ #include "HttpLog.h"
+ #include "LoadContextInfo.h"
+@@ -2330,6 +2331,11 @@ nsHttpHandler::Observe(nsISupports* subject, const char* topic,
+     // clear cache of all authentication credentials.
+     mAuthCache->ClearAll();
+     mPrivateAuthCache->ClearAll();
++
++    if (CacheObserver::ClearCacheOnShutdown() && mAltSvcCache) {
++      mAltSvcCache->ClearAltServiceMappings();
++    }
++
+     if (mWifiTickler) mWifiTickler->Cancel();
+ 
+     // Inform nsIOService that network is tearing down.

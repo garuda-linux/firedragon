@@ -177,64 +177,16 @@ index 0000000..ead4eef
 +    );
 +  },
 +};
-diff --git a/browser/themes/shared/icons/webgl-blocked.svg b/browser/themes/shared/icons/webgl-blocked.svg
-new file mode 100644
-index 0000000000..6e18b7cf54
---- /dev/null
-+++ b/browser/themes/shared/icons/webgl-blocked.svg
-@@ -0,0 +1,18 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-+<svg
-+   width="16"
-+   height="16"
-+   viewBox="0 0 16 16"
-+   version="1.1"
-+   id="svg1"
-+   xml:space="preserve"
-+   xmlns="http://www.w3.org/2000/svg"
-+   xmlns:svg="http://www.w3.org/2000/svg"
-+   fill="context-fill"
-+   fill-opacity="context-fill-opacity"><defs
-+     id="defs1" /><g
-+     id="g30"
-+     transform="translate(-95.002999,-238.87424)"><path
-+       id="path30"
-+       style="stroke-linecap:round;paint-order:stroke fill markers"
-+       d="m 95.604562,238.87619 c -0.463094,0.0319 -0.839908,0.6221 -0.419922,1.06446 l 1,1 1.820312,1.82031 v 10.48437 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.625,-0.625 v -1.35547 h 7.878908 l 2.80078,2.80079 c 0.24466,0.24372 0.6401,0.24372 0.88477,0 0.24415,-0.24409 0.24415,-0.64068 0,-0.88477 l -2.0625,-2.06445 -1.10157,-1.10157 h -0.002 l -3.72656,-3.72656 v -0.002 l -0.96289,-0.96289 h -0.002 l -1.82031,-1.82031 -1.249999,-1.25 -0.636719,-0.63672 -2.367187,-2.36719 -0.462891,-0.46289 -0.355469,-0.35547 c -0.147451,-0.13999 -0.31048,-0.19033 -0.464843,-0.17969 z m 6.056638,4.00196 1.25,1.25 h 5.07422 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 5e-5,0.0215 -0.004,0.0416 -0.006,0.0625 l 0.96289,0.96289 c 0.18374,-0.30216 0.29391,-0.65288 0.29297,-1.02929 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 z m -2.406248,1.25 h 0.117188 l 2.13867,2.14062 a 1.4999924,1.4999924 0 0 0 -0.50976,1.10547 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.11718,-0.5 l 2.26563,2.26562 h -6.628908 z" /></g></svg>
-diff --git a/browser/themes/shared/icons/webgl.svg b/browser/themes/shared/icons/webgl.svg
-new file mode 100644
-index 0000000000..ffbf97c74d
---- /dev/null
-+++ b/browser/themes/shared/icons/webgl.svg
-@@ -0,0 +1,17 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-+<svg
-+   width="16"
-+   height="16"
-+   viewBox="0 0 16 16"
-+   version="1.1"
-+   id="svg1"
-+   xml:space="preserve"
-+   xmlns="http://www.w3.org/2000/svg"
-+   xmlns:svg="http://www.w3.org/2000/svg"
-+   fill="context-fill"
-+   fill-opacity="context-fill-opacity"><defs
-+     id="defs1" /><g
-+     id="g27"
-+     transform="translate(-95.002767,-238.87424)"><path
-+       id="path26"
-+       d="m 96.625679,239.87424 a 0.625,0.625 0 0 0 -0.625,0.625 0.625,0.625 0 0 0 0.625,0.625 h 0.626953 c 0.422091,-7e-5 0.751953,0.32791 0.751953,0.75 v 11.37109 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.624997,-0.625 v -1.35547 h 8.749998 c 1.095,0 1.99494,-0.90304 1.99219,-1.99804 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 h -8.730468 v -1.00391 c 0,-1.09772 -0.904231,-2.00019 -2.00195,-2 z m 2.628903,4.25391 h 8.730468 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 10e-4,0.41835 -0.32385,0.74415 -0.74219,0.74414 h -8.749998 z m 3.246088,1.74609 a 1.4999924,1.4999924 0 0 0 -1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,-1.5 1.4999924,1.4999924 0 0 0 -1.5,-1.5 z" /></g></svg>
 diff --git a/browser/themes/shared/jar.inc.mn b/browser/themes/shared/jar.inc.mn
-index 94de6f280e..882b27147d 100644
+index 907d188..f60a426 100644
 --- a/browser/themes/shared/jar.inc.mn
 +++ b/browser/themes/shared/jar.inc.mn
-@@ -191,6 +191,9 @@
+@@ -213,6 +213,8 @@
    skin/classic/browser/calendar-24.svg                (../shared/icons/calendar-24.svg)
    skin/classic/browser/canvas.svg                     (../shared/icons/canvas.svg)
    skin/classic/browser/canvas-blocked.svg             (../shared/icons/canvas-blocked.svg)
 +  skin/classic/browser/webgl.svg                      (../shared/icons/webgl.svg)
 +  skin/classic/browser/webgl-blocked.svg              (../shared/icons/webgl-blocked.svg)
-+  skin/classic/browser/notification-icons/webgl.svg   (../shared/notification-icons/webgl.svg)
    skin/classic/browser/characterEncoding.svg          (../shared/icons/characterEncoding.svg)
    skin/classic/browser/chevron-animation.svg          (../shared/icons/chevron-animation.svg)
    skin/classic/browser/circle-check-dotted.svg        (../shared/icons/circle-check-dotted.svg)
@@ -258,53 +210,6 @@ index f65f6bb61a..e5bbe3f976 100644
  #webauthn-notification-icon,
  .popup-notification-icon[popupid^="webauthn-prompt-"] {
    list-style-image: url(chrome://browser/skin/fingerprint.svg);
-diff --git a/browser/themes/shared/notification-icons/webgl-blocked.svg b/browser/themes/shared/notification-icons/webgl-blocked.svg
-new file mode 100644
-index 0000000000..6e18b7cf54
---- /dev/null
-+++ b/browser/themes/shared/notification-icons/webgl-blocked.svg
-@@ -0,0 +1,18 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-+<svg
-+   width="16"
-+   height="16"
-+   viewBox="0 0 16 16"
-+   version="1.1"
-+   id="svg1"
-+   xml:space="preserve"
-+   xmlns="http://www.w3.org/2000/svg"
-+   xmlns:svg="http://www.w3.org/2000/svg"
-+   fill="context-fill"
-+   fill-opacity="context-fill-opacity"><defs
-+     id="defs1" /><g
-+     id="g30"
-+     transform="translate(-95.002999,-238.87424)"><path
-+       id="path30"
-+       style="stroke-linecap:round;paint-order:stroke fill markers"
-+       d="m 95.604562,238.87619 c -0.463094,0.0319 -0.839908,0.6221 -0.419922,1.06446 l 1,1 1.820312,1.82031 v 10.48437 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.625,-0.625 v -1.35547 h 7.878908 l 2.80078,2.80079 c 0.24466,0.24372 0.6401,0.24372 0.88477,0 0.24415,-0.24409 0.24415,-0.64068 0,-0.88477 l -2.0625,-2.06445 -1.10157,-1.10157 h -0.002 l -3.72656,-3.72656 v -0.002 l -0.96289,-0.96289 h -0.002 l -1.82031,-1.82031 -1.249999,-1.25 -0.636719,-0.63672 -2.367187,-2.36719 -0.462891,-0.46289 -0.355469,-0.35547 c -0.147451,-0.13999 -0.31048,-0.19033 -0.464843,-0.17969 z m 6.056638,4.00196 1.25,1.25 h 5.07422 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 5e-5,0.0215 -0.004,0.0416 -0.006,0.0625 l 0.96289,0.96289 c 0.18374,-0.30216 0.29391,-0.65288 0.29297,-1.02929 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 z m -2.406248,1.25 h 0.117188 l 2.13867,2.14062 a 1.4999924,1.4999924 0 0 0 -0.50976,1.10547 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.11718,-0.5 l 2.26563,2.26562 h -6.628908 z" /></g></svg>
-diff --git a/browser/themes/shared/notification-icons/webgl.svg b/browser/themes/shared/notification-icons/webgl.svg
-new file mode 100644
-index 0000000000..ffbf97c74d
---- /dev/null
-+++ b/browser/themes/shared/notification-icons/webgl.svg
-@@ -0,0 +1,17 @@
-+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-+<svg
-+   width="16"
-+   height="16"
-+   viewBox="0 0 16 16"
-+   version="1.1"
-+   id="svg1"
-+   xml:space="preserve"
-+   xmlns="http://www.w3.org/2000/svg"
-+   xmlns:svg="http://www.w3.org/2000/svg"
-+   fill="context-fill"
-+   fill-opacity="context-fill-opacity"><defs
-+     id="defs1" /><g
-+     id="g27"
-+     transform="translate(-95.002767,-238.87424)"><path
-+       id="path26"
-+       d="m 96.625679,239.87424 a 0.625,0.625 0 0 0 -0.625,0.625 0.625,0.625 0 0 0 0.625,0.625 h 0.626953 c 0.422091,-7e-5 0.751953,0.32791 0.751953,0.75 v 11.37109 a 0.625,0.625 0 0 0 0.625,0.625 0.625,0.625 0 0 0 0.624997,-0.625 v -1.35547 h 8.749998 c 1.095,0 1.99494,-0.90304 1.99219,-1.99804 l -0.0117,-5.01953 c -0.003,-1.09501 -0.90499,-1.99414 -2,-1.99414 h -8.730468 v -1.00391 c 0,-1.09772 -0.904231,-2.00019 -2.00195,-2 z m 2.628903,4.25391 h 8.730468 c 0.42057,0 0.74894,0.32747 0.75,0.74804 l 0.0117,5.01953 c 10e-4,0.41835 -0.32385,0.74415 -0.74219,0.74414 h -8.749998 z m 3.246088,1.74609 a 1.4999924,1.4999924 0 0 0 -1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,1.5 1.4999924,1.4999924 0 0 0 1.5,-1.5 1.4999924,1.4999924 0 0 0 -1.5,-1.5 z" /></g></svg>
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
 index 5aaa427..52b587f 100644
 --- a/dom/canvas/ClientWebGLContext.cpp

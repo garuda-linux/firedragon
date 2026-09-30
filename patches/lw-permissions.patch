@@ -1,5 +1,5 @@
 diff --git a/browser/components/preferences/config/permissions-data.mjs b/browser/components/preferences/config/permissions-data.mjs
-index e25447b12a..d944570aa0 100644
+index e25447b..432f6f3 100644
 --- a/browser/components/preferences/config/permissions-data.mjs
 +++ b/browser/components/preferences/config/permissions-data.mjs
 @@ -11,6 +11,7 @@ const XPCOMUtils = ChromeUtils.importESModule(
@@ -99,7 +99,7 @@ index e25447b12a..d944570aa0 100644
 +            control: "moz-box-button",
 +            l10nId: "permissions-webgl2",
 +            controlAttrs: {
-+              ".iconSrc": "chrome://browser/skin/notification-icons/webgl.svg",
++              ".iconSrc": "chrome://browser/skin/webgl.svg",
 +              "search-l10n-ids":
 +                "permissions-remove.label,permissions-remove-all.label,permissions-site-webgl-window2.title,permissions-site-webgl-desc",
 +            },
@@ -177,10 +177,10 @@ index 013c0df..f3e74f3 100644
      window: "permissions-site-camera-window2",
      description: "permissions-site-camera-desc",
 diff --git a/browser/modules/moz.build b/browser/modules/moz.build
-index eebf824..d8dfd19 100644
+index cd7ae3c..30a1d0a 100644
 --- a/browser/modules/moz.build
 +++ b/browser/modules/moz.build
-@@ -150,9 +150,11 @@ EXTRA_JS_MODULES += [
+@@ -157,10 +157,12 @@ EXTRA_JS_MODULES += [
  MOZ_SRC_FILES += [
      "CanvasPermissionPromptHelper.sys.mjs",
      "ContextId.sys.mjs",
@@ -188,6 +188,7 @@ index eebf824..d8dfd19 100644
      "ObserverForwarder.sys.mjs",
      "PrivateBrowsingUI.sys.mjs",
      "SerialDeviceSharingHelper.sys.mjs",
+     "UIDensityTelemetry.sys.mjs",
 +    "WebGLPermissionPromptHelper.sys.mjs",
  ]
  
@@ -262,7 +263,7 @@ index 91b2aa7deeff..114fd428a9f6 100644
    "dom.webmidi.enabled"
  );
 diff --git a/browser/themes/shared/preferences/privacy.css b/browser/themes/shared/preferences/privacy.css
-index e81a1e037e03..3d9021f3448e 100644
+index 896619b..8792ec1 100644
 --- a/browser/themes/shared/preferences/privacy.css
 +++ b/browser/themes/shared/preferences/privacy.css
 @@ -37,6 +37,14 @@
@@ -274,7 +275,7 @@ index e81a1e037e03..3d9021f3448e 100644
 +}
 +
 +.webgl-icon {
-+  list-style-image: url(chrome://browser/skin/notification-icons/webgl.svg);
++  list-style-image: url(chrome://browser/skin/webgl.svg);
 +}
 +
  .camera-icon {
