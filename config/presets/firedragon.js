@@ -429,14 +429,19 @@ defaultPref("mousewheel.default.delta_multiplier_y", 300); // Adjust mouse wheel
  * [CATEGORY] FIREDRAGON
  * FireDragon-specific settings
  * ------------------------------- */
+// Use FireDragon Startpage
 defaultPref("browser.startup.page", 3);
+// Enable sidebar and add firedragon tools
 defaultPref("sidebar.revamp", true);
 defaultPref("sidebar.main.tools", "history,bookmarks,firedragon-notes@firedragon.garudalinux.org,firedragon-workspaces@firedragon.garudalinux.org");
+// Allow userChrome & userContent CSS
 defaultPref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 #ifdef XP_LINUX
+// Disable tabs in titlebar for linux to use SSD
 defaultPref("browser.tabs.inTitlebar", 0);
 #endif
 // Disabled for now, since it is quite buggy:
+// Enable global menu (disabled for now, since it is quite buggy)
 // defaultPref("widget.gtk.global-menu.enabled", true);
 // defaultPref("widget.gtk.global-menu.wayland.enabled", true);
 
