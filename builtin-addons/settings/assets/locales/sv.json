@@ -148,6 +148,10 @@
             "title": "Omstart krävs",
             "message": "FireDragons omstart krävs för att helt tillåta eller ej tillåta userChrome.css anpassning."
           }
+        },
+        "enableNovaRedesign": {
+          "title": "Aktivera Nova omdesign",
+          "description": "Aktivera Nova omdesign temat. Är kanske inte kompatibelt med Lepton teman."
         }
       }
     },
