@@ -144,6 +144,9 @@ defaultPref("network.file.disable_unc_paths", true); // hidden, disable using un
 defaultPref("network.proxy.socks_remote_dns", true); // forces dns query through the proxy when using one
 defaultPref("media.peerconnection.ice.proxy_only_if_behind_proxy", true); // force webrtc inside proxy when one is used
 
+// Allow the share menu when MOZ_PROXY_BYPASS_PROTECTION is set
+defaultPref("browser.menu.share_url.allow", true);
+
 /** [SECTION] DNS */
 defaultPref("network.dns.disablePrefetch", true); // disable dns prefetching
 defaultPref("network.dns.disablePrefetchFromHTTPS", true); // disable dns prefetching HTTPS
@@ -579,6 +582,9 @@ defaultPref("signon.autofillForms", false);
 defaultPref("extensions.formautofill.addresses.enabled", false);
 defaultPref("extensions.formautofill.creditCards.enabled", false);
 defaultPref("extensions.formautofill.passports.enabled", false);
+
+// Disable Firefox Relay by default
+defaultPref("signon.firefoxRelay.feature", "disabled");
 
 // Disabling breaks saving of passwords in some cases
 // The "scanning" of the page only runs when "signon.rememberSignons" is set to "true"
