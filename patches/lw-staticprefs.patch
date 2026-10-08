@@ -1,0 +1,42 @@
+diff --git a/modules/libpref/init/StaticPrefList.yaml b/modules/libpref/init/StaticPrefList.yaml
+index e6ae7eaf77..edbb98bf96 100644
+--- a/modules/libpref/init/StaticPrefList.yaml
++++ b/modules/libpref/init/StaticPrefList.yaml
+@@ -12125,6 +12125,25 @@
+   value: true
+   mirror: always
+ 
++#---------------------------------------------------------------------------
++# Prefs starting with "librewolf."
++#---------------------------------------------------------------------------
++
++- name: librewolf.jit.enabled-by-default
++  type: bool
++  value: true
++  mirror: always
++
++- name: librewolf.webgl.prompt
++  type: RelaxedAtomicBool
++  value: true
++  mirror: always
++
++- name: librewolf.webgl.prompt.hide
++  type: RelaxedAtomicBool
++  value: true
++  mirror: always
++
+ #---------------------------------------------------------------------------
+ # Prefs starting with "logging."
+ #---------------------------------------------------------------------------
+diff --git a/modules/libpref/moz.build b/modules/libpref/moz.build
+index 2c8b218c61..16805711b4 100644
+--- a/modules/libpref/moz.build
++++ b/modules/libpref/moz.build
+@@ -56,6 +56,7 @@ pref_groups = [
+     "javascript",
+     "layers",
+     "layout",
++    "librewolf",
+     "logging",
+     "mathml",
+     "media",

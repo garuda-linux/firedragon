@@ -1,0 +1,568 @@
+diff --git a/browser/base/content/browser-siteIdentity.js b/browser/base/content/browser-siteIdentity.js
+index 16b222280f..d73e3c878c 100644
+--- a/browser/base/content/browser-siteIdentity.js
++++ b/browser/base/content/browser-siteIdentity.js
+@@ -7,6 +7,9 @@ ChromeUtils.defineESModuleGetters(this, {
+   QWACs: "resource://gre/modules/psm/QWACs.sys.mjs",
+ });
+ 
++const IDENTITY_JIT_PERMISSION = "jit";
++const IDENTITY_JIT_PREF = "librewolf.jit.enabled-by-default";
++
+ /**
+  * Utility object to handle manipulations of the identity indicators in the UI
+  */
+@@ -237,6 +240,9 @@ var gIdentityHandler = {
+       "identity-popup-more-info": event => {
+         this.handleMoreInfoClick(event);
+       },
++      "identity-popup-enable-jit-button": () => {
++        this.toggleJIT();
++      },
+     };
+ 
+     for (let [id, handler] of Object.entries(COMMANDS)) {
+@@ -436,6 +442,21 @@ var gIdentityHandler = {
+     return this._schemelessHttpsFirstModeEnabled;
+   },
+ 
++  get _jitEnabled() {
++    delete this._jitEnabled;
++    XPCOMUtils.defineLazyPreferenceGetter(
++      this,
++      "_jitEnabled",
++      IDENTITY_JIT_PREF,
++      false,
++      () => {
++        this.refreshJITToggle();
++      }
++    );
++
++    return this._jitEnabled;
++  },
++
+   _isHttpsOnlyModeActive(isWindowPrivate) {
+     return (
+       this._httpsOnlyModeEnabled ||
+@@ -1332,6 +1353,8 @@ var gIdentityHandler = {
+     if (event.target == this._identityPopup) {
+       PopupNotifications.suppressWhileOpen(this._identityPopup);
+       window.addEventListener("focus", this, true);
++
++      this.refreshJITToggle();
+     }
+   },
+ 
+@@ -1370,6 +1393,7 @@ var gIdentityHandler = {
+         let { type } = subject.QueryInterface(Ci.nsIPermission);
+         if (SitePermissions.isSitePermission(type)) {
+           this.refreshIdentityBlock();
++          this.refreshJITToggle();
+         }
+         break;
+       }
+@@ -1454,4 +1478,92 @@ var gIdentityHandler = {
+       elem.removeAttribute(attr);
+     }
+   },
++
++  refreshJITToggle() {
++    const toggle = document.getElementById("identity-popup-enable-jit-toggle");
++    const principal = gBrowser.contentPrincipal;
++
++    if (!toggle || !principal || !principal.isContentPrincipal) {
++      return;
++    }
++
++    const siteURI = Services.io.newURI(principal.siteOriginNoSuffix);
++    const jitPrincipal = Services.scriptSecurityManager.createContentPrincipal(
++      siteURI,
++      principal.originAttributes
++    );
++
++    const permission = Services.perms.testExactPermissionFromPrincipal(
++      jitPrincipal,
++      IDENTITY_JIT_PERMISSION
++    );
++
++    let enabled = this._jitEnabled;
++
++    switch (permission) {
++      case Services.perms.ALLOW_ACTION:
++        enabled = true;
++        break;
++      case Services.perms.DENY_ACTION:
++        enabled = false;
++        break;
++      case Services.perms.UNKNOWN_ACTION:
++      default:
++        break;
++    }
++
++    toggle.toggleAttribute("pressed", enabled);
++  },
++
++  toggleJIT() {
++    const principal = gBrowser.contentPrincipal;
++
++    if (!principal || !principal.isContentPrincipal) {
++      return;
++    }
++
++    const siteURI = Services.io.newURI(principal.siteOriginNoSuffix);
++    const jitPrincipal = Services.scriptSecurityManager.createContentPrincipal(
++      siteURI,
++      principal.originAttributes
++    );
++
++    const defaultEnabled = this._jitEnabled;
++
++    const permission = Services.perms.testExactPermissionFromPrincipal(
++      jitPrincipal,
++      IDENTITY_JIT_PERMISSION
++    );
++
++    let currentlyEnabled = defaultEnabled;
++
++    switch (permission) {
++      case Services.perms.ALLOW_ACTION:
++        currentlyEnabled = true;
++        break;
++      case Services.perms.DENY_ACTION:
++        currentlyEnabled = false;
++        break;
++      case Services.perms.UNKNOWN_ACTION:
++      default:
++        break;
++    }
++
++    const enabled = !currentlyEnabled;
++
++    if (enabled === defaultEnabled) {
++      Services.perms.removeFromPrincipal(jitPrincipal, IDENTITY_JIT_PERMISSION);
++    } else {
++      Services.perms.addFromPrincipal(
++        jitPrincipal,
++        IDENTITY_JIT_PERMISSION,
++        enabled ? Services.perms.ALLOW_ACTION : Services.perms.DENY_ACTION,
++        Services.perms.EXPIRE_NEVER
++      );
++    }
++
++    PanelMultiView.hidePopup(this._identityPopup);
++    this.refreshJITToggle();
++    BrowserCommands.reload();
++  },
+ };
+diff --git a/browser/base/content/browser-trustPanel.js b/browser/base/content/browser-trustPanel.js
+index 544866fac7..3b692ef7bf 100644
+--- a/browser/base/content/browser-trustPanel.js
++++ b/browser/base/content/browser-trustPanel.js
+@@ -138,6 +138,9 @@ const SMARTBLOCK_EMBED_INFO = [
+   },
+ ];
+ 
++const TRUST_JIT_PERMISSION = "jit";
++const TRUST_JIT_PREF = "librewolf.jit.enabled-by-default";
++
+ class TrustPanel {
+   #state = null;
+   #secInfo = null;
+@@ -208,6 +211,8 @@ class TrustPanel {
+     // Add an observer to listen for FxAccounts logout to clear OAuth cache
+     Services.obs.addObserver(this, "fxaccounts:onlogout");
+ 
++    Services.prefs.addObserver(TRUST_JIT_PREF, this);
++
+     customElements.whenDefined("breach-alert-panel").then(() => {
+       const breachAlertElement = document.getElementById(
+         "trustpanel-breach-alert-section"
+@@ -230,6 +235,7 @@ class TrustPanel {
+ 
+     Services.obs.removeObserver(this, "smartblock:open-protections-panel");
+     Services.obs.removeObserver(this, "fxaccounts:onlogout");
++    Services.prefs.removeObserver(TRUST_JIT_PREF, this);
+   }
+ 
+   get #popup() {
+@@ -324,6 +330,9 @@ class TrustPanel {
+         .addEventListener("command", event =>
+           this.#showClearCookiesSubview(event)
+         );
++      document
++        .getElementById("trust-panel-enable-jit-button")
++        .addEventListener("click", () => this.#toggleJIT());
+       document
+         .getElementById("trustpanel-siteinformation-morelink")
+         .addEventListener("click", () => this.#showSecurityPopup());
+@@ -348,6 +357,94 @@ class TrustPanel {
+     }
+   }
+ 
++  #refreshJITToggle() {
++    const toggle = document.getElementById("trust-panel-enable-jit-toggle");
++    const principal = gBrowser.contentPrincipal;
++
++    if (!toggle || !principal || !principal.isContentPrincipal) {
++      return;
++    }
++
++    const siteURI = Services.io.newURI(principal.siteOriginNoSuffix);
++    const jitPrincipal = Services.scriptSecurityManager.createContentPrincipal(
++      siteURI,
++      principal.originAttributes
++    );
++
++    const permission = Services.perms.testExactPermissionFromPrincipal(
++      jitPrincipal,
++      TRUST_JIT_PERMISSION
++    );
++
++    let enabled = Services.prefs.getBoolPref(TRUST_JIT_PREF, false);
++
++    switch (permission) {
++      case Services.perms.ALLOW_ACTION:
++        enabled = true;
++        break;
++      case Services.perms.DENY_ACTION:
++        enabled = false;
++        break;
++      case Services.perms.UNKNOWN_ACTION:
++      default:
++        break;
++    }
++
++    toggle.toggleAttribute("pressed", enabled);
++  }
++
++  #toggleJIT() {
++    const principal = gBrowser.contentPrincipal;
++
++    if (!principal || !principal.isContentPrincipal) {
++      return;
++    }
++
++    const siteURI = Services.io.newURI(principal.siteOriginNoSuffix);
++    const jitPrincipal = Services.scriptSecurityManager.createContentPrincipal(
++      siteURI,
++      principal.originAttributes
++    );
++
++    const defaultEnabled = Services.prefs.getBoolPref(TRUST_JIT_PREF, false);
++
++    const permission = Services.perms.testExactPermissionFromPrincipal(
++      jitPrincipal,
++      TRUST_JIT_PERMISSION
++    );
++
++    let currentlyEnabled = defaultEnabled;
++
++    switch (permission) {
++      case Services.perms.ALLOW_ACTION:
++        currentlyEnabled = true;
++        break;
++      case Services.perms.DENY_ACTION:
++        currentlyEnabled = false;
++        break;
++      case Services.perms.UNKNOWN_ACTION:
++      default:
++        break;
++    }
++
++    const enabled = !currentlyEnabled;
++
++    if (enabled === defaultEnabled) {
++      Services.perms.removeFromPrincipal(jitPrincipal, TRUST_JIT_PERMISSION);
++    } else {
++      Services.perms.addFromPrincipal(
++        jitPrincipal,
++        TRUST_JIT_PERMISSION,
++        enabled ? Services.perms.ALLOW_ACTION : Services.perms.DENY_ACTION,
++        Services.perms.EXPIRE_NEVER
++      );
++    }
++
++    PanelMultiView.hidePopup(this.#popup);
++    this.#refreshJITToggle();
++    BrowserCommands.reload();
++  }
++
+   async showPopup(opts = {}) {
+     // Avoid flicker between the mouseup and panel shown by manually
+     // setting open attribute.
+@@ -690,6 +787,7 @@ class TrustPanel {
+     );
+ 
+     await this.#updateMainView();
++    this.#refreshJITToggle();
+   }
+ 
+   async #updateMainView() {
+@@ -1883,7 +1981,7 @@ class TrustPanel {
+     return blocked;
+   }
+ 
+-  async observe(subject, topic) {
++  async observe(subject, topic, data) {
+     if (!this.#enabled) {
+       return;
+     }
+@@ -1915,6 +2013,12 @@ class TrustPanel {
+         this.showPopup({ reason: "embedPlaceholderButton" });
+         break;
+       }
++      case "nsPref:changed": {
++        if (data === TRUST_JIT_PREF) {
++          this.#refreshJITToggle();
++        }
++        break;
++      }
+     }
+   }
+ 
+diff --git a/browser/components/controlcenter/content/identityPanel.inc.xhtml b/browser/components/controlcenter/content/identityPanel.inc.xhtml
+index d7f214f471..11d37754fc 100644
+--- a/browser/components/controlcenter/content/identityPanel.inc.xhtml
++++ b/browser/components/controlcenter/content/identityPanel.inc.xhtml
+@@ -99,6 +99,15 @@
+                 data-l10n-id="identity-clear-site-data"
+                 class="subviewbutton"/>
+       </vbox>
++      <vbox id="identity-popup-jit-footer"
++            class="panel-subview-footer-button">
++        <toolbarbutton id="identity-popup-enable-jit-button"
++                        class="subviewbutton">
++          <label data-l10n-id="panel-enable-jit" flex="1"/>
++          <html:moz-toggle id="identity-popup-enable-jit-toggle"
++                            style="pointer-events: none;"/>
++        </toolbarbutton>
++    </vbox>
+     </panelview>
+ 
+     <!-- Security SubView -->
+diff --git a/browser/components/controlcenter/content/trustPanel.inc.xhtml b/browser/components/controlcenter/content/trustPanel.inc.xhtml
+index 65f8089b0a..c62f01e9ec 100644
+--- a/browser/components/controlcenter/content/trustPanel.inc.xhtml
++++ b/browser/components/controlcenter/content/trustPanel.inc.xhtml
+@@ -75,6 +75,13 @@
+           <toolbarbutton data-l10n-id="trustpanel-clear-cookies-button" id="trustpanel-clear-cookies-button" class="subviewbutton subviewbutton-nav"></toolbarbutton>
+         </vbox>
+ 
++        <vbox id="trustpanel-enable-jit-footer">
++          <toolbarbutton id="trust-panel-enable-jit-button" class="subviewbutton">
++            <label data-l10n-id="panel-enable-jit" flex="1"/>
++            <html:moz-toggle id="trust-panel-enable-jit-toggle" style="pointer-events: none;"></html:moz-toggle>
++          </toolbarbutton>
++        </vbox>
++
+         <toolbarseparator></toolbarseparator>
+         <toolbarbutton id="trustpanel-privacy-link" data-l10n-id="trustpanel-privacy-link" class="subviewbutton"></toolbarbutton>
+       </vbox>
+diff --git a/dom/ipc/ProcessIsolation.cpp b/dom/ipc/ProcessIsolation.cpp
+index a1b725eafb..dd0546ba71 100644
+--- a/dom/ipc/ProcessIsolation.cpp
++++ b/dom/ipc/ProcessIsolation.cpp
+@@ -17,6 +17,7 @@
+ #include "mozilla/RefPtr.h"
+ #include "mozilla/StaticPrefs_browser.h"
+ #include "mozilla/StaticPrefs_fission.h"
++#include "mozilla/StaticPrefs_librewolf.h"
+ #include "mozilla/StaticPtr.h"
+ #include "mozilla/dom/BrowsingContextGroup.h"
+ #include "mozilla/dom/CanonicalBrowsingContext.h"
+@@ -121,32 +122,47 @@ struct CommaSeparatedPref {
+ CommaSeparatedPref sSeparatedMozillaDomains{
+     "browser.tabs.remote.separatedMozillaDomains"_ns};
+ 
++static nsresult GetEffectiveSiteOriginURI(nsIURI* aSiteOriginURI,
++                                          WindowGlobalParent* aParentWindow,
++                                          nsCOMPtr<nsIURI>& aResult) {
++  nsCOMPtr<nsIURI> topSiteOriginURI = aSiteOriginURI;
++
++  if (aParentWindow) {
++    nsAutoCString topSiteOriginNoSuffix;
++
++    nsresult rv = aParentWindow->TopWindowContext()
++                      ->DocumentPrincipal()
++                      ->GetSiteOriginNoSuffix(topSiteOriginNoSuffix);
++    if (NS_FAILED(rv)) {
++      return rv;
++    }
++
++    rv = NS_NewURI(getter_AddRefs(topSiteOriginURI), topSiteOriginNoSuffix);
++    if (NS_FAILED(rv)) {
++      return rv;
++    }
++  }
++
++  aResult = topSiteOriginURI;
++  return NS_OK;
++}
++
+ bool AllowJITForSiteOrigin(nsIURI* aSiteOriginURI,
+                            WindowGlobalParent* aParentWindow) {
+-  nsresult rv;
+-
+   nsCOMPtr<nsIEnterprisePolicies> policyService =
+       do_GetService("@mozilla.org/enterprisepolicies;1");
+   if (!policyService) {
+     return true;
+   }
+ 
+-  nsCOMPtr<nsIURI> topSiteOriginURI = aSiteOriginURI;
+-
+-  // If this is a subframe then use the principal of the top window.
+-  if (aParentWindow) {
+-    nsAutoCString topSiteOriginNoSuffix;
+-    rv = aParentWindow->TopWindowContext()
+-             ->DocumentPrincipal()
+-             ->GetSiteOriginNoSuffix(topSiteOriginNoSuffix);
+-    NS_ENSURE_SUCCESS(rv, true);
+-
+-    rv = NS_NewURI(getter_AddRefs(topSiteOriginURI), topSiteOriginNoSuffix);
+-    NS_ENSURE_SUCCESS(rv, true);
++  nsCOMPtr<nsIURI> effectiveSiteOriginURI;
++  if (NS_FAILED(GetEffectiveSiteOriginURI(aSiteOriginURI, aParentWindow,
++                                          effectiveSiteOriginURI))) {
++    return true;
+   }
+ 
+   bool isJitAllowed = true;
+-  if (NS_FAILED(policyService->IsAllowedForURI("jit"_ns, topSiteOriginURI,
++  if (NS_FAILED(policyService->IsAllowedForURI("jit"_ns, effectiveSiteOriginURI,
+                                                &isJitAllowed))) {
+     return true;
+   }
+@@ -154,12 +170,73 @@ bool AllowJITForSiteOrigin(nsIURI* aSiteOriginURI,
+   if (!isJitAllowed) {
+     MOZ_LOG(gProcessIsolationLog, LogLevel::Debug,
+             ("JIT is disabled for site %s by enterprise policy",
+-             topSiteOriginURI->GetSpecOrDefault().get()));
++             effectiveSiteOriginURI->GetSpecOrDefault().get()));
+   }
+ 
+   return isJitAllowed;
+ }
+ 
++static bool JITEnabledForSiteOrigin(nsIURI* aSiteOriginURI,
++                                    WindowGlobalParent* aParentWindow,
++                                    nsIPrincipal* aPrincipal) {
++  bool enabled = StaticPrefs::librewolf_jit_enabled_by_default();
++
++  if (!aSiteOriginURI || !aPrincipal || !aPrincipal->GetIsContentPrincipal()) {
++    return enabled;
++  }
++
++  nsCOMPtr<nsIURI> effectiveSiteOriginURI;
++  if (NS_FAILED(GetEffectiveSiteOriginURI(aSiteOriginURI, aParentWindow,
++                                          effectiveSiteOriginURI))) {
++    return enabled;
++  }
++
++  nsCOMPtr<nsIPrincipal> sitePrincipal = BasePrincipal::CreateContentPrincipal(
++      effectiveSiteOriginURI, aPrincipal->OriginAttributesRef());
++
++  if (!sitePrincipal) {
++    return enabled;
++  }
++
++  RefPtr<PermissionManager> permissionManager =
++      PermissionManager::GetInstance();
++
++  if (!permissionManager) {
++    return enabled;
++  }
++
++  uint32_t action = nsIPermissionManager::UNKNOWN_ACTION;
++  nsresult rv = permissionManager->TestExactPermissionFromPrincipal(
++      sitePrincipal, "jit"_ns, &action);
++
++  if (NS_FAILED(rv)) {
++    return enabled;
++  }
++
++  switch (action) {
++    case nsIPermissionManager::ALLOW_ACTION:
++      return true;
++
++    case nsIPermissionManager::DENY_ACTION:
++      return false;
++
++    case nsIPermissionManager::UNKNOWN_ACTION:
++    default:
++      return enabled;
++  }
++}
++
++static bool JITEnabledForLoad(nsIPrincipal* aResultPrincipal,
++                              nsIURI* aSiteOriginURI,
++                              WindowGlobalParent* aParentWindow) {
++  if (!AllowJITForSiteOrigin(aSiteOriginURI, aParentWindow)) {
++    return false;
++  }
++
++  return JITEnabledForSiteOrigin(aSiteOriginURI, aParentWindow,
++                                 aResultPrincipal);
++}
++
+ /**
+  * Certain URIs have special isolation behaviour, and need to be loaded within
+  * specific process types.
+@@ -885,6 +962,11 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+   nsCOMPtr<nsIURI> siteOriginURI;
+   MOZ_TRY(NS_NewURI(getter_AddRefs(siteOriginURI), siteOriginNoSuffix));
+ 
++  bool jitEnabled =
++      JITEnabledForLoad(resultOrPrecursor, siteOriginURI, aParentWindow);
++
++  bool jitDisabled = !jitEnabled;
++
+   // Check if we've already loaded a document with the given principal in some
+   // content process. We want to finish the load in the same process in that
+   // case.
+@@ -934,7 +1016,8 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+         // Check if this WindowGlobalParent has the given resultPrincipal, and
+         // if it does, we need to load in that process.
+         if (!wgp->GetRemoteType().IsNotRemote() &&
+-            principalIsSameSite(wgp->DocumentPrincipal())) {
++            principalIsSameSite(wgp->DocumentPrincipal()) &&
++            wgp->GetRemoteType().IsJitDisabled() == jitDisabled) {
+           MOZ_LOG(gProcessIsolationLog, LogLevel::Debug,
+                   ("Found existing frame with matching principal "
+                    "(remoteType:(%s), origin:%s)",
+@@ -952,7 +1035,7 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+ 
+   options.mRemoteType = RemoteType::SharedWeb(originAttributes);
+ 
+-  if (!AllowJITForSiteOrigin(siteOriginURI, aParentWindow)) {
++  if (jitDisabled) {
+     options.mRemoteType = options.mRemoteType.WithDisableJit(true);
+   }
+ 
+@@ -1146,7 +1229,12 @@ Result<WorkerIsolationOptions, nsresult> IsolationOptionsForWorker(
+   options.mRemoteType =
+       RemoteType::SharedWeb(resultOrPrecursor->OriginAttributesRef());
+ 
+-  if (!AllowJITForSiteOrigin(siteOriginURI, nullptr)) {
++  bool jitEnabled =
++      JITEnabledForLoad(resultOrPrecursor, siteOriginURI, nullptr);
++
++  bool jitDisabled = !jitEnabled;
++
++  if (jitDisabled) {
+     options.mRemoteType = options.mRemoteType.WithDisableJit(true);
+   }
+ 
+@@ -1351,7 +1439,11 @@ Result<RemoteType, nsresult> PredictRemoteTypeForURI(
+ 
+   RemoteType remoteType = RemoteType::SharedWeb(aOriginAttributes);
+ 
+-  if (!AllowJITForSiteOrigin(siteOriginURI, nullptr)) {
++  bool jitEnabled = JITEnabledForLoad(principal, siteOriginURI, nullptr);
++
++  bool jitDisabled = !jitEnabled;
++
++  if (jitDisabled) {
+     remoteType = remoteType.WithDisableJit(true);
+   }
+ 
