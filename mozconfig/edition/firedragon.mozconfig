@@ -21,6 +21,7 @@ mk_add_options MOZ_TELEMETRY_REPORTING=0
 # Features
 ac_add_options --disable-crashreporter
 ac_add_options --disable-default-browser-agent
+ac_add_options --enable-proxy-bypass-protection
 [ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --disable-debug
 ac_add_options --disable-tests
 [ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-jemalloc
