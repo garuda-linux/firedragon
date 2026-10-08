@@ -13,3 +13,7 @@ permissions-site-canvas-window2 =
     .title = Inställningar - Behörigheter för extrahering av Canvas
     .style = { permissions-window2.style }
 permissions-site-canvas-desc = Följande webbplatser har begärt att extrahera canvasdata. Du kan ange vilka webbplatser som får extrahera canvasdata. Du kan också blockera nya förfrågningar som begär att extrahera canvasdata.
+permissions-site-jit-window2 =
+    .title = Inställningar - JavaScript JIT behörigheter
+    .style = { permissions-window2.style }
+permissions-site-jit-desc = Följande webbplatser har en JavaScript JIT behörighetsuppsättning. Att inaktivera JavaScript JIT kan förbättra säkerheten genom att minska risken för vissa typer av attacker som utnyttjar kodexekvering, men det kan göra webbplatser och appar långsammare. WebAssembly fungerar inte om JIT är inaktiverat.
