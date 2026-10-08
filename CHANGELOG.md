@@ -1,5 +1,23 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.8.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.8.0) — 2026-10-08 — [`v13.7.0`…`v13.8.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.7.0...v13.8.0)
+
+### 🚀 Features
+
+- _(mozconfig)_ Enable hardening — [`b49b2bb3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b49b2bb3519e7bceaa9a7ac47ec66f2751a8f1e1)
+- _(mozconfig)_ Disable tests & debug — [`45818da6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/45818da6045a540777af073b7c62957bede4d17b)
+- _(mozconfig)_ Set MOZ_TELEMETRY_REPORTING to empty value — [`c50989fd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c50989fdf109abb313dc985038948b337e2b2e55)
+- _(mozconfig)_ Enable proxy bypass protection — [`c0adb18c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c0adb18cca9bdd2edf6867973a5b4acfcc4b5b47)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(builtin-addons/settings)_ Update Swedish translation — [`358916a3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/358916a3c23dea1d5ec4b8e9d249408c14410aa4)
+- Update to firefox 157.0.1 — [`27e470c6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/27e470c6de3c46ef35b5794c24cb2e644579ff91)
+- _(patches)_ Update librewolf patches to v157.0.1-1 — [`45a60d78…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/45a60d78e7d48ff5ff7896ea93c7741c1b4fda6d)
+- _(config)_ Update librewolf preset to v157.0.1-1 — [`6f7235b3…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6f7235b3ced11f308e374be7b38aca939b275b2c)
+- Update pnpm & deps — [`662b42e1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/662b42e13d6c3e8dcb6988c09b29329047954572)
+- **builtin-addons/startpage:** Update pnpm & deps — [`6652a40e…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/6652a40ea787c3ce2857439f796a346486cf9e89)
+
 ## [FireDragon v13.7.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.7.0) — 2026-09-30 — [`v13.6.1`…`v13.7.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.6.1...v13.7.0)
 
 ### 🚀 Features
