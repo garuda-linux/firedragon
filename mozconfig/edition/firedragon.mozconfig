@@ -31,4 +31,6 @@ mk_add_options MOZ_OBJDIR="$PWD/obj"
 [ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-stl-hardening
 ac_add_options --enable-release
 ac_add_options --enable-rust-simd
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-hardening
+[ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-stl-hardening
 [ -n "${FIREDRAGON_ARTIFACT_BUILD-}" ] || ac_add_options --enable-optimize

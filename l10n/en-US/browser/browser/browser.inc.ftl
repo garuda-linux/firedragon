@@ -22,3 +22,5 @@ firedragon-restart-clear-cache =
     .label = Restart and clear cache
 firedragon-restart-safe-mode =
     .label = Restart in safe mode
+
+panel-enable-jit = Enable JavaScript JIT

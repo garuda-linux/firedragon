@@ -7,4 +7,7 @@ permissions-webgl2 =
 permissions-canvas2 =
     .label = Canvas extraction
 
+permissions-jit2 =
+    .label = JavaScript JIT
+
 firedragon-settings-title = FireDragon Settings
