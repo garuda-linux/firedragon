@@ -135,7 +135,7 @@ index e25447b12a..2b27f23511 100644
 +            control: "moz-box-button",
 +            l10nId: "permissions-jit2",
 +            controlAttrs: {
-+              ".iconSrc": "chrome://browser/skin/lightning-bolt.svg",
++              ".iconSrc": "chrome://browser/skin/jit.svg",
 +              "search-l10n-ids":
 +                "permissions-remove.label,permissions-remove-all.label,permissions-site-jit-window2.title,permissions-site-jit-desc,",
 +            },
@@ -337,3 +337,24 @@ index 03e7f5e..2b0a787 100644
  Preferences.addSetting({
    id: "etpCustomSuspectFingerprintingProtectionEnabled",
    deps: [
+diff --git a/browser/themes/shared/jar.inc.mn b/browser/themes/shared/jar.inc.mn
+index af61e24..c370998 100644
+--- a/browser/themes/shared/jar.inc.mn
++++ b/browser/themes/shared/jar.inc.mn
+@@ -245,6 +245,7 @@
+   skin/classic/browser/history-20.svg                 (../shared/icons/history-20.svg)
+   skin/classic/browser/home.svg                       (../shared/icons/home.svg)
+   skin/classic/browser/import.svg                     (../shared/icons/import.svg)
++  skin/classic/browser/jit.svg                        (../shared/icons/jit.svg)
+   skin/classic/browser/labs-16.svg                    (../shared/icons/labs-16.svg)
+   skin/classic/browser/library.svg                    (../shared/icons/library.svg)
+   skin/classic/browser/lightning-bolt.svg             (../shared/icons/lightning-bolt.svg)
+@@ -293,6 +294,8 @@
+   skin/classic/browser/translations.svg               (../shared/icons/translations.svg)
+   skin/classic/browser/thumb-down.svg                 (../shared/icons/thumb-down.svg)
+   skin/classic/browser/topsites.svg                   (../shared/icons/topsites.svg)
++  skin/classic/browser/webgl.svg                      (../shared/icons/webgl.svg)
++  skin/classic/browser/webgl-blocked.svg              (../shared/icons/webgl-blocked.svg)
+   skin/classic/browser/window.svg                     (../shared/icons/window.svg)
+   skin/classic/browser/window-firefox.svg             (../shared/icons/window-firefox.svg)
+ 

@@ -1,8 +1,8 @@
 diff --git a/browser/base/content/popup-notifications.inc.xhtml b/browser/base/content/popup-notifications.inc.xhtml
-index cb57017aa9..c982089198 100644
+index 43c2429..99b5c5a 100644
 --- a/browser/base/content/popup-notifications.inc.xhtml
 +++ b/browser/base/content/popup-notifications.inc.xhtml
-@@ -168,6 +168,13 @@
+@@ -196,6 +196,13 @@
        </popupnotificationcontent>
      </popupnotification>
  
@@ -13,9 +13,9 @@ index cb57017aa9..c982089198 100644
 +      </popupnotificationcontent>
 +    </popupnotification>
 +
-     <popupnotification id="contextual-feature-recommendation-notification"
-                        buttonhighlight="true"
-                        hidden="true">
+     <popupnotification id="credential-chooser-notification" hidden="true">
+       <popupnotificationheader id="credential-chooser-header" orient="horizontal">
+         <html:div id="credential-chooser-header-container">
 diff --git a/browser/modules/ObserverForwarder.sys.mjs b/browser/modules/ObserverForwarder.sys.mjs
 index 8cf14355f3..bdecc6c230 100644
 --- a/browser/modules/ObserverForwarder.sys.mjs
@@ -177,19 +177,6 @@ index 0000000..ead4eef
 +    );
 +  },
 +};
-diff --git a/browser/themes/shared/jar.inc.mn b/browser/themes/shared/jar.inc.mn
-index 907d188..f60a426 100644
---- a/browser/themes/shared/jar.inc.mn
-+++ b/browser/themes/shared/jar.inc.mn
-@@ -213,6 +213,8 @@
-   skin/classic/browser/calendar-24.svg                (../shared/icons/calendar-24.svg)
-   skin/classic/browser/canvas.svg                     (../shared/icons/canvas.svg)
-   skin/classic/browser/canvas-blocked.svg             (../shared/icons/canvas-blocked.svg)
-+  skin/classic/browser/webgl.svg                      (../shared/icons/webgl.svg)
-+  skin/classic/browser/webgl-blocked.svg              (../shared/icons/webgl-blocked.svg)
-   skin/classic/browser/characterEncoding.svg          (../shared/icons/characterEncoding.svg)
-   skin/classic/browser/chevron-animation.svg          (../shared/icons/chevron-animation.svg)
-   skin/classic/browser/circle-check-dotted.svg        (../shared/icons/circle-check-dotted.svg)
 diff --git a/browser/themes/shared/notification-icons.css b/browser/themes/shared/notification-icons.css
 index f65f6bb61a..e5bbe3f976 100644
 --- a/browser/themes/shared/notification-icons.css

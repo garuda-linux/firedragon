@@ -53,33 +53,30 @@ index 72b016f..7a5fd66 100644
    background-image: url("chrome://global/skin/icons/close.svg");
    right: 10px;
 diff --git a/toolkit/components/pictureinpicture/content/player.xhtml b/toolkit/components/pictureinpicture/content/player.xhtml
-index a723bc5..96a2c94 100644
+index 2cbb075..90a3f9b 100644
 --- a/toolkit/components/pictureinpicture/content/player.xhtml
 +++ b/toolkit/components/pictureinpicture/content/player.xhtml
-@@ -51,13 +51,22 @@
-       tabindex="9"
- #else
-       tabindex="10"
-+#endif
-+      />
+@@ -49,6 +49,10 @@
+       class="control-item control-button tooltip-under-controls" data-l10n-attrs="tooltip"
+       mac="true"
+       />
 +      <button id="piphide"
 +      class="control-item control-button tooltip-under-controls" data-l10n-id="pictureinpicture-piphide-btn" data-l10n-attrs="tooltip"
-+#ifdef XP_MACOSX
 +      mac="true"
-+      tabindex="10"
-+#else
-+      tabindex="11"
- #endif
-       />
++      />
        <button id="unpip"
        class="control-item control-button tooltip-under-controls" data-l10n-id="pictureinpicture-unpip-btn" data-l10n-attrs="tooltip"
- #ifdef XP_MACOSX
        mac="true"
--      tabindex="10"
-+      tabindex="11"
- #else
-       tabindex="9"
- #endif
+@@ -57,6 +61,9 @@
+       <button id="unpip"
+       class="control-item control-button tooltip-under-controls" data-l10n-id="pictureinpicture-unpip-btn" data-l10n-attrs="tooltip"
+       />
++      <button id="piphide"
++      class="control-item control-button tooltip-under-controls" data-l10n-id="pictureinpicture-piphide-btn" data-l10n-attrs="tooltip"
++      />
+       <button id="close"
+       class="control-item control-button tooltip-under-controls" data-l10n-attrs="tooltip"
+       />
 diff --git a/toolkit/components/pictureinpicture/content/player.js b/toolkit/components/pictureinpicture/content/player.js
 index 978c6be..a26ba02 100644
 --- a/toolkit/components/pictureinpicture/content/player.js

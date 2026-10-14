@@ -33,15 +33,15 @@ index 2b70b3f..b111dac 100644
  
  def arcrc_path(): 
 diff --git a/python/sites/mach.txt b/python/sites/mach.txt
-index d5cdce8..f4f38c1 100644
+index d1f054b..f4129b4 100644
 --- a/python/sites/mach.txt
 +++ b/python/sites/mach.txt
 @@ -58,7 +58,7 @@ pth:xpcom/geckoprocesstypes_generator
  pth:xpcom/idl-parser
  # glean-sdk may not be installable if a wheel isn't available
  # and it has to be built from source.
--pypi-optional:glean-sdk==68.0.1:telemetry will not be collected
-+# pypi-optional:glean-sdk==68.0.1:telemetry will not be collected
+-pypi-optional:glean-sdk==70.2.0:telemetry will not be collected
++# pypi-optional:glean-sdk==70.2.0:telemetry will not be collected
  pypi-optional:orjson>=3.10:json operations will be slower in various tools
  # Mach gracefully handles the case where `psutil` is unavailable.
  # We aren't (yet) able to pin packages in automation, so we have to
@@ -124,67 +124,3 @@ index a3f1cc3..715f58b 100644
      gkrust_features += ["glean_disable_upload"]
  
  if CONFIG["MOZ_ENABLE_DBUS"]:
-diff --git a/toolkit/components/telemetry/core/Stopwatch.cpp b/toolkit/components/telemetry/core/Stopwatch.cpp
-index 9fcd929d83..f5f02bb921 100644
---- a/toolkit/components/telemetry/core/Stopwatch.cpp
-+++ b/toolkit/components/telemetry/core/Stopwatch.cpp
-@@ -315,7 +315,7 @@ bool Timers::StartUserInteraction(JSContext* aCx,
-   // Ensure that this ID maps to a UserInteraction that can be recorded
-   // for this product.
-   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
--    if (!mSuppressErrors) {
-+    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
-       LogError(aCx, nsPrintfCString(
-                         "UserInteraction with name \"%s\" cannot be recorded.",
-                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
-@@ -383,7 +383,7 @@ bool Timers::UpdateUserInteraction(JSContext* aCx,
-   // Ensure that this ID maps to a UserInteraction that can be recorded
-   // for this product.
-   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
--    if (!mSuppressErrors) {
-+    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
-       LogError(aCx, nsPrintfCString(
-                         "UserInteraction with name \"%s\" cannot be recorded.",
-                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
-@@ -416,7 +416,7 @@ bool Timers::FinishUserInteraction(
-   // Ensure that this ID maps to a UserInteraction that can be recorded
-   // for this product.
-   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
--    if (!mSuppressErrors) {
-+    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
-       LogError(aCx, nsPrintfCString(
-                         "UserInteraction with id \"%s\" cannot be recorded.",
-                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
-@@ -467,7 +467,7 @@ bool Timers::CancelUserInteraction(JSContext* aCx,
-   // Ensure that this ID maps to a UserInteraction that can be recorded
-   // for this product.
-   if (!TelemetryUserInteraction::CanRecord(aUserInteraction)) {
--    if (!mSuppressErrors) {
-+    if (TelemetryUserInteraction::IsRecordingEnabled() && !mSuppressErrors) {
-       LogError(aCx, nsPrintfCString(
-                         "UserInteraction with id \"%s\" cannot be recorded.",
-                         NS_ConvertUTF16toUTF8(aUserInteraction).get()));
-diff --git a/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp b/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
-index c71fe5b6c6..6ea3c93773 100644
---- a/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
-+++ b/toolkit/components/telemetry/core/TelemetryUserInteraction.cpp
-@@ -94,3 +94,7 @@ bool TelemetryUserInteraction::CanRecord(const nsAString& aName) {
- 
-   return false;
- }
-+
-+bool TelemetryUserInteraction::IsRecordingEnabled() {
-+  return gTelemetryUserInteractionCanRecord;
-+}
-diff --git a/toolkit/components/telemetry/core/TelemetryUserInteraction.h b/toolkit/components/telemetry/core/TelemetryUserInteraction.h
-index 0db315684f..39dcbc4cfa 100644
---- a/toolkit/components/telemetry/core/TelemetryUserInteraction.h
-+++ b/toolkit/components/telemetry/core/TelemetryUserInteraction.h
-@@ -13,6 +13,7 @@ void InitializeGlobalState(bool canRecord);
- void DeInitializeGlobalState();
- 
- bool CanRecord(const nsAString& aName);
-+bool IsRecordingEnabled();
- 
- }  // namespace TelemetryUserInteraction
- 

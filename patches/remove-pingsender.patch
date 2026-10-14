@@ -26,13 +26,13 @@ index dbfb287..7d47b40 100644
  ;
  #if defined(XP_WIN) || defined(XP_MACOSX)
 diff --git a/browser/installer/windows/nsis/shared.nsh b/browser/installer/windows/nsis/shared.nsh
-index 8e5e75d..1fbc59f 100644
+index 8cd458b..b05ec32 100644
 --- a/browser/installer/windows/nsis/shared.nsh
 +++ b/browser/installer/windows/nsis/shared.nsh
-@@ -1765,7 +1765,6 @@ FunctionEnd
-   Push "crashreporter.exe"
+@@ -1412,7 +1412,6 @@ FunctionEnd
    Push "default-browser-agent.exe"
    Push "nmhproxy.exe"
+   Push "notification-helper.exe"
 -  Push "pingsender.exe"
    Push "updater.exe"
    Push "mozwer.dll"
