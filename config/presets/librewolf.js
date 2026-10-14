@@ -257,6 +257,9 @@ pref("webgl.disabled", false);
 defaultPref("dom.webgpu.enabled", false);
 defaultPref("pdfjs.enableWebGPU", false);
 
+/** [SECTION] OTHER */
+defaultPref("beacon.enabled", false); // https://bugzilla.mozilla.org/show_bug.cgi?id=1961408
+
 /** ------------------------------
  * [CATEGORY] SECURITY
  * ------------------------------- */
@@ -416,8 +419,8 @@ defaultPref("permissions.default.media-key-system-access", 0); // Default permis
 defaultPref("browser.urlbar.suggest.searches", false);
 defaultPref("browser.search.suggest.enabled", false);
 defaultPref("browser.search.update", false);
-defaultPref("browser.search.separatePrivateDefault", true); // [FF70+] // Arkenfox user.js v119
-defaultPref("browser.search.separatePrivateDefault.ui.enabled", true); // [FF71+]  // Arkenfox user.js v119
+defaultPref("browser.search.separatePrivateDefault.enabled", true);
+defaultPref("browser.search.separatePrivateDefault.featureGate", true);
 defaultPref("browser.search.serpEventTelemetryCategorization.enabled", false);
 
 defaultPref("browser.urlbar.addons.featureGate", false);
@@ -520,6 +523,17 @@ lockPref("browser.preferences.aiControls", false);
 // Disable all features by default
 lockPref("browser.ai.control.default", "blocked");
 
+/** [SECTION] DLP
+ * https://support.mozilla.org/en-US/kb/data-loss-prevention
+ */
+lockPref("browser.contentanalysis.enabled", false);
+lockPref("browser.contentanalysis.interception_point.clipboard.enabled", false);
+lockPref("browser.contentanalysis.interception_point.clipboard_copy.enabled", false);
+lockPref("browser.contentanalysis.interception_point.download.enabled", false);
+lockPref("browser.contentanalysis.interception_point.drag_and_drop.enabled", false);
+lockPref("browser.contentanalysis.interception_point.file_upload.enabled", false);
+lockPref("browser.contentanalysis.interception_point.print.enabled", false);
+
 /** ------------------------------
  * [CATEGORY] EXTENSIONS
  * ------------------------------- */
@@ -590,9 +604,6 @@ defaultPref("signon.firefoxRelay.feature", "disabled");
 // The "scanning" of the page only runs when "signon.rememberSignons" is set to "true"
 // https://codeberg.org/librewolf/issues/issues/3063#issuecomment-20783558
 defaultPref("signon.formlessCapture.enabled", true);
-
-// https://bugzilla.mozilla.org/show_bug.cgi?id=2063993
-defaultPref("signon.storage.rust.enabled", false);
 
 // https://bugzilla.mozilla.org/show_bug.cgi?id=2063599
 defaultPref("extensions.formautofill.useml", false);
@@ -685,6 +696,7 @@ defaultPref("browser.newtabpage.activity-stream.widgets.hideAllToast.enabled", t
 defaultPref("browser.newtabpage.activity-stream.widgets.system.clocks.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.crossword.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.focusTimer.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.horoscopes.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.lists.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.pictureOfTheDay.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.privacy.enabled", true);
@@ -698,6 +710,7 @@ defaultPref("browser.newtabpage.activity-stream.widgets.system.weatherForecast.e
 defaultPref("browser.newtabpage.activity-stream.widgets.clocks.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.crossword.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.focusTimer.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.horoscopes.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.lists.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.pictureOfTheDay.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.privacy.enabled", false);
@@ -738,6 +751,7 @@ lockPref("browser.newtabpage.activity-stream.discoverystream.reportAds.enabled",
 lockPref("browser.newtabpage.activity-stream.discoverystream.sections.contextualAds.enabled", false);
 lockPref("browser.newtabpage.activity-stream.discoverystream.sections.adAllowedRanks", "");
 lockPref("browser.newtabpage.activity-stream.feeds.adsfeed", false);
+lockPref("browser.newtabpage.activity-stream.unifiedAds.adsClient.enabled", false);
 
 // Disable Mozilla Ad Routing Service (MARS) unified ads service 
 // https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/browser/app/profile/firefox.js#1933-1938
@@ -770,6 +784,9 @@ defaultPref("browser.aboutConfig.showWarning", false);
 
 // Disable Firefox branding
 defaultPref("browser.shell.displayKitImageBehindSetDefaultBrowserButton", "off");
+defaultPref("browser.netError.illustration.enabled", false);
+defaultPref("identity.fxaccounts.toolbar.appMenuSignInPromo.dismissed", true);
+defaultPref("browser.privatebrowsing.introAnimationShown", true);
 
 /** [SECTION] ASROUTER
  * Disable Messaging System
@@ -841,6 +858,7 @@ lockPref("toolkit.telemetry.firstShutdownPing.enabled", false);
 lockPref("toolkit.telemetry.shutdownPingSender.enabled", false);
 lockPref("toolkit.telemetry.bhrPing.enabled", false);
 lockPref("toolkit.telemetry.cachedClientID", "c0ffeec0-ffee-c0ff-eec0-ffeec0ffeec0");
+lockPref("toolkit.telemetry.cachedProfileGroupID", "6b63fbca-5f99-4a37-b55f-d4e4a2d3ca51"); // https://searchfox.org/firefox-main/rev/2ef09bbf347cd5c182552fdafb6d3e3da1864760/toolkit/crashreporter/test/unit/test_crashreporter_crash.js#136
 lockPref("toolkit.telemetry.previousBuildID", "");
 lockPref("toolkit.telemetry.server_owner", "");
 lockPref("toolkit.coverage.opt-out", true); // hidden
@@ -870,8 +888,6 @@ lockPref("datareporting.usage.uploadEnabled", false);
 lockPref("identity.fxaccounts.telemetry.clientInfoPing.enabled", false);
 // Disable newtab ping
 lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.enabled", false);
-// Set random ID
-lockPref("browser.newtabpage.activity-stream.impressionId", "{some-fake-impression-ID}");
 lockPref("toolkit.telemetry.site_categories", "{}");
 lockPref("toolkit.profiles.newProfileSubmitted", true);
 
@@ -912,6 +928,10 @@ lockPref("default-browser-agent.enabled", false); // disable windows specific te
 defaultPref("browser.startup.windowsLaunchOnLogin.defaultEnabled", false); // prevent autorun from automatically being enabled for new profiles and at each portable launch (since v152)
 clearPref("toolkit.winRegisterApplicationRestart"); // clear previous pref setting https://codeberg.org/librewolf/issues/issues/3056
 defaultPref("browser.startup.windowsLaunchOnLogin.disableLaunchOnLoginPrompt", true); // Disable launch on login infobar notification
+
+// Fix broken taskbar shortcut
+// https://librewolf.dev/librewolf/issues/issues/3282
+defaultPref("librewolf.browser.createdShortcut", false);
 
 // Disable alternative icons, until we ship our own.
 // This is currently Windows only.
