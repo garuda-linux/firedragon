@@ -9,7 +9,7 @@
   "dependencies": {
     "@firedragon/shared": "workspace:^",
     "@vue/reactivity": "catalog:",
-    "p-queue": "^9.3.3"
+    "p-queue": "^10.0.0"
   },
   "devDependencies": {
     "@firedragon/build": "workspace:^",

@@ -25,6 +25,17 @@
         "Value": "blocked"
       }
     },
+    "ContentAnalysis": {
+      "Enabled": false,
+      "InterceptionPoints": {
+        "Clipboard": { "Enabled": false },
+        "ClipboardCopy": { "Enabled": false },
+        "Download": { "Enabled": false },
+        "DragAndDrop": { "Enabled": false },
+        "FileUpload": { "Enabled": false },
+        "Print": { "Enabled": false }
+      }
+    },
 #ifndef FIREDRAGON_UPDATE
     "AppUpdateURL": "https://localhost",
     "DisableAppUpdate": true,

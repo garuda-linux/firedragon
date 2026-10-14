@@ -25,18 +25,18 @@ catalog:
   '@intlify/unplugin-vue-i18n': ^11.2.5
   '@quasar/extras': ^2.1.0
   '@quasar/vite-plugin': ^2.0.2
-  '@unhead/vue': ^3.4.2
+  '@unhead/vue': ^3.4.3
   '@vueuse/core': ^15.0.0
   '@vue/reactivity': ^3.5.43
-  '@wxt-dev/browser': ^0.3.4
+  '@wxt-dev/browser': ^0.3.5
   '@wxt-dev/module-vue': ^1.0.3
-  quasar: ^2.34.0
+  quasar: ^2.35.1
   sass-embedded: ^1.105.1
-  tsdown: ^0.23.0
+  tsdown: ^0.23.1
   typescript: ~6.0.3
-  vite: ^8.3.3
+  vite: ^8.3.4
   vite-plugin-vue-devtools: ^8.2.1
   vue: ^3.5.43
-  vue-i18n: ^11.4.13
-  vue-router: ^5.3.1
+  vue-i18n: ^11.4.14
+  vue-router: ^5.4.0
   wxt: ^0.21.4
