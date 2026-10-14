@@ -18,3 +18,4 @@ firedragon-restart-clear-cache =
     .label = Starta om och rensa cache
 firedragon-restart-safe-mode =
     .label = Starta om i säkert läge
+panel-enable-jit = Aktivera JavaScript JIT
