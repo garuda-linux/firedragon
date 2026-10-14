@@ -1,5 +1,18 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.9.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.9.0) — 2026-10-14 — [`v13.8.0`…`v13.9.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.8.0...v13.9.0)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(l10n)_ Update Swedish translation — [`7643d7ae…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7643d7aeb41be4f52f11d94556e292e67f05e9af)
+- _(l10n)_ Update Swedish translation — [`9ee42b81…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9ee42b81f36f9f87c9311c548aef76cb95932fd3)
+- _(l10n)_ Update Swedish translation — [`82ec73ca…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/82ec73caa096798012be3b86c91888e86b175f4d)
+- Update to firefox v158.0 — [`5a6c0bbd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5a6c0bbdafc4753904eae6417dcc629ca0bbb70d)
+- _(patches)_ Update librewolf patches to v158.0-1 — [`d0b8df64…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d0b8df648e88b710d27f790a471c90902b726ac4)
+- _(config)_ Update librewolf preset to v158.0-1 — [`5236d0c7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5236d0c7d32e1965ca88641a5f6c7639db4e1e2f)
+- Update pnpm & deps — [`3657d601…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3657d601d18e9d0506a319627063ea3bbf4d93af)
+- **builtin-addons/startpage:** Update pnpm & deps — [`e1378b4d…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e1378b4d7fb9ac0b2c8c9bc4a891d05385e5a774)
+
 ## [FireDragon v13.8.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.8.0) — 2026-10-08 — [`v13.7.0`…`v13.8.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.7.0...v13.8.0)
 
 ### 🚀 Features
