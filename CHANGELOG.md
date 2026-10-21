@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.10.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.10.0) — 2026-10-21 — [`v13.9.0`…`v13.10.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.9.0...v13.10.0)
+
+### 🚀 Features
+
+- _(make)_ Make all pings respect data collection settings — [`7987d14b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7987d14bb2070a14f721698c4065f2e03c1bbf78)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v158.0.1 — [`604b9a41…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/604b9a419c3407e5d918354199d12d2a6423a46b)
+- _(patches)_ Update librewolf patches to v158.0.1-1 — [`673e247e…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/673e247e2f005de8614c90fa1fa78caba760b6b8)
+- _(l10n)_ Add new language keys from librewolf v158.0.1-1 — [`3fde120b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3fde120b5f51a6c115ac80210ae40b6932fb4713)
+- Update pnpm & deps — [`ff3be372…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ff3be37295240ff5649a884b0700e59b14b3aa5c)
+- **builtin-addons/startpage:** Update pnpm & deps — [`db7417ff…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/db7417ffb52a5ea301830341b2e1071e6b27b2ab)
+
 ## [FireDragon v13.9.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.9.0) — 2026-10-14 — [`v13.8.0`…`v13.9.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.8.0...v13.9.0)
 
 ### ⚙️ Miscellaneous Tasks
