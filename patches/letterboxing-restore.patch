@@ -1,0 +1,33 @@
+diff --git a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs b/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
+index f82d7309e12..271c273c9fa 100644
+--- a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
++++ b/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
+@@ -119,6 +119,12 @@ class _RFPHelper {
+         resizeObserver.observe(browser.parentElement);
+         break;
+       }
++      case "TabSelect": {
++        let browser = aMessage.target.linkedBrowser;
++        let resizeObserver = this._resizeObservers.get(browser.documentGlobal);
++        resizeObserver.observe(browser.parentElement);
++        break;
++      }
+       default:
+         break;
+     }
+@@ -614,6 +620,7 @@ class _RFPHelper {
+   _attachWindow(aWindow) {
+     aWindow.gBrowser.addTabsProgressListener(this);
+     aWindow.addEventListener("TabOpen", this);
++    aWindow.gBrowser.tabContainer.addEventListener("TabSelect", this);
+     let resizeObserver = new aWindow.ResizeObserver(entries => {
+       for (let { target } of entries) {
+         this._roundOrResetContentSize(target.querySelector("browser"));
+@@ -656,6 +663,7 @@ class _RFPHelper {
+     }
+     tabBrowser.removeTabsProgressListener(this);
+     aWindow.removeEventListener("TabOpen", this);
++    tabBrowser.tabContainer.removeEventListener("TabSelect", this);
+ 
+     // revert tabpanel's style to default
+     tabBrowser.tabpanels?.classList.remove("letterboxing");

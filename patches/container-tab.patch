@@ -1,0 +1,98 @@
+diff --git a/browser/base/content/browser-commands.js b/browser/base/content/browser-commands.js
+index 757c5b16612..c95857e01ee 100644
+--- a/browser/base/content/browser-commands.js
++++ b/browser/base/content/browser-commands.js
+@@ -225,7 +225,7 @@ var BrowserCommands = {
+     }
+   },
+ 
+-  openTab({ event, url } = {}) {
++  openTab({ event, url, userContextId } = {}) {
+     let werePassedURL = !!url;
+     url ??= BROWSER_NEW_TAB_URL;
+     let searchClipboard =
+@@ -269,6 +269,9 @@ var BrowserCommands = {
+             relatedToCurrent,
+             resolveOnNewTabCreated: resolve,
+           };
++          if (userContextId !== undefined) {
++            options.userContextId = userContextId;
++          }
+           if (!werePassedURL && searchClipboard) {
+             let clipboard = readFromClipboard();
+             clipboard =
+diff --git a/browser/base/content/browser-sets.inc.xhtml b/browser/base/content/browser-sets.inc.xhtml
+index 9190c6e7f87..e068e2f2ec0 100644
+--- a/browser/base/content/browser-sets.inc.xhtml
++++ b/browser/base/content/browser-sets.inc.xhtml
+@@ -20,6 +20,7 @@
+ 
+     <command id="cmd_newNavigatorTab" />
+     <command id="cmd_newNavigatorTabNoEvent" />
++    <command id="cmd_newNavigatorTabNoEventContainer" />
+     <command id="Browser:OpenFile" />
+     <command id="Browser:SavePage" />
+ 
+@@ -143,6 +144,8 @@
+          modifiers="accel" reserved="true"/>
+     <key id="key_newNavigatorTab" data-l10n-id="tab-new-shortcut" modifiers="accel"
+          command="cmd_newNavigatorTabNoEvent" reserved="true"/>
++    <key id="key_newNavigatorTabContainer" data-l10n-id="tab-new-shortcut" modifiers="accel,alt"
++         command="cmd_newNavigatorTabNoEventContainer" reserved="true"/>
+     <key id="focusURLBar" data-l10n-id="location-open-shortcut" command="Browser:OpenLocation"
+          modifiers="accel"/>
+ #ifndef XP_MACOSX
+diff --git a/browser/base/content/browser-sets.js b/browser/base/content/browser-sets.js
+index a61602d036f..5b409adbe1e 100644
+--- a/browser/base/content/browser-sets.js
++++ b/browser/base/content/browser-sets.js
+@@ -44,6 +44,12 @@ document.addEventListener(
+           case "cmd_newNavigatorTabNoEvent":
+             BrowserCommands.openTab();
+             break;
++          case "cmd_newNavigatorTabNoEventContainer":
++            BrowserCommands.openTab({
++              userContextId:
++                gBrowser.selectedBrowser.getAttribute("usercontextid") || 0,
++            });
++            break;
+           case "Browser:OpenFile":
+             BrowserCommands.openFileWindow();
+             break;
+diff --git a/browser/base/content/utilityOverlay.js b/browser/base/content/utilityOverlay.js
+index 3b8782f6fc3..ce8c723dc74 100644
+--- a/browser/base/content/utilityOverlay.js
++++ b/browser/base/content/utilityOverlay.js
+@@ -489,7 +489,8 @@ async function openPreferences(paneID, extraArgs) {
+         replaceQueryString: true,
+         triggeringPrincipal:
+           Services.scriptSecurityManager.getSystemPrincipal(),
+-      }
++      },
++      0
+     );
+     if (newLoad) {
+       newLoad = !win.switchToTabHavingURI(
+@@ -500,7 +501,8 @@ async function openPreferences(paneID, extraArgs) {
+           replaceQueryString: true,
+           triggeringPrincipal:
+             Services.scriptSecurityManager.getSystemPrincipal(),
+-        }
++        },
++        0
+       );
+     }
+     browser = win.gBrowser.selectedBrowser;
+diff --git a/browser/components/customkeys/CustomKeysParent.sys.mjs b/browser/components/customkeys/CustomKeysParent.sys.mjs
+index 3a3b05e5eec..663756a859d 100644
+--- a/browser/components/customkeys/CustomKeysParent.sys.mjs
++++ b/browser/components/customkeys/CustomKeysParent.sys.mjs
+@@ -116,6 +116,8 @@ export class CustomKeysParent extends JSWindowActorParent {
+     // Add some shortcuts that aren't available in menus.
+     const fileCat = topWin.document.getElementById("file-menu").label;
+     let cat = keys[fileCat];
++    add(cat, "key_newNavigatorTabContainer",
++    "customkeys-file-new-tab-current-container");
+     add(cat, "key_duplicateTab", "customkeys-file-duplicate-tab");
+     const isMac = AppConstants.platform === "macosx";
+     if (!isMac) {

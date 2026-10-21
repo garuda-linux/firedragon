@@ -69,23 +69,3 @@ index a9e56030607f..06253c113a0c 100644
            const auto pii = webgl::PackingInfoInfo::For(desc.pi);
            // DoReadPixels() requres pii to be Some().
            MOZ_ASSERT(pii.isSome());
-diff --git a/toolkit/components/resistfingerprinting/nsRFPService.cpp b/toolkit/components/resistfingerprinting/nsRFPService.cpp
-index 9554fbb..0c1e380 100644
---- a/toolkit/components/resistfingerprinting/nsRFPService.cpp
-+++ b/toolkit/components/resistfingerprinting/nsRFPService.cpp
-@@ -1805,6 +1805,7 @@ nsresult nsRFPService::RandomizeElements(
-     return NS_OK;
-   }
- 
-+  /*
-   // Don't randomize if all groups are uniform.
-   const bool allGroupsMatch = [&]() {
-     auto itr = RangedPtr<const uint8_t>(aData, aSizeInBytes);
-@@ -1819,6 +1820,7 @@ nsresult nsRFPService::RandomizeElements(
-   if (allGroupsMatch) {
-     return NS_OK;
-   }
-+  */
- 
-   auto timerId =
-       glean::fingerprinting_protection::canvas_noise_calculate_time_2.Start();
