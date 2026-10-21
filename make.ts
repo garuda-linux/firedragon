@@ -121,6 +121,8 @@ async function source() {
 
     await $`${buildDir}/${sourceDir}/settings/settings.sh ${buildDir}`;
 
+    await $`find . -type f -name pings.yaml -exec sed -i 's/follows_collection_enabled: false/follows_collection_enabled: true/' {} +`;
+
     const l10nDir = `${buildDir}/${sourceDir}/l10n`,
         locales = await $({ verbose: false })`cat ${buildDir}/browser/locales/l10n-changesets.json`.json();
     for (const [locale, { revision }] of Object.entries(locales) as [string, { revision: string }][]) {
