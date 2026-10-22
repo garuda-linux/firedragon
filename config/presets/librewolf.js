@@ -890,6 +890,8 @@ lockPref("identity.fxaccounts.telemetry.clientInfoPing.enabled", false);
 lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.enabled", false);
 lockPref("toolkit.telemetry.site_categories", "{}");
 lockPref("toolkit.profiles.newProfileSubmitted", true);
+// Set random ID
+lockPref("browser.newtabpage.activity-stream.impressionId", "{some-fake-impression-ID}");
 
 // Disable and deregister the Glean add-on ping scheduler
 // https://codeberg.org/celenity/Phoenix/commit/1ff7ae1dbd3095c993a73af69c6bb2a6ad700c55
