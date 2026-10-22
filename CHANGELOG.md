@@ -1,5 +1,15 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.10.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.10.1) — 2026-10-22 — [`v13.10.0`…`v13.10.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.10.0...v13.10.1)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to librewolf v158.0.1-2 — [`2aab0b28…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/2aab0b28787c4153f6983bef17370165fa31b875)
+- _(patches)_ Update librewolf patches to v158.0.1-2 — [`16134d63…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/16134d632f33598057a42a65f0c3b0f81b483609)
+- _(config)_ Update librewolf preset to v158.0.1-2 — [`10093cf6…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/10093cf6a920fd71ec9b2e16b222d46bb80b5406)
+- Update pnpm & deps — [`4f970f66…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4f970f66afc213d9bec0f317e0fda36959611f20)
+- **builtin-addons/startpage:** Update pnpm & deps — [`93afa2ae…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/93afa2aefdf86dca37f2d45c95520e734ef7594a)
+
 ## [FireDragon v13.10.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.10.0) — 2026-10-21 — [`v13.9.0`…`v13.10.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.9.0...v13.10.0)
 
 ### 🚀 Features
