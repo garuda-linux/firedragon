@@ -1,0 +1,9 @@
+permissions-eme2 =
+    .label = Контент с DRM-защитой
+permissions-webgl2 =
+    .label = WebGL
+permissions-canvas2 =
+    .label = Извлечение через Canvas
+permissions-jit2 =
+    .label = JIT-компиляция JavaScript
+firedragon-settings-title = Настройки FireDragon
