@@ -91,8 +91,11 @@ async function extractArtifactTo(artifact: string, dir: string) {
 
 /* COMMANDS */
 
-async function patches() {
+async function librewolf() {
     const baseUrl = `https://librewolf.dev/librewolf/source/raw/tag/${librewolfVersion}`;
+
+    await $`curl ${baseUrl}/settings/librewolf.cfg -o config/presets/librewolf.js`;
+
     await $`curl ${baseUrl}/assets/patches.txt -o ${tmpDir}/patches.txt`.lines();
     for (const patch of await $`cat ${tmpDir}/patches.txt`.lines()) {
         if (await fs.pathExists(patch)) {
@@ -449,8 +452,8 @@ await $`mkdir -p ${cacheDir} ${distDir}`;
 
 for (const command of argv._) {
     switch (command) {
-        case 'patches':
-            await patches();
+        case 'librewolf':
+            await librewolf();
             break;
         case 'source':
             await source();
