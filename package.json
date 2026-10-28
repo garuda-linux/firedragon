@@ -23,7 +23,7 @@
   },
   "config": {
     "firefox": {
-      "version": "158.0.1"
+      "version": "159.0"
     },
     "librewolf": {
       "release": "2"
