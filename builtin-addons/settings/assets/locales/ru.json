@@ -1,0 +1,855 @@
+{
+  "title": "Настройки FireDragon",
+  "back": "Назад к настройкам",
+  "pages": {
+    "home": {
+      "title": "Настройки FireDragon",
+      "description": "Мы тщательно подбираем настройки по умолчанию, уделяя особое внимание приватности и безопасности. Прежде чем менять настройки, прочитайте описание, чтобы понимать последствия изменений.",
+      "browserBehaviour": {
+        "title": "Поведение браузера",
+        "autoUpdateExtensions": {
+          "title": "Автоматически обновлять дополнения",
+          "description": "Обновлять расширения без ручного вмешательства. Хороший выбор для безопасности. Если вы не проверяете код расширений перед каждым обновлением, эту опцию стоит включить."
+        },
+        "enableSync": {
+          "title": "Включить FireDragon Sync",
+          "description": "Синхронизировать данные с другими браузерами. Требуется перезапуск. FireDragon Sync шифрует данные локально перед отправкой на сервер.",
+          "restartDialog": {
+            "title": "Требуется перезапуск",
+            "message": "Чтобы полностью включить или отключить FireDragon Sync, требуется перезапуск FireDragon."
+          }
+        },
+        "enableMiddleClickPaste": {
+          "title": "Включить вставку средней кнопкой мыши",
+          "description": "Выделите текст, чтобы скопировать его, затем вставьте щелчком средней кнопки мыши."
+        },
+        "hidePasswdmgr": {
+          "title": "Скрыть менеджер паролей",
+          "description": "Скрыть пункт меню и настройки менеджера паролей.",
+          "restartDialog": {
+            "title": "Требуется перезапуск",
+            "message": "Чтобы полностью показать или скрыть менеджер паролей, требуется перезапуск FireDragon."
+          }
+        },
+        "enableTranslations": {
+          "title": "Включить переводы",
+          "description": "Включить офлайн-перевод."
+        },
+        "closeWindowWithLastTab": {
+          "title": "Закрывать окно вместе с последней вкладкой",
+          "description": "Закрывать окно браузера при закрытии последней вкладки."
+        }
+      },
+      "networking": {
+        "title": "Сеть",
+        "enableIPv6": {
+          "title": "Включить IPv6",
+          "description": "Разрешить FireDragon подключаться по IPv6. Вместо блокировки IPv6 в браузере рекомендуем включить расширение приватности IPv6 в вашей ОС."
+        }
+      },
+      "privacy": {
+        "title": "Приватность",
+        "enablePrefetchConfig": {
+          "title": "Включить предзагрузку",
+          "description": "Предзагрузка — функция браузера, позволяющая скачивать ресурсы в фоне, пока пользователь просматривает страницы. Это может повысить производительность и снизить расход трафика.",
+          "restartDialog": {
+            "title": "Требуется перезапуск",
+            "message": "Чтобы полностью включить или отключить предзагрузку, требуется перезапуск FireDragon."
+          }
+        },
+        "limitCrossOriginReferrers": {
+          "title": "Ограничить передачу рефереров между источниками",
+          "description": "Передавать реферер только для запросов с того же источника. Это может сломать работу некоторых сайтов. Кроме того, даже передаваемые рефереры будут усечены."
+        },
+        "autoRefuseCookies": {
+          "title": "Автоматически отклонять баннеры cookie",
+          "description": "Когда сайт спрашивает разрешение на использование cookie, FireDragon автоматически отказывает за вас. Только на поддерживаемых сайтах. Не совместимо с блокировкой всех cookie / строгим режимом."
+        }
+      },
+      "fingerprinting": {
+        "title": "Снятие отпечатков",
+        "enableRFP": {
+          "title": "Включить ResistFingerprinting",
+          "description": "ResistFingerprinting — лучший инструмент защиты от снятия отпечатков. Если нужно его отключить, подумайте о расширении вроде Canvas Blocker."
+        },
+        "enableLetterboxing": {
+          "title": "Включить letterboxing",
+          "description": "Letterboxing добавляет поля вокруг окна, чтобы сообщать ограниченный набор округлённых разрешений."
+        },
+        "enableWebGL": {
+          "title": "Включить WebGL",
+          "description": "WebGL — сильный вектор для снятия отпечатков. Если нужно его включить, подумайте о расширении вроде Canvas Blocker."
+        },
+        "enableWebGLPrompt": {
+          "title": "Включить обработку разрешений WebGL",
+          "description": "Включает обработку разрешений для WebGL: на сайтах, которым он нужен, будет запрошено разрешение. Если отключено, WebGL доступен всем сайтам."
+        },
+        "hideWebGLPrompt": {
+          "title": "Скрыть запрос разрешения WebGL",
+          "description": "Скрывает запрос разрешения WebGL. Он останется доступен из адресной строки."
+        }
+      },
+      "security": {
+        "title": "Безопасность",
+        "enforceOCSP": {
+          "title": "Включить жёсткий отказ OCSP",
+          "description": "Запрещать подключение к сайту, если проверку OCSP выполнить не удалось. Это повышает безопасность, но ломает работу при недоступности OCSP-сервера."
+        },
+        "enable0rtt": {
+          "title": "Включить TLS 1.3 0-RTT",
+          "description": "Включает 0-RTT (Zero Round Trip Time) для TLS-соединений. Это может повысить производительность, но увеличивает риски безопасности."
+        },
+        "enableSafeBrowsing": {
+          "title": "Включить Google Safe Browsing",
+          "description": "Если вы опасаетесь вредоносного ПО и фишинга, стоит включить. Отключено из-за опасений цензуры, но рекомендуется менее опытным пользователям. Все проверки выполняются локально."
+        },
+        "scanDownloads": {
+          "title": "Сканировать загрузки",
+          "description": "Разрешить Safe Browsing проверять загрузки на подозрительные файлы. Все проверки выполняются локально."
+        }
+      }
+    },
+    "design": {
+      "title": "Оформление",
+      "description": "Настройте внешний вид браузера.",
+      "skin": {
+        "title": "Скин",
+        "restartDialog": {
+          "title": "Требуется перезапуск",
+          "message": "Чтобы полностью сменить скин, требуется перезапуск FireDragon."
+        },
+        "proton": {
+          "title": "Proton",
+          "description": "Скин Firefox по умолчанию"
+        },
+        "fluerial": {
+          "title": "Fluerial",
+          "description": "Устаревший интерфейс Floorp"
+        },
+        "lepton": {
+          "title": "Lepton",
+          "description": "Пользовательский скин от black7375"
+        },
+        "lepton-photon": {
+          "title": "Lepton Photon",
+          "description": "Lepton в стиле Photon"
+        },
+        "lepton-proton": {
+          "title": "Lepton Proton",
+          "description": "Lepton в стиле Proton"
+        }
+      },
+      "advanced": {
+        "title": "Дополнительно",
+        "enableNovaRedesign": {
+          "title": "Включить Nova Redesign",
+          "description": "Включает тему Nova Redesign. Может быть несовместимо со скинами Lepton."
+        },
+        "allowUserChromeCss": {
+          "title": "Разрешить настройку через userChrome.css",
+          "description": "Включите, если хотите настраивать интерфейс вручную загруженной темой. Убедитесь, что доверяете источнику темы.",
+          "restartDialog": {
+            "title": "Требуется перезапуск",
+            "message": "Чтобы полностью разрешить или запретить настройку userChrome.css, требуется перезапуск FireDragon."
+          }
+        }
+      }
+    },
+    "design-lepton": {
+      "title": "Настройки Lepton",
+      "description": "Настройте скин Lepton.",
+      "link": "Подробнее",
+      "advanced": "Показать дополнительные настройки",
+      "reset": "Сбросить всё по умолчанию",
+      "default": "Это настройка Lepton по умолчанию; менять её не следует.",
+      "distribution": "Это настройка по умолчанию для выбранной сборки Lepton; менять её не следует.",
+      "theme": {
+        "title": "Тема",
+        "themeBuiltInContrast": {
+          "title": "Использовать встроенную контрастность"
+        },
+        "themeSystemDefault": {
+          "title": "Использовать оформление системы"
+        },
+        "themeProtonColor": {
+          "title": "Использовать цвета Proton"
+        },
+        "themeProtonChrome": {
+          "title": "Использовать всплывающие окна в стиле Proton"
+        },
+        "themeFullyColor": {
+          "title": "Полностью окрашивать компоненты"
+        },
+        "themeFullyDark": {
+          "title": "Улучшить поддержку тёмной темы"
+        },
+        "themeProtonColorDarkBlueAccent": {
+          "title": "Использовать синий акцентный цвет"
+        },
+        "themeMonospace": {
+          "title": "Использовать моноширинный шрифт"
+        }
+      },
+      "decoration": {
+        "title": "Оформление",
+        "decorationCursor": {
+          "title": "Автоматически менять форму курсора"
+        },
+        "decorationFieldBorder": {
+          "title": "Показывать рамку вокруг полей ввода"
+        },
+        "decorationDownloadPanel": {
+          "title": "Улучшить панель загрузок"
+        },
+        "decorationAnimate": {
+          "title": "Включить различные мелкие анимации"
+        },
+        "decorationDisablePanelAnimate": {
+          "title": "Отключить анимацию панелей"
+        },
+        "decorationDisableSidebarAnimate": {
+          "title": "Отключить анимацию боковой панели"
+        }
+      },
+      "autohide": {
+        "title": "Настройки автоскрытия",
+        "autohideTab": {
+          "title": "Автоматически скрывать вкладки",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "opacity": "Прозрачность",
+            "blur": "Размытие"
+          }
+        },
+        "autohideNavbar": {
+          "title": "Автоматически скрывать панель навигации"
+        },
+        "autohideBookmarkbar": {
+          "title": "Автоматически скрывать панель закладок"
+        },
+        "autohideSidebar": {
+          "title": "Автоматически скрывать боковую панель"
+        },
+        "autohideFillUrlbar": {
+          "title": "Автоматически разворачивать адресную строку и скрывать прочие элементы"
+        },
+        "autohideBackButton": {
+          "title": "Автоматически скрывать кнопку «Назад»"
+        },
+        "autohideForwardButton": {
+          "title": "Автоматически скрывать кнопку «Вперёд»"
+        },
+        "autohidePageAction": {
+          "title": "Автоматически скрывать кнопки в адресной строке"
+        },
+        "autohideToolbarOverlap": {
+          "title": "Перекрывать панелью инструментов контент при включённом автоскрытии"
+        }
+      },
+      "hidden": {
+        "title": "Скрыто",
+        "hiddenTabIcon": {
+          "title": "Скрывать значки вкладок",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "always": "Всегда"
+          }
+        },
+        "hiddenTabbar": {
+          "title": "Скрывать панель вкладок"
+        },
+        "hiddenNavbar": {
+          "title": "Скрывать панель навигации"
+        },
+        "hiddenSidebarHeader": {
+          "title": "Скрывать заголовок боковой панели",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "verticalTabOnly": "Только для вертикальных вкладок"
+          }
+        },
+        "hiddenUrlbarIconbox": {
+          "title": "Скрывать значки в адресной строке"
+        },
+        "hiddenBookmarkbar": {
+          "title": "Скрывать подписи или значки на панели закладок",
+          "type": {
+            "none": "Отключено",
+            "icon": "Скрывать значки",
+            "label": "Скрывать подписи"
+          }
+        },
+        "hiddenDisabledMenu": {
+          "title": "Скрывать неактивные пункты меню"
+        }
+      },
+      "centered": {
+        "title": "Центрирование",
+        "centeredTab": {
+          "title": "Центрировать вкладки",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "label": "Только подпись"
+          }
+        },
+        "centeredUrlbar": {
+          "title": "Центрировать адресную строку"
+        },
+        "centeredBookmarkbar": {
+          "title": "Центрировать панель закладок"
+        }
+      },
+      "rounding": {
+        "title": "Скругление",
+        "roundingSquareTab": {
+          "title": "Прямоугольные вкладки"
+        },
+        "roundingSquarePanel": {
+          "title": "Прямоугольные панели"
+        },
+        "roundingSquarePanelitem": {
+          "title": "Прямоугольные элементы панелей"
+        },
+        "roundingSquareMenupopup": {
+          "title": "Прямоугольные всплывающие меню"
+        },
+        "roundingSquareMenuitem": {
+          "title": "Прямоугольные пункты меню"
+        },
+        "roundingSquareField": {
+          "title": "Прямоугольные текстовые поля"
+        },
+        "roundingSquareChecklabel": {
+          "title": "Прямоугольные флажки"
+        }
+      },
+      "padding": {
+        "title": "Отступы",
+        "paddingTabbarWidth": {
+          "title": "Уменьшить отступы на панели вкладок"
+        },
+        "paddingTabbarHeight": {
+          "title": "Уменьшить высоту панели вкладок"
+        },
+        "paddingToolbarButton": {
+          "title": "Уменьшить отступы в кнопках панели инструментов"
+        },
+        "paddingNavbarWidth": {
+          "title": "Уменьшить отступы на панели навигации"
+        },
+        "paddingUrlbar": {
+          "title": "Уменьшить отступы в адресной строке и её выпадающем окне"
+        },
+        "paddingBookmarkbar": {
+          "title": "Уменьшить отступы на панели закладок"
+        },
+        "paddingInfobar": {
+          "title": "Уменьшить отступы в информационной панели"
+        },
+        "paddingMenu": {
+          "title": "Уменьшить отступы в меню"
+        },
+        "paddingBookmarkMenu": {
+          "title": "Уменьшить отступы в меню закладок"
+        },
+        "paddingGlobalMenubar": {
+          "title": "Растянуть глобальное меню для удобства"
+        },
+        "paddingPanel": {
+          "title": "Уменьшить отступы в панели"
+        },
+        "paddingPopupPanel": {
+          "title": "Уменьшить отступы во всплывающей панели"
+        },
+        "paddingFirstTab": {
+          "title": "Добавить отступ перед первой вкладкой",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "always": "Всегда"
+          }
+        },
+        "paddingDragSpace": {
+          "title": "Добавить область перетаскивания",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "maximized": "Сохранять при развёрнутом окне"
+          }
+        },
+        "paddingMenuCompact": {
+          "title": "Уменьшить отступы меню"
+        },
+        "paddingBookmarkMenuCompact": {
+          "title": "Уменьшить отступы меню закладок"
+        },
+        "paddingPanelHeader": {
+          "title": "Уменьшить отступы заголовка панели"
+        },
+        "paddingUrlViewExpanding": {
+          "title": "Уменьшить отступы в развёрнутом окне URL View"
+        },
+        "paddingUrlViewResults": {
+          "title": "Уменьшить отступы в результатах URL View"
+        }
+      },
+      "urlView": {
+        "title": "URL View",
+        "urlViewMoveIconToLeft": {
+          "title": "Переместить значок влево"
+        },
+        "urlViewGoButtonWhenTyping": {
+          "title": "Показывать кнопку «Перейти» при вводе"
+        },
+        "urlViewAlwaysShowPageActions": {
+          "title": "Всегда показывать действия страницы"
+        }
+      },
+      "tabbar": {
+        "title": "Панель вкладок",
+        "tabbarAsTitlebar": {
+          "title": "Показывать панель вкладок вместо заголовка окна"
+        },
+        "tabbarOnBottom": {
+          "title": "Показывать панель вкладок внизу"
+        },
+        "tabbarOnBottomAboveBookmark": {
+          "title": "Показывать панель вкладок над панелью закладок"
+        },
+        "tabbarOnBottomMenubarOnTop": {
+          "title": "Показывать меню сверху"
+        },
+        "tabbarOnBottomHiddenSingleTab": {
+          "title": "Скрывать панель вкладок, если вкладка одна"
+        },
+        "tabbarOneLiner": {
+          "title": "Показывать панель вкладок в одну строку"
+        },
+        "tabbarOneLinerCombineNavbar": {
+          "title": "Объединить с панелью навигации"
+        },
+        "tabbarOneLinerTabbarFirst": {
+          "title": "Показывать панель вкладок первой"
+        },
+        "tabbarOneLinerResponsive": {
+          "title": "Автоматически переключать однострочный режим при малой ширине экрана"
+        }
+      },
+      "tab": {
+        "title": "Вкладка",
+        "tabMultiSelected": {
+          "title": "Настраивать контраст нескольких выделенных вкладок"
+        },
+        "tabUnloaded": {
+          "title": "Настраивать прозрачность выгруженных вкладок"
+        },
+        "tabLettersCleary": {
+          "title": "Отчётливо обрезать текст"
+        },
+        "tabSoundHideLabel": {
+          "title": "Скрывать метку звука"
+        },
+        "tabSoundWithFavicons": {
+          "title": "Показывать значки звука"
+        },
+        "tabPip": {
+          "title": "Показывать значок PiP"
+        },
+        "tabContainer": {
+          "title": "Настраивать индикатор контейнера"
+        },
+        "tabCrashed": {
+          "title": "Скрывать значок упавших вкладок"
+        },
+        "tabConnectToWindow": {
+          "title": "Связать с окном"
+        },
+        "tabColorLikeToolbar": {
+          "title": "Цвет как у панели инструментов"
+        },
+        "tabLeptonLikePadding": {
+          "title": "Отступы в стиле Lepton"
+        },
+        "tabPhotonLikePadding": {
+          "title": "Отступы в стиле Photon"
+        },
+        "tabDynamicSeparator": {
+          "title": "Показывать динамический разделитель"
+        },
+        "tabStaticSeparator": {
+          "title": "Показывать статический разделитель"
+        },
+        "tabStaticSeparatorSelectedAccent": {
+          "title": "Выделять цветом статический разделитель при выборе"
+        },
+        "tabNewtabButtonLikeTab": {
+          "title": "Показывать кнопку новой вкладки как вкладку"
+        },
+        "tabNewtabButtonSmaller": {
+          "title": "Уменьшить кнопку новой вкладки"
+        },
+        "tabNewtabButtonProton": {
+          "title": "Настроить кнопку новой вкладки под стиль Proton"
+        },
+        "tabBoxShadow": {
+          "title": "Добавлять тень вокруг вкладки"
+        },
+        "tabBottomRoundedCorner": {
+          "title": "Скруглённые нижние углы"
+        },
+        "tabPhotonLikeContextline": {
+          "title": "Контекстная линия в стиле Photon"
+        },
+        "tabAlwaysShowTabIcon": {
+          "title": "Всегда показывать значок вкладки"
+        },
+        "tabCloseButtonAtHover": {
+          "title": "Показывать кнопку закрытия при наведении",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "always": "Всегда"
+          }
+        },
+        "tabCloseButtonAtPinned": {
+          "title": "Показывать кнопку закрытия у выбранной закреплённой вкладки",
+          "type": {
+            "none": "Отключено",
+            "default": "По умолчанию",
+            "always": "Всегда"
+          }
+        },
+        "tabCloseButtonAtPinnedBackground": {
+          "title": "Показывать кнопку закрытия у закреплённых фоновых вкладок при наведении"
+        },
+        "tabSoundShowLabel": {
+          "title": "Показывать метку звука"
+        },
+        "tabSupernovaLikeContextline": {
+          "title": "Контекстная линия в стиле Supernova"
+        }
+      },
+      "panel": {
+        "title": "Панель",
+        "panelRemoveStrip": {
+          "title": "Убрать полосу из заголовка панели"
+        },
+        "panelFullWidthSeparator": {
+          "title": "Сделать разделитель заголовка панели на всю ширину"
+        },
+        "panelFullWidthPadding": {
+          "title": "Отступы на всю ширину"
+        }
+      },
+      "sidebar": {
+        "title": "Боковая панель",
+        "panelSidebar": {
+          "title": "Перекрывать контент"
+        }
+      },
+      "fullscreen": {
+        "title": "Полноэкранный режим",
+        "fullscreenOverlap": {
+          "title": "Перекрывать панелью инструментов контент"
+        },
+        "fullscreenShowBookmarkbar": {
+          "title": "Показывать панель закладок в полноэкранном режиме"
+        }
+      },
+      "icon": {
+        "title": "Значки",
+        "iconPanel": {
+          "title": "Показывать значки в панели"
+        },
+        "iconLibrary": {
+          "title": "Показывать значки в библиотеке"
+        },
+        "iconContextMenu": {
+          "title": "Показывать значки в контекстном меню"
+        },
+        "iconGlobalMenu": {
+          "title": "Показывать значки в глобальном меню"
+        },
+        "iconGlobalMenubar": {
+          "title": "Показывать значки в глобальном меню"
+        },
+        "iconPanelFull": {
+          "title": "Показывать полные значки панели"
+        },
+        "iconPanelPhoton": {
+          "title": "Значки панели в стиле Photon"
+        },
+        "iconDisabled": {
+          "title": "Отключить все значки"
+        },
+        "iconAccountImageToRight": {
+          "title": "Переместить изображение вправо в панели аккаунта"
+        },
+        "iconAccountLabelToRight": {
+          "title": "Переместить подпись вправо в панели аккаунта"
+        },
+        "iconMenuFull": {
+          "title": "Полное меню значков"
+        },
+        "iconGlobalMenuMac": {
+          "title": "Значки глобального меню на Mac"
+        }
+      },
+      "player": {
+        "title": "Медиаплеер",
+        "playerUi": {
+          "title": "Улучшенный интерфейс плеера"
+        },
+        "playerIcon": {
+          "title": "Заменить значки плеера"
+        },
+        "playerNoaudio": {
+          "title": "Отчётливо показывать видео без звука"
+        },
+        "playerSize": {
+          "title": "Настраивать размер плеера при сенсорном полноэкранном режиме"
+        },
+        "playerClickToPlay": {
+          "title": "Воспроизведение по клику"
+        },
+        "playerAnimate": {
+          "title": "Анимации плеера"
+        },
+        "playerUiTwoline": {
+          "title": "Двухстрочный интерфейс плеера"
+        }
+      },
+      "newTab": {
+        "title": "Новая вкладка",
+        "newTabFieldBorder": {
+          "title": "Показывать рамку вокруг полей ввода"
+        },
+        "newTabFullIcon": {
+          "title": "Убрать отступы вокруг значков"
+        },
+        "newTabAnimate": {
+          "title": "Анимации новой вкладки"
+        },
+        "newTabSearchbar": {
+          "title": "Улучшенное окно поиска"
+        }
+      },
+      "page": {
+        "title": "Страница",
+        "pageIllustration": {
+          "title": "Показывать иллюстрации ошибок"
+        },
+        "pageProtonColor": {
+          "title": "Использовать цвета Proton"
+        },
+        "pageDarkMode": {
+          "title": "Содержимое в тёмной теме"
+        },
+        "pageProton": {
+          "title": "Содержимое в теме Proton"
+        },
+        "pageProtonColor2": {
+          "title": "Акцентный цвет Proton",
+          "type": {
+            "none": "Отключено",
+            "darkBlueAccent": "Тёмно-синий",
+            "systemAccent": "Системный"
+          }
+        },
+        "pageMonospace": {
+          "title": "Использовать моноширинный шрифт"
+        }
+      }
+    },
+    "keyboardShortcuts": {
+      "title": "Сочетания клавиш",
+      "description": "Управление стандартными и пользовательскими сочетаниями клавиш",
+      "general": {
+        "title": "Общие",
+        "enableDefaultShortcuts": {
+          "title": "Включить стандартные сочетания клавиш",
+          "description": "Включает или отключает все стандартные сочетания клавиш Firefox. Сочетания, заданные в разделе «Сочетания клавиш», не затрагиваются."
+        }
+      },
+      "shortcuts": {
+        "title": "Сочетания клавиш",
+        "command": {
+          "title": "Команда",
+          "options": {
+            "ADD_BOOKMARK_AS": "Добавить закладку",
+            "BACK": "Назад",
+            "BOOKMARK_ALL_TABS": "Добавить в закладки все вкладки",
+            "BOOKMARKS_SIDEBAR": "Переключить боковую панель закладок",
+            "BOOKMARKS_TOOLBAR": "Переключить панель закладок",
+            "CLOSE_TAB": "Закрыть вкладку",
+            "CLOSE_WINDOW": "Закрыть окно",
+            "CUSTOMIZE_TOOLBARS": "Настроить панели инструментов",
+            "DOWNLOADS": "Открыть загрузки",
+            "DUPLICATE_TAB": "Дублировать вкладку",
+            "FIND": "Найти",
+            "FIND_AGAIN": "Найти далее",
+            "FIND_PREVIOUS": "Найти предыдущее",
+            "FIND_SELECTION": "Найти по выделенному",
+            "FORCE_RELOAD": "Принудительно перезагрузить",
+            "FORWARD": "Вперёд",
+            "FULL_ZOOM_ENLARGE": "Увеличить масштаб",
+            "FULL_ZOOM_REDUCE": "Уменьшить масштаб",
+            "FULL_ZOOM_RESET": "Сбросить масштаб",
+            "FULL_ZOOM_TOGGLE": "Переключить масштаб",
+            "FULLSCREEN": "Переключить полноэкранный режим",
+            "HISTORY_SIDEBAR": "Переключить боковую панель истории",
+            "IMPORT_FROM_ANOTHER_BROWSER": "Импортировать из другого браузера",
+            "NEW_NAVIGATOR": "Новая вкладка",
+            "NEW_NAVIGATOR_TAB": "Новое окно",
+            "NEXT_TAB": "Следующая вкладка",
+            "OPEN_ADDONS_PAGE": "Открыть страницу дополнений",
+            "OPEN_FILE": "Открыть файл",
+            "OPEN_HOME_PAGE": "Открыть домашнюю страницу",
+            "OPEN_PREFERENCES": "Открыть настройки",
+            "OPEN_PREFERENCES_PRIVACY": "Открыть настройки приватности",
+            "OPEN_PREFERENCES_CONTAINER": "Открыть настройки контейнеров",
+            "OPEN_PREFERENCES_SEARCH": "Открыть настройки поиска",
+            "OPEN_PREFERENCES_SYNC": "Открыть настройки синхронизации",
+            "PAGE_INFO": "Сведения о странице",
+            "PAGE_SOURCE": "Исходный код страницы",
+            "PREV_TAB": "Предыдущая вкладка",
+            "PRINT_PAGE": "Печать страницы",
+            "QUIT": "Выход",
+            "READER_VIEW": "Переключить режим чтения",
+            "RELOAD": "Перезагрузить",
+            "RELOAD_ALL_TABS": "Перезагрузить все вкладки",
+            "SANITIZE": "Забыть историю",
+            "SAVE_PAGE": "Сохранить страницу",
+            "SCREENSHOT": "Сделать снимок экрана",
+            "SCROLL_BOTTOM": "Прокрутить вниз",
+            "SCROLL_LEFT": "Прокрутить влево",
+            "SCROLL_PAGE_DOWN": "Прокрутить вниз на страницу",
+            "SCROLL_PAGE_UP": "Прокрутить вверх на страницу",
+            "SCROLL_RIGHT": "Прокрутить вправо",
+            "SCROLL_TOP": "Прокрутить вверх",
+            "SEARCH_WEB": "Искать в интернете",
+            "SEARCH_BOOKMARKS": "Искать в закладках",
+            "SEARCH_HISTORY": "Искать в истории",
+            "SEND_LINK": "Отправить ссылку",
+            "SHOW_ALL_TABS_PANEL": "Показать панель всех вкладок",
+            "SIDEBAR_HIDE": "Скрыть боковую панель",
+            "SIDEBAR_REVERSE_POSITION": "Поменять положение боковой панели",
+            "SIDEBAR_TOGGLE": "Переключить боковую панель",
+            "STOP": "Остановить",
+            "TABS_SIDEBAR": "Переключить боковую панель вкладок",
+            "TOGGLE_MUTE": "Переключить беззвучный режим",
+            "TOGGLE_OFFLINE_MODE": "Переключить офлайн-режим",
+            "TRANSLATE": "Перевести",
+            "UNDO_CLOSE_TAB": "Отменить закрытие вкладки",
+            "UNDO_CLOSE_WINDOW": "Отменить закрытие окна",
+            "VIEW_PIP": "Картинка в картинке",
+            "VIEW_PROCESSES": "Диспетчер задач"
+          }
+        },
+        "modifiers": {
+          "title": "Модификаторы",
+          "options": {
+            "ACCEL": "Ctrl (Mac: Meta)",
+            "ALT": "Alt (Mac: Option)",
+            "META": "Meta (Mac: Command)",
+            "SHIFT": "Shift"
+          }
+        },
+        "key": {
+          "title": "Клавиша",
+          "options": {
+            "PK_0": "0",
+            "PK_1": "1",
+            "PK_2": "2",
+            "PK_3": "3",
+            "PK_4": "4",
+            "PK_5": "5",
+            "PK_6": "6",
+            "PK_7": "7",
+            "PK_8": "8",
+            "PK_9": "9",
+            "PK_A": "A",
+            "PK_B": "B",
+            "PK_C": "C",
+            "PK_D": "D",
+            "PK_E": "E",
+            "PK_F": "F",
+            "PK_G": "G",
+            "PK_H": "H",
+            "PK_I": "I",
+            "PK_J": "J",
+            "PK_K": "K",
+            "PK_L": "L",
+            "PK_M": "M",
+            "PK_N": "N",
+            "PK_O": "O",
+            "PK_P": "P",
+            "PK_Q": "Q",
+            "PK_R": "R",
+            "PK_S": "S",
+            "PK_T": "T",
+            "PK_U": "U",
+            "PK_V": "V",
+            "PK_W": "W",
+            "PK_X": "X",
+            "PK_Y": "Y",
+            "PK_Z": "Z",
+            "PK_BACK_QUOTE": "`",
+            "PK_BACK_SLASH": "\\",
+            "PK_CLOSE_BRACKET": "]",
+            "PK_COMMA": ",",
+            "PK_EQUALS": "=",
+            "PK_MINUS": "-",
+            "PK_OPEN_BRACKET": "[",
+            "PK_PERIOD": ".",
+            "PK_PLUS": "+",
+            "PK_QUOTE": "'",
+            "PK_SEMICOLON": ";",
+            "PK_SLASH": "/",
+            "PK_STAR": "*",
+            "VK_F1": "F1",
+            "VK_F2": "F2",
+            "VK_F3": "F3",
+            "VK_F4": "F4",
+            "VK_F5": "F5",
+            "VK_F6": "F6",
+            "VK_F7": "F7",
+            "VK_F8": "F8",
+            "VK_F9": "F9",
+            "VK_F10": "F10",
+            "VK_F11": "F11",
+            "VK_F12": "F12",
+            "VK_F13": "F13",
+            "VK_F14": "F14",
+            "VK_F15": "F15",
+            "VK_F16": "F16",
+            "VK_F17": "F17",
+            "VK_F18": "F18",
+            "VK_F19": "F19",
+            "VK_F20": "F20",
+            "VK_F21": "F21",
+            "VK_F22": "F22",
+            "VK_F23": "F23",
+            "VK_F24": "F24",
+            "VK_RETURN": "Enter"
+          }
+        }
+      }
+    },
+    "sidebar": {
+      "title": "Боковая панель",
+      "description": "Настройте боковую панель.",
+      "urls": {
+        "title": "URL боковой панели",
+        "name": "Название",
+        "url": "URL",
+        "iconUrl": "URL значка",
+        "userContextId": "Контейнер"
+      }
+    }
+  }
+}
