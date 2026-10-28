@@ -227,6 +227,7 @@ defaultPref("network.lna.local-network-to-localhost.skip-checks", false); // Whe
 /** [SECTION] OTHER */
 defaultPref("security.csp.reporting.enabled", false); // https://codeberg.org/librewolf/issues/issues/2688
 defaultPref("network.dns.preferIPv6", true); // Fix IPv6 when using DoH https://codeberg.org/divested/brace/pulls/5
+defaultPref("general.useragent.compatMode.firefox", true); // Always use the Firefox UA
 
 /** ------------------------------
  * [CATEGORY] FINGERPRINTING
@@ -512,6 +513,9 @@ defaultPref("browser.smartwindow.hideTopSites", true);
 defaultPref("browser.smartwindow.smartformfill.enabled", false);
 // Disable Exa snippets
 defaultPref("browser.smartwindow.searchTheWebFast", false);
+defaultPref("browser.smartwindow.searchTheWebAnswers", false);
+// Disable about:smartpage
+defaultPref("browser.smartwindow.aitab.enabled", false);
 // Disable ML for autofill detection
 defaultPref("extensions.formautofill.useml", false);
 // Disable ML speech recognition
@@ -595,6 +599,8 @@ defaultPref("signon.rememberSignons", false);
 defaultPref("signon.autofillForms", false);
 defaultPref("extensions.formautofill.addresses.enabled", false);
 defaultPref("extensions.formautofill.creditCards.enabled", false);
+defaultPref("extensions.formautofill.creditCards.cvv.supported", "on"); // Rollout pref
+defaultPref("extensions.formautofill.creditCards.cvv.enabled", false); // User pref
 defaultPref("extensions.formautofill.passports.enabled", false);
 
 // Disable Firefox Relay by default
@@ -691,6 +697,7 @@ defaultPref("browser.newtabpage.activity-stream.widgets.system.enabled", true); 
 defaultPref("browser.newtabpage.activity-stream.widgets.enabled", false); // Main user toggle
 defaultPref("browser.newtabpage.activity-stream.widgets.feedback.enabled", false); // Disable feedback
 defaultPref("browser.newtabpage.activity-stream.widgets.hideAllToast.enabled", true); // Hide toast when all widgets are disabled
+defaultPref("browser.newtabpage.activity-stream.widgets.marketGate.enabled", false); // Do not restrict widgets in specific regions
 
 // Allow the widgets to be available
 defaultPref("browser.newtabpage.activity-stream.widgets.system.clocks.enabled", true);
@@ -701,7 +708,6 @@ defaultPref("browser.newtabpage.activity-stream.widgets.system.lists.enabled", t
 defaultPref("browser.newtabpage.activity-stream.widgets.system.pictureOfTheDay.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.privacy.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.recentSearches.enabled", true);
-defaultPref("browser.newtabpage.activity-stream.widgets.system.sportsWidget.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.stocks.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.weather.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.weatherForecast.enabled", true);
@@ -715,7 +721,6 @@ defaultPref("browser.newtabpage.activity-stream.widgets.lists.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.pictureOfTheDay.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.privacy.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.recentSearches.enabled", false);
-defaultPref("browser.newtabpage.activity-stream.widgets.sportsWidget.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.stocks.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weather.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weatherForecast.enabled", false);
@@ -734,6 +739,10 @@ defaultPref("browser.newtabpage.activity-stream.discoverystream.attribution.enab
 
 // Disable the top site feed
 defaultPref("browser.newtabpage.activity-stream.feeds.topsites", false);
+
+// Disable topstories
+defaultPref("browser.newtabpage.activity-stream.feeds.system.topstories", false);
+defaultPref("browser.newtabpage.activity-stream.feeds.section.topstories", false);
 
 
 // Disable web notifications on newtabpage
@@ -841,9 +850,16 @@ defaultPref("browser.urlbar.share-button.enabled", false);
 // https://searchfox.org/firefox-main/rev/202150dcdade5798ca858b843b51b20112b4d061/uriloader/exthandler/ExtHandlerService.sys.mjs#95-117
 lockPref("gecko.handlerService.defaultHandlersVersion", 999);
 
-// Set out toolbar defaults
+// Set our toolbar defaults
 defaultPref("browser.uiCustomization.state", '{"placements":{"widget-overflow-fixed-list":[],"unified-extensions-area":[],"nav-bar":["back-button","forward-button","stop-reload-button","customizableui-special-spring1","vertical-spacer","urlbar-container","customizableui-special-spring2","downloads-button","fxa-toolbar-menu-button","reset-pbm-toolbar-button","unified-extensions-button","ublock0_raymondhill_net-browser-action"],"toolbar-menubar":["menubar-items"],"TabsToolbar":["tabbrowser-tabs","new-tab-button","customizableui-special-spring3","alltabs-button","smartwindow-group-tabs-button","ai-window-toggle"],"vertical-tabs":[],"PersonalToolbar":["personal-bookmarks"]},"seen":["reset-pbm-toolbar-button","developer-button","screenshot-button","ublock0_raymondhill_net-browser-action"],"dirtyAreaCache":["nav-bar","TabsToolbar","vertical-tabs"],"currentVersion":26,"newElementCount":4}');
 defaultPref("browser.toolbarbuttons.introduced.sidebar-button", true);
+
+// Adds an option to reveal passwords in password fields
+defaultPref("layout.forms.reveal-password-button.enabled", true);
+
+// Disable popup when highlighting text by default, but make it available
+defaultPref("browser.highlightToSearch.featureGate", true);
+defaultPref("browser.highlightToSearch.enabled", false);
 
 /** ------------------------------
  * [CATEGORY] TELEMETRY
@@ -861,9 +877,6 @@ lockPref("toolkit.telemetry.cachedClientID", "c0ffeec0-ffee-c0ff-eec0-ffeec0ffee
 lockPref("toolkit.telemetry.cachedProfileGroupID", "6b63fbca-5f99-4a37-b55f-d4e4a2d3ca51"); // https://searchfox.org/firefox-main/rev/2ef09bbf347cd5c182552fdafb6d3e3da1864760/toolkit/crashreporter/test/unit/test_crashreporter_crash.js#136
 lockPref("toolkit.telemetry.previousBuildID", "");
 lockPref("toolkit.telemetry.server_owner", "");
-lockPref("toolkit.coverage.opt-out", true); // hidden
-lockPref("toolkit.coverage.enabled", false);
-lockPref("toolkit.coverage.endpoint.base", "");
 lockPref("datareporting.healthreport.uploadEnabled", false);
 lockPref("datareporting.policy.dataSubmissionEnabled", false);
 // opt-out of normandy and studies
@@ -890,8 +903,11 @@ lockPref("identity.fxaccounts.telemetry.clientInfoPing.enabled", false);
 lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.enabled", false);
 lockPref("toolkit.telemetry.site_categories", "{}");
 lockPref("toolkit.profiles.newProfileSubmitted", true);
+lockPref("browser.newtabpage.ping.enabled", false);
 // Set random ID
 lockPref("browser.newtabpage.activity-stream.impressionId", "{some-fake-impression-ID}");
+// Do not store pings locally
+lockPref("telemetry.fog.enable_store_submitted_pings", false);
 
 // Disable and deregister the Glean add-on ping scheduler
 // https://codeberg.org/celenity/Phoenix/commit/1ff7ae1dbd3095c993a73af69c6bb2a6ad700c55
