@@ -1,5 +1,44 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.11.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.11.0) — 2026-10-28 — [`v13.10.1`…`v13.11.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.10.1...v13.11.0)
+
+### 🚜 Refactor
+
+- _(make)_ Rename patches command to librewolf and update logic — [`8d55d330…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8d55d33092a047d1348f003146a8e8140bba3546)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(l10n)_ Add Russian translation — [`7d45d13f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7d45d13f878e075d0176e06a5d274f2a6d8bdd6d)
+- _(l10n)_ Update Russian translation — [`83670d5f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/83670d5f4f414c99c384ac5aa461217227c0d6b2)
+- _(builtin-addons/qr-code)_ Add Russian translation — [`c110fd27…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c110fd27acbed2cdaf83c3518526d555c32213e0)
+- _(builtin-addons/qr-code)_ Update Russian translation — [`a6bfd582…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a6bfd582498fdedce7326f88fddee62b5d45efe6)
+- _(builtin-addons/settings)_ Add Russian translation — [`d441af26…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d441af265a3e1e96452dbeee3aa5d5769189fc57)
+- _(builtin-addons/settings)_ Update Russian translation — [`23d51549…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/23d515493fb8a3e336e057476c9c2b018a576afa)
+- _(l10n)_ Add Russian translation — [`ca288426…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/ca288426bb1c063ba246d906c602cad6c71a7ecf)
+- _(l10n)_ Update Russian translation — [`51e400cf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/51e400cf7a27a368134396ae6b622db22773cd71)
+- _(l10n)_ Add Russian translation — [`5fd0445f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5fd0445f7bd2ff8cb029a2e8d3da315cfa95d2ec)
+- _(l10n)_ Update Russian translation — [`07cf7c2c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/07cf7c2c33d45a9abf71ea13ac08d8dbb5680bef)
+- _(l10n)_ Add Russian translation — [`a7ca4212…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a7ca42126caaa0d93f4cd365c809bae4b1e1fb5c)
+- _(l10n)_ Update Russian translation — [`913d94c0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/913d94c0a8de765177891e7d1002c82f3f6a9787)
+- _(l10n)_ Add Russian translation — [`4f1a5f55…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4f1a5f555e25b229e0c75011d0eec4244b03c261)
+- _(l10n)_ Update Russian translation — [`9cf622dc…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9cf622dc0936a1b1ee597f3ca402f8d9e8f0b0ff)
+- _(builtin-addons/workspaces)_ Add Russian translation — [`1be9c61c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1be9c61c32a7a010314411488abe78bf50a8151d)
+- _(builtin-addons/workspaces)_ Update Russian translation — [`028b6df7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/028b6df71ca53dc1901debe09553589bd3632c0b)
+- _(builtin-addons/welcome)_ Add Russian translation — [`8d77c6dd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8d77c6ddcbeb1ad6883480fafcd5fdee71c69e92)
+- _(builtin-addons/welcome)_ Update Russian translation — [`d4c75454…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d4c7545413ebfa9ceed0ba26be34e3bb8a04e1e2)
+- _(builtin-addons/troubleshooting)_ Add Russian translation — [`3d2bedd1…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3d2bedd1cf22a38ec2191fc17113b1cd45d9bf8d)
+- _(builtin-addons/troubleshooting)_ Update Russian translation — [`d31a7407…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d31a74070075b2155e1243f28645a01168851713)
+- _(l10n)_ Add Russian translation — [`6e059bae…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6e059bae5a657e9abdb5457f3b84963cfb501a7e)
+- _(l10n)_ Update Russian translation — [`d5c9b6bf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d5c9b6bf25cc0e37a02f0bff774947dce06e00da)
+- _(l10n)_ Add Russian translation — [`bfa589da…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bfa589da3fffd26a7bd5be4990d5a5c906851be4)
+- _(l10n)_ Update Russian translation — [`7b4a5265…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7b4a526586087504ece9989215a3dfdf07666635)
+- Update to firefox v159.0 — [`0c7af1db…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0c7af1db787524ee682d21e048858fad0508b6c7)
+- Update to librewolf v159.0-1 — [`b82be589…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b82be589a4214471c3822545af5fdaf1e400f5a4)
+- _(patches)_ Update librewolf patches to v159.0-1 — [`505c5d03…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/505c5d03a6d45c01c54bff105cfbfc100606fb9b)
+- _(config)_ Update librewolf preset to v159.0-1 — [`d633eef0…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d633eef00b7aa757d0b82747aa519d9b395c1af1)
+- Update deps — [`5d915391…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/5d9153919cbcde31a9ada3fe93f2f6b8d7d065ef)
+- **builtin-addons/startpage:** Update deps — [`54aa3f9c…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/54aa3f9c254bcf940ef654ffe0ddf9aad47fbefd)
+
 ## [FireDragon v13.10.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.10.1) — 2026-10-22 — [`v13.10.0`…`v13.10.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.10.0...v13.10.1)
 
 ### ⚙️ Miscellaneous Tasks
