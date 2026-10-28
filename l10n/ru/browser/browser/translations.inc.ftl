@@ -1,0 +1,9 @@
+translations-panel-disable-translations =
+    .label = Полностью отключить переводы
+translations-manage-enable =
+    .label = Включить перевод страниц целиком
+translations-manage-autopopup =
+    .label = Предлагать перевод страниц, язык которых отличается от настроенного в браузере
+main-context-menu-translate-page =
+    .label = Перевести страницу…
+    .accesskey = T
