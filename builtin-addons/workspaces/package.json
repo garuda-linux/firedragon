@@ -9,8 +9,8 @@
   "dependencies": {
     "@paralleldrive/cuid2": "^3.3.0",
     "@quasar/extras": "catalog:",
-    "@trpc/client": "^11.19.0",
-    "@trpc/server": "^11.19.0",
+    "@trpc/client": "^11.22.1",
+    "@trpc/server": "^11.22.1",
     "@unhead/vue": "catalog:",
     "@vueuse/core": "catalog:",
     "@webext-core/storage": "^2.0.0",

@@ -22,21 +22,21 @@ allowBuilds:
   unrs-resolver: true
 
 catalog:
-  '@intlify/unplugin-vue-i18n': ^11.2.7
+  '@intlify/unplugin-vue-i18n': ^11.2.8
   '@quasar/extras': ^2.1.0
   '@quasar/vite-plugin': ^2.0.2
   '@unhead/vue': ^3.4.3
   '@vueuse/core': ^15.0.0
   '@vue/reactivity': ^3.5.44
-  '@wxt-dev/browser': ^0.3.6
+  '@wxt-dev/browser': ^0.3.7
   '@wxt-dev/module-vue': ^1.0.3
   quasar: ^2.35.2
-  sass-embedded: ^1.106.1
-  tsdown: ^0.23.2
+  sass-embedded: ^1.107.1
+  tsdown: ^0.23.4
   typescript: ~6.0.3
   vite: ^8.3.5
   vite-plugin-vue-devtools: ^8.2.1
   vue: ^3.5.44
-  vue-i18n: ^11.4.16
+  vue-i18n: ^11.4.17
   vue-router: ^5.4.0
   wxt: ^0.21.5
