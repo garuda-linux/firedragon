@@ -1,5 +1,22 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.11.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.11.1) — 2026-11-03 — [`v13.11.0`…`v13.11.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.11.0...v13.11.1)
+
+### 🚜 Refactor
+
+- _(make)_ Streamline patch downloading logic — [`3d04fd85…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3d04fd854de6315d61816137e406bb6c03a61430)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(builtin-addons/notes)_ Add Russian translation — [`85234901…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/852349010d70dad07cf19b955330dd8546c9e164)
+- _(builtin-addons/notes)_ Update Russian translation — [`6f3dd6da…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6f3dd6da9464c4f05ba63ecc186ded70141a06ad)
+- _(l10n)_ Add Russian translation — [`6d5ba90b…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/6d5ba90b404e9393744fd8a13d3ecd788b777a75)
+- _(l10n)_ Update Russian translation — [`f1fa9c24…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/f1fa9c2499ee1021a3a0a8f346d98a8142a716ee)
+- Update to firefox v159.0.1 — [`fe89c119…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/fe89c119e80afed400179087ed8db6ba7e5e68e2)
+- _(patches)_ Update librewolf patches to v159.0.1-1 — [`8b72249a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/8b72249a6e37919c8f5f2b911570d995e7ce44e1)
+- Update pnpm & deps — [`d65e45da…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d65e45da5aa8ea2c27a0185c505c0a22c866411c)
+- **builtin-addons/startpage:** Update pnpm & deps — [`68f86c0a…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/68f86c0aebd3bc714dbf5a14ed04b917786c1d5b)
+
 ## [FireDragon v13.11.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.11.0) — 2026-10-28 — [`v13.10.1`…`v13.11.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.10.1...v13.11.0)
 
 ### 🚜 Refactor
