@@ -96,8 +96,7 @@ async function librewolf() {
 
     await $`curl ${baseUrl}/settings/librewolf.cfg -o config/presets/librewolf.js`;
 
-    await $`curl ${baseUrl}/assets/patches.txt -o ${tmpDir}/patches.txt`.lines();
-    for (const patch of await $`cat ${tmpDir}/patches.txt`.lines()) {
+    for (const patch of await $`curl ${baseUrl}/assets/patches.txt`.lines()) {
         if (await fs.pathExists(patch)) {
             await $`curl ${baseUrl}/${patch} -o ${patch}`;
         }
