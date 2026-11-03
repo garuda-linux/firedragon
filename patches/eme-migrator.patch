@@ -1,8 +1,10 @@
+Ensures users get updates for EME components on profile upgrade, due to non ideal settings having been used in the past
+---
 diff --git a/browser/components/ProfileDataUpgrader.sys.mjs b/browser/components/ProfileDataUpgrader.sys.mjs
-index ca6f1f6..5922656 100644
+index 0f397dc74e..e16e297b64 100644
 --- a/browser/components/ProfileDataUpgrader.sys.mjs
 +++ b/browser/components/ProfileDataUpgrader.sys.mjs
-@@ -1087,6 +1087,21 @@ export let ProfileDataUpgrader = {
+@@ -1097,6 +1097,21 @@ export let ProfileDataUpgrader = {
        if (!Services.prefs.prefHasUserValue(IPP_HAS_SEEN_FEATURE_PREF)) {
          Services.prefs.setBoolPref(IPP_HAS_SEEN_FEATURE_PREF, true);
        }

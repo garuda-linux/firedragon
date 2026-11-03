@@ -1,8 +1,10 @@
+Add an option to allow fetching of the remote wallpapers from the CDN
+---
 diff --git a/browser/extensions/newtab/lib/Wallpapers/WallpaperFeed.sys.mjs b/browser/extensions/newtab/lib/Wallpapers/WallpaperFeed.sys.mjs
-index 467b01f..4239d5e 100644
+index 5299d6a502..4b5dbb2a95 100644
 --- a/browser/extensions/newtab/lib/Wallpapers/WallpaperFeed.sys.mjs
 +++ b/browser/extensions/newtab/lib/Wallpapers/WallpaperFeed.sys.mjs
-@@ -155,16 +155,17 @@ export class WallpaperFeed {
+@@ -410,16 +410,17 @@ export class WallpaperFeed {
      }
  
      // retrieving all records in collection

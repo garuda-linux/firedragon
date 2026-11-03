@@ -1,8 +1,10 @@
+Remove installed language packs due to them missing our custom strings, which causes breakage. We already ship all languages by default anyway
+---
 diff --git a/browser/components/BrowserGlue.sys.mjs b/browser/components/BrowserGlue.sys.mjs
-index 938b7aa842..03b6b0c966 100644
+index 4a292baaec..30dedee22f 100644
 --- a/browser/components/BrowserGlue.sys.mjs
 +++ b/browser/components/BrowserGlue.sys.mjs
-@@ -400,6 +400,16 @@ BrowserGlue.prototype = {
+@@ -409,6 +409,16 @@ BrowserGlue.prototype = {
  
      // handle any UI migration
      this._migrateUI();

@@ -1,5 +1,7 @@
+Remove the pingsender binary from our builds. Originally taken from Tor Browser
+---
 diff --git a/browser/app/macbuild/Contents/MacOS-files.in b/browser/app/macbuild/Contents/MacOS-files.in
-index 2f420f7..3551c66 100644
+index 2f420f7736..3551c6613d 100644
 --- a/browser/app/macbuild/Contents/MacOS-files.in
 +++ b/browser/app/macbuild/Contents/MacOS-files.in
 @@ -17,7 +17,6 @@
@@ -11,10 +13,10 @@ index 2f420f7..3551c66 100644
  /ssltunnel
  /xpcshell
 diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
-index dbfb287..7d47b40 100644
+index 6dca9fc6fe..7cec92ce36 100644
 --- a/browser/installer/package-manifest.in
 +++ b/browser/installer/package-manifest.in
-@@ -397,10 +397,6 @@ bin/libfreebl_64int_3.so
+@@ -415,10 +415,6 @@ bin/libfreebl_64int_3.so
  @BINPATH@/crashhelper@BIN_SUFFIX@
  #endif
  
@@ -26,7 +28,7 @@ index dbfb287..7d47b40 100644
  ;
  #if defined(XP_WIN) || defined(XP_MACOSX)
 diff --git a/browser/installer/windows/nsis/shared.nsh b/browser/installer/windows/nsis/shared.nsh
-index 8cd458b..b05ec32 100644
+index 8cd458bc30..b05ec32050 100755
 --- a/browser/installer/windows/nsis/shared.nsh
 +++ b/browser/installer/windows/nsis/shared.nsh
 @@ -1412,7 +1412,6 @@ FunctionEnd
@@ -38,18 +40,18 @@ index 8cd458b..b05ec32 100644
    Push "mozwer.dll"
    Push "${FileMainEXE}"
 diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
-index c4ab5ea..78100e6 100644
+index 6bde27476a..199540640e 100644
 --- a/python/mozbuild/mozbuild/artifacts.py
 +++ b/python/mozbuild/mozbuild/artifacts.py
-@@ -634,7 +634,6 @@ class LinuxArtifactJob(ArtifactJob):
+@@ -719,7 +719,6 @@ class LinuxArtifactJob(ArtifactJob):
          "{product}/dependentlibs.list",
          "{product}/{product}",
          "{product}/{product}-bin",
 -        "{product}/pingsender",
          "{product}/plugin-container",
          "{product}/updater",
-         "{product}/glxtest",
-@@ -732,7 +731,6 @@ class MacArtifactJob(ArtifactJob):
+         "{product}/gfxtest",
+@@ -825,7 +824,6 @@ class MacArtifactJob(ArtifactJob):
                  "{product}-bin",
                  "*.dylib",
                  "nmhproxy",
@@ -58,10 +60,10 @@ index c4ab5ea..78100e6 100644
                  "updater.app/Contents/MacOS/org.mozilla.updater",
                  # 'xpcshell',
 diff --git a/toolkit/components/telemetry/app/TelemetrySend.sys.mjs b/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
-index 81dd0bd..8c89ad6 100644
+index 2ebae13763..496880e402 100644
 --- a/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
 +++ b/toolkit/components/telemetry/app/TelemetrySend.sys.mjs
-@@ -1692,6 +1692,9 @@ export var TelemetrySendImpl = {
+@@ -1677,6 +1677,9 @@ export var TelemetrySendImpl = {
    },
  
    runPingSender(pings, observer) {
@@ -72,10 +74,10 @@ index 81dd0bd..8c89ad6 100644
        throw Components.Exception("", Cr.NS_ERROR_NOT_IMPLEMENTED);
      }
 diff --git a/toolkit/components/telemetry/moz.build b/toolkit/components/telemetry/moz.build
-index 66b428d..2c4ab5c 100644
+index c3eb89d261..1eb011b33e 100644
 --- a/toolkit/components/telemetry/moz.build
 +++ b/toolkit/components/telemetry/moz.build
-@@ -8,10 +8,6 @@ include("/ipc/chromium/chromium-config.mozbuild")
+@@ -6,10 +6,6 @@ include("/ipc/chromium/chromium-config.mozbuild")
  
  FINAL_LIBRARY = "xul"
  

@@ -1,5 +1,7 @@
+Allow enabling the development helpers and disable CDM verification when MOZILLA_OFFICIAL is set
+---
 diff --git a/browser/base/content/browser-development-helpers.js b/browser/base/content/browser-development-helpers.js
-index 5155b28..8dea266 100644
+index 5155b280b8..8dea266fbd 100644
 --- a/browser/base/content/browser-development-helpers.js
 +++ b/browser/base/content/browser-development-helpers.js
 @@ -9,8 +9,10 @@
@@ -16,7 +18,7 @@ index 5155b28..8dea266 100644
  
    quickRestart() {
 diff --git a/browser/base/content/browser-main.js b/browser/base/content/browser-main.js
-index 1ff101a..6b02e5a 100644
+index 89ebf87426..64f1449df6 100644
 --- a/browser/base/content/browser-main.js
 +++ b/browser/base/content/browser-main.js
 @@ -11,9 +11,7 @@
@@ -30,25 +32,11 @@ index 1ff101a..6b02e5a 100644
    Services.scriptloader.loadSubScript("chrome://browser/content/browser-pageActions.js", this);
    Services.scriptloader.loadSubScript("chrome://browser/content/sidebar/browser-sidebar.js", this);
    Services.scriptloader.loadSubScript("chrome://browser/content/browser-customtitlebar.js", this);
-diff --git a/browser/components/BrowserComponents.manifest b/browser/components/BrowserComponents.manifest
-index 17f4eaf..988d852 100644
---- a/browser/components/BrowserComponents.manifest
-+++ b/browser/components/BrowserComponents.manifest
-@@ -86,9 +86,7 @@ category browser-window-delayed-startup chrome://browser/content/browser-fullScr
- #ifdef MOZ_DATA_REPORTING
- category browser-window-delayed-startup chrome://browser/content/browser-data-submission-info-bar.js gDataNotificationInfoBar.init
- #endif
--#ifndef MOZILLA_OFFICIAL
- category browser-window-delayed-startup chrome://browser/content/browser-development-helpers.js DevelopmentHelpers.init
--#endif
- category browser-window-delayed-startup chrome://browser/content/browser-addons.js gExtensionsNotifications.init
- category browser-window-delayed-startup chrome://browser/content/browser-captivePortal.js CaptivePortalWatcher.delayedStartup
- 
 diff --git a/browser/base/jar.mn b/browser/base/jar.mn
-index 22550de..470b23f 100644
+index b2b5db6040..8a0563fdc6 100644
 --- a/browser/base/jar.mn
 +++ b/browser/base/jar.mn
-@@ -45,9 +45,7 @@ browser.jar:
+@@ -41,9 +41,7 @@ browser.jar:
          content/browser/browser-context.js            (content/browser-context.js)
          content/browser/browser-customization.js      (content/browser-customization.js)
          content/browser/browser-data-submission-info-bar.js (content/browser-data-submission-info-bar.js)
@@ -58,11 +46,25 @@ index 22550de..470b23f 100644
          content/browser/browser-fullScreenAndPointerLock.js (content/browser-fullScreenAndPointerLock.js)
          content/browser/browser-gestureSupport.js           (content/browser-gestureSupport.js)
          content/browser/browser-init.js                     (content/browser-init.js)
+diff --git a/browser/components/BrowserComponents.manifest b/browser/components/BrowserComponents.manifest
+index 42e3bd8379..da37c764ad 100644
+--- a/browser/components/BrowserComponents.manifest
++++ b/browser/components/BrowserComponents.manifest
+@@ -94,9 +94,7 @@ category browser-window-delayed-startup chrome://browser/content/browser-fullScr
+ #ifdef MOZ_DATA_REPORTING
+ category browser-window-delayed-startup chrome://browser/content/browser-data-submission-info-bar.js gDataNotificationInfoBar.init
+ #endif
+-#ifndef MOZILLA_OFFICIAL
+ category browser-window-delayed-startup chrome://browser/content/browser-development-helpers.js DevelopmentHelpers.init
+-#endif
+ category browser-window-delayed-startup chrome://browser/content/browser-addons.js gExtensionsNotifications.init
+ category browser-window-delayed-startup chrome://browser/content/browser-captivePortal.js CaptivePortalWatcher.delayedStartup
+ 
 diff --git a/dom/media/gmp/ChromiumCDMAdapter.cpp b/dom/media/gmp/ChromiumCDMAdapter.cpp
-index 475de25..e1f0324 100644
+index 3afba39c6a..0956a87b12 100644
 --- a/dom/media/gmp/ChromiumCDMAdapter.cpp
 +++ b/dom/media/gmp/ChromiumCDMAdapter.cpp
-@@ -69,7 +69,7 @@ void* ChromiumCdmHostCompat(int aHostInterfaceVersion, void* aUserData) {
+@@ -68,7 +68,7 @@ void* ChromiumCdmHostCompat(int aHostInterfaceVersion, void* aUserData) {
    return aUserData;
  }
  
@@ -71,7 +73,7 @@ index 475de25..e1f0324 100644
  static cdm::HostFile TakeToCDMHostFile(HostFileData& aHostFileData) {
    return cdm::HostFile(aHostFileData.mBinary.Path().get(),
                         aHostFileData.mBinary.TakePlatformFile(),
-@@ -85,7 +85,7 @@ GMPErr ChromiumCDMAdapter::GMPInit(const GMPPlatformAPI* aPlatformAPI) {
+@@ -84,7 +84,7 @@ GMPErr ChromiumCDMAdapter::GMPInit(const GMPPlatformAPI* aPlatformAPI) {
      return GMPGenericErr;
    }
  
@@ -81,10 +83,10 @@ index 475de25..e1f0324 100644
    // we call the initialize function.
    auto verify = reinterpret_cast<decltype(::VerifyCdmHost_0)*>(
 diff --git a/media/gmp-clearkey/0.1/gmp-clearkey.cpp b/media/gmp-clearkey/0.1/gmp-clearkey.cpp
-index e54d654..1b6039e 100644
+index 440c4f233f..f48134e5e0 100644
 --- a/media/gmp-clearkey/0.1/gmp-clearkey.cpp
 +++ b/media/gmp-clearkey/0.1/gmp-clearkey.cpp
-@@ -73,7 +73,7 @@ void* CreateCdmInstance(int cdm_interface_version, const char* key_system,
+@@ -74,7 +74,7 @@ void* CreateCdmInstance(int cdm_interface_version, const char* key_system,
      return nullptr;
    }
  

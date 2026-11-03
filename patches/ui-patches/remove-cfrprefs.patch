@@ -1,8 +1,10 @@
+Remove CFR recommendations
+---
 diff --git a/browser/components/preferences/config/tabs-browsing.mjs b/browser/components/preferences/config/tabs-browsing.mjs
-index 50fb553..8f3641c 100644
+index c2fe4aba1c..680d995226 100644
 --- a/browser/components/preferences/config/tabs-browsing.mjs
 +++ b/browser/components/preferences/config/tabs-browsing.mjs
-@@ -543,16 +543,6 @@ Preferences.addSetting({
+@@ -601,16 +601,6 @@ Preferences.addSetting({
    },
  });
  
@@ -19,7 +21,7 @@ index 50fb553..8f3641c 100644
  // Browser layout settings
  Preferences.addSetting({
    id: "browserLayoutRadioGroup",
-@@ -785,25 +775,6 @@ SettingGroupManager.registerGroups({
+@@ -832,25 +822,6 @@ SettingGroupManager.registerGroups({
        },
      ],
    },
@@ -45,7 +47,7 @@ index 50fb553..8f3641c 100644
    // Bug 2028609: the following sections are needed to ensure settings keep
    // working in legacy views, and can be removed when the pref is flipped
    drm: {
-@@ -835,18 +806,6 @@ SettingGroupManager.registerGroups({
+@@ -882,18 +853,6 @@ SettingGroupManager.registerGroups({
            },
          ],
        },
@@ -65,11 +67,11 @@ index 50fb553..8f3641c 100644
          id: "linkPreviewEnabled",
          l10nId: "link-preview-settings-enable",
 diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
-index 57add34..11068c5 100644
+index b4c3b04330..468a371b2f 100644
 --- a/browser/components/preferences/preferences.js
 +++ b/browser/components/preferences/preferences.js
-@@ -442,7 +442,6 @@ const CONFIG_PANES = Object.freeze({
-       "pageNavigation",
+@@ -477,7 +477,6 @@ const CONFIG_PANES = Object.freeze({
+       "keyboardShortcuts",
        "media",
        "performance",
 -      "recommendations",

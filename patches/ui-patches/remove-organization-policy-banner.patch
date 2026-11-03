@@ -1,8 +1,10 @@
+Remove the banner in the settings when policies are being used
+---
 diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
-index 35e044b..bfb6fbb 100644
+index 468a371b2f..73ffb272df 100644
 --- a/browser/components/preferences/preferences.js
 +++ b/browser/components/preferences/preferences.js
-@@ -646,7 +646,6 @@ function init_all() {
+@@ -642,7 +642,6 @@ function init_all() {
      gotoPref(event.target.view);
    });
  

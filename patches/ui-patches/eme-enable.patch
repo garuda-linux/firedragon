@@ -1,5 +1,7 @@
+Enable updates when Widevine is enabled via the popup asking for activation/installation
+---
 diff --git a/browser/actors/EncryptedMediaParent.sys.mjs b/browser/actors/EncryptedMediaParent.sys.mjs
-index 8bdeba9b88033..0c854f2b8fbe2 100644
+index 8bdeba9b88..0c854f2b8f 100644
 --- a/browser/actors/EncryptedMediaParent.sys.mjs
 +++ b/browser/actors/EncryptedMediaParent.sys.mjs
 @@ -27,6 +27,9 @@ export class EncryptedMediaParent extends JSWindowActorParent {

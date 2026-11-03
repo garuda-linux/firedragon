@@ -1,24 +1,10 @@
-From 8ca2d1361a3f0a36f71b7e692319b800cf5c11c8 Mon Sep 17 00:00:00 2001
-From: celenity <celenity@celenity.dev>
-Date: Wed, 4 Feb 2026 04:27:07 +0000
-Subject: [PATCH] fix: Remove OpenAI backend
-
-Removes the OpenAI backend from Mozilla's ML (machine learning) component.
-
-Signed-off-by: celenity <celenity@celenity.dev>
+Remove the OpenAI backend
 ---
- toolkit/components/aboutinference/content/aboutInference.js | 4 ++--
- toolkit/components/ml/content/EngineProcess.sys.mjs         | 2 +-
- toolkit/components/ml/content/backends/Pipeline.mjs         | 6 +++---
- toolkit/components/ml/jar.mn                                | 4 ++--
- toolkit/content/license.html                                | 2 +-
- 5 files changed, 9 insertions(+), 9 deletions(-)
-
 diff --git a/toolkit/components/aboutinference/content/aboutInference.js b/toolkit/components/aboutinference/content/aboutInference.js
-index 01533ad4c9f2..041bdcaeaeaf 100644
+index d95aab99ab..45a1f10c7c 100644
 --- a/toolkit/components/aboutinference/content/aboutInference.js
 +++ b/toolkit/components/aboutinference/content/aboutInference.js
-@@ -381,7 +381,7 @@ const INFERENCE_PAD_PRESETS = {
+@@ -379,7 +379,7 @@ const INFERENCE_PAD_PRESETS = {
      device: "cpu",
      backend: "onnx",
    },
@@ -27,7 +13,7 @@ index 01533ad4c9f2..041bdcaeaeaf 100644
      inputArgs: [
        {
          role: "system",
-@@ -400,7 +400,7 @@ const INFERENCE_PAD_PRESETS = {
+@@ -398,7 +398,7 @@ const INFERENCE_PAD_PRESETS = {
      apiKey: "ollama",
      baseURL: "http://localhost:11434/v1",
      backend: "openai",
@@ -37,12 +23,12 @@ index 01533ad4c9f2..041bdcaeaeaf 100644
  
  const PREDEFINED = Object.keys(INFERENCE_PAD_PRESETS);
 diff --git a/toolkit/components/ml/content/EngineProcess.sys.mjs b/toolkit/components/ml/content/EngineProcess.sys.mjs
-index 025d5aa..8007123 100644
+index 6124d43af2..3f52b14471 100644
 --- a/toolkit/components/ml/content/EngineProcess.sys.mjs
 +++ b/toolkit/components/ml/content/EngineProcess.sys.mjs
-@@ -27,7 +27,7 @@ export const BACKENDS = Object.freeze({
+@@ -36,7 +36,7 @@ export const BACKENDS = Object.freeze({
+   onnxNative: "onnx-native",
    llamaCpp: "llama.cpp",
-   bestLlama: "best-llama",
    bestOnnx: "best-onnx",
 -  openai: "openai",
 +//  openai: "openai",
@@ -50,10 +36,10 @@ index 025d5aa..8007123 100644
  });
  
 diff --git a/toolkit/components/ml/content/backends/Pipeline.mjs b/toolkit/components/ml/content/backends/Pipeline.mjs
-index a4b997e9bc4d..4565f3e097be 100644
+index 1b913af2a3..30a04a0704 100644
 --- a/toolkit/components/ml/content/backends/Pipeline.mjs
 +++ b/toolkit/components/ml/content/backends/Pipeline.mjs
-@@ -12,7 +12,7 @@ ChromeUtils.defineESModuleGetters(
+@@ -13,7 +13,7 @@ ChromeUtils.defineESModuleGetters(
      LlamaCppPipeline:
        "chrome://global/content/ml/backends/LlamaCppPipeline.mjs",
      PipelineOptions: "chrome://global/content/ml/EngineProcess.sys.mjs",
@@ -62,7 +48,7 @@ index a4b997e9bc4d..4565f3e097be 100644
      StaticEmbeddingsPipeline:
        "chrome://global/content/ml/backends/StaticEmbeddingsPipeline.mjs",
    },
-@@ -48,9 +48,9 @@ export async function getBackend(consumer, wasm, options) {
+@@ -46,9 +46,9 @@ export async function getBackend(consumer, wasm, options) {
      case "llama.cpp":
        factory = lazy.LlamaCppPipeline.initialize;
        break;
@@ -75,11 +61,11 @@ index a4b997e9bc4d..4565f3e097be 100644
        factory = lazy.StaticEmbeddingsPipeline.initialize;
        break;
 diff --git a/toolkit/components/ml/jar.mn b/toolkit/components/ml/jar.mn
-index 7dbb7c5afc7b..b2f07fd5bdcf 100644
+index 5237880966..3de1cfb4f8 100644
 --- a/toolkit/components/ml/jar.mn
 +++ b/toolkit/components/ml/jar.mn
-@@ -24,9 +24,9 @@ toolkit.jar:
-     content/global/ml/backends/LlamaPipeline.mjs          (content/backends/LlamaPipeline.mjs)
+@@ -23,9 +23,9 @@ toolkit.jar:
+     content/global/ml/transformers.js           	        (vendor/transformers.js)
      content/global/ml/ThomSample.mjs                      (content/ThomSample.mjs)
      content/global/ml/backends/LlamaCppPipeline.mjs       (content/backends/LlamaCppPipeline.mjs)
 -    content/global/ml/backends/OpenAIPipeline.mjs         (content/backends/OpenAIPipeline.mjs)
@@ -91,7 +77,7 @@ index 7dbb7c5afc7b..b2f07fd5bdcf 100644
  #ifdef NIGHTLY_BUILD
      content/global/ml/ort.webgpu-dev.mjs        	        (vendor/ort.webgpu-dev.mjs)
 diff --git a/toolkit/components/ml/moz.build b/toolkit/components/ml/moz.build
-index d65a41a..920f3d9 100644
+index d65a41a169..920f3d9ac1 100644
 --- a/toolkit/components/ml/moz.build
 +++ b/toolkit/components/ml/moz.build
 @@ -80,7 +80,6 @@ FINAL_LIBRARY = "xul"

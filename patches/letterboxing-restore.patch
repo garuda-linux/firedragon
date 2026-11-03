@@ -1,3 +1,5 @@
+Observe the selected browser's parent on tab selection for letterboxing, to ensure resizing works after a session is restored with multiple tabs
+---
 diff --git a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs b/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
 index f82d7309e12..271c273c9fa 100644
 --- a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
@@ -31,3 +33,4 @@ index f82d7309e12..271c273c9fa 100644
  
      // revert tabpanel's style to default
      tabBrowser.tabpanels?.classList.remove("letterboxing");
+

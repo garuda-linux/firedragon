@@ -1,5 +1,7 @@
+Add a per-process JIT permission with a per-site toggle for both the legacy site identity and the new trust panel UI
+---
 diff --git a/browser/base/content/browser-siteIdentity.js b/browser/base/content/browser-siteIdentity.js
-index 16b222280f..d73e3c878c 100644
+index 1d331baef4..5db8eb880c 100644
 --- a/browser/base/content/browser-siteIdentity.js
 +++ b/browser/base/content/browser-siteIdentity.js
 @@ -7,6 +7,9 @@ ChromeUtils.defineESModuleGetters(this, {
@@ -61,7 +63,7 @@ index 16b222280f..d73e3c878c 100644
          }
          break;
        }
-@@ -1454,4 +1478,92 @@ var gIdentityHandler = {
+@@ -1455,4 +1479,92 @@ var gIdentityHandler = {
        elem.removeAttribute(attr);
      }
    },
@@ -321,7 +323,7 @@ index 544866fac7..3b692ef7bf 100644
    }
  
 diff --git a/browser/components/controlcenter/content/identityPanel.inc.xhtml b/browser/components/controlcenter/content/identityPanel.inc.xhtml
-index d7f214f471..11d37754fc 100644
+index d7f214f471..7135a8cb0d 100644
 --- a/browser/components/controlcenter/content/identityPanel.inc.xhtml
 +++ b/browser/components/controlcenter/content/identityPanel.inc.xhtml
 @@ -99,6 +99,15 @@
@@ -341,7 +343,7 @@ index d7f214f471..11d37754fc 100644
  
      <!-- Security SubView -->
 diff --git a/browser/components/controlcenter/content/trustPanel.inc.xhtml b/browser/components/controlcenter/content/trustPanel.inc.xhtml
-index 65f8089b0a..c62f01e9ec 100644
+index 65f8089b0a..000e6bd625 100644
 --- a/browser/components/controlcenter/content/trustPanel.inc.xhtml
 +++ b/browser/components/controlcenter/content/trustPanel.inc.xhtml
 @@ -75,6 +75,13 @@

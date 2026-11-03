@@ -1,5 +1,7 @@
+Clear the alt-svc cache on session end, to prevent potential fingerprinting
+---
 diff --git a/netwerk/protocol/http/nsHttpHandler.cpp b/netwerk/protocol/http/nsHttpHandler.cpp
-index 78da5858bfe5..3f13d96152f9 100644
+index c35867b90d..33ea20930c 100644
 --- a/netwerk/protocol/http/nsHttpHandler.cpp
 +++ b/netwerk/protocol/http/nsHttpHandler.cpp
 @@ -9,6 +9,7 @@
@@ -10,7 +12,7 @@ index 78da5858bfe5..3f13d96152f9 100644
  #include "EventTokenBucket.h"
  #include "HttpLog.h"
  #include "LoadContextInfo.h"
-@@ -2330,6 +2331,11 @@ nsHttpHandler::Observe(nsISupports* subject, const char* topic,
+@@ -2331,6 +2332,11 @@ nsHttpHandler::Observe(nsISupports* subject, const char* topic,
      // clear cache of all authentication credentials.
      mAuthCache->ClearAll();
      mPrivateAuthCache->ClearAll();

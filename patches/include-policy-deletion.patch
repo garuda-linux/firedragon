@@ -1,5 +1,7 @@
+Allow shipping updates for our policy file via the builtin updater
+---
 diff --git a/config/createprecomplete.py b/config/createprecomplete.py
-index 07139f2..8e80807 100644
+index 07139f2500..8e80807d17 100644
 --- a/config/createprecomplete.py
 +++ b/config/createprecomplete.py
 @@ -27,7 +27,7 @@ def get_build_entries(root_path):

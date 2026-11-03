@@ -1,8 +1,10 @@
+Allow changing the link preview settings via the UI when the AI link preview feature is disabled
+---
 diff --git a/browser/components/preferences/config/tabs-browsing.mjs b/browser/components/preferences/config/tabs-browsing.mjs
-index 0c03ff7..cbbd27e 100644
+index 4f4aa1a0d9..c2fe4aba1c 100644
 --- a/browser/components/preferences/config/tabs-browsing.mjs
 +++ b/browser/components/preferences/config/tabs-browsing.mjs
-@@ -450,22 +450,20 @@ Preferences.addSetting({
+@@ -445,22 +445,20 @@ Preferences.addSetting({
  Preferences.addSetting({
    id: "linkPreviewEnabled",
    pref: "browser.ml.linkPreview.enabled",

@@ -1,9 +1,10 @@
-# https://gitlab.torproject.org/tpo/applications/tor-browser/-/commit/ecb798d066b039329223b4c31133e2f917ca477d
+https://gitlab.torproject.org/tpo/applications/tor-browser/-/commit/ecb798d066b039329223b4c31133e2f917ca477d
+---
 diff --git a/caps/nsScriptSecurityManager.cpp b/caps/nsScriptSecurityManager.cpp
-index 1fb9bc0aba..3a0a916ee8 100644
+index ddeb7ec7d1..8b55666f0f 100644
 --- a/caps/nsScriptSecurityManager.cpp
 +++ b/caps/nsScriptSecurityManager.cpp
-@@ -1039,6 +1039,48 @@ nsresult nsScriptSecurityManager::CheckLoadURIFlags(
+@@ -1031,6 +1031,48 @@ nsresult nsScriptSecurityManager::CheckLoadURIFlags(
          }
        }
  

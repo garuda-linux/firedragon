@@ -1,3 +1,5 @@
+Allow setting which remote settings buckets are allowed to be fetched remotely or via bundled dump.
+---
 diff --git a/services/settings/RemoteSettings.worker.mjs b/services/settings/RemoteSettings.worker.mjs
 index 3e4e915c13..f7840d56d5 100644
 --- a/services/settings/RemoteSettings.worker.mjs

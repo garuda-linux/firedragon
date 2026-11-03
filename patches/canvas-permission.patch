@@ -1,3 +1,5 @@
+Allow showing the canvas permission prompt when RFP is disabled, but the CanvasImageExtractionPrompt/AllTargets RFPTarget is enabled
+---
 diff --git a/browser/modules/SitePermissions.sys.mjs b/browser/modules/SitePermissions.sys.mjs
 index d8be7e7644..81aad0a569 100644
 --- a/browser/modules/SitePermissions.sys.mjs

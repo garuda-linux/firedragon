@@ -1,5 +1,7 @@
+Add a per-site WebGL permission
+---
 diff --git a/browser/base/content/popup-notifications.inc.xhtml b/browser/base/content/popup-notifications.inc.xhtml
-index 43c2429..99b5c5a 100644
+index 43c24290b6..99b5c5acae 100644
 --- a/browser/base/content/popup-notifications.inc.xhtml
 +++ b/browser/base/content/popup-notifications.inc.xhtml
 @@ -196,6 +196,13 @@
@@ -17,7 +19,7 @@ index 43c2429..99b5c5a 100644
        <popupnotificationheader id="credential-chooser-header" orient="horizontal">
          <html:div id="credential-chooser-header-container">
 diff --git a/browser/modules/ObserverForwarder.sys.mjs b/browser/modules/ObserverForwarder.sys.mjs
-index 8cf14355f3..bdecc6c230 100644
+index b62b572cdb..222765c275 100644
 --- a/browser/modules/ObserverForwarder.sys.mjs
 +++ b/browser/modules/ObserverForwarder.sys.mjs
 @@ -14,6 +14,8 @@ let lazy = {};
@@ -28,20 +30,20 @@ index 8cf14355f3..bdecc6c230 100644
 +    "moz-src:///browser/modules/WebGLPermissionPromptHelper.sys.mjs",
    FilePickerCrashed: "resource:///modules/FilePickerCrashed.sys.mjs",
    PluginManager: "resource:///actors/PluginParent.sys.mjs",
-   UnexpectedScriptObserver:
-@@ -28,6 +30,9 @@ ChromeUtils.defineESModuleGetters(lazy, {
- let gObservers = {
+   SerialDeviceSharingHelper:
+@@ -29,6 +31,9 @@ let gObservers = {
    "canvas-permissions-prompt": ["CanvasPermissionPromptHelper"],
    "canvas-permissions-prompt-hide-doorhanger": ["CanvasPermissionPromptHelper"],
-+
+ 
 +  "webgl-permissions-prompt": ["WebGLPermissionPromptHelper"],
 +  "webgl-permissions-prompt-hide-doorhanger": ["WebGLPermissionPromptHelper"],
- 
-   "UnexpectedJavaScriptLoad-Live": ["UnexpectedScriptObserver"],
-   "UnexpectedJavaScriptLoad-UserTookAction": ["UnexpectedScriptObserver"],
++
+   "file-picker-crashed": ["FilePickerCrashed"],
+   "gmp-plugin-crash": ["PluginManager"],
+   "plugin-crashed": ["PluginManager"],
 diff --git a/browser/modules/WebGLPermissionPromptHelper.sys.mjs b/browser/modules/WebGLPermissionPromptHelper.sys.mjs
 new file mode 100644
-index 0000000..ead4eef
+index 0000000000..7c647a1478
 --- /dev/null
 +++ b/browser/modules/WebGLPermissionPromptHelper.sys.mjs
 @@ -0,0 +1,132 @@
@@ -178,10 +180,10 @@ index 0000000..ead4eef
 +  },
 +};
 diff --git a/browser/themes/shared/notification-icons.css b/browser/themes/shared/notification-icons.css
-index f65f6bb61a..e5bbe3f976 100644
+index fc4345e260..73a7df907a 100644
 --- a/browser/themes/shared/notification-icons.css
 +++ b/browser/themes/shared/notification-icons.css
-@@ -203,6 +203,15 @@
+@@ -211,6 +211,15 @@
    list-style-image: url(chrome://browser/skin/canvas-blocked.svg);
  }
  
@@ -198,7 +200,7 @@ index f65f6bb61a..e5bbe3f976 100644
  .popup-notification-icon[popupid^="webauthn-prompt-"] {
    list-style-image: url(chrome://browser/skin/fingerprint.svg);
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
-index 5aaa427..52b587f 100644
+index dde554c222..70d098cdfb 100644
 --- a/dom/canvas/ClientWebGLContext.cpp
 +++ b/dom/canvas/ClientWebGLContext.cpp
 @@ -24,7 +24,9 @@
@@ -489,10 +491,10 @@ index 5aaa427..52b587f 100644
      if (StaticPrefs::webgl_disable_fail_if_major_performance_caveat()) {
        options.failIfMajorPerformanceCaveat = false;
 diff --git a/dom/ipc/BrowserParent.cpp b/dom/ipc/BrowserParent.cpp
-index 7d405ed7d3..95718de445 100644
+index 8b4018fefd..c3f4d21afc 100644
 --- a/dom/ipc/BrowserParent.cpp
 +++ b/dom/ipc/BrowserParent.cpp
-@@ -4115,6 +4115,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
+@@ -4150,6 +4150,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
    return IPC_OK();
  }
  
@@ -523,10 +525,10 @@ index 7d405ed7d3..95718de445 100644
      nsIURI* aURI, nsIURI* aLastVisitedURI, const uint32_t& aFlags,
      const uint64_t& aBrowserId) {
 diff --git a/dom/ipc/BrowserParent.h b/dom/ipc/BrowserParent.h
-index 94d5cb546a..c98d7a6a9c 100644
+index df6377896e..0c13a7ee0a 100644
 --- a/dom/ipc/BrowserParent.h
 +++ b/dom/ipc/BrowserParent.h
-@@ -741,6 +741,8 @@ class BrowserParent final : public PBrowserParent,
+@@ -751,6 +751,8 @@ class BrowserParent final : public PBrowserParent,
    mozilla::ipc::IPCResult RecvShowCanvasPermissionPrompt(
        const nsCString& aOrigin, const bool& aHideDoorHanger);
  
@@ -536,10 +538,10 @@ index 94d5cb546a..c98d7a6a9c 100644
    mozilla::ipc::IPCResult RecvGetSystemFont(nsCString* aFontName);
  
 diff --git a/dom/ipc/PBrowser.ipdl b/dom/ipc/PBrowser.ipdl
-index 76dd02a60d..f045291425 100644
+index 80b0072b13..ff87518d48 100644
 --- a/dom/ipc/PBrowser.ipdl
 +++ b/dom/ipc/PBrowser.ipdl
-@@ -642,6 +642,14 @@ parent:
+@@ -629,6 +629,14 @@ parent:
       */
      async ShowCanvasPermissionPrompt(nsCString aOrigin,
                                       bool aHideDoorHanger);
