@@ -1,5 +1,20 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.12.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.12.0) — 2026-11-11 — [`v13.11.1`…`v13.12.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.11.1...v13.12.0)
+
+### 🐛 Bug Fixes
+
+- _(make)_ Pass appName to make_full_update.sh — [`b9f5fad8…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b9f5fad84ec6aad60e99ca57c4d3569fff247de5)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update to firefox v160.0 — [`1eb3f442…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1eb3f4421c2bb27cb825ec835ad1971d2d8f4ec7)
+- _(patches)_ Update librewolf patches to v160.0-1 — [`3488a5d2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3488a5d21b5f1dd3a6d950446aa4387f736ffb63)
+- _(config)_ Update librewolf preset to v160.0-1 — [`9f35504f…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9f35504ff57f2056b11001515170266564e261b5)
+- _(patches)_ Rebase build-patches onto firefox v160.0 — [`3900e091…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/3900e091943ac31b7b7c134dc72f5a0eeb30f80f)
+- Update pnpm & deps — [`bac57d81…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/bac57d8112a17865d0c88676af13cad214cb6283)
+- **builtin-addons/startpage:** Update pnpm & deps — [`69b1ef06…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/69b1ef064e4c8b6ff59c3d79671cf09a5ed4e4af)
+
 ## [FireDragon v13.11.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.11.1) — 2026-11-03 — [`v13.11.0`…`v13.11.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.11.0...v13.11.1)
 
 ### 🚜 Refactor
