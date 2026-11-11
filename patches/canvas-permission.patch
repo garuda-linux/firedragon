@@ -1,7 +1,7 @@
 Allow showing the canvas permission prompt when RFP is disabled, but the CanvasImageExtractionPrompt/AllTargets RFPTarget is enabled
 ---
 diff --git a/browser/modules/SitePermissions.sys.mjs b/browser/modules/SitePermissions.sys.mjs
-index d8be7e7644..81aad0a569 100644
+index 7b16ea212a..10a3472044 100644
 --- a/browser/modules/SitePermissions.sys.mjs
 +++ b/browser/modules/SitePermissions.sys.mjs
 @@ -3,6 +3,7 @@
@@ -80,7 +80,7 @@ index d8be7e7644..81aad0a569 100644
  };
  
  let gPermissions = {
-@@ -1073,7 +1135,10 @@ let gPermissions = {
+@@ -1084,7 +1146,10 @@ let gPermissions = {
  
      canvas: {
        get disabled() {
@@ -92,7 +92,7 @@ index d8be7e7644..81aad0a569 100644
        },
      },
  
-@@ -1137,6 +1202,37 @@ XPCOMUtils.defineLazyPreferenceGetter(
+@@ -1148,6 +1213,37 @@ XPCOMUtils.defineLazyPreferenceGetter(
    false,
    SitePermissions.invalidatePermissionList.bind(SitePermissions)
  );

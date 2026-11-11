@@ -36,7 +36,7 @@ index 6124d43af2..3f52b14471 100644
  });
  
 diff --git a/toolkit/components/ml/content/backends/Pipeline.mjs b/toolkit/components/ml/content/backends/Pipeline.mjs
-index 1b913af2a3..30a04a0704 100644
+index 5007d0db2c..4c3daa4812 100644
 --- a/toolkit/components/ml/content/backends/Pipeline.mjs
 +++ b/toolkit/components/ml/content/backends/Pipeline.mjs
 @@ -13,7 +13,7 @@ ChromeUtils.defineESModuleGetters(

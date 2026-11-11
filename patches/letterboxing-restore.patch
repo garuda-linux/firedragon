@@ -1,7 +1,7 @@
 Observe the selected browser's parent on tab selection for letterboxing, to ensure resizing works after a session is restored with multiple tabs
 ---
 diff --git a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs b/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
-index f82d7309e12..271c273c9fa 100644
+index d11f8a011f..021d51eff7 100644
 --- a/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
 +++ b/toolkit/components/resistfingerprinting/RFPHelper.sys.mjs
 @@ -119,6 +119,12 @@ class _RFPHelper {
@@ -17,7 +17,7 @@ index f82d7309e12..271c273c9fa 100644
        default:
          break;
      }
-@@ -614,6 +620,7 @@ class _RFPHelper {
+@@ -620,6 +626,7 @@ class _RFPHelper {
    _attachWindow(aWindow) {
      aWindow.gBrowser.addTabsProgressListener(this);
      aWindow.addEventListener("TabOpen", this);
@@ -25,7 +25,7 @@ index f82d7309e12..271c273c9fa 100644
      let resizeObserver = new aWindow.ResizeObserver(entries => {
        for (let { target } of entries) {
          this._roundOrResetContentSize(target.querySelector("browser"));
-@@ -656,6 +663,7 @@ class _RFPHelper {
+@@ -662,6 +669,7 @@ class _RFPHelper {
      }
      tabBrowser.removeTabsProgressListener(this);
      aWindow.removeEventListener("TabOpen", this);
@@ -33,4 +33,3 @@ index f82d7309e12..271c273c9fa 100644
  
      // revert tabpanel's style to default
      tabBrowser.tabpanels?.classList.remove("letterboxing");
-

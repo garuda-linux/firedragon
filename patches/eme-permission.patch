@@ -140,7 +140,7 @@ index 0000000000..4e0d8eeec3
 +  }
 +}
 diff --git a/dom/media/eme/MediaKeySystemAccessManager.cpp b/dom/media/eme/MediaKeySystemAccessManager.cpp
-index aaa3ff25b6..56724a03ac 100644
+index 931c45d4eb..6c3931882c 100644
 --- a/dom/media/eme/MediaKeySystemAccessManager.cpp
 +++ b/dom/media/eme/MediaKeySystemAccessManager.cpp
 @@ -364,9 +364,11 @@ void MediaKeySystemAccessManager::OnDoesAppAllowProtectedMedia(

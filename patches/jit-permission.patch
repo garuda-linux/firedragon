@@ -157,10 +157,10 @@ index 1d331baef4..5db8eb880c 100644
 +  },
  };
 diff --git a/browser/base/content/browser-trustPanel.js b/browser/base/content/browser-trustPanel.js
-index 544866fac7..3b692ef7bf 100644
+index 9d9f2aee95..e1dfc8bb41 100644
 --- a/browser/base/content/browser-trustPanel.js
 +++ b/browser/base/content/browser-trustPanel.js
-@@ -138,6 +138,9 @@ const SMARTBLOCK_EMBED_INFO = [
+@@ -180,6 +180,9 @@ const SMARTBLOCK_EMBED_INFO = [
    },
  ];
  
@@ -170,7 +170,7 @@ index 544866fac7..3b692ef7bf 100644
  class TrustPanel {
    #state = null;
    #secInfo = null;
-@@ -208,6 +211,8 @@ class TrustPanel {
+@@ -253,6 +256,8 @@ class TrustPanel {
      // Add an observer to listen for FxAccounts logout to clear OAuth cache
      Services.obs.addObserver(this, "fxaccounts:onlogout");
  
@@ -179,7 +179,7 @@ index 544866fac7..3b692ef7bf 100644
      customElements.whenDefined("breach-alert-panel").then(() => {
        const breachAlertElement = document.getElementById(
          "trustpanel-breach-alert-section"
-@@ -230,6 +235,7 @@ class TrustPanel {
+@@ -278,6 +283,7 @@ class TrustPanel {
  
      Services.obs.removeObserver(this, "smartblock:open-protections-panel");
      Services.obs.removeObserver(this, "fxaccounts:onlogout");
@@ -187,7 +187,7 @@ index 544866fac7..3b692ef7bf 100644
    }
  
    get #popup() {
-@@ -324,6 +330,9 @@ class TrustPanel {
+@@ -375,6 +381,9 @@ class TrustPanel {
          .addEventListener("command", event =>
            this.#showClearCookiesSubview(event)
          );
@@ -197,7 +197,7 @@ index 544866fac7..3b692ef7bf 100644
        document
          .getElementById("trustpanel-siteinformation-morelink")
          .addEventListener("click", () => this.#showSecurityPopup());
-@@ -348,6 +357,94 @@ class TrustPanel {
+@@ -399,6 +408,94 @@ class TrustPanel {
      }
    }
  
@@ -292,7 +292,7 @@ index 544866fac7..3b692ef7bf 100644
    async showPopup(opts = {}) {
      // Avoid flicker between the mouseup and panel shown by manually
      // setting open attribute.
-@@ -690,6 +787,7 @@ class TrustPanel {
+@@ -745,6 +842,7 @@ class TrustPanel {
      );
  
      await this.#updateMainView();
@@ -300,7 +300,7 @@ index 544866fac7..3b692ef7bf 100644
    }
  
    async #updateMainView() {
-@@ -1883,7 +1981,7 @@ class TrustPanel {
+@@ -1976,7 +2074,7 @@ class TrustPanel {
      return blocked;
    }
  
@@ -309,8 +309,8 @@ index 544866fac7..3b692ef7bf 100644
      if (!this.#enabled) {
        return;
      }
-@@ -1915,6 +2013,12 @@ class TrustPanel {
-         this.showPopup({ reason: "embedPlaceholderButton" });
+@@ -2008,6 +2106,12 @@ class TrustPanel {
+         this.showPopup({ reason: OPENING_REASONS.EMBED_PLACEHOLDER_BUTTON });
          break;
        }
 +      case "nsPref:changed": {
@@ -361,7 +361,7 @@ index 65f8089b0a..000e6bd625 100644
          <toolbarbutton id="trustpanel-privacy-link" data-l10n-id="trustpanel-privacy-link" class="subviewbutton"></toolbarbutton>
        </vbox>
 diff --git a/dom/ipc/ProcessIsolation.cpp b/dom/ipc/ProcessIsolation.cpp
-index a1b725eafb..dd0546ba71 100644
+index 4e02df9672..78188ba3fe 100644
 --- a/dom/ipc/ProcessIsolation.cpp
 +++ b/dom/ipc/ProcessIsolation.cpp
 @@ -17,6 +17,7 @@
@@ -510,7 +510,7 @@ index a1b725eafb..dd0546ba71 100644
  /**
   * Certain URIs have special isolation behaviour, and need to be loaded within
   * specific process types.
-@@ -885,6 +962,11 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+@@ -916,6 +993,11 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
    nsCOMPtr<nsIURI> siteOriginURI;
    MOZ_TRY(NS_NewURI(getter_AddRefs(siteOriginURI), siteOriginNoSuffix));
  
@@ -522,7 +522,7 @@ index a1b725eafb..dd0546ba71 100644
    // Check if we've already loaded a document with the given principal in some
    // content process. We want to finish the load in the same process in that
    // case.
-@@ -934,7 +1016,8 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+@@ -964,7 +1046,8 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
          // Check if this WindowGlobalParent has the given resultPrincipal, and
          // if it does, we need to load in that process.
          if (!wgp->GetRemoteType().IsNotRemote() &&
@@ -532,7 +532,7 @@ index a1b725eafb..dd0546ba71 100644
            MOZ_LOG(gProcessIsolationLog, LogLevel::Debug,
                    ("Found existing frame with matching principal "
                     "(remoteType:(%s), origin:%s)",
-@@ -952,7 +1035,7 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
+@@ -982,7 +1065,7 @@ Result<NavigationIsolationOptions, nsresult> IsolationOptionsForNavigation(
  
    options.mRemoteType = RemoteType::SharedWeb(originAttributes);
  
@@ -541,7 +541,7 @@ index a1b725eafb..dd0546ba71 100644
      options.mRemoteType = options.mRemoteType.WithDisableJit(true);
    }
  
-@@ -1146,7 +1229,12 @@ Result<WorkerIsolationOptions, nsresult> IsolationOptionsForWorker(
+@@ -1176,7 +1259,12 @@ Result<WorkerIsolationOptions, nsresult> IsolationOptionsForWorker(
    options.mRemoteType =
        RemoteType::SharedWeb(resultOrPrecursor->OriginAttributesRef());
  
@@ -555,7 +555,7 @@ index a1b725eafb..dd0546ba71 100644
      options.mRemoteType = options.mRemoteType.WithDisableJit(true);
    }
  
-@@ -1351,7 +1439,11 @@ Result<RemoteType, nsresult> PredictRemoteTypeForURI(
+@@ -1381,7 +1469,11 @@ Result<RemoteType, nsresult> PredictRemoteTypeForURI(
  
    RemoteType remoteType = RemoteType::SharedWeb(aOriginAttributes);
  

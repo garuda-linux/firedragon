@@ -1,7 +1,7 @@
 Ensures users get updates for EME components on profile upgrade, due to non ideal settings having been used in the past
 ---
 diff --git a/browser/components/ProfileDataUpgrader.sys.mjs b/browser/components/ProfileDataUpgrader.sys.mjs
-index 0f397dc74e..e16e297b64 100644
+index 3e61e2df1f..d64682c7ae 100644
 --- a/browser/components/ProfileDataUpgrader.sys.mjs
 +++ b/browser/components/ProfileDataUpgrader.sys.mjs
 @@ -1097,6 +1097,21 @@ export let ProfileDataUpgrader = {

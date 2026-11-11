@@ -19,10 +19,10 @@ index 8979a2e4e8..70822ffc47 100644
  
  
 diff --git a/python/mach/mach/telemetry.py b/python/mach/mach/telemetry.py
-index e3eb5f0718..f61cf6400d 100644
+index a867365e94..e5c51d9573 100644
 --- a/python/mach/mach/telemetry.py
 +++ b/python/mach/mach/telemetry.py
-@@ -82,10 +82,7 @@ def is_applicable_telemetry_environment():
+@@ -88,10 +88,7 @@ def is_applicable_telemetry_environment():
  
  
  def is_telemetry_enabled(settings):
@@ -35,23 +35,23 @@ index e3eb5f0718..f61cf6400d 100644
  
  def arcrc_path():
 diff --git a/python/sites/mach.txt b/python/sites/mach.txt
-index 0f800b6813..1b74085c26 100644
+index 815e1c7f5a..24f79dfc6a 100644
 --- a/python/sites/mach.txt
 +++ b/python/sites/mach.txt
 @@ -58,7 +58,7 @@ pth:xpcom/geckoprocesstypes_generator
  pth:xpcom/idl-parser
  # glean-sdk may not be installable if a wheel isn't available
  # and it has to be built from source.
--pypi-optional:glean-sdk==70.2.1:telemetry will not be collected
-+# pypi-optional:glean-sdk==70.2.1:telemetry will not be collected
+-pypi-optional:glean-sdk==70.3.0:telemetry will not be collected
++# pypi-optional:glean-sdk==70.3.0:telemetry will not be collected
  pypi-optional:orjson>=3.10:json operations will be slower in various tools
  # Mach gracefully handles the case where `psutil` is unavailable.
  # We aren't (yet) able to pin packages in automation, so we have to
 diff --git a/third_party/rust/glean-core/src/core/mod.rs b/third_party/rust/glean-core/src/core/mod.rs
-index 53ee996ef1..b07a23e85b 100644
+index 7acb55c724..6a799f6ebe 100644
 --- a/third_party/rust/glean-core/src/core/mod.rs
 +++ b/third_party/rust/glean-core/src/core/mod.rs
-@@ -876,7 +876,8 @@ impl Glean {
+@@ -880,7 +880,8 @@ impl Glean {
      ///
      /// When upload is disabled, no data will be recorded.
      pub fn is_upload_enabled(&self) -> bool {

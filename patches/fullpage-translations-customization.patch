@@ -1,10 +1,10 @@
 Adds an option for toggling the translations feature in the old settings design
 ---
 diff --git a/browser/base/content/main-popupset.inc.xhtml b/browser/base/content/main-popupset.inc.xhtml
-index 58d33bd452..6e0d5822a9 100644
+index 7355f14e0d..16d1b00de7 100644
 --- a/browser/base/content/main-popupset.inc.xhtml
 +++ b/browser/base/content/main-popupset.inc.xhtml
-@@ -1030,6 +1030,8 @@
+@@ -1031,6 +1031,8 @@
                type="checkbox"
                autocheck="false"
                id="translations-panel-settings-never-translate-site"/>
@@ -14,10 +14,10 @@ index 58d33bd452..6e0d5822a9 100644
      <menuitem class="manage-languages-menuitem"
                data-l10n-id="translations-panel-settings-manage-languages"
 diff --git a/browser/base/content/main-popupset.js b/browser/base/content/main-popupset.js
-index e06d8cccd5..de992ba402 100644
+index 4b5e14bcf4..5775a01de7 100644
 --- a/browser/base/content/main-popupset.js
 +++ b/browser/base/content/main-popupset.js
-@@ -459,6 +459,9 @@ document.addEventListener(
+@@ -471,6 +471,9 @@ document.addEventListener(
          case "translations-panel-settings-never-translate-site":
            FullPageTranslationsPanel.onNeverTranslateSite();
            break;
@@ -28,7 +28,7 @@ index e06d8cccd5..de992ba402 100644
            FullPageTranslationsPanel.openManageLanguages();
            break;
 diff --git a/browser/components/preferences/config/languages.mjs b/browser/components/preferences/config/languages.mjs
-index 7dd8ff65d5..7123cb0f46 100644
+index 831d9fd079..119a2f0751 100644
 --- a/browser/components/preferences/config/languages.mjs
 +++ b/browser/components/preferences/config/languages.mjs
 @@ -20,6 +20,7 @@ Preferences.addAll([
@@ -70,10 +70,10 @@ index 5ba05e0171..bbd2fb97c0 100644
  </groupbox>
  
 diff --git a/browser/components/preferences/main.js b/browser/components/preferences/main.js
-index 6dcfd4bd0e..79ace61162 100644
+index 6b20696e52..2ccf72a38a 100644
 --- a/browser/components/preferences/main.js
 +++ b/browser/components/preferences/main.js
-@@ -712,6 +712,10 @@ var gMainPane = {
+@@ -663,6 +663,10 @@ var gMainPane = {
      window.addEventListener("unload", this);
  
      // Notify observers that the UI is now ready
@@ -84,7 +84,7 @@ index 6dcfd4bd0e..79ace61162 100644
      Services.obs.notifyObservers(window, "main-pane-loaded");
      this.setInitialized();
    },
-@@ -814,39 +818,36 @@ var gMainPane = {
+@@ -765,39 +769,36 @@ var gMainPane = {
      button.disabled = !preference.value;
      return undefined;
    },

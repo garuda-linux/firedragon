@@ -14,7 +14,7 @@ index 32f717fb38..1a85440c97 100644
  	<string>@MOZ_MACBUNDLE_ID@</string>
  	<key>CFBundleInfoDictionaryVersion</key>
 diff --git a/browser/app/moz.build b/browser/app/moz.build
-index 5cc4a68cae..dd51d5e376 100644
+index e0bcda1e3e..c4c7f19ad0 100644
 --- a/browser/app/moz.build
 +++ b/browser/app/moz.build
 @@ -74,7 +74,6 @@ if CONFIG["MOZ_WIDGET_TOOLKIT"] == "cocoa":

@@ -47,7 +47,7 @@ index b2b5db6040..8a0563fdc6 100644
          content/browser/browser-gestureSupport.js           (content/browser-gestureSupport.js)
          content/browser/browser-init.js                     (content/browser-init.js)
 diff --git a/browser/components/BrowserComponents.manifest b/browser/components/BrowserComponents.manifest
-index 42e3bd8379..da37c764ad 100644
+index a5b11f0ab5..cca23ea5e2 100644
 --- a/browser/components/BrowserComponents.manifest
 +++ b/browser/components/BrowserComponents.manifest
 @@ -94,9 +94,7 @@ category browser-window-delayed-startup chrome://browser/content/browser-fullScr

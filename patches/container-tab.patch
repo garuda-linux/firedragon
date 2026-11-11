@@ -45,7 +45,7 @@ index 9190c6e7f8..b75e8fc10f 100644
           modifiers="accel"/>
  #ifndef XP_MACOSX
 diff --git a/browser/base/content/browser-sets.js b/browser/base/content/browser-sets.js
-index b6345b7c99..e07fd8cd68 100644
+index d3da8787f4..b57f53b7df 100644
 --- a/browser/base/content/browser-sets.js
 +++ b/browser/base/content/browser-sets.js
 @@ -44,6 +44,12 @@ document.addEventListener(

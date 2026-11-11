@@ -237,10 +237,10 @@ index e5b20d9b9d..d76a0302de 100644
 +  },
  };
 diff --git a/services/settings/Utils.sys.mjs b/services/settings/Utils.sys.mjs
-index 70f77c9fcb..5149801e7b 100644
+index a5277e213c..288d0e4d08 100644
 --- a/services/settings/Utils.sys.mjs
 +++ b/services/settings/Utils.sys.mjs
-@@ -99,6 +99,18 @@ XPCOMUtils.defineLazyPreferenceGetter(
+@@ -102,6 +102,18 @@ XPCOMUtils.defineLazyPreferenceGetter(
    ""
  );
  
@@ -259,7 +259,7 @@ index 70f77c9fcb..5149801e7b 100644
  function _isUndefined(value) {
    return typeof value === "undefined";
  }
-@@ -111,6 +123,14 @@ export var Utils = {
+@@ -114,6 +126,14 @@ export var Utils = {
        : AppConstants.REMOTE_SETTINGS_SERVER_URLS[0];
    },
  
@@ -274,7 +274,7 @@ index 70f77c9fcb..5149801e7b 100644
    CHANGES_PATH: "/buckets/monitor/collections/changes/changeset",
  
    /**
-@@ -450,7 +470,9 @@ export var Utils = {
+@@ -456,7 +476,9 @@ export var Utils = {
      if (lastModified === undefined) {
        const { timestamp: dumpTimestamp } = await lazy.SharedUtils.loadJSONDump(
          bucket,
@@ -285,7 +285,7 @@ index 70f77c9fcb..5149801e7b 100644
        );
        // Client recognize -1 as missing dump.
        lastModified = dumpTimestamp ?? -1;
-@@ -560,7 +582,13 @@ export var Utils = {
+@@ -566,7 +588,13 @@ export var Utils = {
      }
  
      return {
@@ -330,10 +330,10 @@ index b180cfc850..79d4372716 100644
            // The startup bundles contain both main and preview changesets.
            // Importing both increases complexity down the line, and brings no value.
 diff --git a/toolkit/components/search/ConfigSearchEngine.sys.mjs b/toolkit/components/search/ConfigSearchEngine.sys.mjs
-index 2186215520..2f98ee4e91 100644
+index 907ff865e1..87abda79cd 100644
 --- a/toolkit/components/search/ConfigSearchEngine.sys.mjs
 +++ b/toolkit/components/search/ConfigSearchEngine.sys.mjs
-@@ -189,7 +189,7 @@ class IconHandler {
+@@ -192,7 +192,7 @@ class IconHandler {
        try {
          iconData = await this.#iconCollection.attachments.download(record);
        } catch (ex) {
@@ -342,22 +342,3 @@ index 2186215520..2f98ee4e91 100644
          continue;
        }
  
-diff --git a/toolkit/components/search/SearchEngineSelector.sys.mjs b/toolkit/components/search/SearchEngineSelector.sys.mjs
-index 3a42b383af..3befe8d899 100644
---- a/toolkit/components/search/SearchEngineSelector.sys.mjs
-+++ b/toolkit/components/search/SearchEngineSelector.sys.mjs
-@@ -409,13 +409,7 @@ export class SearchEngineSelector {
-    *   could be obtained.
-    */
-   async #getConfigurationOverrides() {
--    let result = [];
--    try {
--      result = await this.#remoteConfigOverrides.get();
--    } catch (ex) {
--      // This data is remote only, so we just return an empty array if it fails.
--    }
--    return result;
-+    return [];
-   }
- 
-   /**

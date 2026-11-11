@@ -1,7 +1,7 @@
 Integrate the CANVAS/EME/JIT/WEBGL permissions into the permissions system to have them included in the settings tab and notification/prompt system
 ---
 diff --git a/browser/base/content/navigator-toolbox.inc.xhtml b/browser/base/content/navigator-toolbox.inc.xhtml
-index 2bed88de17..a91159d5bf 100644
+index 61a4c0694b..cdce248481 100644
 --- a/browser/base/content/navigator-toolbox.inc.xhtml
 +++ b/browser/base/content/navigator-toolbox.inc.xhtml
 @@ -267,6 +267,10 @@
@@ -25,18 +25,18 @@ index 2bed88de17..a91159d5bf 100644
                        data-l10n-id="urlbar-indexed-db-notification-anchor"/>
                <image id="password-notification-icon" class="notification-anchor-icon" role="button"
 diff --git a/browser/components/preferences/config/permissions-data.mjs b/browser/components/preferences/config/permissions-data.mjs
-index e25447b12a..597ef85042 100644
+index 375f4f051c..90d9e8b9da 100644
 --- a/browser/components/preferences/config/permissions-data.mjs
 +++ b/browser/components/preferences/config/permissions-data.mjs
-@@ -11,6 +11,7 @@ const XPCOMUtils = ChromeUtils.importESModule(
- 
- const lazy = XPCOMUtils.declareLazy({
+@@ -19,6 +19,7 @@ const lazy = XPCOMUtils.declareLazy({
+     default: false,
+   },
    AppConstants: "resource://gre/modules/AppConstants.sys.mjs",
 +  SitePermissions: "resource:///modules/SitePermissions.sys.mjs",
    SelectableProfileService:
      "resource:///modules/profiles/SelectableProfileService.sys.mjs",
-   AlertsServiceDND: () => {
-@@ -63,6 +64,11 @@ Preferences.addAll([
+   SitePermissions: "resource:///modules/SitePermissions.sys.mjs",
+@@ -74,6 +75,11 @@ Preferences.addAll([
    { id: PREF_ADDON_RECOMMENDATIONS_ENABLED, type: "bool" },
    { id: PREF_UPLOAD_ENABLED, type: "bool" },
    { id: "datareporting.usage.uploadEnabled", type: "bool" },
@@ -48,8 +48,8 @@ index e25447b12a..597ef85042 100644
  ]);
  
  /**
-@@ -498,6 +504,73 @@ Preferences.addSetting(
-   })
+@@ -576,6 +582,73 @@ Preferences.addSetting(
+   }
  );
  
 +Preferences.addSetting({
@@ -120,9 +120,9 @@ index e25447b12a..597ef85042 100644
 +});
 +
  SettingGroupManager.registerGroups({
-   permissions: {
-     id: "permissions",
-@@ -607,6 +680,46 @@ SettingGroupManager.registerGroups({
+   notificationsEntry: {
+     l10nId: "notifications-entry-card-header",
+@@ -699,6 +772,46 @@ SettingGroupManager.registerGroups({
                  "permissions-remove.label,permissions-remove-all.label,permissions-site-xr-window2.title,permissions-site-xr-desc,permissions-site-xr-disable-label,permissions-site-xr-disable-desc,",
              },
            },
@@ -170,10 +170,10 @@ index e25447b12a..597ef85042 100644
        },
        {
 diff --git a/browser/components/preferences/config/privacy.mjs b/browser/components/preferences/config/privacy.mjs
-index 861d807227..024918accd 100644
+index 0b486f5751..f8dbb72589 100644
 --- a/browser/components/preferences/config/privacy.mjs
 +++ b/browser/components/preferences/config/privacy.mjs
-@@ -336,6 +336,9 @@ Preferences.addAll([
+@@ -344,6 +344,9 @@ Preferences.addAll([
    // Fingerprinting Protection
    { id: "privacy.fingerprintingProtection", type: "bool" },
    { id: "privacy.fingerprintingProtection.pbmode", type: "bool" },
@@ -183,7 +183,7 @@ index 861d807227..024918accd 100644
  
    // Resist Fingerprinting
    { id: "privacy.resistFingerprinting", type: "bool" },
-@@ -4105,6 +4108,21 @@ Preferences.addSetting({
+@@ -4289,6 +4292,21 @@ Preferences.addSetting({
    pref: "privacy.fingerprintingProtection.pbmode",
  });
  
@@ -206,7 +206,7 @@ index 861d807227..024918accd 100644
    id: "etpCustomSuspectFingerprintingProtectionEnabled",
    deps: [
 diff --git a/browser/components/preferences/dialogs/sitePermissions.js b/browser/components/preferences/dialogs/sitePermissions.js
-index a26eb90f41..ef11119ca4 100644
+index c19c600954..57d7fd6107 100644
 --- a/browser/components/preferences/dialogs/sitePermissions.js
 +++ b/browser/components/preferences/dialogs/sitePermissions.js
 @@ -47,6 +47,24 @@ const sitePermissionsL10n = {
@@ -231,14 +231,14 @@ index a26eb90f41..ef11119ca4 100644
 +    window: "permissions-site-jit-window2",
 +    description: "permissions-site-jit-desc",
 +  },
-   camera: {
-     window: "permissions-site-camera-window2",
-     description: "permissions-site-camera-desc",
+   "register-protocol-handler": {
+     window: "permissions-site-app-links-window",
+     description: "permissions-site-app-links-desc",
 diff --git a/browser/modules/SitePermissions.sys.mjs b/browser/modules/SitePermissions.sys.mjs
-index 81aad0a569..9f8c409233 100644
+index 10a3472044..0a7d465951 100644
 --- a/browser/modules/SitePermissions.sys.mjs
 +++ b/browser/modules/SitePermissions.sys.mjs
-@@ -1142,6 +1142,21 @@ let gPermissions = {
+@@ -1153,6 +1153,21 @@ let gPermissions = {
        },
      },
  
@@ -260,7 +260,7 @@ index 81aad0a569..9f8c409233 100644
      midi: {
        exactHostMatch: true,
        get disabled() {
-@@ -1175,6 +1190,42 @@ let gPermissions = {
+@@ -1186,6 +1201,42 @@ let gPermissions = {
    },
  };
  
@@ -321,10 +321,10 @@ index 66306f218d..90555f16c5 100644
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
 diff --git a/browser/themes/shared/jar.inc.mn b/browser/themes/shared/jar.inc.mn
-index f30c5517ee..25f91e51e3 100644
+index ea6eaeae6d..ca5b88551c 100644
 --- a/browser/themes/shared/jar.inc.mn
 +++ b/browser/themes/shared/jar.inc.mn
-@@ -245,6 +245,7 @@
+@@ -246,6 +246,7 @@
    skin/classic/browser/history-20.svg                 (../shared/icons/history-20.svg)
    skin/classic/browser/home.svg                       (../shared/icons/home.svg)
    skin/classic/browser/import.svg                     (../shared/icons/import.svg)
@@ -332,7 +332,7 @@ index f30c5517ee..25f91e51e3 100644
    skin/classic/browser/labs-16.svg                    (../shared/icons/labs-16.svg)
    skin/classic/browser/library.svg                    (../shared/icons/library.svg)
    skin/classic/browser/lightning-bolt.svg             (../shared/icons/lightning-bolt.svg)
-@@ -292,6 +293,8 @@
+@@ -293,6 +294,8 @@
    skin/classic/browser/translations.svg               (../shared/icons/translations.svg)
    skin/classic/browser/thumb-down.svg                 (../shared/icons/thumb-down.svg)
    skin/classic/browser/topsites.svg                   (../shared/icons/topsites.svg)

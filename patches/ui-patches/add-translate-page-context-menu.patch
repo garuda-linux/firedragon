@@ -1,10 +1,10 @@
 Add a translate option to the context menu
 ---
 diff --git a/browser/base/content/browser-context.inc.xhtml b/browser/base/content/browser-context.inc.xhtml
-index 09af18cecf..315ea6927a 100644
+index 58cadb512b..e8ebc62154 100644
 --- a/browser/base/content/browser-context.inc.xhtml
 +++ b/browser/base/content/browser-context.inc.xhtml
-@@ -372,6 +372,8 @@
+@@ -392,6 +392,8 @@
        <menuitem id="context-searchselect-private"/>
        <menuitem id="context-translate-selection"
                  data-l10n-id="main-context-menu-translate-selection"/>
@@ -28,10 +28,10 @@ index 2e617f91b9..9ea9fa47ba 100644
            gContextMenu.showOnlyThisFrame();
            break;
 diff --git a/browser/base/content/nsContextMenu.sys.mjs b/browser/base/content/nsContextMenu.sys.mjs
-index bdf2c9c292..af07182909 100644
+index e7485dde03..ef11047718 100644
 --- a/browser/base/content/nsContextMenu.sys.mjs
 +++ b/browser/base/content/nsContextMenu.sys.mjs
-@@ -938,6 +938,7 @@ export class nsContextMenu {
+@@ -925,6 +925,7 @@ export class nsContextMenu {
  
      this.showAndFormatSearchContextItem();
      this.showTranslateSelectionItem();
@@ -39,8 +39,8 @@ index bdf2c9c292..af07182909 100644
      lazy.GenAI.buildAskChatMenu(document.getElementById("context-ask-chat"), {
        browser: this.browser,
        selectionInfo: this.selectionInfo,
-@@ -2690,6 +2691,42 @@ export class nsContextMenu {
-     lazy.AIWindow.createAITab(this.window, [this.browser.currentURI.spec]);
+@@ -2667,6 +2668,42 @@ export class nsContextMenu {
+     );
    }
  
 +  /**

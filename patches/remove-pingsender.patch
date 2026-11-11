@@ -40,10 +40,10 @@ index 8cd458bc30..b05ec32050 100755
    Push "mozwer.dll"
    Push "${FileMainEXE}"
 diff --git a/python/mozbuild/mozbuild/artifacts.py b/python/mozbuild/mozbuild/artifacts.py
-index 6bde27476a..199540640e 100644
+index a2857394ce..9301ce6932 100644
 --- a/python/mozbuild/mozbuild/artifacts.py
 +++ b/python/mozbuild/mozbuild/artifacts.py
-@@ -719,7 +719,6 @@ class LinuxArtifactJob(ArtifactJob):
+@@ -741,7 +741,6 @@ class LinuxArtifactJob(ArtifactJob):
          "{product}/dependentlibs.list",
          "{product}/{product}",
          "{product}/{product}-bin",
@@ -51,7 +51,7 @@ index 6bde27476a..199540640e 100644
          "{product}/plugin-container",
          "{product}/updater",
          "{product}/gfxtest",
-@@ -825,7 +824,6 @@ class MacArtifactJob(ArtifactJob):
+@@ -847,7 +846,6 @@ class MacArtifactJob(ArtifactJob):
                  "{product}-bin",
                  "*.dylib",
                  "nmhproxy",

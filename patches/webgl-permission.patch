@@ -1,7 +1,7 @@
 Add a per-site WebGL permission
 ---
 diff --git a/browser/base/content/popup-notifications.inc.xhtml b/browser/base/content/popup-notifications.inc.xhtml
-index 43c24290b6..99b5c5acae 100644
+index a5cbcac2cb..a474d4ec1d 100644
 --- a/browser/base/content/popup-notifications.inc.xhtml
 +++ b/browser/base/content/popup-notifications.inc.xhtml
 @@ -196,6 +196,13 @@
@@ -180,10 +180,10 @@ index 0000000000..7c647a1478
 +  },
 +};
 diff --git a/browser/themes/shared/notification-icons.css b/browser/themes/shared/notification-icons.css
-index fc4345e260..73a7df907a 100644
+index 9f0aa030d0..9592f0403d 100644
 --- a/browser/themes/shared/notification-icons.css
 +++ b/browser/themes/shared/notification-icons.css
-@@ -211,6 +211,15 @@
+@@ -212,6 +212,15 @@
    list-style-image: url(chrome://browser/skin/canvas-blocked.svg);
  }
  
@@ -200,7 +200,7 @@ index fc4345e260..73a7df907a 100644
  .popup-notification-icon[popupid^="webauthn-prompt-"] {
    list-style-image: url(chrome://browser/skin/fingerprint.svg);
 diff --git a/dom/canvas/ClientWebGLContext.cpp b/dom/canvas/ClientWebGLContext.cpp
-index dde554c222..70d098cdfb 100644
+index ed14de7b83..d6e1154e20 100644
 --- a/dom/canvas/ClientWebGLContext.cpp
 +++ b/dom/canvas/ClientWebGLContext.cpp
 @@ -24,7 +24,9 @@
@@ -211,9 +211,9 @@ index dde554c222..70d098cdfb 100644
  #include "mozilla/StaticPrefs_webgl.h"
 +#include "mozilla/dom/BrowserChild.h"
  #include "mozilla/dom/BufferSourceBinding.h"
+ #include "mozilla/dom/CanvasRenderingContextHelper.h"
  #include "mozilla/dom/Document.h"
- #include "mozilla/dom/GeneratePlaceholderCanvasData.h"
-@@ -45,6 +47,8 @@
+@@ -46,6 +48,8 @@
  #include "mozilla/layers/WebRenderUserData.h"
  #include "nsContentUtils.h"
  #include "nsDisplayList.h"
@@ -222,7 +222,7 @@ index dde554c222..70d098cdfb 100644
  
  namespace mozilla {
  
-@@ -863,6 +867,235 @@ void ClientWebGLContext::ResetBitmap() {
+@@ -875,6 +879,235 @@ void ClientWebGLContext::ResetBitmap() {
    Run<RPROC(Resize)>(size);  // No-change resize still clears/resets everything.
  }
  
@@ -456,9 +456,9 @@ index dde554c222..70d098cdfb 100644
 +}
 +
  bool ClientWebGLContext::CreateHostContext(const uvec2& requestedSize) {
-   const auto pNotLost = MakeRefPtr<webgl::NotLostData>(*this);
-   auto& notLost = *pNotLost;
-@@ -872,6 +1105,31 @@ bool ClientWebGLContext::CreateHostContext(const uvec2& requestedSize) {
+   MOZ_ASSERT(mDeferContextCreationError.empty());
+ 
+@@ -886,6 +1119,31 @@ bool ClientWebGLContext::CreateHostContext(const uvec2& requestedSize) {
        return Err("WebGL disabled, see about:support for why");
      }
  
@@ -491,10 +491,10 @@ index dde554c222..70d098cdfb 100644
      if (StaticPrefs::webgl_disable_fail_if_major_performance_caveat()) {
        options.failIfMajorPerformanceCaveat = false;
 diff --git a/dom/ipc/BrowserParent.cpp b/dom/ipc/BrowserParent.cpp
-index 8b4018fefd..c3f4d21afc 100644
+index 4538bc60ed..02a9943c3d 100644
 --- a/dom/ipc/BrowserParent.cpp
 +++ b/dom/ipc/BrowserParent.cpp
-@@ -4150,6 +4150,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
+@@ -4139,6 +4139,29 @@ mozilla::ipc::IPCResult BrowserParent::RecvShowCanvasPermissionPrompt(
    return IPC_OK();
  }
  
