@@ -27,16 +27,16 @@ catalog:
   '@quasar/vite-plugin': ^2.0.2
   '@unhead/vue': ^3.4.3
   '@vueuse/core': ^15.0.0
-  '@vue/reactivity': ^3.5.44
+  '@vue/reactivity': ^3.5.45
   '@wxt-dev/browser': ^0.3.7
   '@wxt-dev/module-vue': ^1.0.3
-  quasar: ^2.35.2
-  sass-embedded: ^1.107.1
-  tsdown: ^0.23.4
+  quasar: ^2.35.3
+  sass-embedded: ^1.108.1
+  tsdown: ^0.23.7
   typescript: ~6.0.3
-  vite: ^8.3.5
+  vite: ^8.3.7
   vite-plugin-vue-devtools: ^8.2.1
-  vue: ^3.5.44
-  vue-i18n: ^11.4.17
-  vue-router: ^5.4.0
+  vue: ^3.5.45
+  vue-i18n: ^11.4.18
+  vue-router: ^5.5.0
   wxt: ^0.21.5
