@@ -198,7 +198,7 @@ async function build() {
         }
     }
 
-    await $`MAR=${objDistDir}/host/bin/mar MOZ_PRODUCT_VERSION=${firefoxVersion} MAR_CHANNEL_ID=release ${buildDir}/tools/update-packaging/make_full_update.sh ${distDir}/${buildBasename}.mar ${objDistDir}/${target.packageDir}`;
+    await $`MAR=${objDistDir}/host/bin/mar MOZ_PRODUCT_VERSION=${firefoxVersion} MAR_CHANNEL_ID=release ${buildDir}/tools/update-packaging/make_full_update.sh ${distDir}/${buildBasename}.mar ${objDistDir}/${target.packageDir} ${appName}`;
 
     const [buildID, hashValue, size] = await Promise.all([
         (async () =>
