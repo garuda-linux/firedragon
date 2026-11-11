@@ -26,7 +26,7 @@ lockPref("librewolf.cfg.version", "8.6");
  *
  * - BEHAVIOR [DRM, SEARCH AND URLBAR, DOWNLOADS, AUTOPLAY, POP-UPS AND WINDOWS, MOUSE, MACHINE LEARNING]
  *
- * - EXTENSIONS [USER INSTALLED, SYSTEM, EXTENSION FIREWALL]
+ * - EXTENSIONS [USER INSTALLED, EXTENSION FIREWALL]
  *
  * - BUILT-IN FEATURES [UPDATER, SYNC, LOCKWISE, CONTAINERS, DEVTOOLS, SHOPPING, OTHERS]
  *
@@ -416,6 +416,7 @@ defaultPref("permissions.default.media-key-system-access", 0); // Default permis
 /** [SECTION] SEARCH AND URLBAR
  * disable search suggestion and do not update opensearch engines.
  */
+lockPref("browser.search.configV3.featureGate", false);
 
 defaultPref("browser.urlbar.suggest.searches", false);
 defaultPref("browser.search.suggest.enabled", false);
@@ -463,6 +464,10 @@ defaultPref("browser.urlbar.yelp.mlEnabled", false);
 defaultPref("browser.urlbar.sponsoredTopSites", false);
 defaultPref("browser.urlbar.suggest.realtimeOptIn", false);
 defaultPref("browser.urlbar.suggest.sports", false);
+
+defaultPref("browser.urlbar.temporal.featureGate", true);
+defaultPref("browser.urlbar.suggest.temporal", false);
+defaultPref("browser.urlbar.suggest.temporal.seasonal", false);
 
 // Enables local shortcuts
 defaultPref("browser.urlbar.suggest.topsites", true);
@@ -520,6 +525,7 @@ defaultPref("browser.smartwindow.aitab.enabled", false);
 defaultPref("extensions.formautofill.useml", false);
 // Disable ML speech recognition
 defaultPref("browser.ai.control.speechRecognition", "blocked");
+defaultPref("media.webspeech.recognition.enable", false);
 
 // Removes the AI pane
 lockPref("browser.preferences.aiControls", false);
@@ -550,12 +556,6 @@ lockPref("browser.contentanalysis.interception_point.print.enabled", false);
 defaultPref("extensions.webextensions.restrictedDomains", "");
 defaultPref("extensions.enabledScopes", 5); // hidden
 defaultPref("extensions.postDownloadThirdPartyPrompt", false);
-
-/** [SECTION] SYSTEM
- * The reporter extension of webcompat is disabled, urls are stripped for defense in depth.
- */
-lockPref("extensions.webcompat-reporter.enabled", false);
-lockPref("extensions.webcompat-reporter.newIssueEndpoint", "");
 
 /** [SECTION] EXTENSION FIREWALL
  * the firewall can be enabled with the below prefs, but it is not a sane default:
@@ -641,7 +641,7 @@ defaultPref("browser.shareqrcode.embed_logo", false); // Don't embed logo in QR 
 /** [SECTION] BRANDING
  * set librewolf support and releases urls in the UI, so that users land in the proper places.
  */
-defaultPref("app.support.baseURL", "https://support.librewolf.net/");
+defaultPref("app.support.baseURL", "https://support.librewolf.net/1/firefox/%VERSION%/%OS%/%LOCALE%/");
 
 /** [SECTION] FIRST LAUNCH
  * disable what's new, ui tour, and privacy notice/terms of use on first start and updates. the browser
@@ -708,7 +708,9 @@ defaultPref("browser.newtabpage.activity-stream.widgets.system.lists.enabled", t
 defaultPref("browser.newtabpage.activity-stream.widgets.system.pictureOfTheDay.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.privacy.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.recentSearches.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.solitaire.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.stocks.enabled", true);
+defaultPref("browser.newtabpage.activity-stream.widgets.system.travel.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.weather.enabled", true);
 defaultPref("browser.newtabpage.activity-stream.widgets.system.weatherForecast.enabled", true);
 
@@ -721,7 +723,9 @@ defaultPref("browser.newtabpage.activity-stream.widgets.lists.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.pictureOfTheDay.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.privacy.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.recentSearches.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.solitaire.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.stocks.enabled", false);
+defaultPref("browser.newtabpage.activity-stream.widgets.travel.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weather.enabled", false);
 defaultPref("browser.newtabpage.activity-stream.widgets.weatherForecast.enabled", false);
 
@@ -771,6 +775,8 @@ lockPref("browser.newtabpage.activity-stream.unifiedAds.adsFeed.enabled", false)
 lockPref("browser.newtabpage.activity-stream.unifiedAds.ohttp.enabled", true); // Might as well keep it as ohttp enabled
 lockPref("browser.newtabpage.activity-stream.discoverystream.merino-feed-experiment", false);
 
+lockPref("browser.newtabpage.activity-stream.telemetry.privatePing.dwellTime.enabled", false);
+
 // Add UI for toggling launching a newtab on session restore
 defaultPref("browser.sessionstore.newTabOnRestore.showSetting", true);
 
@@ -796,6 +802,7 @@ defaultPref("browser.shell.displayKitImageBehindSetDefaultBrowserButton", "off")
 defaultPref("browser.netError.illustration.enabled", false);
 defaultPref("identity.fxaccounts.toolbar.appMenuSignInPromo.dismissed", true);
 defaultPref("browser.privatebrowsing.introAnimationShown", true);
+defaultPref("browser.tabs.firefox-view.importHistory.dismissed", true);
 
 /** [SECTION] ASROUTER
  * Disable Messaging System
@@ -857,6 +864,8 @@ defaultPref("browser.toolbarbuttons.introduced.sidebar-button", true);
 // Adds an option to reveal passwords in password fields
 defaultPref("layout.forms.reveal-password-button.enabled", true);
 
+defaultPref("browser.fireButton.enabled", true);
+
 // Disable popup when highlighting text by default, but make it available
 defaultPref("browser.highlightToSearch.featureGate", true);
 defaultPref("browser.highlightToSearch.enabled", false);
@@ -908,6 +917,10 @@ lockPref("browser.newtabpage.ping.enabled", false);
 lockPref("browser.newtabpage.activity-stream.impressionId", "{some-fake-impression-ID}");
 // Do not store pings locally
 lockPref("telemetry.fog.enable_store_submitted_pings", false);
+
+lockPref("browser.engagement.search_counts.pbm", false);
+
+lockPref("browser.fireButton.enrollmentSlug", "");
 
 // Disable and deregister the Glean add-on ping scheduler
 // https://codeberg.org/celenity/Phoenix/commit/1ff7ae1dbd3095c993a73af69c6bb2a6ad700c55
