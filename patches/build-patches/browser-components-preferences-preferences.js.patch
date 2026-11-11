@@ -1,16 +1,16 @@
 diff --git a/browser/components/preferences/preferences.js b/browser/components/preferences/preferences.js
-index a76699af7525..e7745f7f3f14 100644
+index df1663c5a74c..c3ddd0ac6ac1 100644
 --- a/browser/components/preferences/preferences.js
 +++ b/browser/components/preferences/preferences.js
-@@ -363,6 +363,7 @@ const CONFIG_PANES = Object.freeze({
-     iconSrc: "chrome://browser/skin/notification-icons/geo.svg",
+@@ -383,6 +383,7 @@ const CONFIG_PANES = Object.freeze({
+     iconSrc: "chrome://browser/skin/personal-info-16.svg",
      module:
        "chrome://browser/content/preferences/config/passwords-autofill.mjs",
 +    visible: () => !Services.prefs.getBoolPref('firedragon.hidePasswdmgr'),
    },
    manageMemories: {
      parent: "personalizeSmartWindow",
-@@ -378,6 +379,7 @@ const CONFIG_PANES = Object.freeze({
+@@ -398,6 +399,7 @@ const CONFIG_PANES = Object.freeze({
      iconSrc: "chrome://browser/skin/payment-methods-16.svg",
      module:
        "chrome://browser/content/preferences/config/passwords-autofill.mjs",
@@ -18,17 +18,17 @@ index a76699af7525..e7745f7f3f14 100644
    },
    profiles: {
      parent: srdSectionEnabled("sync") ? "sync" : "general",
-@@ -387,7 +389,7 @@ const CONFIG_PANES = Object.freeze({
+@@ -407,7 +409,7 @@ const CONFIG_PANES = Object.freeze({
    permissionsData: {
      l10nId: "permissions-data-section",
      iconSrc: "chrome://browser/skin/permissions.svg",
--    groupIds: ["permissions", "dataCollection"],
-+    groupIds: ["permissions"],
+-    groupIds: ["notificationsEntry", "permissions", "dataCollection"],
++    groupIds: ["notificationsEntry", "permissions"],
      module: "chrome://browser/content/preferences/config/permissions-data.mjs",
      visible: () => srdSectionEnabled("permissionsData"),
    },
-@@ -405,7 +407,7 @@ const CONFIG_PANES = Object.freeze({
-     groupIds: ["passwords", "payments", "addresses"],
+@@ -439,7 +441,7 @@ const CONFIG_PANES = Object.freeze({
+     groupIds: ["passwords", "payments", "addresses", "personalInfo"],
      module:
        "chrome://browser/content/preferences/config/passwords-autofill.mjs",
 -    visible: () => srdSectionEnabled("passwordsAutofill"),

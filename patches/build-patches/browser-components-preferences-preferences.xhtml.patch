@@ -1,11 +1,11 @@
 diff --git a/browser/components/preferences/preferences.xhtml b/browser/components/preferences/preferences.xhtml
-index b006d5e5e64c..1396026f9189 100644
+index 8e0c6483d6ed..2b999286e4b4 100644
 --- a/browser/components/preferences/preferences.xhtml
 +++ b/browser/components/preferences/preferences.xhtml
-@@ -98,6 +98,8 @@
-   <script type="module" src="chrome://browser/content/preferences/widgets/sync-device-name.mjs"></script>
-   <script type="module" src="chrome://browser/content/preferences/widgets/sync-engines-list.mjs"></script>
+@@ -103,6 +103,8 @@
+   <script type="module" src="chrome://browser/content/preferences/widgets/update-state.mjs"></script>
    <script type="module" src="chrome://browser/content/ipprotection/bandwidth-usage.mjs"></script>
+   <script type="module" src="chrome://browser/content/ipprotection/vpn-site-rules-list.mjs"></script>
 +
 +#include ../../firedragon/content/dist/preferences.inc.xhtml
  </head>
