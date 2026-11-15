@@ -125,35 +125,6 @@
   },
   {
     "base": {
-      "aliases": ["wg"],
-      "classification": "general",
-      "name": "Garuda's Whoogle",
-      "urls": {
-        "search": {
-          "base": "https://search.garudalinux.org/search",
-          "searchTermParamName": "q"
-        },
-        "suggestions": {
-          "base": "https://search.garudalinux.org/autocomplete",
-          "searchTermParamName": "q"
-        }
-      }
-    },
-    "id": "57275f55-dcad-44e0-b778-1e0894baca9a",
-    "identifier": "whoogle-garuda",
-    "last_modified": 1786651715520,
-    "recordType": "engine",
-    "schema": 1718698472747,
-    "variants": [
-      {
-        "environment": {
-          "allRegionsAndLocales": true
-        }
-      }
-    ]
-  },
-  {
-    "base": {
       "aliases": ["kagi"],
       "classification": "general",
       "name": "Kagi",
