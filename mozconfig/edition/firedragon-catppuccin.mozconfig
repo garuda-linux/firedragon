@@ -1,4 +1,5 @@
 . "$topsrcdir/browser/firedragon/mozconfig/edition/firedragon.mozconfig"
+export MOZ_APP_REMOTINGNAME=org.garudalinux.firedragon-catppuccin
 
 ac_add_options --with-branding=browser/firedragon/branding/catppuccin
 ac_add_options --with-firedragon-theme={d090b7ee-a385-4d54-b9a4-f7164d17756d} # Catppuccin-mocha-mauve
