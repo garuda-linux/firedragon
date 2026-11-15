@@ -2,3 +2,6 @@
 
 ac_add_options --with-branding=browser/firedragon/branding/dr460nized
 ac_add_options --with-firedragon-theme={59f619c8-220b-4a27-8918-bf1537bc060a} # Sweet-Dark
+
+# Branding
+export MOZ_APP_REMOTINGNAME=org.garudalinux.firedragon
