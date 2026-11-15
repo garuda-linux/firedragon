@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.12.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.12.1) — 2026-11-15 — [`v13.12.0`…`v13.12.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.12.0...v13.12.1)
+
+### 🐛 Bug Fixes
+
+- Use the correct startup name so GNOME is able to match dock icon and running app — [`505d46f7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/505d46f7b71ba291ab887da2589b1eda402bbcb4)
+- _(settings)_ Drop Garuda Whoogle search engine, it retired — [`9cada0ab…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/9cada0abc705318e963f8dffe17e83519cd5aa47)
+- _(flatpak)_ Remove --name flag from Flatpak launcher — [`b2c13b5c…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/b2c13b5ce5da570e1a8b4965546095893bf2361b)
+
+### ⚙️ Miscellaneous Tasks
+
+- _(mozconfig)_ Reorganize MOZ_APP_REMOTINGNAME for editions — [`0099aae7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/0099aae7a83ace277154b1363f56a4f4bc7dda03)
+- Update pnpm & deps — [`39ff0987…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/39ff0987a5182c11db83bda9b4530a46916059bf)
+- **builtin-addons/startpage:** Update pnpm & deps — [`e0db79bb…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/e0db79bb4afc23aefb9c1903729cfcd6b6273f7e)
+
 ## [FireDragon v13.12.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.12.0) — 2026-11-11 — [`v13.11.1`…`v13.12.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.11.1...v13.12.0)
 
 ### 🐛 Bug Fixes
