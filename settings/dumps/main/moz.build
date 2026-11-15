@@ -14,6 +14,4 @@ FINAL_TARGET_FILES.defaults.settings.main["search-config-icons"] += [
     "search-config-icons/3cb63137-5de3-4651-bcf9-b1b80231cb9b.meta.json",
     "search-config-icons/a4ccd64f-5c7b-4478-9625-aa8a9afadd70",
     "search-config-icons/a4ccd64f-5c7b-4478-9625-aa8a9afadd70.meta.json",
-    "search-config-icons/e4668122-101e-447b-88f0-9cc41f57b1d8",
-    "search-config-icons/e4668122-101e-447b-88f0-9cc41f57b1d8.meta.json",
 ]
