@@ -33,3 +33,94 @@ index 8dd2855e9d..4d7a6976de 100644
  Preferences.addSetting({
    id: "linkPreviewLongPress",
    pref: "browser.ml.linkPreview.longPress",
+diff --git a/browser/components/genai/LinkPreview.sys.mjs b/browser/components/genai/LinkPreview.sys.mjs
+index deaead5da07..780c64420e5 100644
+--- a/browser/components/genai/LinkPreview.sys.mjs
++++ b/browser/components/genai/LinkPreview.sys.mjs
+@@ -26,6 +26,13 @@ ChromeUtils.defineLazyGetter(lazy, "canUseLlamaCpp", () =>
+   Cc["@mozilla.org/ml-utils;1"].getService(Ci.nsIMLUtils).canUseLlamaCpp()
+ );
+ 
++XPCOMUtils.defineLazyPreferenceGetter(
++  lazy,
++  "aiControlDefault",
++  "browser.ai.control.default",
++  "available",
++  () => LinkPreview.onAIControlPref()
++);
+ XPCOMUtils.defineLazyPreferenceGetter(
+   lazy,
+   "allowedLanguages",
+@@ -50,6 +57,13 @@ XPCOMUtils.defineLazyPreferenceGetter(
+   "ignoreMs",
+   "browser.ml.linkPreview.ignoreMs"
+ );
++XPCOMUtils.defineLazyPreferenceGetter(
++  lazy,
++  "keyPointsControl",
++  "browser.ai.control.linkPreviewKeyPoints",
++  "default",
++  () => LinkPreview.onAIControlPref()
++);
+ XPCOMUtils.defineLazyPreferenceGetter(
+   lazy,
+   "labs",
+@@ -269,6 +283,7 @@ export const LinkPreview = {
+ 
+   get canShowKeyPoints() {
+     return (
++      !this._isBlockedByAIControl() &&
+       this.canRunOnDevice &&
+       this._isRegionSupported() &&
+       this._isLocaleSupported() &&
+@@ -387,6 +402,10 @@ export const LinkPreview = {
+     }
+   },
+ 
++  onAIControlPref() {
++    this.updateCardProperty("canShowKeyPoints", this.canShowKeyPoints);
++  },
++
+   /**
+    * Handles the preference change for opt-in state.
+    * Updates all link preview cards with the new opt-in state.
+@@ -487,8 +506,10 @@ export const LinkPreview = {
+    */
+   init(win) {
+     // Access getters for side effects of observing pref changes
++    lazy.aiControlDefault;
+     lazy.collapsed;
+     lazy.enabled;
++    lazy.keyPointsControl;
+     lazy.longPress;
+     lazy.optin;
+     lazy.shift;
+@@ -874,6 +895,19 @@ export const LinkPreview = {
+     return supportedLocales.some(locale => userLocale.startsWith(locale));
+   },
+ 
++  /**
++   * Checks if key points generation is disabled by the AI controls.
++   *
++   * @returns {boolean} True if disabled by either the global or key point specific control, false otherwise.
++   */
++  _isBlockedByAIControl() {
++    const state =
++      lazy.keyPointsControl == "default"
++        ? lazy.aiControlDefault
++        : lazy.keyPointsControl;
++    return state == "blocked";
++  },
++
+   /**
+    * Checks if key points generation is disabled by policy.
+    *
+@@ -950,7 +984,7 @@ export const LinkPreview = {
+   async generateKeyPoints(ogCard, _retry = false) {
+     // Prevent keypoints if user not opt-in to link preview or user is set
+     // keypoints to be collapsed.
+-    if (!lazy.optin || lazy.collapsed) {
++    if (this._isBlockedByAIControl() || !lazy.optin || lazy.collapsed) {
+       return;
+     }
+     this._abortController = new AbortController();
