@@ -1,4 +1,4 @@
-FROM node:24-trixie
+FROM ghcr.io/pnpm/pnpm:12
 
 # Enable 32-bit support
 RUN dpkg --add-architecture i386
@@ -9,9 +9,6 @@ RUN apt-get upgrade -y
 
 # Install dependencies
 RUN apt-get install -y flatpak glab jq libc6:i386 moreutils msitools p7zip-full python3-pip rsync rustup zstd
-
-# Setup corepack
-RUN corepack enable
 
 # Setup rust with all required toolchains
 ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
