@@ -1,5 +1,19 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.13.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.13.0) — 2026-11-18 — [`v13.12.1`…`v13.13.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.12.1...v13.13.0)
+
+### 🚜 Refactor
+
+- Migrate to pnpm devEngines and update Docker base image — [`a0597225…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a059722582bd572712060ce00e82409c60428086)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update Node.js runtime to v26 — [`a1c4e7b9…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/a1c4e7b9ed600d6bb530ef10eff8f785fd4b3472)
+- Update deps — [`4f9ef085…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/4f9ef0855265b86dfafcdcd68f2897d07eb9be76)
+- Update to firefox v160.0.1 — [`7c62cb18…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/7c62cb1897f6c03add96e8f054bd7e39a81dd482)
+- _(patches)_ Update librewolf patches to v160.0.1-1 — [`abfab70a…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/abfab70aa1c173502087fa2cdd75b2066db7d383)
+- **builtin-addons/startpage:** Update deps — [`aefe5ed1…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/aefe5ed1cf8b2dc328add3ff68770ede3b352f5b)
+
 ## [FireDragon v13.12.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.12.1) — 2026-11-15 — [`v13.12.0`…`v13.12.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.12.0...v13.12.1)
 
 ### 🐛 Bug Fixes
