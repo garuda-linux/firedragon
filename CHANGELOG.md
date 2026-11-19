@@ -1,5 +1,17 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.13.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.13.1) — 2026-11-19 — [`v13.13.0`…`v13.13.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.13.0...v13.13.1)
+
+### 🐛 Bug Fixes
+
+- _(docker)_ Add file package to make image — [`c372bec7…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/c372bec7858b0efc9ccdf3347cbb5e5bac184991)
+
+### ⚙️ Miscellaneous Tasks
+
+- Remove .nvmrc — [`d89450b2…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/d89450b208139ebb5cf3322321453ec9516c58c1)
+- Update deps — [`1855c0cd…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1855c0cd17b1c0900c77beb4623bda9204ae4776)
+- **builtin-addons/startpage:** Update deps — [`09f7af7b…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/09f7af7ba25292121dc7854554c932473568ab89)
+
 ## [FireDragon v13.13.0](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.13.0) — 2026-11-18 — [`v13.12.1`…`v13.13.0`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.12.1...v13.13.0)
 
 ### 🚜 Refactor
