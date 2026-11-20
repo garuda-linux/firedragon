@@ -1,5 +1,16 @@
 # FireDragon ChangeLog
 
+## [FireDragon v13.13.2](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.13.2) — 2026-11-20 — [`v13.13.1`…`v13.13.2`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.13.1...v13.13.2)
+
+### 🐛 Bug Fixes
+
+- _(docker)_ Add git package to make image — [`1f2f9390…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/1f2f939040583edb322e41897cbe565eadccdc53)
+
+### ⚙️ Miscellaneous Tasks
+
+- Update deps — [`e48fc2cf…`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/commit/e48fc2cf382fc60a51f12e0f6daa9bfe5a6f11d4)
+- **builtin-addons/startpage:** Update deps — [`a289fa11…`](https://gitlab.com/garuda-linux/firedragon/startpage/-/commit/a289fa110b7862f5729765155c7d6f3f0555bfa2)
+
 ## [FireDragon v13.13.1](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/releases/v13.13.1) — 2026-11-19 — [`v13.13.0`…`v13.13.1`](https://gitlab.com/garuda-linux/firedragon/firedragon13/-/compare/v13.13.0...v13.13.1)
 
 ### 🐛 Bug Fixes
