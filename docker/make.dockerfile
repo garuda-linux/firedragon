@@ -8,7 +8,7 @@ RUN apt-get update
 RUN apt-get upgrade -y
 
 # Install dependencies
-RUN apt-get install -y file flatpak glab jq libc6:i386 moreutils msitools p7zip-full python3-pip rsync rustup zstd
+RUN apt-get install -y file flatpak git glab jq libc6:i386 moreutils msitools p7zip-full python3-pip rsync rustup zstd
 
 # Setup rust with all required toolchains
 ADD docker/install-rust.sh /usr/local/bin/install-rust.sh
